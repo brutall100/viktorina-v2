@@ -10,7 +10,7 @@
 
 body {
 	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg"); 
-    background-image: url('/viktorina.live/images/background/cover5.jpg');  
+    background-image: url('http://localhost/aldas/Viktorina.live/images/background/cover5.jpg');  
     background-size: cover; 
 	display: flex;
 	justify-content: center;

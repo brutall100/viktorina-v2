@@ -5,7 +5,7 @@
  }
 
  body {
-  background: #ffffff url(/images/background/cover0.jpg) center center fixed;
+  background: #ffffff url(http://localhost/aldas/Viktorina.live/images/background/cover0.jpg) center center fixed;
   background-size: cover;
 }
 
@@ -17,12 +17,6 @@
 }
 
   .main {
-    /* background: #ffffff url(/viktorina.live/images/background/cover0.jpg);
-    background-size: cover; */
-    /* -ms-transform: rotate(1deg); IE 9 */
-    /* -webkit-transform: rotate(1deg); Safari */
-    /* -moz-transform: rotate(1deg); Firefox */
-    /* transform: rotate(1deg); */
     display: flex;
     width: 60vw;
     height: 50vh;
@@ -83,6 +77,12 @@
   th {
     text-align: left;
   }
+
+
+
+
+  /* phpquestion.php Modal with js */
+ 
 
  
   

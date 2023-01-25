@@ -67,8 +67,6 @@ document.getElementById('generuoti-varda')
 .addEventListener('click', setRandomName)
 
 
-
-
 document.getElementById('generate-pasword')
 .addEventListener('click',function generatePassword() {
   var password = ""
@@ -97,6 +95,12 @@ document.getElementById('generate-pasword')
     document.body.removeChild(tempInput);
   }
 })
+
+
+
+
+
+ 
 
 
 

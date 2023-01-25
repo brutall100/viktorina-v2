@@ -1,11 +1,19 @@
+<?php
+    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && isset($_SESSION['username'])) {
+     echo "Welcome, " . $_SESSION['username'];
+    }else{
+     echo "Esate neprisijunges";
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="/headerstyle.css" />
+    <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/a_style.css" />
+    <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/aa_headerstyle.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,27 +25,15 @@
   <body>
     <header class="header">
       <ul>
-        <img
-          class="logo"
-          src="/images/icons/viktorina_logo.png" />
+        <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/viktorina_logo.png" />
         <div>
-          <li><a href="/index.html">Viktorina</a></li>
-          <li><a href="#news">Naujienos</a></li>
-          <li>
-            <a href="/NewQuestionInsert/newquestionindex.html"
-              >Irašyti klausimą</a
-            >
-          </li>
-          <!-- <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Irašyti klausimą </a>
-            <div class="dropdown-content">
-            <a href="#">Paprastas</a>
-            <a href="#">Vaizdo</a>
-          </li> -->
-        </div>
-        <div>   <!-- User interface turetu buti -->  
-          <button>User_A</button>
-        </div>
+          <li><a href="http://localhost/aldas/Viktorina.live/a_index.php">Viktorina</a></li>
+          <li><a href="http://localhost/aldas/Viktorina.live/c_questionwaiting.php">Naujienos</a></li>
+          <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php">Irašyti klausimą</a></li>
+        </div> 
+        <div>
+         
+        </div>  
       </ul>
     </header>
 
@@ -76,6 +72,6 @@
         class="imported-footer"></object>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="http://localhost/aldas/Viktorina.live/a_index.js"></script>
   </body>
 </html>

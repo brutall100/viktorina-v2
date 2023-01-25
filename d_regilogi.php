@@ -1,10 +1,11 @@
+<?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="regilogi.css" />
+    <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/d_regilogi.css" />
     <title>Registracija ir Prisijungimas</title>
   </head>
   <body>
@@ -24,37 +25,49 @@
     </div>
 
     <div class="container" id="container">
+      <!-- Registracija -->
       <div class="form-container sign-up-container">
-        <form action="/register.php" method="post">
+        <form action="http://localhost/aldas/Viktorina.live/d_regilogi_register.php" method="post" id="form">
           <h1>Kurti paskyra</h1>
           <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div>
           <span>or use your email for registration</span>
-          <input type="text" placeholder="Vardas" id="name-input" />
-          <input type="email" placeholder="Email" />
-          <input
-            type="password"
-            placeholder="Slaptažodis"
-            id="password-input" />
+          <div class="form-group">
+              <input type="text" placeholder="Vardas" id="name-input" name="nick_name" required/>
+              <span id="name-error"></span>
+          </div>
+          <div class="form-group">
+              <input type="email" placeholder="@" id="user-email" name="user_email" required/>
+              <span id="email-error"></span>
+          </div>
+          <div class="form-group">
+              <input type="password" placeholder="Slaptažodis" id="password-input" name="user_password" required/>
+              <span id="password-error"></span>
+          </div>
           <button>Registruoti</button>
-        </form>
+      </form>
+      
       </div>
+      <!-- Prisijungimas -->
       <div class="form-container sign-in-container">
-        <form action="/login.php" method="post">
-          <h1>Sign in</h1>
+        <form action="d_regilogi_login.php" method="post">
+
+        <?php include('errors.php'); ?>
+        
+          <h1>Prisijungti</h1>
           <div class="social-container">
             <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
             <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
           </div>
           <span>or use your account</span>
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
+          <input type="text" placeholder="Name" name="nick_name" required/>
+          <input type="password" placeholder="Password" name="user_password" required/>
           <a href="#">Forgot your password?</a>
-          <button>Sign In</button>
+          <button>Prisijungti</button>
         </form>
       </div>
       <div class="overlay-container">
@@ -75,8 +88,8 @@
       </div>
     </div>
 
-    <script src="regilogi.js"></script>
-    <script src="nameGenerator.js"></script>
+    <script src="http://localhost/aldas/Viktorina.live/d_regilogi.js"></script>
+    <script src="http://localhost/aldas/Viktorina.live/d_regilogi_nameGenerator.js"></script>
     <footer></footer>
   </body>
 </html>

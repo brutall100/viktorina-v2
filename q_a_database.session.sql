@@ -1,18 +1,4 @@
-INSERT INTO question_answer (id, user, question, answer, data)
-VALUES (
-    id:int,
-    'user:varchar',
-    'question:varchar',
-    'answer:varchar',
-    'data:date'
-  );INSERT INTO question_answer (id, user, question, answer, data)
-VALUES (
-     id:int,
-    'user:varchar',
-    'question:varchar',
-    'answer:varchar',
-    'data:date'
-  );INSERT INTO question_answer (id, user, question, answer, data)
+  INSERT INTO question_answer (id, user, question, answer, date_inserted)
   VALUES (
       id:int,
       'user:varchar',
