@@ -1,78 +1,116 @@
-const database = {
-  questions: [
-    {
-      id: 1,
-      question: "What is the capital of France?",
-      answers: "Paris",
-    },
-    {
-      id: 2,
-      question: "What is the largest ocean in the world?",
-      answers: "Pacific Ocean",
-    },
-    {
-      id: 3,
-      question: "What is the highest mountain in the world?",
-      answers: "Everest",
-    },
-    {
-      id: 4,
-      question: "What is the longest river in the world?",
-      answers: "Nile",
-    },
-    {
-      id: 5,
-      question: "Kas megsta saldainius?",
-      answers: "Giedrius Pamparam",
-    },
-    {
-      id: 6,
-      question: "Kas daro netvarka?",
-      answers: "Viktorija",
-    },
-    {
-      id: 7,
-      question: "Seimos Narys?",
-      answers: "Ugis 1",
-    },
-    {
-      id: 8,
-      question: "Aldo gimimo metai?",
-      answers: "1986",
-    },
-  ]
-};
+// const database = {
+//   questions: [
+//     {
+//       id: 1,
+//       question: "What is the capital of France?",
+//       answers: "Paris",
+//     },
+//     {
+//       id: 2,
+//       question: "What is the largest ocean in the world?",
+//       answers: "Pacific Ocean",
+//     },
+//     {
+//       id: 3,
+//       question: "What is the highest mountain in the world?",
+//       answers: "Everest",
+//     },
+//     {
+//       id: 4,
+//       question: "What is the longest river in the world?",
+//       answers: "Nile",
+//     },
+//     {
+//       id: 5,
+//       question: "Kas megsta saldainius?",
+//       answers: "Giedrius Pamparam",
+//     },
+//     {
+//       id: 6,
+//       question: "Kas daro netvarka?",
+//       answers: "Viktorija",
+//     },
+//     {
+//       id: 7,
+//       question: "Seimos Narys?",
+//       answers: "Ugis 1",
+//     },
+//     {
+//       id: 8,
+//       question: "Aldo gimimo metai?",
+//       answers: "1986",
+//     },
+//   ]
+// };
 
+// fetch('a_get_data.php')
+//   .then(response => response.json())
+//   .then(data => {
+//     database.questions = data;
+//     const question = getRandomQuestion();
+//     displayQuestion(question);
+//   })
+//   .catch(error => console.error(error));
+
+
+
+
+
+// function getRandomQuestion() {
+//   // Generate a random index based on the length of the questions array
+//   const randomIndex = Math.floor(Math.random() * database.questions.length);
+
+//   // Get the question object at the random index
+//   const question = database.questions[randomIndex];
+
+//   return question;
+// }
+
+
+// function displayQuestion(question) {
+//   const questionElement = document.getElementById("question")
+//   questionElement.innerText = question.question
+
+//   const answersElement = document.getElementById("answers")
+//   answersElement.innerHTML = ""
+
+//   const dotsElement = document.getElementById("dot-answer")
+//   dotsElement.innerHTML = ""
+
+//   const lenghtElement = document.getElementById("dot-answer-lenght")
+//   lenghtElement.innerText = question.answers.length
+
+//   // Split the answer into an array of words
+//   const words = question.answers.split(" ");
+//   const underscore = "_"
+//   // Loop through the words and add a dot for each character
+//   for (let i = 0; i < words.length; i++) {
+//     for (let j = 0; j < words[i].length; j++) {
+//       dotsElement.innerHTML += " &#x2B1C; "
+//     }
+  
+//     // Add a space after each word, except for the last word
+//     if (i < words.length - 1) {
+//   dotsElement.innerHTML += `${underscore}`
+//     }
+//   }
+  
+  
 fetch('a_get_data.php')
   .then(response => response.json())
   .then(data => {
-    database.questions = data;
-    const question = getRandomQuestion();
+    const question = data[0];
     displayQuestion(question);
   })
+  
   .catch(error => console.error(error));
 
-
-
-
-
-function getRandomQuestion() {
-  // Generate a random index based on the length of the questions array
-  const randomIndex = Math.floor(Math.random() * database.questions.length);
-
-  // Get the question object at the random index
-  const question = database.questions[randomIndex];
-
-  return question;
-}
-
-
 function displayQuestion(question) {
-  const questionElement = document.getElementById("question")
-  questionElement.innerText = question.question
+  const questionElement = document.getElementById("question");
+  questionElement.innerText = question.question;
 
-  const answersElement = document.getElementById("answers")
-  answersElement.innerHTML = ""
+  const answersElement = document.getElementById("answers");
+  answersElement.innerText = question.answer;
 
   const dotsElement = document.getElementById("dot-answer")
   dotsElement.innerHTML = ""
@@ -94,10 +132,9 @@ function displayQuestion(question) {
   dotsElement.innerHTML += `${underscore}`
     }
   }
-  
-  
-  displayLettersWithDelay(answersElement, question.answers, 3000)
+  displayLettersWithDelay(answersElement, question.answer, 3000)
 }
+
 
 
 
