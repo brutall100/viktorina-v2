@@ -43,6 +43,18 @@ const database = {
   ]
 };
 
+fetch('a_get_data.php')
+  .then(response => response.json())
+  .then(data => {
+    database.questions = data;
+    const question = getRandomQuestion();
+    displayQuestion(question);
+  })
+  .catch(error => console.error(error));
+
+
+
+
 
 function getRandomQuestion() {
   // Generate a random index based on the length of the questions array

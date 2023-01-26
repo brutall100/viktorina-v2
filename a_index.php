@@ -1,11 +1,3 @@
-<?php
-    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true && isset($_SESSION['username'])) {
-     echo "Welcome, " . $_SESSION['username'];
-    }else{
-     echo "Esate neprisijunges";
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
