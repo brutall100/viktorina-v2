@@ -105,35 +105,36 @@ fetch('a_get_data.php')
   
   .catch(error => console.error(error));
 
-function displayQuestion(question) {
-  const questionElement = document.getElementById("question");
-  questionElement.innerText = question.question;
-
-  const answersElement = document.getElementById("answers");
-  answersElement.innerText = question.answer;
-
-  const dotsElement = document.getElementById("dot-answer")
-  dotsElement.innerHTML = ""
-
-  const lenghtElement = document.getElementById("dot-answer-lenght")
-  lenghtElement.innerText = question.answers.length
-
-  // Split the answer into an array of words
-  const words = question.answers.split(" ");
-  const underscore = "_"
-  // Loop through the words and add a dot for each character
-  for (let i = 0; i < words.length; i++) {
-    for (let j = 0; j < words[i].length; j++) {
-      dotsElement.innerHTML += " &#x2B1C; "
-    }
+  function displayQuestion(question) {
+    const questionElement = document.getElementById("question")
+    questionElement.innerText = question.question
   
-    // Add a space after each word, except for the last word
-    if (i < words.length - 1) {
-  dotsElement.innerHTML += `${underscore}`
+    const answersElement = document.getElementById("answers")
+    answersElement.innerHTML = ""
+  
+    const dotsElement = document.getElementById("dot-answer")
+    dotsElement.innerHTML = ""
+  
+    const lenghtElement = document.getElementById("dot-answer-lenght")
+    lenghtElement.innerText = question.answer.length
+  
+    // Split the answer into an array of words
+    const words = question.answer.split(" ");
+    const underscore = "_"
+    // Loop through the words and add a dot for each character
+    for (let i = 0; i < words.length; i++) {
+      for (let j = 0; j < words[i].length; j++) {
+        dotsElement.innerHTML += " &#x2B1C; "
+      }
+    
+      // Add a space after each word, except for the last word
+      if (i < words.length - 1) {
+    dotsElement.innerHTML += `${underscore}`
+      }
     }
+    displayLettersWithDelay(answersElement, question.answer, 3000)
   }
-  displayLettersWithDelay(answersElement, question.answer, 3000)
-}
+  
 
 
 
@@ -279,10 +280,10 @@ function generateAndDisplayRandomPoint() {
 function refreshPage() {
   setTimeout(() => {
     location.reload();
-  }, 17000); // 8000 milliseconds = 8 seconds
+  }, 8000); // 8000 milliseconds = 8 seconds
 }
 
-const question = getRandomQuestion();
+// const question = getRandomQuestion();
 displayQuestion(question);
 generateAndDisplayRandomPoint();
 refreshPage();
