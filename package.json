@@ -19,6 +19,6 @@
   "homepage": "https://github.com/brutall100/Viktorina.Live#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "mysql2": "^3.0.0"
+    "mysql2": "^3.0.1"
   }
 }
