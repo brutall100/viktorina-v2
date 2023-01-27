@@ -24,4 +24,14 @@ const refreshData = () => {
 
 refreshData();
 
+
+// module.exports = data;
+exports.refreshData = refreshData;
+
+
+
+// node a_getData.js
+// node a_getData.js
+
+
   
