@@ -52,8 +52,9 @@
 
     <footer class="footer">
       <object
-        data="/Footer/footer.html"
-        class="imported-footer"></object>
+        data="http://localhost/aldas/Viktorina.live/Footer/footer.html"
+        class="imported-footer">
+      </object>
     </footer>
   </body>
 </html>
