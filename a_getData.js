@@ -1,37 +1,38 @@
 const mysql = require('mysql2');
 
+let dataQnA = {};
+
 const refreshData = () => {
     const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'viktorina'
-  });
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'viktorina'
+    });
 
-  connection.connect();
+    connection.connect();
 
-  const sql = 'SELECT id, question, answer FROM question_answer ORDER BY RAND() LIMIT 1';
+    const sql = 'SELECT id, question, answer FROM question_answer ORDER BY RAND() LIMIT 1';
 
-  connection.query(sql, (err, results) => {
-    if (err) throw err;
+    connection.query(sql, (err, results) => {
+        if (err) throw err;
 
-    const data = JSON.stringify(results);
-    console.log(data);
-    connection.end();
-    setTimeout(refreshData, 10000);
-  });
+        dataQnA = results;
+        connection.end();
+        console.log(dataQnA); 
+        console.log(dataQnA[0].id);
+        console.log(dataQnA[0].question);
+        console.log(dataQnA[0].answer);
+
+        setTimeout(refreshData, 10000);
+    });
 };
-
 refreshData();
 
-
-// module.exports = data;
 exports.refreshData = refreshData;
+exports.dataQnA = dataQnA;
 
 
-
-// node a_getData.js
-// node a_getData.js
 
 
   
