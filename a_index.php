@@ -41,7 +41,7 @@
         <div class="super" id="bonus-points"></div>
       </div>
       <div class="super" id="question"></div>
-      <div class="super" id="answers"></div>
+      <div class="super" id="answer"></div>
       <div class="" id="dot-answer"></div>
       <div class="" id="dot-answer-lenght"></div>
 

@@ -1,23 +1,24 @@
+const { refreshData, dataQnA } = require('./a_getData');
 
-// fetch('a_get_data.php')
-//   .then(response => response.json())
-//   .then(data => {
-//     const question = data[0];
-//     displayQuestion(question);
-//   })
-  
-//   .catch(error => console.error(error));
+async function getData() {
+    return new Promise((resolve, reject) => {
+        refreshData((data) => {
+            resolve(data);
+        });
+    });
+}
 
-// const refreshData = require('./a_getData.js');
-const { refreshData } = require('./a_getData.js');
+(async () => {
+    const data = await getData();
+    })();
 
 
-console.log(data);
-const question = data[0];
-displayQuestion(question);
-console.log(question)
-
-refreshData()
+refreshData((dataQ) => {
+  console.log(dataQ);
+  console.log(dataQ.id);
+  console.log(dataQ.question);
+  console.log(dataQ.answer);
+});
 
 
   function displayQuestion(question) {
@@ -25,7 +26,7 @@ refreshData()
     const questionElement = document.getElementById("question")
     questionElement.innerText = question.question
   
-    const answersElement = document.getElementById("answers")
+    const answersElement = document.getElementById("answer")
     answersElement.innerHTML = ""
   
     const dotsElement = document.getElementById("dot-answer")
