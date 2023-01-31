@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/brutall100/Viktorina.Live#readme",
   "dependencies": {
+    "axios": "^1.2.6",
     "express": "^4.18.2",
     "mysql2": "^3.0.1"
   }

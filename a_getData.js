@@ -1,3 +1,4 @@
+const express = require('express');
 const mysql = require('mysql2');
 
 let dataQnA = {};
@@ -24,9 +25,25 @@ const refreshData = (callback) => {
   });
 };
 
+async function getData() {
+  return new Promise((resolve, reject) => {
+      refreshData((data) => {
+          resolve(data);
+      });
+  });
+}
+
+(async () => {
+  const data = await getData();
+  console.log(data);
+  console.log(data.id);
+  console.log(data.question);
+  console.log(data.answer);
+})();
 
 exports.refreshData = refreshData;
 exports.dataQnA = dataQnA;
+
 
 
 

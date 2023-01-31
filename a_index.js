@@ -1,24 +1,26 @@
-const { refreshData, dataQnA } = require('./a_getData');
-
-async function getData() {
-    return new Promise((resolve, reject) => {
-        refreshData((data) => {
-            resolve(data);
-        });
-    });
-}
-
-(async () => {
-    const data = await getData();
-    })();
+const axios = require('axios');
 
 
-refreshData((dataQ) => {
-  console.log(dataQ);
-  console.log(dataQ.id);
-  console.log(dataQ.question);
-  console.log(dataQ.answer);
-});
+axios.get('http://localhost:3000/data')
+  .then(function (response) {
+    console.log(response.data);
+    console.log(response.data.id);
+    console.log(response.data.question);
+    console.log(response.data.answer);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+
+
+// async function fetchData() {
+//   const response = await fetch('http://localhost:3000/a_getData');
+//   const data = await response.json();
+//   console.log(dataQnA);
+// }
+
+// fetchData();
 
 
   function displayQuestion(question) {
