@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql2');
+const router = express.Router();
 
 let dataQnA = {};
 
@@ -21,28 +22,18 @@ const refreshData = (callback) => {
       dataQnA = results[0];
       connection.end();
       callback(dataQnA);
-      setTimeout(() => refreshData(callback), 10000);
   });
 };
 
-async function getData() {
-  return new Promise((resolve, reject) => {
-      refreshData((data) => {
-          resolve(data);
-      });
-  });
-}
+router.get('http://localhost:3000/aGetData', (req, res) => {
+  res.send(dataQnA);
+});
 
-(async () => {
-  const data = await getData();
-  console.log(data);
-  console.log(data.id);
-  console.log(data.question);
-  console.log(data.answer);
-})();
+setInterval(() => refreshData(() => {}), 10000);
 
-exports.refreshData = refreshData;
-exports.dataQnA = dataQnA;
+module.exports = router;
+
+
 
 
 
