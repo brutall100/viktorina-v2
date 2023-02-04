@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Viktorina.live</title>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/a_style.css" />
     <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/aa_headerstyle.css" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet" />
-    <title>Viktorina.live</title>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />  
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    
   </head>
+
   <body>
     <header class="header">
       <ul>
@@ -41,6 +41,8 @@
         <div class="super" id="bonus-points"></div>
       </div>
       <div class="super" id="question"></div>
+<!-- bandymas -->
+<div id="dataContainer"></div>
       <div class="super" id="answer"></div>
       <div class="" id="dot-answer"></div>
       <div class="" id="dot-answer-lenght"></div>
@@ -58,13 +60,14 @@
         <button id="chat-button">Send</button>
       </div> -->
 
+      <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+      <!-- <script type="text/javascript" src="http://localhost/aldas/Viktorina.live/a_index.js"></script> -->
+    <script type="text/javascript" src="http://localhost/aldas/Viktorina.live/a_index.js"></script>
     <footer class="footer">
       <object
         data="http://localhost/aldas/Viktorina.live/Footer/footer.html"
         class="imported-footer">
       </object>
     </footer>
-
-    <script src="http://localhost/aldas/Viktorina.live/a_index.js"></script>
   </body>
 </html>
