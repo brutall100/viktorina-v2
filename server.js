@@ -10,7 +10,7 @@ app.use(function(req, res, next) {
 });
 
 
-let dataQnA = {};
+let cachedData = null;
 
 const refreshData = (callback) => {
   const connection = mysql.createConnection({
@@ -27,20 +27,25 @@ const refreshData = (callback) => {
   connection.query(sql, (err, results) => {
     if (err) throw err;
 
-    dataQnA = results[0];
-    console.log(dataQnA);
+    cachedData = results[0];
+    console.log(cachedData);
     connection.end();
-    callback(dataQnA);
+    callback(cachedData);
   });
 };
 
 app.get('/data', (req, res) => {
+  if (!cachedData) {
   refreshData((data) => {
-    res.send(data);
+  cachedData = data;
+  res.send(cachedData);
   });
-});
+  } else {
+  res.send(cachedData);
+  }
+  });
 
-setInterval(() => refreshData(() => {}), 10000);
+setInterval(() => refreshData(() => {}), 60000);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

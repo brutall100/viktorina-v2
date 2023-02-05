@@ -28,7 +28,8 @@
         </div>  
       </ul>
     </header>
-
+<!-- bandymas -->
+<div id="dataContainer"></div>
     <section>
       <div class="litas-container">
         <div id="litai-img"></div>
@@ -41,8 +42,6 @@
         <div class="super" id="bonus-points"></div>
       </div>
       <div class="super" id="question"></div>
-<!-- bandymas -->
-<div id="dataContainer"></div>
       <div class="super" id="answer"></div>
       <div class="" id="dot-answer"></div>
       <div class="" id="dot-answer-lenght"></div>
