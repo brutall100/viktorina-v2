@@ -16,6 +16,7 @@ async function fetchData() {
   console.log('ID:', data.data.id);
   console.log('Answer:', data.data.answer); 
   console.log('Litan:', data.data.lita);
+  console.log('Bonus:', data.data.bonusLita);
   const dataContainer = document.getElementById("dataContainer");
   dataContainer.innerHTML = JSON.stringify(data);
   displayQuestion(data);

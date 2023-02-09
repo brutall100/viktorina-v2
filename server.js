@@ -10,6 +10,23 @@ app.use(function(req, res, next) {
 });
 
 let cachedData = null;
+let bonusLita = 0;
+let count = 0;
+
+const generateBonus = () => {
+  const interval = Math.floor(Math.random() * 60 * 60 * 1000); // Generate a random interval in milliseconds
+  setTimeout(() => {
+    bonusLita = Math.floor(Math.random() * 5) * 10 ;
+    count++;
+    console.log(`Generated bonus: ${bonusLita}`);
+    if (count < 20) {
+      generateBonus();
+    }
+  }, interval);
+};
+
+generateBonus();
+
 
 const refreshData = (callback) => {
   const connection = mysql.createConnection({
@@ -26,34 +43,38 @@ const refreshData = (callback) => {
   connection.query(sql, (err, results) => {
     if (err) throw err;
 
-    const randomNumber = Math.floor(Math.random() * 5) + 1;
+    const randomNumber = Math.floor(Math.random() * 5);
 
     cachedData = {
       ...results[0],
-      lita: randomNumber
+      lita: randomNumber,
+      bonusLita: bonusLita
     };
 
+    
     console.log(cachedData);
     connection.end();
     callback(cachedData);
+    bonusLita = 0;
   });
 };
 
 
+
 app.get('/data', (req, res) => {
+  generateBonus(); // Call generateBonus to generate a new bonusLita value
+
   if (!cachedData) {
     refreshData((data) => {
       cachedData = data;
       res.send({
         data: cachedData,
-        // lita: data.lita
       });
     });
   } else {
     res.send({
       data: cachedData,
-      // lita: cachedData.lita
-    });
+          });
   }
 });
 
