@@ -46,13 +46,13 @@ app.get('/data', (req, res) => {
       cachedData = data;
       res.send({
         data: cachedData,
-        lita: data.lita
+        // lita: data.lita
       });
     });
   } else {
     res.send({
       data: cachedData,
-      lita: cachedData.lita
+      // lita: cachedData.lita
     });
   }
 });
