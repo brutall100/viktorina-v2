@@ -9,7 +9,6 @@ app.use(function(req, res, next) {
   next();
 });
 
-
 let cachedData = null;
 
 const refreshData = (callback) => {
@@ -27,29 +26,47 @@ const refreshData = (callback) => {
   connection.query(sql, (err, results) => {
     if (err) throw err;
 
-    cachedData = results[0];
+    const randomNumber = Math.floor(Math.random() * 5) + 1;
+
+    cachedData = {
+      ...results[0],
+      lita: randomNumber
+    };
+
     console.log(cachedData);
     connection.end();
     callback(cachedData);
   });
 };
 
+
 app.get('/data', (req, res) => {
   if (!cachedData) {
-  refreshData((data) => {
-  cachedData = data;
-  res.send(cachedData);
-  });
+    refreshData((data) => {
+      cachedData = data;
+      res.send({
+        data: cachedData,
+        lita: data.lita
+      });
+    });
   } else {
-  res.send(cachedData);
+    res.send({
+      data: cachedData,
+      lita: cachedData.lita
+    });
   }
-  });
+});
 
-setInterval(() => refreshData(() => {}), 60000);
+
+setInterval(() => {
+  refreshData(() => {});
+  lita = Math.floor(Math.random() * 5) + 1;
+}, 60000);
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Serveris prisijunges on http://localhost:${port}`);
 });
+
 
 
 // node server.js

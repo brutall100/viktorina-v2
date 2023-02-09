@@ -9,10 +9,11 @@ async function fetchData() {
 
 (async function() {
   const data = await fetchData();
-  console.log('Data:', data);
-  console.log('ID:', data.id);
-  console.log('Question:', data.question);
-  console.log('Answer:', data.answer);  
+  console.log('Dataa:', data);
+  // console.log('Question:', data.data.question);
+  // console.log('ID:', data.data.id);
+  // console.log('Answer:', data.data.answer); 
+  // console.log('Lita:', data.data.lita);
   const dataContainer = document.getElementById("dataContainer");
   dataContainer.innerHTML = JSON.stringify(data);
   
@@ -20,9 +21,12 @@ async function fetchData() {
 })();
 
 
+
+
+
 async function displayQuestion(data) {
   const questionElement = document.getElementById("question");
-  questionElement.innerText = data.question;
+  questionElement.innerText = data.data.question;
   
   const answersElement = document.getElementById("answer");
   answersElement.innerHTML = "";
@@ -31,9 +35,9 @@ async function displayQuestion(data) {
   dotsElement.innerHTML = "";
   
   const lenghtElement = document.getElementById("dot-answer-lenght");
-  lenghtElement.innerText = data.answer.length;
+  lenghtElement.innerText = data.data.answer.length;
   
-  const words = data.answer.split(" ");
+  const words = data.data.answer.split(" ");
   const underscore = "_";
   
   for (let i = 0; i < words.length; i++) {
@@ -46,8 +50,8 @@ async function displayQuestion(data) {
   }
   
   displayLettersWithDelay(answersElement, data.answer, 3000);
-}
 
+}
 async function displayLettersWithDelay(element, string, delay) {
   for (let i = 0; i < 4; i++) {
     await new Promise((resolve) => setTimeout(resolve, 5000 + delay * i));
@@ -96,116 +100,73 @@ if (bonusPoint > 0) {
 
 
 
+const generateAndDisplayRandomPoint = () => {
+  let = randomPoint = Math.floor(Math.random() * 5) + 1;
+  litoVerte = "";
+  imageSrc = "";
+  const litaiImg = document.getElementById("litai-img");
 
-function generateAndDisplayRandomPoint() {
-  let storedRandomPoint = localStorage.getItem("randomPoint");
-  let storedTime = localStorage.getItem("time");
-
-  // Check if 60 seconds have passed since the last time the point was generated
-  if (storedRandomPoint && storedTime && (Date.now() - storedTime < 60000)) {
-    // 60 seconds have not passed, use the stored random point
-    randomPoint = storedRandomPoint;
-  } else {
-    // 60 seconds have passed or no stored random point, generate a new one
-    randomPoint = Math.floor(Math.random() * 5) + 1;
-
-    // Store the new random point and time in local storage
-    localStorage.setItem("randomPoint", randomPoint);
-    localStorage.setItem("time", Date.now());
+  switch (randomPoint) {
+    case 1:
+      litoVerte = "Litas";
+      imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
+      break;
+    case 2:
+      litoVerte = "Litai";
+      imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
+      displayImage(imageSrc, litaiImg, "on-off-litai1");
+      imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
+      break;
+    case 3:
+      litoVerte = "Litai";
+      imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
+      displayImage(imageSrc, litaiImg, "on-off-litai");
+      imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
+      break;
+    case 4:
+      litoVerte = "Litai";
+      imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
+      displayImage(imageSrc, litaiImg, "on-off-litai");
+      imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
+      break;
+    case 5:
+      litoVerte = "Litai";
+      imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/5Lt.png";
+      break;
+    default:
+      litoVerte = "Lita";
+      imageSrc = "/ImgLitai/2Lt.png";
+      break;
   }
 
-  let litoVerte = "";
-  let imageSrc = "";
-
-  // Determine the value of litoVerte and imageSrc based on the value of randomPoint
-  if (randomPoint === 1) {
-    litoVerte = "Litas";
-  
-    const image1Element = document.createElement("img");
-    image1Element.src = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
-    image1Element.alt = "Klausimo verte vienas Litas";
-    image1Element.classList.add("on-off-litai"); // Add the new class here
-    document.getElementById("litai-img").appendChild(image1Element);
-    
-  } 
-  else if (randomPoint === 2) {
-    litoVerte = "Litai";
-
-    const image1Element = document.createElement("img");
-    image1Element.src = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
-    image1Element.alt = "1 Litas";
-    image1Element.classList.add("on-off-litai1"); // Add the new class here
-    document.getElementById("litai-img").appendChild(image1Element);
-
-    const image2Element = document.createElement("img");
-    image2Element.src = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
-    image2Element.alt = "1 Litas";
-    image1Element.classList.add("on-off-litai"); // Add the new class here
-    document.getElementById("litai-img").appendChild(image2Element);
-  }
-  else if (randomPoint === 3) {
-    litoVerte = "Litai";
-
-    // Display multiple images
-    const image1Element = document.createElement("img");
-    image1Element.src = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
-    image1Element.alt = "1 Litas";
-    image1Element.classList.add("on-off-litai"); // Add the new class here
-    document.getElementById("litai-img").appendChild(image1Element);
-
-    const image2Element = document.createElement("img");
-    image2Element.src = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
-    image2Element.alt = "2 Litai";
-    image1Element.classList.add("on-off-litai"); // Add the new class here
-    document.getElementById("litai-img").appendChild(image2Element);
-  }
-  else if (randomPoint === 4) {
-    litoVerte = "Litai";
-
-    // Display multiple images
-    const image1Element = document.createElement("img");
-    image1Element.src = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
-    image1Element.alt = "2 Litai";
-    image1Element.classList.add("on-off-litai"); // Add the new class here
-    document.getElementById("litai-img").appendChild(image1Element);
-
-    const image2Element = document.createElement("img");
-    image2Element.src = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
-    image2Element.alt = "2 Litai";
-    image1Element.classList.add("on-off-litai"); // Add the new class here
-    document.getElementById("litai-img").appendChild(image2Element);
-  }
-  else if (randomPoint === 5) {
-    litoVerte = "Litai";
-  
-    const image1Element = document.createElement("img");
-    image1Element.src = "http://localhost/aldas/Viktorina.live/images/ImgLitai/5Lt.png";
-    image1Element.alt = "5 Litai";
-    image1Element.classList.add("new-class1"); // Add the new class here
-    document.getElementById("litai-img").appendChild(image1Element);
-  } 
-  else {
-    litoVerte = "Litai";
-    imageSrc = "/ImgLitai/2Lt.png";
-  }
+  displayImage(imageSrc, litaiImg, "new-class1");
 
   // Display the random point in the "points" element
-  document.getElementById("points").innerHTML = `Verte: ${randomPoint} ${litoVerte} `;
-
-  // Display the image in the "image" element
-  const imageElement = document.getElementById("litai-img");
-  imageElement.src = imageSrc;
-  imageElement.alt = `${randomPoint} ${litoVerte}`;
+  document.getElementById("points").innerHTML = `Verte: ${randomPoint} ${litoVerte}`;
+};
   
-}
+  const displayImage = (src, parent, className) => {
+  const imageElement = document.createElement("img");
+  imageElement.src = src;
+  imageElement.alt = `${randomPoint} Litai`;
+  imageElement.classList.add(className);
+  parent.appendChild(imageElement);
+  
+  
+};
+
+  
 
 
 
-function refreshPage() {
+const refreshPage = () => {
   setTimeout(() => {
+    localStorage.removeItem("randomPoint");
     location.reload();
-  }, 59000); // 8000 milliseconds = 8 seconds
-}
+  }, 60000); // 59000 milliseconds = 59 seconds
+};
+
+
 
 // displayQuestion();
 generateAndDisplayRandomPoint();
