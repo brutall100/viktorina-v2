@@ -16,14 +16,18 @@ let count = 0;
 const generateBonus = () => {
   const interval = Math.floor(Math.random() * 60 * 60 * 1000); // Generate a random interval in milliseconds
   setTimeout(() => {
-    bonusLita = Math.floor(Math.random() * 5) * 10 ;
-    count++;
+    bonusLita = Math.floor(Math.random() * 5) * 10 + 10;
     console.log(`Generated bonus: ${bonusLita}`);
+    setTimeout(() => {
+      bonusLita = 0;
+      console.log(`Removed bonus: ${bonusLita}`);
+    }, 60000);
     if (count < 20) {
       generateBonus();
     }
   }, interval);
 };
+
 
 generateBonus();
 
@@ -43,7 +47,7 @@ const refreshData = (callback) => {
   connection.query(sql, (err, results) => {
     if (err) throw err;
 
-    const randomNumber = Math.floor(Math.random() * 5);
+    const randomNumber = Math.floor(Math.random() * 5) + 1;
 
     cachedData = {
       ...results[0],
@@ -55,7 +59,7 @@ const refreshData = (callback) => {
     console.log(cachedData);
     connection.end();
     callback(cachedData);
-    bonusLita = 0;
+    
   });
 };
 
@@ -81,7 +85,7 @@ app.get('/data', (req, res) => {
 
 setInterval(() => {
   refreshData(() => {});
-  lita = Math.floor(Math.random() * 5) + 1;
+  // lita = Math.floor(Math.random() * 5) + 1;
 }, 60000);
 
 app.listen(port, () => {
