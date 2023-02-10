@@ -50,6 +50,7 @@ function displayLettersWithDelay(element, string, delay) {
 }
 
 
+<<<<<<< Updated upstream
 function generateBonusPoints() {
   const currentTime = new Date();
   const currentHour = currentTime.getHours();
@@ -57,6 +58,36 @@ function generateBonusPoints() {
   if (currentHour === randomHour) {
     const randomNumber = Math.floor(Math.random() * 5);
     return (randomNumber + 1) * 10;
+=======
+
+//                      LITAI
+const generateAndDisplayRandomPoint = async (lita) => {
+  litoVerte = "";
+  imageSrc = "";
+  const litaiImg = document.getElementById("litai-img");
+
+  if (lita === 1) {
+    litoVerte = "Litas";
+    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
+  } else if (lita === 2) {
+    litoVerte = "Litai";
+    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
+    displayImage(imageSrc, litaiImg, "on-off-litai1");
+    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
+  } else if (lita === 3) {
+    litoVerte = "Litai";
+    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
+    displayImage(imageSrc, litaiImg, "on-off-litai");
+    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
+  } else if (lita === 4) {
+    litoVerte = "Litai";
+    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
+    displayImage(imageSrc, litaiImg, "on-off-litai");
+    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png";
+  } else if (lita === 5) {
+    litoVerte = "Litai";
+    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/5Lt.png";
+>>>>>>> Stashed changes
   } else {
     return 0;
   }
