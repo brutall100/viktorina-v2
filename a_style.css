@@ -107,19 +107,20 @@ body {
     }
   }
   
-  .submit-btn {
-    animation: pulse 2s infinite;
-  }
-  
+.submit-btn {
+   animation: pulse 2s infinite;
+}
   
 
+
+   
 .litas-container {
     position: absolute;
     bottom: 22%;
     left: 10%; /* Change the left position to 50% */
     transform: translate(-50%, 0); /* Use translate to adjust the element's position */
-    display: flex;
-    justify-content: center;
+    /* display: block; */
+    /* justify-content: center; */
     padding: 5px;
     margin: 10px auto; /* Use margin: auto to center the element */
     width: 200px;
@@ -127,6 +128,16 @@ body {
     /* border: 1px solid black; */
 
   }
+
+  .litas-container-img{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    
+  }
+
+
 
   @media (max-width: 550px) {
     section {

@@ -94,4 +94,5 @@ app.listen(port, () => {
 
 
 
-// node server.js
+// C:\xampp\htdocs\aldas\Viktorina.live> node server.js
+// Geriau leisti per tikra terminala

@@ -1,5 +1,3 @@
-let lita;
-
 async function fetchData() {
   try {
     const response = await axios.get('http://localhost:3000/data');
@@ -21,10 +19,15 @@ async function fetchData() {
   dataContainer.innerHTML = JSON.stringify(data);
   displayQuestion(data);
   generateAndDisplayRandomPoint(data.data.lita);
+  generateBonusPoints(data.data.bonusLita);
 
   lita = data.data.lita;
   const litaContainer = document.getElementById("lita");
   litaContainer.innerHTML = lita;
+
+  const bonusLitaContainer = document.getElementById("lita-bonus");
+  bonusLitaContainer.innerHTML = data.data.bonusLita;
+  
 })();
 
 
@@ -53,9 +56,7 @@ async function displayQuestion(data) {
       dotsElement.innerHTML += `${underscore}`;
     }
   }
-  
-  displayLettersWithDelay(answersElement, data.data.answer, 3000);
-
+    displayLettersWithDelay(answersElement, data.data.answer, 3000);
 }
 async function displayLettersWithDelay(element, string, delay) {
   for (let i = 0; i < 4; i++) {
@@ -66,7 +67,7 @@ async function displayLettersWithDelay(element, string, delay) {
 
 
 
-
+//                    LITAI
 const generateAndDisplayRandomPoint = async (lita) => {
   litoVerte = "";
   imageSrc = "";
@@ -94,15 +95,14 @@ const generateAndDisplayRandomPoint = async (lita) => {
     litoVerte = "Litai";
     imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/5Lt.png";
   } else {
-    litoVerte = "Lita";
-    imageSrc = "/ImgLitai/2Lt.png";
+    litoVerte = "";
+    imageSrc = "";
   }
-  
   
   displayImage(imageSrc, litaiImg, "new-class1");
 
   // Display the random point in the "points" element
-  document.getElementById("points").innerHTML = `Verte: ${lita} ${litoVerte}`;
+  document.getElementById("points").innerHTML = `Verte: ${lita} ${litoVerte}&nbsp;  `;
 };
   
   const displayImage = (src, parent, className) => {
@@ -115,66 +115,44 @@ const generateAndDisplayRandomPoint = async (lita) => {
 
 
 
+//                BONUS-LITAI
+function generateBonusPoints(bonusLita) {
+ 
+const pointsElement = document.getElementById('bonus-points')
+const imageElement = document.getElementById('litai-img-bonus')
 
+if (bonusLita > 0) {
+  pointsElement.innerText= ` + Bonus: ${bonusLita}`
+  let images = "";
+  if(bonusLita === 10 || bonusLita === 20 || bonusLita === 50) {
+      images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`
+  }else if(bonusLita === 30) {
+       {
+        images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/10Lt.png" alt="Dešimt litų">`
+        images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
+      }
+  }else if(bonusLita === 40) {
+      for (let i = 0; i < 2; i++) {
+        images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
+      }
+  }
+  imageElement.innerHTML = images
+} else {
+  pointsElement.style.display = "none"
+}
 
-
-
-// function generateBonusPoints() {
-//   const currentTime = new Date();
-//   const currentHour = currentTime.getHours();
-//   const randomHour = Math.floor(Math.random() * 24);
-//   if (currentHour === randomHour) {
-//     const randomNumber = Math.floor(Math.random() * 5);
-//     return (randomNumber + 1) * 10;
-//   } else {
-//     return 0;
-//   }
-// }
-
-// const pointsElement = document.getElementById('bonus-points')
-// const imageElement = document.getElementById('litai-img')
-// const bonusPoint = generateBonusPoints()
-
-// if (bonusPoint > 0) {
-//   pointsElement.innerHTML = ` + Bonus: ${bonusPoint}`
-//   let images = "";
-//   if(bonusPoint === 10 || bonusPoint === 20 || bonusPoint === 50) {
-//       images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/${bonusPoint}Lt.png" alt="${bonusPoint} Litų">`
-//   }else if(bonusPoint === 30) {
-//        {
-//         images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/10Lt.png" alt="Dešimt litų">`
-//         images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
-//       }
-//   }else if(bonusPoint === 40) {
-//       for (let i = 0; i < 2; i++) {
-//         images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
-//       }
-//   }
-//   imageElement.innerHTML = images
-// } else {
-//   pointsElement.style.display = "none"
-// }
-
-
-
-
+}
 
   
 
-
-
 const refreshPage = () => {
   setTimeout(() => {
-    localStorage.removeItem("randomPoint");
-    location.reload();
-  }, 60000); // 59000 milliseconds = 59 seconds
-};
+    location.reload()
+  }, 60000)
+}
+refreshPage()
 
 
-
-// displayQuestion();
-
-refreshPage();
 
 
 

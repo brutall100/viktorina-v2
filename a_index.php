@@ -31,9 +31,12 @@
 <!-- bandymas -->
 <div id="dataContainer"></div>
 <div id="lita"></div>
+<div id="lita-bonus"></div>
+<!-- bandymas -->
     <section>
       <div class="litas-container">
-        <div id="litai-img"></div>
+        <div class="litas-container-img" id="litai-img-bonus"></div>
+        <div class="litas-container-img" id="litai-img"></div>
       </div>
     </section>
 
