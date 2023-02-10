@@ -1,3 +1,12 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['user_id'])) {
+    header('Location: http://localhost/aldas/Viktorina.live/d_regilogi.php');
+    exit();
+  }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,7 +20,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />  
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
   </head>
 
   <body>

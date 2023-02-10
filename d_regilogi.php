@@ -1,4 +1,4 @@
-<?php include('server.php') ?>
+<?php include('d_server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,7 +55,7 @@
       <div class="form-container sign-in-container">
         <form action="d_regilogi_login.php" method="post">
 
-        <?php include('errors.php'); ?>
+        <?php include('d_errors.php'); ?>
         
           <h1>Prisijungti</h1>
           <div class="social-container">
