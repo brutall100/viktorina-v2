@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 // database configuration
 $db = mysqli_connect('localhost', 'root', '', 'viktorina');
 
@@ -48,7 +46,7 @@ if (isset($_POST['reg_user'])) {
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
-    header('location: http://localhost/aldas/Viktorina.live/d_regilogi_index.php');
+    header('location: http://localhost/aldas/Viktorina.live/a_index.php');
   }
 }
 
@@ -71,7 +69,7 @@ if (isset($_POST['login_user'])) {
       // login user
       $_SESSION['username'] = $username;
       $_SESSION['success'] = "You are now logged in";
-      header('location: http://localhost/aldas/Viktorina.live/d_regilogi_index.php');
+      header('location: http://localhost/aldas/Viktorina.live/a_index.php');
     } else {
       array_push($errors, "Wrong username/password combination");
     }

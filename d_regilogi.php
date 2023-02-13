@@ -26,14 +26,16 @@
 
     <div class="container" id="container">
       <!-- Registracija -->
+      
       <div class="form-container sign-up-container">
         <form action="http://localhost/aldas/Viktorina.live/d_regilogi_register.php" method="post" id="form">
-          <h1>Kurti paskyra</h1>
-          <div class="social-container">
+          <?php include('d_errors.php'); ?>
+          <h1>Registracija</h1>
+          <!-- <div class="social-container">
               <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
               <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
               <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-          </div>
+          </div> -->
           <span>or use your email for registration</span>
           <div class="form-group">
               <input type="text" placeholder="Vardas" id="name-input" name="nick_name" required/>
@@ -51,25 +53,25 @@
       </form>
       
       </div>
+
       <!-- Prisijungimas -->
       <div class="form-container sign-in-container">
-        <form action="d_regilogi_login.php" method="post">
-
-        <?php include('d_errors.php'); ?>
-        
-          <h1>Prisijungti</h1>
-          <div class="social-container">
-            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-          <span>or use your account</span>
-          <input type="text" placeholder="Name" name="nick_name" required/>
-          <input type="password" placeholder="Password" name="user_password" required/>
-          <a href="#">Forgot your password?</a>
-          <button>Prisijungti</button>
-        </form>
+        <form action="http://localhost/aldas/Viktorina.live/d_regilogi_login.php" method="post">   
+          <?php include('d_errors.php'); ?>     
+            <h1>Prisijungti</h1>
+            <!-- <div class="social-container">
+              <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+              <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div> -->
+            <span>or use your account</span>
+            <input type="text" placeholder="Name" name="nick_name" required/>
+            <input type="password" placeholder="Password" name="user_password" required/>
+            <a href="#">Forgot your password?</a>
+            <input type="submit" name="submit">
+          </form>
       </div>
+
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-left">

@@ -1,9 +1,21 @@
-<?php
-  session_start();
-  if (!isset($_SESSION['user_id'])) {
-    header('Location: http://localhost/aldas/Viktorina.live/d_regilogi.php');
-    exit();
-  }
+<?php 
+	session_start(); //starting the session, to use and store data in session variable
+
+	//if the session variable is empty, this means the user is yet to login
+	//user will be sent to 'login.php' page to allow the user to login
+	if (!isset($_SESSION['username'])) {
+		$_SESSION['msg'] = "You have to log in first";
+		header('location: http://localhost/aldas/Viktorina.live/d_regilogi.php');
+	}
+
+	// logout button will destroy the session, and will unset the session variables
+	//user will be headed to 'login.php' after loggin out
+	if (isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['username']);
+		header("location: http://localhost/aldas/Viktorina.live/d_regilogi.php");
+	}
+
 ?>
 
 
@@ -36,6 +48,32 @@
         </div>  
       </ul>
     </header>
+    <!-- bandymas -->
+<div class="content">
+
+<!-- creating notification when the user logs in -->
+<!-- accessible only to the users that have logged in already -->
+<?php if (isset($_SESSION['success'])) : ?>
+  <div class="error success" >
+    <h3>
+      <?php 
+        echo $_SESSION['success']; 
+        unset($_SESSION['success']);
+      ?>
+    </h3>
+  </div>
+<?php endif ?>
+
+<!-- information of the user logged in -->
+<!-- welcome message for the logged in user -->
+<?php  if (isset($_SESSION['username'])) : ?>
+  <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+  <p> <a href="a_index.php?logout='1'" style="color: blue;">Click here to LLogout</a> </p>
+<?php endif ?>
+</div>
+<!-- bandymas -->
+
+
 <!-- bandymas -->
 <div id="dataContainer"></div>
 <div id="lita"></div>
