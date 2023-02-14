@@ -96,10 +96,10 @@
       <div class="" id="dot-answer"></div>
       <div class="" id="dot-answer-lenght"></div>
 
-      <form id="answer-form">
+      <form action="" id="answer-form" method="post">
         <label for="answer-input">Atsakymas:</label>
-        <input type="text" id="answer-input" name="answer" />
-        <button class="submit-btn" type="submit">Submit</button>
+        <input type="text" id="answer-input" name="answer-input" />
+        <button class="submit-btn" type="submit-answer">Submit</button>
       </form>
     </main>
 
