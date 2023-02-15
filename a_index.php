@@ -103,6 +103,7 @@
       </form>
     </main>
 
+    
     <!-- <div id="chat-container">
         <div id="chat-messages"></div>
         <input type="text" id="chat-input" placeholder="Enter a message...">
