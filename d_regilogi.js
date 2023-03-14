@@ -14,7 +14,7 @@ signInButton.addEventListener('click', () => {
 
 
 // Add event listener to form's submit button
-document.querySelector("form").addEventListener("submit", validateForm);
+document.getElementById("register-form").addEventListener("submit", validateForm);
 
 function validateForm(event) {
 	event.preventDefault(); // prevent form from being submitted
@@ -54,9 +54,10 @@ function validateForm(event) {
 
 	// If all input fields are valid, submit form
 	if (nameInput.value && emailInput.value && passwordInput.value) {
-		form.submit();
+		event.target.submit();
 	}
 }
+
 
 
 

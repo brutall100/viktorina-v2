@@ -13,5 +13,6 @@
             "username": "root",
             "password": ""
         }
-    ]
+    ],
+    "CodeGPT.maxTokens": 5000
 }

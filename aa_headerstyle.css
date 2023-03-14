@@ -77,3 +77,13 @@ button{
   margin: 0;
   padding: 0;
 }
+
+.header #btn-atsijungti {
+  visibility: hidden;
+}
+
+.header:hover #btn-atsijungti {
+  visibility: visible;
+  opacity: 0.1;
+}
+

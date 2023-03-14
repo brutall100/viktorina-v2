@@ -15,7 +15,8 @@ let firstNames = ["Aldas","Justė", "AKiss", "Ąžuolas", "Kamilė", "Dalia", "S
 "Rūta", "Rita", "Marius", "Gabrielė", "Tomas", "Laima", "Živilė", "Gediminas", "Kristijonas", "Viktorija", "Vilhelmina", "Ramūnas", "Egidijus", 
 "Sigita", "Algimantas","Emily", "Hannah", "Sarah", "Lauren", "Amber", "Brianna", "Jordan", "Victoria", "Haley", "Megan", "Kayla", "Heather", 
 "Abby", "Kaitlyn", "Allison", "Alexis", "Morgan", "Bailey", "Savannah", "Samantha", "Rachel", "Sydney", "Mackenzie", "Madeline", "Katie", "Erin", 
-"Olivia", "Emma", "Brooke", "Danielle", "Katherine", "Lily", "Hailey", "Jenna", "Chloe", "Isabella", "Mia", "Grace", "Taylor", "Leah" ];
+"Olivia", "Emma", "Brooke", "Danielle", "Katherine", "Lily", "Hailey", "Jenna", "Chloe", "Isabella", "Mia", "Grace", "Taylor", "Leah","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","" ];
 
 let secondNames = ["Uoga","Pupa","Super","Linksmuolis","Bambalinis","Kukli","Paprastutė","Generolas","Nuolanki","Trapi","Išmintinga","Kietasis",
 "1","2","3","69","99","4","","Sasiska","Puikioji","Išmanusis","Piktas","Rusas","Kiškis","Genijus","Babulė","Dundukas","Siaubūnas", "Protinguolis", "Afigienas", 
@@ -36,19 +37,19 @@ let secondNames = ["Uoga","Pupa","Super","Linksmuolis","Bambalinis","Kukli","Pap
 "Vėsios", "Karštos", "Sviestos", "Kvepiančios", "Saldžios", "Sūrios", "Šarminės", "Aitrios", "Grietinėlės", "Saulės", "Saldžių", "Sūrių", 
 "Sviestų", "Šaltų", "Karštų", "Gėlių", "Vaisių", "Pieno", "Medaus", "Miltų", "Vandens", "Debesų", "Dangaus", "Žemės", "Vėjo", "Žalios", "Mėlynos", 
 "Rudos", "Baltos", "Žalios", "Raudonos", "Violetinės", "Auksinės", "Juodos", "Baltos","juoda", "Balta", "raudona", "geltona", "žalia", "mėlyna", 
-"purpurinė", "tamsiai mėlyna", "tamsiai raudona", "tamsiai geltona", "tamsiai žalia", "tamsiai purpurinė", "sidabrinė", "auksinė", "bronzinė", 
-"persikų", "rožinė", "rožinė", "citrinų", "oranžinė", "žali", "tamsiai oranžinė", "tamsiai žali", "tamsiai citrinų", "tamsiai persikų", 
-"tamsiai rožinė", "tamsiai rožinė", "mėlynai raudona", "mėlynai geltona", "mėlynai žalia", "mėlynai purpurinė", "mėlynai citrinų", 
-"mėlynai persikų", "mėlynai rožinė", "mėlynai rožinė", "žaliojo gintaro", "žaliojo smaragdo", "žaliojo sardžio", "žaliojo topazo", 
-"žaliojo turkio", "raudonojo akmens", "raudonojo granato", "raudonojo rubino", "raudonojo sardžio", "raudonojo topazo","Darbininkas",
+"purpurinė", "tamsusis", "tamsiai raudona", "tamsiai geltona", "tamsiai žalia", "tamsiukė", "sidabrinė", "auksinė", "bronzinė", 
+"persikų", "rožinė", "rožinė", "citrinų", "oranžinė", "žali", "oranžinė", "žali", "tamsiai citrinų", "persikutė", 
+"tamsiai rožinė", "rožė", "raudė", "geltona", "mėlynai", "purpuriukė", "citrinukė", 
+"mėlynai persikų", "mėlynojus", "mėlynė", "gintariukas", "žaliojo", "smaragdo", "žalias", "žalioji", 
+"turkio", "akmens", "granato", "rubino", "raudonoji", "topazo","Darbininkas",
 "Statybininkas","Medikas","Gydytojas","Mokytojas","Programuotojas","Inžinierius","Mokslininkas","Rašytojas","Dailininkas","Muzikantas","Fotografas",
-"Kirpėjas","Konditeris","Vairuotojas","Statybos vadybininkas","Statybos inžinierius","Analitikas","Verslininkas","Policininkas","Gaisrininkas",
-"Herojus","Žurnalistas","Buhalteris","Techninis direktorius","Kompiuterių technikas","Vadybininkas","Sprendimų priėmėjas",
-"Kirpėjas","Konditerio padėjėjas","Statybos darbininkas","Finansininkas", "Vadybininkas","Adminas","Policijos", "Komisaras","Gaisrininkas",
-"Režisierius","Žiniasklaidininkas","Buhalterė","Specialistas","Prognozuotojas","Superman","Batman","Wonder Woman",
+"Kirpėjas","Konditeris","Vairuotojas","Statybos","vadybininkas","Inžinierius","Analitikas","Verslininkas","Policininkas","Gaisrininkas",
+"Herojus","Žurnalistas","Buhalteris","Direktorius","Technikas","Vadybininkas","Sprendimų priėmėjas",
+"Kirpėjas","padėjėjas","Statybos darbininkas","Finansininkas", "Vadybininkas","Adminas","Policijos", "Komisaras","Gaisrininkas",
+"Režisierius","Žiniukas","Buhalterė","Specialistas","Prognozuotojas","Superman","Batman","Wonder Woman",
 "The Flash","Green Lantern","Spider-Man","Iron Man","Captain America","Black Widow","Hulk","Thor","Aquaman","The X-Men","Cyclops","Storm","Wolverine",
 "Rogue","Gambit","Nightcrawler","Daredevil","The Punisher","The Green Arrow","Black Canary","Starfire","Raven","Beast Boy","Wonder Girl","Black Lightning",
-"Martian","","","","","","","","","","","","","",""];
+"Martian","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
 
 
 let getRandomNumber = (max) => Math.floor(Math.random() * max);

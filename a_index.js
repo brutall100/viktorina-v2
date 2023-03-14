@@ -1,3 +1,5 @@
+let data;
+
 async function fetchData() {
   try {
     const response = await axios.get('http://localhost:3000/data');
@@ -8,7 +10,7 @@ async function fetchData() {
 }
 
 (async function() {
-  const data = await fetchData();
+  data = await fetchData();
   console.log('Data:', data);
   console.log('Question:', data.data.question);
   console.log('ID:', data.data.id);
@@ -30,8 +32,41 @@ async function fetchData() {
   
 })();
 
+function checkServerData() {
+  axios.get('http://localhost:3000/data')
+    .then(response => {
+      const serverData = response.data.data;
+      const serverId = serverData.id;
+      const clientId = data.data.id;
+
+      if (serverId === clientId) {
+        console.log('Server id matches client id.');
+        // Do something
+      } else {
+        console.log('Server id does not match client id. Reloading in 1 seconds...');
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
+
+setInterval(checkServerData, 500); // call the function every 0.5 seconds
 
 
+
+
+window.onload = function() {
+  document.getElementById("answer-input").focus();
+};
+
+
+
+
+                      // Rodyti klausima
 async function displayQuestion(data) {
   const questionElement = document.getElementById("question");
   questionElement.innerText = data.data.question;
@@ -56,11 +91,11 @@ async function displayQuestion(data) {
       dotsElement.innerHTML += `${underscore}`;
     }
   }
-    displayLettersWithDelay(answersElement, data.data.answer, 3000);
+    displayLettersWithDelay(answersElement, data.data.answer, 8000);
 }
 async function displayLettersWithDelay(element, string, delay) {
   for (let i = 0; i < 4; i++) {
-    await new Promise((resolve) => setTimeout(resolve, 5000 + delay * i));
+    await new Promise((resolve) => setTimeout(resolve, delay));
     element.innerHTML += string[i];
   }
 }
@@ -100,8 +135,6 @@ const generateAndDisplayRandomPoint = async (lita) => {
   }
   
   displayImage(imageSrc, litaiImg, "new-class1");
-
-  // Display the random point in the "points" element
   document.getElementById("points").innerHTML = `Verte: ${lita} ${litoVerte}&nbsp;  `;
 };
   
@@ -143,14 +176,147 @@ if (bonusLita > 0) {
 
 }
 
-  
 
-const refreshPage = () => {
-  setTimeout(() => {
-    location.reload()
-  }, 60000)
+                  //Atsakymas
+const userData = {
+  name: '',
+  level: '',
+  points: ''
+};
+
+const populateUserData = () => {
+  const userDataElement = document.getElementById('user-data');
+  userData.name = userDataElement.dataset.name;
+  userData.level = userDataElement.dataset.level;
+  userData.points = userDataElement.dataset.points;
 }
-refreshPage()
+
+populateUserData();
+
+const answerForm = document.getElementById('answer-form');
+
+answerForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const answerInput = document.getElementById('answer-input');
+  const userAnswer = answerInput.value;
+
+  handleUserAnswer(userAnswer);
+
+  answerInput.value = '';
+});
+
+
+const recentData = JSON.parse(localStorage.getItem('recentData'));
+
+function displayRecentData() {
+  const recentDataList = document.getElementById('recent-data-list');
+  recentDataList.innerHTML = '';
+
+  if (!recentData || recentData.length === 0) {
+    recentDataList.innerHTML = '<li>No recent data found</li>';
+    return;
+  }
+
+  for (const dataObj of recentData) {
+    const timestamp = new Date(dataObj.timestamp).toLocaleString();
+    const listItem = document.createElement('li');
+    listItem.textContent = `${dataObj.id} ${dataObj.question} was ${dataObj.answer} ${timestamp}`;
+    recentDataList.appendChild(listItem);
+  }
+}
+
+displayRecentData();
+
+
+const handleUserAnswer = async (userAnswer) => {
+  const data = await fetchData();
+
+  if (!data || !data.data || !data.data.answer) {
+    console.error('Answer not found in data object');
+    return;
+  }
+
+  const correctAnswer = data.data.answer.toLowerCase();
+  const userAnswerLower = userAnswer.toLowerCase();
+
+  if (userAnswerLower === correctAnswer) {
+    const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10);
+    userData.points = litaPoints.toString();
+    const successMsg = `Teisingai atsakė ${userData.name}: <span class="special-atsakymas" style="color: green; font-weight: bold">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`;
+    document.getElementById('answer').innerHTML = successMsg;
+  
+    // Send HTTP POST request to update user's points
+    const url = 'http://localhost:8000/a_points.js';
+    const body = JSON.stringify({
+      user_id_name: userData.name,
+      points: litaPoints
+    });    
+  
+    const headers = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    };
+  
+    const response = await fetch(url, {
+      method: 'POST',
+      headers,
+      body
+    });
+  
+    if (response.ok) {
+      const { user_id_name, points } = await response.json();
+      console.log(`User points updated successfully ${points}`);
+      console.log("user_id_name: " + user_id_name);
+      console.log("points: " + points);
+
+      setTimeout(() => {
+        location.reload();
+      }, 5000); // Perkrauna page po 5 sekundziu
+      
+    } else {
+      console.error('Failed to update user points');
+    }
+  
+    const answerInput = document.getElementById('answer-input');
+    answerInput.disabled = true;
+    setTimeout(() => {
+      answerInput.disabled = false;
+    }, 6000); // Disable answerInput for 6 seconds
+  } else {
+    // Add current data object to recentData array
+    const { id, question, answer } = data.data;
+    recentData.push({ id, question, answer });
+
+    // Remove oldest data object if array has more than 5 items
+    if (recentData.length > 5) {
+      recentData.shift();
+    }
+
+    displayRecentData();
+
+    const answerInput = document.getElementById('answer-input');
+    answerInput.disabled = true;
+
+    const errorMsg = `Atsakymas "${userAnswer}" yra neteisingas. Bandykite dar kartą.`;
+    document.getElementById('answer').textContent = errorMsg;
+
+    setTimeout(() => {
+      answerInput.disabled = false;
+    }, 2500); // Disable answerInput for 2.5 seconds
+
+    setTimeout(() => {
+      location.reload();
+    }, 2000); // Reload after 2 seconds
+
+  }
+
+  document.getElementById('answer-input').value = '';
+
+  // Store recent data in local storage
+  localStorage.setItem('recentData', JSON.stringify(recentData));
+};
+
+
+
 
 
 
