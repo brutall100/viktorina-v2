@@ -1,5 +1,4 @@
 let data;
-
 async function fetchData() {
   try {
     const response = await axios.get('http://localhost:3000/data');
@@ -8,7 +7,6 @@ async function fetchData() {
     console.error(error);
   }
 }
-
 (async function() {
   data = await fetchData();
   console.log('Data:', data);
@@ -22,23 +20,19 @@ async function fetchData() {
   displayQuestion(data);
   generateAndDisplayRandomPoint(data.data.lita);
   generateBonusPoints(data.data.bonusLita);
-
   lita = data.data.lita;
   const litaContainer = document.getElementById("lita");
   litaContainer.innerHTML = lita;
-
   const bonusLitaContainer = document.getElementById("lita-bonus");
   bonusLitaContainer.innerHTML = data.data.bonusLita;
   
 })();
-
 function checkServerData() {
   axios.get('http://localhost:3000/data')
     .then(response => {
       const serverData = response.data.data;
       const serverId = serverData.id;
       const clientId = data.data.id;
-
       if (serverId === clientId) {
         console.log('Server id matches client id.');
         // Do something
@@ -53,16 +47,13 @@ function checkServerData() {
       console.log(error);
     });
 }
-
 setInterval(checkServerData, 500); // call the function every 0.5 seconds
-
 
 
 
 window.onload = function() {
   document.getElementById("answer-input").focus();
 };
-
 
 
 
@@ -99,15 +90,11 @@ async function displayLettersWithDelay(element, string, delay) {
     element.innerHTML += string[i];
   }
 }
-
-
-
 //                    LITAI
 const generateAndDisplayRandomPoint = async (lita) => {
   litoVerte = "";
   imageSrc = "";
   const litaiImg = document.getElementById("litai-img");
-
   if (lita === 1) {
     litoVerte = "Litas";
     imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png";
@@ -145,15 +132,11 @@ const generateAndDisplayRandomPoint = async (lita) => {
   imageElement.classList.add(className);
   parent.appendChild(imageElement);
 };
-
-
-
 //                BONUS-LITAI
 function generateBonusPoints(bonusLita) {
  
 const pointsElement = document.getElementById('bonus-points')
 const imageElement = document.getElementById('litai-img-bonus')
-
 if (bonusLita > 0) {
   pointsElement.innerText= ` + Bonus: ${bonusLita}`
   let images = "";
@@ -173,72 +156,36 @@ if (bonusLita > 0) {
 } else {
   pointsElement.style.display = "none"
 }
-
 }
-
-
                   //Atsakymas
 const userData = {
   name: '',
   level: '',
   points: ''
 };
-
 const populateUserData = () => {
   const userDataElement = document.getElementById('user-data');
   userData.name = userDataElement.dataset.name;
   userData.level = userDataElement.dataset.level;
   userData.points = userDataElement.dataset.points;
 }
-
 populateUserData();
-
 const answerForm = document.getElementById('answer-form');
-
 answerForm.addEventListener('submit', (event) => {
   event.preventDefault();
   const answerInput = document.getElementById('answer-input');
   const userAnswer = answerInput.value;
-
   handleUserAnswer(userAnswer);
-
   answerInput.value = '';
 });
-
-
-const recentData = JSON.parse(localStorage.getItem('recentData'));
-
-function displayRecentData() {
-  const recentDataList = document.getElementById('recent-data-list');
-  recentDataList.innerHTML = '';
-
-  if (!recentData || recentData.length === 0) {
-    recentDataList.innerHTML = '<li>No recent data found</li>';
-    return;
-  }
-
-  for (const dataObj of recentData) {
-    const timestamp = new Date(dataObj.timestamp).toLocaleString();
-    const listItem = document.createElement('li');
-    listItem.textContent = `${dataObj.id} ${dataObj.question} was ${dataObj.answer} ${timestamp}`;
-    recentDataList.appendChild(listItem);
-  }
-}
-
-displayRecentData();
-
-
 const handleUserAnswer = async (userAnswer) => {
   const data = await fetchData();
-
   if (!data || !data.data || !data.data.answer) {
     console.error('Answer not found in data object');
     return;
   }
-
   const correctAnswer = data.data.answer.toLowerCase();
   const userAnswerLower = userAnswer.toLowerCase();
-
   if (userAnswerLower === correctAnswer) {
     const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10);
     userData.points = litaPoints.toString();
@@ -267,7 +214,6 @@ const handleUserAnswer = async (userAnswer) => {
       console.log(`User points updated successfully ${points}`);
       console.log("user_id_name: " + user_id_name);
       console.log("points: " + points);
-
       setTimeout(() => {
         location.reload();
       }, 5000); // Perkrauna page po 5 sekundziu
@@ -282,69 +228,38 @@ const handleUserAnswer = async (userAnswer) => {
       answerInput.disabled = false;
     }, 6000); // Disable answerInput for 6 seconds
   } else {
-    // Add current data object to recentData array
-    const { id, question, answer } = data.data;
-    recentData.push({ id, question, answer });
-
-    // Remove oldest data object if array has more than 5 items
-    if (recentData.length > 5) {
-      recentData.shift();
-    }
-
-    displayRecentData();
-
-    const answerInput = document.getElementById('answer-input');
+        const answerInput = document.getElementById('answer-input');
     answerInput.disabled = true;
-
     const errorMsg = `Atsakymas "${userAnswer}" yra neteisingas. Bandykite dar kartą.`;
     document.getElementById('answer').textContent = errorMsg;
-
     setTimeout(() => {
       answerInput.disabled = false;
     }, 2500); // Disable answerInput for 2.5 seconds
 
     setTimeout(() => {
-      location.reload();
+      location.reload(); 
     }, 2000); // Reload after 2 seconds
 
   }
 
   document.getElementById('answer-input').value = '';
-
-  // Store recent data in local storage
-  localStorage.setItem('recentData', JSON.stringify(recentData));
 };
 
 
 
-
-
-
-
-
-
 // Get a reference to the form
-
-
 //  // Get a reference to the form element
 //  const form = document.getElementById('answer-form');
-
 //  // Add an event listener to the form to handle submit events
 //  form.addEventListener('submit', event => {
 //    // Prevent the default form submission behavior
 //    event.preventDefault();
-
 //    // Get the value of the answer input field
 //    const answer = event.target.elements.answer.value;
-
 //    // Do something with the answer, such as sending it to a server or processing it in some way
 //    // ...
 //  })
    
-
-
-
-
 // //  Chatt container
 // function getFormattedTime() {
 //   const date = new Date();
@@ -353,44 +268,34 @@ const handleUserAnswer = async (userAnswer) => {
 //   const seconds = date.getSeconds();
 //   return `${hours}:${minutes}:${seconds}`;
 // }
-
 // const chatContainer = document.getElementById('chat-container');
 // const chatMessages = document.getElementById('chat-messages');
 // const chatInput = document.getElementById('chat-input');
 // const chatButton = document.getElementById('chat-button');
-
 // // Save the text to localStorage
 // localStorage.setItem('inputText', chatInput.value);
-
 // // Retrieve the text from localStorage
 // const storedText = localStorage.getItem('inputText');
-
 // // Update the input field with the stored text
 // if (storedText) {
 //   chatInput.value = storedText;
 // }
-
 // chatButton.addEventListener('click', () => {
 //   const message = chatInput.value;
 //   const time = getFormattedTime();
 //   chatInput.value = '';
 //   chatMessages.innerHTML += `<div><span class="time">${time}</span> ${message}</div>`;
 //   chatContainer.scrollTop = chatContainer.scrollHeight;
-
 //   // Save the messages to localStorage
 //   const messages = chatMessages.innerHTML;
 //   localStorage.setItem('messages', messages);
 // });
-
-
 // // Retrieve the messages from localStorage
 // const storedMessages = localStorage.getItem('messages');
-
 // // Update the chat dialog box with the stored messages
 // if (storedMessages) {
 //   chatMessages.innerHTML = storedMessages;
 // }
-
 
 
 

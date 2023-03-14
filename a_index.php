@@ -119,9 +119,16 @@ if (isset($_GET['name'])) {
       </form>
     </main>
 
-
+    
     <section class="section-answer">
       <div><?php echo $name?>:</div>
+      <div id="answer"></div>
+    </section>
+
+    
+<!-- Visai neblogai atodo po vardu ta linija geltona -->
+    <section class="old-question-section">
+      <div><?php echo $name?>:</div>   
       <div id="answer"></div>
     </section>
 

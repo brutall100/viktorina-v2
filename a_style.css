@@ -268,29 +268,6 @@ img {
     right: 2vh;
   }
 
-  ul.old-question-data-class {
-    border: 5px solid  violet;
-    display: flex;
-    flex-direction: column-reverse; /* reverse the order of the child elements */
-    justify-content: normal;
-    align-items: normal;
-    background: none;
-    max-height: 300px; /* set a maximum height for the ul element */
-    max-width: 200px; /* set a maximum width for the ul element */
-    overflow-y: scroll; /* add a vertical scrollbar when the content exceeds the max-height */
-    margin: 0.5rem; 
-    padding: 0.5rem;
-  }
-
-  ul.old-question-data-class li {
-    margin-top: 1em;
-    margin-bottom: 1em; 
-    color: #111111;
-    letter-spacing: 0.1em; /* add 0.1 em letter spacing */
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); /* add a text shadow */
-    font-weight: bold;
-  }
- 
   
  
  
