@@ -128,8 +128,9 @@ if (isset($_GET['name'])) {
     
 <!-- Visai neblogai atodo po vardu ta linija geltona -->
     <section class="old-question-section">
-      <div><?php echo $name?>:</div>   
-      <div id="answer"></div>
+      <div id="old-question">
+          
+      </div>
     </section>
 
     <script type="text/javascript" src="http://localhost/aldas/Viktorina.live/a_index.js"></script>
