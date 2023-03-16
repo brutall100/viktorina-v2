@@ -43,7 +43,7 @@ function checkServerData() {
         console.log('Server id does not match client id. Reloading in 1 seconds...');
         setTimeout(() => {
           location.reload();
-        }, 1000);
+        }, 600);
       }
     })
     .catch(error => {
@@ -54,32 +54,10 @@ setInterval(checkServerData, 500); // call the function every 0.5 seconds
 
 
 
-function oldQuestionData() {
-  axios.get('http://localhost:3000/data')
-    .then(response => {
-      const serverData = response.data.data;
-      const serverQuestion = serverData.question;
-      console.log('Old question:', serverQuestion);
-      
-      // Delay the display of the question by 45 seconds
-      setTimeout(() => {
-        const oldQuestionDiv = document.getElementById('old-question');
-        oldQuestionDiv.innerHTML = serverQuestion;
-      }, 45000);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
+// function oldQuestionData() { 
+// }
+// oldQuestionData();
 
-oldQuestionData();
-
-reikia is db istraukti id .ir po 45 seconds parodyti atsakyma Fsio
-
-
-    
-      
-      
 
 
 

@@ -1,5 +1,7 @@
 <!-- 1 uzduotis -->
-<!--  Gal start server,then user logins-->
+<!-- Kolkas palieku ramybeje,nes nezinau kaip padaryti function oldQuestionData()
+Funkcija turi pagauti id=47 paprasta..Tada kazkaip ji issisaugoti ir tik kai pasikeicia id=32 tada rodyti 
+praeita id=47  -->
 
 <!-- 2 -->
 <!-- Pasidaryti svaria php ir javaScript registracijos kopija githube su pasijungimu i xampp -->
@@ -21,8 +23,7 @@ turbut su duombaze kazkuram laijkui arba su scrolu iki 20 ar 30 paskutiniu irasu
 <!-- Full screen api ,kad vaizdas butu per visa ekrana -->
 
 <!-- 8 -->
-<!-- Reikia padaryti kad command promt prasidetu nuo C:\xampp\htdocs\aldas\Viktorina.live>node startServers.js
-Tai pat pasidometi serverio auto ijungimu -->
+<!--  -->
 
 <!-- 9 -->
 <!-- sukurti ikoneles useriams su daug litu,galima butu
@@ -38,7 +39,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- sukurti 5 geimusmus -->
 
 <!-- 13 -->
-<!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litų -->
+<!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
 
 <!-- 14 -->
 <!-- Raides eitu i kvadratukus,kad nurodytu raidziu kieki atsakyme -->
@@ -47,7 +48,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Sutvarkyti Lt raide S-š i-į ir t.t -->
 
 <!--16 -->
-<!-- Padaryti kad persikrovus page, kad atskymo impute butu pagaliukas,pasiruoses klausimo irasymui. -->
+<!--  -->
 
 <!-- 17 -->
 <!-- Uz klausimo irasyma 10 litu + Ikonele kokia 1 savatei klausimu irasytojas + mini taisykles -->
