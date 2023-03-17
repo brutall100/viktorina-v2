@@ -37,26 +37,48 @@ function checkServerData() {
       const serverId = serverData.id;
       const clientId = data.data.id;
       if (serverId === clientId) {
-        console.log('Server id matches client id.');
+        console.log('Serverio id matches client id.');
         // Do something
       } else {
-        console.log('Server id does not match client id. Reloading in 1 seconds...');
+        console.log('Serverio id does not match client id. Reloading in 1 seconds...');
         setTimeout(() => {
           location.reload();
-        }, 600);
+        }, 10);
       }
     })
     .catch(error => {
       console.log(error);
     });
 }
-setInterval(checkServerData, 500); // call the function every 0.5 seconds
+setInterval(checkServerData, 1000); // call the function every 0.5 seconds
 
 
 
-// function oldQuestionData() { 
-// }
-// oldQuestionData();
+function oldQuestionData() {
+  setTimeout(() => {
+    axios.get('http://localhost:3000/data')
+      .then(response => {
+        const serverData = response.data.data;
+        const serverQuestion = serverData.question;
+        const questionId = serverData.id;
+
+        console.log('Old question:', serverQuestion, 'ID:', questionId);
+
+        const oldQuestionDiv = document.getElementById('old-question');
+
+        oldQuestionDiv.innerHTML = `Question ID: ${questionId} - ${serverQuestion}`;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, 40000); // 40 seconds in milliseconds
+}
+
+oldQuestionData();
+
+// reikia prideti zinute ,niekas neatsake ,kitas klausimas po 3 sek
+// vietoi kluasimo zinute,parodomas atsakumas atsakymas buvo blalal
+// atsakymo input stop
 
 
 
