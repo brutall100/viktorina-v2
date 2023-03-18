@@ -54,31 +54,51 @@ setInterval(checkServerData, 1000); // call the function every 0.5 seconds
 
 
 
+
 function oldQuestionData() {
-  setTimeout(() => {
-    axios.get('http://localhost:3000/data')
-      .then(response => {
-        const serverData = response.data.data;
-        const serverQuestion = serverData.question;
-        const questionId = serverData.id;
+  axios.get('http://localhost:3000/data')
+    .then(response => {
+      const serverData = response.data.data;
+      const serverQuestion = serverData.question;
+      const questionId = serverData.id;
+      
+      console.log('Old question:', serverQuestion, 'ID:', questionId);
 
-        console.log('Old question:', serverQuestion, 'ID:', questionId);
-
-        const oldQuestionDiv = document.getElementById('old-question');
-
-        oldQuestionDiv.innerHTML = `Question ID: ${questionId} - ${serverQuestion}`;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }, 40000); // 40 seconds in milliseconds
+      const oldQuestionDiv = document.getElementById('old-question');
+     
+      oldQuestionDiv.innerHTML = `Question ID: ${questionId} - ${serverQuestion}`;
+    })
+    .catch(error => {
+      console.error(error);
+    });
 }
 
-oldQuestionData();
 
-// reikia prideti zinute ,niekas neatsake ,kitas klausimas po 3 sek
-// vietoi kluasimo zinute,parodomas atsakumas atsakymas buvo blalal
-// atsakymo input stop
+
+// bandau sia funkcija naudoti kitur kolkas uzdrausta
+// function oldQuestionData() {
+//   setTimeout(() => {
+//     axios.get('http://localhost:3000/data')
+//       .then(response => {
+//         const serverData = response.data.data;
+//         const serverQuestion = serverData.question;
+//         const questionId = serverData.id;
+
+//         console.log('Old question:', serverQuestion, 'ID:', questionId);
+
+//         const oldQuestionDiv = document.getElementById('old-question');
+
+//         oldQuestionDiv.innerHTML = `Question ID: ${questionId} - ${serverQuestion}`;
+//       })
+//       .catch(error => {
+//         console.error(error);
+//       });
+//   }, 40000); // 40 seconds in milliseconds
+// }
+
+// oldQuestionData();
+
+
 
 
 
@@ -122,6 +142,9 @@ async function displayLettersWithDelay(element, string, delay) {
     element.innerHTML += string[i];
   }
 }
+
+
+
 //                    LITAI
 const generateAndDisplayRandomPoint = async (lita) => {
   litoVerte = "";
@@ -164,7 +187,11 @@ const generateAndDisplayRandomPoint = async (lita) => {
   imageElement.classList.add(className);
   parent.appendChild(imageElement);
 };
-//                BONUS-LITAI
+              
+
+
+
+                        //  BONUS-LITAI
 function generateBonusPoints(bonusLita) {
  
 const pointsElement = document.getElementById('bonus-points')
@@ -189,6 +216,13 @@ if (bonusLita > 0) {
   pointsElement.style.display = "none"
 }
 }
+
+
+
+
+// reikia prideti zinute ,niekas neatsake ,kitas klausimas po 3 sek
+// vietoi kluasimo zinute,parodomas atsakumas atsakymas buvo blalal
+// atsakymo input stop
                   //Atsakymas
 const userData = {
   name: '',
@@ -210,6 +244,10 @@ answerForm.addEventListener('submit', (event) => {
   handleUserAnswer(userAnswer);
   answerInput.value = '';
 });
+
+
+
+
 const handleUserAnswer = async (userAnswer) => {
   const data = await fetchData();
   if (!data || !data.data || !data.data.answer) {
@@ -224,7 +262,6 @@ const handleUserAnswer = async (userAnswer) => {
     const successMsg = `Teisingai atsakė ${userData.name}: <span class="special-atsakymas" style="color: green; font-weight: bold">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`;
     document.getElementById('answer').innerHTML = successMsg;
   
-    // Send HTTP POST request to update user's points
     const url = 'http://localhost:8000/a_points.js';
     const body = JSON.stringify({
       user_id_name: userData.name,
@@ -253,14 +290,8 @@ const handleUserAnswer = async (userAnswer) => {
     } else {
       console.error('Failed to update user points');
     }
-  
-    const answerInput = document.getElementById('answer-input');
-    answerInput.disabled = true;
-    setTimeout(() => {
-      answerInput.disabled = false;
-    }, 6000); // Disable answerInput for 6 seconds
   } else {
-        const answerInput = document.getElementById('answer-input');
+    const answerInput = document.getElementById('answer-input');
     answerInput.disabled = true;
     const errorMsg = `Atsakymas "${userAnswer}" yra neteisingas. Bandykite dar kartą.`;
     document.getElementById('answer').textContent = errorMsg;
@@ -270,12 +301,15 @@ const handleUserAnswer = async (userAnswer) => {
 
     setTimeout(() => {
       location.reload(); 
-    }, 2000); // Reload after 2 seconds
+    }, 1000); // Reload after 2 seconds
 
   }
 
   document.getElementById('answer-input').value = '';
 };
+
+
+
 
 
 

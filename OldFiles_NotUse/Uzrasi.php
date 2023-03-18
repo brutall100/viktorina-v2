@@ -23,7 +23,7 @@ turbut su duombaze kazkuram laijkui arba su scrolu iki 20 ar 30 paskutiniu irasu
 <!-- Full screen api ,kad vaizdas butu per visa ekrana -->
 
 <!-- 8 -->
-<!--  -->
+<!-- Css padaryti kad baigiantis laikui klausimas prades nykti ir mazeti ir nubrgs i desny kampa apacioj  -->
 
 <!-- 9 -->
 <!-- sukurti ikoneles useriams su daug litu,galima butu
@@ -48,7 +48,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Sutvarkyti Lt raide S-š i-į ir t.t -->
 
 <!--16 -->
-<!--  -->
+<!-- Irasant klausima prideti 10 litu, ir galimas pridejimas linko i klausima ir paaiskinimas.Kad is kur klausimas ir pagrindimas -->
 
 <!-- 17 -->
 <!-- Uz klausimo irasyma 10 litu + Ikonele kokia 1 savatei klausimu irasytojas + mini taisykles -->
