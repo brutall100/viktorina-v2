@@ -256,6 +256,7 @@ const handleUserAnswer = async (userAnswer) => {
   }
   const correctAnswer = data.data.answer.toLowerCase();
   const userAnswerLower = userAnswer.toLowerCase();
+
   if (userAnswerLower === correctAnswer) {
     const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10);
     userData.points = litaPoints.toString();
@@ -291,6 +292,9 @@ const handleUserAnswer = async (userAnswer) => {
     } else {
       console.error('Failed to update user points');
     }
+  } else if (!userAnswerLower.length === 0) {   // nedaug truksta,sutvarkyti priezasty
+    setTimeout(oldQuestionData, 3000);
+
   } else if (userAnswerLower.length < 1) {
     const answerInput = document.getElementById('answer-input');
     answerInput.disabled = true;
@@ -303,7 +307,7 @@ const handleUserAnswer = async (userAnswer) => {
       location.reload();
     }, 1000); // Reload after 2 seconds
 
-  } else {
+  }  else {
     const answerInputBad = document.getElementById('answer-input');
     answerInputBad.disabled = true;
     const errorMsg = `Atsakymas "${userAnswer}" yra neteisingas. Bandykite dar kartą.`;
