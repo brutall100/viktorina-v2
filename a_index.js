@@ -283,6 +283,7 @@ const handleUserAnswer = async (userAnswer) => {
       console.log(`User points updated successfully ${points}`);
       console.log("user_id_name: " + user_id_name);
       console.log("points: " + points);
+      oldQuestionData()
       setTimeout(() => {
         location.reload();
       }, 5000); // Perkrauna page po 5 sekundziu
@@ -290,23 +291,36 @@ const handleUserAnswer = async (userAnswer) => {
     } else {
       console.error('Failed to update user points');
     }
-  } else {
+  } else if (userAnswerLower.length < 1) {
     const answerInput = document.getElementById('answer-input');
     answerInput.disabled = true;
-    const errorMsg = `Atsakymas "${userAnswer}" yra neteisingas. Bandykite dar kartą.`;
-    document.getElementById('answer').textContent = errorMsg;
+    const MsgNoAnswer = `Atsakymas negali būti tuščias.`;
+    document.getElementById('answer').textContent = MsgNoAnswer;
     setTimeout(() => {
       answerInput.disabled = false;
     }, 2500); // Disable answerInput for 2.5 seconds
+    setTimeout(() => {
+      location.reload();
+    }, 1000); // Reload after 2 seconds
+
+  } else {
+    const answerInputBad = document.getElementById('answer-input');
+    answerInputBad.disabled = true;
+    const errorMsg = `Atsakymas "${userAnswer}" yra neteisingas. Bandykite dar kartą.`;
+    document.getElementById('answer').textContent = errorMsg;
+    setTimeout(() => {
+      answerInputBad.disabled = false;
+    }, 3000); // Disable answerInput for 2.5 seconds
 
     setTimeout(() => {
       location.reload(); 
     }, 1000); // Reload after 2 seconds
-
   }
 
   document.getElementById('answer-input').value = '';
 };
+
+
 
 
 
