@@ -67,7 +67,8 @@ function oldQuestionData() {
 
       const oldQuestionDiv = document.getElementById('old-question');
      
-      oldQuestionDiv.innerHTML = `Klausimo numeris: ${questionId} - ${serverQuestion} - ${serverAnswer}`;
+      oldQuestionDiv.innerHTML = `Klausimo numeris: <span class="question">${questionId}</span> - <span class="serverQuestion">${serverQuestion}</span> - <span class="serverAnswer">${serverAnswer}</span>`;
+
     })
     .catch(error => {
       console.error(error);

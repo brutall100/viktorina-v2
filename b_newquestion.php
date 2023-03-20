@@ -29,17 +29,25 @@ if (empty($question) || empty($answer)) {
     echo $message;
 } else {
     // Insert the data into the database
-    $sql = "INSERT INTO viktorina.question_answer (user, question, answer, 	date_inserted, ip) VALUES ('$name', '$question', '$answer', '$date_inserted','$ip')";
+    $sql = "INSERT INTO question_answer (user, question, answer, date_inserted, ip) VALUES ('$name', '$question', '$answer', '$date_inserted','$ip')";
     if (mysqli_query($conn, $sql)) {
         echo $message;
-    } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-    }
-    // Close the connection
-    mysqli_close($conn);
-?>
+        $sql = "UPDATE viktorina.super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
 
+        if (mysqli_query($conn, $sql)) {
+            echo "Litai_sum updated successfully";
+        } else {
+            echo "Error updating litai_sum: " . mysqli_error($conn);
+        }
+
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+}
+
+// Close the connection
+mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html>

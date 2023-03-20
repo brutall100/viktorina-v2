@@ -1,7 +1,5 @@
 <!-- 1 uzduotis -->
-<!-- Kolkas palieku ramybeje,nes nezinau kaip padaryti function oldQuestionData()
-Funkcija turi pagauti id=47 paprasta..Tada kazkaip ji issisaugoti ir tik kai pasikeicia id=32 tada rodyti 
-praeita id=47  -->
+<!--   -->
 
 <!-- 2 -->
 <!-- Pasidaryti svaria php ir javaScript registracijos kopija githube su pasijungimu i xampp -->
@@ -48,7 +46,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Sutvarkyti Lt raide S-š i-į ir t.t -->
 
 <!--16 -->
-<!-- Irasant klausima prideti 10 litu, ir galimas pridejimas linko i klausima ir paaiskinimas.Kad is kur klausimas ir pagrindimas -->
+<!-- -->
 
 <!-- 17 -->
 <!-- Uz klausimo irasyma 10 litu + Ikonele kokia 1 savatei klausimu irasytojas + mini taisykles -->

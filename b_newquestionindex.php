@@ -1,6 +1,5 @@
 <?php
 session_start();
-// Store the name and level and points in the session if they are present in the GET request
 if (isset($_GET['name'])) {
   $_SESSION['name'] = $_GET['name'];
 }
@@ -11,7 +10,6 @@ if (isset($_GET['points'])) {
   $_SESSION['points'] = $_GET['points'];
 }
 
-// Retrieve the name and level and points from the session
 $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
@@ -55,7 +53,7 @@ $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
     </header>
 
 
-    <!-- Registered user fiils automatic , not registered ip or useful info-->
+  
 
     <main class="main">
       <div class="main-form">

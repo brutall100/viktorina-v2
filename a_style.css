@@ -276,7 +276,19 @@ img {
 .old-question-section #old-question {
   border: 1.5px solid rgba(30, 74, 30, 0.864);
 }
+.question {
+  font-weight: bold;
+}
 
+.serverQuestion {
+  color: blue;
+  font-weight: bold;
+}
+
+.serverAnswer {
+  color: rgb(14, 15, 14);
+  font-weight: bold;
+}
   
  
  
