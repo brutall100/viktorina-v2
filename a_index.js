@@ -61,45 +61,18 @@ function oldQuestionData() {
       const serverData = response.data.data;
       const serverQuestion = serverData.question;
       const questionId = serverData.id;
+      const serverAnswer = serverData.answer;
       
-      console.log('Old question:', serverQuestion, 'ID:', questionId);
+      console.log('Old question:', serverQuestion, 'ID:', questionId, 'Answer:', serverAnswer);
 
       const oldQuestionDiv = document.getElementById('old-question');
      
-      oldQuestionDiv.innerHTML = `Question ID: ${questionId} - ${serverQuestion}`;
+      oldQuestionDiv.innerHTML = `Klausimo numeris: ${questionId} - ${serverQuestion} - ${serverAnswer}`;
     })
     .catch(error => {
       console.error(error);
     });
 }
-
-
-
-// bandau sia funkcija naudoti kitur kolkas uzdrausta
-// function oldQuestionData() {
-//   setTimeout(() => {
-//     axios.get('http://localhost:3000/data')
-//       .then(response => {
-//         const serverData = response.data.data;
-//         const serverQuestion = serverData.question;
-//         const questionId = serverData.id;
-
-//         console.log('Old question:', serverQuestion, 'ID:', questionId);
-
-//         const oldQuestionDiv = document.getElementById('old-question');
-
-//         oldQuestionDiv.innerHTML = `Question ID: ${questionId} - ${serverQuestion}`;
-//       })
-//       .catch(error => {
-//         console.error(error);
-//       });
-//   }, 40000); // 40 seconds in milliseconds
-// }
-
-// oldQuestionData();
-
-
-
 
 
 
@@ -246,8 +219,13 @@ answerForm.addEventListener('submit', (event) => {
 });
 
 
-
-
+let isTimeUp = false;
+setTimeout(() => {
+  isTimeUp = true;
+  oldQuestionData();
+  console.log('time is over');
+}, 40000);
+ 
 const handleUserAnswer = async (userAnswer) => {
   const data = await fetchData();
   if (!data || !data.data || !data.data.answer) {
@@ -319,13 +297,21 @@ const handleUserAnswer = async (userAnswer) => {
     setTimeout(() => {
       location.reload(); 
     }, 1000); // Reload after 2 seconds
-  }
+  } 
 
+ 
   document.getElementById('answer-input').value = '';
 };
 
 
-
+// let isTimeUp = false;
+//  setTimeout(() => {
+//   isTimeUp = true;
+//  }, 1000);
+  
+//  if (isTimeUp) {
+//   console.log('time is ower');
+//  }
 
 
 

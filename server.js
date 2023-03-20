@@ -104,7 +104,7 @@ const checkLitaiSum = () => {
   
   setInterval(() => {
     const currentTime = new Date();
-    if (lastRefreshTime === null || (currentTime - lastRefreshTime) >= 50000) {    // serverio refreshas
+    if (lastRefreshTime === null || (currentTime - lastRefreshTime) >= 45000) {    // serverio refreshas
       console.log(`Refreshing data every 50 seconds`);
       lastRefreshTime = currentTime;
       refreshData((data) => {
