@@ -46,7 +46,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Sutvarkyti Lt raide S-š i-į ir t.t -->
 
 <!--16 -->
-<!-- -->
+<!-- Prirasyti taisykliu prie irasyti klausima prideti info zenkliukas-->
 
 <!-- 17 -->
 <!-- Uz klausimo irasyma 10 litu + Ikonele kokia 1 savatei klausimu irasytojas + mini taisykles -->

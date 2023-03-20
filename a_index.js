@@ -236,7 +236,7 @@ const handleUserAnswer = async (userAnswer) => {
   const correctAnswer = data.data.answer.toLowerCase();
   const userAnswerLower = userAnswer.toLowerCase();
 
-  if (userAnswerLower === correctAnswer) {
+  if (checkLettersAndCompare(userAnswerLower, correctAnswer)) {
     const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10);
     userData.points = litaPoints.toString();
     const successMsg = `Teisingai atsakė ${userData.name}: <span class="special-atsakymas" style="color: green; font-weight: bold">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`;
@@ -305,14 +305,26 @@ const handleUserAnswer = async (userAnswer) => {
 };
 
 
-// let isTimeUp = false;
-//  setTimeout(() => {
-//   isTimeUp = true;
-//  }, 1000);
+
+function checkLettersAndCompare(str1, str2) {
+  const letterMap = {
+    'ą': 'a',
+    'č': 'c',
+    'ę': 'e',
+    'ė': 'e',
+    'į': 'i',
+    'š': 's',
+    'ų': 'u',
+    'ū': 'u',
+    'ž': 'z'
+  };
   
-//  if (isTimeUp) {
-//   console.log('time is ower');
-//  }
+  // Replace accented letters with their ASCII equivalents
+  const cleanStr1 = str1.replace(/[ąčęėįšųž]/gi, match => letterMap[match.toLowerCase()]);
+  const cleanStr2 = str2.replace(/[ąčęėįšųž]/gi, match => letterMap[match.toLowerCase()]);
+  
+  return cleanStr1.toLowerCase() === cleanStr2.toLowerCase();
+}
 
 
 
