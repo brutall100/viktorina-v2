@@ -9,10 +9,14 @@ if (isset($_GET['level'])) {
 if (isset($_GET['points'])) {
   $_SESSION['points'] = $_GET['points'];
 }
+if (isset($_GET['user_id'])) {
+  $_SESSION['user_id'] = $_GET['user_id'];
+}
 
 $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 ?>
 
 
@@ -56,9 +60,9 @@ $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
     <ul>
       <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/viktorina_logo.png" />
       <div>
-        <li><a href="http://localhost/aldas/Viktorina.live/a_index.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>">Viktorina</a></li>
-        <li><a href="http://localhost/aldas/Viktorina.live/c_questionwaiting.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>">Naujienos</a></li>
-        <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>">Irašyti klausimą</a></li>
+      <li><a href="http://localhost/aldas/Viktorina.live/a_index.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Viktorina</a></li>
+          <li><a href="http://localhost/aldas/Viktorina.live/c_questionwaiting.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Naujienos</a></li>
+          <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Irašyti klausimą</a></li>
       </div> 
       <div>
         <button id="btn-atsijungti">Atsijungti</button>
