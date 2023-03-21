@@ -74,14 +74,15 @@ echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$po
 if (isset($_GET['name'])) {
   $name = $_GET['name'];
   $conn = mysqli_connect("localhost", "root", "", "viktorina");
-  $query = "SELECT user_lvl, litai_sum FROM super_users WHERE nick_name = '$name'";
+  $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $level = $row['user_lvl'];
     $points = $row['litai_sum'];
-    echo "Welcome, $name! Your current level is $level and you have $points points.";
-    // echo "<br><button onclick=\"window.location.href='statistic.php?name=$name'\">Logout</button>"; // Pass the nickname as a query parameter
+    $user_id = $row['user_id'];
+    echo "Welcome, $name! Your current level is $level and you have $points points. Your id: $user_id";
+   
   } else {
     echo "User not found!";
   }
@@ -90,6 +91,7 @@ if (isset($_GET['name'])) {
   echo "Welcome!";
 }
 ?>
+
 
 
 
@@ -121,7 +123,6 @@ if (isset($_GET['name'])) {
 
     
     <section class="section-answer">
-      <div><?php echo $name?>:</div>
       <div id="answer"></div>
     </section>
 
