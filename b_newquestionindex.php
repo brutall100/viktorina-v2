@@ -58,6 +58,8 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           <label for="name">Autorius:</label>
           <input type="text" id="name" name="name" value="<?php echo $name; ?>" />
           
+          <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
+
           <label for="question">Klausimas:</label>
           <input type="text" id="question" name="question" />
           

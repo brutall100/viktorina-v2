@@ -11,6 +11,7 @@ if (!$conn) {
 }
 
 $name = $_POST['name'];
+$user_id = $_POST['user_id'];
 $question = $_POST['question'];
 $answer = $_POST['answer'];
 $date_inserted = date("Y-m-d"); // current date
@@ -26,7 +27,7 @@ if (empty($question) || empty($answer)) {
     echo $message;
 } else {
     // Insert the data into the database
-    $sql = "INSERT INTO question_answer (user, question, answer, date_inserted, ip) VALUES ('$name', '$question', '$answer', '$date_inserted','$ip')";
+    $sql = "INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES ('$name', '$user_id', '$question', '$answer', '$date_inserted','$ip')";
     if (mysqli_query($conn, $sql)) {
         echo $message;
         $sql = "UPDATE viktorina.super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
