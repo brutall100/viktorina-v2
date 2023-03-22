@@ -52,7 +52,6 @@ echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$po
         </div> 
         <div>
           <button id="btn-atsijungti">Atsijungti</button>
-        <!-- Reikes vistiek ta scripta nesdint is cia -->
         <script>
           const logoutButton = document.getElementById('btn-atsijungti');
           logoutButton.addEventListener('click', () => {

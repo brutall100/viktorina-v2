@@ -42,19 +42,18 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           <li><a href="http://localhost/aldas/Viktorina.live/a_index.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Viktorina</a></li>
           <li><a href="http://localhost/aldas/Viktorina.live/c_questionwaiting.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Naujienos</a></li>
           <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Irašyti klausimą</a></li>
+        </div> 
         <div>
           <button id="btn-atsijungti">Atsijungti</button>
-          <!-- Rekes vistiek ta scripta nesdint is cia -->
         <script>
-            const logoutButton = document.getElementById('btn-atsijungti');
-            logoutButton.addEventListener('click', () => {
-              window.location.href = 'http://localhost/aldas/Viktorina.live/statistic.php?name=<?php echo $name ?>';
-            });
+          const logoutButton = document.getElementById('btn-atsijungti');
+          logoutButton.addEventListener('click', () => {
+            window.location.href = 'http://localhost/aldas/Viktorina.live/statistic.php?name=<?php echo $name ?>';
+          });
         </script>
         </div>  
       </ul>
     </header>
-<!-- REikia tvarkyti ta bardaka scriptus iskelti css iskelti -->
 
   
 
