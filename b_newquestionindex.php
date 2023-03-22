@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 session_start();
 if (isset($_GET['name'])) {
   $_SESSION['name'] = $_GET['name'];
@@ -12,12 +12,11 @@ if (isset($_GET['points'])) {
 if (isset($_GET['user_id'])) {
   $_SESSION['user_id'] = $_GET['user_id'];
 }
-
 $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
-?> -->
+?> 
 
 
 
@@ -31,8 +30,6 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
     <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/aa_headerstyle.css" />
     <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/b_newguestion.css" />
   </head>
-
-
 
   <body>
     <header class="header">
@@ -55,8 +52,6 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
       </ul>
     </header>
 
-  
-
     <main class="main">
       <div class="main-form">
         <form action="http://localhost/aldas/Viktorina.live/b_newquestion.php" method="post">
@@ -73,7 +68,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
         </form>
       </div>
             
-      <div class="main-info">
+      <div class="main-info">   <!-- Laikinai main-info.Arba gražiai sutvarkyti -->
         <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
           <p>Autorius: <?php echo $name; ?></p>
           <p>Lygis: <?php echo $level; ?></p>
@@ -81,7 +76,6 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           <p>Id: <?php echo $user_id; ?></p>
         <?php endif; ?>
       </div>
-
     </main>
 
     <footer class="footer">

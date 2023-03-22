@@ -1,5 +1,4 @@
 <?php
-// Connect to the database
 $host = 'localhost';
 $user = 'root';
 $password = '';
@@ -7,12 +6,10 @@ $dbname = 'viktorina';
 
 $conn = mysqli_connect($host, $user, $password, $dbname);
 
-// Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Get the form data
 $name = $_POST['name'];
 $question = $_POST['question'];
 $answer = $_POST['answer'];
