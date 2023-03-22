@@ -63,26 +63,79 @@
 
 
 
-/* questionwaiting.php */
-  table {
-    width: 50%;
-    border-collapse: collapse;
+/* b_questionwaiting.php */
+.table {
+  margin: 10px auto 130px;
+  width: 50%;
+  border-collapse: collapse;
+}
+
+.table, td, th {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+th {
+  text-align: left;
+}
+.vote_count.positive {
+  color: green;
+
+}
+.vote_count.negative {
+  color: red;
+}
+
+.upvote, .downvote {
+  background-color: #1d0b0b;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: .75rem;
+  line-height: 1.2rem;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  margin: 1px;
+  cursor: pointer;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.344);
+  transition: all 0.2s ease-in-out;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.upvote:hover, .downvote:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
+  animation: none;
+}
+
+/* Nezinau ar reikia mygtuko mitksejimas */
+/* @keyframes pulse {
+  0% {
+    background-color: #1d0b0b;
   }
-
-  table, td, th {
-    border: 1px solid black;
-    padding: 5px;
+  50% {
+    background-color: #105f0f6d;
   }
-
-  th {
-    text-align: left;
+  100% {
+    background-color: #1d0b0b;
   }
+} */
 
+.upvote::before {
+  content: "+";
+  font-size: 1.7rem; /* change the font size to your desired size */
+  display: inline-block;
+}
+  
+.downvote::after {
+  content: "-";
+  font-size: 1.7rem; /* change the font size to your desired size */
+  display: inline-block;
+  margin-bottom: 5px;
+}
 
-
-
-  /* phpquestion.php Modal with js */
- 
 
  
   

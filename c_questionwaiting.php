@@ -12,7 +12,6 @@ if (isset($_GET['points'])) {
 if (isset($_GET['user_id'])) {
   $_SESSION['user_id'] = $_GET['user_id'];
 }
-
 $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
@@ -23,37 +22,10 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
 <html>
 <head>
-  <title>My Page</title>
+  <title>Naujai sukurti klausimai</title>
+  <meta http-equiv="refresh" content="300">
   <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/aa_headerstyle.css" />
   <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/b_newguestion.css" />
-  <!-- Style laikinai bus perkeltas virsun -->
-  
-  <style>  
-      table {
-    width: 50%;
-    border-collapse: collapse;
-  }
-
-  table, td, th {
-    border: 1px solid black;
-    padding: 5px;
-  }
-
-  th {
-    text-align: left;
-  }
-  .vote_count.positive {
-  color: green;
-
-  }
-  .vote_count.negative {
-  color: red;
-}
-  </style>
-
-
-   <!-- Meta refresh kas 5 min -->
-<meta http-equiv="refresh" content="300">
 </head>
 <body>
   <header class="header">
@@ -76,28 +48,17 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
     </ul>
   </header>
 
-
-    <div class="main-info">
-        <?php if (!empty($name) && !empty($level) && !empty($points)): ?>
-          <p>Autorius: <?php echo $name; ?></p>
-          <p>Lygis: <?php echo $level; ?></p>
-          <p>Litai: <?php echo $points; ?></p>
-        <?php endif; ?>
-      </div>
-
-
-  <table style="margin: 0 auto;">
+  <table class="table">
     <tr>
-      <th>Number</th>
-      <th>User</th>
-      <th>Question</th>
-      <th>Answer</th>
-      <th>Upvote</th>
-      <th>Downvote</th>
-      <th>Vote Count</th>
+      <th>Numeris</th>
+      <th>Autorius</th>
+      <th>Klausimas</th>
+      <th>Atsakymas</th>
+      <th>Priimti</th>
+      <th>Atmesti</th>
+      <th>Rezultatas</th>
     </tr>
     <?php
-      // Connect to the database
       $host = 'localhost';
       $user = 'root';
       $password = '';
@@ -105,12 +66,10 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
       $conn = mysqli_connect($host, $user, $password, $dbname);
 
-      // Check connection
       if (!$conn) {
           die("Connection failed: " . mysqli_connect_error());
       }
 
-      // Select the data from the database
       $sql = "SELECT id, user, question, answer, vote_count FROM viktorina.question_answer";
       $result = mysqli_query($conn, $sql);
 
@@ -122,12 +81,8 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
             echo "<td>" . $row['user'] . "</td>";
             echo "<td>" . $row['question'] . "</td>";
             echo "<td>" . $row['answer'] . "</td>";
-            echo "<td>
-            <button class='upvote' data-id='". $row['id'] ."'>Upvote</button>
-            </td>";
-            echo "<td>
-            <button class='downvote' data-id='". $row['id'] ."'>Downvote</button>
-            </td>";
+            echo "<td><button class='upvote' data-id='". $row['id'] ."'></button></td>";
+            echo "<td><button class='downvote' data-id='". $row['id'] ."'></button></td>";
             echo "<td class='vote_count " . ($row['vote_count'] >= 0 ? 'positive' : 'negative') . "'>" . $row['vote_count'] . "</td>";
         }
         
@@ -135,10 +90,10 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           echo "0 results";
       }
 
-      // Close the connection
       mysqli_close($conn);
     ?>
   </table>
+
   <footer class="footer">
       <object
         data="http://localhost/aldas/Viktorina.live/Footer/footer.html"
@@ -160,7 +115,7 @@ document.querySelectorAll('.upvote').forEach(function(button) {
         console.log(text);
         setTimeout(function(){
           location.reload();
-        }, 3000);
+        }, 50);
       })
       .catch(function(error) {
         console.log('Request failed', error);
@@ -179,7 +134,7 @@ document.querySelectorAll('.downvote').forEach(function(button) {
         console.log(text);
         setTimeout(function(){
           location.reload();
-        }, 3000);
+        }, 50);
       })
       .catch(function(error) {
         console.log('Request failed', error);
