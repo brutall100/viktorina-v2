@@ -2,7 +2,8 @@
 <!-- Reikia tvarkyti laikus serveryje, plius bonus per ilgai uzzsilaiko  -->
 
 <!-- 2 -->
-<!-- Pasidaryti svaria php ir javaScript registracijos kopija githube su pasijungimu i xampp -->
+<!-- Pasidaryti svaria php ir javaScript registracijos kopija githube su pasijungimu i xampp
+ir balsavimo funkcijas su duomenu baze -->
 
 <!-- 3 -->
 <!-- Teisingi ir neteisingi klausimai eina i kazkoki chatuka,

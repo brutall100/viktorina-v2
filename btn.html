@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Example AJAX Request</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(function() {
+			$("#myButton").click(function() {
+				$.ajax({
+					url: "transferData.php",
+					method: "post",
+					success: function(response) {
+						console.log(response);
+					},
+					error: function(xhr, status, error) {
+						console.log("Error: " + error);
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<button id="myButton">Execute Script</button>
+</body>
+</html>
