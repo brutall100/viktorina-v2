@@ -1,30 +1,44 @@
 <?php
-  // Connect to the database
-  $host = 'localhost';
-  $user = 'root';
-  $password = '';
-  $dbname = 'viktorina';
+function hasUserVoted($conn, $userId, $questionId) {
+    $sql = "SELECT * FROM user_votes WHERE user_id = $userId AND question_id = $questionId";
+    $result = mysqli_query($conn, $sql);
 
-  $conn = mysqli_connect($host, $user, $password, $dbname);
+    return (mysqli_num_rows($result) > 0);
+}
 
-  // Check connection
-  if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-  }
+$host = 'localhost';
+$user = 'root';
+$password = '';
+$dbname = 'viktorina';
+$conn = mysqli_connect($host, $user, $password, $dbname);
 
-  // Get the question id from the URL
-  $id = $_GET['id'];
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-  // Create the SQL query
-  $sql = "UPDATE viktorina.question_answer SET vote_count = vote_count + 1 WHERE id = $id";
+// Get the question id and user id from the URL
+$id = $_GET['id'];
+$userId = $_GET['user_id'];
 
-  // Execute the query
-  if (mysqli_query($conn, $sql)) {
-      echo "Record updated successfully";
-  } else {
-      echo "Error updating record: " . mysqli_error($conn);
-  }
+if (!hasUserVoted($conn, $userId, $id)) {
+    // Create the SQL query
+    $sql = "UPDATE question_answer SET vote_count = vote_count + 1 WHERE id = $id";
 
-  // Close the connection
-  mysqli_close($conn);
+    // Execute the query
+    if (mysqli_query($conn, $sql)) {
+        // Insert user vote record
+        $sql = "INSERT INTO user_votes (user_id, question_id) VALUES ($userId, $id)";
+        mysqli_query($conn, $sql);
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . mysqli_error($conn);
+    }
+} else {
+    echo "User has already voted";
+}
+
+// Close the connection
+mysqli_close($conn);
 ?>
+
+

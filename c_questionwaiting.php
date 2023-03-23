@@ -107,7 +107,8 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 document.querySelectorAll('.upvote').forEach(function(button) {
   button.addEventListener('click', function() {
     var id = this.dataset.id;
-    fetch('c_upvote.php?id=' + id)
+    var user_id = "<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>";
+    fetch('c_upvote.php?id=' + id + '&user_id=' + user_id)
       .then(function(response) {
         return response.text();
       })
@@ -123,10 +124,12 @@ document.querySelectorAll('.upvote').forEach(function(button) {
   });
 });
 
+
 document.querySelectorAll('.downvote').forEach(function(button) {
   button.addEventListener('click', function() {
     var id = this.dataset.id;
-    fetch('c_downvote.php?id=' + id)
+    var user_id = "<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>";
+    fetch('c_downvote.php?id=' + id + '&user_id=' + user_id)
       .then(function(response) {
         return response.text();
       })
