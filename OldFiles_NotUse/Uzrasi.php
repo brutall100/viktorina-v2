@@ -44,7 +44,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Raides eitu i kvadratukus,kad nurodytu raidziu kieki atsakyme -->
 
 <!-- 15 -->
-<!-- Sutvarkyti Lt raide S-š i-į ir t.t -->
+<!-- Button perkelti padaryti prieinama nuo 4 lvl -->
 
 <!--16 -->
 <!-- Prirasyti taisykliu prie irasyti klausima prideti info zenkliukas-->

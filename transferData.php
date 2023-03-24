@@ -1,6 +1,6 @@
 <?php
     $connection1 = new mysqli("127.0.0.1", "root", "", "viktorina");
-    $connection2 = new mysqli("127.0.0.1", "root", "", "test");
+    $connection2 = new mysqli("127.0.0.1", "root", "", "viktorina");
 
     if ($connection1->connect_error || $connection2->connect_error) {
         die("Error connecting to the databases: " . $connection1->connect_error . $connection2->connect_error);
@@ -12,14 +12,14 @@
         $result = $connection1->query($query);
         if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
-            $checkDuplicate = "SELECT COUNT(*) as duplicate_count FROM testukas WHERE klausimas = ?";
+            $checkDuplicate = "SELECT COUNT(*) as duplicate_count FROM main_database WHERE klausimas = ?";
             $checkStmt = $connection2->prepare($checkDuplicate);
             $checkStmt->bind_param("s", $row["question"]);
             $checkStmt->execute();
             $checkResult = $checkStmt->get_result();
             $checkRow = $checkResult->fetch_assoc();
             if ($checkRow["duplicate_count"] == 0) {
-              $insertQuery = "INSERT INTO testukas(qna_id, klausimas, atsakymas) VALUES (?, ?, ?)";
+              $insertQuery = "INSERT INTO main_database(id_of_qna, klausimas, atsakymas) VALUES (?, ?, ?)";
               $stmt = $connection2->prepare($insertQuery);
               $stmt->bind_param("iss", $row["id"], $row["question"], $row["answer"]);
               $stmt->execute();
