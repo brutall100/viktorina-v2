@@ -5,9 +5,9 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script>
 		$(function() {
-			$("#myButton").click(function() {
+			$("#btn-perkelti-klausimus").click(function() {
 				$.ajax({
-					url: "transferData.php",
+					url: "http://localhost/aldas/Viktorina.live/transferData.php",
 					method: "post",
 					success: function(response) {
 						console.log(response);
@@ -24,3 +24,6 @@
 	<button id="myButton">Execute Script</button>
 </body>
 </html>
+
+<!-- include 'path/to/file.php';
+trackAndMoveData(); -->

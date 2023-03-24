@@ -199,68 +199,6 @@ img {
 
 
 
-
-
-
- 
- /* Chat container */
- #chat-container {
-    position: absolute;
-    bottom: 50px;
-    left: 50%; /* Change the left position to 50% */
-    transform: translate(-50%, 0); 
-    width: 500px;
-    height: 330px;
-    border: 1px solid #ccc;
-    /* overflow-y: scroll; */
-    display: flex;
-    /* margin: auto; */
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  
-  #chat-messages {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin: 10px;
-  }
-  
-  #chat-messages div {
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 80%;
-  }
-  
-  #chat-input {
-    width: 80%;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    outline: none;
-  }
-  
-  #chat-button {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #eee;
-    cursor: pointer;
-  }
-
-  .time {
-    color: rgb(20, 14, 14);
-    font-size: 12px;
-    margin-right: 5px;
-  }
-
-
-
-
-
  /* .old-question-section */
 .old-question-section {
   border: 3px solid rgb(97, 17, 17);
