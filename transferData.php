@@ -12,14 +12,14 @@
         $result = $connection1->query($query);
         if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {
-            $checkDuplicate = "SELECT COUNT(*) as duplicate_count FROM main_database WHERE klausimas = ?";
+            $checkDuplicate = "SELECT COUNT(*) as duplicate_count FROM main_database WHERE question = ?";
             $checkStmt = $connection2->prepare($checkDuplicate);
             $checkStmt->bind_param("s", $row["question"]);
             $checkStmt->execute();
             $checkResult = $checkStmt->get_result();
             $checkRow = $checkResult->fetch_assoc();
             if ($checkRow["duplicate_count"] == 0) {
-              $insertQuery = "INSERT INTO main_database(id_of_qna, klausimas, atsakymas) VALUES (?, ?, ?)";
+              $insertQuery = "INSERT INTO main_database(id_of_qna, question, answer) VALUES (?, ?, ?)";
               $stmt = $connection2->prepare($insertQuery);
               $stmt->bind_param("iss", $row["id"], $row["question"], $row["answer"]);
               $stmt->execute();

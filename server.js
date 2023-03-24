@@ -38,7 +38,7 @@ const refreshData = (callback) => {
   });
   connection.connect();
 
-  const sql = 'SELECT id, question, answer FROM question_answer ORDER BY RAND() LIMIT 1';
+  const sql = 'SELECT id, question, answer FROM main_database ORDER BY RAND() LIMIT 1';
 
   connection.query(sql, (err, results) => {
     if (err) throw err;

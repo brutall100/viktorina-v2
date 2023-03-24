@@ -6,14 +6,13 @@
 ir balsavimo funkcijas su duomenu baze -->
 
 <!-- 3 -->
-<!-- Teisingi ir neteisingi klausimai eina i kazkoki chatuka,
-turbut su duombaze kazkuram laijkui arba su scrolu iki 20 ar 30 paskutiniu irasu-->
+<!-- Padaryti css litus plevesuojancius kaip veliava-->
 
 <!-- 4 -->
-<!-- Question waiting sutvarkyti, kad klausimai su upvotais pereitu i pagrindine db -->
+<!--  -->
 
 <!-- 5 -->
-<!-- a_index.php pradetu imti klausimus is pagrindines db -->
+<!--  -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->
