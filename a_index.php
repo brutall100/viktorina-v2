@@ -94,9 +94,6 @@ if (isset($_GET['name'])) {
 
 
 
-
-<!-- bandymas -->
-
     <section>
       <div class="litas-container">
         <div class="litas-container-img" id="litai-img-bonus"></div>
@@ -106,12 +103,12 @@ if (isset($_GET['name'])) {
 
     <main class="super-container">
       <div class="points-container">
-        <div class="super" id="points"></div>
-        <div class="super" id="bonus-points"></div>
+        <div class="" id="points"></div>
+        <div class="" id="bonus-points"></div>
       </div>
-      <div class="super" id="question"></div>
-      <div class="super" id="answer"></div>
-      <div class="" id="dot-answer"></div>
+      <div class="" id="question"></div>
+      <div class="" id="answer"></div>
+      <div class="dot-answer" id="dot-answer"></div>
       <div class="" id="dot-answer-lenght"></div>
 
       <form action="a_index.php?name=<?php echo urlencode($_GET['name']); ?>" id="answer-form" method="post">

@@ -4,19 +4,15 @@
     padding: 0;
 }
 
-/* Scroll to the first li when the page is reloaded */
-
 
 body {
     font-size: 1em;
     background-color: lightblue;
     background: url(http://localhost/aldas/Viktorina.live/images/background/website4.png);
-    /* background: url(/images/background/floWer3.png); */
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    
 }
 
 .imported-header {
@@ -38,24 +34,33 @@ body {
     left: 50%; /* Change the left position to 50% */
     transform: translate(-50%, 0);
     margin: auto;
-    width: 90%;
+    width: 70%;
     /* or any other desired width */
     height: 200px;
     /* or any other desired height */
     justify-content: center;
     align-items: center;
-    border: 1px solid rebeccapurple;
+    border: 10px solid rgb(153, 18, 97);
 }
 
-.super{
-  font-size: 1.3em;
+.super {
+  display: inline-block;
 }
 
+#question,
+#answer {
+  font-size: 24px;
+}
+ 
 #dot-answer{
-  font-size: 22px;
-  color: rgb(150, 5, 5);
-  border: 1px solid red;
+ background-color:white;
+ display:inline-block
 }
+
+
+
+
+
 
 #dot-answer-lenght{
   border: 1px solid green;
