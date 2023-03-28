@@ -85,37 +85,26 @@ window.onload = function() {
 
                       // Rodyti klausima
 async function displayQuestion(data) {
-  const questionElement = document.getElementById("question");
-  questionElement.innerText = data.data.question;
-  
-  const answersElement = document.getElementById("answer");
-  answersElement.innerHTML = "";
-  
-  const dotsElement = document.getElementById("dot-answer");
-  dotsElement.innerHTML = "";
-  
-  const lenghtElement = document.getElementById("dot-answer-lenght");
-  lenghtElement.innerText = data.data.answer.length;
-  
-  const words = data.data.answer.split(" ");
-  const underscore = "_";
-  
-  for (let i = 0; i < words.length; i++) {
-    for (let j = 0; j < words[i].length; j++) {
-      dotsElement.innerHTML += " &#x2B1C; ";
-    }
-    if (i < words.length - 1) {
-      dotsElement.innerHTML += `${underscore}`;
-    }
-  }
-    displayLettersWithDelay(answersElement, data.data.answer, 8000);
+  const question = document.getElementById("question");
+  const answer = document.getElementById("answer");
+  question.innerText = data.data.question;
+  const answerString = data.data.answer;
+  const hiddenString = answerString.replace(/./g, "⬜").split("").join(" ");
+  answer.innerText = hiddenString;
+  await displayLettersWithDelay(answerString, answer, 8000);
 }
-async function displayLettersWithDelay(element, string, delay) {
-  for (let i = 0; i < 4; i++) {
-    await new Promise((resolve) => setTimeout(resolve, delay));
-    element.innerHTML += string[i];
+
+async function displayLettersWithDelay(string, element, delay) {
+  for (let i = 0; i < 4 && i < string.length; i++) {
+    const revealDelay = delay + (i * 1000);
+    await new Promise(resolve => setTimeout(resolve, revealDelay));
+    const hiddenString = element.innerText.split(" ");
+    hiddenString[i] = string[i];
+    element.innerText = hiddenString.join(" ");
   }
 }
+
+                      
 
 
 

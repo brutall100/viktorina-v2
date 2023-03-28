@@ -4,7 +4,6 @@
     padding: 0;
 }
 
-
 body {
     font-size: 1em;
     background-color: lightblue;
@@ -26,48 +25,37 @@ body {
     width: 100%;
 }
 
+
+
+/* Pagrindinis question and answer containeris */
 .super-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top:15%;
-    left: 50%; /* Change the left position to 50% */
-    transform: translate(-50%, 0);
-    margin: auto;
-    width: 70%;
-    /* or any other desired width */
-    height: 200px;
-    /* or any other desired height */
-    justify-content: center;
-    align-items: center;
-    border: 10px solid rgb(153, 18, 97);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top:15%;
+  left: 50%; /* Change the left position to 50% */
+  transform: translate(-50%, 0);
+  margin: auto;
+  width: 70%;
+  /* or any other desired width */
+  height: 200px;
+  /* or any other desired height */
+  justify-content: center;
+  align-items: center;
+  border: 5px solid orangered;
+    
 }
 
-.super {
-  display: inline-block;
+.super-container-qna-section{
+  border: 3px solid rgb(110, 28, 90);
 }
 
 #question,
 #answer {
   font-size: 24px;
+  text-align: center;
 }
  
-#dot-answer{
- background-color:white;
- display:inline-block
-}
-
-
-
-
-
-
-#dot-answer-lenght{
-  border: 1px solid green;
-  font-size: 1em;
-}
-
-
 #question{
     font-family: 'PT Serif', serif;
     font-weight: 600;
@@ -78,6 +66,12 @@ body {
   border:1px solid orange;
   top:50px;
 }
+
+
+
+
+
+
 
 /* .special-atsakymas {
   color: red;

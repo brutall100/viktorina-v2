@@ -106,11 +106,10 @@ if (isset($_GET['name'])) {
         <div class="" id="points"></div>
         <div class="" id="bonus-points"></div>
       </div>
-      <div class="" id="question"></div>
-      <div class="" id="answer"></div>
-      <div class="dot-answer" id="dot-answer"></div>
-      <div class="" id="dot-answer-lenght"></div>
-
+      <div class="super-container-qna-section">
+        <div class="" id="question"></div>
+        <div class="" id="answer"></div>
+      </div>
       <form action="a_index.php?name=<?php echo urlencode($_GET['name']); ?>" id="answer-form" method="post">
         <label for="answer-input">Atsakymas:</label>
         <input type="text" id="answer-input" name="answer-input" />
