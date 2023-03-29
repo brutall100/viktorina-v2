@@ -9,7 +9,7 @@ ir balsavimo funkcijas su duomenu baze -->
 <!-- Padaryti css litus plevesuojancius kaip veliava-->
 
 <!-- 4 -->
-<!--  -->
+<!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->
 
 <!-- 5 -->
 <!--  -->

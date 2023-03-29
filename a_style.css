@@ -57,15 +57,26 @@ body {
 }
  
 #question{
-    font-family: 'PT Serif', serif;
-    font-weight: 600;
-    font-style: italic;
+  font-family: 'PT Serif', serif;
+  font-weight: 600;
+  font-style: italic;
+  border:2px solid rgb(81, 37, 151);
 }
 
 #answer{
-  border:1px solid orange;
+  border:2px solid rgb(66, 151, 37);
   top:50px;
 }
+
+.square {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+
+
+
 
 
 

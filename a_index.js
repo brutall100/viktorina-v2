@@ -89,7 +89,7 @@ async function displayQuestion(data) {
   const answer = document.getElementById("answer");
   question.innerText = data.data.question;
   const answerString = data.data.answer;
-  const hiddenString = answerString.replace(/./g, "⬜").split("").join(" ");
+  const hiddenString = answerString.replace(/./g, "*").split("").join(" ");
   answer.innerText = hiddenString;
   await displayLettersWithDelay(answerString, answer, 8000);
 }
