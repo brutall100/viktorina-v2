@@ -68,12 +68,12 @@ body {
   top:50px;
 }
 
-.square {
+/* .square {
   display: inline-block;
   width: 20px;
   height: 20px;
   border: 1px solid black;
-}
+} */
 
 
 
@@ -183,11 +183,7 @@ body {
   }
 
 
-img {
-    width: 200px;
-    opacity: 0.8; /* Set the transparency to 70% */
-    box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5); /* Add a green shadow with 50% transparency */
-  }
+
 
  @media(max-width: 550px) {
     /* img {
@@ -204,8 +200,88 @@ img {
 
 
 
+/* Plevesuojantys litai siektiek */
+#litai-img{
+  width: 200px;
+  opacity: 0.8; /* Set the transparency to 70% */
+  box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5);
+  animation: flag-wave 7s infinite;
+}
 
-
+@keyframes flag-wave {
+  0% {
+    transform: rotate(0deg) translateX(0);
+    background-position: center;
+    visibility: visible;
+    opacity: 1;
+  }
+  5% {
+    transform: rotate(0deg) translateX(-5px);
+    background-position: center;
+    visibility: visible;
+    opacity: 0.8;
+  }
+  10% {
+    transform: rotate(-5deg) translateX(0);
+    background-position: calc(100% - 5px) 5px;
+    visibility: visible;
+    opacity: 0.6;
+  }
+  15% {
+    transform: rotate(0deg) translateX(5px);
+    background-position: center;
+    visibility: visible;
+    opacity: 0.8;
+  }
+  20% {
+    transform: rotate(5deg) translateX(0);
+    background-position: 5px calc(100% - 5px);
+    visibility: visible;
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(0deg) translateX(0);
+    background-position: center;
+    visibility: visible;
+    opacity: 1;
+  }
+  75% {
+    transform: rotate(0deg) translateX(0);
+    background-position: center;
+    visibility: visible;
+    opacity: 1;
+  }
+  80% {
+    transform: rotate(-5deg) translateX(0);
+    background-position: calc(100% - 5px) 5px;
+    visibility: visible;
+    opacity: 0.8;
+  }
+  85% {
+    transform: rotate(0deg) translateX(-5px);
+    background-position: center;
+    visibility: visible;
+    opacity: 0.6;
+  }
+  90% {
+    transform: rotate(5deg) translateX(0);
+    background-position: 5px calc(100% - 5px);
+    visibility: visible;
+    opacity: 0.8;
+  }
+  95% {
+    transform: rotate(0deg) translateX(5px);
+    background-position: center;
+    visibility: visible;
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(0deg) translateX(0);
+    background-position: center;
+    visibility: visible;
+    opacity: 1;
+  }
+}
 
 
 
@@ -220,7 +296,7 @@ img {
   margin: 0.5rem;
   padding: 0.5rem;
 }
-/* #old-question */
+
 .old-question-section #old-question {
   border: 1.5px solid rgba(30, 74, 30, 0.864);
 }
