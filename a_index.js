@@ -225,7 +225,9 @@ const handleUserAnswer = async (userAnswer) => {
   const correctAnswer = data.data.answer.toLowerCase();
   const userAnswerLower = userAnswer.toLowerCase();
 
-  if (checkLettersAndCompare(userAnswerLower, correctAnswer)) {
+  const isAnswerCorrect = checkLettersAndCompare(userAnswerLower, correctAnswer);
+
+  if (isAnswerCorrect) {
     const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10);
     userData.points = litaPoints.toString();
     const successMsg = `Teisingai atsakė ${userData.name}: <span class="special-atsakymas" style="color: green; font-weight: bold">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`;
@@ -247,18 +249,22 @@ const handleUserAnswer = async (userAnswer) => {
       body
     });
 
-        // Send a signal to gameServers.js if the answer is correct
-    if (checkLettersAndCompare(userAnswerLower, correctAnswer)) {
-      const url2 = 'http://localhost:5000';
-      const signalResponse = await fetch(url2, { method: 'POST' });
+    // Send a signal to gameServers.js if the answer is correct
+    const url2 = 'http://localhost:5000';
+    const signalResponse = await fetch(url2, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: userData.name })
+    });
 
-      if (signalResponse.ok) {
-        console.log('Signal sent to gameServers.js');
-      } else {
-        console.error('Failed to send signal to gameServers.js');
-      }
+    if (signalResponse.ok) {
+      console.log('Signal sent to gameServers.js');
+    } else {
+      console.error('Failed to send signal to gameServers.js');
     }
-  
+
     if (response.ok) {
       const { user_id_name, points } = await response.json();
       console.log(`User points updated successfully ${points}`);

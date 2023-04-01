@@ -6,7 +6,7 @@
 ir balsavimo funkcijas su duomenu baze -->
 
 <!-- 3 -->
-<!-- Padaryti css bonus litus plevesuojancius-->
+<!-- -->
 
 <!-- 4 -->
 <!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->
