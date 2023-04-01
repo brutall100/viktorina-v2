@@ -12,7 +12,7 @@ ir balsavimo funkcijas su duomenu baze -->
 <!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->
 
 <!-- 5 -->
-<!--  -->
+<!-- Irasant klausima padaryti laukely zymiai didesny -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->

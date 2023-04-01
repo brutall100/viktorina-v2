@@ -1,0 +1,659 @@
+[33mcommit 1923190cac4cdaeac80c16a146b8d3d0a512cc62[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Mar 31 17:28:55 2023 +0300
+
+    V-3.2.6
+    
+    Bandom kurti games
+
+[33mcommit cd2dd4264c1c97612cdbc8e94c1911ba1990a75c[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 29 18:54:33 2023 +0300
+
+    V-3.2.5
+    
+    Plevesuojantys litai
+
+[33mcommit 6d2f0773bb4e71ff6f34167cb38ccb38565045c3[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 29 18:14:44 2023 +0300
+
+    V-3.2.4
+    
+    Kvadratas pakeistas asteriksu.
+
+[33mcommit 6e675e9e72e9dcaf886e4a3e208595699bdfa054[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Tue Mar 28 18:12:47 2023 +0300
+
+    V-3.2.3
+    
+    Veikia atsakymas i kvadraatuka.JEEE
+
+[33mcommit 30b7831b2cb061030056d2ab1274b316592f6ce4[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Mar 27 18:48:32 2023 +0300
+
+    V3.2.2
+    
+    Smulkmenos
+
+[33mcommit 028e0940d9677d7fad5beaa71e9205e631852a05[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Mar 27 18:14:29 2023 +0300
+
+    V-3.2.1
+    
+    Keli pakeitimai bandant raide ideti kvadrata
+
+[33mcommit 7958792386d71cf7872e9269ac7c24aadbf76150[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Mar 24 12:00:48 2023 +0200
+
+    V-3.2.0
+    
+    Visi pagrindiniai mazgai veikia. Geriausia versija
+
+[33mcommit 32fad35af89d0c8f5ef535eafe0d7a7d3dd03deb[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Mar 24 11:29:08 2023 +0200
+
+    V-3.1.9
+    
+    Veikia pilnai balsavimas ir klausimo perkelimas i kita database.
+
+[33mcommit e2772babd4db6634ddf2f252f5720f23644289cf[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Mar 24 10:44:02 2023 +0200
+
+    V-3.1.8
+    
+    Pridetas butonas kad perkelti duomenis i kita db Main database
+
+[33mcommit 075a9aa7e3aec6bacd06b1a110c44f21318dfb29[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Mar 23 18:43:33 2023 +0200
+
+    V-3.1.7
+    
+    Veikia klausimo perkelimas i kita db.Dar reiki taisyti
+
+[33mcommit 00a799d6549eda39cc221a30afcdc37aa6334133[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Mar 23 13:04:27 2023 +0200
+
+    V-3.1.6
+    
+    Veikia balsavimas puikiai
+
+[33mcommit 3393d5cac792bddcfaa6f11287852fa897c41263[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 22 17:01:00 2023 +0200
+
+    V-3.1.5
+    
+    Css tvarkymas
+
+[33mcommit 5a1a80b2639c72f3559189cf4cc6f23e5a9a0af8[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 22 15:09:05 2023 +0200
+
+    V-3.1.4
+    
+    Sutvarkytas user_id
+
+[33mcommit b73b3a1aceac6242a48804fef99e878274117dc0[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 22 11:53:48 2023 +0200
+
+    V-3.1.3
+    
+    Smulkus
+
+[33mcommit 2ae953385fdc1e79a13d8cbe31c2c15e1370542c[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 22 11:28:40 2023 +0200
+
+    V-3.1.2
+    
+    Aptvarkytas header
+
+[33mcommit e1973fe269fde266082848208a403af63a97908e[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Tue Mar 21 19:30:24 2023 +0200
+
+    V-3.1.1
+    
+    Prie sesion pridetas user_ID ,kad butu galima padaryrti balsavimą
+
+[33mcommit 2929d363c3c888974e45c6bb8084edcdc0dbc3cd[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Tue Mar 21 18:16:13 2023 +0200
+
+    V-3.1.0
+    
+    Smulkus pakeitimai
+
+[33mcommit 184e0ce4aac3a707c918040f56e4b38048e60c31[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Mar 20 18:37:06 2023 +0200
+
+    V-3.0.9
+    
+    Pridetas raidziu tikrinimas,Suvienodinimas č === c
+
+[33mcommit 16af35392f454510767341c297059e63d5cbc820[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Mar 20 17:11:24 2023 +0200
+
+    V-3.0.8
+    
+    Prideda po 10 tasku uz irsyta klausima.
+
+[33mcommit 42005ad83af51ef153dc64832757074e09f95e05[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Mar 20 14:25:00 2023 +0200
+
+    V-3.0.7
+    
+    Veikia old question parodymas
+
+[33mcommit 64c3fa5419a7a0e791cf8473b49a916465a67335[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sat Mar 18 09:57:14 2023 +0200
+
+    V-3.0.6
+    
+    Baigaim tvarkyti condition
+
+[33mcommit c1503b2306390dc818c3590fd65a0b4d3dd91201[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sat Mar 18 08:58:13 2023 +0200
+
+    V-3.0.5
+    
+    Netycia pridejau, bet gerai const MsgNoAnswer = `Atsakymas negali būti tuščias.`;
+
+[33mcommit 7ddbebe60f95f3ab4966d1d8543e391b04fa35ae[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sat Mar 18 08:04:54 2023 +0200
+
+    V-3.0.4
+    
+    Smulkus pakeitimai
+
+[33mcommit c7cc496f9a89b79441eb4319012d1cf9be9b1ef5[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sat Mar 18 00:29:58 2023 +0200
+
+    V-3.0.2
+    
+    Labai arti old question funkcijos
+
+[33mcommit 3c6258d235408cb5a87824e6145a2bb617dfcbc2[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Mar 17 00:36:59 2023 +0200
+
+    V-3.0.2
+    
+    Uzrasai papildyta
+
+[33mcommit 7ff23d20acc58a51f9adc0e02b9bc915ac49faaa[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Mar 16 00:35:04 2023 +0200
+
+    V-3.0.2
+
+[33mcommit 549462da3286d5329f55090053a369336c265eb5[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 15 11:11:26 2023 +0200
+
+    V-3.0.1
+    
+    Pridetas div ir siek tiek style to div.Ja paliktas tas pats
+
+[33mcommit f8206d60832045cc74e0b2ee00ea358e67d7e9e9[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 15 00:53:24 2023 +0200
+
+    V-3.0.0
+    
+    Atstatymass i 2.8.9 versija pasalinata funkcija >.Tikekimes viskas ok
+
+[33mcommit 021f30bbe7d6e3ca0ec3dfd79c65270793bee90d[m
+Author: Aldas <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Mar 15 00:25:36 2023 +0200
+
+    Reg witgh (#8)
+    
+    * Update a_index.php
+    
+    * V-1.2.3
+    
+    Veikia abu serveriai .Ataskaitos taskas
+    
+    * V-1.2.4
+    
+    All good
+    
+    * Update a_index.php
+    
+    Add to welcome points an lvl
+    
+    * V-1.2.5
+    
+    👌
+    
+    * Simple update
+    
+    * Aded statistic.php
+    
+    Aded statistic php. Then user logout show some statistic.
+    
+    * Sutvarkyti failai
+    
+    Aptvarkyti failai.Parusiuota
+    
+    * Update Uzrasi.php
+    
+    * d_server.js
+    
+    d_server.js siuncia i duomenu baze lvl = 0
+    
+    * Perejimas is vieno page i kita
+    
+    Jau veikia is index i  question page nuvejimas.Ir autmatiskai uzsipildo fieldas autorius
+    
+    * veikia session
+    
+    <?php
+    session_start();
+    
+    // Store the name and level and points in the session if they are present in the GET request
+    if (isset($_GET['name'])) {
+      $_SESSION['name'] = $_GET['name'];
+    }
+    if (isset($_GET['level'])) {
+      $_SESSION['level'] = $_GET['level'];
+    }
+    if (isset($_GET['points'])) {
+      $_SESSION['points'] = $_GET['points'];
+    }
+    
+    // Retrieve the name and level and points from the session
+    $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
+    $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
+    $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
+    ?>
+    
+    * V-2.5
+    
+    Viskas puikiai
+    
+    * V-2.6
+    
+    * Php vs JavaScript
+    
+    Padrytas name points level kinatmuju siuntimas i JavaScript.Kuriuos galima updatinti.
+    
+    * V-2.7
+    
+    Veikia pagaliau taskai i duomenu baze.
+    2.7 good
+    
+    * V-2.8
+    
+    * Small update
+    
+    * V-2.8
+    
+    Veikia refreshas.Puikiai
+    
+    * Note
+    
+    * Pries tvarkant registracija del gender
+    
+    * V-2.8.1
+    
+    Padrytas genderiu pasirinkimas .Sutvarkyta duomenu baze
+    
+    * V-2.8.2
+    
+    * V-2.8.3
+    
+    Pries bandant idiegti websocket. Viskas ok V-2.8.3
+    
+    * V-2,8,4
+    
+    Viskas Puikiai
+    
+    * V-2.8.5
+    
+    Prideti uzrasai
+    
+    * V-2.8.6
+    
+        displayLettersWithDelay(answersElement, data.data.answer, 3000);
+        displayLettersWithDelay(answersElement, data.data.answer, 8000);
+    }
+    async function displayLettersWithDelay(element, string, delay) {
+      for (let i = 0; i < 4; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 5000 + delay * i));
+        await new Promise((resolve) => setTimeout(resolve, delay));
+    
+    * V-2.8.7
+    
+    Pridetas setTimeout() prie blogo atsakymo 2 sekundes
+    
+    * V-2.8.8
+    
+    Sutvarkyti laikai.Veikia idealiai berods
+    
+    * V-2.8.9
+    
+    I answer input padarytas focus() after reload location
+    
+    * V-2.9.0
+    
+    Bandau padaryti senus klausimus kad rodyt. Nors gal nereikia bent kolkas .....
+    
+    * V-3.0.0
+    
+    Geeroji versija
+
+[33mcommit 2f172a25dfe0325f7c81a1b25203225bdfc6b8f1[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Feb 20 11:56:25 2023 +0200
+
+    Create bcrypt_lib.node
+
+[33mcommit d33eebe3070e6cf94a9e90446faf80b60434b51e[m
+Author: Aldas <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Feb 15 17:24:45 2023 +0200
+
+    Update a_index.php (#7)
+
+[33mcommit 0fe16a0ef128ab46eb8b6a50c1b667de50e6554c[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Tue Feb 14 14:14:36 2023 +0200
+
+    Update a_index.php
+
+[33mcommit e40e5b517b07466632686ee45f9db083d5277b20[m
+Merge: 7876de5 c8c833d
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Feb 13 16:02:36 2023 +0200
+
+    Merge branch 'Registracija'
+
+[33mcommit c8c833d414b3bcb24a80c150ecb7478f9b30ba4d[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Feb 13 16:00:48 2023 +0200
+
+    Update db_connect.php
+
+[33mcommit 4dc29a953417895a74519712894476c3a6ddd01a[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Feb 13 15:34:30 2023 +0200
+
+    Sutvarkyta registracija
+    
+    Dar neveikia hash
+
+[33mcommit b89df2fa44be47deb0dfe56be9fb8f503802cd41[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Feb 10 16:38:39 2023 +0200
+
+    R-1.1.2
+
+[33mcommit a75d528fff70282b653e4e85535561599740a4e7[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Feb 10 16:33:55 2023 +0200
+
+    R-1.1.1
+
+[33mcommit 7876de5ca9f6ce19b98f1fb0bb8051361ffdd8bb[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Feb 10 13:29:02 2023 +0200
+
+    V-1.1.9 Main
+
+[33mcommit 07d3067503f3160d552f145e94197db317f1052a[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Feb 10 13:18:36 2023 +0200
+
+    V-1.1.9
+    
+    Nu viskas veikia ir bonus ir litai ir  klausimas
+
+[33mcommit f038fb01abab96f6427511d988d1c82f629d730b[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Feb 9 17:33:29 2023 +0200
+
+    V-1.1.8
+    
+    Viskas veikia is servo puses
+
+[33mcommit e8d08cf2527ea2bed4ed1c7f7637cf1580b0294c[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Feb 9 16:40:09 2023 +0200
+
+    BonusLita
+    
+    Jau beveik veikia bonusLita,Kartais uzgeneruoja nuli random litas
+
+[33mcommit 95fbe3bbf7eca23510f22ffb2177fe75d52c4d9d[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Feb 9 14:10:20 2023 +0200
+
+    V-1.1.7
+    
+    Veikia refresh litai is serverio .labai gera versija
+
+[33mcommit c94cfedaadb71ae00717c24b652a74744bd112fb[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Feb 9 11:23:35 2023 +0200
+
+    V-1.1.6
+    
+    Veikia serveris ir lita eina per serveri ,taigi neina refresh sukčiauti.
+
+[33mcommit 8f43b49e8e35f53dfa6f9aac0a906b2954169649[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sun Feb 5 16:11:24 2023 +0200
+
+    SUPER gera
+    
+    Viskas veikia
+
+[33mcommit 73f7939e09a2307063a6c0437cc04affbddf24b4[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sat Feb 4 09:37:15 2023 +0200
+
+    V_1.5
+    
+    Veikia serveris.paleisti per terminala.rodo web klausimus.Kolkas atstumos taskas.
+
+[33mcommit 4cfeaefb242a3a30f0da74fce5e549937c8f36aa[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Feb 2 00:09:10 2023 +0200
+
+    Psalintas getData.js
+
+[33mcommit c422bbbb2aafdfd2899a330081596028098c432d[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Feb 1 00:26:05 2023 +0200
+
+    Version 1.1.0
+    
+    Dar su serveriais vargstu,uzluzo xampp.neaisku kas kaltas.
+
+[33mcommit 9b90e47f66f393d0cf957757b97b4089d93b8805[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sun Jan 29 17:10:37 2023 +0200
+
+    Sutvarkyta versija 1.1.1
+    
+    Cia yra ataskaitos taškas
+
+[33mcommit c036619e12d6e9366f3e1841fa8bd53ec2195a5b[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sun Jan 29 16:48:17 2023 +0200
+
+    Update a_getData.js
+
+[33mcommit 30c5cac070b7f57b2c44eb825fe1d4f605ad77e7[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sun Jan 29 16:23:59 2023 +0200
+
+    Version 1.1.1
+    
+    Puikiausiai veikia node.js
+
+[33mcommit fd9d58df4e26be0b6cfca0a45ddec42bee7a686b[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Sun Jan 29 16:16:23 2023 +0200
+
+    Version 1.1.1
+
+[33mcommit 03a3606d3e2539141e85e7156d34bb3045db7f77[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Jan 27 16:30:33 2023 +0200
+
+    getData.js
+    
+    Still not works
+
+[33mcommit 3f2df7dc65b57a3a0751b1bc34aa0cc4aa9141ad[m
+Author: Aldas <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Jan 27 15:18:48 2023 +0200
+
+    Version one 2023 01 27 (#4)
+    
+    * Sukarta a_getData.js
+    
+    2023-01-27
+
+[33mcommit ab740da090709868d2ef1aae2e277eb038e6d42a[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Jan 27 15:17:22 2023 +0200
+
+    Sukarta a_getData.js
+    
+    2023-01-27
+
+[33mcommit 6a13d77c1fadfd1e0cf460a4c0c9525e3c20d899[m
+Author: Aldas <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Jan 27 14:22:57 2023 +0200
+
+    First update (#3)
+
+[33mcommit 4c506ec5f3d78e123519781b0b325918b32b5ba5[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Jan 26 17:19:58 2023 +0200
+
+    First update
+
+[33mcommit a1eae70c683abc7bdc9a9a20b93c462be3ff9e43[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Jan 26 17:16:13 2023 +0200
+
+    Update a_index.js
+
+[33mcommit e41fba6d56489d78488ed41281f2056fb77916eb[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Jan 26 16:59:31 2023 +0200
+
+    Version 1.1
+
+[33mcommit b917b3d3becd4439f9adcf5d25cfd422d70ec244[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Thu Jan 26 15:46:44 2023 +0200
+
+    Version 1
+    
+    Jau paima klausimus is duomenu bazes.,bet dar reikia tvarkyti atskymus.Laikom sia versija kaip pirmaja.
+
+[33mcommit 770433c6431021cbcc4ef8d02cbb0cfde43e4274[m
+Merge: 6dd2d60 097cfdf
+Author: Aldas <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Jan 25 13:51:07 2023 +0200
+
+    Merge pull request #2 from brutall100/Sidedd-branch
+    
+    Create .gitignore
+
+[33mcommit 097cfdf4c7320c0deea022fc27663de716714efb[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Jan 25 13:50:36 2023 +0200
+
+    Create .gitignore
+
+[33mcommit 6dd2d6065248b3eb7075b951606db2638e8346b0[m
+Merge: 113ae56 89f72bf
+Author: Aldas <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Jan 25 13:43:58 2023 +0200
+
+    Merge pull request #1 from brutall100/Sidedd-branch
+    
+    Sidedd branch
+
+[33mcommit 89f72bf5fea74ec3b9f1f463595a8933498225e4[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Jan 25 13:39:01 2023 +0200
+
+    Viktorina.livee from htdocs
+    
+    Pasimetes su tais branchais
+
+[33mcommit 4c529c9d90c78a21ff27bdff57c97157248b67fc[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Jan 20 15:13:02 2023 +0200
+
+    Pries keiciant index.html
+    
+    Kad visko nesugadinti keiciame index.html i index.php
+
+[33mcommit 922133b99ce2a54809a941e9674112c0083ba67c[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Jan 18 18:40:14 2023 +0200
+
+    Veikia kolkas
+    
+    Pakolkas viskas veikia balsavimas ,localhost.
+
+[33mcommit 97cc9ee539d8514f80f0043e521d27515e613651[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Wed Jan 18 17:24:34 2023 +0200
+
+    questiowaiting.php
+    
+    Veikia balsavimas duomenu bazeje.
+
+[33mcommit 05e28d4661e5c23c8664ca2d9f2dd608acb303c3[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Tue Jan 17 16:40:34 2023 +0200
+
+    Pries tvarkant folderius
+    
+    Bandysiu is folderio istraukt html ir du php
+
+[33mcommit 113ae565f359d8c147660e49d129b3d6be26b858[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Mon Jan 16 15:28:45 2023 +0200
+
+    Some
+    
+    Some changes
+
+[33mcommit 094e41f4435ec0e5f63315f089a102a15f02d6df[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Jan 13 10:59:52 2023 +0200
+
+    Updat folder
+
+[33mcommit 156120542302e62cbc39ff6fb4727d31df199584[m
+Author: brutall100 <37956008+brutall100@users.noreply.github.com>
+Date:   Fri Jan 13 10:51:46 2023 +0200
+
+    Initial commit
