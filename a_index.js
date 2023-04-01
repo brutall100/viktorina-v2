@@ -246,6 +246,18 @@ const handleUserAnswer = async (userAnswer) => {
       headers,
       body
     });
+
+        // Send a signal to gameServers.js if the answer is correct
+    if (checkLettersAndCompare(userAnswerLower, correctAnswer)) {
+      const url2 = 'http://localhost:5000';
+      const signalResponse = await fetch(url2, { method: 'POST' });
+
+      if (signalResponse.ok) {
+        console.log('Signal sent to gameServers.js');
+      } else {
+        console.error('Failed to send signal to gameServers.js');
+      }
+    }
   
     if (response.ok) {
       const { user_id_name, points } = await response.json();
