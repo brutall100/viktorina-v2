@@ -9,12 +9,12 @@ async function fetchData() {
 }
 (async function() {
   data = await fetchData();
-  console.log('Data:', data);
-  console.log('Question:', data.data.question);
-  console.log('ID:', data.data.id);
-  console.log('Answer:', data.data.answer); 
-  console.log('Litan:', data.data.lita);
-  console.log('Bonus:', data.data.bonusLita);
+  // console.log('Data:', data);
+  // console.log('Question:', data.data.question);
+  // console.log('ID:', data.data.id);
+  // console.log('Answer:', data.data.answer); 
+  // console.log('Litan:', data.data.lita);
+  // console.log('Bonus:', data.data.bonusLita);
   const dataContainer = document.getElementById("dataContainer");
   dataContainer.innerHTML = JSON.stringify(data);
   displayQuestion(data);
@@ -37,7 +37,7 @@ function checkServerData() {
       const serverId = serverData.id;
       const clientId = data.data.id;
       if (serverId === clientId) {
-        console.log('Serverio id matches client id.');
+        // console.log('Serverio id matches client id.');
         // Do something
       } else {
         console.log('Serverio id does not match client id. Reloading in 1 seconds...');
@@ -216,6 +216,8 @@ setTimeout(() => {
   console.log('time is over');
 }, 40000);
  
+
+
 const handleUserAnswer = async (userAnswer) => {
   const data = await fetchData();
   if (!data || !data.data || !data.data.answer) {
@@ -233,6 +235,14 @@ const handleUserAnswer = async (userAnswer) => {
     const successMsg = `Teisingai atsakė ${userData.name}: <span class="special-atsakymas" style="color: green; font-weight: bold">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`;
     document.getElementById('answer').innerHTML = successMsg;
   
+
+
+  // const gameNo = randomGame()
+  // console.log('randomGame generates: ' + gameNo)
+  playGame();
+
+  
+
     const url = 'http://localhost:8000/a_points.js';
     const body = JSON.stringify({
       user_id_name: userData.name,
@@ -248,22 +258,6 @@ const handleUserAnswer = async (userAnswer) => {
       headers,
       body
     });
-
-    // Send a signal to gameServers.js if the answer is correct
-    const url2 = 'http://localhost:5000';
-    const signalResponse = await fetch(url2, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name: userData.name })
-    });
-
-    if (signalResponse.ok) {
-      console.log('Signal sent to gameServers.js');
-    } else {
-      console.error('Failed to send signal to gameServers.js');
-    }
 
     if (response.ok) {
       const { user_id_name, points } = await response.json();
@@ -325,13 +319,50 @@ function checkLettersAndCompare(str1, str2) {
     'ū': 'u',
     'ž': 'z'
   };
-  
   // Replace accented letters with their ASCII equivalents
   const cleanStr1 = str1.replace(/[ąčęėįšųž]/gi, match => letterMap[match.toLowerCase()]);
   const cleanStr2 = str2.replace(/[ąčęėįšųž]/gi, match => letterMap[match.toLowerCase()]);
   
   return cleanStr1.toLowerCase() === cleanStr2.toLowerCase();
 }
+
+
+
+                    // Games section
+
+
+function randomGame() {
+  return Math.floor(Math.random() * 10);
+}
+
+
+const widths = 500;      // Kontroliuoja issokancio lango dydzius ir pozicija
+const heights = 500;
+const lefts = window.innerWidth / 2 - widths / 2;
+const tops = window.innerHeight / 2 - heights / 2;
+
+function playGame() {
+  const gameNo = randomGame();
+  console.log('randomGame generates: ' + gameNo);
+
+  if (gameNo === 3) {
+    console.log(`game1 will play player ${userData.name}`);
+    const gameWindow1 = window.open(`http://localhost/aldas/Viktorina.live/game1.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
+   
+  } else if (gameNo === 6) {
+    console.log(`game2 will play player ${userData.name}`);
+    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/game1.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
+    
+  } else if (gameNo === 9) {
+    console.log(`game3 will play player ${userData.name}`);
+    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/game1.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
+   
+    console.log('game not ready');
+  }
+}
+
+
+
 
 
 

@@ -24,7 +24,7 @@ function getCachedNumber() {
   setTimeout(() => {
     console.log("Cache expired, clearing cached number");
     cachedNumber = null;
-  }, 60000);
+  }, 10000);
 
   return newNumber;
 }
@@ -60,6 +60,7 @@ const server = http.createServer((req, res) => {
     if (gameNo === 3) {
       console.log(`game1 will play player ${userData.name}`);
       response.gameName = 'game1';
+      window.open('http://localhost/aldas/Viktorina.live/game1.php', '_blank');
     } else if (gameNo === 6) {
       console.log(`game2 will play player ${userData.name}`);
       response.gameName = 'game2';
@@ -76,7 +77,7 @@ const server = http.createServer((req, res) => {
 });
 
 function randomNumber() {
-  return Math.floor(Math.random() * 10) + 1;
+  return Math.floor(Math.random() * 3) + 1;
 }
 
 server.listen(port, () => {
