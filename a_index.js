@@ -336,26 +336,26 @@ function randomGame() {
 }
 
 
-const widths = 500;      // Kontroliuoja issokancio lango dydzius ir pozicija
-const heights = 500;
+const widths = 520;      // Kontroliuoja issokancio lango dydzius ir pozicija
+const heights = 300;
 const lefts = window.innerWidth / 2 - widths / 2;
 const tops = window.innerHeight / 2 - heights / 2;
 
 function playGame() {
-  const gameNo = randomGame();
+  const gameNo = 3; //randomGame();
   console.log('randomGame generates: ' + gameNo);
 
   if (gameNo === 3) {
     console.log(`game1 will play player ${userData.name}`);
-    const gameWindow1 = window.open(`http://localhost/aldas/Viktorina.live/game1.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
+    const gameWindow1 = window.open(`http://localhost/aldas/Viktorina.live/Games/game1.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
    
   } else if (gameNo === 6) {
     console.log(`game2 will play player ${userData.name}`);
-    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/game1.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
+    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
     
   } else if (gameNo === 9) {
     console.log(`game3 will play player ${userData.name}`);
-    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/game1.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
+    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
    
     console.log('game not ready');
   }
