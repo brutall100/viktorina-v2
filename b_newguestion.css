@@ -89,6 +89,25 @@ input[type="submit"]:active {
   transform: scale(1);
 }
 
+.info-icon {
+  position: relative;
+  border: 1px solid black;
+  display: inline-block;
+}
+
+.info-icon img {
+  position: absolute;
+  top: -50px;
+  left: 90%;
+  width: 22px;
+  height: 22px;
+  opacity: 0.7;
+}
+
+
+
+
+
 /* Media queries for different devices */
 @media only screen and (min-width: 769px) {
   /* Styles for larger screens */

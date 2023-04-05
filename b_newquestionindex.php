@@ -57,6 +57,9 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
         <form action="http://localhost/aldas/Viktorina.live/b_newquestion.php" method="post">
           <label for="name">Autorius:</label>
           <input type="text" id="name" name="name" value="<?php echo $name; ?>" />
+          <span class="info-icon">
+            <img src="http://localhost\aldas\Viktorina.live\images\images_\info.png" alt="info icon">
+          </span>
           
           <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
 
