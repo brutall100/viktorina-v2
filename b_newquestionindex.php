@@ -61,10 +61,10 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
 
           <label for="question">Klausimas:</label>
-          <input type="text" id="question" name="question" />
+          <textarea id="question" name="question" class="resizable"></textarea>
           
           <label for="answer">Atsakymas:</label>
-          <input type="text" id="answer" name="answer" />
+          <textarea id="answer" name="answer" class="resizable"></textarea>
 
           <input type="submit" value="Įrašyti" />
         </form>

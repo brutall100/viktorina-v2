@@ -1,69 +1,142 @@
- *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
- }
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
- body {
+body {
   background: #ffffff url(http://localhost/aldas/Viktorina.live/images/background/cover0.jpg) center center fixed;
   background-size: cover;
 }
 
- .imported-footer {
+.imported-footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  
+
 }
 
-  .main {
-    display: flex;
-    width: 60vw;
-    height: 50vh;
-    margin: 8% auto;
-    justify-content: center;
-    align-content: center;
-    /* border: 1px solid red; */
-  }
 
 
-  .main-form {
-    width: 50%;
-  }
+                /* Klausimo irasymo imputs + button */
+/* Default styles for all devices */
+.main {
+  display: flex;
+  width: 60vw;
+  height: 50vh;
+  margin: 8% auto;
+  padding: 10rem;
+  justify-content: center;
+  align-content: center;
+  border: 5px solid red;
+}
 
+.main-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid greenyellow;
+}
+
+.resizable {
+  width: 200px;
+  height: 50px;
+  resize: both;
+  -webkit-resize: both; /* For Safari */
+  -moz-resize: both; /* For Firefox */
+  -o-resize: both; /* For Opera */
+}
+
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin: 1px 0;
+}
+
+input[type="text"],
+textarea {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid rgb(28, 26, 26);
+  font-size: 1.2rem;
+}
+
+input[type="submit"] {
+  font-weight: bold;
+  background-color: rgb(144,94,241);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  transform: scale(1.05);
+}
+
+input[type="submit"]:active {
+  transform: scale(1);
+}
+
+/* Media queries for different devices */
+@media only screen and (min-width: 769px) {
+  /* Styles for larger screens */
   form {
     display: flex;
-    flex-direction: column;
-  }
-
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    margin: 1px 0;
-    
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   input[type="text"],
   textarea {
-    margin-bottom: 20px;
-    padding: 5px;
-    border: 1px solid rgb(28, 26, 26);
+    width: 48%;
   }
+}
 
+@media only screen and (max-width: 768px) {
+  /* Styles for tablets */
+  .main {
+    width: 80vw;
+  }
+  
   input[type="submit"] {
-    font-weight: bold;
-    background-color: rgb(144,94,241);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    cursor: pointer;
+    padding: 10px 15px;
   }
+}
+
+@media only screen and (max-width: 480px) {
+  /* Styles for phones */
+  .main {
+    width: 90vw;
+  }
+  
+  input[type="submit"] {
+    padding: 8px 12px;
+  }
+}
 
 
 
 
-/* b_questionwaiting.php */
+
+
+
+
+
+
+                      /* b_questionwaiting.php */
 .table {
   margin: 10px auto 130px;
   width: 50%;
@@ -137,7 +210,6 @@ th {
 }
 
 
- 
-  
+
   
   
