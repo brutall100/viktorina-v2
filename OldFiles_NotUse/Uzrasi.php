@@ -6,7 +6,7 @@
 ir balsavimo funkcijas su duomenu baze -->
 
 <!-- 3 -->
-<!-- -->
+<!-- Padaryti kad klausimus butu galima rasyti nuo 2 lvl, nes nuo pirmo bus sikniu-->
 
 <!-- 4 -->
 <!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->

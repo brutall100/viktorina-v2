@@ -41,13 +41,14 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Irašyti klausimą</a></li>
         </div> 
         <div>
-          <button id="btn-atsijungti">Atsijungti</button>
-        <script>
+          <button id="btn-atsijungti">Atsijungti</button>   <!-- Scriptus 2 reikes isnesti is cia -->
+        <script>   
           const logoutButton = document.getElementById('btn-atsijungti');
           logoutButton.addEventListener('click', () => {
             window.location.href = 'http://localhost/aldas/Viktorina.live/statistic.php?name=<?php echo $name ?>';
           });
         </script>
+
         </div>  
       </ul>
     </header>
@@ -55,11 +56,16 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
     <main class="main">
       <div class="main-form">
         <form action="http://localhost/aldas/Viktorina.live/b_newquestion.php" method="post">
-          <label for="name">Autorius:</label>
-          <input type="text" id="name" name="name" value="<?php echo $name; ?>" />
-          <span class="info-icon">
-            <img src="http://localhost\aldas\Viktorina.live\images\images_\info.png" alt="info icon">
-          </span>
+          <div>
+            <label for="name">Autorius:</label>
+            <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly />
+            <span id="info-icon" onmouseover="showInfoText()" onmouseout="hideInfoText()">
+              <img src="http://localhost/aldas/Viktorina.live/images/images_/small_info2.png" alt="info icon">
+              <div id="info-text" style.display = "none">
+                <p>Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta <span class="litai-text-color">10 litų</span>. </p>
+              </div>
+            </span>
+          </div>
           
           <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
 
@@ -90,4 +96,17 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
       </object>
     </footer>
   </body>
+
+        <!-- Scriptus 2 reikes isnesti is cia -->
+<script type="text/javascript">
+  function showInfoText() {
+    document.getElementById("info-text").style.display = "block";
+  }
+
+  function hideInfoText() {
+    document.getElementById("info-text").style.display = "none";
+  }
+</script>
+
+
 </html>
