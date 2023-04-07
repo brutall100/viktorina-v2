@@ -12,7 +12,7 @@ ir balsavimo funkcijas su duomenu baze -->
 <!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->
 
 <!-- 5 -->
-<!-- Irasant klausima padaryti laukely zymiai didesny -->
+<!-- Irasant klausima padaryti laukely zymiai didesny sutvarkyti tuos dydzius galu gale -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->
@@ -34,23 +34,25 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
 
 <!-- 12 -->
-<!-- sukurti 5 geimusmus -->
+<!-- sukurti 3-5 geimusmus -->
 
 <!-- 13 -->
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
 
 <!-- 14 -->
-<!-- Raides eitu i kvadratukus,kad nurodytu raidziu kieki atsakyme -->
+<!-- Raides eitu i kvadratukus,kad nurodytu raidziu kieki atsakyme padaryti kad rodytu tarpa nematoma Underscore -->
 
 <!-- 15 -->
 <!-- Button perkelti padaryti prieinama nuo 4 lvl -->
 
 <!--16 -->
-<!-- Prirasyti taisykliu prie irasyti klausima prideti info zenkliukas-->
+<!-- Padaryti kad butu galima isjungti games.Visus game -->
 
 <!-- 17 -->
 <!-- Uz klausimo irasyma 10 litu + Ikonele kokia 1 savatei klausimu irasytojas + mini taisykles -->
 
+<!-- 18 -->
+<!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire -->
 
 
 <!-- Recapha    apsauga -->

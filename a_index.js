@@ -342,7 +342,7 @@ const lefts = window.innerWidth / 2 - widths / 2;
 const tops = window.innerHeight / 2 - heights / 2;
 
 function playGame() {
-  const gameNo = 3; //randomGame();
+  const gameNo = 6; //randomGame();
   console.log('randomGame generates: ' + gameNo);
 
   if (gameNo === 3) {

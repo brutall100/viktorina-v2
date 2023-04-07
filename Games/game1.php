@@ -1,7 +1,7 @@
 <?php
-session_start();
-$name = $_GET['name'];
-echo "$name, laimėjai žaidimą pasirink prizą";
+  session_start();
+  $name = $_GET['name'];
+  echo "$name, laimėjai žaidimą pasirink prizą";
 ?>
 
 <!DOCTYPE html>
