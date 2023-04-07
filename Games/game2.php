@@ -29,6 +29,11 @@
         }
     });
 
+
+    window.onload = function() {
+        document.getElementById("answer").focus();
+    };
+
     // Set the timer
     let seconds = 20;
     const timer = setInterval(function() {
@@ -49,24 +54,24 @@
 
     // Generate a random number
     const num1 = Math.floor(Math.random() * 101);
-const num2 = Math.floor(Math.random() * 101);
-const result = num1 + num2;
-console.log(result);
+    const num2 = Math.floor(Math.random() * 101);
+    const result = num1 + num2;
+    console.log(result);
 
-document.getElementById("question").innerHTML = "What is " + num1 + " + " + num2 + "?";
+    document.getElementById("question").innerHTML = "What is " + num1 + " + " + num2 + "?";
 
-function getCurrencyWord(result) {
-  console.log(result); // check the value of result passed to the function
-  if (result === 1) {
-    return "Litą";
-  } else if (result >= 2 && result <= 4) {
-    return "Litus";
-  } else if (result >= 5 && result <= 9) {
-    return "litų";
-  } else {
-    return "Lt";
-  }
-}
+    function getCurrencyWord(result) {
+    console.log(result); // Neveikia if and else.  Veikia tik paskutinis else, kolkas palieku
+    if (result === 1) {
+        return "Litą";
+    } else if (result >= 2 && result <= 4) {
+        return "Litus";
+    } else if (result >= 5 && result <= 9) {
+        return "litų";
+    } else {
+        return "Lt";
+    }
+    }
 
 
 
