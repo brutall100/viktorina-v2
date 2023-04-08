@@ -52,4 +52,89 @@
 
 
 
-/* game2.php */
+        /* game2.php      reikia konteinerio dydy tvarkyti tiktais*/ 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffbdbd; /* warm background color */
+    overflow: hidden; /* hide the scroll bar */
+}
+
+.container {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    width: 400px;
+    height: 400px;
+}
+
+button {
+    background-color: #ff7171; /* warm button color */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #f93e3e; /* darker button color on hover */
+}
+
+input[type=number] {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type=number]:focus {
+    outline: none;
+    border-bottom: 1px solid #ff7171; /* warm color on focus */
+}
+
+#greeting {
+    background-color: #ffda79;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Add a shadow to the input field */
+input {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Add styles to the close button */
+button.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f93e3e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+button.close:hover {
+    background-color: #d63030;
+}

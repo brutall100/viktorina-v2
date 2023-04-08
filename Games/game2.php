@@ -1,8 +1,4 @@
-<?php
-  session_start();
-  $name = $_GET['name'];
-  echo "Hello $name, You will play game 2";
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,11 +10,23 @@
   <title>Įrašyk teisingą atsakymą</title>
 </head>
 <body>
+<div id="greeting">
+    <?php
+      session_start();
+      $name = $_GET['name'];
+      echo "<div style='background-color: #ffda79; padding: 20px; text-align: center; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);'>Hello $name, You will play game 2</div>";
+    ?>
+</div>
+
+
+  <div class="container">
     <h2>Šiame žaidime gali laimėti nuo -200 iki +200 litų.</h2>
-    <p id="question" ></p>
+    <p id="question"></p>
     <input type="number" id="answer" maxlength="3" />
     <button onclick="checkAnswer()">Atsakymas</button>
     <p id="timer"></p>
+  </div>
+
 
 
     <script>
@@ -35,7 +43,7 @@
     };
 
     // Set the timer    kolkas daugiau
-    let seconds = 40;
+    let seconds = 17;
     const timer = setInterval(function() {
         seconds--;
         if (seconds < 0) {
@@ -45,7 +53,7 @@
             document.body.appendChild(message);
             setTimeout(() => {
                 window.close();
-            }, 20000);
+            }, 3000);
         }
         else {
             document.getElementById("timer").innerHTML = seconds + " seconds left";
@@ -60,7 +68,10 @@
 
     document.getElementById("question").innerHTML = "What is " + num1 + " + " + num2 + "?";
 
-    function getCurrencyWord(result) {
+    function getCurrencyWord(result, answer) {
+        if (answer != result) {
+            result = answer;
+        }
         if ((result < 0) || (result > 200)) {
             return "Lt";
         } else if ((result % 10 === 1) && (result % 100 !== 11)) {
@@ -77,32 +88,27 @@
 
 
 
+
     // Check the answer
     function checkAnswer() {
-        
         const answer = document.getElementById("answer").value;
         let points = 0;
         if (answer == result) {
-            
             clearInterval(timer);
             points = result;
-            const currency = getCurrencyWord(result);
+            const currency = getCurrencyWord(result, answer);
             const message = document.createElement('h2');
             message.textContent = "Teisingai! Uždirbai " + result + " " + currency + ".";
             document.body.appendChild(message);
             console.log("result+" + result);
-
-        }
-        else {
-            
+        } else {
             clearInterval(timer);
             points = -(answer - result);
-            const currency2 = getCurrencyWord(result);
+            const currency2 = getCurrencyWord(result, answer);
             const message = document.createElement('h2');
             message.textContent = "Deje NE. Atsakymas buvo " + result + " Uždirbai -" + answer + " " + currency2;
             document.body.appendChild(message);
             console.log("result-" + result);
-
         }
 
         // Send data to server
