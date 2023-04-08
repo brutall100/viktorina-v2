@@ -34,8 +34,8 @@
         document.getElementById("answer").focus();
     };
 
-    // Set the timer
-    let seconds = 20;
+    // Set the timer    kolkas daugiau
+    let seconds = 40;
     const timer = setInterval(function() {
         seconds--;
         if (seconds < 0) {
@@ -45,7 +45,7 @@
             document.body.appendChild(message);
             setTimeout(() => {
                 window.close();
-            }, 3000);
+            }, 20000);
         }
         else {
             document.getElementById("timer").innerHTML = seconds + " seconds left";
@@ -53,25 +53,27 @@
     }, 1000);
 
     // Generate a random number
-    const num1 = Math.floor(Math.random() * 101);
-    const num2 = Math.floor(Math.random() * 101);
+    const num1 = Math.floor(Math.random() * 100);
+    const num2 = Math.floor(Math.random() * 100);
     const result = num1 + num2;
     console.log(result);
 
     document.getElementById("question").innerHTML = "What is " + num1 + " + " + num2 + "?";
 
     function getCurrencyWord(result) {
-    console.log(result); // Neveikia if and else.  Veikia tik paskutinis else, kolkas palieku
-    if (result === 1) {
-        return "Litą";
-    } else if (result >= 2 && result <= 4) {
-        return "Litus";
-    } else if (result >= 5 && result <= 9) {
-        return "litų";
-    } else {
-        return "Lt";
+        if ((result < 0) || (result > 200)) {
+            return "Lt";
+        } else if ((result % 10 === 1) && (result % 100 !== 11)) {
+            return "Litą";
+        } else if (((result % 10 >= 2) && (result % 10 <= 9)) || ((result % 100 >= 22) && (result % 100 <= 29))) {
+            return "Litus";
+        } else {
+            return "litų";
+        }
     }
-    }
+
+
+
 
 
 
@@ -88,6 +90,7 @@
             const message = document.createElement('h2');
             message.textContent = "Teisingai! Uždirbai " + result + " " + currency + ".";
             document.body.appendChild(message);
+            console.log("result+" + result);
 
         }
         else {
@@ -98,6 +101,7 @@
             const message = document.createElement('h2');
             message.textContent = "Deje NE. Atsakymas buvo " + result + " Uždirbai -" + answer + " " + currency2;
             document.body.appendChild(message);
+            console.log("result-" + result);
 
         }
 
