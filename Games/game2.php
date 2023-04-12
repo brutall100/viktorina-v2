@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/Games/gameStyle.css" />
+  <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/Games/gameStyle2.css" />
   <title>Įrašyk teisingą atsakymą</title>
 </head>
 <body>
@@ -42,8 +42,8 @@
         document.getElementById("answer").focus();
     };
 
-    // Set the timer    kolkas daugiau
-    let seconds = 17;
+    // Set the timer 20 sekundziu    kolkas daugiau laiko dadeta reguliujam
+    let seconds = 5000;
     const timer = setInterval(function() {
         seconds--;
         if (seconds < 0) {

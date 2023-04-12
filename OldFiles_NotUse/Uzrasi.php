@@ -6,7 +6,9 @@
 ir balsavimo funkcijas su duomenu baze -->
 
 <!-- 3 -->
-<!-- Padaryti kad klausimus butu galima rasyti nuo 2 lvl, nes nuo pirmo bus sikniu-->
+<!-- Padaryti kad klausimus butu galima rasyti nuo 2 lvl, nes nuo pirmo bus sikniu 
+Padaryti keiksmazodziu duomenu baze, kurioje jei irasant klausima aptinkamas keiksmazodis <Siknius>
+arba junginys <Jus esate gaidziai> , klausimas neisirasytu i laikinaja DB. Gal ban ip -->
 
 <!-- 4 -->
 <!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->
