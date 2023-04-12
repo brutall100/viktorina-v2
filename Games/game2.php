@@ -25,6 +25,7 @@
     <input type="number" id="answer" maxlength="3" />
     <button onclick="checkAnswer()">Atsakymas</button>
     <p id="timer"></p>
+    <button onclick="closeGame()" class="closeBtn">Pabėgti?</button>
   </div>
 
 
@@ -36,6 +37,16 @@
             this.value = 200;
         }
     });
+
+    answerInput.addEventListener('keypress', function(event) {
+    const keyCode = event.keyCode || event.which;
+    const forbiddenKeys = [43, 45, 42, 47]; // Key codes for +, -, *, /
+    
+        if (forbiddenKeys.includes(keyCode)) {
+            event.preventDefault();
+        }
+    });
+
 
 
     window.onload = function() {
@@ -66,7 +77,7 @@
     const result = num1 + num2;
     console.log(result);
 
-    document.getElementById("question").innerHTML = "What is " + num1 + " + " + num2 + "?";
+    document.getElementById("question").innerHTML = "Kiek bus? " + num1 + " + " + num2 + "?";
 
     function getCurrencyWord(result, answer) {
         if (answer != result) {
@@ -140,12 +151,18 @@
     }
 
     // Add a close button
-    const closeButton = document.createElement('button');
-    closeButton.textContent = 'Uždaryti';
-    closeButton.addEventListener('click', () => {
+    // const closeButton = document.createElement('button');
+    // closeButton.textContent = 'Uždaryti';
+    // closeButton.addEventListener('click', () => {
+    //     window.close();
+    // });
+    // document.body.appendChild(closeButton);
+
+    function closeGame() {
         window.close();
-    });
-    document.body.appendChild(closeButton);
+    }
+
+
 </script>
 
     

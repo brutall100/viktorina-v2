@@ -337,7 +337,7 @@ function randomGame() {
 
 
 const widths = 520;      // Kontroliuoja issokancio lango dydzius ir pozicija
-const heights = 300;
+const heights = 400;
 const lefts = window.innerWidth / 2 - widths / 2;
 const tops = window.innerHeight / 2 - heights / 2;
 
@@ -351,7 +351,7 @@ function playGame() {
    
   } else if (gameNo === 6) {
     console.log(`game2 will play player ${userData.name}`);
-    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights + 100},left=${lefts},top=${tops}`);
+    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`, '_blank', `width=${widths},height=${heights},left=${lefts},top=${tops}`);
     
   } else if (gameNo === 9) {
     console.log(`game3 will play player ${userData.name}`);

@@ -24,7 +24,7 @@ body {
     padding: 20px;
     text-align: center;
     width: 400px;
-    height: 400px;
+    max-height: 200px;
 }
 
 button {
@@ -52,8 +52,8 @@ input[type=number] {
     border-bottom: 1px solid #ccc;
     font-size: 18px;
     margin-top: 10px;
-    padding: 10px;
-    width: 100%;
+    padding: 5px;
+    width: 30%;
 }
 
 input[type=number]:focus {
@@ -66,7 +66,7 @@ input[type=number]:focus {
     padding: 20px;
     text-align: center;
     margin-top: 10px;
-    /* margin-bottom: 10px; */
+    margin-bottom: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -76,11 +76,11 @@ input {
 }
 
 /* Add styles to the close button */
-button.close {
-    width: 100%;
+.closeBtn {
+    width: 17%;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    bottom: 2.5%;
+    right: 5%;
     background-color: #f93e3e;
     color: #fff;
     border: none;
@@ -90,7 +90,8 @@ button.close {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-button.close:hover {
+.closeBtn:hover {
     background-color: #d63030;
+    /* background-color: gold; */
 }
         

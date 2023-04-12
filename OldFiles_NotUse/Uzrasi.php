@@ -56,6 +56,9 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- 18 -->
 <!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire -->
 
+<!-- 19 -->
+<!-- Game 2 padaryti kad nelestini zenklai irasant klausima + - * / reikia ziureti ka jis ten skaiciuoja. Nes tai prideda tai atima
+Reload galimybe panaikinti.Paspaudu reload game issijungtu visai.IF posible -->
 
 <!-- Recapha    apsauga -->
 reCAPTCHA is a free service from Google that helps protect websites from spam and abuse. It uses advanced risk analysis techniques to tell humans and bots apart. With the new API, a significant number of your valid human users will pass the reCAPTCHA challenge without having to solve a CAPTCHA. reCAPTCHA offers more than just spam protection. It can also be used for security purposes like to prevent bots from trying to login to your site.
