@@ -54,7 +54,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Uz klausimo irasyma 10 litu + Ikonele kokia 1 savatei klausimu irasytojas + mini taisykles -->
 
 <!-- 18 -->
-<!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire -->
+<!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire pagrindinaime puslapyje -->
 
 <!-- 19 -->
 <!--Game2  Reikia ziureti ka jis ten skaiciuoja. Nes tai prideda tai atima -->

@@ -1,4 +1,4 @@
-/* game2.php      reikia konteinerio dydy tvarkyti tiktais*/ 
+/* game2.php*/ 
 * {
     margin: 0;
     padding: 0;
@@ -11,20 +11,17 @@ body {
     justify-content: center;
     align-items: center;
     height: 87vh;
-    background-color: #ffbdbd; /* warm background color */
+    background-color: #ffbdbd;
     overflow: hidden; /* hide the scroll bar */
-    /* border: 4px solid saddlebrown; */
 }
 
 #greeting {
     background-color: #ffda79;
     padding: 20px;
     text-align: center;
-    margin-top: 1px; /* Add a 20px top margin */
+    margin-top: 1px;
     margin-bottom: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-    /* Funny text style */
     font-family: 'Comic Sans MS', cursive, sans-serif;
     font-size: 20px;
     color: purple;
@@ -45,7 +42,7 @@ body {
 
 
 button {
-    background-color: #ff7171; /* warm button color */
+    background-color: #ff7171; 
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -61,8 +58,9 @@ button {
 }
 
 button:hover {
-    background-color: #f93e3e; /* darker button color on hover */
+    background-color: #f93e3e; 
 }
+
 
 input[type=number] {
     border: none;
@@ -71,19 +69,29 @@ input[type=number] {
     margin-top: 10px;
     padding: 5px;
     width: 30%;
+    text-align: center; /* center the input text */
 }
 
 input[type=number]:focus {
     outline: none;
-    border-bottom: 1px solid #ff7171; /* warm color on focus */
+    border-bottom: 1px solid #ff7171;
 }
 
-/* Add a shadow to the input field */
 input {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Add styles to the close button */
+/* Move the input to the left if the value is 100 or greater */
+input#answer[value="100"] {
+    text-align: left;
+}
+
+/* Move the input to the right if the value is less than 100 */
+input#answer[value="99"] {
+    text-align: right;
+}
+
+
 .closeBtn {
     width: 17%;
     position: absolute;
@@ -100,6 +108,5 @@ input {
 
 .closeBtn:hover {
     background-color: #ffda79;
-    /* background-color: gold; */
 }
         
