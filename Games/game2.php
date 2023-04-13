@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +12,7 @@
     <?php
       session_start();
       $name = $_GET['name'];
-      echo "<div style='background-color: #ffda79; padding: 20px; text-align: center; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);'>Hello $name, You will play game 2</div>";
+      echo "<div>Hello $name, You will play game 2</div>";
     ?>
 </div>
 
