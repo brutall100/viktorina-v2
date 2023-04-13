@@ -119,15 +119,15 @@
             const message = document.createElement('h2');
             message.textContent = "Teisingai! Uždirbai " + result + " " + currency + ".";
             document.body.appendChild(message);
-            console.log("result+" + result);
+            localStorage.removeItem('seconds') // Nezinau ar veikia
         } else {
             clearInterval(timer);
-            points = -(answer - result);
+            points = -answer;  // Galima arba -answer arba -result arba minus -50
             const currency2 = getCurrencyWord(result, answer);
             const message = document.createElement('h2');
             message.textContent = "Deje NE. Atsakymas buvo " + result + " Uždirbai -" + answer + " " + currency2;
             document.body.appendChild(message);
-            console.log("result-" + result);
+            localStorage.removeItem('seconds') // Nezinau ar veikia
         }
 
         // Send data to server
