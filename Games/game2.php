@@ -12,11 +12,9 @@
     <?php
       session_start();
       $name = $_GET['name'];
-      echo "<div>Hello $name, You will play game 2</div>";
+      echo "<div> Labas $name, Jūs žaisite žaidimą SUSKAIČIUOK! </div>";
     ?>
 </div>
-
-
   <div class="container">
     <h2>Šiame žaidime gali laimėti nuo -200 iki +200 litų.</h2>
     <p id="question"></p>
@@ -25,7 +23,6 @@
     <p id="timer"></p>
     <button onclick="closeGame()" class="closeBtn">Pabėgti?</button>
   </div>
-
 
 
     <script>
@@ -51,9 +48,15 @@
         document.getElementById("answer").focus();
     };
 
-    // Set the timer 20 sekundziu    kolkas daugiau laiko dadeta reguliujam
-    let seconds = 5000;
-    const timer = setInterval(function() {
+    // Set the timer 20 sekundziu   
+   // Get the value of seconds from local storage
+        let seconds = localStorage.getItem('seconds');
+            if (seconds === null) {
+            seconds = 20;
+        }
+
+        // Set the timer
+        const timer = setInterval(function() {
         seconds--;
         if (seconds < 0) {
             clearInterval(timer);
@@ -61,13 +64,20 @@
             message.textContent = "Laikas baigėsi!";
             document.body.appendChild(message);
             setTimeout(() => {
-                window.close();
+            window.close();
             }, 3000);
-        }
-        else {
+        } else {
             document.getElementById("timer").innerHTML = seconds + " seconds left";
+            // Save the value of seconds to local storage
+            localStorage.setItem('seconds', seconds);
         }
-    }, 1000);
+        }, 1000);
+
+        // Clear the value of seconds from local storage when the game is over
+        setTimeout(() => {
+            localStorage.removeItem('seconds');
+        }, 3000);
+
 
     // Generate a random number
     const num1 = Math.floor(Math.random() * 100);
@@ -148,20 +158,12 @@
         }, 3000);
     }
 
-    // Add a close button
-    // const closeButton = document.createElement('button');
-    // closeButton.textContent = 'Uždaryti';
-    // closeButton.addEventListener('click', () => {
-    //     window.close();
-    // });
-    // document.body.appendChild(closeButton);
-
     function closeGame() {
         window.close();
     }
 
 
-</script>
+    </script>
 
     
 </body>

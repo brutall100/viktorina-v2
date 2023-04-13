@@ -23,7 +23,14 @@ body {
     margin-top: 1px; /* Add a 20px top margin */
     margin-bottom: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    /* Funny text style */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 20px;
+    color: purple;
+    text-shadow: 2px 2px 0px #f7df1e;
 }
+
 
 .container {
     background-color: #f9f9f9;
