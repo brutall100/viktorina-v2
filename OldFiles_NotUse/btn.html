@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Example AJAX Request</title>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script>
-		$(function() {
-			$("#btn-perkelti-klausimus").click(function() {
-				$.ajax({
-					url: "http://localhost/aldas/Viktorina.live/transferData.php",
-					method: "post",
-					success: function(response) {
-						console.log(response);
-					},
-					error: function(xhr, status, error) {
-						console.log("Error: " + error);
-					}
-				});
-			});
-		});
-	</script>
-</head>
-<body>
-	<button id="myButton">Execute Script</button>
-</body>
+  <head>
+    <title>Example AJAX Request</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(function () {
+        $("#btn-perkelti-klausimus").click(function () {
+          $.ajax({
+            url: "http://localhost/aldas/Viktorina.live/transferData.php",
+            method: "post",
+            success: function (response) {
+              console.log(response);
+            },
+            error: function (xhr, status, error) {
+              console.log("Error: " + error);
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="myButton">Execute Script</button>
+  </body>
 </html>
 
 <!-- include 'path/to/file.php';
