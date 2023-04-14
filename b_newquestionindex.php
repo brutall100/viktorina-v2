@@ -61,17 +61,17 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
             <span id="info-icon" onmouseover="showInfoText()" onmouseout="hideInfoText()">
               <img src="http://localhost/aldas/Viktorina.live/images/images_/small_info2.png" alt="info icon">
               <div id="info-text" style.display = "none">
-                <p>Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta <span class="litai-text-color">10 litų</span>. </p>
+                <p>Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta <span class="litai-text-color">10 litų</span>.Klausimo ilgis neribojamas. Atsakymo ilgis maksimalus 50 simbolių. </p>
               </div>
             </span>
           </div>
           
           <label for="question">Klausimas:</label>
-          <textarea id="question" name="question" class="resizable"></textarea>
+          <textarea id="question" name="question" class="question-resizable"></textarea>
           
           <label for="answer">Atsakymas:</label>
-          <textarea id="answer" name="answer" class="resizable"></textarea>
-          
+          <input type="text" id="answer" name="answer" class="answer-not-resizable" maxlength="50" />
+         
           <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
           <input type="submit" value="Įrašyti" />
         </form>
@@ -93,6 +93,9 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
         class="imported-footer">
       </object>
     </footer>
+
+    <script type="text/javascript" src="http://localhost/aldas/Viktorina.live/b_newquestion.js"></script>    
+
   </body>
 
         <!-- Scriptus 2 reikes isnesti is cia -->
