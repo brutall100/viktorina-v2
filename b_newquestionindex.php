@@ -55,9 +55,8 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
     <main class="main">
       <div class="main-form">
-        <form action="http://localhost/aldas/Viktorina.live/b_newquestion.php" method="post">
+        <form class="main-form-forma" action="http://localhost/aldas/Viktorina.live/b_newquestion.php" method="post">
           <div>
-            <label for="name">Autorius:</label>
             <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly />
             <span id="info-icon" onmouseover="showInfoText()" onmouseout="hideInfoText()">
               <img src="http://localhost/aldas/Viktorina.live/images/images_/small_info2.png" alt="info icon">
@@ -67,28 +66,27 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
             </span>
           </div>
           
-          <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
-
           <label for="question">Klausimas:</label>
           <textarea id="question" name="question" class="resizable"></textarea>
           
           <label for="answer">Atsakymas:</label>
           <textarea id="answer" name="answer" class="resizable"></textarea>
-
+          
+          <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
           <input type="submit" value="Įrašyti" />
         </form>
       </div>
+      </main>
             
-      <div class="main-info">   <!-- Laikinai main-info.Arba gražiai sutvarkyti -->
-        <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
-          <p>Autorius: <?php echo $name; ?></p>
-          <p>Lygis: <?php echo $level; ?></p>
-          <p>Litai: <?php echo $points; ?></p>
-          <p>Id: <?php echo $user_id; ?></p>
-        <?php endif; ?>
-      </div>
-    </main>
-
+    <div class="main-info">   <!-- Laikinai main-info.Arba gražiai sutvarkyti -->
+      <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
+        <p>Autorius: <?php echo $name; ?></p>
+        <p>Lygis: <?php echo $level; ?></p>
+        <p>Litai: <?php echo $points; ?></p>
+        <p>Id: <?php echo $user_id; ?></p>
+      <?php endif; ?>
+    </div>
+    
     <footer class="footer">
       <object
         data="http://localhost/aldas/Viktorina.live/Footer/footer.html"

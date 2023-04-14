@@ -9,10 +9,11 @@
   
   "tabWidth": 2,
   "useTabs": false,
-  "printWidth": 80,
+  "printWidth": 200,
   "trailingComma": "none",
   "htmlWhitespaceSensitivity": "ignore",
   "endOfLine": "lf"
+
 }
 
   
