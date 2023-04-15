@@ -14,22 +14,21 @@ let bonusLita = 0
 let count = 0
 
 const generateBonus = () => {
-  const interval = Math.floor(Math.random() * 30000) + 30000 // Generate a random interval in milliseconds between 30000 and 60000
+  const interval = Math.floor(Math.random() * 30000) + 30000 // Generate a random interval in milliseconds between 30000 and 60000 [Gal dar reikes tobulinti]
 
   setTimeout(() => {
-    bonusLita = Math.floor(Math.random() * 5) * 10 + 10
+    bonusLita = Math.floor(Math.random() * 5) * 10 + 10 // Generuoja random bonus tarp 10 and 50
     console.log(`Generated bonus: ${bonusLita}`)
     setTimeout(() => {
       bonusLita = 0
-      console.log(`Removed bonus: ${bonusLita}`)
+      console.log(`Removed bonus: ${bonusLita}`) // Pasalina Bonus po 5 sekundziu
     }, 5000)
     count++
-    if (count < 100) {
+    if (count < 10000000) {
       generateBonus()
     }
   }, interval)
 }
-
 generateBonus()
 
 const refreshData = (callback) => {
@@ -100,19 +99,19 @@ const checkLitaiSum = () => {
     connection.end()
 
     console.log("Checking litai_sum at", new Date())
-  }, 5000) // interval of 5 seconds
+  }, 1000) // interval of 1 seconds  Nesenai pakeista 2023 04 15 buvo 5000
 
   setInterval(() => {
     const currentTime = new Date()
     if (lastRefreshTime === null || currentTime - lastRefreshTime >= 45000) {
       // serverio refreshas
-      console.log(`Refreshing data every 50 seconds`)
+      console.log(`Refreshing data every 45 seconds`)
       lastRefreshTime = currentTime
       refreshData((data) => {
         cachedData = data
       })
     }
-  }, 5000) // interval of 5 seconds
+  }, 1000) // interval of 1 seconds  Nesenai pakeista 2023 04 15 buvo 5000
 }
 
 checkLitaiSum()
@@ -137,4 +136,3 @@ app.listen(port, () => {
 })
 
 // C:\xampp\htdocs\aldas\Viktorina.live> node server.js
-
