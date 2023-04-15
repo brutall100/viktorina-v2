@@ -4,7 +4,7 @@ async function fetchData() {
     const response = await axios.get("http://localhost:3000/data")
     return response.data
   } catch (error) {
-    console.error(error)
+    console.error(error) 
   }
 }
 ;(async function () {
@@ -226,7 +226,7 @@ const handleUserAnswer = async (userAnswer) => {
 
     // const gameNo = randomGame()
     // console.log('randomGame generates: ' + gameNo)
-    playGame()
+    // playGame()
 
     const url = "http://localhost:8000/a_points.js"
     const body = JSON.stringify({
