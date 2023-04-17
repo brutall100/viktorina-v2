@@ -1,5 +1,5 @@
 <!-- 1 uzduotis -->
-<!-- Reikia tvarkyti laikus serveryje, plius bonus per ilgai uzzsilaiko  -->
+<!--   -->
 
 <!-- 2 -->
 <!-- Pasidaryti svaria php ir javaScript registracijos kopija githube su pasijungimu i xampp
