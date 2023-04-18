@@ -2,12 +2,11 @@
 <!-- Tvarkyti atsijungimo BTN , Padryti prisijungimo BTN   -->
 
 <!-- 2 -->
-<!--  -->
+<!--  Klausimus perkleti i pagrindine db galima tik nuo 4 lvl . Mygtuka matoma ir aktyvu nuo 4 lvl
+Ir balsaviam su didesniu kiekiu padaryti tai yra kai parbalsuoja kokie 15 zmoniu tik tada perkelti-->
 
 <!-- 3 -->
-<!--  
-Padaryti keiksmazodziu duomenu baze, kurioje jei irasant klausima aptinkamas keiksmazodis <Siknius>
-arba junginys <Jus esate gaidziai> , klausimas neisirasytu i laikinaja DB. Gal ban ip -->
+<!--  Sutvarkyti modal foldery. isikelti i githuba GRAZIai -->
 
 <!-- 4 -->
 <!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->

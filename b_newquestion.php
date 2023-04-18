@@ -61,7 +61,7 @@ if (empty($question) || empty($answer)) {
         $sql = "UPDATE viktorina.super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
 
         if (mysqli_query($conn, $sql)) {
-            echo "Litai_sum updated successfully";
+            echo "  Jums pervedama 10 LITŲ  ";
         } else {
             echo "Error updating litai_sum: " . mysqli_error($conn);
         }
@@ -73,9 +73,8 @@ if (empty($question) || empty($answer)) {
 
 mysqli_close($conn);
 
-echo "<script>setTimeout(function() { location.href = 'http://localhost/aldas/Viktorina.live/b_newquestionindex.php'; }, 3000);</script>";
-echo $message;
-
+echo "<script>setTimeout(function() { location.href = 'http://localhost/aldas/Viktorina.live/b_newquestionindex.php'; }, 30000);</script>";
+// echo $message;
 ?>
 
 
