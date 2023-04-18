@@ -17,10 +17,38 @@ $answer = $_POST['answer'];
 $date_inserted = date("Y-m-d"); // current date
 $ip = $_SERVER['REMOTE_ADDR'];
 
-$message = "Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus apdorojamas.";
+$message = "Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus apdorojamas. Už įrašyta klausimą jums suteikta 10 LITŲ.";
 if (empty($question) || empty($answer)) {
     $message = "Klaida: ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.";
 }
+
+// Tikrina ar yra keiksmazodziu zodyje
+$bad_words_sql = "SELECT curse_words FROM bad_words";
+$bad_words_result = mysqli_query($conn, $bad_words_sql);
+$bad_words_array = array();
+
+if (mysqli_num_rows($bad_words_result) > 0) {
+    while($row = mysqli_fetch_assoc($bad_words_result)) {
+        $bad_words_array[] = $row["curse_words"];
+    }
+}
+
+foreach ($bad_words_array as $bad_word) {
+    if (strpos($question, $bad_word) !== false) {
+        $message = "Klaida: klausime yra nepriimtinų žodžių.";
+        echo $message;
+        exit();
+    }
+}
+
+foreach ($bad_words_array as $bad_word) {
+    if (strpos($answer, $bad_word) !== false) {
+        $message = "Klaida: atsakyme yra nepriimtinų žodžių.";
+        echo $message;
+        exit();
+    }
+}
+
 
 // Check if any of the fields are empty
 if (empty($question) || empty($answer)) {
@@ -43,92 +71,19 @@ if (empty($question) || empty($answer)) {
     }
 }
 
-// Close the connection
 mysqli_close($conn);
+
+echo "<script>setTimeout(function() { location.href = 'http://localhost/aldas/Viktorina.live/b_newquestionindex.php'; }, 3000);</script>";
+echo $message;
+
 ?>
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <style>
-    /* The Modal (background) */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed;/* Stay in place */
-      background-color:green; 
-      z-index: 1; /* Sit on top */
-      padding-top: 100px; /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-
-    /* Modal Content */
-    .modal-content {
-      background-color: #fefefe;
-      margin: auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-    }
-
-    /* The Close Button */
-    .close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    </style>
-  </head>
-  
-  <body>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p><?php echo $message; ?></p>
-        </div>
-    </div>
-  </body>
 
 
-<script>
-// Get the modal
-var modal = document.getElementById("myModal"); 
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on the button, open the modal
-modal.style.display = "block";
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-  setTimeout(function(){
-        location.href = "http://localhost/aldas/Viktorina.live/b_newquestionindex.php";
-    }, 2000);
-}
 
-// Close the modal after 5 seconds
-setTimeout(function(){
-    modal.style.display = "none";
-    location.href = "http://localhost/aldas/Viktorina.live/b_newquestionindex.php";
-}, 5000);
-
-</script>
 
 
 
