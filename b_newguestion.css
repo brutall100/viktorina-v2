@@ -259,3 +259,16 @@ th {
   display: inline-block;
   margin-bottom: 5px;
 }
+
+
+
+                  /*b_newquestion.php  */
+                  
+.message {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding: 20px;
+	margin: 20px;
+	font-size: 1.2rem;
+	text-align: center;
+}
