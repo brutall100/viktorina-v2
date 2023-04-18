@@ -74,7 +74,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           <textarea id="question" name="question" class="question-resizable"></textarea>
           
           <label for="answer">Atsakymas:</label>
-          <input type="text" id="answer" name="answer" class="answer-not-resizable" maxlength="50" />
+          <input type="text" id="answer" name="answer" class="answer-not-resizable" maxlength="60" />
          
           <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
           <input type="submit" value="Įrašyti" />

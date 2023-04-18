@@ -50,7 +50,8 @@ body {
 }
 
 .answer-not-resizable {
-  width: 50ch;
+  display: inline-block; 
+  min-width: 700px;
   height: 50px;
 }
 
@@ -64,9 +65,9 @@ label {
 input[type="text"],
 textarea {
   margin-bottom: 20px;
-  width: 300px;
+  width: 400px;
   padding: 10px;
-  /* border: 5px solid rgb(28, 26, 26); */
+/* border: 5px solid rgb(28, 26, 26);   */
   font-size: 1.2rem;
 }
 
