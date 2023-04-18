@@ -41,7 +41,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Irašyti klausimą</a></li>
         </div> 
         <div>
-          <button id="btn-atsijungti">Atsijungti</button>   <!-- Scriptus 2 reikes isnesti is cia -->
+          <button id="btn-atsijungti">Atsijungti</button> 
         <script>   
           const logoutButton = document.getElementById('btn-atsijungti');
           logoutButton.addEventListener('click', () => {
@@ -65,6 +65,10 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
               </div>
             </span>
           </div>
+
+          
+         
+
           
           <label for="question">Klausimas:</label>
           <textarea id="question" name="question" class="question-resizable"></textarea>
@@ -76,6 +80,32 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           <input type="submit" value="Įrašyti" />
         </form>
       </div>
+
+
+      <script>
+          // Funkcija tikrinanti Varotojo levely
+          if ('<?php echo isset($_SESSION['level']) ? "true" : "false"; ?>' === 'true') {
+            // Get the value of the level variable from the session
+            var level = '<?php echo $_SESSION['level']; ?>';
+            // Do something with the level variable
+            console.log("User levell: " + level);
+          } else {
+            // Session variable not set, do something else
+            console.log("Session variable not set");
+          }
+
+          const userLevel = '<?php echo $_SESSION['level'] ?? 0; ?>';
+          const isUserLevelValid = userLevel !== undefined && userLevel !== null && userLevel !== '' && userLevel !== 'unknown' && parseInt(userLevel) >= 2;
+
+          if (!isUserLevelValid) {
+            // Disable the input fields if the user's level is invalid or less than 2
+            document.getElementById("question").disabled = true;
+            document.getElementById("answer").disabled = true;
+          }
+      </script>
+
+
+
       </main>
             
     <div class="main-info">   <!-- Laikinai main-info.Arba gražiai sutvarkyti -->

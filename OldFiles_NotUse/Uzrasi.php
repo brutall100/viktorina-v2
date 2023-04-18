@@ -1,12 +1,11 @@
 <!-- 1 uzduotis -->
-<!--   -->
+<!-- Tvarkyti atsijungimo BTN , Padryti prisijungimo BTN   -->
 
 <!-- 2 -->
-<!-- Pasidaryti svaria php ir javaScript registracijos kopija githube su pasijungimu i xampp
-ir balsavimo funkcijas su duomenu baze -->
+<!--  -->
 
 <!-- 3 -->
-<!-- Padaryti kad klausimus butu galima rasyti nuo 2 lvl, nes nuo pirmo bus sikniu 
+<!--  
 Padaryti keiksmazodziu duomenu baze, kurioje jei irasant klausima aptinkamas keiksmazodis <Siknius>
 arba junginys <Jus esate gaidziai> , klausimas neisirasytu i laikinaja DB. Gal ban ip -->
 
@@ -14,7 +13,7 @@ arba junginys <Jus esate gaidziai> , klausimas neisirasytu i laikinaja DB. Gal b
 <!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->
 
 <!-- 5 -->
-<!-- Irasant klausima padaryti laukely zymiai didesny sutvarkyti tuos dydzius galu gale -->
+<!--  -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->
