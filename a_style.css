@@ -68,12 +68,10 @@ body {
   top:50px;
 }
 
-/* .square {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border: 1px solid black;
-} */
+.invisible {
+  visibility: hidden;
+}
+
 
 
 

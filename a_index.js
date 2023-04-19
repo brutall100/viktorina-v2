@@ -4,7 +4,7 @@ async function fetchData() {
     const response = await axios.get("http://localhost:3000/data")
     return response.data
   } catch (error) {
-    console.error(error) 
+    console.error(error)
   }
 }
 ;(async function () {
@@ -27,6 +27,8 @@ async function fetchData() {
   bonusLitaContainer.innerHTML = data.data.bonusLita
 })()
 
+//
+//
 function checkServerData() {
   axios
     .get("http://localhost:3000/data")
@@ -38,9 +40,7 @@ function checkServerData() {
         // console.log('Serverio id matches client id.');
         // Do something
       } else {
-        console.log(
-          "Serverio id does not match client id. Reloading in 1 seconds..."
-        )
+        console.log("Serverio id does not match client id. Reloading in 1 seconds...")
         setTimeout(() => {
           location.reload()
         }, 10)
@@ -52,6 +52,8 @@ function checkServerData() {
 }
 setInterval(checkServerData, 1000) // call the function every 0.5 seconds
 
+//
+//
 function oldQuestionData() {
   axios
     .get("http://localhost:3000/data")
@@ -61,14 +63,7 @@ function oldQuestionData() {
       const questionId = serverData.id
       const serverAnswer = serverData.answer
 
-      console.log(
-        "Old question:",
-        serverQuestion,
-        "ID:",
-        questionId,
-        "Answer:",
-        serverAnswer
-      )
+      console.log("Old question:", serverQuestion, "ID:", questionId, "Answer:", serverAnswer)
 
       const oldQuestionDiv = document.getElementById("old-question")
 
@@ -79,31 +74,40 @@ function oldQuestionData() {
     })
 }
 
+//
+//
 window.onload = function () {
   document.getElementById("answer-input").focus()
 }
 
+//
 // Rodyti klausima
 async function displayQuestion(data) {
   const question = document.getElementById("question")
   const answer = document.getElementById("answer")
   question.innerText = data.data.question
   const answerString = data.data.answer
-  const hiddenString = answerString.replace(/./g, "*").split("").join(" ")
-  answer.innerText = hiddenString
+  const hiddenString = answerString
+    .split("")
+    .map((char) => (char === " " ? '<span class="invisible">_</span>' : " * "))
+    .join("")
+  answer.innerHTML = hiddenString
   await displayLettersWithDelay(answerString, answer, 8000)
 }
+
+
 
 async function displayLettersWithDelay(string, element, delay) {
   for (let i = 0; i < 4 && i < string.length; i++) {
     const revealDelay = delay + i * 1000
     await new Promise((resolve) => setTimeout(resolve, revealDelay))
-    const hiddenString = element.innerText.split(" ")
+    const hiddenString = element.innerHTML.split(" ")
     hiddenString[i] = string[i]
-    element.innerText = hiddenString.join(" ")
+    element.innerHTML = hiddenString.join(" ")
   }
 }
 
+//
 //                    LITAI
 const generateAndDisplayRandomPoint = async (lita) => {
   litoVerte = ""
@@ -136,9 +140,7 @@ const generateAndDisplayRandomPoint = async (lita) => {
   }
 
   displayImage(imageSrc, litaiImg, "new-class1")
-  document.getElementById(
-    "points"
-  ).innerHTML = `Verte: ${lita} ${litoVerte}&nbsp;  `
+  document.getElementById("points").innerHTML = `Verte: ${lita} ${litoVerte}&nbsp;  `
 }
 
 const displayImage = (src, parent, className) => {
@@ -181,7 +183,7 @@ function generateBonusPoints(bonusLita) {
 const userData = {
   name: "",
   level: "",
-  points: "",
+  points: ""
 }
 const populateUserData = () => {
   const userDataElement = document.getElementById("user-data")
@@ -204,7 +206,7 @@ setTimeout(() => {
   isTimeUp = true
   oldQuestionData()
   console.log("time is over")
-}, 40000)
+}, 45000) // Ketik pakeistas 2023 04 19 prideta 5 seconds
 
 const handleUserAnswer = async (userAnswer) => {
   const data = await fetchData()
@@ -218,8 +220,7 @@ const handleUserAnswer = async (userAnswer) => {
   const isAnswerCorrect = checkLettersAndCompare(userAnswerLower, correctAnswer)
 
   if (isAnswerCorrect) {
-    const litaPoints =
-      parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10)
+    const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10)
     userData.points = litaPoints.toString()
     const successMsg = `Teisingai atsakė ${userData.name}: <span class="special-atsakymas" style="color: green; font-weight: bold">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`
     document.getElementById("answer").innerHTML = successMsg
@@ -231,17 +232,17 @@ const handleUserAnswer = async (userAnswer) => {
     const url = "http://localhost:8000/a_points.js"
     const body = JSON.stringify({
       user_id_name: userData.name,
-      points: litaPoints,
+      points: litaPoints
     })
 
     const headers = {
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/x-www-form-urlencoded"
     }
 
     const response = await fetch(url, {
       method: "POST",
       headers,
-      body,
+      body
     })
 
     if (response.ok) {
@@ -297,21 +298,17 @@ function checkLettersAndCompare(str1, str2) {
     š: "s",
     ų: "u",
     ū: "u",
-    ž: "z",
+    ž: "z"
   }
   // Replace accented letters with their ASCII equivalents
-  const cleanStr1 = str1.replace(
-    /[ąčęėįšųž]/gi,
-    (match) => letterMap[match.toLowerCase()]
-  )
-  const cleanStr2 = str2.replace(
-    /[ąčęėįšųž]/gi,
-    (match) => letterMap[match.toLowerCase()]
-  )
+  const cleanStr1 = str1.replace(/[ąčęėįšųž]/gi, (match) => letterMap[match.toLowerCase()])
+  const cleanStr2 = str2.replace(/[ąčęėįšųž]/gi, (match) => letterMap[match.toLowerCase()])
 
   return cleanStr1.toLowerCase() === cleanStr2.toLowerCase()
 }
 
+//
+//
 // Games section
 
 function randomGame() {
@@ -329,30 +326,19 @@ function playGame() {
 
   if (gameNo === 3) {
     console.log(`game1 will play player ${userData.name}`)
-    const gameWindow1 = window.open(
-      `http://localhost/aldas/Viktorina.live/Games/game1.php?name=${userData.name}`,
-      "_blank",
-      `width=${widths},height=${heights},left=${lefts},top=${tops}`
-    )
+    const gameWindow1 = window.open(`http://localhost/aldas/Viktorina.live/Games/game1.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
   } else if (gameNo === 6) {
     console.log(`game2 will play player ${userData.name}`)
-    const gameWindow2 = window.open(
-      `http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`,
-      "_blank",
-      `width=${widths},height=${heights},left=${lefts},top=${tops}`
-    )
+    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
   } else if (gameNo === 9) {
     console.log(`game3 will play player ${userData.name}`)
-    const gameWindow3 = window.open(
-      `http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`,
-      "_blank",
-      `width=${widths},height=${heights},left=${lefts},top=${tops}`
-    )
+    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
 
     console.log("game not ready")
   }
 }
 
+//
 // Get a reference to the form
 //  // Get a reference to the form element
 //  const form = document.getElementById('answer-form');

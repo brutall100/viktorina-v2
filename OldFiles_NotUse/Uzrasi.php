@@ -59,7 +59,11 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 
 <!-- 20 -->
 <!-- b_newquestion.php cia iskylantis phhp puslapis reikia sutvarkyti zinute, prideti css pagrazinti,
-pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, prideti zvaigzdute klausimo irasytojas -->
+pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, prideti zvaigzdute klausimo irasytojas,
+ reikia atskirt css kazkaip gal bendra raide dadeti  -->
+
+ <!-- 21 -->
+ <!-- Gal GALBUT ateiciai reikes padaryti ,  jei atsakymas iš 2 ar daugiau zodziu, kad ir tie zodziai atsiverstu kaip dabar pirmas zodis -->
 
 
 
