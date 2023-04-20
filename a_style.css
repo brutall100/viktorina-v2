@@ -63,15 +63,15 @@ body {
   border:2px solid rgb(81, 37, 151);
 }
 
-#answer{
-  border:2px solid rgb(66, 151, 37);
-  top:50px;
+#answer {
+  letter-spacing: 2em;
+  word-spacing: 2em;
+  font-family: Arial, sans-serif;
+  font-size: 1.3em;
+  color: rgb(73, 20, 59); /* Set the color of the asterisks */
+
 }
 
-#answer span {
-  margin-right: 5px; /* Add spacing between the asterisks */
-  color: rgb(15, 51, 70); /* Set the color of the asterisks */
-}
 
 
 

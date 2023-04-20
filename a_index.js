@@ -99,10 +99,7 @@ async function displayQuestion(data) {
     await new Promise(resolve => setTimeout(resolve, 8000));
     const letter = answerString[i] === ' ' ? ' ' : answerString[i] === '\n' ? '\n' : answerString[i] === '\t' ? '\t' : answerString[i] === '\r' ? '\r' : answerString[i] === '\f' ? '\f' : answerString[i] === '\v' ? '\v' : answerString[i];
     answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1);
-    answer.style.letterSpacing = '3em'; // Adjust letter-spacing as desired
-    answer.style.wordSpacing = '2em'; // Adjust word-spacing as desired
-    answer.style.fontFamily = 'Arial, sans-serif'; // Adjust font-family as desired
-    answer.style.fontSize = '1.5em'; // Adjust font-size as desired
+    
   }
 }
 
