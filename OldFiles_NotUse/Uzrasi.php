@@ -12,7 +12,7 @@ Ir balsaviam su didesniu kiekiu padaryti tai yra kai parbalsuoja kokie 15 zmoniu
 <!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->
 
 <!-- 5 -->
-<!--  -->
+<!-- Dienos topas kiek klausimu atsake kiek uzdirbo naujas modal issokantis su php mysql -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->

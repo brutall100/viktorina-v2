@@ -85,27 +85,24 @@ window.onload = function () {
 async function displayQuestion(data) {
   const question = document.getElementById("question")
   const answer = document.getElementById("answer")
-  question.innerText = data.data.question
   const answerString = data.data.answer
-  const hiddenString = answerString
-    .split("")
-    .map((char) => (char === " " ? '<span class="invisible">_</span>' : " * "))
-    .join("")
-  answer.innerHTML = hiddenString
-  await displayLettersWithDelay(answerString, answer, 8000)
-}
 
+  // Display the question immediately
+  question.textContent = data.data.question
 
+  // Hide the answer with asterisks
+  const asterisks = answerString.replace(/\S/g, '*')
+  answer.textContent = asterisks
 
-async function displayLettersWithDelay(string, element, delay) {
-  for (let i = 0; i < 4 && i < string.length; i++) {
-    const revealDelay = delay + i * 1000
-    await new Promise((resolve) => setTimeout(resolve, revealDelay))
-    const hiddenString = element.innerHTML.split(" ")
-    hiddenString[i] = string[i]
-    element.innerHTML = hiddenString.join(" ")
+  // Show the answer letters one by one with an 8-second delay
+  for (let i = 0; i < answerString.length; i++) {
+    await new Promise(resolve => setTimeout(resolve, 8000))
+    const letter = answerString[i] === ' ' ? ' ' : answerString[i] === '\n' ? '\n' : answerString[i] === '\t' ? '\t' : answerString[i] === '\r' ? '\r' : answerString[i] === '\f' ? '\f' : answerString[i] === '\v' ? '\v' : answerString[i]
+    answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1)
   }
 }
+
+
 
 //
 //                    LITAI
