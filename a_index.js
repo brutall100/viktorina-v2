@@ -90,23 +90,22 @@ async function displayQuestion(data) {
   // Display the question immediately
   question.textContent = data.data.question;
 
-  // Wrap each letter in a span element with asterisk content
-  const spans = answerString.split('').map(letter => {
-    const span = document.createElement('span');
-    span.textContent = '*';
-    return span;
-  });
-
-  // Append the spans to the answer element
-  answer.append(...spans);
+  // Hide the answer with asterisks
+  const asterisks = answerString.replace(/\S/g, '*');
+  answer.textContent = asterisks;
 
   // Show the answer letters one by one with an 8-second delay
   for (let i = 0; i < answerString.length; i++) {
     await new Promise(resolve => setTimeout(resolve, 8000));
     const letter = answerString[i] === ' ' ? ' ' : answerString[i] === '\n' ? '\n' : answerString[i] === '\t' ? '\t' : answerString[i] === '\r' ? '\r' : answerString[i] === '\f' ? '\f' : answerString[i] === '\v' ? '\v' : answerString[i];
-    spans[i].textContent = letter;
+    answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1);
+    answer.style.letterSpacing = '3em'; // Adjust letter-spacing as desired
+    answer.style.wordSpacing = '2em'; // Adjust word-spacing as desired
+    answer.style.fontFamily = 'Arial, sans-serif'; // Adjust font-family as desired
+    answer.style.fontSize = '1.5em'; // Adjust font-size as desired
   }
 }
+
 
 
 

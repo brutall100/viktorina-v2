@@ -1,31 +1,3 @@
-<?php
-session_start();
-
-if (isset($_GET['name'])) {
-  $name = $_GET['name'];
-  $conn = mysqli_connect("localhost", "root", "", "viktorina");
-  $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
-  $result = mysqli_query($conn, $query);
-  if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $level = $row['user_lvl'];
-    $points = $row['litai_sum'];
-    $user_id = $row['user_id'];
-    // echo "Y have $points points. Your id: $user_id";
-    mysqli_close($conn);
-  }
-  if (isset($_GET['level']) && isset($_GET['points'])) {
-    $level = $_GET['level'];
-    $points = $_GET['points'];
-  }
-}
-
-// Embed the variable values in the HTML output 
-echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$points'></div>";
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,6 +12,33 @@ echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$po
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />  
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
+
+  <?php
+    session_start();
+
+    if (isset($_GET['name'])) {
+      $name = $_GET['name'];
+      $conn = mysqli_connect("localhost", "root", "", "viktorina");
+      $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
+      $result = mysqli_query($conn, $query);
+      if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $level = $row['user_lvl'];
+        $points = $row['litai_sum'];
+        $user_id = $row['user_id'];
+        // echo "Y have $points points. Your id: $user_id";
+        mysqli_close($conn);
+      }
+      if (isset($_GET['level']) && isset($_GET['points'])) {
+        $level = $_GET['level'];
+        $points = $_GET['points'];
+      }
+    }
+
+    // Embed the variable values in the HTML output 
+    echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$points'></div>";
+  ?>  
+
 
   <body>
     <header class="header">
