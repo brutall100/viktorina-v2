@@ -68,8 +68,9 @@ body {
   top:50px;
 }
 
-.invisible {
-  visibility: hidden;   /* Pasleptas underscore atsakyme su asteriksais */
+#answer span {
+  margin-right: 5px; /* Add spacing between the asterisks */
+  color: rgb(15, 51, 70); /* Set the color of the asterisks */
 }
 
 

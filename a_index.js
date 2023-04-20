@@ -83,24 +83,31 @@ window.onload = function () {
 //
 // Rodyti klausima
 async function displayQuestion(data) {
-  const question = document.getElementById("question")
-  const answer = document.getElementById("answer")
-  const answerString = data.data.answer
+  const question = document.getElementById("question");
+  const answer = document.getElementById("answer");
+  const answerString = data.data.answer;
 
   // Display the question immediately
-  question.textContent = data.data.question
+  question.textContent = data.data.question;
 
-  // Hide the answer with asterisks
-  const asterisks = answerString.replace(/\S/g, '*')
-  answer.textContent = asterisks
+  // Wrap each letter in a span element with asterisk content
+  const spans = answerString.split('').map(letter => {
+    const span = document.createElement('span');
+    span.textContent = '*';
+    return span;
+  });
+
+  // Append the spans to the answer element
+  answer.append(...spans);
 
   // Show the answer letters one by one with an 8-second delay
   for (let i = 0; i < answerString.length; i++) {
-    await new Promise(resolve => setTimeout(resolve, 8000))
-    const letter = answerString[i] === ' ' ? ' ' : answerString[i] === '\n' ? '\n' : answerString[i] === '\t' ? '\t' : answerString[i] === '\r' ? '\r' : answerString[i] === '\f' ? '\f' : answerString[i] === '\v' ? '\v' : answerString[i]
-    answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1)
+    await new Promise(resolve => setTimeout(resolve, 8000));
+    const letter = answerString[i] === ' ' ? ' ' : answerString[i] === '\n' ? '\n' : answerString[i] === '\t' ? '\t' : answerString[i] === '\r' ? '\r' : answerString[i] === '\f' ? '\f' : answerString[i] === '\v' ? '\v' : answerString[i];
+    spans[i].textContent = letter;
   }
 }
+
 
 
 
