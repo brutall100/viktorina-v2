@@ -50,7 +50,7 @@ function checkServerData() {
       console.log(error)
     })
 }
-setInterval(checkServerData, 1000) // call the function every 0.5 seconds
+setInterval(checkServerData, 1000) // call the function every 1 seconds
 
 //
 //
@@ -95,7 +95,7 @@ async function displayQuestion(data) {
   answer.textContent = asterisks;
 
   // Show the answer letters one by one with an 8-second delay
-  for (let i = 0; i < answerString.length; i++) {
+  for (let i = 0; i < 4 && i < answerString.length; i++) {
     await new Promise(resolve => setTimeout(resolve, 8000));
     const letter = answerString[i] === ' ' ? ' ' : answerString[i] === '\n' ? '\n' : answerString[i] === '\t' ? '\t' : answerString[i] === '\r' ? '\r' : answerString[i] === '\f' ? '\f' : answerString[i] === '\v' ? '\v' : answerString[i];
     answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1);
@@ -221,12 +221,12 @@ const handleUserAnswer = async (userAnswer) => {
   if (isAnswerCorrect) {
     const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10)
     userData.points = litaPoints.toString()
-    const successMsg = `Teisingai atsakė ${userData.name}: <span class="special-atsakymas" style="color: green; font-weight: bold">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`
+    const successMsg = `Teisingai atsakė ${userData.name}: <span class="corect-answer-answered">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`
     document.getElementById("answer").innerHTML = successMsg
 
-    // const gameNo = randomGame()
-    // console.log('randomGame generates: ' + gameNo)
-    // playGame()
+    const gameNo = randomGame()
+    console.log('randomGame generates: ' + gameNo)
+    playGame()
 
     const url = "http://localhost:8000/a_points.js"
     const body = JSON.stringify({
@@ -257,7 +257,6 @@ const handleUserAnswer = async (userAnswer) => {
       console.error("Failed to update user points")
     }
   } else if (!userAnswerLower.length === 0) {
-    // nedaug truksta,sutvarkyti priezasty
     setTimeout(oldQuestionData, 3000)
   } else if (userAnswerLower.length < 1) {
     const answerInput = document.getElementById("answer-input")
@@ -281,7 +280,7 @@ const handleUserAnswer = async (userAnswer) => {
 
     setTimeout(() => {
       location.reload()
-    }, 1000) // Reload after 2 seconds
+    }, 3000) // Reload after 2 seconds
   }
 
   document.getElementById("answer-input").value = ""
@@ -320,7 +319,7 @@ const lefts = window.innerWidth / 2 - widths / 2
 const tops = window.innerHeight / 2 - heights / 2
 
 function playGame() {
-  const gameNo = 6 //randomGame() ========= 3.6.9;
+  const gameNo = randomGame() //========= 3.6.9;
   console.log("randomGame generates: " + gameNo)
 
   if (gameNo === 3) {
@@ -337,53 +336,3 @@ function playGame() {
   }
 }
 
-//
-// Get a reference to the form
-//  // Get a reference to the form element
-//  const form = document.getElementById('answer-form');
-//  // Add an event listener to the form to handle submit events
-//  form.addEventListener('submit', event => {
-//    // Prevent the default form submission behavior
-//    event.preventDefault();
-//    // Get the value of the answer input field
-//    const answer = event.target.elements.answer.value;
-//    // Do something with the answer, such as sending it to a server or processing it in some way
-//    // ...
-//  })
-
-// //  Chatt container
-// function getFormattedTime() {
-//   const date = new Date();
-//   const hours = date.getHours();
-//   const minutes = date.getMinutes();
-//   const seconds = date.getSeconds();
-//   return `${hours}:${minutes}:${seconds}`;
-// }
-// const chatContainer = document.getElementById('chat-container');
-// const chatMessages = document.getElementById('chat-messages');
-// const chatInput = document.getElementById('chat-input');
-// const chatButton = document.getElementById('chat-button');
-// // Save the text to localStorage
-// localStorage.setItem('inputText', chatInput.value);
-// // Retrieve the text from localStorage
-// const storedText = localStorage.getItem('inputText');
-// // Update the input field with the stored text
-// if (storedText) {
-//   chatInput.value = storedText;
-// }
-// chatButton.addEventListener('click', () => {
-//   const message = chatInput.value;
-//   const time = getFormattedTime();
-//   chatInput.value = '';
-//   chatMessages.innerHTML += `<div><span class="time">${time}</span> ${message}</div>`;
-//   chatContainer.scrollTop = chatContainer.scrollHeight;
-//   // Save the messages to localStorage
-//   const messages = chatMessages.innerHTML;
-//   localStorage.setItem('messages', messages);
-// });
-// // Retrieve the messages from localStorage
-// const storedMessages = localStorage.getItem('messages');
-// // Update the chat dialog box with the stored messages
-// if (storedMessages) {
-//   chatMessages.innerHTML = storedMessages;
-// }

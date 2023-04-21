@@ -61,16 +61,22 @@ body {
 
 #answer {
   letter-spacing: 0.4em;
-  word-spacing: 0.4em;
+  word-spacing: 0.2em;
   font-family: Arial, sans-serif;
   font-size: 1.3em;
   color: rgb(34, 34, 34); /* Set the color of the asterisks */
 }
 
-/* .special-atsakymas {
+
+
+
+.corect-answer-answered { /*Teisingai atsakytas atsakymas */
   color: red;
   font-weight: bold;
-} */
+}
+
+
+
 
 #answer-form {
   display: flex;
