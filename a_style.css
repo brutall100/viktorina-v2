@@ -25,6 +25,38 @@ body {
   width: 100%;
 }
 
+/*  */
+/* Today Top section */
+.today-top {
+  position: relative;
+}
+
+.today-top-btn {
+  position: absolute;
+  top: -4em;
+  right: 1.1em;
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+}
+
+.today-top-btn:hover {
+  background-color: #3e8e41; /* Dark green */
+  box-shadow: 0px 15px 20px rgba(46, 204, 113, 0.4);
+  transform: translateY(-7px);
+}
+
+/*  */
 /* Pagrindinis question and answer containeris */
 .super-container {
   display: flex;
@@ -60,8 +92,9 @@ body {
 }
 
 #answer {
+  margin-top: .7em;
   letter-spacing: 0.4em;
-  word-spacing: 0.2em;
+  word-spacing: 0.1em;
   font-family: Arial, sans-serif;
   font-size: 1.3em;
   color: rgb(34, 34, 34); /* Set the color of the asterisks */
