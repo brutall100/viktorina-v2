@@ -1,38 +1,36 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-size: 1em;
-    background-color: lightblue;
-    background: url(http://localhost/aldas/Viktorina.live/images/background/website4.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
+  font-size: 1em;
+  background-color: lightblue;
+  background: url(http://localhost/aldas/Viktorina.live/images/background/website4.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .imported-header {
-    width: 100%;
-    height: 12.5rem;
+  width: 100%;
+  height: 12.5rem;
 }
 
 .imported-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
-
-
 
 /* Pagrindinis question and answer containeris */
 .super-container {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top:15%;
+  top: 15%;
   left: 50%; /* Change the left position to 50% */
   transform: translate(-50%, 0);
   margin: auto;
@@ -43,163 +41,131 @@ body {
   justify-content: center;
   align-items: center;
   border: 5px solid orangered;
-    
 }
 
-.super-container-qna-section{
+.super-container-qna-section {
   border: 3px solid rgb(110, 28, 90);
 }
 
-#question,
-#answer {
+#question, #answer {
   font-size: 24px;
   text-align: center;
 }
- 
-#question{
-  font-family: 'PT Serif', serif;
+
+#question {
+  font-family: "PT Serif", serif;
   font-weight: 600;
   font-style: italic;
-  border:2px solid rgb(81, 37, 151);
+  border: 2px solid rgb(81, 37, 151);
 }
 
 #answer {
-  letter-spacing: 2em;
-  word-spacing: 2em;
+  letter-spacing: 0.4em;
+  word-spacing: 0.4em;
   font-family: Arial, sans-serif;
   font-size: 1.3em;
-  color: rgb(73, 20, 59); /* Set the color of the asterisks */
-
+  color: rgb(34, 34, 34); /* Set the color of the asterisks */
 }
-
-
-
-
-
-
-
-
-
-
 
 /* .special-atsakymas {
   color: red;
   font-weight: bold;
 } */
 
-
 #answer-form {
-    display: flex;
-    flex-direction: column;
-    /* padding-top: 5%; */
-  }
- 
-  .submit-btn {
-    color: rgb(43, 68, 64);
-    padding: .5em;
-    margin: .5rem 0 0 0;
-    font-weight: 900;
-    transition: background-color 0.2s, transform 0.2s;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .submit-btn:hover {
-    background-color: #333;
-    color: #fff;
-    transform: scale(1.1);
-  }
-  
-  .submit-btn:active {
-    background-color: #333;
-  }
-  
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-.submit-btn {
-   animation: pulse 2s infinite;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5%;
 }
-  
 
+.submit-btn {
+  color: rgb(43, 68, 64);
+  padding: 0.5em;
+  margin: 0.5rem 0 0 0;
+  font-weight: 900;
+  transition: background-color 0.2s, transform 0.2s;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
-   
+.submit-btn:hover {
+  background-color: #333;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.submit-btn:active {
+  background-color: #333;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.submit-btn {
+  animation: pulse 2s infinite;
+}
+
 .litas-container {
-    position: absolute;
-    bottom: 22%;
-    left: 10%; /* Change the left position to 50% */
-    transform: translate(-50%, 0); /* Use translate to adjust the element's position */
-    /* display: block; */
-    /* justify-content: center; */
-    padding: 5px;
-    margin: 10px auto; /* Use margin: auto to center the element */
-    width: 200px;
-    height: 200px;
-    /* border: 1px solid black; */
+  position: absolute;
+  bottom: 22%;
+  left: 10%; /* Change the left position to 50% */
+  transform: translate(-50%, 0); /* Use translate to adjust the element's position */
+  /* display: block; */
+  /* justify-content: center; */
+  padding: 5px;
+  margin: 10px auto; /* Use margin: auto to center the element */
+  width: 200px;
+  height: 200px;
+  /* border: 1px solid black; */
+}
 
-  }
+.litas-container-img {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
 
-  .litas-container-img{
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    
-  }
-
-
-
-  @media (max-width: 550px) {
-    section {
-      display: none;
-    }
-  }
-  
-
-
-
-  .points-container .super {
-    float: left;
-  }
-  
-  
-  
-  .hidden-bonus {
+@media (max-width: 550px) {
+  section {
     display: none;
   }
+}
 
+.points-container .super {
+  float: left;
+}
 
+.hidden-bonus {
+  display: none;
+}
 
-
- @media(max-width: 550px) {
-    /* img {
+@media (max-width: 550px) {
+  /* img {
         width: 100px;
         opacity: 0.8; 
         box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5); 
       } */
- } 
-  
- .section-answer{
-  border:1px solid red;
- }
+}
 
-
-
+.section-answer {
+  border: 1px solid red;
+}
 
 /* Plevesuojantys litai siektiek */
-#litai-img{
+#litai-img {
   width: 200px;
   opacity: 0.8; /* Set the transparency to 70% */
   box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5);
@@ -281,9 +247,7 @@ body {
   }
 }
 
-
-
- /* .old-question-section */
+/* .old-question-section */
 .old-question-section {
   border: 3px solid rgb(97, 17, 17);
   position: fixed;
@@ -311,19 +275,3 @@ body {
   color: rgb(14, 15, 14);
   font-weight: bold;
 }
-
-
-
-  
- 
- 
-  
-  
-  
-  
-  
-
-  
-  
-  
-  

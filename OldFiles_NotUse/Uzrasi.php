@@ -9,7 +9,8 @@ Ir balsaviam su didesniu kiekiu padaryti tai yra kai parbalsuoja kokie 15 zmoniu
 <!--  Sutvarkyti modal foldery. isikelti i githuba GRAZIai -->
 
 <!-- 4 -->
-<!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... -->
+<!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... 
+Padaryti atverciamas tik 4 raides apie 40sekunziu paleisti funkcija po 40 kad parodyti atsakyma, input disabled, reload after 45 seconds from async-->
 
 <!-- 5 -->
 <!-- Dienos topas kiek klausimu atsake kiek uzdirbo naujas modal issokantis su php mysql -->

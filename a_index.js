@@ -99,7 +99,6 @@ async function displayQuestion(data) {
     await new Promise(resolve => setTimeout(resolve, 8000));
     const letter = answerString[i] === ' ' ? ' ' : answerString[i] === '\n' ? '\n' : answerString[i] === '\t' ? '\t' : answerString[i] === '\r' ? '\r' : answerString[i] === '\f' ? '\f' : answerString[i] === '\v' ? '\v' : answerString[i];
     answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1);
-    
   }
 }
 
