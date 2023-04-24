@@ -88,7 +88,7 @@
     ?>
 
     <section class="today-top">
-      <button class="today-top-btn">Šiandienos TOP 10</button>
+      <button class="today-top-btn" id="today-top-btn" >Šiandienos TOP 10</button>
     </section>
 
     <section class="litas-container">

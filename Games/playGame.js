@@ -28,9 +28,10 @@ const server = http.createServer(async (req, res) => {
 
       // Update user points
       const [rows, fields] = await connection.execute(
-        "UPDATE super_users SET litai_sum = litai_sum + ? WHERE nick_name = ?",
-        [points, user_id_name],
+        'UPDATE super_users SET litai_sum = litai_sum + ?, litai_sum_today = litai_sum_today + ? WHERE nick_name = ?',
+        [points, points, user_id_name]
       );
+      
 
       const response = {
         user_id_name,

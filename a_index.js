@@ -83,28 +83,37 @@ window.onload = function () {
 //
 // Rodyti klausima
 async function displayQuestion(data) {
-  const question = document.getElementById("question");
-  const answer = document.getElementById("answer");
-  const answerString = data.data.answer;
+  const question = document.getElementById("question")
+  const answer = document.getElementById("answer")
+  const answerString = data.data.answer
 
   // Display the question immediately
-  question.textContent = data.data.question;
+  question.textContent = data.data.question
 
   // Hide the answer with asterisks
-  const asterisks = answerString.replace(/\S/g, '*');
-  answer.textContent = asterisks;
+  const asterisks = answerString.replace(/\S/g, "*")
+  answer.textContent = asterisks
 
   // Show the answer letters one by one with an 8-second delay
   for (let i = 0; i < 4 && i < answerString.length; i++) {
-    await new Promise(resolve => setTimeout(resolve, 8000));
-    const letter = answerString[i] === ' ' ? ' ' : answerString[i] === '\n' ? '\n' : answerString[i] === '\t' ? '\t' : answerString[i] === '\r' ? '\r' : answerString[i] === '\f' ? '\f' : answerString[i] === '\v' ? '\v' : answerString[i];
-    answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1);
+    await new Promise((resolve) => setTimeout(resolve, 8000))
+    const letter =
+      answerString[i] === " "
+        ? " "
+        : answerString[i] === "\n"
+        ? "\n"
+        : answerString[i] === "\t"
+        ? "\t"
+        : answerString[i] === "\r"
+        ? "\r"
+        : answerString[i] === "\f"
+        ? "\f"
+        : answerString[i] === "\v"
+        ? "\v"
+        : answerString[i]
+    answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1)
   }
 }
-
-
-
-
 
 //
 //                    LITAI
@@ -225,7 +234,7 @@ const handleUserAnswer = async (userAnswer) => {
     document.getElementById("answer").innerHTML = successMsg
 
     const gameNo = randomGame()
-    console.log('randomGame generates: ' + gameNo)
+    console.log("randomGame generates: " + gameNo)
     playGame()
 
     const url = "http://localhost:8000/a_points.js"
@@ -335,4 +344,22 @@ function playGame() {
     console.log("game not ready")
   }
 }
+
+//
+//
+//
+//
+//
+// const btn = document.getElementById('today-top-btn');
+// const topPlayers = ["Player 1", "Player 2", "Player 3", "Player 4", "Player 5", "Player 6", "Player 7", "Player 8", "Player 9", "Player 10"];
+
+// btn.addEventListener('click', () => {
+//   const topList = document.createElement('ul');
+//   topPlayers.forEach(player => {
+//     const listItem = document.createElement('li');
+//     listItem.textContent = player;
+//     topList.appendChild(listItem);
+//   });
+//   document.querySelector('.today-top').appendChild(topList);
+// });
 

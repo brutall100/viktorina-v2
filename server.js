@@ -135,4 +135,5 @@ app.listen(port, () => {
   console.log(`Serveris prisijunges on http://localhost:${port}`)
 })
 
+// 
 // C:\xampp\htdocs\aldas\Viktorina.live> node server.js
