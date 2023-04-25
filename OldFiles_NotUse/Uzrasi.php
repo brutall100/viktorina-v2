@@ -66,6 +66,9 @@ pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, 
  <!-- 21 -->
  <!-- Gal GALBUT ateiciai reikes padaryti ,  jei atsakymas iš 2 ar daugiau zodziu, kad ir tie zodziai atsiverstu kaip dabar pirmas zodis -->
 
+ <!-- 22 -->
+ <!-- Padaryti tavo today points grazu atvaizdavima .Sios dienos tavo surinti taskai -->
+
 
 
 

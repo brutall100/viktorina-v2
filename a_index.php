@@ -69,14 +69,15 @@
     if (isset($_GET['name'])) {
       $name = $_GET['name'];
       $conn = mysqli_connect("localhost", "root", "", "viktorina");
-      $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
+      $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id FROM super_users WHERE nick_name = '$name'";
       $result = mysqli_query($conn, $query);
       if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $level = $row['user_lvl'];
         $points = $row['litai_sum'];
+        $points_today = $row['litai_sum_today'];
         $user_id = $row['user_id'];
-        echo "Welcome, $name! Your current level is $level and you have $points points. Your id: $user_id";
+        echo "Welcome, $name! Your current level is $level and you have $points points.Today's points $points_today . Your id: $user_id";
       
       } else {
         echo "User not found!";
@@ -87,9 +88,41 @@
     }
     ?>
 
+
+<!--  -->
+<!--  -->
+<?php
+if (isset($_GET['get_top_players'])) {
+  $conn = mysqli_connect("localhost", "root", "", "viktorina");
+  $query = "SELECT nick_name, litai_sum_today FROM super_users ORDER BY litai_sum_today DESC LIMIT 10";
+  $result = mysqli_query($conn, $query);
+
+  if (mysqli_num_rows($result) > 0) {
+    echo "<h3>Today's top 10 players:</h3>";
+    echo "<ol>";
+    while ($row = mysqli_fetch_assoc($result)) {
+      $name = $row['nick_name'];
+      $points_today = $row['litai_sum_today'];
+      echo "<li>$name - $points_today points today</li>";
+    }
+    echo "</ol>";
+  } else {
+    echo "No players found!";
+  }
+  mysqli_close($conn);
+}
+?>
+
+
     <section class="today-top">
       <button class="today-top-btn" id="today-top-btn" >Šiandienos TOP 10</button>
+      <ol class="today-top-list" id="today-top-list"></ol>
     </section>
+
+
+    <script> 
+    // empty
+    </script>
 
     <section class="litas-container">
       <div class="litas-container-img" id="litai-img-bonus"></div>
