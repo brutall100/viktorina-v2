@@ -355,10 +355,12 @@ document.getElementById('today-top-btn').addEventListener('click', function() {
   xhr.open('GET', 'a_top_players.php?get_top_players=true', true);
   xhr.onload = function() {
     if (xhr.status === 200) {
-      document.querySelector('.today-top').innerHTML = xhr.responseText;
+      var todayTop = document.querySelector('.today-top');
+      todayTop.innerHTML = xhr.responseText;
+      todayTop.style.height = 'auto'; /* Set height to 'auto' to allow it to expand */
     } else {
       console.log('Request failed.  Returned status of ' + xhr.status);
     }
-  };
+  };  
   xhr.send();
 });

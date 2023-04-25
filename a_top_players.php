@@ -6,18 +6,22 @@ if (isset($_GET['get_top_players'])) {
 
   if (mysqli_num_rows($result) > 0) {
     echo "<h3>Today's top 10 players:</h3>";
-    echo "<ol>";
+    echo "<ol class='today-top-list'>";
+    $i = 1;
     while ($row = mysqli_fetch_assoc($result)) {
       $name = $row['nick_name'];
       $points_today = $row['litai_sum_today'];
-      echo "<li>$name - $points_today points today</li>";
+      echo "<li>$i: $name $points_today Litai</li>";
+      $i++;
     }
     echo "</ol>";
   } else {
     echo "No players found!";
   }
+  
   mysqli_close($conn);
 }
 ?>
+
 
 <!-- Paapaudus Btn a_index.php parodys sios dienos top 10 pagal litus -->

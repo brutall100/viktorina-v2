@@ -29,12 +29,16 @@ body {
 /* Today Top section */
 .today-top {
   position: relative;
+  height: 3em; /* Set initial height */
+  border: 10px solid rgb(36, 39, 39);
+  width: 200px;
+  transition: height 0.3s ease-in-out; /* Add a transition for the height */
 }
 
 .today-top-btn {
   position: absolute;
-  top: -4em;
-  right: 1.1em;
+  /* top: -4em;
+  right: 1.1em; */
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -55,6 +59,21 @@ body {
   box-shadow: 0px 15px 20px rgba(46, 204, 113, 0.4);
   transform: translateY(-7px);
 }
+
+.today-top-list {
+  list-style-type: none;
+  margin-right: auto;
+  padding-left: 0;
+}
+
+.today-top-list li {
+  margin: 5px;
+  font-size: 20px;
+  /* display: block; */
+}
+
+
+
 
 /*  */
 /* Pagrindinis question and answer containeris */
