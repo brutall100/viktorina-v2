@@ -6,12 +6,12 @@ if (isset($_GET['get_top_players'])) {
 
   if (mysqli_num_rows($result) > 0) {
     // echo "<h3>Today's top 10 playyers:</h3>";
-    // echo "<ol class='today-top-list'>";
+    echo "<ol class='today-top-list'>";
     $i = 1;
     while ($row = mysqli_fetch_assoc($result)) {
       $name = $row['nick_name'];
       $points_today = $row['litai_sum_today'];
-      echo "<li>TOP $i $name $points_today Litai</li>";
+      echo "<li class='today-top-list-li' >TOP $i $name $points_today Litai</li>";
       $i++;
     }
     echo "</ol>";

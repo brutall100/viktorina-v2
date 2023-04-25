@@ -356,7 +356,7 @@ document.getElementById('today-top-btn').addEventListener('click', function() {
     if (xhr.status === 200) {
       var todayTop = document.querySelector('.today-top');
       todayTop.innerHTML = xhr.responseText;
-      todayTop.style.height = 'auto'; /* Set height to 'auto' to allow it to expand */
+      // todayTop.style.height = 'auto'; /* Set height to 'auto' to allow it to expand */
     } else {
       console.log('Request failed.  Returned status of ' + xhr.status);
     }
