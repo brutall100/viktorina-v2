@@ -96,7 +96,7 @@
 
     <section class="today-top">
       <button class="today-top-btn" id="today-top-btn" >Šiandienos TOP 10</button>
-      <ol class="today-top-list" id="today-top-list"></ol>
+      <!-- <ol class="today-top-list" id="today-top-list"></ol> -->
     </section>
 
 
