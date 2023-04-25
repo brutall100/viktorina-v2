@@ -24,4 +24,4 @@ if (isset($_GET['get_top_players'])) {
 ?>
 
 
-<!-- Paapaudus Btn a_index.php parodys sios dienos top 10 pagal litus -->
+<!-- PHP funkcija     a_top_players.php    paiima is DuomenuBazes  litai_sum_today  -->

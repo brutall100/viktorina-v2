@@ -348,8 +348,7 @@ function playGame() {
 //
 //
 //
-//
-//
+//Funkcija paspaudus <today-top-btn>>> paiima is a_top_players.php koda ir atvaizduoja snd top 10  
 document.getElementById('today-top-btn').addEventListener('click', function() {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', 'a_top_players.php?get_top_players=true', true);
