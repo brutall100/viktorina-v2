@@ -56,7 +56,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire pagrindinaime puslapyje -->
 
 <!-- 19 -->
-<!--Game2  Reikia ziureti ka jis ten skaiciuoja. Nes tai prideda tai atima -->
+<!-- -->
 
 <!-- 20 -->
 <!-- b_newquestion.php cia iskylantis phhp puslapis reikia sutvarkyti zinute, prideti css pagrazinti,
@@ -64,7 +64,7 @@ pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, 
 reikia atskirt css kazkaip gal bendra raide dadeti  -->
 
 <!-- 21 -->
-<!-- Gal GALBUT ateiciai reikes padaryti ,  jei atsakymas iš 2 ar daugiau zodziu, kad ir tie zodziai atsiverstu kaip dabar pirmas zodis -->
+<!--  -->
 
 <!-- 22 -->
 <!-- Padaryti tavo today points grazu atvaizdavima .Sios dienos tavo surinti taskai -->
@@ -125,4 +125,14 @@ You need to replace 'your_secret_key' with the Secret key that you obtained from
 This is just a basic example of how to add a reCAPTCHA to your form, you can customize it according to your requirements.
 
 <!-- / -->
-<!--           / -->
+<!-- Planai po ikelimo i web / -->
+
+<!-- 1 -->
+<!-- Gal GALBUT ateiciai reikes padaryti ,jei atsakymas iš 2 ar daugiau zodziu, kad ir tie zodziai atsiverstu kaip dabar pirmas zodis. -->
+
+<!-- 2 -->
+<!-- Trecias game (Galimai 4) bus zodziu grandinele. Reikia sukurti DB grandinelei. ir zaidima ir t.t -->
+<!-- PVZ: Vieno perejimo pauksciai?   VADA
+                   Arimo griovelis?   VAGA
+                Drabuzius susegame?   SAGA
+               isegamas papuosalas?   SAGĖ -->

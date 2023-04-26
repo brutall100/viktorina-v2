@@ -6,7 +6,6 @@
 
 body {
   position: relative;
-  font-size: 1em;
   background-color: lightblue;
   background: url(http://localhost/aldas/Viktorina.live/images/background/website4.png);
   background-repeat: no-repeat;
@@ -28,15 +27,27 @@ body {
 
 /*  */
 /* Today Top section */
-.today-top-btn { 
+.today-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 4em;
   position:absolute;
-  right: 1em;
-  
-  background-color: #4CAF50; /* Green */
+  right: 2em;
+  height: 3em; /* Set initial height */
+  border: 5px solid rgb(36, 39, 39);
+  width: 260px;
+  min-height: 290px;
+
+}
+
+.today-top-btn { 
+  background-color: #a65b46; 
   border: none;
   color: white;
   padding: 11px 10px;
   text-align: center;
+  width: 150px;
   text-decoration: none;
   font-size: 14px;
   margin: 4px 2px;
@@ -46,26 +57,19 @@ body {
 
 
 
-.today-top {
-  top: 3.5em;
-  position:absolute;
-  right: 2em;
-  height: 3em; /* Set initial height */
-  border: 5px solid rgb(36, 39, 39);
-  width: 250px;
-  min-height: 270px;
 
-}
 
 /* .today-top-list {
   
 } */
 
 .today-top-list-li {
-  border: 4px solid rgb(11, 5, 37);
+  
+  border: .5px solid rgb(11, 5, 37);
   margin: 3px;
-  padding: 2px;
-  float: left; /* align to the left */
+  float: none;
+  width: 100%;
+
 }
 
 
@@ -83,13 +87,13 @@ body {
   left: 50%; /* Change the left position to 50% */
   transform: translate(-50%, 0);
   margin: auto;
-  width: 70%;
+  width: 50%;
   /* or any other desired width */
   height: 200px;
   /* or any other desired height */
   justify-content: center;
   align-items: center;
-  border: 5px solid orangered;
+  border: 10px solid orangered;
 }
 
 .super-container-qna-section {

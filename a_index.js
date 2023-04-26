@@ -350,16 +350,27 @@ function playGame() {
 //
 //Funkcija paspaudus <today-top-btn>>> paiima is a_top_players.php koda ir atvaizduoja snd top 10  
 document.getElementById('today-top-btn').addEventListener('click', function() {
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'a_top_players.php?get_top_players=true', true);
-  xhr.onload = function() {
-    if (xhr.status === 200) {
-      var todayTop = document.querySelector('.today-top');
-      todayTop.innerHTML = xhr.responseText;
-      // todayTop.style.height = 'auto'; /* Set height to 'auto' to allow it to expand */
-    } else {
-      console.log('Request failed.  Returned status of ' + xhr.status);
-    }
-  };  
-  xhr.send();
+  var todayTop = document.querySelector('.today-top');
+  var list = todayTop.querySelector('.today-top-list');
+
+  if (list) {
+    // If list exists, remove it
+    todayTop.removeChild(list);
+  } else {
+    // If list doesn't exist, load it using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'a_top_players.php?get_top_players=true', true);
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        var list = document.createElement('ol');
+        list.className = 'today-top-list';
+        list.innerHTML = xhr.responseText;
+        todayTop.appendChild(list);
+      } else {
+        console.log('Request failed. Returned status of ' + xhr.status);
+      }
+    };
+    xhr.send();
+  }
 });
+

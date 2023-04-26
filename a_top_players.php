@@ -11,7 +11,7 @@ if (isset($_GET['get_top_players'])) {
     while ($row = mysqli_fetch_assoc($result)) {
       $name = $row['nick_name'];
       $points_today = $row['litai_sum_today'];
-      echo "<li class='today-top-list-li' >TOP $i $name $points_today Litai</li>";
+      echo "<li class='today-top-list-li' >Top $i: $name $points_today Litai</li>";
       $i++;
     }
     echo "</ol>";
