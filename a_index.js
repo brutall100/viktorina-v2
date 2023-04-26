@@ -349,15 +349,36 @@ function playGame() {
 //
 //
 //Funkcija paspaudus <today-top-btn>>> paiima is a_top_players.php koda ir atvaizduoja snd top 10  
+// Check if there is a stored state for the list
+if (sessionStorage.getItem('listState') === 'open') {
+  // Load the list using AJAX
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'a_top_players.php?get_top_players=true', true);
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      var todayTop = document.querySelector('.today-top');
+      var list = document.createElement('ol');
+      list.className = 'today-top-list';
+      list.innerHTML = xhr.responseText;
+      todayTop.appendChild(list);
+    } else {
+      console.log('Request failed. Returned status of ' + xhr.status);
+    }
+  };
+  xhr.send();
+}
+
+// Add click event listener to the button
 document.getElementById('today-top-btn').addEventListener('click', function() {
   var todayTop = document.querySelector('.today-top');
   var list = todayTop.querySelector('.today-top-list');
 
   if (list) {
-    // If list exists, remove it
+    // If list exists, remove it and store state as closed
     todayTop.removeChild(list);
+    sessionStorage.setItem('listState', 'closed');
   } else {
-    // If list doesn't exist, load it using AJAX
+    // If list doesn't exist, load it using AJAX and store state as open
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'a_top_players.php?get_top_players=true', true);
     xhr.onload = function() {
@@ -366,6 +387,7 @@ document.getElementById('today-top-btn').addEventListener('click', function() {
         list.className = 'today-top-list';
         list.innerHTML = xhr.responseText;
         todayTop.appendChild(list);
+        sessionStorage.setItem('listState', 'open');
       } else {
         console.log('Request failed. Returned status of ' + xhr.status);
       }
@@ -373,4 +395,6 @@ document.getElementById('today-top-btn').addEventListener('click', function() {
     xhr.send();
   }
 });
+
+
 
