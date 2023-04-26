@@ -96,13 +96,7 @@
 
     <section class="today-top">
       <button class="today-top-btn" id="today-top-btn" >Šiandienos TOP 10</button>
-      <!-- <ol class="today-top-list" id="today-top-list"></ol> -->
     </section>
-
-
-    <script> 
-    // empty
-    </script>
 
     <section class="litas-container">
       <div class="litas-container-img" id="litai-img-bonus"></div>

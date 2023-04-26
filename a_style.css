@@ -55,10 +55,6 @@ body {
   border-radius: 10px;
 }
 
-
-
-
-
 /* .today-top-list {
   
 } */
@@ -83,17 +79,16 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 15%;
+  top: 45%;
   left: 50%; /* Change the left position to 50% */
   transform: translate(-50%, 0);
   margin: auto;
+  padding: 20px;
   width: 50%;
-  /* or any other desired width */
-  height: 200px;
-  /* or any other desired height */
+  height: 300px;  
   justify-content: center;
   align-items: center;
-  border: 10px solid orangered;
+  border: 2px dotted orangered;
 }
 
 .super-container-qna-section {
@@ -119,6 +114,8 @@ body {
   font-family: Arial, sans-serif;
   font-size: 1.3em;
   color: rgb(34, 34, 34); /* Set the color of the asterisks */
+  padding: 10px;
+  border: 2px solid rgb(151, 117, 37);
 }
 
 
@@ -179,16 +176,16 @@ body {
 
 .litas-container {
   position: absolute;
-  bottom: 22%;
+  /* bottom: 22%; */
   left: 10%; /* Change the left position to 50% */
   transform: translate(-50%, 0); /* Use translate to adjust the element's position */
-  /* display: block; */
-  /* justify-content: center; */
+  /* display: block;
+  justify-content: center; */
   padding: 5px;
   margin: 10px auto; /* Use margin: auto to center the element */
   width: 200px;
   height: 200px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 
 .litas-container-img {
@@ -204,8 +201,9 @@ body {
   }
 }
 
-.points-container .super {
-  float: left;
+.points-container{
+  /* float: left; */
+  border: 3px solid brown;
 }
 
 .hidden-bonus {
@@ -313,8 +311,8 @@ body {
   position: fixed;
   bottom: 10vh;
   right: 2vh;
-  height: 40vh;
-  width: 20vh;
+  height: 30vh;
+  width: 55vh;
   margin: 0.5rem;
   padding: 0.5rem;
 }
