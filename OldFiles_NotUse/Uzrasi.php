@@ -64,7 +64,7 @@ pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, 
 reikia atskirt css kazkaip gal bendra raide dadeti  -->
 
 <!-- 21 -->
-<!--  -->
+<!-- Pirmo game isvaizda padaryti gera ir automatiskai uzdaryti uz 3 sekunds -->
 
 <!-- 22 -->
 <!-- Padaryti tavo today points grazu atvaizdavima .Sios dienos tavo surinti taskai -->
