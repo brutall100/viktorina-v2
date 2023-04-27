@@ -13,7 +13,7 @@ Ir balsaviam su didesniu kiekiu padaryti tai yra kai parbalsuoja kokie 15 zmoniu
 Padaryti atverciamas tik 4 raides apie 40sekunziu paleisti funkcija po 40 kad parodyti atsakyma, input disabled, reload after 45 seconds from async-->
 
 <!-- 5 -->
-<!-- Dienos topas kiek klausimu atsake kiek uzdirbo naujas modal issokantis su php mysql -->
+<!--  -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->
@@ -41,7 +41,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
 
 <!-- 14 -->
-<!-- Raides eitu i kvadratukus,kad nurodytu raidziu kieki atsakyme padaryti kad rodytu tarpa nematoma Underscore -->
+<!--  -->
 
 <!-- 15 -->
 <!-- Button perkelti padaryti prieinama nuo 4 lvl -->
@@ -136,3 +136,7 @@ This is just a basic example of how to add a reCAPTCHA to your form, you can cus
                    Arimo griovelis?   VAGA
                 Drabuzius susegame?   SAGA
                isegamas papuosalas?   SAGĖ -->
+
+<!-- 3 -->
+<!-- Paspaudus irasyti klausima iskristu dropdown'as su Irasyti klausima
+                                                        Irasyti grandineles klausima-->

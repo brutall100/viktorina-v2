@@ -233,9 +233,11 @@ const handleUserAnswer = async (userAnswer) => {
     const successMsg = `Teisingai atsakė ${userData.name}: <span class="corect-answer-answered">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`
     document.getElementById("answer").innerHTML = successMsg
 
+    // 
     const gameNo = randomGame()
     console.log("randomGame generates: " + gameNo)
     playGame()
+    //  
 
     const url = "http://localhost:8000/a_points.js"
     const body = JSON.stringify({
@@ -328,7 +330,7 @@ const lefts = window.innerWidth / 2 - widths / 2
 const tops = window.innerHeight / 2 - heights / 2
 
 function playGame() {
-  const gameNo = randomGame() //========= 3.6.9;
+  const gameNo = 3  //========= 3.6.9   randomGame();
   console.log("randomGame generates: " + gameNo)
 
   if (gameNo === 3) {
