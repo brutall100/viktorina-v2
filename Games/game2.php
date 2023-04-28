@@ -8,13 +8,14 @@
   <title>Įrašyk teisingą atsakymą</title>
 </head>
 <body>
-<div id="greeting">
-    <?php
-      session_start();
-      $name = $_GET['name'];
-      echo "<div> Labas $name, Jūs žaisite žaidimą SUSKAIČIUOK! </div>";
-    ?>
-</div>
+  <div id="greeting">
+     <?php
+     session_start();
+     $name = $_GET['name'];
+     echo "<div> Labas $name, Jūs žaisite žaidimą SUSKAIČIUOK! </div>";
+     ?>
+  </div>
+  
   <div class="container">
     <h2>Šiame žaidime gali laimėti nuo -200 iki +200 litų.</h2>
     <p id="question"></p>

@@ -1,9 +1,3 @@
-<?php
-  session_start();
-  $name = $_GET['name'];
-  echo "$name, laimėjai žaidimą pasirink prizą";
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +7,12 @@
   <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/Games/gameStyle1.css" />
   <title>Pasirink prizą</title>
 </head>
+
+<?php
+  session_start();
+  $name = $_GET['name'];
+  echo "$name, laimėjai žaidimą pasirink prizą";
+?>
 
 <body>
 
@@ -29,7 +29,7 @@
 <script>
 const randomValues = [gameLitai(), gameLitai(), gameLitai()];
 let selectedBox = null;
-let countdown = 10;
+let countdown = 10;   //lango uzdarymo laikas s
 
 function gameLitai() {
   return Math.floor(Math.random() * 601) - 100;
@@ -42,12 +42,26 @@ function showValues() {
 }
 
 function showMessage(boxNumber) {
-  message1.innerHTML = `Jūs pasirinkote ${boxNumber} dėžutę. Joje radote ${selectedBox.innerHTML}`;
+  let points = parseInt(selectedBox.innerHTML);
+  let word;
+  if (points % 10 === 1 && points % 100 !== 11) {
+  word = "Litą";
+} else if (points % 10 >= 2 && points % 10 <= 9 && (points % 100 < 10 || points % 100 >= 20)) {
+  word = "Litus";
+} else {
+  word = "Litų";
+}
+
+
+
+
+
+  message1.innerHTML = `Jūs pasirinkote ${boxNumber} dėžutę. Radote ${points} ${word}.`;
 
   // Send data to server
   const data = {
     user_id_name: "<?php echo $name; ?>",
-    points: parseInt(selectedBox.innerHTML)
+    points: points
   };
 
   fetch('http://localhost:5000/playGame.js', {
@@ -66,10 +80,11 @@ function showMessage(boxNumber) {
   });
 }
 
+
 function startCountdown() {
   countdown--;
   if (countdown > 0) {
-    message.innerHTML = `Jūsų pasirinkimas  buvo užregistruotas. Langas užsidarys po ${countdown} sekundžių.`;
+    message.innerHTML = `Langas užsidarys po ${countdown} sekundžių.`;
     setTimeout(startCountdown, 1000);
   } else {
     window.close();
