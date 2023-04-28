@@ -1,6 +1,20 @@
                         /* game1.php */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+                          
+h3 {
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+    margin-top: 20px;
+    }
+      
+
 .box {
-   background-color: lightgray;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
    width: 100px;
    height: 100px;
    margin: 10px;
@@ -12,6 +26,14 @@
    align-items: center;
    cursor: pointer;
 }
+
+#message1, #message {
+    background-color: #FAFAFA;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    margin: 10px;
+  }
   
 .unclickable {
     pointer-events: none;
