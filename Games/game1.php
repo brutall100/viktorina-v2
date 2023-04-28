@@ -44,6 +44,9 @@ function showValues() {
 function showMessage(boxNumber) {
   let points = parseInt(selectedBox.innerHTML);
   let word;
+  if (points < 0) {
+    points = Math.abs(points);
+  }
   if (points % 10 === 1 && points % 100 !== 11) {
   word = "Litą";
 } else if (points % 10 >= 2 && points % 10 <= 9 && (points % 100 < 10 || points % 100 >= 20)) {
