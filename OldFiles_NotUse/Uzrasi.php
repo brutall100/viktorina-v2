@@ -139,4 +139,13 @@ This is just a basic example of how to add a reCAPTCHA to your form, you can cus
 
 <!-- 3 -->
 <!-- Paspaudus irasyti klausima iskristu dropdown'as su Irasyti klausima
-                                                        Irasyti grandineles klausima-->
+                                                        Irasyti grandineles klausima -->
+
+<!-- 4 -->
+<!-- Seimyniniai klausimai kiekviena seima gales sukurti db apie savo seima ir zaisti seimoje -->
+
+<!-- 5 -->
+<!-- Vaikiski klausimai vaiku db  vaikai patys gali rasyti klausimus -->
+
+<!-- 6 -->
+<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos -->
