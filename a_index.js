@@ -209,12 +209,13 @@ answerForm.addEventListener("submit", (event) => {
   answerInput.value = ""
 })
 
-let isTimeUp = false
-setTimeout(() => {
-  isTimeUp = true
-  oldQuestionData()
-  console.log("time is over")
-}, 45000) // Ketik pakeistas 2023 04 19 prideta 5 seconds
+// let isTimeUp = false
+// setTimeout(() => {
+//   isTimeUp = true
+//   oldQuestionData()
+//   console.log("time is over")
+// }, 45000) // Ketik pakeistas 2023 04 19 prideta 5 seconds
+// uzdraustas 04 29
 
 const handleUserAnswer = async (userAnswer) => {
   const data = await fetchData()
@@ -325,7 +326,7 @@ function randomGame() {
 }
 
 const widths = 520 // Kontroliuoja issokancio lango dydzius ir pozicija
-const heights = 400
+const heights = 420
 const lefts = window.innerWidth / 2 - widths / 2
 const tops = window.innerHeight / 2 - heights / 2
 

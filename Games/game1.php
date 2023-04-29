@@ -24,12 +24,29 @@
   </div>
 
   <div id="message1"></div>
-  <div id="message"></div>
+  <div class="message-container">
+    <div id="messageWin" class="message message-win"></div>
+    <div id="closeMessage" class="message message-close"></div>
+  </div>
+
 
 <script>
 const randomValues = [gameLitai(), gameLitai(), gameLitai()];
 let selectedBox = null;
-let countdown = 10;   //lango uzdarymo laikas s
+let pageCloseCountdown = 100;  //puslapio uzdarymo laikas 8
+let countdown = 7;   //lango uzdarymo laikas s  4
+
+
+function startClosePage() {
+  pageCloseCountdown--;
+  if (pageCloseCountdown > 0) {
+    closeMessage.innerHTML = `Likęs laikas pasirnkti ${pageCloseCountdown} sekundžių.`;
+    setTimeout(startClosePage, 1000);
+  } else {
+    window.close();
+  }
+}
+startClosePage()
 
 function gameLitai() {
   return Math.floor(Math.random() * 601) - 100;
@@ -44,15 +61,15 @@ function showValues() {
 function showMessage(boxNumber) {
   let points = parseInt(selectedBox.innerHTML);
   let word;
-    if (points % 10 === 1 && points % 100 !== 11) {
-    word = "Litą";
-  } else if (points % 10 >= 2 && points % 10 <= 9 && (points % 100 < 10 || points % 100 >= 20)) {
-    word = "Litus";
-  } else {
-    word = "Litų";
-  }
-  if (selectedBox.innerHTML.includes("-")) {
-      word = "Lt";
+  if (points % 10 === 1 && points % 100 !== 11) {
+  word = "Litą";
+} else if (points % 10 >= 2 && points % 10 <= 9 && (points % 100 < 10 || points % 100 >= 20)) {
+  word = "Litus";
+} else {
+  word = "Litų";
+}
+if (selectedBox.innerHTML.includes("-")) {
+    word = "Lt";
 }
 
 
@@ -87,7 +104,7 @@ function showMessage(boxNumber) {
 function startCountdown() {
   countdown--;
   if (countdown > 0) {
-    message.innerHTML = `Langas užsidarys po ${countdown} sekundžių.`;
+    messageWin.innerHTML = `Langas užsidarys po ${countdown} sekundžių.`;
     setTimeout(startCountdown, 1000);
   } else {
     window.close();
