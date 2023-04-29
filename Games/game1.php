@@ -25,16 +25,17 @@
 
   <div id="message1"></div>
   <div class="message-container">
-    <div id="messageWin" class="message message-win"></div>
-    <div id="closeMessage" class="message message-close"></div>
+    <div id="messageWin" class="message message-win">Langas užsidarys po 4 sekundžių.</div>
+    <div id="closeMessage" class="message message-close">8</div>
   </div>
 
 
 <script>
 const randomValues = [gameLitai(), gameLitai(), gameLitai()];
 let selectedBox = null;
-let pageCloseCountdown = 100;  //puslapio uzdarymo laikas 8
-let countdown = 7;   //lango uzdarymo laikas s  4
+let pageCloseCountdown = 8;  //puslapio uzdarymo laikas 8
+let countdown = 4;   //lango uzdarymo laikas s  4
+let stopClosePage = false; // reiskia laikas paleistas veikia
 
 
 function startClosePage() {
