@@ -37,28 +37,30 @@ const refreshData = (callback) => {
     user: "root",
     password: "",
     database: "viktorina"
-  })
-  connection.connect()
+  });
 
-  const sql = "SELECT id, question, answer FROM main_database ORDER BY RAND() LIMIT 1"
+  connection.connect();
+
+  const sql = "SELECT id, question, answer FROM main_database WHERE LENGTH(question) - LENGTH(REPLACE(question, ' ', '')) + 1 <= 21 ORDER BY RAND() LIMIT 1";
 
   connection.query(sql, (err, results) => {
-    if (err) throw err
+    if (err) throw err;
 
-    const randomNumber = Math.floor(Math.random() * 5) + 1
+    const randomNumber = Math.floor(Math.random() * 5) + 1;
 
-    cachedData = {
+    const cachedData = {
       ...results[0],
       lita: randomNumber,
       bonusLita: bonusLita
-    }
+    };
 
-    console.log(cachedData)
-    console.log(cachedData.id)
-    connection.end()
-    callback(cachedData)
-  })
-}
+    console.log(cachedData);
+    console.log(cachedData.id);
+    connection.end();
+    callback(cachedData);
+  });
+};
+
 
 // Serverio refreshas kas 45 sekundes.Ir tikrina litai_sum.
 let previousLitaiSum = null
