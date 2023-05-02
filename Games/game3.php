@@ -8,19 +8,35 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Papildomas Klausimas</title>
   </head>
-<body>
-  <!-- <div id="greeting"></div> -->
-    <?php
-      session_start();
-      $name = $_GET['name'];
-      echo "<div> Labas $name, Jūs gavote progą atsakyti į papildomą klausimą.</div>";
-    ?>
+
+  <?php
+    session_start();
+    $name = $_GET['name'];
+    echo "<div> Labas $name, Jūs gavote progą atsakyti į papildomą klausimą.</div>";
+  ?>
+
+  <body>
+    <div class="container"> 
 
 
 
-    <div id="question"></div>
-    <div id="answer"></div>
-    <div id="id"></div>
+
+
+
+
+
+
+
+      <h2>Šiame žaidime gali laimėti nuo 5 minučių BAN iki +300 litų.</h2>
+      
+      <div id="question"></div>
+      <div id="answer"></div>
+      <div id="id"></div>
+
+
+      <div id="closeMessage" class="message message-close"></div>
+    </div>
+    
 
 
     <script>
@@ -31,19 +47,23 @@
           $('#id').text(`ID: ${data.id}`);
         });
       });
+
+      function startClosePage() {
+        let pageCloseCountdown = 20;  // Lango uzdarymo laikas
+        function countdown() {
+          pageCloseCountdown--;
+          if (pageCloseCountdown > 0) {
+            closeMessage.innerHTML = `Likęs laikas atsakymui ${pageCloseCountdown} sekundžių.`;
+            setTimeout(countdown, 1000);
+          } else {
+            window.close();
+          }
+        }
+        countdown();
+      }
+      startClosePage();
+
     </script>
-
-
-
-
-
-  <div class="container"> 
-    <h2>Šiame žaidime gali laimėti nuo 5 minučių BAN iki +300 litų.</h2>
-    
-  </div>
-  
-
-
-</body>
+  </body>
 </html>
 <!-- Nu arba papildomo klausimo game random +300 ir ban  -100 ir ban 5minutem  -->
