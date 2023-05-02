@@ -322,7 +322,7 @@ function checkLettersAndCompare(str1, str2) {
 // Games section
 
 function randomGame() {
-  return Math.floor(Math.random() * 10)
+  return Math.floor(Math.random() * 50) //Tikimybe laimeti papildoma GAME
 }
 
 const widths = 520 // Kontroliuoja issokancio lango dydzius ir pozicija
@@ -331,7 +331,7 @@ const lefts = window.innerWidth / 2 - widths / 2
 const tops = window.innerHeight / 2 - heights / 2
 
 function playGame() {
-  const gameNo = 3  //========= 3.6.9   randomGame();
+  const gameNo = 9  //========= 3.6.9   randomGame();
   console.log("randomGame generates: " + gameNo)
 
   if (gameNo === 3) {
