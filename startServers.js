@@ -16,6 +16,10 @@ console.log('playGame.js started on port 5000');
 const aPointsServerProcess = spawn('node', ['a_points.js']);
 console.log('a_points.js started on port 8000');
 
+// Start game3server.js
+const game3serverProcess = spawn('node', ['./Games/game3server.js']);
+console.log('game3server.js started on port 7000');
+
 // Handle errors
 serverProcess.on('error', (err) => {
   console.error('Error starting server.js', err);
@@ -33,6 +37,10 @@ aPointsServerProcess.on('error', (err) => {
   console.error('Error starting a_points.js', err);
 });
 
+game3serverProcess.on('error', (err) => {
+  console.error('Error starting game3server.js', err);
+});
+
 // Handle exit events
 serverProcess.on('exit', (code) => {
   console.log(`server.js exited with code ${code}`);
@@ -48,4 +56,8 @@ gameServerProcess.on('exit', (code) => {
 
 aPointsServerProcess.on('exit', (code) => {
   console.log(`a_points.js exited with code ${code}`);
+});
+
+game3serverProcess.on('exit', (code) => {
+  console.log(`game3server.js exited with code ${code}`);
 });
