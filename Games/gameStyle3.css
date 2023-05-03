@@ -4,3 +4,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body{
+  background-color: aqua;
+}
+
+#question{
+  background-color: blanchedalmond;
+}
+
+#answer-asteriks{
+  color: brown;
+}
