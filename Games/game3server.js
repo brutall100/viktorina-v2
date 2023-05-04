@@ -1,8 +1,15 @@
 const express = require('express');
 const mysql = require('mysql');
+const rateLimit = require("express-rate-limit");
 const port = 7000;
 
 const app = express();
+
+const limiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minute laiko turi praeti kol serveris leis perkrovima
+    max: 1, // limit each IP to 1 requests per windowMs
+  });
+  app.use(limiter);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -18,7 +18,7 @@
   <body>
     <div class="container"> 
       <header>
-        <h2>Šiame žaidime gali laimėti nuo 5 minučių BAN iki +300 litų.</h2>
+        <h2>Šiame žaidime gali laimėti nuo -100 Litų iki +300 Litų.</h2>
       </header>
 
 
@@ -58,13 +58,49 @@ $(document).ready(() => {
     }
     $('#question').text(`Klausimas: ${data.question}`);
     $('#answer-asteriks').text(hiddenAnswer.trim());
-    $('#submit-answer').click(() => {
+    $('#submit-answer').click(event => {
+      event.preventDefault(); // prevent page from reloading
+      
+      // Check if the user has already answered within the last minute
+      const hasAnswered = localStorage.getItem('hasAnswered');
+      if (hasAnswered && Date.now() - hasAnswered < 60 * 1000) {
+        alert("You can only answer once per minute.");
+        return;
+      }
+      
       const userAnswer = $('#answer-input').val().toLowerCase();
       // Compare user's answer to the actual answer here
       if (checkLettersAndCompare(userAnswer, serverAnswer)) {
-        $('#winning-message').text(`Atsakymas teisingas! ${actualAnswer} Jūs laimėjote 300 litų.`);
+        const points = generatePoints();
+        const message = showMessage(points, 'Lit');
+        $('#winning-message').text(`Atsakymas teisingas! ${actualAnswer} ${message}`);
         $('#answer-input').prop('disabled', true);
         $('#submit-answer').prop('disabled', true);
+        // Send data to server
+        const data = {
+          user_id_name: "<?php echo $name; ?>",
+          points: points
+        };
+        fetch('http://localhost:5000/playGame.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          mode: 'no-cors',
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+        
+        // Set the hasAnswered flag in localStorage with an expiration time of 1 minute
+        localStorage.setItem('hasAnswered', Date.now());
+        setTimeout(() => {
+          localStorage.removeItem('hasAnswered');
+        }, 60 * 1000);
       } else {
         $('#winning-message').text(`Atsakymas ${userAnswer} yra neteisingas! Bandykite kitą kartą. Atsakymas buvo ${actualAnswer}.`);
         $('#answer-input').val('');
@@ -72,6 +108,9 @@ $(document).ready(() => {
     });
   });
 });
+
+
+
 
 function checkLettersAndCompare(str1, str2) {
   const letterMap = {
@@ -91,6 +130,24 @@ function checkLettersAndCompare(str1, str2) {
 
   return cleanStr1 === cleanStr2
 }
+
+function generatePoints() {
+  return Math.floor(Math.random() * 251) + 50;
+}
+
+
+function showMessage(points, word) {
+  if (points % 10 === 1 && points % 100 !== 11) {
+    // handles numbers that end with 1
+    return `Jūs laimėjote ${points} ${word}ą.`;
+  } else {
+    // handles all other numbers
+    return `Jūs laimėjote ${points} ${points % 10 === 0 || (points % 100 >= 11 && points % 100 <= 19) ? `${word}u` : `${word}us`}.`;
+  }
+}
+
+
+
 
 
 
