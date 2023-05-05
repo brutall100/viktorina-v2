@@ -47,7 +47,7 @@
     
 
 
-    <script>
+<script>
 $(document).ready(() => {
   $.get('http://localhost:7000/game3_server', data => {
     const actualAnswer = data.answer
@@ -75,7 +75,7 @@ $(document).ready(() => {
         $('#winning-message').text(`Atsakymas teisingas! ${actualAnswer} Jums pervesta ${message}`);
         $('#answer-input').prop('disabled', true);
         $('#submit-answer').prop('disabled', true);
-        // Send data to server
+      
         const data = {
           user_id_name: "<?php echo $name; ?>",
           points: points
@@ -101,13 +101,11 @@ $(document).ready(() => {
         }, 60 * 1000);     // Laikas 60 sekundziu kolkas paskui 300 bus. // Set the hasAnswered flag in localStorage with an expiration time of 1 minute
       } 
       else {
-        
-        
-        // Generate negative points
         const negativePoints = generateMinusPoints();
         const negativeMessage = showMessage(negativePoints, 'Lit');
-        
-        // Send data to server
+        $('#answer-input').prop('disabled', true);
+        $('#submit-answer').prop('disabled', true);
+  
         const data = {
           user_id_name: "<?php echo $name; ?>",
           points: negativePoints
@@ -126,15 +124,6 @@ $(document).ready(() => {
         .catch(error => {
           console.error(error);
         });
-        
-        // Subtract negative points from total score
-        const currentScore = parseInt($('#total-score').text());
-        const newScore = currentScore + negativePoints;
-        $('#total-score').text(newScore);
-        
-        // // Display message about negative points
-        // $('#negative-message').text(`Jūs praradote ${negativePoints} ${negativeMessage}.`);
-
         $('#winning-message').text(`Atsakymas ${userAnswer} yra neteisingas! Bandykite kitą kartą. Atsakymas buvo ${actualAnswer}. Jūs praradote ${negativeMessage}`);
         $('#answer-input').val('');
 
@@ -143,6 +132,20 @@ $(document).ready(() => {
   });
 });
 
+function startClosePage() {
+  let pageCloseCountdown = 200;  // Lango uzdarymo laikas
+  function countdown() {
+    pageCloseCountdown--;
+    if (pageCloseCountdown > 0) {
+      closeMessage.innerHTML = `Likęs laikas atsakymui ${pageCloseCountdown} sekundžių.`;
+      setTimeout(countdown, 1000);
+    } else {
+      window.close();
+    }
+  }
+  countdown();
+}
+startClosePage();
 
 
 
@@ -186,52 +189,7 @@ function showMessage(points, word) {
 
 
 
-
-
-
-      
-
-
-
-
-
-      function startClosePage() {
-        let pageCloseCountdown = 200;  // Lango uzdarymo laikas
-        function countdown() {
-          pageCloseCountdown--;
-          if (pageCloseCountdown > 0) {
-            closeMessage.innerHTML = `Likęs laikas atsakymui ${pageCloseCountdown} sekundžių.`;
-            setTimeout(countdown, 1000);
-          } else {
-            window.close();
-          }
-        }
-        countdown();
-      }
-      startClosePage();
-
-    </script>
+</script>
   </body>
 </html>
-<!-- Nu arba papildomo klausimo game random +300 ir ban  -100 ir ban 5minutem  -->
 
-
-
-<!-- function checkLettersAndCompare(str1, str2) {
-  const letterMap = {
-    ą: "a",
-    č: "c",
-    ę: "e",
-    ė: "e",
-    į: "i",
-    š: "s",
-    ų: "u",
-    ū: "u",
-    ž: "z"
-  }
-  // Replace accented letters with their ASCII equivalents
-  const cleanStr1 = str1.replace(/[ąčęėįšųž]/gi, (match) => letterMap[match.toLowerCase()])
-  const cleanStr2 = str2.replace(/[ąčęėįšųž]/gi, (match) => letterMap[match.toLowerCase()])
-
-  return cleanStr1.toLowerCase() === cleanStr2.toLowerCase()
-} -->
