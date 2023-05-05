@@ -143,16 +143,18 @@ function startClosePage() {
   
   function countdown() {
     if (submitClicked) {
-      if (pageCloseCountdown > 8) {
-        pageCloseCountdown = 8;  // Reduce time limit to 8 seconds if submit button has been clicked
-        closeMessage.innerHTML = "Goodbye!";
-      } else {
-        pageCloseCountdown--;
-      }
-    } else {
-      pageCloseCountdown--;
-      closeMessage.innerHTML = `Likęs laikas atsakymui ${pageCloseCountdown} sekundžių.`;
-    }
+  if (pageCloseCountdown > 8) {
+    pageCloseCountdown = 8;
+    closeMessage.innerHTML = `Iki pasimatymo! Puslapis užsidaro už ${pageCloseCountdown} sekundžių.`;
+  } else {
+    pageCloseCountdown--;
+    closeMessage.innerHTML = `Iki pasimatymo! Puslapis užsidaro už ${pageCloseCountdown} sekundžių.`;
+  }
+} else {
+  pageCloseCountdown--;
+  closeMessage.innerHTML = `Likęs laikas atsakymui ${pageCloseCountdown} sekundžių.`;
+}
+
     
     if (pageCloseCountdown > 0) {
       setTimeout(countdown, 1000);
