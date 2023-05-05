@@ -132,20 +132,39 @@ $(document).ready(() => {
   });
 });
 
+
 function startClosePage() {
   let pageCloseCountdown = 200;  // Lango uzdarymo laikas
+  let submitClicked = false;  // Has the submit button been clicked?
+  
+  $('#submit-answer').click(event => {
+    submitClicked = true;
+  });
+  
   function countdown() {
-    pageCloseCountdown--;
-    if (pageCloseCountdown > 0) {
+    if (submitClicked) {
+      if (pageCloseCountdown > 8) {
+        pageCloseCountdown = 8;  // Reduce time limit to 8 seconds if submit button has been clicked
+        closeMessage.innerHTML = "Goodbye!";
+      } else {
+        pageCloseCountdown--;
+      }
+    } else {
+      pageCloseCountdown--;
       closeMessage.innerHTML = `Likęs laikas atsakymui ${pageCloseCountdown} sekundžių.`;
+    }
+    
+    if (pageCloseCountdown > 0) {
       setTimeout(countdown, 1000);
     } else {
       window.close();
     }
   }
+  
   countdown();
 }
 startClosePage();
+
 
 
 
