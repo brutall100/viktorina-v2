@@ -40,6 +40,7 @@
 
       <footer>
         <div id="winning-message"></div>
+        <div id="negative-message" ></div>
         <div id="closeMessage" class="message-close"></div>
       </footer>
     </div>
@@ -59,21 +60,19 @@ $(document).ready(() => {
     $('#question').text(`Klausimas: ${data.question}`);
     $('#answer-asteriks').text(hiddenAnswer.trim());
     $('#submit-answer').click(event => {
-      event.preventDefault(); // prevent page from reloading
+      event.preventDefault();
       
-      // Check if the user has already answered within the last minute
       const hasAnswered = localStorage.getItem('hasAnswered');
-      if (hasAnswered && Date.now() - hasAnswered < 60 * 1000) {
-        alert("You can only answer once per minute.");
+      if (hasAnswered && Date.now() - hasAnswered < 60 * 1000) { // Laikas 60 sekundziu kolkas paskui 300 bus. // Check if the user has already answered within the last minute
+        alert("Galima atsakyti tik vieną kartą.");
         return;
       }
       
       const userAnswer = $('#answer-input').val().toLowerCase();
-      // Compare user's answer to the actual answer here
       if (checkLettersAndCompare(userAnswer, serverAnswer)) {
         const points = generatePoints();
         const message = showMessage(points, 'Lit');
-        $('#winning-message').text(`Atsakymas teisingas! ${actualAnswer} ${message}`);
+        $('#winning-message').text(`Atsakymas teisingas! ${actualAnswer} Jums pervesta ${message}`);
         $('#answer-input').prop('disabled', true);
         $('#submit-answer').prop('disabled', true);
         // Send data to server
@@ -95,15 +94,50 @@ $(document).ready(() => {
         .catch(error => {
           console.error(error);
         });
-        
-        // Set the hasAnswered flag in localStorage with an expiration time of 1 minute
+               
         localStorage.setItem('hasAnswered', Date.now());
         setTimeout(() => {
           localStorage.removeItem('hasAnswered');
-        }, 60 * 1000);
-      } else {
-        $('#winning-message').text(`Atsakymas ${userAnswer} yra neteisingas! Bandykite kitą kartą. Atsakymas buvo ${actualAnswer}.`);
+        }, 60 * 1000);     // Laikas 60 sekundziu kolkas paskui 300 bus. // Set the hasAnswered flag in localStorage with an expiration time of 1 minute
+      } 
+      else {
+        
+        
+        // Generate negative points
+        const negativePoints = generateMinusPoints();
+        const negativeMessage = showMessage(negativePoints, 'Lit');
+        
+        // Send data to server
+        const data = {
+          user_id_name: "<?php echo $name; ?>",
+          points: negativePoints
+        };
+        fetch('http://localhost:5000/playGame.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          mode: 'no-cors',
+          body: JSON.stringify(data)
+        })
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+        
+        // Subtract negative points from total score
+        const currentScore = parseInt($('#total-score').text());
+        const newScore = currentScore + negativePoints;
+        $('#total-score').text(newScore);
+        
+        // // Display message about negative points
+        // $('#negative-message').text(`Jūs praradote ${negativePoints} ${negativeMessage}.`);
+
+        $('#winning-message').text(`Atsakymas ${userAnswer} yra neteisingas! Bandykite kitą kartą. Atsakymas buvo ${actualAnswer}. Jūs praradote ${negativeMessage}`);
         $('#answer-input').val('');
+
       }
     });
   });
@@ -135,14 +169,17 @@ function generatePoints() {
   return Math.floor(Math.random() * 251) + 50;
 }
 
+function generateMinusPoints() {
+  return -Math.floor(Math.random() * 100 + 1);
+}
 
 function showMessage(points, word) {
   if (points % 10 === 1 && points % 100 !== 11) {
     // handles numbers that end with 1
-    return `Jūs laimėjote ${points} ${word}ą.`;
+    return `${points} ${word}ą.`;
   } else {
     // handles all other numbers
-    return `Jūs laimėjote ${points} ${points % 10 === 0 || (points % 100 >= 11 && points % 100 <= 19) ? `${word}u` : `${word}us`}.`;
+    return `${points} ${points % 10 === 0 || (points % 100 >= 11 && points % 100 <= 19) ? `${word}u` : `${word}us`}.`;
   }
 }
 
