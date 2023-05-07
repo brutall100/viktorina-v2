@@ -325,10 +325,14 @@ function randomGame() {
   return Math.floor(Math.random() * 50) //Tikimybe laimeti papildoma GAME
 }
 
-const widths = 520 // Kontroliuoja issokancio lango dydzius ir pozicija
-const heights = 420
-const lefts = window.innerWidth / 2 - widths / 2
-const tops = window.innerHeight / 2 - heights / 2
+const widths = 520;  // Kontroliuoja issokancio lango dydzius ir pozicija
+const heights = 420;
+const lefts = null;
+const tops = null;
+const screenX = window.screenX != undefined ? window.screenX : window.screenLeft;
+const screenY = window.screenY != undefined ? window.screenY : window.screenTop;
+
+
 
 function playGame() {
   const gameNo = 9  //========= 3.6.9   randomGame();
@@ -342,7 +346,7 @@ function playGame() {
     const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
   } else if (gameNo === 9) {
     console.log(`game3 will play player ${userData.name}`)
-    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
+    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`, "_blank", `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`);
 
     console.log("game not ready")
   }

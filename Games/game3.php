@@ -9,42 +9,42 @@
     <title>Papildomas Klausimas</title>
   </head>
 
-  <?php
-    session_start();
-    $name = $_GET['name'];
-    echo "<div> Labas $name, Jūs gavote progą atsakyti į papildomą klausimą.</div>";
-  ?>
-
-  <body>
-    <div class="container"> 
-      <header>
-        <h2>Šiame žaidime gali laimėti nuo -100 Litų iki +300 Litų.</h2>
-      </header>
 
 
 
-      <main>
-        <div id="question-container">
-          <div id="question"></div>
-          <div id="answer-asteriks"></div>
-        </div>
-  
-        <div id="answer-container">
-          <label for="answer-input">Answer:</label>
-          <input type="text" id="answer-input" maxlength="50">
-          <button id="submit-answer">Submit</button>
-        </div>
-      </main>
+<body>
+  <div class="container"> 
+    <?php
+      session_start();
+      $name = $_GET['name'];
+      echo "<div class='greeting-container'>Labas <span>$name</span> <br> Jūs gavote progą atsakyti į papildomą klausimą.</div>";
+    ?>
 
-      
+    <header>
+      <h2>Šiame žaidime gali laimėti nuo -100 Litų iki +300 Litų.</h2>
+    </header>
 
-      <footer>
-        <div id="winning-message"></div>
-        <div id="negative-message" ></div>
-        <div id="closeMessage" class="message-close"></div>
-      </footer>
-    </div>
-    
+    <main>
+      <div id="question-container">
+        <div id="question">Klausimas:</div>
+        <div id="answer-asteriks"></div>
+      </div>
+
+      <div id="answer-container">
+        <label for="answer-input">Atsakymas</label>
+        <input type="text" id="answer-input" maxlength="50">
+        <button id="submit-answer">Submit</button>
+      </div>
+    </main>
+
+    <footer>
+      <div id="winning-message"></div>
+      <div id="negative-message" ></div>
+      <div id="closeMessage" class="message-close"></div>
+      <button onclick="closeGame()" class="close-Btn">Pabėgti?</button>
+    </footer>
+  </div>
+</body>
 
 
 <script>
@@ -57,7 +57,7 @@ $(document).ready(() => {
     for (let i = 0; i < words.length; i++) {
       hiddenAnswer += `${'*'.repeat(words[i].length)} `;
     }
-    $('#question').text(`Klausimas: ${data.question}`);
+    $('#question').html(`Klausimas: <span class="question-text">${data.question}</span>`);
     $('#answer-asteriks').text(hiddenAnswer.trim());
     $('#submit-answer').click(event => {
       event.preventDefault();
@@ -194,7 +194,7 @@ function generatePoints() {
 }
 
 function generateMinusPoints() {
-  return -Math.floor(Math.random() * 100 + 1);
+  return -Math.floor(Math.random() * 81 + 20);
 }
 
 function showMessage(points, word) {
@@ -207,10 +207,19 @@ function showMessage(points, word) {
   }
 }
 
+window.onload = function() {
+  document.getElementById("answer-input").focus();
+};
+
+function closeGame() {
+  window.close();
+};    
+
+
 
 
 
 </script>
-  </body>
+
 </html>
 

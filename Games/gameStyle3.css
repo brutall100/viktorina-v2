@@ -1,18 +1,161 @@
-/* game3.php*/
+/* game3.php */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
-  background-color: aqua;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #C9D6D2 ;
+  height: 100vh;
 }
 
-#question{
-  background-color: blanchedalmond;
+.greeting-container {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  color: #444;
+  background-color: #F8F9FA;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
 }
 
-#answer-asteriks{
-  color: brown;
+.greeting-container span {
+  font-family: Segoe Script, cursive;
 }
+
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #D6E8D6 ;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#question, label[for="answer-input"] {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+
+.question-text {
+  font-family: 'Monotype Corsiva', cursive;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+#answer-asteriks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 30px;
+  color: #EF4444;
+  text-shadow: 2px 2px #ccc;
+  letter-spacing: 10px;
+}
+
+label, input[type="text"], button {
+  font-family: Arial, sans-serif;
+}
+
+input[type="text"] {
+  font-size: 20px; /* or any other font size you prefer */
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  margin-right: 10px;
+  width: 70%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+
+button#submit-answer {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+#answer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.message-close {
+  text-align: center;
+}
+
+button.close-Btn {
+  background-color: #EF4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 20px auto 0;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#winning-message {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 18px;
+  color: #4CAF50;
+  text-align: center;
+  margin-top: 20px;
+}
+
+#negative-message {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 18px;
+  color: #EF4444;
+  text-align: center;
+  margin-top: 20px;
+}
+
+div[style="color: red;"] {
+  color: #EF4444;
+  font-weight: bold;
+}
+
+div[style="color: green;"] {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+
