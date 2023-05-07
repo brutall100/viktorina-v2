@@ -70,10 +70,7 @@ reikia atskirt css kazkaip gal bendra raide dadeti  -->
 <!-- Padaryti tavo today points grazu atvaizdavima .Sios dienos tavo surinti taskai -->
 
 <!-- 23 -->
-<!-- 3 zaidimas bus is papildomo klausimo. Papildomas klausimas bus ilgieji irasyti klausimai, klausimai kuriu ilgis virs xxx simboliu bus papildomame zaidime. -->
-<!-- Reikia prideti points siuntima i servery. padaryti nuo minus -1 iki -100 random points uz neteisinga atsakyma. IR beabejo css klausimai stilius labai sriftus kaip poema
-. puslapio uzdaryma iskart po 4 sekundziu. anas laikas pataptu naujuoju laiko ir uzsidaro
-Else pabaigti sutvarkyti -->
+<!-- 3 zaidimas litu galunes sutvrkyti ir sveikinimo css spalva prideti padaryti kad galima paspausti enter knopke atsakant i kl -->
 
 
 
