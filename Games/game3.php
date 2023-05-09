@@ -133,6 +133,17 @@ $(document).ready(() => {
 });
 
 
+const answerInput = document.getElementById("answer-input");
+const submitButton = document.getElementById("submit-answer");
+
+answerInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    submitButton.click();
+  }
+});
+
+
 function startClosePage() {
   let pageCloseCountdown = 200;  // Lango uzdarymo laikas
   let submitClicked = false;  // Has the submit button been clicked?
@@ -153,9 +164,7 @@ function startClosePage() {
 } else {
   pageCloseCountdown--;
   closeMessage.innerHTML = `Likęs laikas atsakymui ${pageCloseCountdown} sekundžių.`;
-}
-
-    
+} 
     if (pageCloseCountdown > 0) {
       setTimeout(countdown, 1000);
     } else {
@@ -166,8 +175,6 @@ function startClosePage() {
   countdown();
 }
 startClosePage();
-
-
 
 
 function checkLettersAndCompare(str1, str2) {
@@ -214,10 +221,6 @@ window.onload = function() {
 function closeGame() {
   window.close();
 };    
-
-
-
-
 
 </script>
 
