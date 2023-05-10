@@ -53,7 +53,10 @@ body {
   font-family: 'Monotype Corsiva', cursive;
   font-size: 21px;
   font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .8px;
 }
+
 
 #answer-asteriks {
   display: flex;

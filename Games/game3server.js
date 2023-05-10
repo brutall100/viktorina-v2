@@ -6,7 +6,7 @@ const port = 7000;
 const app = express();
 
 const limiter = rateLimit({
-    windowMs: 61 * 1000, // 61 sekunde kolkas paskui 4 min laiko turi praeti kol serveris leis perkrovima
+    windowMs: 301 * 1000, // 61 sekunde kolkas paskui (300s) 5min laiko turi praeti kol serveris leis perkrovima
     max: 1, // limit each IP to 1 requests per windowMs
   });
   app.use(limiter);

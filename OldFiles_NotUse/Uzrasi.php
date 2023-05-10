@@ -35,7 +35,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
 
 <!-- 12 -->
-<!-- sukurti 3-5 geimusmus -->
+<!-- -->
 
 <!-- 13 -->
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
@@ -64,13 +64,13 @@ pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, 
 reikia atskirt css kazkaip gal bendra raide dadeti  -->
 
 <!-- 21 -->
-<!-- Pirmo game isvaizda padaryti gera ir automatiskai uzdaryti uz 3 sekunds -->
+<!-- -->
 
 <!-- 22 -->
 <!-- Padaryti tavo today points grazu atvaizdavima .Sios dienos tavo surinti taskai -->
 
 <!-- 23 -->
-<!-- 3 zaidimas litu galunes sutvrkyti ir sveikinimo css spalva prideti padaryti kad galima paspausti enter knopke atsakant i kl -->
+<!-- Game suskaiciuok inpute reikia kad veiktu su enter-->
 
 
 

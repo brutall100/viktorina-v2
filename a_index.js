@@ -43,7 +43,7 @@ function checkServerData() {
         console.log("Serverio id does not match client id. Reloading in 1 seconds...")
         setTimeout(() => {
           location.reload()
-        }, 10)
+        }, 5000) // 5 sekundes kolkas paskui 10milsec
       }
     })
     .catch((error) => {
@@ -234,11 +234,9 @@ const handleUserAnswer = async (userAnswer) => {
     const successMsg = `Teisingai atsakė ${userData.name}: <span class="corect-answer-answered">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`
     document.getElementById("answer").innerHTML = successMsg
 
-    // 
-    const gameNo = randomGame()
-    console.log("randomGame generates: " + gameNo)
-    playGame()
-    //  
+    
+    playGame() // atsakius teisingai paleidziama funkcija 
+
 
     const url = "http://localhost:8000/a_points.js"
     const body = JSON.stringify({
@@ -310,21 +308,16 @@ function checkLettersAndCompare(str1, str2) {
     ū: "u",
     ž: "z"
   }
-  // Replace accented letters with their ASCII equivalents
   const cleanStr1 = str1.replace(/[ąčęėįšųž]/gi, (match) => letterMap[match.toLowerCase()])
   const cleanStr2 = str2.replace(/[ąčęėįšųž]/gi, (match) => letterMap[match.toLowerCase()])
 
   return cleanStr1.toLowerCase() === cleanStr2.toLowerCase()
 }
 
-//
-//
-// Games section
 
-function randomGame() {
-  return Math.floor(Math.random() * 50) //Tikimybe laimeti papildoma GAME
-}
-
+                              //
+                              //
+                              // Games section
 const widths = 520;  // Kontroliuoja issokancio lango dydzius ir pozicija
 const heights = 420;
 const lefts = null;
@@ -332,19 +325,21 @@ const tops = null;
 const screenX = window.screenX != undefined ? window.screenX : window.screenLeft;
 const screenY = window.screenY != undefined ? window.screenY : window.screenTop;
 
-
+function randomGame() {
+  return Math.floor(Math.random() * 60) //Tikimybe laimeti papildoma GAME
+}
 
 function playGame() {
-  const gameNo = 9  //========= 3.6.9   randomGame();
-  console.log("randomGame generates: " + gameNo)
+  const gameNo = randomGame()  //========= 15.30.45;
+  console.log("randomGame generatess: " + gameNo)
 
-  if (gameNo === 3) {
+  if (gameNo === 15) {
     console.log(`game1 will play player ${userData.name}`)
     const gameWindow1 = window.open(`http://localhost/aldas/Viktorina.live/Games/game1.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
-  } else if (gameNo === 6) {
+  } else if (gameNo === 30) {
     console.log(`game2 will play player ${userData.name}`)
     const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
-  } else if (gameNo === 9) {
+  } else if (gameNo === 45) {
     console.log(`game3 will play player ${userData.name}`)
     const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`, "_blank", `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`);
 
