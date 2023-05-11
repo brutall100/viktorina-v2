@@ -209,13 +209,6 @@ answerForm.addEventListener("submit", (event) => {
   answerInput.value = ""
 })
 
-// let isTimeUp = false
-// setTimeout(() => {
-//   isTimeUp = true
-//   oldQuestionData()
-//   console.log("time is over")
-// }, 45000) // Ketik pakeistas 2023 04 19 prideta 5 seconds
-// uzdraustas 04 29
 
 const handleUserAnswer = async (userAnswer) => {
   const data = await fetchData()
@@ -324,26 +317,48 @@ const lefts = null;
 const tops = null;
 const screenX = window.screenX != undefined ? window.screenX : window.screenLeft;
 const screenY = window.screenY != undefined ? window.screenY : window.screenTop;
+// let lastGameTime = 0;  Berods nereikalinga 2023 05 11 // Variable to store the time of the last game played
+const GAME_A = 4;
+const GAME_B = 9;
+const GAME_C = 14;
 
 function randomGame() {
-  return Math.floor(Math.random() * 60) //Tikimybe laimeti papildoma GAME
+  return Math.floor(Math.random() * 20)  //Tikimybe laimeti papildoma GAME 20  tarp 0-19 Games [4.9.14]
 }
 
 function playGame() {
-  const gameNo = randomGame()  //========= 15.30.45;
-  console.log("randomGame generatess: " + gameNo)
+  const gameNo = randomGame();
+  console.log("randomGame generates: " + gameNo);//
+  
+  if (gameNo === GAME_A || gameNo === GAME_B || gameNo === GAME_C) {
+    const currentTime = Date.now();
+    const lastGameTime = localStorage.getItem('lastGameTime');
+    
+    if (lastGameTime) {
+      const timeSinceLastGame = (currentTime - lastGameTime) / 1000;
+      if (timeSinceLastGame < 300) {
+        console.log(`Game ${gameNo} cannot be played for another ${300 - timeSinceLastGame} seconds.`);//
+        return;
+      }
+    }
+    
+    localStorage.setItem('lastGameTime', currentTime);
+  }
 
-  if (gameNo === 15) {
-    console.log(`game1 will play player ${userData.name}`)
-    const gameWindow1 = window.open(`http://localhost/aldas/Viktorina.live/Games/game1.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
-  } else if (gameNo === 30) {
-    console.log(`game2 will play player ${userData.name}`)
-    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
-  } else if (gameNo === 45) {
-    console.log(`game3 will play player ${userData.name}`)
-    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`, "_blank", `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`);
-
-    console.log("game not ready")
+  if (gameNo === GAME_A) {
+    const gameWindow1 = window.open(`http://localhost/aldas/Viktorina.live/Games/game1.php?name=${userData.name}`,
+     "_blank",
+      `width=${widths},height=${heights},left=${lefts},top=${tops}`);
+  } 
+  else if (gameNo === GAME_B) {
+    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`,
+     "_blank",
+      `width=${widths},height=${heights},left=${lefts},top=${tops}`);
+  } 
+  else if (gameNo === GAME_C) {
+    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`,
+     "_blank",
+      `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`);
   }
 }
 
