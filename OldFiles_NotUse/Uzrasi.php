@@ -56,7 +56,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire pagrindinaime puslapyje -->
 
 <!-- 19 -->
-<!-- -->
+<!-- Siandienos top jei 0 tai visai nerodyti rodyti tik kur + ar -   -->
 
 <!-- 20 -->
 <!-- b_newquestion.php cia iskylantis phhp puslapis reikia sutvarkyti zinute, prideti css pagrazinti,

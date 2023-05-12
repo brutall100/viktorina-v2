@@ -143,7 +143,7 @@
 
 
   function startClosePage() {
-    let pageCloseCountdown = 60;  // Lango uzdarymo laikas
+    let pageCloseCountdown = 60;  // Lango uzdarymo laikas 60s
     let submitClicked = false;  
     
     $('#submit-answer').click(event => {
@@ -152,7 +152,7 @@
     
     function countdown() {
       if (submitClicked) {
-    if (pageCloseCountdown > 5) { // Lango uzdarymo laikas po atsakymo pateikimo
+    if (pageCloseCountdown > 5) { // Lango uzdarymo laikas po atsakymo pateikimo 5s
       pageCloseCountdown = 5;
       closeMessage.innerHTML = `Iki pasimatymo! Puslapis užsidaro už ${pageCloseCountdown} sekundžių.`;
     } else {

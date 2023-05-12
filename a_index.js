@@ -327,7 +327,7 @@ function randomGame() {
 }
 
 function playGame() {
-  const gameNo = randomGame();
+  const gameNo = 9; // randomGame()
   console.log("randomGame generates: " + gameNo);//
   
   if (gameNo === GAME_A || gameNo === GAME_B || gameNo === GAME_C) {
