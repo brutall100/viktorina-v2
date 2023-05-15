@@ -13,7 +13,7 @@ Ir balsaviam su didesniu kiekiu padaryti tai yra kai parbalsuoja kokie 15 zmoniu
 Padaryti atverciamas tik 4 raides apie 40sekunziu paleisti funkcija po 40 kad parodyti atsakyma, input disabled, reload after 45 seconds from async-->
 
 <!-- 5 -->
-<!--  -->
+<!-- Atsijungimo puslapio topus sutvarkyti main database question db -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->
@@ -41,7 +41,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
 
 <!-- 14 -->
-<!--  -->
+<!--  Uz kieviena prabalsavima gauti 1 lita geriau puse lito. Bet gerai ir litas.-->
 
 <!-- 15 -->
 <!-- Button perkelti padaryti prieinama nuo 4 lvl -->

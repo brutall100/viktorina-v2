@@ -91,8 +91,25 @@ input#answer[value="99"] {
     text-align: right;
 }
 
+#timer {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffda79;
+    text-shadow: 1px 1px 2px #000000;
+  }
+  
+  
 
-.closeBtn {
+.message-style {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(140, 0, 255);
+  }
+
+
+#closeBtn {
     width: 17%;
     position: absolute;
     bottom: 2.5%;
@@ -106,7 +123,7 @@ input#answer[value="99"] {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.closeBtn:hover {
+#closeBtn:hover {
     background-color: #ffda79;
 }
         

@@ -311,7 +311,7 @@ function checkLettersAndCompare(str1, str2) {
                               //
                               //
                               // Games section
-const widths = 520;  // Kontroliuoja issokancio lango dydzius ir pozicija
+const widths = 520;
 const heights = 420;
 const lefts = null;
 const tops = null;
@@ -336,8 +336,8 @@ function playGame() {
     
     if (lastGameTime) {
       const timeSinceLastGame = (currentTime - lastGameTime) / 1000;
-      if (timeSinceLastGame < 300) {
-        console.log(`Game ${gameNo} cannot be played for another ${300 - timeSinceLastGame} seconds.`);//
+      if (timeSinceLastGame < 10) { //kolkas 10 bus 300
+        console.log(`Game ${gameNo} cannot be played for another ${10- timeSinceLastGame} seconds.`);//kolkas 10 bus 300
         return;
       }
     }
