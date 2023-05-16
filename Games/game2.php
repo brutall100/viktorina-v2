@@ -116,7 +116,7 @@ const timer = setInterval(() => {
       window.close();
     }, 3000);
   } else {
-    document.getElementById("timer").innerHTML = `${seconds} seconds left`;
+    document.getElementById("timer").innerHTML = `Liko ${seconds} `;
     localStorage.setItem('seconds', seconds);
   }
 }, 1000);
@@ -149,11 +149,5 @@ function getCurrencyWord(result, answer) {
  document.getElementById('closeBtn').addEventListener('click', () => {
     window.close();
 });
-
-
-
 </script>
-
-    
-
 </html>

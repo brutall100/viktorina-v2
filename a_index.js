@@ -327,7 +327,7 @@ function randomGame() {
 }
 
 function playGame() {
-  const gameNo = 9; // randomGame()
+  const gameNo = randomGame(); // 4 9 14
   console.log("randomGame generates: " + gameNo);//
   
   if (gameNo === GAME_A || gameNo === GAME_B || gameNo === GAME_C) {
@@ -336,8 +336,8 @@ function playGame() {
     
     if (lastGameTime) {
       const timeSinceLastGame = (currentTime - lastGameTime) / 1000;
-      if (timeSinceLastGame < 10) { //kolkas 10 bus 300
-        console.log(`Game ${gameNo} cannot be played for another ${10- timeSinceLastGame} seconds.`);//kolkas 10 bus 300
+      if (timeSinceLastGame < 300) { //kolkas 10 bus 300
+        console.log(`Game ${gameNo} cannot be played for another ${300- timeSinceLastGame} seconds.`);//kolkas 10 bus 300
         return;
       }
     }
