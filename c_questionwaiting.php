@@ -34,58 +34,60 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
 <body>
 <?php include 'Header/header.php'; ?>
+  <main>
+    <table class="table">
+      <tr>
+        <th>Numeris</th>
+        <th>Autorius</th>
+        <th>Klausimas</th>
+        <th>Atsakymas</th>
+        <th>Priimti</th>
+        <th>Atmesti</th>
+        <th>Rezultatas</th>
+      </tr>
+      <?php
+        $host = 'localhost';
+        $user = 'root';
+        $password = '';
+        $dbname = 'viktorina';
 
-<table class="table">
-  <tr>
-    <th>Numeris</th>
-    <th>Autorius</th>
-    <th>Klausimas</th>
-    <th>Atsakymas</th>
-    <th>Priimti</th>
-    <th>Atmesti</th>
-    <th>Rezultatas</th>
-  </tr>
-  <?php
-    $host = 'localhost';
-    $user = 'root';
-    $password = '';
-    $dbname = 'viktorina';
+        $conn = mysqli_connect($host, $user, $password, $dbname);
 
-    $conn = mysqli_connect($host, $user, $password, $dbname);
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+        $sql = "SELECT id, user, question, answer, vote_count FROM viktorina.question_answer";
+        $result = mysqli_query($conn, $sql);
 
-    $sql = "SELECT id, user, question, answer, vote_count FROM viktorina.question_answer";
-    $result = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result) > 0) {
+            // Output the data
+            while($row = mysqli_fetch_assoc($result)) {
+              echo "<tr>";
+              echo "<td>" . $row['id'] . "</td>";
+              echo "<td>" . $row['user'] . "</td>";
+              echo "<td>" . $row['question'] . "</td>";
+              echo "<td>" . $row['answer'] . "</td>";
+              echo "<td><button class='upvote' data-id='". $row['id'] ."'></button></td>";
+              echo "<td><button class='downvote' data-id='". $row['id'] ."'></button></td>";
+              echo "<td class='vote_count " . ($row['vote_count'] >= 0 ? 'positive' : 'negative') . "'>" . $row['vote_count'] . "</td>";
+          }   
+        } else {
+            echo "0 results";
+        }
+        mysqli_close($conn);
+      ?>
+    </table>
+  </main>  
 
-    if (mysqli_num_rows($result) > 0) {
-        // Output the data
-        while($row = mysqli_fetch_assoc($result)) {
-          echo "<tr>";
-          echo "<td>" . $row['id'] . "</td>";
-          echo "<td>" . $row['user'] . "</td>";
-          echo "<td>" . $row['question'] . "</td>";
-          echo "<td>" . $row['answer'] . "</td>";
-          echo "<td><button class='upvote' data-id='". $row['id'] ."'></button></td>";
-          echo "<td><button class='downvote' data-id='". $row['id'] ."'></button></td>";
-          echo "<td class='vote_count " . ($row['vote_count'] >= 0 ? 'positive' : 'negative') . "'>" . $row['vote_count'] . "</td>";
-      }   
-    } else {
-        echo "0 results";
-    }
-    mysqli_close($conn);
-  ?>
-</table>
-
-<footer class="footer">
+  <footer class="footer">
     <object
       data="http://localhost/aldas/Viktorina.live/Footer/footer.html"
       class="imported-footer">
     </object>
   </footer>
 </body>
+
 </html>
 
 <script>

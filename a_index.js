@@ -15,16 +15,16 @@ async function fetchData() {
   // console.log('Answer:', data.data.answer);
   // console.log('Litan:', data.data.lita);
   // console.log('Bonus:', data.data.bonusLita);
-  const dataContainer = document.getElementById("dataContainer")
-  dataContainer.innerHTML = JSON.stringify(data)
+  // const dataContainer = document.getElementById("dataContainer")
+  // dataContainer.innerHTML = JSON.stringify(data)
   displayQuestion(data)
   generateAndDisplayRandomPoint(data.data.lita)
   generateBonusPoints(data.data.bonusLita)
-  lita = data.data.lita
-  const litaContainer = document.getElementById("lita")
-  litaContainer.innerHTML = lita
-  const bonusLitaContainer = document.getElementById("lita-bonus")
-  bonusLitaContainer.innerHTML = data.data.bonusLita
+  // lita = data.data.lita
+  // const litaContainer = document.getElementById("lita")
+  // litaContainer.innerHTML = lita
+  // const bonusLitaContainer = document.getElementById("lita-bonus")
+  // bonusLitaContainer.innerHTML = data.data.bonusLita
 })()
 
 //
