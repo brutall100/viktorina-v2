@@ -16,6 +16,7 @@ $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
+include 'Header/header.php';
 ?> 
 
 
@@ -27,31 +28,31 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Naujo klausimo įrašymas</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/aa_headerstyle.css" />
+  
     <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/b_newguestion.css" />
   </head>
 
   <body>
-    <header class="header">
-      <ul>
-        <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/viktorina_logo.png" />
+    <!-- <header class="header">
+      <ul> -->
+        <!-- <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/viktorina_logo.png" />
         <div>
           <li><a href="http://localhost/aldas/Viktorina.live/a_index.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Viktorina</a></li>
           <li><a href="http://localhost/aldas/Viktorina.live/c_questionwaiting.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Naujienos</a></li>
           <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Irašyti klausimą</a></li>
         </div> 
         <div>
-          <button id="btn-atsijungti">Atsijungti</button> 
-        <script>   
+          <button id="btn-atsijungti">Atsijungti</button>  -->
+        <!-- <script>   
           const logoutButton = document.getElementById('btn-atsijungti');
           logoutButton.addEventListener('click', () => {
             window.location.href = 'http://localhost/aldas/Viktorina.live/statistic.php?name=<?php echo $name ?>';
           });
-        </script>
+        </script> -->
 
-        </div>  
+        <!-- </div>  
       </ul>
-    </header>
+    </header> -->
 
     <main class="main">
       <div class="main-form">
