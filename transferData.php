@@ -8,7 +8,7 @@
 
     function trackAndMoveData() {
         global $connection1, $connection2;
-        $query = "SELECT id, question, answer FROM question_answer WHERE vote_count > 5";
+        $query = "SELECT id, question, answer FROM question_answer WHERE vote_count > 15"; // Surinkus +15 balsu perkeliamas klausimas
         $result = $connection1->query($query);
         if ($result->num_rows > 0) {
           while($row = $result->fetch_assoc()) {

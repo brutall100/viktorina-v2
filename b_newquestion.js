@@ -1,4 +1,4 @@
-                        //  Funkcija didinanti Klausimas: area
+//  Funkcija didinanti Klausimas: area
 const resizable = document.querySelector(".question-resizable")
 resizable.addEventListener("input", function () {
   this.style.height = "auto"
@@ -9,5 +9,15 @@ resizable.addEventListener("input", function () {
   }
 })
 
+
+
+// Info zenkliuko JS
+function showInfoText() {
+  document.getElementById("info-text").style.display = "block";
+}
+
+function hideInfoText() {
+  document.getElementById("info-text").style.display = "none";
+}
 
 
