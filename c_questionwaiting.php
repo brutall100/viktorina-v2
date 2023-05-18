@@ -16,7 +16,6 @@ $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
-include 'Header/header.php';
 ?>
 
 
@@ -27,21 +26,9 @@ include 'Header/header.php';
   <meta http-equiv="refresh" content="300">
   <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/b_newguestion.css" />
 </head>
-<body>
-  <!-- <header class="header">
-    <ul>
-      <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/viktorina_logo.png" />
-      <div>
-        <li><a href="http://localhost/aldas/Viktorina.live/a_index.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Viktorina</a></li>
-        <li><a href="http://localhost/aldas/Viktorina.live/c_questionwaiting.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Naujienos</a></li>
-        <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Irašyti klausimą</a></li>
-      </div>
-      <div class="two-right-btn">
-        <button id="btn-perkelti-klausimus">Perkelti</button> 
-        <button id="btn-atsijungti">Atsijungti</button>
-      </div>  
-    </ul>
-  </header> -->
+
+  <body>
+  <?php include 'Header/header.php'; ?>
 
   <table class="table">
     <tr>
@@ -163,10 +150,10 @@ document.querySelectorAll('.downvote').forEach(function(button) {
 
 
                 <!-- atsijungimo funkcija,mygtukas -->
-<script>
+<!-- <script>
   const logoutButton = document.getElementById('btn-atsijungti');
   logoutButton.addEventListener('click', () => {
     window.location.href = 'http://localhost/aldas/Viktorina.live/statistic.php?name=<?php echo $name ?>';
   });
-</script>
+</script> -->
 
