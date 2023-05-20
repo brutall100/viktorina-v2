@@ -32,9 +32,6 @@ if (isset($_GET['name'])) {
   }
 }
 
-
-
-      // Embed the variable values in the HTML output 
       echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$points'></div>";
 ?>  
 
