@@ -414,4 +414,10 @@ document.getElementById('today-top-btn').addEventListener('click', function() {
 });
 
 
+function redirectToLogin() {
+  window.location.href = "http://localhost/aldas/Viktorina.live/d_regilogi.php";
+}
+
+
+
 

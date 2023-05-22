@@ -2,23 +2,25 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-  }
-  
-  body {
+}
+
+body {
     background: #ffffff url(http://localhost/aldas/Viktorina.live/images/background/cover6.jpg) center center fixed;
     background-size: cover;
-  }
-  
-  main {
+}
+
+main {
     position: relative;
-    margin-top: 20px; 
-  }
-  
-  .table-wrapper {
+    margin-top: 20px;
+}
+
+.table-wrapper {
     position: relative;
     display: inline-block;
-    margin-bottom: 120px; /* Add margin to create space between table and footer */
-  }
+    margin-bottom: 130px;
+    /* Add margin to create space between table and footer */
+}
+
 /* BTN perkelti */
 .button-wrapper {
     display: inline-block;
@@ -27,9 +29,9 @@
     left: 2px;
     transform: translateY(-50%);
     z-index: 9999;
-  }
-  
-  .btn-perkelti-klausimus {
+}
+
+.btn-perkelti-klausimus {
     z-index: 9999;
     opacity: 0.8;
     position: relative;
@@ -39,56 +41,65 @@
     margin: 20px;
     border: none;
     border-radius: 7px;
-    background-color: #ECECEC; /* Soft gray color */
-    color: #333333; /* Dark text color */
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); /* Shadow */
-    cursor: pointer; /* Pointer cursor */
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
-    writing-mode: vertical-lr; /* Display text vertically from top to bottom */
-    text-orientation: upright; /* Set the text orientation upright */
-  }
-  
-  
-  
-  
-  
-  .btn-perkelti-klausimus:hover {
-    background-color: #D4D4D4; /* Light gray color on hover */
-  }
-  
-  .btn-perkelti-klausimus:active {
-    background-color: #C2C2C2; /* Lighter gray color when pressed */
-  }
-  
-  
-  .table {
+    background-color: #ECECEC;
+    /* Soft gray color */
+    color: #333333;
+    /* Dark text color */
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    /* Shadow */
+    cursor: pointer;
+    /* Pointer cursor */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background color */
+    writing-mode: vertical-lr;
+    /* Display text vertically from top to bottom */
+    text-orientation: upright;
+    /* Set the text orientation upright */
+}
+
+
+
+
+
+.btn-perkelti-klausimus:hover {
+    background-color: #D4D4D4;
+    /* Light gray color on hover */
+}
+
+.btn-perkelti-klausimus:active {
+    background-color: #C2C2C2;
+    /* Lighter gray color when pressed */
+}
+
+
+.table {
     margin: 1px auto;
     width: 60%;
     border-collapse: collapse;
-  }
-  
-  .table,
-  td,
-  th {
+}
+
+.table,
+td,
+th {
     border: 2px solid black;
     padding: 5px;
-  }
-  
-  th {
+}
+
+th {
     text-align: center;
-  }
-  
-  .vote_count.positive {
+}
+
+.vote_count.positive {
     color: green;
     text-align: center;
-  }
-  
-  .vote_count.negative {
+}
+
+.vote_count.negative {
     color: red;
     text-align: center;
-  }
-  
-  .upvote {
+}
+
+.upvote {
     background-color: #1d0b0b;
     border: none;
     border-radius: 5px;
@@ -98,9 +109,9 @@
     cursor: pointer;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.344);
     transition: all 0.2s ease-in-out;
-  }
+}
 
-  .downvote {
+.downvote {
     background-color: #1d0b0b;
     border: none;
     border-radius: 5px;
@@ -113,41 +124,63 @@
     cursor: pointer;
     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.344);
     transition: all 0.2s ease-in-out;
-  }
-  
-  .upvote:hover {
+}
+
+.upvote:hover {
     transform: scale(1.6);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     opacity: 0.8;
     animation: none;
-  }
-  
-  .downvote:hover {
+}
+
+.downvote:hover {
     transform: scale(0.8);
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     opacity: 0.8;
     animation: none;
-  }
+}
 
-  .upvote::before {
+.upvote::before {
     content: "+";
     color: green;
     font-size: 1.8rem;
-  }
-  
-  .downvote::after {
+}
+
+.downvote::after {
     content: "-";
     color: red;
     font-size: 2rem;
-  }
-  
+}
 
-  
-  .imported-footer {
+
+
+.imported-footer {
     position: fixed;
-    bottom: 0; /* Adjust the bottom value as per your desired spacing */
+    bottom: 0;
+    /* Adjust the bottom value as per your desired spacing */
     width: 100%;
-  }
-  
-  
-  
+}
+
+
+/* Scroolbaro style */
+::-webkit-scrollbar {
+    width: 24px;
+    /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* color of the scrollbar */
+    border-radius: 10px;
+    /* roundness of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* color of the scrollbar on hover */
+}

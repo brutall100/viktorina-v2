@@ -32,7 +32,12 @@ if (isset($_GET['name'])) {
   }
 }
 
-      echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$points'></div>";
+// if (isset($name)) {
+//   echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$points'></div>";
+// } else {
+//   echo "<button id='login-button'>Login</button>";
+// }
+
 ?>  
 
 
@@ -40,6 +45,13 @@ if (isset($_GET['name'])) {
 
 <body>
 <?php include 'Header/header.php'; ?>
+
+<div id="login-container" <?php echo isset($name) ? 'style="display: none;"' : ''; ?>>
+  <button id="login-button" onclick="redirectToLogin()">Prisijungti</button>
+</div>
+<div id="user-data" data-name="<?php echo isset($name) ? $name : ''; ?>" data-level="<?php echo isset($level) ? $level : ''; ?>" data-points="<?php echo isset($points) ? $points : ''; ?>"></div>
+
+
   
     <!-- bandymas -->
     <div id="dataContainer"></div>
@@ -65,7 +77,8 @@ if (isset($_GET['name'])) {
       }
       mysqli_close($conn);
     } else {
-      echo "Welcome!";
+      echo "Labas! <img src='http://localhost/aldas/Viktorina.live/images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.";
+
     }
     ?>
 

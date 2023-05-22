@@ -55,10 +55,6 @@ body {
   border-radius: 10px;
 }
 
-/* .today-top-list {
-  
-} */
-
 .today-top-list-li {
   
   border: .5px solid rgb(11, 5, 37);
@@ -67,6 +63,36 @@ body {
   width: 100%;
 
 }
+
+/* LOGIN BTN */
+#login-container {
+  position: fixed;
+  top: 9px;
+  right: 7px;
+  z-index: 9999;
+}
+
+#login-button {
+  padding: 10px 30px;
+  background-color: #d1b284;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+#login-button:hover {
+  background-color: #957545;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+
+#login-button:focus {
+  outline: none;
+}
+
 
 
 
