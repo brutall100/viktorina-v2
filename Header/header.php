@@ -25,9 +25,13 @@
 </body>
 </html>
 
-<script>
-  const logoutButton = document.getElementById('btn-atsijungti');
-  logoutButton.addEventListener('click', () => {
-    window.location.href = 'http://localhost/aldas/Viktorina.live/statistic.php?name=<?php echo $name ?>';
-  });
-</script>
+<?php if (isset($name)) { ?>
+  <script>
+    const logoutButton = document.getElementById('btn-atsijungti');
+    const name = "<?php echo $name ?>";
+    logoutButton.addEventListener('click', () => {
+      window.location.href = `http://localhost/aldas/Viktorina.live/statistic.php?name=${name}`;
+    });
+  </script>
+<?php } ?>
+
