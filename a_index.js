@@ -76,9 +76,9 @@ function oldQuestionData() {
 
 //
 //
-window.onload = function () {
-  document.getElementById("answer-input").focus()
-}
+// window.onload = function () {
+//   document.getElementById("answer-input").focus()
+// }
 
 //
 // Rodyti klausima
@@ -192,22 +192,37 @@ const userData = {
   name: "",
   level: "",
   points: ""
-}
+};
+
 const populateUserData = () => {
-  const userDataElement = document.getElementById("user-data")
-  userData.name = userDataElement.dataset.name
-  userData.level = userDataElement.dataset.level
-  userData.points = userDataElement.dataset.points
-}
-populateUserData()
-const answerForm = document.getElementById("answer-form")
-answerForm.addEventListener("submit", (event) => {
-  event.preventDefault()
-  const answerInput = document.getElementById("answer-input")
-  const userAnswer = answerInput.value
-  handleUserAnswer(userAnswer)
-  answerInput.value = ""
-})
+  const userDataElement = document.getElementById("user-data");
+  userData.name = userDataElement.dataset.name;
+  userData.level = userDataElement.dataset.level;
+  userData.points = userDataElement.dataset.points;
+};
+
+populateUserData();
+
+window.onload = function () {
+  const answerForm = document.getElementById("answer-form");
+  if (answerForm) {
+    answerForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const answerInput = document.getElementById("answer-input");
+      if (answerInput) {
+        const userAnswer = answerInput.value;
+        handleUserAnswer(userAnswer);
+        answerInput.value = "";
+      }
+    });
+  }
+
+  const answerInput = document.getElementById("answer-input");
+  if (answerInput) {
+    answerInput.focus();
+  }
+};
+
 
 
 const handleUserAnswer = async (userAnswer) => {

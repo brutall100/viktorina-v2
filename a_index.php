@@ -52,35 +52,37 @@ if (isset($_GET['name'])) {
 <div id="user-data" data-name="<?php echo isset($name) ? $name : ''; ?>" data-level="<?php echo isset($level) ? $level : ''; ?>" data-points="<?php echo isset($points) ? $points : ''; ?>"></div>
 
 
-  
+  <!--  Your current level is $level and you have $points points. Today's points: $points_today. Your id: $user_id -->
     <!-- bandymas -->
     <div id="dataContainer"></div>
     <div id="lita"></div>
     <div id="lita-bonus"></div>
 
-    <?php
-    if (isset($_GET['name'])) {
-      $name = $_GET['name'];
-      $conn = mysqli_connect("localhost", "root", "", "viktorina");
-      $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id FROM super_users WHERE nick_name = '$name'";
-      $result = mysqli_query($conn, $query);
-      if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $level = $row['user_lvl'];
-        $points = $row['litai_sum'];
-        $points_today = $row['litai_sum_today'];
-        $user_id = $row['user_id'];
-        echo "Welcome, $name! Your current level is $level and you have $points points.Today's points $points_today . Your id: $user_id";
-      
-      } else {
-        echo "User not found!";
-      }
-      mysqli_close($conn);
-    } else {
-      echo "Labas! <img src='http://localhost/aldas/Viktorina.live/images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.";
-
+<?php
+if (isset($_GET['name'])) {
+  $name = $_GET['name'];
+  $conn = mysqli_connect("localhost", "root", "", "viktorina");
+  $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id FROM super_users WHERE nick_name = '$name'";
+  $result = mysqli_query($conn, $query);
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $level = $row['user_lvl'];
+    $points = $row['litai_sum'];
+    $points_today = $row['litai_sum_today'];
+    $user_id = $row['user_id'];
+    if (isset($_SESSION['name'])) {
+      echo "Welcome, $name !";
     }
-    ?>
+  } else {
+    echo "User not found!";
+  }
+  mysqli_close($conn);
+} else {
+  echo "Labas! <img src='http://localhost/aldas/Viktorina.live/images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.";
+}
+?>
+
+    
 
 
     <section class="today-top">
@@ -101,12 +103,18 @@ if (isset($_GET['name'])) {
         <div class="" id="question"></div>
         <div class="" id="answer"></div>
       </div>
-      <form action="a_index.php?name=<?php echo urlencode($_GET['name']); ?>" id="answer-form" method="post">
-        <label for="answer-input">Atsakymas:</label>
-        <input type="text" id="answer-input" name="answer-input" />
-        <button class="submit-btn" type="submit">Submit</button>
-      </form>
+      <?php if (isset($_SESSION['name'])) { ?>
+        <form action="a_index.php?name=<?php echo urlencode($_GET['name']); ?>" id="answer-form" method="post">
+          <label for="answer-input">Atsakymas:</label>
+          <input type="text" id="answer-input" name="answer-input" />
+          <button class="submit-btn" type="submit">Submit</button>
+        </form>
+      <?php } ?>
     </main>
+
+
+
+
 
     <section class="old-question-section">
       <div id="old-question">
