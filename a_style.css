@@ -67,7 +67,7 @@ body {
 /* LOGIN BTN */
 #login-container {
   position: fixed;
-  top: 9px;
+  top: 8px;
   right: 7px;
   z-index: 9999;
 }

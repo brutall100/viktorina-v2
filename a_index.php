@@ -103,13 +103,15 @@ if (isset($_GET['name'])) {
         <div class="" id="question"></div>
         <div class="" id="answer"></div>
       </div>
-      <?php if (isset($_SESSION['name'])) { ?>
-        <form action="a_index.php?name=<?php echo urlencode($_GET['name']); ?>" id="answer-form" method="post">
+      <?php if (isset($_SESSION['name']) && !empty($_SESSION['name']) && !isset($error)) { ?>
+        <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">
           <label for="answer-input">Atsakymas:</label>
-          <input type="text" id="answer-input" name="answer-input" />
+          <input type="text" id="answer-input" name="answer-input">
           <button class="submit-btn" type="submit">Submit</button>
         </form>
       <?php } ?>
+
+
     </main>
 
 
