@@ -1,5 +1,5 @@
 <!-- 1 uzduotis -->
-<!-- Tvarkyti atsijungimo BTN , Padryti prisijungimo BTN   -->
+<!--    -->
 
 <!-- 2 -->
 <!--  Klausimus perkleti i pagrindine db galima tik nuo 4 lvl . Mygtuka matoma ir aktyvu nuo 4 lvl

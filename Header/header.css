@@ -72,33 +72,20 @@ li.dropdown {
 
 
 
-
-   /* c_questionwaiting.php hidden buttons */
-.two-right-btn{
-  text-align: center;
-  height: 45px;
-  width: 150px;
-  display: flex;
-  text-align: center;
-}
-
-.header #btn-perkelti-klausimus{
-  margin-right: 2px;
+/* BTN ATSIJUNGTI */
+.header #btn-atsijungti{
+  margin-left: 10px;
   width: 70px;
+  height: 40px;
 }
 
 .header #btn-atsijungti{
-  margin-left: 2px;
-  width: 70px;
-}
-
-.header #btn-atsijungti, .header #btn-perkelti-klausimus {
   visibility: hidden;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.header:hover #btn-atsijungti, .header:hover #btn-perkelti-klausimus  {
+.header:hover #btn-atsijungti{
   visibility: visible;
   opacity: 0.1;
 }
