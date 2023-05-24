@@ -239,7 +239,7 @@ const handleUserAnswer = async (userAnswer) => {
   if (isAnswerCorrect) {
     const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10)
     userData.points = litaPoints.toString()
-    const successMsg = `Atsakymas teisingas: <span class="corect-answer-answered">${userAnswer} <br> </span> <span class="corect-answer-answered-user">${userData.name}</span> gauna ${litaPoints} litų` // tvarkyti kintamaji litas lita litu
+    const successMsg = `<span class="corect-answer-answered-user">${userData.name}</span> atsakė teisingai: <span class="corect-answer-answered">${userAnswer}</span>  <br> ir uždirba ${litaPoints} litų` // tvarkyti kintamaji litas lita litu
     document.getElementById("answer-msg").innerHTML = successMsg
 
     

@@ -149,34 +149,42 @@ body {
   border: 2px solid rgb(151, 117, 37);
 }
 
-#answer-msg{
-  font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
-  font-size: 18px;
-  
 
+
+/* answer-section */
+.answer-section {
+  height: 10vh;
+  width: auto;
+  border: 3px solid rgb(12, 126, 38);
+  /* position: fixed; */
+  /* bottom: -1vh; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  /* display: flex; */
+  /* justify-content: center; */
+  align-items: center;
+  /* margin: 0.5rem;
+  padding: 0.5rem;  */
 }
 
 
-
+#answer-msg{
+  font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
 
 .corect-answer-answered {
-  /*Teisingai atsakytas atsakymas */
   color: rgba(47, 50, 216, 0.822);
   font-weight: bold;
   text-transform: uppercase;
 }
 
-
-/* Dar neisku koki style bus */
 .corect-answer-answered-user{
   text-transform: capitalize;
-  font-family: 'Neue Metana', sans-serif;/*Naujas font*/
+  font-family: 'Neue Metana', sans-serif;
   font-weight: bold;
-  color: #a65b46;
-  background-image: url("texture.jpg"); /* Replace with your desired texture or pattern image */
-  background-repeat: repeat; /* Adjust according to your image and design preference */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow properties as needed */
-  
+  color: #a65b46;  
 }
 
 

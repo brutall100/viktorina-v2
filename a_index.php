@@ -84,8 +84,6 @@ if (isset($_GET['name'])) {
 ?>
 
     
-
-
     <section class="today-top">
       <button class="today-top-btn" id="today-top-btn" >Šiandienos TOP 10</button>
     </section>
@@ -95,16 +93,21 @@ if (isset($_GET['name'])) {
       <div class="litas-container-img" id="litai-img"></div>
     </section>
 
+
     <main class="super-container">
       <div class="points-container">
         <div class="" id="points"></div>
         <div class="" id="bonus-points"></div>
       </div>
+
       <div class="super-container-qna-section">
         <div class="" id="question"></div>
         <div class="" id="answer"></div>
-        <div class="" id="answer-msg"></div>
+        <div class="answer-section">
+          <div class="" id="answer-msg"></div>
+        </div>  
       </div>
+
       <?php if (isset($_SESSION['name']) && !empty($_SESSION['name']) && !isset($error)) { ?>
         <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">
           <label for="answer-input">Atsakymas:</label>
@@ -113,16 +116,12 @@ if (isset($_GET['name'])) {
         </form>
       <?php } ?>
 
-
+      
     </main>
 
 
-
-
-
     <section class="old-question-section">
-      <div id="old-question">
-      </div>
+      <div id="old-question"></div>
     </section>
 
     <script type="text/javascript" src="http://localhost/aldas/Viktorina.live/a_index.js"></script>

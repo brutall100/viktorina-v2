@@ -2,7 +2,7 @@
 <!--  Tvarkyti sauguma, uzkoduoti adreso eilute kad nieko negaletum matyti ir keisti ty lvl pointu nieko  -->
 
 <!-- 2 -->
-<!--  -->
+<!-- Skaiciu zaidime padRYTI kad galima btn tik vien kart paspausti -->
 
 <!-- 3 -->
 <!--  Sutvarkyti modal foldery. isikelti i githuba GRAZIai -->
