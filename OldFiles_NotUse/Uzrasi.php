@@ -1,9 +1,8 @@
 <!-- 1 uzduotis -->
-<!--    -->
+<!--  Tvarkyti sauguma, uzkoduoti adreso eilute kad nieko negaletum matyti ir keisti ty lvl pointu nieko  -->
 
 <!-- 2 -->
-<!--  Klausimus perkleti i pagrindine db galima tik nuo 4 lvl . Mygtuka matoma ir aktyvu nuo 4 lvl
-Ir balsaviam su didesniu kiekiu padaryti tai yra kai parbalsuoja kokie 15 zmoniu tik tada perkelti-->
+<!--  -->
 
 <!-- 3 -->
 <!--  Sutvarkyti modal foldery. isikelti i githuba GRAZIai -->
@@ -44,7 +43,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!--  Uz kieviena prabalsavima gauti 1 lita geriau puse lito. Bet gerai ir litas.-->
 
 <!-- 15 -->
-<!-- Button perkelti padaryti prieinama nuo 4 lvl -->
+<!--  -->
 
 <!--16 -->
 <!-- Padaryti kad butu galima isjungti games.Visus game -->
@@ -56,7 +55,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire pagrindinaime puslapyje -->
 
 <!-- 19 -->
-<!-- Siandienos top jei 0 tai visai nerodyti rodyti tik kur + ar -   -->
+<!-- -->
 
 <!-- 20 -->
 <!-- b_newquestion.php cia iskylantis phhp puslapis reikia sutvarkyti zinute, prideti css pagrazinti,
@@ -67,10 +66,10 @@ reikia atskirt css kazkaip gal bendra raide dadeti  -->
 <!-- Pagrindiniama puslapyje atsakius kl tvarkyti zinute kad raides nepersipintu-->
 
 <!-- 22 -->
-<!-- Padaryti tavo today points grazu atvaizdavima .Sios dienos tavo surinti taskai -->
+<!--  -->
 
 <!-- 23 -->
-<!-- Game suskaiciuok inpute reikia kad veiktu su enter-->
+<!-- -->
 
 
 

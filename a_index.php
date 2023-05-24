@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/a_style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />  
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" /> 
+    <link href="https://fonts.cdnfonts.com/css/neue-metana" rel="stylesheet"> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
@@ -102,6 +103,7 @@ if (isset($_GET['name'])) {
       <div class="super-container-qna-section">
         <div class="" id="question"></div>
         <div class="" id="answer"></div>
+        <div class="" id="answer-msg"></div>
       </div>
       <?php if (isset($_SESSION['name']) && !empty($_SESSION['name']) && !isset($error)) { ?>
         <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">

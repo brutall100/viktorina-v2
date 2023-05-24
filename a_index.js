@@ -239,8 +239,8 @@ const handleUserAnswer = async (userAnswer) => {
   if (isAnswerCorrect) {
     const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10)
     userData.points = litaPoints.toString()
-    const successMsg = `Teisingai atsakė ${userData.name}: <span class="corect-answer-answered">${userAnswer}</span> ${userData.name} gauna ${litaPoints} litų`
-    document.getElementById("answer").innerHTML = successMsg
+    const successMsg = `Atsakymas teisingas: <span class="corect-answer-answered">${userAnswer} <br> </span> <span class="corect-answer-answered-user">${userData.name}</span> gauna ${litaPoints} litų` // tvarkyti kintamaji litas lita litu
+    document.getElementById("answer-msg").innerHTML = successMsg
 
     
     playGame() // atsakius teisingai paleidziama funkcija 
@@ -291,7 +291,7 @@ const handleUserAnswer = async (userAnswer) => {
     const answerInputBad = document.getElementById("answer-input")
     answerInputBad.disabled = true
     const errorMsg = `Atsakymas "${userAnswer}" yra neteisingas. Bandykite dar kartą.`
-    document.getElementById("answer").textContent = errorMsg
+    document.getElementById("answer-msg").textContent = errorMsg
     setTimeout(() => {
       answerInputBad.disabled = false
     }, 3000) // Disable answerInput for 2.5 seconds
@@ -316,8 +316,8 @@ function checkLettersAndCompare(str1, str2) {
     ū: "u",
     ž: "z"
   }
-  const cleanStr1 = str1.replace(/[ąčęėįšųž]/gi, (match) => letterMap[match.toLowerCase()])
-  const cleanStr2 = str2.replace(/[ąčęėįšųž]/gi, (match) => letterMap[match.toLowerCase()])
+  const cleanStr1 = str1.replace(/[ąčęėįšųūž]/gi, (match) => letterMap[match.toLowerCase()])
+  const cleanStr2 = str2.replace(/[ąčęėįšųūž]/gi, (match) => letterMap[match.toLowerCase()])
 
   return cleanStr1.toLowerCase() === cleanStr2.toLowerCase()
 }

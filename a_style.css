@@ -32,17 +32,18 @@ body {
   flex-direction: column;
   align-items: center;
   top: 4em;
-  position:absolute;
+  position: absolute;
   right: 2em;
-  height: 3em; /* Set initial height */
+  height: 3em;
+  /* Set initial height */
   border: 5px solid rgb(36, 39, 39);
   width: 260px;
   min-height: 290px;
 
 }
 
-.today-top-btn { 
-  background-color: #a65b46; 
+.today-top-btn {
+  background-color: #a65b46;
   border: none;
   color: white;
   padding: 11px 10px;
@@ -56,7 +57,7 @@ body {
 }
 
 .today-top-list-li {
-  
+
   border: .5px solid rgb(11, 5, 37);
   margin: 3px;
   float: none;
@@ -105,24 +106,27 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 45%;
-  left: 50%; /* Change the left position to 50% */
+  top: 85%;
+  left: 50%;
+  /* Change the left position to 50% */
   transform: translate(-50%, 0);
   margin: auto;
   padding: 20px;
   width: 50%;
-  height: 300px;  
+  height: 300px;
   justify-content: center;
   align-items: center;
-  border: 2px dotted orangered;
+  border: 1px dotted orangered;
 }
 
 .super-container-qna-section {
-  border: 3px solid rgb(110, 28, 90);
+  border: 5px solid rgb(110, 28, 90);
+  margin-top: 20px;
 }
 
-#question, #answer {
-  font-size: 24px;
+#question,
+#answer {
+  font-size: 30px;
   text-align: center;
 }
 
@@ -139,17 +143,40 @@ body {
   word-spacing: 0.1em;
   font-family: Arial, sans-serif;
   font-size: 1.3em;
-  color: rgb(34, 34, 34); /* Set the color of the asterisks */
+  color: rgb(34, 34, 34);
+  /* Set the color of the asterisks */
   padding: 10px;
   border: 2px solid rgb(151, 117, 37);
+}
+
+#answer-msg{
+  font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+  font-size: 18px;
+  
+
 }
 
 
 
 
-.corect-answer-answered { /*Teisingai atsakytas atsakymas */
-  color: red;
+.corect-answer-answered {
+  /*Teisingai atsakytas atsakymas */
+  color: rgba(47, 50, 216, 0.822);
   font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+/* Dar neisku koki style bus */
+.corect-answer-answered-user{
+  text-transform: capitalize;
+  font-family: 'Neue Metana', sans-serif;/*Naujas font*/
+  font-weight: bold;
+  color: #a65b46;
+  background-image: url("texture.jpg"); /* Replace with your desired texture or pattern image */
+  background-repeat: repeat; /* Adjust according to your image and design preference */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adjust the shadow properties as needed */
+  
 }
 
 
@@ -186,10 +213,12 @@ body {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.1);
     opacity: 0.8;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -203,12 +232,15 @@ body {
 .litas-container {
   position: absolute;
   /* bottom: 22%; */
-  left: 10%; /* Change the left position to 50% */
-  transform: translate(-50%, 0); /* Use translate to adjust the element's position */
+  left: 10%;
+  /* Change the left position to 50% */
+  transform: translate(-50%, 0);
+  /* Use translate to adjust the element's position */
   /* display: block;
   justify-content: center; */
   padding: 5px;
-  margin: 10px auto; /* Use margin: auto to center the element */
+  margin: 10px auto;
+  /* Use margin: auto to center the element */
   width: 200px;
   height: 200px;
   border: 1px solid black;
@@ -227,7 +259,7 @@ body {
   }
 }
 
-.points-container{
+.points-container {
   /* float: left; */
   border: 3px solid brown;
 }
@@ -251,7 +283,8 @@ body {
 /* Plevesuojantys litai siektiek */
 #litai-img {
   width: 200px;
-  opacity: 0.8; /* Set the transparency to 70% */
+  opacity: 0.8;
+  /* Set the transparency to 70% */
   box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5);
   animation: flag-wave 7s infinite;
 }
@@ -263,66 +296,77 @@ body {
     visibility: visible;
     opacity: 1;
   }
+
   5% {
     transform: rotate(0deg) translateX(-5px);
     background-position: center;
     visibility: visible;
     opacity: 0.8;
   }
+
   10% {
     transform: rotate(-5deg) translateX(0);
     background-position: calc(100% - 5px) 5px;
     visibility: visible;
     opacity: 0.6;
   }
+
   15% {
     transform: rotate(0deg) translateX(5px);
     background-position: center;
     visibility: visible;
     opacity: 0.8;
   }
+
   20% {
     transform: rotate(5deg) translateX(0);
     background-position: 5px calc(100% - 5px);
     visibility: visible;
     opacity: 1;
   }
+
   25% {
     transform: rotate(0deg) translateX(0);
     background-position: center;
     visibility: visible;
     opacity: 1;
   }
+
   75% {
     transform: rotate(0deg) translateX(0);
     background-position: center;
     visibility: visible;
     opacity: 1;
   }
+
   80% {
     transform: rotate(-5deg) translateX(0);
     background-position: calc(100% - 5px) 5px;
     visibility: visible;
     opacity: 0.8;
   }
+
   85% {
     transform: rotate(0deg) translateX(-5px);
     background-position: center;
     visibility: visible;
     opacity: 0.6;
   }
+
   90% {
     transform: rotate(5deg) translateX(0);
     background-position: 5px calc(100% - 5px);
     visibility: visible;
     opacity: 0.8;
   }
+
   95% {
     transform: rotate(0deg) translateX(5px);
     background-position: center;
     visibility: visible;
     opacity: 0.6;
   }
+
   100% {
     transform: rotate(0deg) translateX(0);
     background-position: center;
@@ -346,6 +390,7 @@ body {
 .old-question-section #old-question {
   border: 1.5px solid rgba(30, 74, 30, 0.864);
 }
+
 .question {
   font-weight: bold;
 }
