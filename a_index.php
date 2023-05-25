@@ -96,21 +96,21 @@ if (isset($_GET['name'])) {
 
     <main class="super-container">
       <div class="points-container">
-        <div class="" id="points"></div>
-        <div class="" id="bonus-points"></div>
+        <div id="points"></div>
+        <div id="bonus-points"></div>
       </div>
 
       <div class="super-container-qna-section">
-        <div class="" id="question"></div>
-        <div class="" id="answer"></div>
+        <div id="question"></div>
+        <div id="answer"></div>
         <div class="answer-section">
-          <div class="" id="answer-msg"></div>
+          <div id="answer-msg"></div>
         </div>  
       </div>
 
       <?php if (isset($_SESSION['name']) && !empty($_SESSION['name']) && !isset($error)) { ?>
         <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">
-          <label for="answer-input">Atsakymas:</label>
+          <label for="answer-input"></label>
           <input type="text" id="answer-input" name="answer-input">
           <button class="submit-btn" type="submit">Submit</button>
         </form>
