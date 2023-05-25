@@ -280,7 +280,7 @@ const handleUserAnswer = async (userAnswer) => {
     const answerInput = document.getElementById("answer-input")
     answerInput.disabled = true
     const MsgNoAnswer = `Atsakymas negali būti tuščias.`
-    document.getElementById("answer").textContent = MsgNoAnswer
+    document.getElementById("answer-msg").textContent = MsgNoAnswer
     setTimeout(() => {
       answerInput.disabled = false
     }, 2500) // Disable answerInput for 2.5 seconds

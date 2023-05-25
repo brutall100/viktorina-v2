@@ -112,7 +112,7 @@ if (isset($_GET['name'])) {
         <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">
           <label for="answer-input"></label>
           <input type="text" id="answer-input" name="answer-input">
-          <button class="submit-btn" type="submit">Submit</button>
+          <button class="submit-btn" type="submit">Spėti</button>
         </form>
       <?php } ?>
 

@@ -165,7 +165,7 @@ body {
 
 /* answer-section */
 .answer-section {
-  height: 10vh;
+  min-height: 7vh;
   width: auto/2;
   border: 3px solid rgb(12, 126, 38);
   /* position: fixed; */
@@ -178,7 +178,6 @@ body {
   margin: 0.5rem;
   padding: 0.5rem; 
 }
-
 
 #answer-msg{
   font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
@@ -202,16 +201,25 @@ body {
 
 
 
-#answer-form {
-  display: flex;
-  flex-direction: column;
-  padding-top: 1%;
+
+#answer-input {
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 37px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 20px;
+  color: #333;
+  margin-right: 10px;
+  text-align: center;
 }
 
 .submit-btn {
+  width: 100px;
   color: rgb(43, 68, 64);
-  padding: 0.5em;
-  margin: 0.5rem 0 0 0;
+  padding: 0.7em;
+  margin: 0.3rem 0 0 0;
   font-weight: 900;
   transition: background-color 0.2s, transform 0.2s;
   cursor: pointer;
