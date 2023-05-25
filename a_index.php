@@ -59,11 +59,11 @@ if (isset($_GET['name'])) {
     <div id="lita"></div>
     <div id="lita-bonus"></div>
 
-<?php
+    <?php
 if (isset($_GET['name'])) {
   $name = $_GET['name'];
   $conn = mysqli_connect("localhost", "root", "", "viktorina");
-  $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id FROM super_users WHERE nick_name = '$name'";
+  $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
@@ -71,8 +71,9 @@ if (isset($_GET['name'])) {
     $points = $row['litai_sum'];
     $points_today = $row['litai_sum_today'];
     $user_id = $row['user_id'];
+    $position = $row['position'];
     if (isset($_SESSION['name'])) {
-      echo "Welcome, $name !";
+      echo "Welcome, $name! Your level is $level. You have $points points. Your position in the database is $position.";
     }
   } else {
     echo "User not found!";
@@ -82,6 +83,7 @@ if (isset($_GET['name'])) {
   echo "Labas! <img src='http://localhost/aldas/Viktorina.live/images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.";
 }
 ?>
+
 
     
     <section class="today-top">

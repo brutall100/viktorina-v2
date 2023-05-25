@@ -66,7 +66,8 @@ reikia atskirt css kazkaip gal bendra raide dadeti  -->
 <!-- Pagrindiniama puslapyje atsakius kl tvarkyti zinute kad raides nepersipintu-->
 
 <!-- 22 -->
-<!--  -->
+<!-- Sveikinimo zinute sutvarkyti ty welcome xxx your lvl your points position
+Perkelti i html struktura -->
 
 <!-- 23 -->
 <!-- -->
