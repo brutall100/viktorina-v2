@@ -70,7 +70,7 @@ reikia atskirt css kazkaip gal bendra raide dadeti  -->
 Perkelti i html struktura -->
 
 <!-- 23 -->
-<!-- -->
+<!-- Naujienos page padaryti BTN apacioje ir kuris greitai perkelia i virsu turbut sticky-->
 
 
 

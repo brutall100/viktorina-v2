@@ -3,13 +3,25 @@ session_start();
 if (isset($_GET['name'])) {
   $name = $_GET['name'];
   $conn = mysqli_connect("localhost", "root", "", "viktorina");
-  $query = "SELECT user_lvl, litai_sum FROM super_users WHERE nick_name = '$name'";
+  $query = "SELECT user_lvl, litai_sum, litai_sum_today, gender_super, user_email FROM super_users WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $level = $row['user_lvl'];
     $points = $row['litai_sum'];
-    echo "You are logging out, $name. Your current level is $level and you have $points points.<br>";
+    $points_today = $row['litai_sum_today'];
+    $gender = $row['gender_super'];
+    $email = $row['user_email'];
+
+    echo "<link rel='stylesheet' type='text/css' href='statistic.css'>";
+
+    echo "<div>
+            Jūsų surinkta litų suma: <span class='highlight'>$points</span><br>
+            Jūsų pasiektas lygis: <span class='highlight'>$level</span><br>
+            Jūs esate atjungiamas nuo Viktorinos, <span class='name'>$name</span> {$gender}.<br>
+            Šiandien surinkote: <span class='highlight'>$points_today</span> litų.<br>
+            Registravotės su šiuo @: <span class='highlight'>$email</span>
+          </div>";
   } else {
     echo "User not found!<br>";
   }
@@ -33,7 +45,7 @@ if (isset($_GET['name'])) {
   echo "<p>Total number of users: $user_count</p>";
   echo "<h2>Top 10 users by litai_sum</h2>";
   echo "<table>";
-  echo "<tr><th>Nickname</th><th>Litai Sum</th><th>User Level</th></tr>";
+  echo "<tr><th>Vardas</th><th>Litai</th><th>Levelis</th></tr>";
   while ($row3 = mysqli_fetch_assoc($result3)) {
     $nickname = $row3['nick_name'];
     $litai_sum = $row3['litai_sum'];
@@ -48,7 +60,7 @@ if (isset($_GET['name'])) {
 
   // Countdown timer using JavaScript
   echo "<script>";
-  echo "var seconds = 15;";
+  echo "var seconds = 500;";// 10-15 seconds has to be.
   echo "var countdown = setInterval(function() {";
   echo "  seconds--;";
   echo "  document.getElementById('countdown').textContent = seconds;";
@@ -60,7 +72,7 @@ if (isset($_GET['name'])) {
   echo "</script>";
 
   // Destroy the session after 15 seconds
-  header('Refresh: 15; URL=d_regilogi.php');
+  header('Refresh: 500; URL=d_regilogi.php');
   session_destroy();
 } else {
   echo "Error: missing nickname parameter.";

@@ -109,15 +109,15 @@ if (isset($_GET['name'])) {
           <div id="answer-msg"></div>
         </div>  
       </div>
-
-      <?php if (isset($_SESSION['name']) && !empty($_SESSION['name']) && !isset($error)) { ?>
-        <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">
-          <label for="answer-input"></label>
-          <input type="text" id="answer-input" name="answer-input">
-          <button class="submit-btn" type="submit">Spėti</button>
-        </form>
-      <?php } ?>
-
+      <div class="form-container">
+        <?php if (isset($_SESSION['name']) && !empty($_SESSION['name']) && !isset($error)) { ?>
+          <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">
+            <label for="answer-input"></label>
+            <input type="text" id="answer-input" name="answer-input">
+            <button class="submit-btn" type="submit">Spėti</button>
+          </form>
+        <?php } ?>
+      </div>
       
     </main>
 

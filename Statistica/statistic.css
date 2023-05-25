@@ -1,0 +1,15 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  
+  .highlight {
+    color: #00ff00;
+    font-weight: bold;
+  }
+  
+  .name {
+    color: #ff0000;
+  }
+  
