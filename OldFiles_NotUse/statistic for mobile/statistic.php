@@ -56,47 +56,48 @@ if (isset($_GET['name'])) {
       </div>";
 
 
-      echo "<div class='table-container left-table'>";
-echo "<h2>Top 10 pagal Litus</h2>";
-echo "<table class='statistic-table'>";
-echo "<tr>
-        <th>Vardas</th>
-        <th>Litai</th>
-        <th>Lygis</th>
-      </tr>";
-while ($row4 = mysqli_fetch_assoc($result4)) {
-  $nickname = $row4['nick_name'];
-  $litai_sum = $row4['litai_sum'];
-  $user_lvl = $row4['user_lvl'];
-  echo "<tr>
-          <td>$nickname</td>
-          <td>$litai_sum</td>
-          <td>$user_lvl</td>
-        </tr>";
-}
-echo "</table>";
-echo "</div>";
-
-
-
-echo "<div class='table-container right-table'>";
-echo "<h2>Top 10 klausimų kūrėjų</h2>";
-echo "<table class='statistic-table'>";
-echo "<tr>
-        <th>Vardas</th>
-        <th>Kiekis</th>
-      </tr>";
-while ($row5 = mysqli_fetch_assoc($result5)) {
-  $question_writer = $row5['user'];
-  $question_count = $row5['question_count'];
-  echo "<tr>
-          <td>$question_writer</td>
-          <td>$question_count</td>
-        </tr>";
-}
-echo "</table>";
-echo "</div>";
-
+      echo "<div class='table-container'>";
+      echo "<h2>Top 10 pagal Litus</h2>";
+      echo "<table class='statistic-table'>";
+      echo "<tr>
+              <th>Vardas</th>
+              <th>Litai</th>
+              <th>Lygis</th>
+            </tr>";
+      while ($row4 = mysqli_fetch_assoc($result4)) {
+        $nickname = $row4['nick_name'];
+        $litai_sum = $row4['litai_sum'];
+        $user_lvl = $row4['user_lvl'];
+        echo "<tr>
+                <td>$nickname</td>
+                <td>$litai_sum</td>
+                <td>$user_lvl</td>
+              </tr>";
+      }
+      echo "</table>";
+      echo "</div>";
+      
+      // Add a gap between tables
+      echo "<div style='margin-top: 20px'></div>";
+      
+      echo "<div class='table-container'>";
+      echo "<h2>Top 10 klausimų kūrėjų</h2>";
+      echo "<table class='statistic-table'>";
+      echo "<tr>
+              <th>Vardas</th>
+              <th>Kiekis</th>
+            </tr>";
+      while ($row5 = mysqli_fetch_assoc($result5)) {
+        $question_writer = $row5['user'];
+        $question_count = $row5['question_count'];
+        echo "<tr>
+                <td>$question_writer</td>
+                <td>$question_count</td>
+              </tr>";
+      }
+      echo "</table>";
+      echo "</div>";
+      
       
 
   mysqli_close($conn);
