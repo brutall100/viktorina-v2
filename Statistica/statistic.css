@@ -2,10 +2,16 @@
 
 body {
   text-align: center;
+  background-color: lightblue;
+  background: url(http://localhost/aldas/Viktorina.live/images/background/cover8.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h1 {
-  margin-top: 50px;
+  margin-top: 2px;
 }
 
 .highlight {
@@ -14,11 +20,29 @@ h1 {
 }
 
 #user-info {
-  margin-top: 20px;
+  position: relative;
+  border: 1px solid gold;
+  padding-top: 20px;
 }
 
+.time-left {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  margin: 10px;
+  color: aqua;
+}
+
+#countdown {
+  display: block;
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+
 #user-info p {
-  margin-bottom: 10px;
+  /* margin-bottom: 5px; */
+  border: 1px solid rgb(45, 163, 222);
 }
 
 #user-info .name {
@@ -26,7 +50,7 @@ h1 {
 }
 
 .statistic-info {
-  margin-top: 10px;
+  margin-top: 5px;
   text-align: center;
 }
 
@@ -47,11 +71,7 @@ h1 {
   margin: 0 auto;
 }
 
-#countdown {
-  display: block;
-  margin-top: 20px;
-  font-size: 20px;
-}
+
 
 .statistic-table {
   width: 100%;

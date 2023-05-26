@@ -16,16 +16,18 @@ if (isset($_GET['name'])) {
     echo "<link rel='stylesheet' type='text/css' href='statistic.css'>";
 
     echo "<div id='user-info'>
-            <p>Jūsų surinkta litų suma: <span class='highlight'>$points</span></p>
-            <p>Šiandien surinkote: <span class='highlight'>$points_today</span> litų.</p>
-            <p>Jūsų pasiektas lygis: <span class='highlight'>$level</span></p>
-            <p>Jūs esate atjungiamas nuo Viktorinos, <span class='name'>$name</span> {$gender}.</p>
-            <p>Registravotės su šiuo @: <span class='highlight'>$email</span></p>
-          </div>";
+        <h1>Jūs esate atjungiamas nuo Viktorinos, <span class='name'>$name</span> " . ($gender ? $gender : "") . "</h1> 
+        <h2 class='time-left'> <span id='countdown'>15</span></h2>
+        <p>Jūsų surinkta litų suma: <span class='highlight'>$points</span></p>
+        <p>Šiandien surinkote: <span class='highlight'>$points_today</span> litų.</p>
+        <p>Jūsų pasiektas lygis: <span class='highlight'>$level</span></p>
+        <p>Registravotės su šiuo @: <span class='highlight'>$email</span></p>
+      </div>";
   } else {
     echo "User not found!<br>";
   }
-  
+
+
   // Retrieve statistics
   $query1 = "SELECT COUNT(*) AS question_count_main FROM main_database";
   $result1 = mysqli_query($conn, $query1);
@@ -101,7 +103,6 @@ echo "</div>";
 
   mysqli_close($conn);
 
-  echo "<br><span id='countdown'>15</span> seconds before logging out...";
 
   // Countdown timer using JavaScript
   echo "<script>
@@ -117,7 +118,7 @@ echo "</div>";
         </script>";
 
   // Destroy the session after 15 seconds
-  header('Refresh: 500; URL=d_regilogi.php');
+  header('Refresh: 500; URL=http://localhost/aldas/Viktorina.live/d_regilogi.php');
   session_destroy();
 } else {
   echo "Error: missing nickname parameter.";
