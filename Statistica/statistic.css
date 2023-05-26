@@ -1,15 +1,45 @@
-/* styles.css */
+/* statistic.css */
+
 body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-  }
-  
-  .highlight {
-    color: #00ff00;
-    font-weight: bold;
-  }
-  
-  .name {
-    color: #ff0000;
-  }
-  
+  text-align: center;
+}
+
+h1 {
+  margin-top: 50px;
+}
+
+.highlight {
+  color: blue;
+  font-weight: bold;
+}
+
+#user-info {
+  margin-top: 20px;
+}
+
+#user-info p {
+  margin-bottom: 10px;
+}
+
+#user-info .name {
+  font-style: italic;
+}
+
+.table-container {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.table-container h2 {
+  margin-bottom: 10px;
+}
+
+.table-container table {
+  margin: 0 auto;
+}
+
+#countdown {
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+}
