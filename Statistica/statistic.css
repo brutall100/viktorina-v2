@@ -22,7 +22,7 @@ h1 {
 #user-info {
   position: relative;
   border: 1px solid gold;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 }
 
 .time-left {
@@ -39,7 +39,6 @@ h1 {
   font-size: 30px;
 }
 
-
 #user-info p {
   /* margin-bottom: 5px; */
   border: 1px solid rgb(45, 163, 222);
@@ -49,34 +48,21 @@ h1 {
   font-style: italic;
 }
 
-.statistic-info {
-  margin-top: 5px;
+
+
+
+.main-info-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* Divide the container into three columns */
+  grid-gap: 20px; /* Add a gap between the columns */
+  /* margin-top: 10px; */
   text-align: center;
 }
 
-.table-container {
-  display: inline-block;
-}
-
-.left-table {
-  margin-right: 50px;
-}
-
-
-.table-container h2 {
-  margin-bottom: 10px;
-}
-
-.table-container table {
-  margin: 0 auto;
-}
-
-
-
-.statistic-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: 1px solid #ccc;
+.main-info-container .table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .statistic-table th,
