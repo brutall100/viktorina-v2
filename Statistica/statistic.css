@@ -8,6 +8,9 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
 }
 
 h1 {
@@ -16,35 +19,93 @@ h1 {
 
 .highlight {
   color: blue;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 #user-info {
   position: relative;
-  border: 1px solid gold;
+  /* border: 1px solid gold; */
+  font-weight: bold;
 }
 
 .time-left {
   position: absolute;
   top: 0;
   right: 50px;
-  margin: 10px;
-  color: aqua;
+  
+  color: rgb(168, 188, 188);
 }
 
 #countdown {
   display: block;
-  margin-top: 20px;
+  margin-top: -12px;
   font-size: 30px;
 }
 
-#user-info p {
-  border: 1px solid rgb(45, 163, 222);
-}
+/* #user-info p {
+  border: 1px solid gold;
+} */
 
 #user-info .name {
   font-style: italic;
 }
+
+/* DROPDOWN BTN SU VARTOTOJAIS */
+.dropdown-btn {
+  background-color: #333;
+  font-style: italic;
+  font-weight: 600;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  letter-spacing: 2px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%);
+  
+}
+
+
+.dropdown-title {
+  background-color: #333;
+  color: #fff;
+  padding: 8px 16px;
+  margin: 0;
+}
+
+.dropdown-list {
+  list-style-type: decimal;
+  padding-left: 20px;
+  margin: 5px 10px;
+}
+
+.dropdown-list li {
+  padding: 8px 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  border-bottom: #333;
+}
+
+.dropdown-list li:nth-child(odd) {
+  background-color: #ddd;
+}
+
+.dropdown-list li:hover {
+  background-color: #ccc;
+}
+
+
+
 
 .main-info-container {
   display: grid;

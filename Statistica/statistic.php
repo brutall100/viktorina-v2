@@ -15,14 +15,49 @@ if (isset($_GET['name'])) {
 
     echo "<link rel='stylesheet' type='text/css' href='statistic.css'>";
 
+    // Calculate user's place in the database
+    $query_place = "SELECT COUNT(*) AS user_place FROM super_users WHERE litai_sum > $points";
+    $result_place = mysqli_query($conn, $query_place);
+    $row_place = mysqli_fetch_assoc($result_place);
+    $user_place = $row_place['user_place'] + 1; // Add 1 to account for the user's own place
+
+    // Retrieve the total number of users
+    $query_total_users = "SELECT COUNT(*) AS total_users FROM super_users";
+    $result_total_users = mysqli_query($conn, $query_total_users);
+    $row_total_users = mysqli_fetch_assoc($result_total_users);
+    $total_users = $row_total_users['total_users'];
+
     echo "<div id='user-info'>
         <h1>Jūs esate atjungiamas nuo Viktorinos, <span class='name'>$name</span> " . ($gender ? $gender : "") . "</h1> 
         <h2 class='time-left'> <span id='countdown'>15</span></h2>
-        <p>Jūsų surinkta litų suma: <span class='highlight'>$points</span></p>
+        <p>Jūsų vieta duomenų bazėje: <span class='highlight'>$user_place</span> iš <span class='highlight'>$total_users</span></p>
         <p>Šiandien surinkote: <span class='highlight'>$points_today</span> litų.</p>
+        <p>Jūsų surinkta litų suma: <span class='highlight'>$points</span></p>
         <p>Jūsų pasiektas lygis: <span class='highlight'>$level</span></p>
-        <p>Registravotės su šiuo @: <span class='highlight'>$email</span></p>
-      </div>";
+        <p>Registravotės su šiuo @: <span class='highlight'>$email</span></p>";
+
+    // Add a button to open the dropdown
+    echo "<button class='dropdown-btn' onclick='toggleDropdown()'>Pasižiūrėti</button>";
+
+    // Create the dropdown
+    echo "<div id='dropdown' class='dropdown-content' style='display: none;'>";
+    
+    $query_all_users = "SELECT nick_name, litai_sum FROM super_users ORDER BY litai_sum DESC";
+    $result_all_users = mysqli_query($conn, $query_all_users);
+    
+    echo "<h3 class='dropdown-title'>Visi žaidėjai:</h3>";
+    echo "<ol class='dropdown-list'>";
+    while ($row_all_users = mysqli_fetch_assoc($result_all_users)) {
+      $username = $row_all_users['nick_name'];
+      $user_points = $row_all_users['litai_sum'];
+      echo "<li>$username - $user_points LT</li>";
+    }
+    echo "</ol>";
+    
+    echo "</div>";
+    
+    echo "</div>";
+    
   } else {
     echo "Toks vartotojas nerastas!<br>";
   }
@@ -30,6 +65,7 @@ if (isset($_GET['name'])) {
   // Destroy the session after 15 seconds
   header('Refresh: 500; URL=http://localhost/aldas/Viktorina.live/d_regilogi.php');
   session_destroy();
+
 
   // Retrieve statistics
   $query1 = "SELECT COUNT(*) AS question_count_main FROM main_database";
@@ -86,7 +122,7 @@ if (isset($_GET['name'])) {
             <p>Iš viso laukančių patvirtinimo klausimų: $question_count_vaiting</p>
         </div>";
   
-    echo "<h2>Top 5 pagal litus šiandien</h2>";
+    echo "<h2>Top 5 pagal Litus šiandien</h2>";
     echo "<table class='statistic-table'>";
     echo "<tr>
             <th>Vardas</th>
@@ -141,4 +177,16 @@ if (isset($_GET['name'])) {
 } else {
   echo "Error: missing nickname parameter.";
 }
+
+echo "<script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById('dropdown');
+        if (dropdown.style.display === 'none') {
+          dropdown.style.display = 'block';
+        } else {
+          dropdown.style.display = 'none';
+        }
+      }
+      </script>";
+
 ?>
