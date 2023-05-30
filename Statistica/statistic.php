@@ -24,9 +24,12 @@ if (isset($_GET['name'])) {
         <p>Registravotės su šiuo @: <span class='highlight'>$email</span></p>
       </div>";
   } else {
-    echo "User not found!<br>";
+    echo "Toks vartotojas nerastas!<br>";
   }
 
+  // Destroy the session after 15 seconds
+  header('Refresh: 500; URL=http://localhost/aldas/Viktorina.live/d_regilogi.php');
+  session_destroy();
 
   // Retrieve statistics
   $query1 = "SELECT COUNT(*) AS question_count_main FROM main_database";
@@ -50,10 +53,11 @@ if (isset($_GET['name'])) {
   $query5 = "SELECT user, COUNT(*) AS question_count FROM question_answer GROUP BY user ORDER BY question_count DESC LIMIT 10";
   $result5 = mysqli_query($conn, $query5);
 
+  $query6 = "SELECT nick_name, litai_sum_today FROM super_users ORDER BY litai_sum_today DESC LIMIT 5";
+  $result6 = mysqli_query($conn, $query6);
   
-
   echo "<div class='main-info-container'>";
-  echo "<div class='table-container'>";
+  echo "<div class='table-container left-table'>";
     echo "<h2>Top 10 pagal Litus</h2>";
     echo "<table class='statistic-table'>";
     echo "<tr>
@@ -68,20 +72,39 @@ if (isset($_GET['name'])) {
       echo "<tr>
               <td>$nickname</td>
               <td>$litai_sum</td>
-              <td>$user_lvl</td>
+              <td class='center-numbers'>$user_lvl</td>
             </tr>";
     }
     echo "</table>";
   echo "</div>";
     
-  echo "<div class='statistic-info'>
-          <h1>Statistika</h1>
-          <p>Registruotų vartotojų: $user_count</p>
-          <p>Iš viso klausimų: $question_count_main</p>
-          <p>Iš viso laukančių patvirtinimo klausimų: $question_count_vaiting</p>
-      </div>";
-    
-  echo "<div class='table-container'>";
+  echo "<div class='table-container center-table'>";
+    echo "<div class='statistic-info'>
+            <h1>Statistika</h1>
+            <p>Registruotų vartotojų: $user_count</p>
+            <p>Iš viso klausimų: $question_count_main</p>
+            <p>Iš viso laukančių patvirtinimo klausimų: $question_count_vaiting</p>
+        </div>";
+  
+    echo "<h2>Top 5 pagal litus šiandien</h2>";
+    echo "<table class='statistic-table'>";
+    echo "<tr>
+            <th>Vardas</th>
+            <th>Litai šiandien</th>
+          </tr>";
+    while ($row6 = mysqli_fetch_assoc($result6)) {
+      $nickname = $row6['nick_name'];
+      $litai_sum_today = $row6['litai_sum_today'];
+      echo "<tr>
+              <td>$nickname</td>
+              <td class='center-numbers'>$litai_sum_today</td>
+            </tr>";
+    }
+    echo "</table>";
+  echo "</div>";
+
+
+  echo "<div class='table-container right-table'>";
     echo "<h2>Top 10 klausimų kūrėjų</h2>";
     echo "<table class='statistic-table'>";
     echo "<tr>
@@ -93,18 +116,15 @@ if (isset($_GET['name'])) {
       $question_count = $row5['question_count'];
       echo "<tr>
               <td>$question_writer</td>
-              <td>$question_count</td>
+              <td class='center-numbers'>$question_count</td>
             </tr>";
     }
     echo "</table>";
   echo "</div>";
-echo "</div>";
-
-
-
+  
+  echo "</div>";
 
   mysqli_close($conn);
-
 
   // Countdown timer using JavaScript
   echo "<script>
@@ -118,10 +138,6 @@ echo "</div>";
             }
           }, 1000);
         </script>";
-
-  // Destroy the session after 15 seconds
-  header('Refresh: 500; URL=http://localhost/aldas/Viktorina.live/d_regilogi.php');
-  session_destroy();
 } else {
   echo "Error: missing nickname parameter.";
 }
