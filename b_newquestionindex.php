@@ -1,4 +1,9 @@
 <?php
+    // Include the b_newquestion.php file
+    include('b_newquestion.php');
+?>
+
+<?php
 session_start();
 if (isset($_GET['name'])) {
   $_SESSION['name'] = $_GET['name'];
@@ -35,7 +40,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
   
   <main class="main">
     <div class="main-form">
-      <form class="main-form-forma" action="http://localhost/aldas/Viktorina.live/b_newquestion.php" method="post">
+      <form class="main-form-forma" method="post">
         <div>
           <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly />
           <span id="info-icon" onmouseover="showInfoText()" onmouseout="hideInfoText()">
@@ -66,6 +71,11 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
       <?php endif; ?>
     </div>
   </main>
+
+
+  <div><?php echo $message; ?></div>
+
+
 
   <footer class="footer">
     <object

@@ -63,7 +63,7 @@ if (isset($_GET['name'])) {
   }
 
   // Destroy the session after 15 seconds
-  header('Refresh: 500; URL=http://localhost/aldas/Viktorina.live/d_regilogi.php');
+  header('Refresh: 15; URL=http://localhost/aldas/Viktorina.live/d_regilogi.php');
   session_destroy();
 
 
@@ -164,13 +164,13 @@ if (isset($_GET['name'])) {
 
   // Countdown timer using JavaScript
   echo "<script>
-          var seconds = 500;
+          var seconds = 15;
           var countdown = setInterval(function() {
             seconds--;
             document.getElementById('countdown').textContent = seconds;
             if (seconds <= 0) {
               clearInterval(countdown);
-              window.location.href = 'd_regilogi.php';
+              window.location.href = 'http://localhost/aldas/Viktorina.live/d_regilogi.php';
             }
           }, 1000);
         </script>";

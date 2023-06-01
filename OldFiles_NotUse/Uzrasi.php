@@ -8,11 +8,10 @@
 <!--  Sutvarkyti modal foldery. isikelti i githuba GRAZIai -->
 
 <!-- 4 -->
-<!-- Reikia didesnio valdymo paslepto atsakymo, asterikso arba kvadratuko.O gal visai ne...... 
-Padaryti atverciamas tik 4 raides apie 40sekunziu paleisti funkcija po 40 kad parodyti atsakyma, input disabled, reload after 45 seconds from async-->
+<!-- -->
 
 <!-- 5 -->
-<!-- Atsijungimo puslapio topus sutvarkyti main database question db -->
+<!--  -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->
@@ -152,7 +151,10 @@ requirements.
 <!-- Vaikiski klausimai vaiku db  vaikai patys gali rasyti klausimus -->
 
 <!-- 6 -->
-<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos -->
+<!-- Statistic.php Viskas OK Šiek tiek CSS reiketų. Kolkas palieku -->
 
 <!-- 7 -->
+<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos -->
+
+<!-- 8 -->
 <!-- Game gal koks zymiu zmoniu foto, gal muzikinis klausimas,  -->
