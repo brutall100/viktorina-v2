@@ -8,7 +8,7 @@
 <!--  Sutvarkyti modal foldery. isikelti i githuba GRAZIai -->
 
 <!-- 4 -->
-<!-- -->
+<!-- b_newquestionindex.php sutvarkyti btn nes nelabai spaudziasi -->
 
 <!-- 5 -->
 <!--  -->
