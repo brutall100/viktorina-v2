@@ -180,3 +180,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
+<!-- <p>Jūs esate perkkeliamas atgal. Gal įrašysite dar vieną klausimą?  <span id="countdown">30</span> seconds.</p> -->

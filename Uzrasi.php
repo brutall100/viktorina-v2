@@ -11,7 +11,8 @@
 <!-- b_newquestionindex.php sutvarkyti btn nes nelabai spaudziasi -->
 
 <!-- 5 -->
-<!--  -->
+<!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)
+Isiraso kai atsakoma i klausima arba kai niekas neatsako. o paskutini klausima 100 istrina is DB -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->
