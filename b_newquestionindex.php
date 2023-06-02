@@ -17,8 +17,6 @@ $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
-// $message = '';
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $host = 'localhost';
     $user = 'root';
@@ -39,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $ip = $_SERVER['REMOTE_ADDR'];
 
     if (empty($question) || empty($answer)) {
-        $message = "Klaida: ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.";
+        $message = '<span class="empty-fields">Klaida: ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
     } else {
         // Check if answer contains bad words
         $bad_words_sql = "SELECT curse_words FROM bad_words";
@@ -54,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         foreach ($bad_words_array as $bad_word) {
             if (strpos($answer, $bad_word) !== false) {
-                $message = "Klaida: atsakyme yra nepriimtinų žodžių.";
+                $message = '<span class="bad-word-message">Klaida: atsakyme yra nepriimtinų žodžių.</span>';
                 echo $message;
                 exit();
             }
@@ -70,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Insert the data into the database
             $sql = "INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES ('$name', '$user_id', '$question', '$answer', '$date_inserted','$ip')";
             if (mysqli_query($conn, $sql)) {
-                $message = "Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus apdorojamas. Už įrašytą klausimą jums suteikta 10 LITŲ.";
+                $message = '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums suteikta 10 LITŲ.</span>';
                 $sql = "UPDATE viktorina.super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
 
                 if (mysqli_query($conn, $sql)) {
@@ -87,7 +85,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     mysqli_close($conn);
 }
 
-// echo $message;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,8 +135,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
   <?php if (!empty($message)): ?>
-    <div class="message">
-      <?php echo $message; ?>
+    <div class="message-container">
+        <div class="message">
+          <?php echo $message; ?>
+        </div>
     </div>
   <?php endif; ?>
 

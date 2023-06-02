@@ -9,11 +9,7 @@ body {
   background-size: cover;
 }
 
-.imported-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
+
 
 /* Klausimo irasymo imputs + button */
 /* Default styles for all devices */
@@ -125,7 +121,7 @@ input[type="submit"]:active {
 /* Main info Autorius */
 .main-info {
   position: absolute;
-  left: 13%;
+  left: 13.65%;
   top: 50%;
   transform: translate(-50%, -50%);
   padding: 30px;
@@ -174,26 +170,39 @@ input[type="submit"]:active {
   color: #fff;
 }
 
-/* Media queries for different devices */
+.message-container {
+  width: 260px;
+  height: 260px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  background-color: #459ce3;
+  border-radius: 20px;
+  border: 1px solid #000;
+}
 
-/*  */
+.empty-fields {
+  color:#bd1717;
+  font-size: large;
+}
+
+.bad-word-message {
+  color: red;
+  font-weight: bold;
+  /* Add any other styles you want */
+}
+
+.good-question {
+  color: #ffa000;
+}
 
 
 
 
-
-
-
-
-
-
-                  /*b_newquestion.php  */
-                  
-.message {
-	background-color: #fff;
-	border: 1px solid #ccc;
-	padding: 20px;
-	margin: 20px;
-	font-size: 1.2rem;
-	text-align: center;
+.imported-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
