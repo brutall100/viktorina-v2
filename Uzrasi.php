@@ -15,7 +15,8 @@
 Isiraso kai atsakoma i klausima arba kai niekas neatsako. o paskutini klausima 100 istrina is DB -->
 
 <!-- 6 -->
-<!-- Padarti i statistic.php menesio top savaites top dienos top  top 10 irasysiu klausimus nusinulina 12 nakties -->
+<!-- Padarti i statistic.php menesio top 10, savaites top 10, dienos top 10, irasysiu klausimus top 10 nusinulina 1 menesio diena,
+Siuo metu yra tik bendras padarytas top. Aplamai menesio reik padaryti -->
 
 <!-- 7 -->
 <!-- Full screen api ,kad vaizdas butu per visa ekrana -->
@@ -34,7 +35,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
 
 <!-- 12 -->
-<!-- Klausimu kurimas pasitelikiant ai klausimo ilgis tokenaais ir atsakymas-->
+<!-- Klausimu kurimas pasitelikiant ai klausimo ilgis tokenaais ir atsakymas. Klausimu kurimas pasitelkiant Ai nuo 3 lvl-->
 
 <!-- 13 -->
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
@@ -43,7 +44,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!--  Uz kieviena prabalsavima gauti 1 lita geriau puse lito. Bet gerai ir litas.-->
 
 <!-- 15 -->
-<!-- Statistikoje TOP 5 padaryti-->
+<!-- -->
 
 <!--16 -->
 <!-- Padaryti kad butu galima isjungti games.Visus game -->
