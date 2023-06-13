@@ -5,10 +5,10 @@
 <!-- Skaiciu zaidime padRYTI kad galima btn tik vien kart paspausti -->
 
 <!-- 3 -->
-<!--  Sutvarkyti modal foldery. isikelti i githuba GRAZIai -->
+<!--  Atsakymo btn pagrindiniame puslapyje sujungti su inputu. Daug graziau atrodo -->
 
 <!-- 4 -->
-<!-- b_newquestionindex.php sutvarkyti btn nes nelabai spaudziasi -->
+<!-- b_newquestionindex.php sutvarkyti btn nes nelabai spaudziasi,   del modalo -->
 
 <!-- 5 -->
 <!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)

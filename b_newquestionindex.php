@@ -150,6 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   </footer>
 
 </body>
+<script src="http://localhost/aldas/Viktorina.live/b_newquestion.js"></script>
 </html>
 
           

@@ -90,26 +90,28 @@ input[type="submit"]:active {
 #info-icon {
   position: absolute;
   display: inline-block;
-}
+} 
 
 #info-icon img {
   position: relative;
   width: 27px;
   height: 27px;
-  right: 40px;
-  top: 12px;
+  right: 35px;
+  top: 10px;
+  cursor: pointer;
 }
 
 #info-text {
   display: none;
   position: absolute;
-  bottom: 20px;
-  left: 5px;
+  bottom: -27px;
+  left: 3px;
   width: 400px;
   background-color: #fff;
   padding: 10px;
   border-radius: 8px;
   border: none;
+  /* z-index: 1000; */
 }
 
 .litai-text-color {
