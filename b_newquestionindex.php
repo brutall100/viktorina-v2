@@ -17,7 +17,7 @@ $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
-$message = ""; // Initialize the message variable
+$message = ""; // Initialize the message variable  Klausimas privalo būti aiškus, teisingai suformuluotas ir su skyrybos ženklais, be keiksmažodžių. Atsakymas privalo būti aiškus ir taisyklingas.
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $host = 'localhost';

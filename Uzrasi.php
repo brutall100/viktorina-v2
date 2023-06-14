@@ -64,14 +64,14 @@ pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, 
 reikia atskirt css kazkaip gal bendra raide dadeti  -->
 
 <!-- 21 -->
-<!-- Pagrindiniama puslapyje atsakius kl tvarkyti zinute kad raides nepersipintu-->
+<!-- -->
 
 <!-- 22 -->
 <!-- Sveikinimo zinute sutvarkyti ty welcome xxx your lvl your points position
 Perkelti i html struktura -->
 
 <!-- 23 -->
-<!-- Naujienos page padaryti BTN apacioje ir kuris greitai perkelia i virsu turbut sticky-->
+<!-- Naujienos page padaryti BTN apacioje ir kuris greitai perkelia i virsu turbut sticky .Taip pat buttton i apacia kad numestu-->
 
 
 
