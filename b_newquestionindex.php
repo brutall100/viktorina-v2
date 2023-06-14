@@ -19,6 +19,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
 $message = ""; // Initialize the message variable  Klausimas privalo būti aiškus, teisingai suformuluotas ir su skyrybos ženklais, be keiksmažodžių. Atsakymas privalo būti aiškus ir taisyklingas.
 
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $host = 'localhost';
     $user = 'root';
@@ -39,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $ip = $_SERVER['REMOTE_ADDR'];
 
     if (empty($question) || empty($answer)) {
-        $message .= '<span class="empty-fields">Klaida: ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
+        $message = '<span class="empty-fields">Klaida: ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
     } else {
         // Check if answer contains bad words
         $bad_words_sql = "SELECT curse_words FROM bad_words";
@@ -54,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         foreach ($bad_words_array as $bad_word) {
             if (strpos($answer, $bad_word) !== false) {
-                $message .= '<span class="bad-word-message">Klaida: klausime arba atsakyme yra nepriimtinų žodžių.</span>';
+                $message = '<span class="bad-word-message">Klaida: klausime arba atsakyme yra nepriimtinų žodžių.</span>';
                 break; // Stop the loop after finding the first bad word
             }
         }
@@ -69,33 +70,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $user_lvl = $row['user_lvl'];
 
                 if ($user_lvl <= 1) {
-                    $message .= '<span class="user-level-error">Klaida: jūs neturite leidimo įrašyti klausimo ir atsakymo į duomenų bazę.</span>';
+                    $message = '<span class="user-level-error">Klaida: jūs neturite leidimo įrašyti klausimo ir atsakymo į duomenų bazę.</span>';
                 } else {
                     // Check if the same question and answer already exist
                     $check_sql = "SELECT * FROM question_answer WHERE question = '$question' AND answer = '$answer'";
                     $check_result = mysqli_query($conn, $check_sql);
 
                     if (mysqli_num_rows($check_result) > 0) {
-                        $message .= "Toks klausimas jau egzistuoja.";
+                        $message = "Toks klausimas jau egzistuoja.";
                     } else {
                         // Insert the data into the database
                         $sql = "INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES ('$name', '$user_id', '$question', '$answer', '$date_inserted','$ip')";
                         if (mysqli_query($conn, $sql)) {
-                            $message .= '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums bus suteikta 10 LITŲ.</span>';
+                            $message = '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums bus suteikta 10 LITŲ.</span>';
                             $sql = "UPDATE super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
 
                             if (mysqli_query($conn, $sql)) {
                                 // Success
                             } else {
-                                $message .= "Error updating litai_sum: " . mysqli_error($conn);
+                                $message = "Error updating litai_sum: " . mysqli_error($conn);
                             }
                         } else {
-                            $message .= "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            $message = "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
                     }
                 }
             } else {
-                $message .= "Nepavyko gauti naudotojo lygio informacijos.";
+                $message = "Nepavyko gauti naudotojo lygio informacijos.";
             }
         }
     }
@@ -103,6 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     mysqli_close($conn);
 }
 ?>
+
 
 
 
@@ -161,7 +163,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           <?php echo $message; ?>
         </div>
     </div>
+  <?php else: ?>
+      <div class="message-container">
+          <div class="message">
+            Klausimas privalo būti aiškus, teisingai suformuluotas ir su skyrybos ženklais, be keiksmažodžių. Atsakymas privalo būti aiškus ir taisyklingas.
+          </div>
+      </div>
   <?php endif; ?>
+
 
   <footer class="footer">
     <object
