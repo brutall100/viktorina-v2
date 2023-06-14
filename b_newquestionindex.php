@@ -17,7 +17,7 @@ $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
-$message = ""; // Initialize the message variable  Klausimas privalo būti aiškus, teisingai suformuluotas ir su skyrybos ženklais, be keiksmažodžių. Atsakymas privalo būti aiškus ir taisyklingas.
+$message = ""; 
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         foreach ($bad_words_array as $bad_word) {
-            if (strpos($answer, $bad_word) !== false) {
+          if (strpos($question, $bad_word) !== false || strpos($answer, $bad_word) !== false) {
                 $message = '<span class="bad-word-message">Klaida: klausime arba atsakyme yra nepriimtinų žodžių.</span>';
                 break; // Stop the loop after finding the first bad word
             }
