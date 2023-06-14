@@ -17,6 +17,8 @@ $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
+$message = ""; // Initialize the message variable
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $host = 'localhost';
     $user = 'root';
@@ -37,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $ip = $_SERVER['REMOTE_ADDR'];
 
     if (empty($question) || empty($answer)) {
-        $message = '<span class="empty-fields">Klaida: ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
+        $message .= '<span class="empty-fields">Klaida: ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
     } else {
         // Check if answer contains bad words
         $bad_words_sql = "SELECT curse_words FROM bad_words";
@@ -52,60 +54,59 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         foreach ($bad_words_array as $bad_word) {
             if (strpos($answer, $bad_word) !== false) {
-                $message = '<span class="bad-word-message">Klaida: atsakyme yra nepriimtinų žodžių.</span>';
-                echo $message;
-                exit();
+                $message .= '<span class="bad-word-message">Klaida: klausime arba atsakyme yra nepriimtinų žodžių.</span>';
+                break; // Stop the loop after finding the first bad word
             }
         }
 
-        // Check user level
-        $check_level_sql = "SELECT user_lvl FROM super_users WHERE user_id = '$user_id'";
-        $check_level_result = mysqli_query($conn, $check_level_sql);
+        if (empty($message)) {
+            // Check user level
+            $check_level_sql = "SELECT user_lvl FROM super_users WHERE user_id = '$user_id'";
+            $check_level_result = mysqli_query($conn, $check_level_sql);
 
-        if (mysqli_num_rows($check_level_result) > 0) {
-            $row = mysqli_fetch_assoc($check_level_result);
-            $user_lvl = $row['user_lvl'];
+            if (mysqli_num_rows($check_level_result) > 0) {
+                $row = mysqli_fetch_assoc($check_level_result);
+                $user_lvl = $row['user_lvl'];
 
-            if ($user_lvl <= 1) {
-                $message = '<span class="user-level-error">Klaida: jūs neturite leidimo įrašyti klausimo ir atsakymo į duomenų bazę.</span>';
-                echo $message;
-                exit();
-            }
-        } else {
-            $message = "Nepavyko gauti naudotojo lygio informacijos.";
-            echo $message;
-            exit();
-        }
-
-        // Check if the same question and answer already exist
-        $check_sql = "SELECT * FROM question_answer WHERE question = '$question' AND answer = '$answer'";
-        $check_result = mysqli_query($conn, $check_sql);
-
-        if (mysqli_num_rows($check_result) > 0) {
-            $message = "Toks klausimas jau egzistuoja.";
-        } else {
-            // Insert the data into the database
-            $sql = "INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES ('$name', '$user_id', '$question', '$answer', '$date_inserted','$ip')";
-            if (mysqli_query($conn, $sql)) {
-                $message = '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums suteikta 10 LITŲ.</span>';
-                $sql = "UPDATE super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
-
-                if (mysqli_query($conn, $sql)) {
-                    // Success
+                if ($user_lvl <= 1) {
+                    $message .= '<span class="user-level-error">Klaida: jūs neturite leidimo įrašyti klausimo ir atsakymo į duomenų bazę.</span>';
                 } else {
-                    echo "Error updating litai_sum: " . mysqli_error($conn);
+                    // Check if the same question and answer already exist
+                    $check_sql = "SELECT * FROM question_answer WHERE question = '$question' AND answer = '$answer'";
+                    $check_result = mysqli_query($conn, $check_sql);
+
+                    if (mysqli_num_rows($check_result) > 0) {
+                        $message .= "Toks klausimas jau egzistuoja.";
+                    } else {
+                        // Insert the data into the database
+                        $sql = "INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES ('$name', '$user_id', '$question', '$answer', '$date_inserted','$ip')";
+                        if (mysqli_query($conn, $sql)) {
+                            $message .= '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums bus suteikta 10 LITŲ.</span>';
+                            $sql = "UPDATE super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
+
+                            if (mysqli_query($conn, $sql)) {
+                                // Success
+                            } else {
+                                $message .= "Error updating litai_sum: " . mysqli_error($conn);
+                            }
+                        } else {
+                            $message .= "Error: " . $sql . "<br>" . mysqli_error($conn);
+                        }
+                    }
                 }
             } else {
-                $message = "Error: " . $sql . "<br>" . mysqli_error($conn);
+                $message .= "Nepavyko gauti naudotojo lygio informacijos.";
             }
         }
     }
 
     mysqli_close($conn);
 }
-
-
 ?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,7 +149,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <p>Autorius: <?php echo $name; ?></p>
         <p>Lygis: <?php echo $level; ?></p>
         <p>Litai: <?php echo $points; ?></p>
-        <p>Id: <?php echo $user_id; ?></p>
+        <p>Id: <?php echo $user_id; ?></p> <!-- Reikes paslepti, nereikia kad butu matomas. Bus sugeneruotas skaiciu derinys -->
       <?php endif; ?>
     </div>
   </main>

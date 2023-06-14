@@ -44,7 +44,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!--  Uz kieviena prabalsavima gauti 1 lita geriau puse lito. Bet gerai ir litas.-->
 
 <!-- 15 -->
-<!-- -->
+<!-- Registruojantis user_id reikia sugeneruoti skaiciu derini. Galbut kartu su raidemis-->
 
 <!--16 -->
 <!-- Padaryti kad butu galima isjungti games.Visus game -->
@@ -56,7 +56,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire pagrindinaime puslapyje -->
 
 <!-- 19 -->
-<!-- -->
+<!-- Padaryti Bad word irasyma i db, nuo 5 lvl.tik nuo 5 lvl -->
 
 <!-- 20 -->
 <!-- b_newquestion.php cia iskylantis phhp puslapis reikia sutvarkyti zinute, prideti css pagrazinti,

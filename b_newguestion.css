@@ -193,7 +193,11 @@ input[type="submit"]:active {
 .bad-word-message {
   color: red;
   font-weight: bold;
-  /* Add any other styles you want */
+}
+
+.user-level-error {
+  color: rgb(68, 2, 2);
+  font-weight: bold;
 }
 
 .good-question {
