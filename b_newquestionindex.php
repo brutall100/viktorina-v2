@@ -58,6 +58,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
 
+        // Check user level
+        $check_level_sql = "SELECT user_lvl FROM super_users WHERE user_id = '$user_id'";
+        $check_level_result = mysqli_query($conn, $check_level_sql);
+
+        if (mysqli_num_rows($check_level_result) > 0) {
+            $row = mysqli_fetch_assoc($check_level_result);
+            $user_lvl = $row['user_lvl'];
+
+            if ($user_lvl <= 1) {
+                $message = '<span class="user-level-error">Klaida: jūs neturite leidimo įrašyti klausimo ir atsakymo į duomenų bazę.</span>';
+                echo $message;
+                exit();
+            }
+        } else {
+            $message = "Nepavyko gauti naudotojo lygio informacijos.";
+            echo $message;
+            exit();
+        }
+
         // Check if the same question and answer already exist
         $check_sql = "SELECT * FROM question_answer WHERE question = '$question' AND answer = '$answer'";
         $check_result = mysqli_query($conn, $check_sql);
@@ -69,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $sql = "INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES ('$name', '$user_id', '$question', '$answer', '$date_inserted','$ip')";
             if (mysqli_query($conn, $sql)) {
                 $message = '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums suteikta 10 LITŲ.</span>';
-                $sql = "UPDATE viktorina.super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
+                $sql = "UPDATE super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
 
                 if (mysqli_query($conn, $sql)) {
                     // Success
@@ -84,6 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     mysqli_close($conn);
 }
+
 
 ?>
 <!DOCTYPE html>
