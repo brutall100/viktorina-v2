@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $ip = $_SERVER['REMOTE_ADDR'];
 
     if (empty($question) || empty($answer)) {
-        $message = '<span class="empty-fields">Klaida: ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
+        $message = '<span class="empty-fields">Klaida:</br> Ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
     } else {
         // Check if answer contains bad words
         $bad_words_sql = "SELECT curse_words FROM bad_words";
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         foreach ($bad_words_array as $bad_word) {
           if (strpos($question, $bad_word) !== false || strpos($answer, $bad_word) !== false) {
-                $message = '<span class="bad-word-message">Klaida: klausime arba atsakyme yra nepriimtinų žodžių.</span>';
+                $message = '<span class="bad-word-message">Klaida:</br> Klausime arba atsakyme yra nepriimtinų žodžių.</span>';
                 break; // Stop the loop after finding the first bad word
             }
         }
@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $user_lvl = $row['user_lvl'];
 
                 if ($user_lvl <= 1) {
-                    $message = '<span class="user-level-error">Klaida: jūs neturite leidimo įrašyti klausimo ir atsakymo į duomenų bazę.</span>';
+                    $message = '<span class="user-level-error">Klaida:</br> Jūs neturite leidimo įrašyti klausimo ir atsakymo į duomenų bazę.</span>';
                 } else {
                     // Check if the same question and answer already exist
                     $check_sql = "SELECT * FROM question_answer WHERE question = '$question' AND answer = '$answer'";
@@ -116,6 +116,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Naujo klausimo įrašymas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/b_newguestion.css" />
 </head>
   
@@ -166,7 +169,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <?php else: ?>
       <div class="message-container">
           <div class="message">
-            Klausimas privalo būti aiškus, teisingai suformuluotas ir su skyrybos ženklais, be keiksmažodžių. Atsakymas privalo būti aiškus ir taisyklingas.
+            Klausimai ir atsakymai privalo būti aiškūs, teisingai suformuluoti, su skyrybos ženklais, be keiksmažodžių.
           </div>
       </div>
   <?php endif; ?>

@@ -182,28 +182,37 @@ input[type="submit"]:active {
   transform: translateY(-50%);
   background-color: #459ce3;
   border-radius: 20px;
-  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  font-family: 'Amatic SC', cursive;
+  /* font-family: 'Pacifico', cursive; */
+  font-weight: 900;
+  font-size: 30px;
+  color: #333333;
+  padding: 5px;
+  text-align: center;
 }
 
 .empty-fields {
-  color:#bd1717;
-  font-size: large;
+  color: #bd1717;
+  
 }
 
 .bad-word-message {
   color: red;
-  font-weight: bold;
 }
 
 .user-level-error {
   color: rgb(68, 2, 2);
-  font-weight: bold;
 }
 
 .good-question {
   color: #ffa000;
 }
-
 
 .imported-footer {
   position: fixed;
