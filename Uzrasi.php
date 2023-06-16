@@ -64,7 +64,8 @@ pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, 
 reikia atskirt css kazkaip gal bendra raide dadeti  -->
 
 <!-- 21 -->
-<!-- -->
+<!-- Irasant klausima ir atsakyma i db turi buti fiksuojamas zodzio ilgis.
+Kad nebutu per ilgu zodziu. taip pat galima fiksuoti vienodas raides. ty jei trys is eiles vienodos raides,t.y ggg ir bus metama klaida -->
 
 <!-- 22 -->
 <!-- Sveikinimo zinute sutvarkyti ty welcome xxx your lvl your points position

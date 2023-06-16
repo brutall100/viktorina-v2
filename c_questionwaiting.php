@@ -36,9 +36,11 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 <?php include 'Header/header.php'; ?>
 <main>
     <div class="button-wrapper">
-       <button id="btn-perkelti-klausimus" class="btn-perkelti-klausimus">Button</button>
+      <button id="btn-perkelti-klausimus" class="btn-perkelti-klausimus">Perkelti</button>
     </div>
+    
     <div class="table-wrapper">
+      <button id="btn-drop-bottom" class="btn-drop-bottom">Į APAČIA</button>
       <table class="table">
         <tr>
           <th>Numeris</th>
@@ -82,9 +84,10 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
           mysqli_close($conn);
         ?>
       </table>
+      <button id="btn-drop-top" class="btn-drop-top">Į VIRŠŲ</button>
     </div>
   </main>  
-
+  
   <footer class="footer">
     <object
       data="http://localhost/aldas/Viktorina.live/Footer/footer.html"

@@ -21,28 +21,27 @@ main {
     /* Add margin to create space between table and footer */
 }
 
-/* BTN perkelti */
+/* BTN perkelti klausimus */
 .button-wrapper {
     display: inline-block;
     position: fixed;
     top: 50%;
-    left: 2px;
+    left: 110px;
     transform: translateY(-50%);
-    z-index: 9999;
+    z-index: 9;
 }
 
 .btn-perkelti-klausimus {
-    z-index: 9999;
+    z-index: 9;
     opacity: 0.8;
     position: relative;
-    width: 150px;
-    height: 150px;
-    padding: 8px 12px;
-    margin: 20px;
+    min-width: 70px;
+    min-height: 233px;
+    padding: 10px 21px;
+    /* margin: 20px; */
     border: none;
     border-radius: 7px;
-    background-color: #ECECEC;
-    /* Soft gray color */
+    background-color: #c0e1f4;
     color: #333333;
     /* Dark text color */
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
@@ -55,11 +54,11 @@ main {
     /* Display text vertically from top to bottom */
     text-orientation: upright;
     /* Set the text orientation upright */
+    font-size: 21px; /* Adjust the size as needed */
+    color: #333333;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
 }
-
-
-
-
 
 .btn-perkelti-klausimus:hover {
     background-color: #D4D4D4;
@@ -70,6 +69,49 @@ main {
     background-color: #C2C2C2;
     /* Lighter gray color when pressed */
 }
+
+
+/* BTN persokimas i virsu/apacia */
+.btn-drop-top{
+    position: absolute;
+    bottom: 100px;
+    right: 80px;
+}
+
+.btn-drop-bottom{
+    position: absolute;
+    top: 100px;
+    right: 80px;
+}
+
+.btn-drop-top,
+.btn-drop-bottom { 
+    z-index: 9;
+    min-width: 140px;
+    min-height: 70px;
+    background-color: #c0e1f4;
+    color: #333333;
+    opacity: 0.8;
+    border: none;
+    border-radius: 7px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+  }
+  
+  .btn-drop-top:hover, 
+  .btn-drop-bottom:hover {
+    background-color: #D4D4D4;
+  }
+  
+  .btn-drop-top:active,
+  .btn-drop-bottom:active {
+    background-color: #C2C2C2;
+  }
+  
+
 
 
 .table {
