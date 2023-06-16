@@ -176,4 +176,23 @@ document.querySelectorAll('.downvote').forEach(function(button) {
   toggleButtonVisibility();
 </script>
 
+<!-- BTN To Bottom and To Top -->
+<script>
+  document.getElementById('btn-drop-bottom').addEventListener('click', function() {
+  const pageHeight = document.documentElement.scrollHeight
+
+  window.scrollTo({
+    top: pageHeight,
+    behavior: 'smooth'
+  })
+}) 
+
+  document.getElementById('btn-drop-top').addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
+</script>
+
 
