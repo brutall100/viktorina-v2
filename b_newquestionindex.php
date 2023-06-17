@@ -123,7 +123,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
   
 <body>
-<?php include 'Header/header.php'; ?>
+<div class="header-wrapper">
+  <?php include 'Header/header.php'; ?>
+</div>
   
   <main class="main">
     <div class="main-form">

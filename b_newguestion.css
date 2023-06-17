@@ -9,7 +9,11 @@ body {
   background-size: cover;
 }
 
-
+.header-wrapper{
+  position:sticky;
+  top: 0;  
+  z-index: 9;
+}
 
 /* Klausimo irasymo imputs + button */
 /* Default styles for all devices */

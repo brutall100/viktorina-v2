@@ -33,7 +33,9 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 
 
 <body>
-<?php include 'Header/header.php'; ?>
+<div class="header-wrapper">
+  <?php include 'Header/header.php'; ?>
+</div>
 <main>
     <div class="button-wrapper">
       <button id="btn-perkelti-klausimus" class="btn-perkelti-klausimus">Perkelti</button>

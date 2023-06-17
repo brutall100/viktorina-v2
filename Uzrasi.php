@@ -8,7 +8,8 @@
 <!--  Atsakymo btn pagrindiniame puslapyje sujungti su inputu. Daug graziau atrodo -->
 
 <!-- 4 -->
-<!-- b_newquestionindex.php sutvarkyti btn nes nelabai spaudziasi,   del modalo -->
+<!-- b_newquestionindex.php sutvarkyti btn nes nelabai spaudziasi,   del modalo ty yra footer apziureti pratrinti ta modala. Kiek viename page savos 
+taisykles. klausimo irasymo, klausimo balsavimo, bendrosios pagrindiniame puslapyje -->
 
 <!-- 5 -->
 <!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)
@@ -22,14 +23,14 @@ Siuo metu yra tik bendras padarytas top. Aplamai menesio reik padaryti -->
 <!-- Full screen api ,kad vaizdas butu per visa ekrana -->
 
 <!-- 8 -->
-<!-- Css padaryti kad baigiantis laikui klausimas prades nykti ir mazeti ir nubrgs i desny kampa apacioj  -->
+<!-- Css padaryti kad baigiantis laikui klausimas prades nykti ir mazeti ir nubrgs i desny kampa apacioj ????????? Gal -->
 
 <!-- 9 -->
 <!-- sukurti ikoneles useriams su daug litu,galima butu
 nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -->
 
 <!-- 10 -->
-<!-- Kosmetinis saito sutvarkymas .Dizaino paieskos ir.t.t -->
+<!-- Paspaudus copyright nukreipiamas i pastabu pasiulymu , saito klaidu, klausimo klaidu puslapy, klausimas turi tureti id nr kad apie ji pranesti -->
 
 <!-- 11 -->
 <!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
@@ -44,16 +45,16 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!--  Uz kieviena prabalsavima gauti 1 lita geriau puse lito. Bet gerai ir litas.-->
 
 <!-- 15 -->
-<!-- Registruojantis user_id reikia sugeneruoti skaiciu derini. Galbut kartu su raidemis-->
+<!-- Registruojantis user_id reikia sugeneruoti skaiciu derini. Galbut kartu su raidemis, del saugumo BUtinai-->
 
 <!--16 -->
 <!-- Padaryti kad butu galima isjungti games.Visus game -->
 
 <!-- 17 -->
-<!-- Uz klausimo irasyma 10 litu + Ikonele kokia 1 savatei klausimu irasytojas + mini taisykles -->
+<!-- Uz klausimo irasyma 10 litu +++++ Ikonele kokia 1 savatei klausimu irasytojas +++++ mini taisykles -->
 
 <!-- 18 -->
-<!-- Rasant atsakyma raides nuo vidurio rasytusi ir eitu i kaire pagrindinaime puslapyje -->
+<!--  -->
 
 <!-- 19 -->
 <!-- Padaryti Bad word irasyma i db, nuo 5 lvl.tik nuo 5 lvl -->
@@ -72,9 +73,13 @@ Kad nebutu per ilgu zodziu. taip pat galima fiksuoti vienodas raides. ty jei try
 Perkelti i html struktura -->
 
 <!-- 23 -->
-<!-- Naujienos page padaryti BTN apacioje ir kuris greitai perkelia i virsu turbut sticky .Taip pat buttton i apacia kad numestu-->
+<!-- -->
 
+<!-- 24 -->
+<!-- -->
 
+<!-- 25 -->
+<!-- -->
 
 
 

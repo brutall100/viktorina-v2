@@ -45,7 +45,10 @@ if (isset($_GET['name'])) {
 
 
 <body>
-<?php include 'Header/header.php'; ?>
+<div class="header-wrapper">
+  <?php include 'Header/header.php'; ?>
+</div>
+
 
 <div id="login-container" <?php echo isset($name) ? 'style="display: none;"' : ''; ?>>
   <button id="login-button" onclick="redirectToLogin()">Prisijungti</button>
