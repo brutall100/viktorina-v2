@@ -16,8 +16,14 @@ footer {
   opacity: 0.7;
 }
 
-footer > p > a{
-  color: hsl(22, 28%, 60%); /*218, 17%, 62%*/
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow with offset and blur */
+footer > p > a {
+  color: hsl(22, 28%, 60%);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   text-decoration: none;
+  transition: font-size 0.3s; /* Adding a transition effect for smooth animation */
 }
+
+footer > p > a:hover {
+  font-size: 18px; /* Increase the font size when hovering */
+}
+
