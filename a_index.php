@@ -115,12 +115,17 @@ if (isset($_GET['name'])) {
       <div class="form-container">
         <?php if (isset($_SESSION['name']) && !empty($_SESSION['name']) && !isset($error)) { ?>
           <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">
-            <label for="answer-input"></label>
-            <input type="text" id="answer-input" name="answer-input">
-            <button class="submit-btn" type="submit">Spėti</button>
+            <div class="answer-input">
+              <input type="text" id="answer-input" name="answer-input">
+              <input type="image" src="http://localhost/aldas/Viktorina.live/images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
+            </div>
           </form>
         <?php } ?>
       </div>
+
+
+
+
       
     </main>
 
