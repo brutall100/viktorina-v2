@@ -16,6 +16,7 @@ $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
+$iconAddress = "http://localhost/aldas/Viktorina.live/images/icons/entered_question.png";
 
 $message = ""; 
 
@@ -83,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         $sql = "INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES ('$name', '$user_id', '$question', '$answer', '$date_inserted','$ip')";
                         if (mysqli_query($conn, $sql)) {
                             $message = '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums bus suteikta 10 LITŲ.</span>';
-                            $sql = "UPDATE super_users SET litai_sum = litai_sum + 10 WHERE nick_name = '$name'";
+                            $sql = "UPDATE super_users SET litai_sum = litai_sum + 10, timestamp_icon = CURRENT_TIMESTAMP WHERE nick_name = '$name'";
 
                             if (mysqli_query($conn, $sql)) {
                                 // Success
@@ -153,10 +154,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <div class="main-info">   <!-- Laikinai main-info.Arba gražiai sutvarkyti -->
       <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
-        <p>Autorius: <?php echo $name; ?></p>
+        <?php
+        // Get the timestamp from the database
+        $timestamp = ''; // Retrieve the timestamp from the database and assign it to the $timestamp variable
+        $fiveMinutesAgo = strtotime('-5 minutes'); // Calculate the timestamp 5 minutes ago
+
+        // Check if the timestamp is within the last 5 minutes
+        if ($timestamp > $fiveMinutesAgo) {
+            echo '<p>Autorius: ' . $name . ' <img src="' . $iconAddress . '" alt="icon" width="21" height="21"></p>';
+        } else {
+            echo '<p>Autorius: ' . $name . '</p>';
+        }
+        ?>
         <p>Lygis: <?php echo $level; ?></p>
         <p>Litai: <?php echo $points; ?></p>
-        <p>Id: <?php echo $user_id; ?></p> <!-- Reikes paslepti, nereikia kad butu matomas. Bus sugeneruotas skaiciu derinys -->
+        <p>Id: <?php echo $user_id; ?></p>
       <?php endif; ?>
     </div>
   </main>
