@@ -20,10 +20,10 @@ footer > p > a {
   color: hsl(22, 28%, 60%);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   text-decoration: none;
-  transition: font-size 0.3s; /* Adding a transition effect for smooth animation */
+  transition: font-size 0.4s; /* Adding a transition effect for smooth animation */
 }
 
 footer > p > a:hover {
-  font-size: 18px; /* Increase the font size when hovering */
+  font-size: 17px; /* Increase the font size when hovering */
 }
 

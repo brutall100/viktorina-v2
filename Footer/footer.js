@@ -9,3 +9,12 @@ updateClock()
 
 setInterval(updateClock, 1000)
 
+
+
+document.getElementById("viktorina-link").addEventListener("click", function(event) {
+  event.preventDefault();
+  var url = this.getAttribute("href");
+  var windowFeatures = "width=800,height=600"; // Adjust the dimensions as needed
+  window.open(url, "_blank", windowFeatures);
+});
+

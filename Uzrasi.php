@@ -5,7 +5,7 @@
 <!-- Skaiciu zaidime padRYTI kad galima btn tik vien kart paspausti -->
 
 <!-- 3 -->
-<!--  Atsakymo btn pagrindiniame puslapyje sujungti su inputu. Daug graziau atrodo -->
+<!--   -->
 
 <!-- 4 -->
 <!-- b_newquestionindex.php sutvarkyti btn nes nelabai spaudziasi,   del modalo ty yra footer apziureti pratrinti ta modala. Kiek viename page savos 
