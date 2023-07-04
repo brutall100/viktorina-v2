@@ -16,7 +16,6 @@ $name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
 $level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
 $points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
-$iconAddress = "http://localhost/aldas/Viktorina.live/images/icons/entered_question.png";
 
 $message = ""; 
 
@@ -152,25 +151,48 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </form>
     </div>
 
-    <div class="main-info">   <!-- Laikinai main-info.Arba gražiai sutvarkyti -->
+    <div class="main-info">
       <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
         <?php
-        // Get the timestamp from the database
-        $timestamp = ''; // Retrieve the timestamp from the database and assign it to the $timestamp variable
-        $fiveMinutesAgo = strtotime('-5 minutes'); // Calculate the timestamp 5 minutes ago
+        date_default_timezone_set('Europe/Vilnius'); // Set the time zone to "Europe/Vilnius"
 
-        // Check if the timestamp is within the last 5 minutes
-        if ($timestamp > $fiveMinutesAgo) {
+        $conn = mysqli_connect("localhost", "root", "", "viktorina");
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+
+        // Get the timestamp from the database
+        $sql = "SELECT timestamp_icon FROM super_users WHERE user_id = '$user_id'";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $timestamp_icon = strtotime($row['timestamp_icon']); // Convert timestamp to UNIX timestamp
+            //echo "Timestamp from database: " . date('Y-m-d H:i:s', $timestamp_icon) . "<br>"; // Debugging statement
+            //echo "Current time: " . date('Y-m-d H:i:s') . "<br>"; // Debugging statement
+        } else {
+            $timestamp_icon = 0; // If no timestamp is found, assign a default value
+        }
+
+        $oneWeekAgo = strtotime('-1 week'); // Calculate the timestamp 1 week ago
+        $iconAddress = "http://localhost/aldas/Viktorina.live/images/icons/entered_question.png";
+        // Check if the timestamp is within the last 1 week
+        if ($timestamp_icon > $oneWeekAgo) {
             echo '<p>Autorius: ' . $name . ' <img src="' . $iconAddress . '" alt="icon" width="21" height="21"></p>';
         } else {
             echo '<p>Autorius: ' . $name . '</p>';
         }
+
+        mysqli_close($conn);
         ?>
         <p>Lygis: <?php echo $level; ?></p>
         <p>Litai: <?php echo $points; ?></p>
         <p>Id: <?php echo $user_id; ?></p>
       <?php endif; ?>
     </div>
+
+
+
   </main>
 
 
@@ -202,14 +224,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
           
 <script>
-    // Funkcija tikrinanti Varotojo levely
     if ('<?php echo isset($_SESSION['level']) ? "true" : "false"; ?>' === 'true') {
-      // Get the value of the level variable from the session
       var level = '<?php echo $_SESSION['level']; ?>';
-      // Do something with the level variable
       console.log("User levell: " + level);
     } else {
-      // Session variable not set, do something else
       console.log("Session variable not set");
     }
 
@@ -217,7 +235,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     const isUserLevelValid = userLevel !== undefined && userLevel !== null && userLevel !== '' && userLevel !== 'unknown' && parseInt(userLevel) >= 2;
 
     if (!isUserLevelValid) {
-      // Disable the input fields if the user's level is invalid or less than 2
       document.getElementById("question").disabled = true;
       document.getElementById("answer").disabled = true;
     }
