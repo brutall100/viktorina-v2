@@ -151,6 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </form>
     </div>
 
+    
     <div class="main-info">
       <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
         <?php
@@ -175,10 +176,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         $oneWeekAgo = strtotime('-1 week'); // Calculate the timestamp 1 week ago
-        $iconAddress = "http://localhost/aldas/Viktorina.live/images/icons/entered_question.png";
+        $iconAddress = "http://localhost/aldas/Viktorina.live/images/icons/question_master6.jpg";
         // Check if the timestamp is within the last 1 week
         if ($timestamp_icon > $oneWeekAgo) {
-            echo '<p>Autorius: ' . $name . ' <img src="' . $iconAddress . '" alt="icon" width="21" height="21"></p>';
+            echo '<p>Autorius: ' . $name . ' <img src="' . $iconAddress . '" alt="icon" width="21" height="21" class="question_master_icon"></p>'; 
         } else {
             echo '<p>Autorius: ' . $name . '</p>';
         }
@@ -190,9 +191,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <p>Id: <?php echo $user_id; ?></p>
       <?php endif; ?>
     </div>
-
-
-
   </main>
 
 

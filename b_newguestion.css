@@ -176,6 +176,17 @@ input[type="submit"]:active {
   color: #fff;
 }
 
+.question_master_icon {
+  transition: transform 0.3s;
+  border-radius: 3.3px;
+}
+
+.question_master_icon:hover {
+  transform: scale(3.5) translateX(8px);
+}
+
+
+
 .message-container {
   width: 260px;
   height: 260px;
