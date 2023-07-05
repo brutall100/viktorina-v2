@@ -5,11 +5,10 @@
 <!-- Skaiciu zaidime padRYTI kad galima btn tik vien kart paspausti -->
 
 <!-- 3 -->
-<!-- Irasius klausima padaryti SVG besisukanty ar besikraunanty kokia 0.5s kad atseit matytusi ikraunamas klausimas -->
+<!--  -->
 
 <!-- 4 -->
-<!-- b_newquestionindex.php sutvarkyti btn nes nelabai spaudziasi,   del modalo ty yra footer apziureti pratrinti ta modala. Kiek viename page savos 
-taisykles. klausimo irasymo, klausimo balsavimo, bendrosios pagrindiniame puslapyje -->
+<!--  -->
 
 <!-- 5 -->
 <!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)
@@ -36,7 +35,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
 
 <!-- 12 -->
-<!-- Klausimu kurimas pasitelikiant ai klausimo ilgis tokenaais ir atsakymas. Klausimu kurimas pasitelkiant Ai nuo 3 lvl-->
+<!-- -->
 
 <!-- 13 -->
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
@@ -51,7 +50,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Padaryti kad butu galima isjungti games.Visus game -->
 
 <!-- 17 -->
-<!-- Uz klausimo irasyma 10 litu +++++ Ikonele kokia 1 savatei klausimu irasytojas +++++ mini taisykles -->
+<!--  -->
 
 <!-- 18 -->
 <!--  -->
@@ -60,9 +59,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Padaryti Bad word irasyma i db, nuo 5 lvl.tik nuo 5 lvl -->
 
 <!-- 20 -->
-<!-- b_newquestion.php cia iskylantis phhp puslapis reikia sutvarkyti zinute, prideti css pagrazinti,
-pridet laika beganti atgal, kad esi nukreipiamas atgal i klausimo irasymo page, prideti zvaigzdute klausimo irasytojas,
-reikia atskirt css kazkaip gal bendra raide dadeti  -->
+<!--  -->
 
 <!-- 21 -->
 <!-- Irasant klausima ir atsakyma i db turi buti fiksuojamas zodzio ilgis.
@@ -166,3 +163,14 @@ requirements.
 
 <!-- 8 -->
 <!-- Game gal koks zymiu zmoniu foto, gal muzikinis klausimas,  -->
+
+<!-- 9 -->
+<!-- Ikonele kokia 1 savatei klausimu irasytojas turetu buti ir kituose puslapiouse ir matoma visur
+Dabar matoma tik klausimo irasymo puslapyje -->
+
+<!-- 10 -->
+<!-- Irasius klausima padaryti SVG besisukanty ar besikraunanty kokia 0.5s kad atseit matytusi ikraunamas klausimas.
+Kolkas palieku, nes nebutina. Veikimo neitakoja. Stabilumui nekenkia. tik del grozio -->
+
+<!-- 11 -->
+<!-- Klausimu kurimas pasitelikiant ai klausimo ilgis tokenaais ir atsakymas. Klausimu kurimas pasitelkiant Ai nuo 3 lvl -->
