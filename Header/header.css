@@ -5,11 +5,15 @@
 
 }
 
-
 .logo{
   width: 3.2em;
-  aspect-ratio: 3/2;
-  object-fit: contain;
+  margin: 2px 0 0 10px;
+  cursor: crosshair;
+  transition: transform 0.7s;
+}
+
+.logo:hover{
+  transform: scale(2.5) translate(20px, 20px);
 }
 
 ul {

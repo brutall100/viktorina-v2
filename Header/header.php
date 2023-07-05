@@ -11,15 +11,17 @@
 <body>
   <header class="header">
     <ul>
-      <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/viktorina_logo.png" />
-      <div>
+      <div class="logo-container">
+      <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
+      </div>
+      <div class="menu-container">
         <li><a href="http://localhost/aldas/Viktorina.live/a_index.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Viktorina</a></li>
         <li><a href="http://localhost/aldas/Viktorina.live/c_questionwaiting.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Naujienos</a></li>
         <li><a href="http://localhost/aldas/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Irašyti klausimą</a></li>
-      </div> 
-      <div>
+      </div>
+      <div class="logout-container">
         <button id="btn-atsijungti">Atsijungti</button>
-      </div>  
+      </div>
     </ul>
   </header>
 </body>
