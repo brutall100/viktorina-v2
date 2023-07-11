@@ -8,7 +8,7 @@
 <!--  logotipa reikia ideti i adreso eilute ir i registracijos puslapy-->
 
 <!-- 4 -->
-<!--  -->
+<!--Pagrazinti zinutes klausimo irasymo puslapyje. Kazko truksta-->
 
 <!-- 5 -->
 <!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)
@@ -53,7 +53,8 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!--  -->
 
 <!-- 18 -->
-<!--  -->
+<!-- D regi logi Btn su padidinuimu turi buti, keisti spalva siek tiek, pamirsote slaptazody turi nukreipti i priminima, 
+lyties inputa pagrazinti, pagenetravus name- pasw, neturi judeti visas ekranas, Sukurti db name + kas prisiregina nuimti 1 raide nuo priekio ir galo prideti random skaiciu 1-100 -->
 
 <!-- 19 -->
 <!-- Padaryti Bad word irasyma i db, nuo 5 lvl.tik nuo 5 lvl -->

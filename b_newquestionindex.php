@@ -54,16 +54,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         foreach ($bad_words_array as $bad_word) {
-          if (strpos($question, $bad_word) !== false || strpos($answer, $bad_word) !== false) {
-              $message = '<span class="bad-word-message">Klaida:</br> Klausime arba atsakyme yra nepriimtinų žodžių.</span>';
-              break; // Stop the loop after finding the first bad word
-          }
-      
-          // Check for three or more consecutive same letters in question or answer
-          if (preg_match('/(.)\1{2,}/', $question) || preg_match('/(.)\1{2,}/', $answer)) {
-              $message = '<span class="consecutive-letters-message">Klaida:</br> Klausime arba atsakyme yra trys ar daugiau iš eilės einančios tokios pačios raidės.</span>';
-              break; // Stop the loop after finding three or more consecutive same letters
-          }
+            if (strpos($question, $bad_word) !== false || strpos($answer, $bad_word) !== false) {
+                $message = '<span class="bad-word-message">Klaida:</br> Klausime arba atsakyme yra nepriimtinų žodžių.</span>';
+                break; // Stop the loop after finding the first bad word
+            }
+        
+            // Check for three or more consecutive same letters in question or answer
+            if (preg_match('/(.)\1{2,}/', $question) || preg_match('/(.)\1{2,}/', $answer)) {
+                $message = '<span class="consecutive-letters-message">Klaida:</br> Klausime arba atsakyme yra trys ar daugiau iš eilės einančios tokios pačios raidės.</span>';
+                break; // Stop the loop after finding three or more consecutive same letters
+            }
+        
+            // Check if any word has more than 21 letters in question or answer
+            $words = preg_split('/\s+/', $question);
+            $words = array_merge($words, preg_split('/\s+/', $answer));
+        
+            foreach ($words as $word) {
+                if (strlen($word) > 21) {
+                    $message = '<span class="long-word-message">Klaida:</br> Klausime arba atsakyme yra žodis, turintis daugiau nei 21 raidę.</span>';
+                    break 2; // Stop the loop and exit the outer loop after finding a long word
+                }
+            }
         }
 
         if (empty($message)) {
