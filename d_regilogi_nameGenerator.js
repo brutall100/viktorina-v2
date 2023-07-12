@@ -16,16 +16,24 @@ let firstNames = ["Aldas","Justė", "AKiss", "Ąžuolas", "Kamilė", "Dalia", "S
 "Sigita", "Algimantas","Emily", "Hannah", "Sarah", "Lauren", "Amber", "Brianna", "Jordan", "Victoria", "Haley", "Megan", "Kayla", "Heather", 
 "Abby", "Kaitlyn", "Allison", "Alexis", "Morgan", "Bailey", "Savannah", "Samantha", "Rachel", "Sydney", "Mackenzie", "Madeline", "Katie", "Erin", 
 "Olivia", "Emma", "Brooke", "Danielle", "Katherine", "Lily", "Hailey", "Jenna", "Chloe", "Isabella", "Mia", "Grace", "Taylor", "Leah","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","" ];
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","" ];
 
 let secondNames = ["Uoga","Pupa","Super","Linksmuolis","Bambalinis","Kukli","Paprastutė","Generolas","Nuolanki","Trapi","Išmintinga","Kietasis",
 "1","2","3","69","99","4","","Sasiska","Puikioji","Išmanusis","Piktas","Rusas","Kiškis","Genijus","Babulė","Dundukas","Siaubūnas", "Protinguolis", "Afigienas", 
 "Beprotis", "Juokingas", "Tikintis", "Storulis", "Beprotis", "Pilotas", "Trumparegis", "Mamos", "Koldūnas", "Sliekas", "Baršiasriubis", "Gudrus", 
-"Gerasis", "Išprotejusi", "Karšta", "Gudri", "Putiovas","Digimonas", "Pokemonas", "Gražioji", "auskleidžiantis", "nepaprastas", "paprastas", 
-"stiprus", "silpnas", "ištikimas", "neištikimas", "geras", "blogas", "niekšingas", "švelnus", "stiprus", "ryžtingas", "atsargus", "neatsargus", "ramus", 
-"neramus", "puikus", "prastas", "gražus", "negražus", "malonus", "nemalonus", "didelis", "mažas", "stambus", "mažytis", "ilgas", "trumpas", 
-"platus", "siauras", "aukštas", "žemas", "storegtas", "apvalus", "kvadratinis", "apvalus","švelnus", "naujas", "didžiulis", "mažas", "lengvas", 
-"ryškus", "sunkus", "aukštas", "ilgas", "siauras", "trumpas", "storas", "plonas", "gyvas", "miręs", "kvailas", "protingas", "gražus", "negražus", 
+"Gerasis", "Išprotejusi", "Karšta", "Gudri", "Putiovas","Digimonas", "Pokemonas", "Gražioji", "Auskleidžiantis", "Nepaprastas", "Paprastas", 
+"Stiprus", "Silpnas", "Ištikimas", "Neištikimas", "Geras", "Blogas", "Niekšingas", "Švelnus", "Stiprus", "Ryžtingas", "Atsargus", "Neatsargus", "Ramus", 
+"neramus", "puikus", "prastas", "gražus", "negražus", "malonus", "nemalonus", "Didelis", "Mažas", "Stambus", "Mažytis", "Ilgas", "Trumpas", 
+"Platus", "Siauras", "Aukštas", "Žemas", "Storegtas", "Apvalus", "Kvadratinis", "apvalus","švelnus", "naujas", "didžiulis", "mažas", "lengvas", 
+"Ryškus", "Sunkus", "Aukštas", "Ilgas", "siauras", "trumpas", "storas", "plonas", "gyvas", "miręs", "kvailas", "protingas", "gražus", "negražus", 
 "šiltas", "šaltas", "sveikas", "ligotas", "baltas", "juodas", "raudonas", "geltonas", "melynas", "žalias", "oranžinis", "violetinis", "rožinis", 
 "mėlynas", "rudas", "sidabrinis", "auksinis", "brangus", "pigus", "geras", "blogas", "greitas", "lėtas", "jaunas", "senas", "linksmas", "liūdnas", 
 "nerimastingas", "ramus", "didelis", "mažas", "galingas", "silpnas", "daugelis", "mažai", "šviesus", "tamsus", "nepaprastas", "įprastas", 
@@ -44,16 +52,19 @@ let secondNames = ["Uoga","Pupa","Super","Linksmuolis","Bambalinis","Kukli","Pap
 "turkio", "akmens", "granato", "rubino", "raudonoji", "topazo","Darbininkas",
 "Statybininkas","Medikas","Gydytojas","Mokytojas","Programuotojas","Inžinierius","Mokslininkas","Rašytojas","Dailininkas","Muzikantas","Fotografas",
 "Kirpėjas","Konditeris","Vairuotojas","Statybos","vadybininkas","Inžinierius","Analitikas","Verslininkas","Policininkas","Gaisrininkas",
-"Herojus","Žurnalistas","Buhalteris","Direktorius","Technikas","Vadybininkas","Sprendimų priėmėjas",
-"Kirpėjas","padėjėjas","Statybos darbininkas","Finansininkas","Vadybininkas","Adminas","Policijos", "Komisaras","Gaisrininkas",
+"Herojus","Žurnalistas","Buhalteris","Direktorius","Technikas","Vadybinis","Sprendimų priėmėjas",
+"Kirpėjas","padėjėjas","Statybos","Darbininkas","Finansininkas","Vadybininkas","Adminas","Policijos", "Komisaras","Gaisrininkas",
 "Režisierius","Žiniukas","Buhalterė","Specialistas","Prognozuotojas","Superman","Batman","Wonder Woman",
 "The Flash","Green Lantern","Spider-Man","Iron Man","Captain","America","Black", "Widow","Hulk","Thor","Aquaman","The X-Men","Cyclops","Storm","Wolverine",
-"Rogue","Gambit","Nightcrawler","Daredevil","The Punisher","The Green Arrow","Black Canary","Starfire","Raven","Beast Boy","Wonder Girl","Black Lightning",
+"Rogue","Gambit","Nightcrawler","Daredevil","The Punisher","The Green Arrow","Black Canary","Starfire","Raven","Beast","Boy","Wonder","Girl","Black","Lightning",
 "Martian","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
 "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
 "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
 "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
 
+
+// THird name reikia generuoti numeri nuo 1 iki 100 ir eliminuoti second name
 
 let getRandomNumber = (max) => Math.floor(Math.random() * max);
 

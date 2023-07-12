@@ -14,16 +14,12 @@
 <body>
   <div class="container-generator">
     <div class="generate-butons">
+      <button class="generate-btn" id="generuoti-varda">Generuoti vardą</button>
       <h2 class="randomized" id="random-name"></h2>
-      <button class="generate-btn" id="generuoti-varda">
-        Generuoti vardą
-      </button>
     </div>
     <div class="generate-butons">
+      <button class="generate-btn" id="generate-pasword">Generuoti slaptažodį</button>
       <h2 class="randomized" id="password"></h2>
-      <button class="generate-btn" id="generate-pasword">
-        Generuoti slaptažodį
-      </button>
     </div>
   </div>
 
@@ -33,9 +29,9 @@
       <form method="POST" action="http://localhost:4000/register" id="register-form">
         <h1>Registracija</h1>
         <div class="form-group">
-          <label for="gender-select">Lytis:</label>
+          <!-- <label for="gender-select">Lytis:</label> -->
           <select id="gender-select" name="gender">
-            <option value="Nepasirinkta">Pasirinkite savo lytį</option>
+            <option value="Nepasirinkta">Jūsų lytis?</option>
             <option value="Vyras">Vyras</option>
             <option value="Moteris">Moteris</option>
             <option value="Abinary">Abinary</option>
@@ -177,11 +173,13 @@
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
+          <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
           <h1>Sveiki sugrįžę!</h1>
           <p>Prašome prisijungti.</p>
           <button class="ghost" id="signIn">Prisijungti</button>
         </div>
         <div class="overlay-panel overlay-right">
+          <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
           <h1>Labas, Drauge!</h1>
           <p>Įveskite savo asmeninius duomenis ir pradėkite kelionę su mumis.</p>
           <button class="ghost" id="signUp">Registruotis</button>

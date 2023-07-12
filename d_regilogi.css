@@ -68,6 +68,7 @@ button {
 button:hover{
 	transform: scale(1.05);
 	transition: transform 90ms ease-in;
+	background-color: #ff411fe9;
 
 }
 
@@ -272,7 +273,7 @@ input {
 	transform: translateX(20%);
 }
 
-.social-container {
+/* .social-container {
 	margin: 20px 0;
 }
 
@@ -285,7 +286,34 @@ input {
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+} */
+
+
+
+
+
+#gender-select {
+    width: 193px; /* Adjust the width as needed */
+    height: 38px; /* Adjust the height as needed */
+    font-size: 15px; /* Adjust the font size as needed */
+    border: 1px solid #ccc; /* Add a border */
+    border-radius: 4px; /* Add border radius for rounded corners */
+    padding: 5px; /* Add some padding */
+    background-color: #fff; /* Set the background color */
+	margin-bottom: 2px;
+  }
+
+
+.logo{
+	width: 5em;
+	margin-bottom: 25%;
+	cursor: crosshair;
+	transition: transform 0.7s;
 }
+
+.logo:hover{
+	transform: scale(1.5);
+}  
 
 /* footer {
     background-color: #222;
