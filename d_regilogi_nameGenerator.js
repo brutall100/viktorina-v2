@@ -45,11 +45,14 @@ let secondNames = ["Uoga","Pupa","Super","Linksmuolis","Bambalinis","Kukli","Pap
 "Statybininkas","Medikas","Gydytojas","Mokytojas","Programuotojas","Inžinierius","Mokslininkas","Rašytojas","Dailininkas","Muzikantas","Fotografas",
 "Kirpėjas","Konditeris","Vairuotojas","Statybos","vadybininkas","Inžinierius","Analitikas","Verslininkas","Policininkas","Gaisrininkas",
 "Herojus","Žurnalistas","Buhalteris","Direktorius","Technikas","Vadybininkas","Sprendimų priėmėjas",
-"Kirpėjas","padėjėjas","Statybos darbininkas","Finansininkas", "Vadybininkas","Adminas","Policijos", "Komisaras","Gaisrininkas",
+"Kirpėjas","padėjėjas","Statybos darbininkas","Finansininkas","Vadybininkas","Adminas","Policijos", "Komisaras","Gaisrininkas",
 "Režisierius","Žiniukas","Buhalterė","Specialistas","Prognozuotojas","Superman","Batman","Wonder Woman",
-"The Flash","Green Lantern","Spider-Man","Iron Man","Captain America","Black Widow","Hulk","Thor","Aquaman","The X-Men","Cyclops","Storm","Wolverine",
+"The Flash","Green Lantern","Spider-Man","Iron Man","Captain","America","Black", "Widow","Hulk","Thor","Aquaman","The X-Men","Cyclops","Storm","Wolverine",
 "Rogue","Gambit","Nightcrawler","Daredevil","The Punisher","The Green Arrow","Black Canary","Starfire","Raven","Beast Boy","Wonder Girl","Black Lightning",
-"Martian","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
+"Martian","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
 
 
 let getRandomNumber = (max) => Math.floor(Math.random() * max);
@@ -73,7 +76,7 @@ document.getElementById('generate-pasword')
   var password = ""
   var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};':" + "\\|,.<>/?`~"
 
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 16; i++) {
     password += possible.charAt(Math.floor(Math.random() * possible.length))
   }
 

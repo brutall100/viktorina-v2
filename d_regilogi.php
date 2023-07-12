@@ -6,13 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/d_regilogi.css" />
-
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+  <meta http-equiv="refresh" content="600"><!-- Auto refresh 10 min -->
   <title>Registracija ir Prisijungimas</title>
-
-  <!-- <meta http-equiv="refresh" content="60"> -->
-
 </head>
 
 <body>

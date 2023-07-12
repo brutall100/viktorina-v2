@@ -1,16 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
+:root {
+    /* border: 2px solid rgb(233, 0, 0); */
+    height: 100vh;
+}
+
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	/* border: 1px solid rgb(0, 96, 0); */
     
 }
-
 
 body {
 	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg"); 
     background-image: url('http://localhost/aldas/Viktorina.live/images/background/cover5.jpg');  
+	height: 90vh;
+	padding-top: 5%;
     background-size: cover; 
 	display: flex;
 	justify-content: center;
@@ -18,48 +26,29 @@ body {
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
 	height: 100vh;
-	margin: -20px 0 50px;
-}
-
-p {
-	font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
-}
-
-a {
-	color: #333;
-	font-size: 14px;
-	text-decoration: none;
-	margin: 15px 0;
+	/* border: 1px solid rgb(64, 192, 32); */
+	margin: 0;
+	padding: 10%;
 }
 
 .container-generator{
 	display: flex;
-	justify-content: space-between;
-	max-width: 90vh;
-
+	justify-content: space-evenly;
+	/* border: 3px solid yellowgreen; */
+	width: 770px;
 }
 
-
-h2.randomized#random-name,h2.randomized#password {
-  text-align: center;
+.generate-butons{
+	/* border: 3px solid rgb(26, 27, 23); */
+	height: 100px;
+	
 }
-
-.randomized{
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	align-self: center;
-	color: #582c5e;
-}
-
 
 .generate-btn{
-	width: 18em;
-	padding: 1em;
+	width: 22em;
+	padding: 1.1em;
 	margin: 1em 3em;
-	opacity: 0.8;
+	opacity: 0.7;
 }
 
 button {
@@ -76,21 +65,70 @@ button {
 	cursor: pointer;
 }
 
+button:hover{
+	transform: scale(1.05);
+	transition: transform 90ms ease-in;
 
-
-button:active {
-	transform: scale(0.95);
-	box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
 button:focus {
 	outline: none;
 }
 
+button:active {
+	transform: scale(1.15);
+	box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
 button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
+
+
+
+
+
+
+
+
+
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+
+
+h2.randomized#random-name,h2.randomized#password {
+  text-align: center;
+}
+
+.randomized{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	align-self: center;
+	color: #582c5e;
+}
+
+
+
+
+
+
+
+
+
 
 form {
 	background-color: #FFFFFF;
@@ -249,7 +287,7 @@ input {
 	width: 40px;
 }
 
-footer {
+/* footer {
     background-color: #222;
     color: #fff;
     font-size: 14px;
@@ -259,6 +297,6 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
-}
+} */
 
 
