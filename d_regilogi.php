@@ -27,7 +27,7 @@
     <!-- Registracija -->
     <div class="form-container sign-up-container">
       <form method="POST" action="http://localhost:4000/register" id="register-form">
-        <h1>Registracija</h1>
+        <h1 class="main-h1">Registracija</h1>
         <div class="form-group">
           <!-- <label for="gender-select">Lytis:</label> -->
           <select id="gender-select" name="gender">
@@ -153,18 +153,18 @@
           <input type="password" placeholder="Slaptažodis" id="password-input" name="user_password" required />
           <span id="password-error"></span>
         </div>
-        <button type="submit" name="submitBtnReg" value="Reginam" id="submitButtonReg">Register</button>
+        <button type="submit" name="submitBtnReg" value="Reginam" id="submitButtonReg">Registruotis</button>
       </form>
     </div>
 
     <!-- Prisijungimas -->
     <div class="form-container sign-in-container">
       <form method="POST" action="http://localhost:4000/login">
-        <h1>Prisijungti</h1>
+        <h1 class="main-h1">Prisijungti</h1>
         <!-- <span>or use your account</span> -->
         <input type="text" placeholder="Slapyvardis" name="nick_name" required />
         <input type="password" placeholder="Slaptažodis" name="user_password" required />
-        <a href="#">Pamiršote slaptažodį?</a>
+        <a href="#" class="forgot-password">Pamiršote slaptažodį?</a>
         <button type="submit" name="submitBtnLog" value="Loginam" id="submitButtonLog">Jungtis</button>
       </form>
 
@@ -176,13 +176,13 @@
           <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
           <h1>Sveiki sugrįžę!</h1>
           <p>Prašome prisijungti.</p>
-          <button class="ghost" id="signIn">Prisijungti</button>
+          <button class="ghost" id="signIn">Prisijungimas</button>
         </div>
         <div class="overlay-panel overlay-right">
           <img class="logo" src="http://localhost/aldas/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
           <h1>Labas, Drauge!</h1>
           <p>Įveskite savo asmeninius duomenis ir pradėkite kelionę su mumis.</p>
-          <button class="ghost" id="signUp">Registruotis</button>
+          <button class="ghost" id="signUp">Registracija</button>
         </div>
       </div>
     </div>
