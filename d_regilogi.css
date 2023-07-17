@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
+/* Set the root font size and height */
 :root {
-    /* border: 2px solid rgb(233, 0, 0); */
-    height: 100vh;
+    height: 100vh; /* Viewport height */
 }
 
+/* Apply box-sizing and reset margins/padding for all elements */
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	/* border: 1px solid rgb(0, 96, 0); */
 }
 
+/* Style for paragraphs */
 p {
 	font-size: 14px;
 	font-weight: 100;
@@ -20,43 +21,54 @@ p {
 	margin: 20px 0 30px;
 }
 
+/* Body styles */
 body {
-	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg"); 
-    background-image: url('http://localhost/aldas/Viktorina.live/images/background/cover5.jpg');  
+	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg");
+	background-image: url('http://localhost/aldas/Viktorina.live/images/background/cover5.jpg');
 	height: 90vh;
 	padding-top: 5%;
-    background-size: cover; 
+	background-size: cover;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	/* border: 1px solid rgb(64, 192, 32); */
+	/* height: 100vh; (Duplicate property removed) */
 	margin: 0;
 	padding: 10%;
 }
 
-.container-generator{
+/* Container styles for the generator */
+.container-generator {
 	display: flex;
 	justify-content: space-evenly;
-	/* border: 3px solid yellowgreen; */
+	border: 3px solid yellowgreen;
 	width: 770px;
 }
 
-.generate-butons{
-	/* border: 3px solid rgb(26, 27, 23); */
-	height: 100px;
-	
+/* Styles for the randomized element */
+.randomized {
+	text-align: center;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	align-self: center;
+	color: #582c5e;
+	border: 3px solid rgb(58, 79, 17);
 }
 
-.generate-btn{
+/* Styles for the generate buttons container */
+.generate-butons {
+	height: 100px;
+}
+
+/* Styles for the generate button */
+.generate-btn {
 	width: 22em;
 	padding: 1.1em;
 	margin: 1em 3em;
 	opacity: 0.7;
 }
 
+/* Common styles for buttons */
 button {
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
@@ -71,104 +83,78 @@ button {
 	cursor: pointer;
 }
 
-button:hover{
+/* Button hover effect */
+button:hover {
 	transform: scale(1.05);
 	transition: transform 90ms ease-in;
 	background-color: #ff411fe9;
 }
 
+/* Remove button outline on focus */
 button:focus {
 	outline: none;
 }
 
+/* Button click effect */
 button:active {
 	transform: scale(0.9);
 	box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
+/* Styles for ghost buttons */
 button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
 
-#submitButtonReg {
-	margin-top: 7%;
-}
-
-/* Inpuut of gender */
+/* Styles for the gender input select */
 #gender-select {
-    width: 250px; /* Adjust the width as needed */
-    height: 38px; /* Adjust the height as needed */
-    font-size: 15px; /* Adjust the font size as needed */
-    border: 1px solid #ccc; /* Add a border */
-    border-radius: 4px; /* Add border radius for rounded corners */
-    padding: 5px; /* Add some padding */
-    background-color: #eee; /* Set the background color */
+    width: 250px; 
+    height: 40px; 
+    font-size: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    padding: 5px; 
+    background-color: #eee; 
 	margin-bottom: 6px;
 }
 
+/* Styles for the gender input select options */
 #gender-select option {
 	background-color: #d6d6d6;
 	color: #333333; 
 	font-family: "Arial", sans-serif; 
 	font-size: 16px; 
 	text-align: center;
-  }
-  
-  
+}
 
-
-
-/* Logotipas */
-.logo{
+/* Styles for the logo image */
+.logo {
 	width: 5em;
 	margin-bottom: 25%;
 	cursor: crosshair;
 	transition: transform 0.7s;
 }
 
-.logo:hover{
+/* Logo hover effect */
+.logo:hover {
 	transform: scale(1.5);
 }
 
-.main-h1{
+/* Styles for the main heading */
+.main-h1 {
 	margin-bottom: 10%;
 }
 
-
-
-
-
-
-
-
+/* Styles for the forgot password link */
 a.forgot-password {
-	color: #333;
-	font-size: 14px;
+	color: #721313;
+	font-size: 15px;
 	text-decoration: none;
 	margin: 15px 0;
 }
 
-
-
-
-
-.randomized{
-	text-align: center;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	align-self: center;
-	color: #582c5e;
-}
-
-
-
-
-
-
-
-
-
-
+/* Form styles */
 form {
 	background-color: #FFFFFF;
 	display: flex;
@@ -178,8 +164,9 @@ form {
 	padding: 0 50px;
 	height: 100%;
 	text-align: center;
-} 
+}
 
+/* Input styles */
 input {
 	background-color: #eee;
 	border: 1px solid #ccc; 
@@ -188,34 +175,34 @@ input {
 	margin: 8px 0;
 	width: 250px;
 }
-/* Tablet Styles 768 */
-@media (max-width: 600px) {
-	input,#gender-select {
+
+/* Tablet Styles (max-width: 768px) */
+@media (max-width: 768px) {
+	input, #gender-select {
 		width: 200px;
 	}
 }
-/* Phone Styles */
+
+/* Phone Styles (max-width: 480px) */
 @media (max-width: 480px) {
 	input {
-		/* padding: 8px 10px;
-		margin: 6px 0; */
 		width: 100px;
 	}
 }
 
+/* Container styles */
 .container {
 	background-color: #fff;
 	border-radius: 10px;
-  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
 	min-height: 480px;
-	
 }
 
+/* Form container styles */
 .form-container {
 	position: absolute;
 	top: 0;
@@ -223,16 +210,19 @@ input {
 	transition: all 0.6s ease-in-out;
 }
 
+/* Sign-in container styles */
 .sign-in-container {
 	left: 0;
 	width: 50%;
 	z-index: 2;
 }
 
+/* Right panel active styles for sign-in container */
 .container.right-panel-active .sign-in-container {
 	transform: translateX(100%);
 }
 
+/* Sign-up container styles */
 .sign-up-container {
 	left: 0;
 	width: 50%;
@@ -240,6 +230,7 @@ input {
 	z-index: 1;
 }
 
+/* Right panel active styles for sign-up container */
 .container.right-panel-active .sign-up-container {
 	transform: translateX(100%);
 	opacity: 1;
@@ -247,6 +238,7 @@ input {
 	animation: show 0.6s;
 }
 
+/* Animation for showing sign-up container */
 @keyframes show {
 	0%, 49.99% {
 		opacity: 0;
@@ -259,6 +251,7 @@ input {
 	}
 }
 
+/* Overlay container styles */
 .overlay-container {
 	position: absolute;
 	top: 0;
@@ -270,10 +263,12 @@ input {
 	z-index: 100;
 }
 
+/* Right panel active styles for overlay container */
 .container.right-panel-active .overlay-container{
 	transform: translateX(-100%);
 }
 
+/* Overlay styles */
 .overlay {
 	background: #FF416C;
 	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
@@ -286,14 +281,16 @@ input {
 	left: -100%;
 	height: 100%;
 	width: 200%;
-  	transform: translateX(0);
+	transform: translateX(0);
 	transition: transform 1s ease-in-out;
 }
 
+/* Right panel active styles for overlay */
 .container.right-panel-active .overlay {
-  	transform: translateX(50%);
+	transform: translateX(50%);
 }
 
+/* Overlay panel styles */
 .overlay-panel {
 	position: absolute;
 	display: flex;
@@ -309,65 +306,24 @@ input {
 	transition: transform 0.6s ease-in-out;
 }
 
+/* Overlay panel styles for left panel */
 .overlay-left {
 	transform: translateX(-20%);
 }
 
+/* Right panel active styles for left panel */
 .container.right-panel-active .overlay-left {
 	transform: translateX(0);
 }
 
+/* Overlay panel styles for right panel */
 .overlay-right {
 	right: 0;
 	transform: translateX(0);
 }
 
+/* Right panel active styles for right panel */
 .container.right-panel-active .overlay-right {
 	transform: translateX(20%);
 }
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-/* #random-name,#password {
-} */
-
-/* .social-container {
-	margin: 20px 0;
-}
-
-.social-container a {
-	border: 1px solid #DDDDDD;
-	border-radius: 50%;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0 5px;
-	height: 40px;
-	width: 40px;
-} */
-
-/* footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-} */
-
 
