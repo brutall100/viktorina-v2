@@ -1,5 +1,7 @@
 const http = require('http');
 const url = require('url');
+require('dotenv').config();
+
 
 const server = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true);
@@ -19,10 +21,10 @@ const server = http.createServer(async (req, res) => {
       const mysql = require('mysql2/promise');
 
       const connection = await mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'viktorina'
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DATABASE
       });
       
       // Update user points

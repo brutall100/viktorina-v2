@@ -3,6 +3,8 @@ const axios = require('axios');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
+require('dotnev').config();
 
 const app = express();
 
@@ -11,15 +13,28 @@ app.use(bodyParser.json());
 
 // create a connection to your MySQL database
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'viktorina'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
 });
 
 connection.connect((err) => {
   if (err) throw err;
   console.log('Connected to database Viktorina');
+});
+
+// Nodemailer configuration (update with your email provider details)
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    type: 'OAuth2',
+    user: 'brutall100@gmail.com',  // process.env.MAIL_USERNAME,
+    pass: 'kq|7fH%?Kw?`K:}K',  // process.env.MAIL_PASSWORD,
+    clientId: process.env.OAUTH_CLIENTID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    refreshToken: process.env.OAUTH_REFRESH_TOKEN
+  }
 });
 
 app.post('/login', (req, res) => {
@@ -72,12 +87,33 @@ app.post('/register', (req, res) => {
         }
       } else {
         // handle successful registration
+
+        // Sending welcome email
+        const welcomeMessage = `Welcome, ${nick_name}! Thank you for registering.`;
+
+        const mailOptions = {
+          from: 'brutall100@gmail.com', // Replace with your email
+          to: user_email,
+          subject: 'Welcome to Viktorina',
+          text: welcomeMessage
+        };
+
+        // Sending the email
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
+
         const user_lvl = 0; // set the user_lvl variable to 0
         res.redirect(`http://localhost/aldas/Viktorina.live/a_index.php?name=${nick_name}&email=${user_email}&level=${user_lvl}`);
-      }      
+      }
     });
   });
 });
+
 
 
 
