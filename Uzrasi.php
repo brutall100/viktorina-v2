@@ -5,7 +5,7 @@
 <!-- Skaiciu zaidime padRYTI kad galima btn tik vien kart paspausti -->
 
 <!-- 3 -->
-<!--  logotipa reikia ideti i adreso eilute ir i registracijos puslapy-->
+<!--  -->
 
 <!-- 4 -->
 <!--Pagrazinti zinutes klausimo irasymo puslapyje. Kazko truksta-->
