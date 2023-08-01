@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 const mysql = require("mysql")
 const bcrypt = require("bcrypt")
 const nodemailer = require("nodemailer")
+const { v4: uuidv4 } = require('uuid')
 require("dotenv").config()
 
 const app = express()
@@ -54,60 +55,65 @@ app.post("/login", (req, res) => {
 })
 
 app.post("/register", (req, res) => {
-  const { nick_name, user_email, user_password, gender, other_gender } = req.body
+  const { nick_name, user_email, user_password, gender, other_gender } = req.body;
 
   bcrypt.hash(user_password, 10, (err, hashedPassword) => {
-    if (err) throw err
+    if (err) throw err;
 
-    const currentDate = new Date().toISOString().slice(0, 20) // Get the current date in YYYY-MM-DD format
+    const currentDate = new Date().toISOString().slice(0, 20); // Get the current date in YYYY-MM-DD format
 
-    let genderValue = ""
+    let genderValue = "";
     if (gender === "Other") {
-      genderValue = other_gender
+      genderValue = other_gender;
     } else {
-      genderValue = gender
+      genderValue = gender;
     }
 
-    const sql = `INSERT INTO super_users (nick_name, user_email, user_password, registration_date, user_lvl, gender_super) VALUES (?, ?, ?, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), 0, ?)`
+    const uuid = uuidv4();
 
-    connection.query(sql, [nick_name, user_email, hashedPassword, genderValue], (err, result) => {
+    const sql = `INSERT INTO super_users (nick_name, user_email, user_password, registration_date, user_lvl, gender_super, uuid) VALUES (?, ?, ?, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), 0, ?, ?)`;
+
+    connection.query(sql, [nick_name, user_email, hashedPassword, genderValue, uuid], (err, result) => {
       if (err) {
         if (err.code === "ER_DUP_ENTRY") {
           // handle duplicate entry error
-          res.send("User already exists")
+          res.send("User already exists");
         } else {
           // handle other errors
-          throw err
+          throw err;
         }
       } else {
         // handle successful registration
 
         // Sending welcome email
-        const welcomeMessage = `Labas, ${nick_name}! Jūsų registracija sėkminga. Regisracijos el. paštas ${user_email} ir slaptažodis ${user_password}`
+        const welcomeMessage = `Labas, ${nick_name}! Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą: http://localhost/aldas/Viktorina.live/confirm?uuid=${uuid}`;
 
         const mailOptions = {
           from: "viktorina.live@gmail.com", // Replace with your email
-          to: "viktorina.live@gmail.com",
+          to: "viktorina.live@gmail.com",//user_email, nepamirsti pakeisti sios eilutes i user_email,   
           subject: "Welcome to Viktorina",
-          text: welcomeMessage
-        }
+          text: welcomeMessage,
+        };
 
         // Sending the email
         transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
-            console.log(error)
+            console.log(error);
           } else {
-            console.log("Email sent: " + info.response)
+            console.log("Email sent: " + info.response);
           }
-        })
+        });
 
-        const user_lvl = 0 // set the user_lvl variable to 0
-        res.redirect(`http://localhost/aldas/Viktorina.live/a_index.php?name=${nick_name}&email=${user_email}&level=${user_lvl}`)
+        const user_lvl = 0; // set the user_lvl variable to 0
+        res.redirect(`http://localhost/aldas/Viktorina.live/a_index.php?name=${nick_name}&email=${user_email}&level=${user_lvl}`);
       }
-    })
-  })
-})
+    });
+  });
+});
+
 
 app.listen(4000, () => {
   console.log("Server listening on port 4000")
 })
+
+
