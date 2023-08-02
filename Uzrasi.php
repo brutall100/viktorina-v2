@@ -5,14 +5,16 @@
 <!-- Skaiciu zaidime padRYTI kad galima btn tik vien kart paspausti -->
 
 <!-- 3 -->
-<!--  -->
+<!-- d_server.js patvirtinus pasta pagrazinti zinute, atskirti mail.js i kita faila prideti papildomas apsaugas 
+per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazodio priminimo Funkcija -->
 
 <!-- 4 -->
 <!--Pagrazinti zinutes klausimo irasymo puslapyje. Kazko truksta-->
 
 <!-- 5 -->
 <!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)
-Isiraso kai atsakoma i klausima arba kai niekas neatsako. o paskutini klausima 100 istrina is DB -->
+Isiraso kai atsakoma i klausima arba kai niekas neatsako. o paskutini klausima 100 istrina is DB
+Taip pat prideti atsakiusio zmoogaus varda, jei toks atsake. Simtas last question bus geriau -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top 10, savaites top 10, dienos top 10, irasysiu klausimus top 10 nusinulina 1 menesio diena,

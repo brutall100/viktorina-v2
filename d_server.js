@@ -86,7 +86,7 @@ app.post("/register", (req, res) => {
         // handle successful registration
 
         // Sending welcome email
-        const welcomeMessage = `Labas, ${nick_name}! Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą: http://localhost:4000/confirm?uuid=${uuid}`;
+        const welcomeMessage = `Labas, ${nick_name}! Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą: http://localhost:${PORT}/confirm?uuid=${uuid}`;
 
         const mailOptions = {
           from: "viktorina.live@gmail.com", // Replace with your email
@@ -112,6 +112,7 @@ app.post("/register", (req, res) => {
 });
 
 // New /confirm route handler
+// Kai patvirtinamas el pastas nusiusti dar viena zinute su prisijungimo informacija name and email
 app.get("/confirm", (req, res) => {
   const { uuid } = req.query;
 
@@ -128,8 +129,9 @@ app.get("/confirm", (req, res) => {
 });
 
 // Start the server
-app.listen(4000, () => {
-  console.log("Server listening on port 4000");
+const PORT = 4000;
+app.listen(PORT, () => {
+  console.log("Server listening on port ${PORT}");
 });
 
 
