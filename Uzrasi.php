@@ -37,7 +37,8 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
 
 <!-- 12 -->
-<!-- -->
+<!-- Sukurti user info issokanti langa , jis kaip ir yra tik reikia tinkamai sutvarkyti.
+ lvl, points, today points, place, email confirmed Kvadratinis langelis su kazkokiu pazymejimu -->
 
 <!-- 13 -->
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
