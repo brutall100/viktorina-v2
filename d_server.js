@@ -86,11 +86,11 @@ app.post("/register", (req, res) => {
         // handle successful registration
 
         // Sending welcome email
-        const welcomeMessage = `Labas, ${nick_name}! Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą: http://localhost/aldas/Viktorina.live/confirm?uuid=${uuid}`;
+        const welcomeMessage = `Labas, ${nick_name}! Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą: http://localhost:4000/confirm?uuid=${uuid}`;
 
         const mailOptions = {
           from: "viktorina.live@gmail.com", // Replace with your email
-          to: "viktorina.live@gmail.com",//user_email, nepamirsti pakeisti sios eilutes i user_email,   
+          to: "viktorina.live@gmail.com",//user_email, nepamirsti pakeisti sios eilutes i user_email,
           subject: "Welcome to Viktorina",
           text: welcomeMessage,
         };
@@ -111,9 +111,25 @@ app.post("/register", (req, res) => {
   });
 });
 
+// New /confirm route handler
+app.get("/confirm", (req, res) => {
+  const { uuid } = req.query;
 
+  const sql = "UPDATE super_users SET email_verified = 1 WHERE uuid = ?";
+  connection.query(sql, [uuid], (err, result) => {
+    if (err) throw err;
+
+    if (result.affectedRows === 1) {
+      res.send("Email confirmed! You can now log in.");
+    } else {
+      res.send("Invalid or expired confirmation link.");
+    }
+  });
+});
+
+// Start the server
 app.listen(4000, () => {
-  console.log("Server listening on port 4000")
-})
+  console.log("Server listening on port 4000");
+});
 
 
