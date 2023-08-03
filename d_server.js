@@ -123,15 +123,15 @@ app.get("/confirm", (req, res) => {
     if (err) throw err;
 
     if (result.affectedRows === 1) {
-      res.send("Email confirmed! You can now log in.");
+      res.send("El. paštas patvirtintas! Galite prisijungti.");
     } else {
-      res.send("Invalid or expired confirmation link.");
+      res.send("Netaisyklingas arba pasibaigęs patvirtinimo nuorodos terminas.");
     }
   });
 });
 
 // Start the server
-const PORT = 4000;
+const PORT = process.env.PORT4;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
