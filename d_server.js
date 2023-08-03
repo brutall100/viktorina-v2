@@ -3,7 +3,6 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const mysql = require("mysql")
 const bcrypt = require("bcrypt")
-// const nodemailer = require("nodemailer")
 const { v4: uuidv4 } = require('uuid')
 require("dotenv").config()
 
@@ -26,13 +25,6 @@ connection.connect((err) => {
 })
 
 
-// let transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: process.env.MAIL_USER,
-//     pass: process.env.MAIL_PASS
-//   }
-// })
 
 app.post("/login", (req, res) => {
   const { nick_name, user_password } = req.body
@@ -84,26 +76,7 @@ app.post("/register", (req, res) => {
           throw err;
         }
       } else {
-        // handle successful registration
-
-        // // Sending welcome email
-        // const welcomeMessage = `Labas, ${nick_name}! Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą: http://localhost:${PORT}/confirm?uuid=${uuid}`;
-
-        // const mailOptions = {
-        //   from: "viktorina.live@gmail.com", // Replace with your email
-        //   to: "viktorina.live@gmail.com",//user_email, nepamirsti pakeisti sios eilutes i user_email,
-        //   subject: "Welcome to Viktorina",
-        //   text: welcomeMessage,
-        // };
-
-        // // Sending the email
-        // transporter.sendMail(mailOptions, (error, info) => {
-        //   if (error) {
-        //     console.log(error);
-        //   } else {
-        //     console.log("Email sent: " + info.response);
-        //   }
-        // });
+     
         sendWelcomeEmail(nick_name, user_email, uuid);
 
         const user_lvl = 0; // set the user_lvl variable to 0

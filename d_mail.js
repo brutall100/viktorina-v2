@@ -11,57 +11,58 @@ let transporter = nodemailer.createTransport({
 
 function sendWelcomeEmail(nick_name, user_email, uuid) {
   const welcomeMessage = `
-    <html>
-      <head>
+<html>
+    <head>
         <style>
-          body {
+        body {
             background-color: #f5f5f5;
             font-family: Arial, sans-serif;
-          }
-          .container {
+        }
+        .container {
             text-align: center;
             margin: 20px auto;
             padding: 20px;
             border-radius: 5px;
             background-color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          }
-          .header {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+        .header {
             color: #007bff;
-            font-size: 24px;
-            margin-bottom: 20px;
-          }
-          .message {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+        .message {
             font-size: 18px;
             line-height: 1.5;
-          }
-          .button {
+            padding: 10px;
+        }
+        .button {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
             padding: 10px 20px;
             background-color: #007bff;
             color: #ffffff;
             text-decoration: none;
             border-radius: 4px;
-          }
+        }
         </style>
-      </head>
-      <body>
-      <div class="container">
-        <div class="header">Labas, ${nick_name}!</div>
-        <div class="message">
-            Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą:
-         </div>
-        <a class="button" href="http://localhost:4000/confirm?uuid=${uuid}">Patvirtinti el. paštą</a>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">Labas, ${nick_name}!</div>
+            <div class="message">
+                Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą.
+            </div>
+            <a class="button" href="http://localhost:4000/confirm?uuid=${uuid}">Patvirtinti el. paštą</a>
 
-        <div class="message">
-            Taip pat galite nustatyti arba atkurti slaptažodį čia.
+            <div class="message">
+                Taip pat galite nustatyti arba atkurti slaptažodį čia.
+            </div>
+            <a class="button" href="http://localhost:4000/reset-password">Keisti slaptažodį</a>
         </div>
-        <a class="button" href="http://localhost:4000/reset-password">Keisti slaptažodį</a>
-      </div>
-    
-      </body>
-    </html>
+    </body>
+</html>
   `;
 
   const mailOptions = {

@@ -1,5 +1,9 @@
 .env
 
+# Ignore Old_files folder
+OldFiles_NotUse
+
+
 # Ignore node_modules
 # node_modules/
 
