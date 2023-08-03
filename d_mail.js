@@ -47,13 +47,19 @@ function sendWelcomeEmail(nick_name, user_email, uuid) {
         </style>
       </head>
       <body>
-        <div class="container">
-          <div class="header">Labas, ${nick_name}!</div>
-          <div class="message">
+      <div class="container">
+        <div class="header">Labas, ${nick_name}!</div>
+        <div class="message">
             Jūsų registracija sėkminga. Norėdami patvirtinti savo el. pašto adresą, prašome paspausti šią nuorodą:
-          </div>
-          <a class="button" href="http://localhost:4000/confirm?uuid=${uuid}">Patvirtinti el. paštą</a>
+         </div>
+        <a class="button" href="http://localhost:4000/confirm?uuid=${uuid}">Patvirtinti el. paštą</a>
+
+        <div class="message">
+            Taip pat galite nustatyti arba atkurti slaptažodį čia.
         </div>
+        <a class="button" href="http://localhost:4000/reset-password">Keisti slaptažodį</a>
+      </div>
+    
       </body>
     </html>
   `;
@@ -61,7 +67,7 @@ function sendWelcomeEmail(nick_name, user_email, uuid) {
   const mailOptions = {
     from: "viktorina.live@gmail.com",
     to: "viktorina.live@gmail.com",  //user_email,
-    subject: "Welcome to Viktorina",
+    subject: "Sveiki prisijunge prie Viktorina.live",
     html: welcomeMessage, // Use HTML content for styled email
   };
 
