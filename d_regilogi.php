@@ -36,6 +36,30 @@
     max-width: 500px; /* Set a maximum width */
     padding: 20px;
   }
+
+  #close-modal {
+    position: absolute;
+    top: 10px;
+    right: 1px;
+    width: 10px;
+    height: 10px;
+    font-size: 16px;
+    line-height: 10px; /* Adjust line-height to match the height */
+    text-align: center;
+    color: silver;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border: 1px solid green;
+  }
+
+  /* Hover styles for the close button */
+  #close-modal:hover {
+    color: red; /* Change the color on hover */
+    /* background: none; */
+    width: 10px;
+    height: 10px;
+  }
 </style>
 
 
@@ -223,7 +247,7 @@
   <!-- Modal -->
   <div class="modal" id="forgotPasswordModal">
     <div class="modal-content">
-      <!-- Place your password reset form here -->
+      <button id="close-modal">✕</button> <!-- Close button -->
       <h2>Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
       <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jums sugrįžti.</p>
       <form action="/request-reset" method="POST">
@@ -238,12 +262,18 @@
     // JavaScript to show the modal
     const forgotPasswordLink = document.querySelector('.forgot-password');
     const modal = document.getElementById('forgotPasswordModal');
+    const closeModalButton = modal.querySelector('#close-modal');
 
     forgotPasswordLink.addEventListener('click', function(event) {
       event.preventDefault();
       modal.style.display = 'block';
     });
+
+    closeModalButton.addEventListener('click', function() {
+      modal.style.display = 'none';
+    });
   </script>
+
 
   <!-- <script src="http://localhost/aldas/Viktorina.live/d_server.js"></script> -->
   <script src="http://localhost/aldas/Viktorina.live/d_regilogi.js"></script>
