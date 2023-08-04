@@ -9,6 +9,38 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <meta http-equiv="refresh" content="600"><!-- Auto refresh 10 min -->
   <title>Registracija ir Prisijungimas</title>
+
+  <style>
+
+
+  /* Make the modal appear on top of other elements */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1000; /* Adjust the z-index value as needed */
+  }
+
+  /* Center the modal content */
+  .modal-content {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; /* Adjust the width as needed */
+    max-width: 500px; /* Set a maximum width */
+    padding: 20px;
+  }
+</style>
+
+
+
+
 </head>
 
 <body>
@@ -187,6 +219,31 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div class="modal" id="forgotPasswordModal">
+    <div class="modal-content">
+      <!-- Place your password reset form here -->
+      <h2>Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
+      <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jums sugrįžti.</p>
+      <form action="/request-reset" method="POST">
+        <label for="email">El. paštas:</label>
+        <input type="email" id="email" name="user_email" required>
+        <button type="submit">Siūsti priminimą</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to show the modal
+    const forgotPasswordLink = document.querySelector('.forgot-password');
+    const modal = document.getElementById('forgotPasswordModal');
+
+    forgotPasswordLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      modal.style.display = 'block';
+    });
+  </script>
 
   <!-- <script src="http://localhost/aldas/Viktorina.live/d_server.js"></script> -->
   <script src="http://localhost/aldas/Viktorina.live/d_regilogi.js"></script>
