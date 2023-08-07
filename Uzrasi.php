@@ -47,7 +47,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!--  Uz kieviena prabalsavima gauti 1 lita geriau puse lito. Bet gerai ir litas.-->
 
 <!-- 15 -->
-<!-- Registruojantis user_id reikia sugeneruoti skaiciu derini. Galbut kartu su raidemis, del saugumo BUtinai-->
+<!-- Slaptažodžio priminimas būtų kintamasis, kiekvienų metų laiu, būti vis ktoks. ty vasarą vienoks, rudenį kitoks ir t.t-->
 
 <!--16 -->
 <!-- Padaryti kad butu galima isjungti games.Visus game -->
