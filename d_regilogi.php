@@ -202,7 +202,7 @@
       <button id="close-modal">✕</button> <!-- Close button -->
       <h2>Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
       <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jam sugrįžti.</p>
-      <form action="/request-reset" method="POST">
+      <form action="http://localhost:4000/reset-password" method="POST">
         <label for="email">El. paštas:</label>
         <input type="email" id="email" name="user_email" required>
         <button type="submit">Siūsti priminimą</button>
@@ -210,7 +210,7 @@
     </div>
   </div>
 
-  <script>
+  <!-- <script>
     // JavaScript to show the modal
     const forgotPasswordLink = document.querySelector('.forgot-password');
     const modal = document.getElementById('forgotPasswordModal');
@@ -224,7 +224,7 @@
     closeModalButton.addEventListener('click', function() {
       modal.style.display = 'none';
     });
-  </script>
+  </script> -->
 
 
   <script src="http://localhost/aldas/Viktorina.live/d_regilogi.js"></script>

@@ -1,3 +1,18 @@
+// JavaScript to show the modal
+const forgotPasswordLink = document.querySelector('.forgot-password');
+const modal = document.getElementById('forgotPasswordModal');
+const closeModalButton = modal.querySelector('#close-modal');
+
+forgotPasswordLink.addEventListener('click', function(event) {
+event.preventDefault();
+modal.style.display = 'block';
+});
+
+closeModalButton.addEventListener('click', function() {
+modal.style.display = 'none';
+});
+
+
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 let container = document.getElementById('container');
@@ -57,7 +72,5 @@ function validateForm(event) {
 		event.target.submit();
 	}
 }
-
-
 
 
