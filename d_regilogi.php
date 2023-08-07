@@ -12,55 +12,7 @@
 
   <style>
 
-
-  /* Make the modal appear on top of other elements */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1000; /* Adjust the z-index value as needed */
-  }
-
-  /* Center the modal content */
-  .modal-content {
-    background-color: #fff;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%; /* Adjust the width as needed */
-    max-width: 500px; /* Set a maximum width */
-    padding: 20px;
-  }
-
-  #close-modal {
-    position: absolute;
-    top: 10px;
-    right: 1px;
-    width: 10px;
-    height: 10px;
-    font-size: 16px;
-    line-height: 10px; /* Adjust line-height to match the height */
-    text-align: center;
-    color: silver;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    border: 1px solid green;
-  }
-
-  /* Hover styles for the close button */
-  #close-modal:hover {
-    color: red; /* Change the color on hover */
-    /* background: none; */
-    width: 10px;
-    height: 10px;
-  }
-</style>
+ </style>
 
 
 
@@ -249,7 +201,7 @@
     <div class="modal-content">
       <button id="close-modal">✕</button> <!-- Close button -->
       <h2>Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
-      <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jums sugrįžti.</p>
+      <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jam sugrįžti.</p>
       <form action="/request-reset" method="POST">
         <label for="email">El. paštas:</label>
         <input type="email" id="email" name="user_email" required>
@@ -275,7 +227,6 @@
   </script>
 
 
-  <!-- <script src="http://localhost/aldas/Viktorina.live/d_server.js"></script> -->
   <script src="http://localhost/aldas/Viktorina.live/d_regilogi.js"></script>
   <script src="http://localhost/aldas/Viktorina.live/d_regilogi_nameGenerator.js"></script>
   <footer></footer>
