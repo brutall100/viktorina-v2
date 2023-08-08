@@ -205,7 +205,7 @@
       <form method="POST" action="http://localhost:4000/reset-password">  
         <label for="email">El. paštas:</label>
         <input type="email" id="email" name="user_email" required>
-        <button type="submit">Siūsti priminimą</button>
+        <button type="submit">Siųsti priminimą</button>
       </form>
     </div>
   </div>

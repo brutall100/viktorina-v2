@@ -5,9 +5,16 @@ const mysql = require("mysql");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 require("dotenv").config();
+const path = require("path"); // Import the "path" module
 
 const { sendWelcomeEmail } = require("./d_mail");
 const app = express();
+
+// Set EJS as the view engine
+app.set("view engine", "ejs");
+
+// Set the directory for views/templates
+app.set("views", path.join(__dirname, "views")); // Make sure you have a "views" directory in your project
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -84,10 +91,6 @@ app.post("/register", (req, res) => {
   });
 });
 
-
-
-
-
 // Generate a random token
 function generateResetToken() {
   return uuidv4();
@@ -119,15 +122,14 @@ function sendResetEmail(email, token) {
   });
 }
 
-// Handle password reset request
-app.post("/reset-password", (req, res) => {
+app.post("/reset-password", (req, res) => { // Handle password reset request
   try {
     const userEmail = req.body.user_email;
 
     const resetToken = generateResetToken();
     console.log("Generated reset token:", resetToken);
 
-    const expires = new Date(Date.now() + 3600000); // Set expiration time (e.g., 1 hour)
+    const expires = new Date(Date.now() + 86400000); // Set expiration time 24H.
     const updateQuery =
       "UPDATE super_users SET reset_token = ?, reset_token_expires = ? WHERE user_email = ?";
 
@@ -151,6 +153,118 @@ app.post("/reset-password", (req, res) => {
     res.status(500).send("An error occurred.");
   }
 });
+
+
+
+
+app.get("/reset/:token", (req, res) => {
+  const resetToken = req.params.token;
+
+  // Query the database to find a user with the matching reset token
+  const findUserQuery = "SELECT * FROM super_users WHERE reset_token = ?";
+  connection.query(findUserQuery, [resetToken], (error, results) => {
+    if (error) {
+      console.error("Error querying database:", error);
+      return res.status(500).send("An error occurred.");
+    }
+
+    if (results.length === 0) {
+      // No user found with the given reset token
+      return res.status(400).send("Invalid reset token.");
+    }
+
+    const user = results[0];
+    const resetTokenExpires = user.reset_token_expires;
+
+    // Check if the reset token has expired
+    const now = new Date();
+    if (resetTokenExpires < now) {
+      // Token has expired
+      return res.status(400).send("Reset token has expired.");
+    }
+
+    // Render the password reset form with the reset token
+    res.render("reset-form", { token: resetToken });
+  });
+});
+
+
+// // New endpoint to handle password reset link
+// app.post("/reset/:token", (req, res) => {
+//   const resetToken = req.params.token;
+//   const newPassword = req.body.password;
+
+//   // Query the database to find a user with the matching reset token
+//   const findUserQuery = "SELECT * FROM super_users WHERE reset_token = ?";
+//   connection.query(findUserQuery, [resetToken], (error, results) => {
+//     if (error) {
+//       console.error("Error querying database:", error);
+//       return res.status(500).send("An error occurred.");
+//     }
+
+//     if (results.length === 0) {
+//       // No user found with the given reset token
+//       return res.status(400).send("Invalid reset token.");
+//     }
+
+//     const user = results[0];
+//     const resetTokenExpires = user.reset_token_expires;
+
+//     // Check if the reset token has expired
+//     const now = new Date();
+//     if (resetTokenExpires < now) {
+//       // Token has expired
+//       return res.status(400).send("Reset token has expired.");
+//     }
+
+   
+//   });
+// });
+
+// // New endpoint to handle password reset link
+// app.get("/reset/:token", (req, res) => {
+//   const resetToken = req.params.token;
+
+//   // Query the database to find a user with the matching reset token
+//   const findUserQuery = "SELECT * FROM super_users WHERE reset_token = ?";
+//   connection.query(findUserQuery, [resetToken], (error, results) => {
+//     if (error) {
+//       console.error("Error querying database:", error);
+//       return res.status(500).send("An error occurred.");
+//     }
+
+//     if (results.length === 0) {
+//       // No user found with the given reset token
+//       return res.status(400).send("Invalid reset token.");
+//     }
+
+//     const user = results[0];
+//     const resetTokenExpires = user.reset_token_expires;
+
+//     // Check if the reset token has expired
+//     const now = new Date();
+//     if (resetTokenExpires < now) {
+//       // Token has expired
+//       return res.status(400).send("Reset token has expired.");
+//     }
+
+//     // Send the password reset email
+//     sendResetEmail(user.user_email, resetToken, (emailError) => {
+//       if (emailError) {
+//         console.error("Error sending email:", emailError);
+//         return res.status(500).send("An error occurred while sending email.");
+//       }
+
+//       // Email sent successfully, render the password reset form
+//       res.render("reset-form", { token: resetToken }); // Make sure "reset-form.ejs" is in your "views" folder
+
+
+//     });
+//   });
+// });
+
+
+
 
 
 

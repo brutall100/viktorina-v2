@@ -1,3 +1,7 @@
+<!-- 0 uzduotis -->
+<!--   -->
+
+
 <!-- 1 uzduotis -->
 <!--  Tvarkyti sauguma, uzkoduoti adreso eilute kad nieko negaletum matyti ir keisti ty lvl pointu nieko  -->
 
