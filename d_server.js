@@ -1,30 +1,28 @@
-const express = require("express")
-// const axios = require("axios")
-const bodyParser = require("body-parser")
-const mysql = require("mysql")
-const bcrypt = require("bcrypt")
-const { v4: uuidv4 } = require('uuid')
-require("dotenv").config()
+const express = require("express");
+const bodyParser = require("body-parser");
+const nodemailer = require("nodemailer");
+const mysql = require("mysql");
+const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require("uuid");
+require("dotenv").config();
 
-const { sendWelcomeEmail } = require("./d_mail")
-const app = express()
+const { sendWelcomeEmail } = require("./d_mail");
+const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
-})
+  database: process.env.DB_DATABASE,
+});
 
 connection.connect((err) => {
-  if (err) throw err
-  console.log("Connected to database Viktorina")
-})
-
-
+  if (err) throw err;
+  console.log("Connected to database Viktorina");
+});
 
 app.post("/login", (req, res) => {
   const { nick_name, user_password } = req.body
@@ -85,6 +83,80 @@ app.post("/register", (req, res) => {
     });
   });
 });
+
+
+
+
+
+// Generate a random token
+function generateResetToken() {
+  return uuidv4();
+}
+
+// Send password reset email using Nodemailer
+function sendResetEmail(email, token) {
+  const transporter = nodemailer.createTransport({
+    service: "Gmail", // Use your email service
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: process.env.MAIL_PASS,
+    },
+  });
+
+  const mailOptions = {
+    from: "viktorina.live@gmail.com",
+    to: "viktorina.live@gmail.com",
+    subject: "Password Reset Request",
+    text: `Click the following link to reset your password: http://localhost:${PORT}/reset/${token}`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
+
+// Handle password reset request
+app.post("/reset-password", (req, res) => {
+  try {
+    const userEmail = req.body.user_email;
+
+    const resetToken = generateResetToken();
+    console.log("Generated reset token:", resetToken);
+
+    const expires = new Date(Date.now() + 3600000); // Set expiration time (e.g., 1 hour)
+    const updateQuery =
+      "UPDATE super_users SET reset_token = ?, reset_token_expires = ? WHERE user_email = ?";
+
+    connection.query(
+      updateQuery,
+      [resetToken, expires, userEmail],
+      (error, results) => {
+        if (error) {
+          console.error("Error updating database:", error);
+          res.status(500).send("An error occurred.");
+        } else {
+          sendResetEmail(userEmail, resetToken);
+          res.send(
+            "Password reset process initiated. Check your email for instructions."
+          );
+        }
+      }
+    );
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("An error occurred.");
+  }
+});
+
+
+
+
+
+
 
 // New /confirm route handler
 // Kai patvirtinamas el pastas nusiusti dar viena zinute su prisijungimo informacija name and email

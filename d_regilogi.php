@@ -202,7 +202,7 @@
       <button id="close-modal">✕</button> <!-- Close button -->
       <h2>Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
       <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jam sugrįžti.</p>
-      <form method="POST" action="http://localhost:7700/reset-password">  
+      <form method="POST" action="http://localhost:4000/reset-password">  
         <label for="email">El. paštas:</label>
         <input type="email" id="email" name="user_email" required>
         <button type="submit">Siūsti priminimą</button>
