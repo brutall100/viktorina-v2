@@ -200,7 +200,7 @@ app.post('/reset/:token', (req, res) => {
   const confirmPassword = req.body.confirmPassword;
 
   if (newPassword !== confirmPassword) {
-    res.status(400).send('Slaptažodžiai nesutampa.');
+    res.status(400).send('Ojojoi 😄❌🙈 Atrodo, kad jūsų slaptažodžiai nesutampa. Jie turėtų sutapti. 🙂');
     return;
   }
 
@@ -229,7 +229,7 @@ app.post('/reset/:token', (req, res) => {
           return;
         }
 
-        res.send('Password reset successful.');
+        res.send('Voohoo! Slaptažodis atstatytas sėkmingai. ✨😄 Dabar galite saugiai įeiti į savo paskyrą su naujuoju slaptažodžiu. 🚀');
       }
     );
   });
