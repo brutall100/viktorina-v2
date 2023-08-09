@@ -12,9 +12,8 @@ const app = express();
 
 // Set EJS as the view engine
 app.set("view engine", "ejs");
-
 // Set the directory for views/templates
-app.set("views", path.join(__dirname, "views")); // Make sure you have a "views" directory in your project
+app.set("views", path.join(__dirname, "views")); 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -31,6 +30,8 @@ connection.connect((err) => {
   console.log("Connected to database Viktorina");
 });
 
+
+//                     LOGIN
 app.post("/login", (req, res) => {
   const { nick_name, user_password } = req.body
   const sql = `SELECT * FROM super_users WHERE nick_name = ?`
@@ -52,6 +53,8 @@ app.post("/login", (req, res) => {
   })
 })
 
+
+//                  REGISTER
 app.post("/register", (req, res) => {
   const { nick_name, user_email, user_password, gender, other_gender } = req.body;
 
@@ -108,7 +111,7 @@ function sendResetEmail(email, token) {
 
   const mailOptions = {
     from: "viktorina.live@gmail.com",
-    to: "viktorina.live@gmail.com",
+    to: "brutall100@gmail.com",
     subject: "Password Reset Request",
     text: `Click the following link to reset your password: http://localhost:${PORT}/reset/${token}`,
   };
@@ -122,7 +125,9 @@ function sendResetEmail(email, token) {
   });
 }
 
-app.post("/reset-password", (req, res) => { // Handle password reset request
+
+//            MODAL PASSWORD RESET
+app.post("/reset-password", (req, res) => { 
   try {
     const userEmail = req.body.user_email;
 
@@ -155,8 +160,7 @@ app.post("/reset-password", (req, res) => { // Handle password reset request
 });
 
 
-
-
+//                USER RESPOND, CLICK LINK and REDIRECTED TO reset-form.ejs 
 app.get("/reset/:token", (req, res) => {
   const resetToken = req.params.token;
 
@@ -189,91 +193,52 @@ app.get("/reset/:token", (req, res) => {
 });
 
 
-// // New endpoint to handle password reset link
-// app.post("/reset/:token", (req, res) => {
-//   const resetToken = req.params.token;
-//   const newPassword = req.body.password;
+//               USER ENTER 2 PASS and SUBMIT FORM
+app.post('/reset/:token', (req, res) => {
+  const token = req.params.token;
+  const newPassword = req.body.password;
+  const confirmPassword = req.body.confirmPassword;
 
-//   // Query the database to find a user with the matching reset token
-//   const findUserQuery = "SELECT * FROM super_users WHERE reset_token = ?";
-//   connection.query(findUserQuery, [resetToken], (error, results) => {
-//     if (error) {
-//       console.error("Error querying database:", error);
-//       return res.status(500).send("An error occurred.");
-//     }
+  if (newPassword !== confirmPassword) {
+    res.status(400).send('Slaptažodžiai nesutampa.');
+    return;
+  }
 
-//     if (results.length === 0) {
-//       // No user found with the given reset token
-//       return res.status(400).send("Invalid reset token.");
-//     }
+  connection.query('SELECT * FROM super_users WHERE reset_token = ?', [token], (err, rows) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal server error');
+      return;
+    }
 
-//     const user = results[0];
-//     const resetTokenExpires = user.reset_token_expires;
+    if (rows.length === 0) {
+      res.status(400).send('Invalid reset token.');
+      return;
+    }
 
-//     // Check if the reset token has expired
-//     const now = new Date();
-//     if (resetTokenExpires < now) {
-//       // Token has expired
-//       return res.status(400).send("Reset token has expired.");
-//     }
+    const user = rows[0];
+    const hashedPassword = bcrypt.hashSync(newPassword, 10);
 
-   
-//   });
-// });
+    connection.query(
+      'UPDATE super_users SET user_password = ?, reset_token = NULL WHERE user_id = ?',
+      [hashedPassword, user.user_id],
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send('Internal server error');
+          return;
+        }
 
-// // New endpoint to handle password reset link
-// app.get("/reset/:token", (req, res) => {
-//   const resetToken = req.params.token;
-
-//   // Query the database to find a user with the matching reset token
-//   const findUserQuery = "SELECT * FROM super_users WHERE reset_token = ?";
-//   connection.query(findUserQuery, [resetToken], (error, results) => {
-//     if (error) {
-//       console.error("Error querying database:", error);
-//       return res.status(500).send("An error occurred.");
-//     }
-
-//     if (results.length === 0) {
-//       // No user found with the given reset token
-//       return res.status(400).send("Invalid reset token.");
-//     }
-
-//     const user = results[0];
-//     const resetTokenExpires = user.reset_token_expires;
-
-//     // Check if the reset token has expired
-//     const now = new Date();
-//     if (resetTokenExpires < now) {
-//       // Token has expired
-//       return res.status(400).send("Reset token has expired.");
-//     }
-
-//     // Send the password reset email
-//     sendResetEmail(user.user_email, resetToken, (emailError) => {
-//       if (emailError) {
-//         console.error("Error sending email:", emailError);
-//         return res.status(500).send("An error occurred while sending email.");
-//       }
-
-//       // Email sent successfully, render the password reset form
-//       res.render("reset-form", { token: resetToken }); // Make sure "reset-form.ejs" is in your "views" folder
-
-
-//     });
-//   });
-// });
+        res.send('Password reset successful.');
+      }
+    );
+  });
+});
 
 
 
-
-
-
-
-
-
-
-// New /confirm route handler
-// Kai patvirtinamas el pastas nusiusti dar viena zinute su prisijungimo informacija name and email
+//            USER RESPOND, CLICK LINK and UPDATES DB WITH CONFIRMED EMAIL 
+// Kai patvirtinamas el pastas nusiusti dar viena zinute su prisijungimo informacija name and email  ARBA sukurti sveikinimo ejs failiuka.VSIO
 app.get("/confirm", (req, res) => {
   const { uuid } = req.query;
 

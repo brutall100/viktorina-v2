@@ -9,14 +9,6 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <meta http-equiv="refresh" content="600"><!-- Auto refresh 10 min -->
   <title>Registracija ir Prisijungimas</title>
-
-  <style>
-
- </style>
-
-
-
-
 </head>
 
 <body>
@@ -209,23 +201,6 @@
       </form>
     </div>
   </div>
-
-  <!-- <script>
-    // JavaScript to show the modal
-    const forgotPasswordLink = document.querySelector('.forgot-password');
-    const modal = document.getElementById('forgotPasswordModal');
-    const closeModalButton = modal.querySelector('#close-modal');
-
-    forgotPasswordLink.addEventListener('click', function(event) {
-      event.preventDefault();
-      modal.style.display = 'block';
-    });
-
-    closeModalButton.addEventListener('click', function() {
-      modal.style.display = 'none';
-    });
-  </script> -->
-
 
   <script src="http://localhost/aldas/Viktorina.live/d_regilogi.js"></script>
   <script src="http://localhost/aldas/Viktorina.live/d_regilogi_nameGenerator.js"></script>
