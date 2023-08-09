@@ -1,11 +1,11 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const nodemailer = require("nodemailer");
-const mysql = require("mysql");
-const bcrypt = require("bcrypt");
-const { v4: uuidv4 } = require("uuid");
-require("dotenv").config();
-const path = require("path"); // Import the "path" module
+const express = require("express"); // Import the Express framework (npm install express)
+const bodyParser = require("body-parser"); // Parse HTTP request body (npm install body-parser)
+const nodemailer = require("nodemailer"); // Send email (npm install nodemailer)
+const mysql = require("mysql"); // MySQL database driver (npm install mysql)
+const bcrypt = require("bcrypt"); // Password hashing (npm install bcrypt)
+const { v4: uuidv4 } = require("uuid"); // Generate UUIDs (npm install uuid)
+require("dotenv").config(); // Load environment variables from .env file (no installation needed)
+const path = require("path"); // Import the "path" module for file path manipulation (part of Node.js core)
 
 const { sendWelcomeEmail } = require("./d_mail");
 const app = express();
@@ -220,7 +220,7 @@ app.post('/reset/:token', (req, res) => {
     const hashedPassword = bcrypt.hashSync(newPassword, 10);
 
     connection.query(
-      'UPDATE super_users SET user_password = ?, reset_token = NULL WHERE user_id = ?',
+      'UPDATE super_users SET user_password = ?, reset_token = NULL, reset_token_expires = NULL WHERE user_id = ?',
       [hashedPassword, user.user_id],
       (err, result) => {
         if (err) {
@@ -229,7 +229,7 @@ app.post('/reset/:token', (req, res) => {
           return;
         }
 
-        res.send('Voohoo! Slaptažodis atstatytas sėkmingai. ✨😄 Dabar galite saugiai įeiti į savo paskyrą su naujuoju slaptažodžiu. 🚀');
+        res.render('reset-success.ejs');  // Sukurtas res.render('reset-success.ejs');   kuris turėtų nukreipti i d_regiligi.php bet meta klaida.
       }
     );
   });
