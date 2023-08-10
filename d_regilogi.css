@@ -354,12 +354,23 @@ input {
     transform: translate(-50%, -50%);
     width: 78%; 
     max-width: 500px; 
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
   }
 
   .modal-content > form{
 	background-color: #eee;
+	height: 150px;
+
+  }
+
+  .centered-input {
+	width: 250px; /* Adjust the width as needed */
+	text-align: center;
+  }
+  
+  .button-container {
+	margin-top: 10px; /* Adjust the margin as needed */
   }
 
   #close-modal {

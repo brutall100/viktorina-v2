@@ -196,8 +196,10 @@
       <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jam sugrįžti.</p>
       <form method="POST" action="http://localhost:4000/reset-password">  
         <label for="email">El. paštas:</label>
-        <input type="email" id="email" name="user_email" required>
-        <button type="submit">Siųsti priminimą</button>
+        <input type="email" id="email" class="centered-input" name="user_email" required>
+        <div class="button-container">
+          <button type="submit">Siųsti priminimą</button>
+        </div>
       </form>
     </div>
   </div>

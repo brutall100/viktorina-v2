@@ -78,7 +78,7 @@ app.post("/register", (req, res) => {
       if (err) {
         if (err.code === "ER_DUP_ENTRY") {
           // handle duplicate entry error
-          res.send("User already exists");
+          res.send("Ups, jau turime šį vartotoją!  Bandykite kitą vardą!");
         } else {
           // handle other errors
           throw err;
@@ -111,7 +111,7 @@ function sendResetEmail(email, token) {
 
   const mailOptions = {
     from: "viktorina.live@gmail.com",
-    to: "brutall100@gmail.com",
+    to: "viktorina.live@gmail.com",
     subject: "Password Reset Request",
     text: `Click the following link to reset your password: http://localhost:${PORT}/reset/${token}`,
   };
@@ -127,12 +127,11 @@ function sendResetEmail(email, token) {
 
 
 //            MODAL PASSWORD RESET
-app.post("/reset-password", (req, res) => { 
+app.post("/reset-password", (req, res) => {
   try {
     const userEmail = req.body.user_email;
 
     const resetToken = generateResetToken();
-    console.log("Generated reset token:", resetToken);
 
     const expires = new Date(Date.now() + 86400000); // Set expiration time 24H.
     const updateQuery =
@@ -147,9 +146,7 @@ app.post("/reset-password", (req, res) => {
           res.status(500).send("An error occurred.");
         } else {
           sendResetEmail(userEmail, resetToken);
-          res.send(
-            "Password reset process initiated. Check your email for instructions."
-          );
+          res.render("modal-reset.ejs"); // Render the success template
         }
       }
     );
@@ -158,6 +155,7 @@ app.post("/reset-password", (req, res) => {
     res.status(500).send("An error occurred.");
   }
 });
+
 
 
 //                USER RESPOND, CLICK LINK and REDIRECTED TO reset-form.ejs 
