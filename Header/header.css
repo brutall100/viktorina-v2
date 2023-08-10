@@ -1,18 +1,26 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
 }
 
-.logo{
+.menu-container {
+  display: flex;
+  align-items: center;
+}
+
+.menu-container li {
+  margin-right: 20px;
+}
+
+.logo {
   width: 3.2em;
   margin: 2px 0 0 10px;
   cursor: crosshair;
   transition: transform 0.7s;
 }
 
-.logo:hover{
+.logo:hover {
   transform: scale(2.5) translate(20px, 20px);
 }
 
@@ -22,26 +30,23 @@ ul {
   align-items: center;
   list-style-type: none;
   background-color: rgb(36, 33, 33);
-  /* background: url(); */
-  opacity: 0.8;padding: .3rem;
-
+  opacity: 0.8;
+  padding: 0.3rem;
 }
 
-li {
-  float: right;
-}
-
-li a, .dropbtn {
-  display: inline-block; 
-  color: rgb(214,237,243);
+li a,
+.dropbtn {
+  display: inline-block;
+  color: rgb(214, 237, 243);
   text-align: center;
   font-weight: bold;
   padding: 14px 16px;
   text-decoration: none;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
-  background-color:rgb(1, 17, 10);
+li a:hover,
+.dropdown:hover .dropbtn {
+  background-color: rgb(1, 17, 10);
   border-radius: 0.4em;
 }
 
@@ -54,10 +59,9 @@ li.dropdown {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 143px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
   border-radius: 0 0 10px 10px;
   z-index: 1;
- 
 }
 
 .dropdown-content a {
@@ -68,28 +72,28 @@ li.dropdown {
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-
-
 /* BTN ATSIJUNGTI */
-.header #btn-atsijungti{
+.header #btn-atsijungti {
   margin-left: 10px;
   width: 70px;
   height: 40px;
 }
 
-.header #btn-atsijungti{
+.header #btn-atsijungti {
   visibility: hidden;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.header:hover #btn-atsijungti{
+.header:hover #btn-atsijungti {
   visibility: visible;
   opacity: 0.1;
 }
