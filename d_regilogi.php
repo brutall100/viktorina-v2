@@ -191,7 +191,7 @@
   <!-- Modal -->
   <div class="modal" id="forgotPasswordModal">
     <div class="modal-content">
-      <button id="close-modal">✕</button> <!-- Close button -->
+      <button id="close-modal">✕</button> 
       <h2>Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
       <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jam sugrįžti.</p>
       <form method="POST" action="http://localhost:4000/reset-password">  

@@ -1,20 +1,148 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Password Reset</title>
+  <title>Slaptažodzio atstatymas</title>
+  <style>
+    body {
+      background-color: #ffc0cb; 
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif; 
+    }
+    
+    h1 {
+      color: #ff0000;
+    }
+    
+    form {
+      background-color: #ffff99; 
+      padding:30px;
+      border-radius: 10px;
+      margin: auto;
+      width: 30%;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    input {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ff00ff; 
+      border-radius: 5px;
+      width: 70%;
+    }
+
+  
+    input[type="password"] {
+      text-align: center; 
+    }
+
+    .eye-icon {
+    cursor: pointer;
+    margin-left: -30px; 
+   }
+    
+    button {
+      background-color: #ff9900; 
+      color: white;
+      margin-top: 10px;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #ff6600; 
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+    
+  </style>
 </head>
 <body>
-  <h1>Password Reset</h1>
-  <p>Enter your new password below:</p>
+  <h1>Slaptažodzio atstatymas</h1>
+  <p>Įveskite naujajį slaptažodį:</p>
   
   <form method="POST" action="/reset/<%= token %>">
-    <label for="password">New Password:</label>
+    <label for="password">Naujasis slaptažodis:</label>
     <input type="password" id="password" name="password" required>
+    <span class="eye-icon" onclick="togglePasswordVisibility('password', 'togglePassword1')">👁️</span>
     <br>
-    <label for="confirmPassword">Confirm Password:</label>
+    <label for="confirmPassword">Patvirtinti slaptažodį:</label>
     <input type="password" id="confirmPassword" name="confirmPassword" required>
+    <span class="eye-icon" onclick="togglePasswordVisibility('confirmPassword', 'togglePassword2')">👁️</span>
     <br>
-    <button type="submit">Reset Password</button>
+    <button id="submitButton" type="submit">Tvirtinu 👍</button>
   </form>
+
+  <div id="successMessage" style="display: none;">
+    <p>Voohoo! Slaptažodis atstatytas sėkmingai. <span class="emoji">✨😄🚀</span><br>
+      Dabar galite saugiai įeiti į savo paskyrą su naujuoju slaptažodžiu.</p>
+  </div>
+  <div id="errorMessage" style="display: none; color: red;">
+    Slaptažodžiai nesutampa.
+  </div>
+  
+  
+
+  
+  <script>
+    function togglePasswordVisibility(inputId, iconId) {
+      const passwordInput = document.getElementById(inputId);
+      const togglePasswordIcon = document.getElementById(iconId);
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        passwordInput.style.textAlign = 'center';
+        togglePasswordIcon.textContent = '👁️';
+      } else {
+        passwordInput.type = 'password';
+        passwordInput.style.textAlign = '';
+        togglePasswordIcon.textContent = '👁️';
+      }
+    }
+
+    function showSuccessMessage() {
+      const successMessageDiv = document.getElementById('successMessage');
+      successMessageDiv.style.display = 'block';
+    }
+    
+    function submitForm(event) {
+      event.preventDefault();
+
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+      const errorMessageDiv = document.getElementById('errorMessage');
+      const submitButton = document.getElementById('submitButton');
+
+      if (passwordInput.value !== confirmPasswordInput.value) {
+        errorMessageDiv.style.display = 'block';
+        submitButton.disabled = true; 
+        return;
+      }
+
+      errorMessageDiv.style.display = 'none';
+      submitButton.disabled = false; 
+
+      setTimeout(() => {
+        showSuccessMessage();
+        setTimeout(() => {
+          window.location.href = 'http://localhost/aldas/Viktorina.live/d_regilogi.php';
+        }, 5000);
+      }, 1000);
+    }
+
+
+    document.querySelector('form').addEventListener('submit', submitForm);
+  </script>
+  
+  
 </body>
 </html>

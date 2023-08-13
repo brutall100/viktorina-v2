@@ -111,9 +111,9 @@ function sendResetEmail(email, token) {
 
   const mailOptions = {
     from: "viktorina.live@gmail.com",
-    to: "viktorina.live@gmail.com",
+    to: "brutall100@gmail.com",
     subject: "Password Reset Request",
-    text: `Click the following link to reset your password: http://localhost:${PORT}/reset/${token}`,
+    text: `Norėdami pasikeisti slaptažodį spauskite šią nuorodą: http://localhost:${PORT}/reset/${token}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -146,7 +146,7 @@ app.post("/reset-password", (req, res) => {
           res.status(500).send("An error occurred.");
         } else {
           sendResetEmail(userEmail, resetToken);
-          res.render("modal-reset.ejs"); // Render the success template
+          res.render("modal-reset.ejs"); 
         }
       }
     );
@@ -227,7 +227,7 @@ app.post('/reset/:token', (req, res) => {
           return;
         }
 
-        res.render('reset-success.ejs');  // Sukurtas res.render('reset-success.ejs');   kuris turėtų nukreipti i d_regiligi.php bet meta klaida.
+        // res.render('reset-success.ejs');  
       }
     );
   });
