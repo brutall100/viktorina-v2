@@ -27,7 +27,7 @@
           <a href="#">Puslapio klaidos</a>
           <a href="#">Pasiūlymai balsuoti</a>
           <a href="#">Balsavimas</a>
-          <a href="#">Klaidos klausimuose</a><!-- Jei pastebejote klaida viename is klausimu prasome nurodyti kluasimo nr ir priezasti kodel manote jog klausimas neteisingas -->
+          <a href="#">Klaidos klausime</a><!-- Jei pastebejote klaida viename is klausimu prasome nurodyti kluasimo nr ir priezasti kodel manote jog klausimas neteisingas -->
         </div>
       </div>
     </div>
