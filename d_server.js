@@ -152,35 +152,37 @@ app.post("/reset-password", (req, res) => {
 
 //                USER RESPOND, CLICK LINK and REDIRECTED TO reset-form.ejs
 app.get("/reset/:token", (req, res) => {
-  const resetToken = req.params.token
+  const resetToken = req.params.token;
 
   // Query the database to find a user with the matching reset token
-  const findUserQuery = "SELECT * FROM super_users WHERE reset_token = ?"
+  const findUserQuery = "SELECT * FROM super_users WHERE reset_token = ?";
+  
   connection.query(findUserQuery, [resetToken], (error, results) => {
     if (error) {
-      console.error("Error querying database:", error)
-      return res.status(500).send("An error occurred.")
+      console.error("Error querying database:", error);
+      return res.status(500).send("An error occurred.");
     }
 
     if (results.length === 0) {
       // No user found with the given reset token
-      return res.status(400).send("Invalid reset token.")
+      return res.render("invalid-token");
     }
 
-    const user = results[0]
-    const resetTokenExpires = user.reset_token_expires
+    const user = results[0];
+    const resetTokenExpires = user.reset_token_expires;
 
     // Check if the reset token has expired
-    const now = new Date()
+    const now = new Date();
     if (resetTokenExpires < now) {
       // Token has expired
-      return res.status(400).send("Reset token has expired.")
+      return res.render("invalid-token", { errorMessage: "The reset link has expired." });
     }
 
     // Render the password reset form with the reset token
-    res.render("reset-form", { token: resetToken })
-  })
-})
+    return res.render("reset-form", { token: resetToken });
+  });
+});
+
 
 app.post("/reset/:token", (req, res) => {
   const token = req.params.token;
