@@ -1,24 +1,12 @@
 <?php
 session_start();
-if (isset($_GET['name'])) {
-  $_SESSION['name'] = $_GET['name'];
-}
-if (isset($_GET['level'])) {
-  $_SESSION['level'] = $_GET['level'];
-}
-if (isset($_GET['points'])) {
-  $_SESSION['points'] = $_GET['points'];
-}
-if (isset($_GET['user_id'])) {
-  $_SESSION['user_id'] = $_GET['user_id'];
-}
-$name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
-$level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
-$points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
-$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
-
+// Nesaugu naudoti GET metoda kartu su sesijomis
+$name = $_SESSION['nick_name'] ?? "";
+$level = $_SESSION['user_lvl'] ?? "";
+$points = $_SESSION['points'] ?? "";
+$user_id = $_SESSION['user_id'] ?? "";
+include('dev.php');
 $message = ""; 
-
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $host = 'localhost';
@@ -34,12 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $name = $_POST['name'];
     $user_id = $_POST['user_id'];
-    $question = $_POST['question'];
-    $answer = $_POST['answer'];
+    $question = $_POST['question'] ?? "";
+    $answer = $_POST['answer'] ?? "";
     $date_inserted = date("Y-m-d"); // current date
     $ip = $_SERVER['REMOTE_ADDR'];
 
-    if (empty($question) || empty($answer)) {
+	if (isset($name)) { // Neprisijungus spaudziant irasyti nemes klaidos
+		$message = '<span class="empty-fields">Klaida:</br> Turite prisijungti.</span>'; }
+    elseif (empty($question) || empty($answer)) {
         $message = '<span class="empty-fields">Klaida:</br> Ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
     } else {
         // Check if answer contains bad words
@@ -122,21 +112,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 
-
-
-
+<!--
+    Tagu pabaigose ">" slash "/" jau nebenaudojamas HTML5 puslapiuose, jie skirti tik XHTML puslapiams, kurie turi grieztesnes taisykles
+-->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Naujo klausimo įrašymas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/b_newguestion.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/b_newguestion.css">
 </head>
   
 <body>
@@ -148,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="main-form">
       <form class="main-form-forma" method="post">
         <div>
-          <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly />
+          <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly>
           <span id="info-icon" onmouseover="showInfoText()" onmouseout="hideInfoText()">
             <img src="http://localhost/Viktorina.live/images/images_/small_info2.png" alt="Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta 10 litų .Klausimo ilgis neribojamas. Atsakymo ilgis maksimalus 50 simbolių.">
             <div id="info-text" style.display = "none">
