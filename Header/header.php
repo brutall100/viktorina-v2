@@ -12,7 +12,7 @@
 <header class="header">
   <ul>
     <div class="logo-container">
-      <img class="logo" src="http://localhost/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
+      <img class="logo" src="./images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " >
     </div>
     <div class="menu-container"><!--  NEZINAU KAS GERIAU AR INFO AR FORUMAS AR PALIKTI ABU AR DAR KAS NAUDOJA TUOS FORUMUS.  kA MANAI???? -->
       <li><a href="http://localhost/Viktorina.live/a_index.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Viktorina</a></li>
@@ -27,7 +27,7 @@
           <a href="#">Puslapio klaidos</a>
           <a href="#">Pasiūlymai balsuoti</a>
           <a href="#">Balsavimas</a>
-          <a href="#">Klaidos klausime</a><!-- Jei pastebejote klaida viename is klausimu prasome nurodyti kluasimo nr ir priezasti kodel manote jog klausimas neteisingas -->
+          <a href="#">Klaidos klausimuose</a><!-- Jei pastebejote klaida viename is klausimu prasome nurodyti klausimo nr ir priezasti kodel manote jog klausimas neteisingas -->
         </div>
       </div>
     </div>
@@ -46,6 +46,7 @@
     });
   </script>
 <?php } ?>
+
 
 </body>
 </html>

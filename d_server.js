@@ -7,30 +7,29 @@ const { v4: uuidv4 } = require("uuid") // Generate UUIDs (npm install uuid)
 require("dotenv").config() // Load environment variables from .env file (no installation needed)
 const path = require("path") // Import the "path" module for file path manipulation (part of Node.js core)
 
-const { sendWelcomeEmail } = require("./d_mail")
-const app = express()
+const { sendWelcomeEmail } = require("./d_mail");
+const app = express();
 
-// Set EJS as the view engine
-app.set("view engine", "ejs")
-// Set the directory for views/templates
-app.set("views", path.join(__dirname, "views"))
+app.set("view engine", "ejs");// Set the directory for views/templates
+app.set("views", path.join(__dirname, "views"));
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
-})
+  database: process.env.DB_DATABASE,
+});
 
 connection.connect((err) => {
   if (err) throw err
-  console.log("Connected to database Viktorina")
+  console.log("Connected to database Viktorina");
 })
 
 //                     LOGIN
+
 app.post("/login", (req, res) => {
   const { nick_name, user_password } = req.body
   const sql = `SELECT * FROM super_users WHERE nick_name = ?`
@@ -41,7 +40,9 @@ app.post("/login", (req, res) => {
       bcrypt.compare(user_password, hashedPassword, (err, match) => {
         if (err) throw err
         if (match) {
-          res.redirect(`http://localhost/Viktorina.live/a_index.php?name=${nick_name}&email=${user_email}&level=${user_lvl}`)
+          //res.redirect(`http://localhost/Viktorina.live/a_index.php?name=${nick_name}&email=${user_email}&level=${user_lvl}`)
+		  res.redirect(307,`http://localhost/Viktorina.live/a_index.php`)
+
         } else {
           res.send("Invalid username or password")
         }
@@ -84,8 +85,10 @@ app.post("/register", (req, res) => {
       } else {
         sendWelcomeEmail(nick_name, user_email, uuid)
 
-        const user_lvl = 0 // set the user_lvl variable to 0
-        res.redirect(`http://localhost/Viktorina.live/a_index.php?name=${nick_name}&email=${user_email}&level=${user_lvl}`)
+        const user_lvl = 0; // set the user_lvl variable to 0
+        //res.redirect(`http://localhost/Viktorina.live/a_index.php?name=${nick_name}&email=${user_email}&level=${user_lvl}`);
+		res.redirect(307,`http://localhost/Viktorina.live/a_index.php`);
+
       }
     })
   })
@@ -93,8 +96,8 @@ app.post("/register", (req, res) => {
 
 // Generate a random token
 function generateResetToken() {
-  return uuidv4()
-}
+  return uuidv4();
+
 
 // Send password reset email using Nodemailer
 function sendResetEmail(email, token) {
@@ -108,8 +111,8 @@ function sendResetEmail(email, token) {
 
   const mailOptions = {
     from: "viktorina.live@gmail.com",
-    to: "brutall100@gmail.com",
-    subject: "Password Reset Request",
+    to: "brutall100@gmail.com", // `${user_email}`,
+    subject: "Slaptažodžio keitimo nuoroda",
     text: `Norėdami pasikeisti slaptažodį spauskite šią nuorodą: http://localhost:${PORT}/reset/${token}`
   }
 
