@@ -1,67 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Slaptažodžio atkurimo procesas</title>
-  <style>
-    body {
-      background-image: url(http://localhost/aldas/Viktorina.live/images/background/cover7.jpg);  
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      text-align: center;
-      position: relative;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-    }
-    .message {
-      font-size: 20px;
-      color: #0f0303;
-      position: absolute;
-      bottom: 150px;
-      right: 100px;
-      width: 550px; 
-      min-height: 100px;
-      height: auto; 
-      padding: 10px; 
-      background-color: rgba(255, 255, 255, 0.3); 
-      border-radius: 10px; 
-    }
+  <head>
+    <title>Slaptažodžio atkurimo procesas</title>
+    <style>
+      body {
+        background-image: url(http://localhost/Viktorina.live/images/background/cover7.jpg);
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        text-align: center;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+      }
+      .message {
+        font-size: 20px;
+        color: #0f0303;
+        position: absolute;
+        bottom: 150px;
+        right: 100px;
+        width: 550px;
+        min-height: 100px;
+        height: auto;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+      }
 
-    .countdown {
-      font-size: 50px;
-      font-weight: 700;
-      color: #9f4915;
-      position: absolute;
-      top: 1px;
-      right: 30px;
-      padding: 20px;
-    }
+      .countdown {
+        font-size: 50px;
+        font-weight: 700;
+        color: #9f4915;
+        position: absolute;
+        top: 1px;
+        right: 30px;
+        padding: 20px;
+      }
 
-    .emoji {
-      font-size: 40px;
-    }
-  </style>
-</head>
-<body>
+      .emoji {
+        font-size: 40px;
+      }
+    </style>
+  </head>
+  <body>
     <div class="countdown" id="countdown">5</div>
     <div class="message">
-        <h1><span class="emoji">😍</span> Slaptažodžio atstatymo procesas pradėtas <span class="emoji">🛠️</span>.</h1>
-        <h3>Pasitikrinkite savo el. paštą 📧. Jame rasite instrukcija ir lengvai pasikeiste slaptažodį <span class="emoji">🔒</span>.</h3>
+      <h1>
+        <span class="emoji">😍</span>
+        Slaptažodžio atstatymo procesas pradėtas
+        <span class="emoji">🛠️</span>
+        .
+      </h1>
+      <h3>
+        Pasitikrinkite savo el. paštą 📧. Jame rasite instrukcija ir lengvai pasikeiste slaptažodį
+        <span class="emoji">🔒</span>
+        .
+      </h3>
     </div>
-</body>
-<script>
-    let secondsLeft = 5;
-    const countdownElement = document.getElementById("countdown");
+  </body>
+  <script>
+    let secondsLeft = 5
+    const countdownElement = document.getElementById("countdown")
 
     function updateCountdown() {
-      countdownElement.textContent = secondsLeft;
-      secondsLeft--;
+      countdownElement.textContent = secondsLeft
+      secondsLeft--
 
       if (secondsLeft >= 0) {
-        setTimeout(updateCountdown, 1000);
+        setTimeout(updateCountdown, 1000)
       } else {
-        window.location.href = 'http://localhost/aldas/Viktorina.live/d_regilogi.php'; // Redirect after countdown
+        window.location.href = "http://localhost/Viktorina.live/d_regilogi.php" // Redirect after countdown
       }
     }
-updateCountdown();
-</script>
+    updateCountdown()
+  </script>
 </html>

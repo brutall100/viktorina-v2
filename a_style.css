@@ -8,7 +8,6 @@
   --border-rad-lg: 10px;
 }
 
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,16 +17,16 @@
 body {
   position: relative;
   background-color: lightblue;
-  background: url(http://localhost/aldas/Viktorina.live/images/background/website4.png);
+  background: url(http://localhost/Viktorina.live/images/background/website4.png);
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
 }
 
-.header-wrapper{
-  position:sticky;
-  top: 0;  
+.header-wrapper {
+  position: sticky;
+  top: 0;
   z-index: 9;
 }
 
@@ -51,7 +50,6 @@ body {
   border: 5px solid rgb(36, 39, 39);
   width: 260px;
   min-height: 290px;
-
 }
 
 .today-top-btn {
@@ -69,12 +67,10 @@ body {
 }
 
 .today-top-list-li {
-
-  border: .5px solid rgb(11, 5, 37);
+  border: 0.5px solid rgb(11, 5, 37);
   margin: 3px;
   float: none;
   width: 100%;
-
 }
 
 /* LOGIN BTN */
@@ -101,16 +97,9 @@ body {
   cursor: pointer;
 }
 
-
 #login-button:focus {
   outline: none;
 }
-
-
-
-
-
-
 
 /*  */
 /* Pagrindinis question and answer containeris */
@@ -162,7 +151,7 @@ body {
 }
 
 #answer {
-  margin-top: .7em;
+  margin-top: 0.7em;
   letter-spacing: 0.4em;
   word-spacing: 0.1em;
   font-family: Arial, sans-serif;
@@ -172,8 +161,6 @@ body {
   padding: 10px;
   border: 2px solid rgb(151, 117, 37);
 }
-
-
 
 /* answer-section */
 .answer-section {
@@ -188,11 +175,11 @@ body {
   /* justify-content: center; */
   align-items: center;
   margin: 0.5rem;
-  padding: 0.5rem; 
+  padding: 0.5rem;
 }
 
-#answer-msg{
-  font-family: Georgia, 'Times New Roman', Times, serif, sans-serif;
+#answer-msg {
+  font-family: Georgia, "Times New Roman", Times, serif, sans-serif;
   font-size: 18px;
   text-align: center;
 }
@@ -203,22 +190,18 @@ body {
   text-transform: uppercase;
 }
 
-.corect-answer-answered-user{
+.corect-answer-answered-user {
   text-transform: capitalize;
-  font-family: 'Neue Metana', sans-serif;
+  font-family: "Neue Metana", sans-serif;
   font-weight: bold;
-  color: #a65b46;  
+  color: #a65b46;
 }
-
-
-
 
 /* answer-input and btn */
 .form-container {
   display: flex;
   align-items: center;
   margin-top: auto;
-  
 }
 
 .answer-input {
@@ -250,16 +233,13 @@ body {
   border: none;
   background: var(--main-btn-color);
   cursor: pointer;
-  border-top-right-radius: var(--border-rad-lg); 
+  border-top-right-radius: var(--border-rad-lg);
   border-bottom-right-radius: var(--border-rad-lg);
 }
 
 .submit-icon:hover {
   background-color: var(--dark);
 }
-
-
-
 
 .litas-container {
   position: absolute;
@@ -290,8 +270,6 @@ body {
     display: none;
   }
 }
-
-
 
 @media (max-width: 550px) {
   /* img {

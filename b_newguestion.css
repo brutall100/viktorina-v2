@@ -5,13 +5,13 @@
 }
 
 body {
-  background: #ffffff url(http://localhost/aldas/Viktorina.live/images/background/cover0.jpg) center center fixed;
+  background: #ffffff url(http://localhost/Viktorina.live/images/background/cover0.jpg) center center fixed;
   background-size: cover;
 }
 
-.header-wrapper{
-  position:sticky;
-  top: 0;  
+.header-wrapper {
+  position: sticky;
+  top: 0;
   z-index: 9;
 }
 
@@ -50,7 +50,7 @@ body {
 }
 
 .answer-not-resizable {
-  display: inline-block; 
+  display: inline-block;
   min-width: 700px;
   height: 50px;
 }
@@ -67,7 +67,7 @@ textarea {
   margin-bottom: 20px;
   width: 400px;
   padding: 10px;
-/* border: 5px solid rgb(28, 26, 26);   */
+  /* border: 5px solid rgb(28, 26, 26);   */
   font-size: 1.2rem;
 }
 
@@ -94,7 +94,7 @@ input[type="submit"]:active {
 #info-icon {
   position: absolute;
   display: inline-block;
-} 
+}
 
 #info-icon img {
   position: relative;
@@ -185,8 +185,6 @@ input[type="submit"]:active {
   transform: scale(3.5) translateX(8px);
 }
 
-
-
 .message-container {
   width: 260px;
   height: 260px;
@@ -203,7 +201,7 @@ input[type="submit"]:active {
 }
 
 .message {
-  font-family: 'Amatic SC', cursive;
+  font-family: "Amatic SC", cursive;
   /* font-family: 'Pacifico', cursive; */
   font-weight: 900;
   font-size: 30px;
@@ -214,7 +212,6 @@ input[type="submit"]:active {
 
 .empty-fields {
   color: #bd1717;
-  
 }
 
 .bad-word-message {

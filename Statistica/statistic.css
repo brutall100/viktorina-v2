@@ -3,7 +3,7 @@
 body {
   text-align: center;
   background-color: lightblue;
-  background: url(http://localhost/aldas/Viktorina.live/images/background/cover8.jpg);
+  background: url(http://localhost/Viktorina.live/images/background/cover8.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -32,7 +32,7 @@ h1 {
   position: absolute;
   top: 0;
   right: 50px;
-  
+
   color: rgb(168, 188, 188);
 }
 
@@ -72,9 +72,7 @@ h1 {
   z-index: 1;
   left: 50%;
   transform: translate(-50%);
-  
 }
-
 
 .dropdown-title {
   background-color: #333;
@@ -103,9 +101,6 @@ h1 {
 .dropdown-list li:hover {
   background-color: #ccc;
 }
-
-
-
 
 .main-info-container {
   display: grid;
@@ -138,7 +133,6 @@ h1 {
   background-color: #e5e5e5;
 }
 
-.center-numbers{
+.center-numbers {
   text-align: center;
 }
-

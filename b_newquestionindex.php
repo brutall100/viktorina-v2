@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/b_newguestion.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/b_newguestion.css" />
 </head>
   
 <body>
@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div>
           <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly />
           <span id="info-icon" onmouseover="showInfoText()" onmouseout="hideInfoText()">
-            <img src="http://localhost/aldas/Viktorina.live/images/images_/small_info2.png" alt="Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta 10 litų .Klausimo ilgis neribojamas. Atsakymo ilgis maksimalus 50 simbolių.">
+            <img src="http://localhost/Viktorina.live/images/images_/small_info2.png" alt="Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta 10 litų .Klausimo ilgis neribojamas. Atsakymo ilgis maksimalus 50 simbolių.">
             <div id="info-text" style.display = "none">
               <p>Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta <span class="litai-text-color">10 litų</span>.Klausimo ilgis neribojamas. Atsakymo ilgis maksimalus 50 simbolių. </p>
             </div>
@@ -193,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         $oneWeekAgo = strtotime('-1 week'); // Calculate the timestamp 1 week ago
-        $iconAddress = "http://localhost/aldas/Viktorina.live/images/icons/question_master6.jpg";
+        $iconAddress = "http://localhost/Viktorina.live/images/icons/question_master6.jpg";
         // Check if the timestamp is within the last 1 week
         if ($timestamp_icon > $oneWeekAgo) {
             echo '<p>Autorius: ' . $name . ' <img src="' . $iconAddress . '" alt="icon" width="21" height="21" class="question_master_icon"></p>'; 
@@ -228,13 +228,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   <footer class="footer">
     <object
-      data="http://localhost/aldas/Viktorina.live/Footer/footer.html"
+      data="http://localhost/Viktorina.live/Footer/footer.html"
       class="imported-footer">
     </object>
   </footer>
 
 </body>
-<script src="http://localhost/aldas/Viktorina.live/b_newquestion.js"></script>
+<script src="http://localhost/Viktorina.live/b_newquestion.js"></script>
 </html>
 
           

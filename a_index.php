@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="http://localhost/aldas/Viktorina.live/a_style.css" />
+    <link rel="stylesheet" href="http://localhost/Viktorina.live/a_style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet" /> 
@@ -83,7 +83,7 @@ if (isset($_GET['name'])) {
   }
   mysqli_close($conn);
 } else {
-  echo "Labas! <img src='http://localhost/aldas/Viktorina.live/images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.";
+  echo "Labas! <img src='http://localhost/Viktorina.live/images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.";
 }
 ?>
 
@@ -117,7 +117,7 @@ if (isset($_GET['name'])) {
           <form action="a_index.php?name=<?php echo isset($_GET['name']) ? urlencode($_GET['name']) : ''; ?>" id="answer-form" method="post">
             <div class="answer-input">
               <input type="text" id="answer-input" name="answer-input">
-              <input type="image" src="http://localhost/aldas/Viktorina.live/images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
+              <input type="image" src="http://localhost/Viktorina.live/images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
             </div>
           </form>
         <?php } ?>
@@ -134,10 +134,10 @@ if (isset($_GET['name'])) {
       <div id="old-question"></div>
     </section>
 
-    <script type="text/javascript" src="http://localhost/aldas/Viktorina.live/a_index.js"></script>
+    <script type="text/javascript" src="http://localhost/Viktorina.live/a_index.js"></script>
     <footer class="footer">
       <object
-        data="http://localhost/aldas/Viktorina.live/Footer/footer.html"
+        data="http://localhost/Viktorina.live/Footer/footer.html"
         class="imported-footer">
       </object>
     </footer>

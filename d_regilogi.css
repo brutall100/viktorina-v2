@@ -1,397 +1,389 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 /* Set the root font size and height */
 :root {
-    height: 100vh; /* Viewport height */
+  height: 100vh; /* Viewport height */
 }
 
 /* Apply box-sizing and reset margins/padding for all elements */
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-
-
-  
 /* Style for paragraphs */
 p {
-	font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
+  font-size: 14px;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px;
 }
 
 /* Body styles */
 body {
-	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg");
-	background-image: url('http://localhost/aldas/Viktorina.live/images/background/cover5.jpg');
-	height: 90vh;
-	padding-top: 5%;
-	background-size: cover;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	/* height: 100vh; (Duplicate property removed) */
-	margin: 0;
-	padding: 10%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg");
+  background-image: url("http://localhost/Viktorina.live/images/background/cover5.jpg");
+  height: 90vh;
+  padding-top: 5%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  /* height: 100vh; (Duplicate property removed) */
+  margin: 0;
+  padding: 10%;
 }
 
 /* Container styles for the generator */
 .container-generator {
-	display: flex;
-	justify-content: space-evenly;
-	border: 3px solid yellowgreen;
-	width: 770px;
+  display: flex;
+  justify-content: space-evenly;
+  border: 3px solid yellowgreen;
+  width: 770px;
 }
 
 /* Styles for the randomized element */
 .randomized {
-	text-align: center;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-	align-self: center;
-	color: #582c5e;
-	border: 3px solid rgb(58, 79, 17);
+  text-align: center;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  align-self: center;
+  color: #582c5e;
+  border: 3px solid rgb(58, 79, 17);
 }
 
 /* Styles for the generate buttons container */
 .generate-butons {
-	height: 100px;
+  height: 100px;
 }
 
 /* Styles for the generate button */
 .generate-btn {
-	width: 22em;
-	padding: 1.1em;
-	margin: 1em 3em;
-	opacity: 0.7;
+  width: 22em;
+  padding: 1.1em;
+  margin: 1em 3em;
+  opacity: 0.7;
 }
-
 
 /* Common styles for buttons */
 button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-	cursor: pointer;
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
 }
 
 /* Button hover effect */
 button:hover {
-	transform: scale(1.05);
-	transition: transform 90ms ease-in;
-	background-color: #ff411fe9;
+  transform: scale(1.05);
+  transition: transform 90ms ease-in;
+  background-color: #ff411fe9;
 }
 
 /* Remove button outline on focus */
 button:focus {
-	outline: none;
+  outline: none;
 }
 
 /* Button click effect */
 button:active {
-	transform: scale(0.9);
-	box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+  transform: scale(0.9);
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
 /* Styles for ghost buttons */
 button.ghost {
-	background-color: transparent;
-	border-color: #FFFFFF;
+  background-color: transparent;
+  border-color: #ffffff;
 }
 
 /* Styles for the gender input select */
 #gender-select {
-    width: 250px; 
-    height: 40px; 
-    font-size: 15px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
-    padding: 5px; 
-    background-color: #eee; 
-	margin-bottom: 6px;
+  width: 250px;
+  height: 40px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #eee;
+  margin-bottom: 6px;
 }
 
 /* Styles for the gender input select options */
 #gender-select option {
-	background-color: #d6d6d6;
-	color: #333333; 
-	font-family: "Arial", sans-serif; 
-	font-size: 16px; 
-	text-align: center;
+  background-color: #d6d6d6;
+  color: #333333;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
+  text-align: center;
 }
-
 
 /* Styles for the logo image */
 .logo {
-	width: 5em;
-	margin-bottom: 25%;
-	cursor: crosshair;
-	transition: transform 0.7s;
+  width: 5em;
+  margin-bottom: 25%;
+  cursor: crosshair;
+  transition: transform 0.7s;
 }
 
 /* Logo hover effect */
 .logo:hover {
-	transform: scale(1.5);
+  transform: scale(1.5);
 }
 
 /* Styles for the main heading */
 .main-h1 {
-	margin-bottom: 10%;
+  margin-bottom: 10%;
 }
 
 /* Styles for the forgot password link */
 a.forgot-password {
-	color: #721313;
-	font-size: 15px;
-	text-decoration: none;
-	margin: 15px 0;
+  color: #721313;
+  font-size: 15px;
+  text-decoration: none;
+  margin: 15px 0;
 }
 
 /* Form styles */
 form {
-	background-color: #FFFFFF;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
 }
 
 /* Input styles */
 input {
-	background-color: #eee;
-	border: 1px solid #ccc; 
-    border-radius: 4px;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 250px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 250px;
 }
 
 /* Tablet Styles (max-width: 768px) */
 @media (max-width: 768px) {
-	input, #gender-select {
-		width: 200px;
-	}
+  input,
+  #gender-select {
+    width: 200px;
+  }
 }
 
 /* Phone Styles (max-width: 480px) */
 @media (max-width: 480px) {
-	input {
-		width: 100px;
-	}
+  input {
+    width: 100px;
+  }
 }
 
 /* Container styles */
 .container {
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	width: 768px;
-	max-width: 100%;
-	min-height: 480px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
 }
 
 /* Form container styles */
 .form-container {
-	position: absolute;
-	top: 0;
-	height: 100%;
-	transition: all 0.6s ease-in-out;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
 }
 
 /* Sign-in container styles */
 .sign-in-container {
-	left: 0;
-	width: 50%;
-	z-index: 2;
+  left: 0;
+  width: 50%;
+  z-index: 2;
 }
 
 /* Right panel active styles for sign-in container */
 .container.right-panel-active .sign-in-container {
-	transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 /* Sign-up container styles */
 .sign-up-container {
-	left: 0;
-	width: 50%;
-	opacity: 0;
-	z-index: 1;
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
 }
 
 /* Right panel active styles for sign-up container */
 .container.right-panel-active .sign-up-container {
-	transform: translateX(100%);
-	opacity: 1;
-	z-index: 5;
-	animation: show 0.6s;
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: show 0.6s;
 }
 
 /* Animation for showing sign-up container */
 @keyframes show {
-	0%, 49.99% {
-		opacity: 0;
-		z-index: 1;
-	}
-	
-	50%, 100% {
-		opacity: 1;
-		z-index: 5;
-	}
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
 }
 
 /* Overlay container styles */
 .overlay-container {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 50%;
-	height: 100%;
-	overflow: hidden;
-	transition: transform 0.6s ease-in-out;
-	z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.6s ease-in-out;
+  z-index: 100;
 }
 
 /* Right panel active styles for overlay container */
-.container.right-panel-active .overlay-container{
-	transform: translateX(-100%);
+.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
 }
 
 /* Overlay styles */
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 0 0;
-	color: #FFFFFF;
-	position: relative;
-	left: -100%;
-	height: 100%;
-	width: 200%;
-	transform: translateX(0);
-	transition: transform 1s ease-in-out;
+  background: #ff416c;
+  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 0;
+  color: #ffffff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: transform 1s ease-in-out;
 }
 
 /* Right panel active styles for overlay */
 .container.right-panel-active .overlay {
-	transform: translateX(50%);
+  transform: translateX(50%);
 }
 
 /* Overlay panel styles */
 .overlay-panel {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 40px;
-	text-align: center;
-	top: 0;
-	height: 100%;
-	width: 50%;
-	transform: translateX(0);
-	transition: transform 0.6s ease-in-out;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  text-align: center;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  transform: translateX(0);
+  transition: transform 0.6s ease-in-out;
 }
 
 /* Overlay panel styles for left panel */
 .overlay-left {
-	transform: translateX(-20%);
+  transform: translateX(-20%);
 }
 
 /* Right panel active styles for left panel */
 .container.right-panel-active .overlay-left {
-	transform: translateX(0);
+  transform: translateX(0);
 }
 
 /* Overlay panel styles for right panel */
 .overlay-right {
-	right: 0;
-	transform: translateX(0);
+  right: 0;
+  transform: translateX(0);
 }
 
 /* Right panel active styles for right panel */
 .container.right-panel-active .overlay-right {
-	transform: translateX(20%);
+  transform: translateX(20%);
 }
-
-
 
 /* Modal */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1000;
-  }
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
 
-  .modal-content {
-    background-color: #eee;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 78%; 
-    max-width: 500px; 
-    padding: 30px;
-    border-radius: 10px;
-  }
+.modal-content {
+  background-color: #eee;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 78%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 10px;
+}
 
-  .modal-content > form{
-	background-color: #eee;
-	height: 150px;
+.modal-content > form {
+  background-color: #eee;
+  height: 150px;
+}
 
-  }
+.centered-input {
+  width: 250px; /* Adjust the width as needed */
+  text-align: center;
+}
 
-  .centered-input {
-	width: 250px; /* Adjust the width as needed */
-	text-align: center;
-  }
-  
-  .button-container {
-	margin-top: 10px; /* Adjust the margin as needed */
-  }
+.button-container {
+  margin-top: 10px; /* Adjust the margin as needed */
+}
 
-  #close-modal {
-    position: absolute;
-    bottom: 14px;
-    right: 10px;
-	padding: 10px;
-	margin: 10px;
-    width: 5px;
-    height: 5px;
-    font-size: 20px;
-    text-align: center;
-    color: #FF416C;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-   
-  }
+#close-modal {
+  position: absolute;
+  bottom: 14px;
+  right: 10px;
+  padding: 10px;
+  margin: 10px;
+  width: 5px;
+  height: 5px;
+  font-size: 20px;
+  text-align: center;
+  color: #ff416c;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 
-  #close-modal:hover{
-    color: rgb(230, 33, 33);
-  }
-
-
+#close-modal:hover {
+  color: rgb(230, 33, 33);
+}

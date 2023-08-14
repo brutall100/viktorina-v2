@@ -123,25 +123,25 @@ const generateAndDisplayRandomPoint = async (lita) => {
   const litaiImg = document.getElementById("litai-img")
   if (lita === 1) {
     litoVerte = "Litas"
-    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png"
+    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/1Lt.png"
   } else if (lita === 2) {
     litoVerte = "Litai"
-    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png"
+    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/1Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai1")
-    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png"
+    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/1Lt.png"
   } else if (lita === 3) {
     litoVerte = "Litai"
-    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/1Lt.png"
+    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/1Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai")
-    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png"
+    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/2Lt.png"
   } else if (lita === 4) {
     litoVerte = "Litai"
-    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png"
+    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/2Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai")
-    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/2Lt.png"
+    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/2Lt.png"
   } else if (lita === 5) {
     litoVerte = "Litai"
-    imageSrc = "http://localhost/aldas/Viktorina.live/images/ImgLitai/5Lt.png"
+    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/5Lt.png"
   } else {
     litoVerte = ""
     imageSrc = ""
@@ -167,15 +167,15 @@ function generateBonusPoints(bonusLita) {
     pointsElement.innerText = ` + Bonus: ${bonusLita}`
     let images = ""
     if (bonusLita === 10 || bonusLita === 20 || bonusLita === 50) {
-      images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`
+      images += `<img src="http://localhost/Viktorina.live/images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`
     } else if (bonusLita === 30) {
       {
-        images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/10Lt.png" alt="Dešimt litų">`
-        images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
+        images += `<img src="http://localhost/Viktorina.live/images/ImgLitai/10Lt.png" alt="Dešimt litų">`
+        images += `<img src="http://localhost/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
       }
     } else if (bonusLita === 40) {
       for (let i = 0; i < 2; i++) {
-        images += `<img src="http://localhost/aldas/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
+        images += `<img src="http://localhost/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
       }
     }
     imageElement.innerHTML = images
@@ -192,38 +192,36 @@ const userData = {
   name: "",
   level: "",
   points: ""
-};
+}
 
 const populateUserData = () => {
-  const userDataElement = document.getElementById("user-data");
-  userData.name = userDataElement.dataset.name;
-  userData.level = userDataElement.dataset.level;
-  userData.points = userDataElement.dataset.points;
-};
+  const userDataElement = document.getElementById("user-data")
+  userData.name = userDataElement.dataset.name
+  userData.level = userDataElement.dataset.level
+  userData.points = userDataElement.dataset.points
+}
 
-populateUserData();
+populateUserData()
 
 window.onload = function () {
-  const answerForm = document.getElementById("answer-form");
+  const answerForm = document.getElementById("answer-form")
   if (answerForm) {
     answerForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const answerInput = document.getElementById("answer-input");
+      event.preventDefault()
+      const answerInput = document.getElementById("answer-input")
       if (answerInput) {
-        const userAnswer = answerInput.value;
-        handleUserAnswer(userAnswer);
-        answerInput.value = "";
+        const userAnswer = answerInput.value
+        handleUserAnswer(userAnswer)
+        answerInput.value = ""
       }
-    });
+    })
   }
 
-  const answerInput = document.getElementById("answer-input");
+  const answerInput = document.getElementById("answer-input")
   if (answerInput) {
-    answerInput.focus();
+    answerInput.focus()
   }
-};
-
-
+}
 
 const handleUserAnswer = async (userAnswer) => {
   const data = await fetchData()
@@ -242,9 +240,7 @@ const handleUserAnswer = async (userAnswer) => {
     const successMsg = `<span class="corect-answer-answered-user">${userData.name}</span> atsakė teisingai: <span class="corect-answer-answered">${userAnswer}</span>  <br> ir uždirba ${litaPoints} litų` // tvarkyti kintamaji litas lita litu
     document.getElementById("answer-msg").innerHTML = successMsg
 
-    
-    playGame() // atsakius teisingai paleidziama funkcija 
-
+    playGame() // atsakius teisingai paleidziama funkcija
 
     const url = "http://localhost:8000/a_points.js"
     const body = JSON.stringify({
@@ -322,117 +318,108 @@ function checkLettersAndCompare(str1, str2) {
   return cleanStr1.toLowerCase() === cleanStr2.toLowerCase()
 }
 
-
-                              //
-                              //
-                              // Games section
-const widths = 520;
-const heights = 420;
-const lefts = null;
-const tops = null;
-const screenX = window.screenX != undefined ? window.screenX : window.screenLeft;
-const screenY = window.screenY != undefined ? window.screenY : window.screenTop;
+//
+//
+// Games section
+const widths = 520
+const heights = 420
+const lefts = null
+const tops = null
+const screenX = window.screenX != undefined ? window.screenX : window.screenLeft
+const screenY = window.screenY != undefined ? window.screenY : window.screenTop
 // let lastGameTime = 0;  Berods nereikalinga 2023 05 11 // Variable to store the time of the last game played
-const GAME_A = 4;
-const GAME_B = 9;
-const GAME_C = 14;
+const GAME_A = 4
+const GAME_B = 9
+const GAME_C = 14
 
 function randomGame() {
-  return Math.floor(Math.random() * 20)  //Tikimybe laimeti papildoma GAME 20  tarp 0-19 Games [4.9.14]
+  return Math.floor(Math.random() * 20) //Tikimybe laimeti papildoma GAME 20  tarp 0-19 Games [4.9.14]
 }
 
 function playGame() {
-  const gameNo = randomGame(); // 4 9 14
-  console.log("randomGame generates: " + gameNo);//
-  
+  const gameNo = randomGame() // 4 9 14
+  console.log("randomGame generates: " + gameNo) //
+
   if (gameNo === GAME_A || gameNo === GAME_B || gameNo === GAME_C) {
-    const currentTime = Date.now();
-    const lastGameTime = localStorage.getItem('lastGameTime');
-    
+    const currentTime = Date.now()
+    const lastGameTime = localStorage.getItem("lastGameTime")
+
     if (lastGameTime) {
-      const timeSinceLastGame = (currentTime - lastGameTime) / 1000;
-      if (timeSinceLastGame < 300) { //kolkas 10 bus 300
-        console.log(`Game ${gameNo} cannot be played for another ${300- timeSinceLastGame} seconds.`);//kolkas 10 bus 300
-        return;
+      const timeSinceLastGame = (currentTime - lastGameTime) / 1000
+      if (timeSinceLastGame < 300) {
+        //kolkas 10 bus 300
+        console.log(`Game ${gameNo} cannot be played for another ${300 - timeSinceLastGame} seconds.`) //kolkas 10 bus 300
+        return
       }
     }
-    
-    localStorage.setItem('lastGameTime', currentTime);
+
+    localStorage.setItem("lastGameTime", currentTime)
   }
 
   if (gameNo === GAME_A) {
-    const gameWindow1 = window.open(`http://localhost/aldas/Viktorina.live/Games/game1.php?name=${userData.name}`,
-     "_blank",
-      `width=${widths},height=${heights},left=${lefts},top=${tops}`);
-  } 
-  else if (gameNo === GAME_B) {
-    const gameWindow2 = window.open(`http://localhost/aldas/Viktorina.live/Games/game2.php?name=${userData.name}`,
-     "_blank",
-      `width=${widths},height=${heights},left=${lefts},top=${tops}`);
-  } 
-  else if (gameNo === GAME_C) {
-    const gameWindow3 = window.open(`http://localhost/aldas/Viktorina.live/Games/game3.php?name=${userData.name}`,
-     "_blank",
-      `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`);
+    const gameWindow1 = window.open(`http://localhost/Viktorina.live/Games/game1.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
+  } else if (gameNo === GAME_B) {
+    const gameWindow2 = window.open(`http://localhost/Viktorina.live/Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
+  } else if (gameNo === GAME_C) {
+    const gameWindow3 = window.open(
+      `http://localhost/Viktorina.live/Games/game3.php?name=${userData.name}`,
+      "_blank",
+      `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`
+    )
   }
 }
 
 //
 //
 //
-//Funkcija paspaudus <today-top-btn>>> paiima is a_top_players.php koda ir atvaizduoja snd top 10  
+//Funkcija paspaudus <today-top-btn>>> paiima is a_top_players.php koda ir atvaizduoja snd top 10
 // Check if there is a stored state for the list
-if (sessionStorage.getItem('listState') === 'open') {
+if (sessionStorage.getItem("listState") === "open") {
   // Load the list using AJAX
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'a_top_players.php?get_top_players=true', true);
-  xhr.onload = function() {
+  var xhr = new XMLHttpRequest()
+  xhr.open("GET", "a_top_players.php?get_top_players=true", true)
+  xhr.onload = function () {
     if (xhr.status === 200) {
-      var todayTop = document.querySelector('.today-top');
-      var list = document.createElement('ol');
-      list.className = 'today-top-list';
-      list.innerHTML = xhr.responseText;
-      todayTop.appendChild(list);
+      var todayTop = document.querySelector(".today-top")
+      var list = document.createElement("ol")
+      list.className = "today-top-list"
+      list.innerHTML = xhr.responseText
+      todayTop.appendChild(list)
     } else {
-      console.log('Request failed. Returned status of ' + xhr.status);
+      console.log("Request failed. Returned status of " + xhr.status)
     }
-  };
-  xhr.send();
+  }
+  xhr.send()
 }
 
 // Add click event listener to the button
-document.getElementById('today-top-btn').addEventListener('click', function() {
-  var todayTop = document.querySelector('.today-top');
-  var list = todayTop.querySelector('.today-top-list');
+document.getElementById("today-top-btn").addEventListener("click", function () {
+  var todayTop = document.querySelector(".today-top")
+  var list = todayTop.querySelector(".today-top-list")
 
   if (list) {
     // If list exists, remove it and store state as closed
-    todayTop.removeChild(list);
-    sessionStorage.setItem('listState', 'closed');
+    todayTop.removeChild(list)
+    sessionStorage.setItem("listState", "closed")
   } else {
     // If list doesn't exist, load it using AJAX and store state as open
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'a_top_players.php?get_top_players=true', true);
-    xhr.onload = function() {
+    var xhr = new XMLHttpRequest()
+    xhr.open("GET", "a_top_players.php?get_top_players=true", true)
+    xhr.onload = function () {
       if (xhr.status === 200) {
-        var list = document.createElement('ol');
-        list.className = 'today-top-list';
-        list.innerHTML = xhr.responseText;
-        todayTop.appendChild(list);
-        sessionStorage.setItem('listState', 'open');
+        var list = document.createElement("ol")
+        list.className = "today-top-list"
+        list.innerHTML = xhr.responseText
+        todayTop.appendChild(list)
+        sessionStorage.setItem("listState", "open")
       } else {
-        console.log('Request failed. Returned status of ' + xhr.status);
+        console.log("Request failed. Returned status of " + xhr.status)
       }
-    };
-    xhr.send();
+    }
+    xhr.send()
   }
-});
-
+})
 
 function redirectToLogin() {
-  window.location.href = "http://localhost/aldas/Viktorina.live/d_regilogi.php";
+  window.location.href = "http://localhost/Viktorina.live/d_regilogi.php"
 }
-
-
-
-

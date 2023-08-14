@@ -28,7 +28,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="300">
-  <link rel="stylesheet" type="text/css" href="http://localhost/aldas/Viktorina.live/c_questionwaiting.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/c_questionwaiting.css" />
 </head>
 
 
@@ -92,7 +92,7 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
   
   <footer class="footer">
     <object
-      data="http://localhost/aldas/Viktorina.live/Footer/footer.html"
+      data="http://localhost/Viktorina.live/Footer/footer.html"
       class="imported-footer">
     </object>
   </footer>
@@ -151,7 +151,7 @@ document.querySelectorAll('.downvote').forEach(function(button) {
   $(function() {
     $("#btn-perkelti-klausimus").click(function() {
       $.ajax({
-        url: "http://localhost/aldas/Viktorina.live/transferData.php",
+        url: "http://localhost/Viktorina.live/transferData.php",
         method: "post",
         success: function(response) {
           console.log(response);
