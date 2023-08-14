@@ -80,16 +80,8 @@
       <button id="submitButton" type="submit">Tvirtinu 👍</button>
     </form>
 
-    <div id="successMessage" style="display: none">
-      <p>
-        Voohoo! Slaptažodis atstatytas sėkmingai.
-        <span class="emoji">✨😄🚀</span>
-        <br />
-        Dabar galite saugiai įeiti į savo paskyrą su naujuoju slaptažodžiu.
-      </p>
-    </div>
     <div id="errorMessage" style="display: none; color: red">Slaptažodžiai nesutampa.</div>
-
+<!-- Sukurti funkcija Slaptazodzio stiprumui ir dar viena sutapimui zalia reskia sutampa -->
     <script>
       function togglePasswordVisibility(inputId, iconId) {
         const passwordInput = document.getElementById(inputId)
@@ -105,38 +97,6 @@
           togglePasswordIcon.textContent = "👁️"
         }
       }
-
-      function showSuccessMessage() {
-        const successMessageDiv = document.getElementById("successMessage")
-        successMessageDiv.style.display = "block"
-      }
-
-      function submitForm(event) {
-        event.preventDefault()
-
-        const passwordInput = document.getElementById("password")
-        const confirmPasswordInput = document.getElementById("confirmPassword")
-        const errorMessageDiv = document.getElementById("errorMessage")
-        const submitButton = document.getElementById("submitButton")
-
-        if (passwordInput.value !== confirmPasswordInput.value) {
-          errorMessageDiv.style.display = "block"
-          submitButton.disabled = true
-          return
-        }
-
-        errorMessageDiv.style.display = "none"
-        submitButton.disabled = false
-
-        setTimeout(() => {
-          showSuccessMessage()
-          setTimeout(() => {
-            window.location.href = "http://localhost/Viktorina.live/d_regilogi.php"
-          }, 5000)
-        }, 1000)
-      }
-
-      document.querySelector("form").addEventListener("submit", submitForm)
     </script>
   </body>
 </html>

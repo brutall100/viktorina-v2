@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slaptažodžio atstatymas</title>
+    <style>
+      body {
+        background-color: #ffc0cb;
+        text-align: center;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+      }
+
+      h1 {
+        color: #ff0000;
+        margin-top: 20px;
+      }
+
+      #errorMessage {
+        display: block;
+        color: red;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+
+      .smiley {
+        font-size: 36px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Slaptažodžio Atstatymas</h1>
+    <div id="errorMessage">
+        <p>Ojojoi 😄❌🙈 Atrodo, kad jūsų slaptažodžiai nesutampa. Jie turėtų sutapti. <span class="smiley">🙂</span></p>
+        <p>Kadangi įvedėte skirtingus slaptažodžius, jus busite nukreiptas į prisijungimo puslapį ir atlikęs slaptažodžio priminimo veiksmus iš naujo.</p>
+    </div>
+
+    <script>
+        window.onload = function() {
+          const errorMessageDiv = document.getElementById("errorMessage");
+          errorMessageDiv.style.display = "block";
+          setTimeout(() => {
+            window.location.href = "http://localhost/Viktorina.live/d_regilogi.php";
+          }, 8000); // Redirect after 8 seconds
+        };
+      </script>
+  </body>
+</html>
+

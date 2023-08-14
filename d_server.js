@@ -97,7 +97,7 @@ app.post("/register", (req, res) => {
 // Generate a random token
 function generateResetToken() {
   return uuidv4();
-
+};
 
 // Send password reset email using Nodemailer
 function sendResetEmail(email, token) {
@@ -182,43 +182,63 @@ app.get("/reset/:token", (req, res) => {
   })
 })
 
-//               USER ENTER 2 PASS and SUBMIT FORM
 app.post("/reset/:token", (req, res) => {
-  const token = req.params.token
-  const newPassword = req.body.password
-  const confirmPassword = req.body.confirmPassword
+  const token = req.params.token;
+  const newPassword = req.body.password;
+  const confirmPassword = req.body.confirmPassword;
+
+  console.log("Received token:", token);
+  console.log("New password:", newPassword);
+  console.log("Confirm password:", confirmPassword);
 
   if (newPassword !== confirmPassword) {
-    res.status(400).send("Ojojoi 😄❌🙈 Atrodo, kad jūsų slaptažodžiai nesutampa. Jie turėtų sutapti. 🙂")
-    return
+    console.log("Passwords do not match");
+    res.render("passw-dont-match.ejs");
+    return;
   }
 
   connection.query("SELECT * FROM super_users WHERE reset_token = ?", [token], (err, rows) => {
     if (err) {
-      console.error(err)
-      res.status(500).send("Internal server error")
-      return
+      console.error(err);
+      res.status(500).send("Internal server error");
+      return;
     }
 
     if (rows.length === 0) {
-      res.status(400).send("Invalid reset token.")
-      return
+      console.log("Invalid reset token");
+      res.status(400).send("Pasibaigęs rakto galiojimo laikas.");
+      return;
     }
 
-    const user = rows[0]
-    const hashedPassword = bcrypt.hashSync(newPassword, 10)
+    const user = rows[0];
+    const hashedPassword = bcrypt.hashSync(newPassword, 10);
 
-    connection.query("UPDATE super_users SET user_password = ?, reset_token = NULL, reset_token_expires = NULL WHERE user_id = ?", [hashedPassword, user.user_id], (err, result) => {
-      if (err) {
-        console.error(err)
-        res.status(500).send("Internal server error")
-        return
+    connection.query(
+      "UPDATE super_users SET user_password = ?, reset_token = NULL, reset_token_expires = NULL WHERE user_id = ?",
+      [hashedPassword, user.user_id],
+      (err, result) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send("Internal server error");
+          return;
+        }
+
+        console.log("Password updated successfully");
+        res.redirect("http://localhost/Viktorina.live/d_regilogi.php"); 
       }
+    );
+  });
+});
 
-      // res.render('reset-success.ejs');
-    })
-  })
-})
+
+app.get("/reset-form/:token", (req, res) => {
+  const token = req.params.token;
+  res.render("reset-form.ejs", { token });
+});
+
+
+
+
 
 //            USER RESPOND, CLICK LINK and UPDATES DB WITH CONFIRMED EMAIL
 // Kai patvirtinamas el pastas nusiusti dar viena zinute su prisijungimo informacija name and email  ARBA sukurti sveikinimo ejs failiuka.VSIO
@@ -238,7 +258,7 @@ app.get("/confirm", (req, res) => {
 })
 
 // Start the server
-const PORT = process.env.PORT4
+const PORT = process.env.PORT4;
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`)
-})
+  console.log(`Server listening on port ${PORT}`);
+});
