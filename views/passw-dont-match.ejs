@@ -4,45 +4,71 @@
     <title>Slaptažodžio atstatymas</title>
     <style>
       body {
-        background-color: #73c062;
+        background-color: #c0deba;
         text-align: center;
         font-family: "Comic Sans MS", cursive, sans-serif;
-      }
-
-      h1 {
-        color: #ff0000;
-        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
       }
 
       #errorMessage {
-        display: block;
-        color: red;
-        margin-top: 20px;
-        font-size: 18px;
+        text-align: center;
+        background-color: #ffffff;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 400px;
       }
 
       .smiley {
         font-size: 36px;
         margin-left: 10px;
       }
+
+      #countdown {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 20px;
+      }
+
+      #seconds {
+        color: #5c2f2d;      
+      }
     </style>
   </head>
   <body>
-    <h1>Slaptažodžio Atstatymas</h1>
     <div id="errorMessage">
         <p>Ojojoi 😄❌🙈 Atrodo, kad jūsų slaptažodžiai nesutampa. Jie turėtų sutapti. <span class="smiley">🙂</span></p>
         <p>Kadangi įvedėte skirtingus slaptažodžius, jus busite nukreiptas į prisijungimo puslapį ir reikės atlikti slaptažodžio priminimo veiksmus iš naujo.</p>
+        <p id="countdown">Perkėlimas po <span id="seconds">8</span> sekundžių.</p>
     </div>
 
     <script>
         window.onload = function() {
           const errorMessageDiv = document.getElementById("errorMessage");
           errorMessageDiv.style.display = "block";
-          setTimeout(() => {
-            window.location.href = "http://localhost/Viktorina.live/d_regilogi.php";
-          }, 8000); // Redirect after 8 seconds
+
+          let secondsLeft = 8;
+          const countdownElement = document.getElementById("seconds");
+
+          function updateCountdown() {
+            countdownElement.textContent = secondsLeft;
+            secondsLeft--;
+
+            if (secondsLeft < 0) {
+              window.location.href = "http://localhost/Viktorina.live/d_regilogi.php";
+            } else {
+              setTimeout(updateCountdown, 1000);
+            }
+          }
+
+          updateCountdown();
         };
       </script>
   </body>
 </html>
+
 
