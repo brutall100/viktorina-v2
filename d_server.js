@@ -165,19 +165,19 @@ app.get("/reset/:token", (req, res) => {
 
     if (results.length === 0) {
       // No user found with the given reset token
-      return res.render("invalid-token");
+      return res.render("invalid-token", { errorMessage: "Turbūt bus pasibaiges nuorodos galiojimo laikas. Prašome pabandyti iš naujo" });
     }
-
+    
     const user = results[0];
     const resetTokenExpires = user.reset_token_expires;
-
+    
     // Check if the reset token has expired
     const now = new Date();
     if (resetTokenExpires < now) {
       // Token has expired
-      return res.render("invalid-token", { errorMessage: "The reset link has expired." });
+      return res.render("invalid-token", { errorMessage: "Pasibaiges nuorodos galiojimo laikas.Nuoroda galioja 1 parą.", yourEmailAddress: "viktorina.live@gmail.com" });
     }
-
+    
     // Render the password reset form with the reset token
     return res.render("reset-form", { token: resetToken });
   });
@@ -195,7 +195,7 @@ app.post("/reset/:token", (req, res) => {
 
   if (newPassword !== confirmPassword) {
     console.log("Passwords do not match");
-    res.render("passw-dont-match.ejs");
+    res.render("passw-dont-match");
     return;
   }
 
@@ -233,10 +233,10 @@ app.post("/reset/:token", (req, res) => {
 });
 
 
-app.get("/reset-form/:token", (req, res) => {
-  const token = req.params.token;
-  res.render("reset-form.ejs", { token });
-});
+// app.get("/reset-form/:token", (req, res) => {
+//   const token = req.params.token;
+//   res.render("reset-form.ejs", { token });
+// });
 
 
 

@@ -24,20 +24,48 @@
       color: #d9534f;
       font-weight: bold;
     }
+
+    #countdown {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    #seconds {
+      color: #5c2f2d;      
+    }
   </style>
 </head>
 <body>
-  <div id="errorMessage">
-    <p>Simiilar to pasibaigęs nuorodos galiojimo laikas, arba ji netegzistuoja.</p>
+    <div id="errorMessage">
+    <% if (errorMessage) { %>
+      <p class="error-message"><%= errorMessage %></p>
+    <% } else { %>
+        <p>Iškilo nenumatyta problema, prašome pabandyti iš naujo.</p>
+        <p>Jei nepavyksta pasikeisti slaptažodžio, prašome pranešti el. paštu: <%= yourEmailAddress %></p>  
+    <% } %>
+    <p id="countdown">Perkėlimas po <span id="seconds">8</span> sekundžių.</p>
   </div>
 
   <script>
     window.onload = function() {
       const errorMessageDiv = document.getElementById("errorMessage");
       errorMessageDiv.style.display = "block";
-      setTimeout(() => {
-        window.location.href = "http://localhost/Viktorina.live/d_regilogi.php";
-      }, 8000); // Redirect after 8 seconds
+
+      let secondsLeft = 8;
+      const countdownElement = document.getElementById("seconds");
+
+      function updateCountdown() {
+        countdownElement.textContent = secondsLeft;
+        secondsLeft--;
+
+        if (secondsLeft < 0) {
+          window.location.href = "http://localhost/Viktorina.live/d_regilogi.php";
+        } else {
+          setTimeout(updateCountdown, 1000);
+        }
+      }
+
+      updateCountdown();
     };
   </script>
 </body>
