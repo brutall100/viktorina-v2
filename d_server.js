@@ -213,8 +213,10 @@ app.post("/reset/:token", (req, res) => {
         return
       }
 
-      console.log("Password updated successfully")
-      res.redirect("http://localhost/Viktorina.live/d_regilogi.php")
+      const successMessage = "Jusu slaptazodis pakeistas sekmingai";
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php";
+      const alertScript = `<script>alert("${successMessage}"); window.location.href = "${redirectUrl}";</script>`;
+      res.send(alertScript);
     })
   })
 })
