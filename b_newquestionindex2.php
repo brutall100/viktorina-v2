@@ -5,6 +5,7 @@ $name = $_SESSION['nick_name'] ?? "";
 $level = $_SESSION['user_lvl'] ?? "";
 $points = $_SESSION['points'] ?? "";
 $user_id = $_SESSION['user_id'] ?? "";
+include('dev.php');
 $message = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -26,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $date_inserted = date("Y-m-d"); // current date
     $ip = $_SERVER['REMOTE_ADDR'];
 
-	if (empty($name)) { // Neprisijungus spaudziant irasyti nemes klaidos
+	if (isset($name)) { // Neprisijungus spaudziant irasyti nemes klaidos
 		$message = '<span class="empty-fields">Klaida:</br> Turite prisijungti.</span>'; }
     elseif (empty($question) || empty($answer)) {
         $message = '<span class="empty-fields">Klaida:</br> Ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
@@ -110,8 +111,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     mysqli_close($conn);
 }
 ?>
-<!--  Tagu pabaigose ">" slash "/" jau nebenaudojamas HTML5 puslapiuose, jie skirti tik XHTML puslapiams, kurie turi grieztesnes taisykles
+
+<!--
+    Tagu pabaigose ">" slash "/" jau nebenaudojamas HTML5 puslapiuose, jie skirti tik XHTML puslapiams, kurie turi grieztesnes taisykles
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,12 +127,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/b_newguestion.css">
-</head>  
+</head>
+  
 <body>
 <div class="header-wrapper">
-  <?php include 'Header/header.php';
-  include 'dev.php';
- ?>
+  <?php include 'Header/header.php'; ?>
 </div>
   
   <main class="main">
@@ -136,24 +139,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <form class="main-form-forma" method="post">
         <div>
           <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly>
-          <div id="info-icon" onmouseover="showInfoText()" onmouseout="hideInfoText()">
+          <span id="info-icon" onmouseover="showInfoText()" onmouseout="hideInfoText()">
             <img src="http://localhost/Viktorina.live/images/images_/small_info2.png" alt="Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta 10 litų .Klausimo ilgis neribojamas. Atsakymo ilgis maksimalus 50 simbolių.">
-            <div id="info-text" style="display:none">
+            <div id="info-text" style.display = "none">
               <p>Klausimus gali rašyti vartotojai nuo 2 lygio. Už kiekvieną įrašyta klausimą tau bus pervesta <span class="litai-text-color">10 litų</span>.Klausimo ilgis neribojamas. Atsakymo ilgis maksimalus 50 simbolių. </p>
             </div>
-          </div>
+          </span>
         </div>
 
         <label for="question">Klausimas:</label>
         <textarea id="question" name="question" class="question-resizable"></textarea>
         
         <label for="answer">Atsakymas:</label>
-        <input type="text" id="answer" name="answer" class="answer-not-resizable" maxlength="60">
+        <input type="text" id="answer" name="answer" class="answer-not-resizable" maxlength="60" />
         
-        <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>">
-        <input type="submit" value="Įrašyti">
+        <input type="hidden" id="user_id" name="user_id" value="<?php echo $user_id; ?>" />
+        <input type="submit" value="Įrašyti" />
       </form>
     </div>
+
     
     <div class="main-info">
       <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
@@ -196,6 +200,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
   </main>
 
+
   <?php if (!empty($message)): ?>
     <div class="message-container">
         <div class="message">
@@ -210,26 +215,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
   <?php endif; ?>
 
+
   <footer class="footer">
     <object
       data="http://localhost/Viktorina.live/Footer/footer.html"
       class="imported-footer">
     </object>
-  </footer>  
-<script src="http://localhost/Viktorina.live/b_newquestion.js"></script>
-<script>                     <!-- Cia dar neaisku kaip turi buti, pirmai buvo klaida level undefined -->
-    if ('<?php echo !empty($level) ? "true" : "false"; ?>' === 'true') {
-      var level = '<?php echo $level; ?>';
-      console.log("User level: " + level);
-    } else { console.log("Session variable not set");   }
+  </footer>
 
-    const userLevel = '<?php echo $level ?? 0; ?>';
+</body>
+<script src="http://localhost/Viktorina.live/b_newquestion.js"></script>
+</html>
+
+          
+<script>
+    if ('<?php echo isset($_SESSION['level']) ? "true" : "false"; ?>' === 'true') {
+      var level = '<?php echo $_SESSION['level']; ?>';
+      console.log("User levell: " + level);
+    } else {
+      console.log("Session variable not set");
+    }
+
+    const userLevel = '<?php echo $_SESSION['level'] ?? 0; ?>';
     const isUserLevelValid = userLevel !== undefined && userLevel !== null && userLevel !== '' && userLevel !== 'unknown' && parseInt(userLevel) >= 2;
+
     if (!isUserLevelValid) {
       document.getElementById("question").disabled = true;
       document.getElementById("answer").disabled = true;
     }
-</script>   <!-- Skriptai dokumento viduje turi buti -->	
-</body>
-</html>
+</script>
+
+
+
+
+
 <!-- <p>Jūs esate perkkeliamas atgal. Gal įrašysite dar vieną klausimą?  <span id="countdown">30</span> seconds.</p> -->

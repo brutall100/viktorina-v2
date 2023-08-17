@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Viktorina.live</title>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/Header/header.css" />
-</head>
 
-<body>
+	<link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/Header/header.css">
 <header class="header">
   <ul>
-    <div class="logo-container">
-      <img class="logo" src="./images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " >
-    </div>
-    <div class="menu-container"><!--  NEZINAU KAS GERIAU AR INFO AR FORUMAS AR PALIKTI ABU AR DAR KAS NAUDOJA TUOS FORUMUS.  kA MANAI???? -->
-      <li><a href="http://localhost/Viktorina.live/a_index.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Viktorina</a></li>
-      <li><a href="#?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Forumas</a></li>
-      <li><a href="http://localhost/Viktorina.live/c_questionwaiting.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Naujienos</a></li>
-      <li><a href="http://localhost/Viktorina.live/b_newquestionindex.php?name=<?php echo $name ?>&level=<?php echo $level ?>&points=<?php echo $points ?>&user_id=<?php echo $user_id ?>">Irašyti klausimą</a></li>
+	<li>
+      <img class="logo" src="./images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis ">
+	</li>
+    <div class="menu-container"><!--  NEZINAU KAS GERIAU AR INFO AR FORUMAS AR PALIKTI ABU AR DAR KAS NAUDOJA TUOS FORUMUS.  kA MANAI???? Ir taip ir ne, labiau techniniai egzistuoja, pramoginiai gal ne taip nzn -->
+<!-- Sutrumpintos nuorodos, uzejus ant nuorodos apacioj turetu rodyt pilna adresa -->      
+	  <li><a href="./a_index.php">Viktorina</a></li>
+      <li><a href="#?name=">Forumas</a></li>
+      <li><a href="./c_questionwaiting.php">Naujienos</a></li>
+      <li><a href="./b_newquestionindex.php">Irašyti klausimą</a></li>
       <div class="dropdown">
         <li class="dropbtn">Info</li>
         <div class="dropdown-content">
@@ -31,24 +23,28 @@
         </div>
       </div>
     </div>
+<!-- Patasisyti prisijungti atsijungti, anksciau tiesiog uzdengdavo vienas kita -->
+<div id="login-container" <?php echo (isset($name) && !empty($name)) ? 'style="display: none;"' : ''; ?>>
+  <button id="login-button" onclick="redirectToLogin()">Prisijungti</button>
+</div>
     <div class="logout-container">
-      <button id="btn-atsijungti">Atsijungti</button>
+      <?php echo (isset($name) && !empty($name))  ? '<button id="btn-atsijungti">Atsijungti</button>' : ""; ?>
     </div>
   </ul>
 </header>
 
-<?php if (isset($name)) { ?>
+<?php if (isset($name) && !empty($name)) { ?>
   <script>
     const logoutButton = document.getElementById('btn-atsijungti');
     const name = "<?php echo $name ?>";
     logoutButton.addEventListener('click', () => {
-      window.location.href = `http://localhost/Viktorina.live/Statistica/statistic.php?name=${name}`;
+      window.location.href = `./Statistica/statistic.php`;
     });
   </script>
+<?php } else { ?>
+  <script>
+   function redirectToLogin() {
+    window.location.href = "http://localhost/viktorina.live/d_regilogi.php";
+   }
+  </script>
 <?php } ?>
-
-
-</body>
-</html>
-
-

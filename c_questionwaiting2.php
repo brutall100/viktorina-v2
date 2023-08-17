@@ -1,10 +1,24 @@
 <?php
 session_start();
-$name = $_SESSION['nick_name'] ?? "";
-$level = $_SESSION['user_lvl'] ?? "";
-$points = $_SESSION['points'] ?? "";
-$user_id = $_SESSION['user_id'] ?? "";
+if (isset($_GET['name'])) {
+  $_SESSION['name'] = $_GET['name'];
+}
+if (isset($_GET['level'])) {
+  $_SESSION['level'] = $_GET['level'];
+}
+if (isset($_GET['points'])) {
+  $_SESSION['points'] = $_GET['points'];
+}
+if (isset($_GET['user_id'])) {
+  $_SESSION['user_id'] = $_GET['user_id'];
+}
+$name = isset($_SESSION['name']) ? $_SESSION['name'] : "";
+$level = isset($_SESSION['level']) ? $_SESSION['level'] : "";
+$points = isset($_SESSION['points']) ? $_SESSION['points'] : "";
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : "";
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +28,10 @@ $user_id = $_SESSION['user_id'] ?? "";
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="300">
-  <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/c_questionwaiting.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/c_questionwaiting.css" />
 </head>
+
+
 <body>
 <div class="header-wrapper">
   <?php include 'Header/header.php'; ?>
@@ -81,7 +97,9 @@ $user_id = $_SESSION['user_id'] ?? "";
     </object>
   </footer>
 </body>
+
 </html>
+
 <script>
 // UPVOTE
 document.querySelectorAll('.upvote').forEach(function(button) {
@@ -126,6 +144,7 @@ document.querySelectorAll('.downvote').forEach(function(button) {
 });
 </script>
 
+ 
              <!-- perkelia klausimus i kita DB naudojant transferData.php -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
