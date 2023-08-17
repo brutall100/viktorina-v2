@@ -105,11 +105,19 @@ function sendResetEmail(email, token) {
     }
   })
 
+  const resetLink = `http://localhost:${PORT}/reset/${token}`
   const mailOptions = {
     from: "viktorina.live@gmail.com",
     to: "brutall100@gmail.com", // `${user_email}`,
     subject: "Slaptažodžio keitimo nuoroda",
-    text: `Norėdami pasikeisti slaptažodį spauskite šią nuorodą: http://localhost:${PORT}/reset/${token}`
+    html: `
+      <div style="background-color: #f0f0f0; padding: 20px; text-align: center;">
+        <h1 style="color: #333;">Slaptažodžio keitimo nuoroda</h1>
+        <p style="color: #666;">Norėdami pasikeisti slaptažodį, paspauskite žemiau esantį mygtuką:</p>
+        <a href="${resetLink}" style="display: inline-block; background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Keisti slaptažodį</a>
+        <p style="color: #666; margin-top: 20px;">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</p>
+      </div>
+    `,
   }
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -176,7 +184,7 @@ app.get("/reset/:token", (req, res) => {
 
 //              USER ENTERS 2 PASW AND DB UPDATES
 function generateAlertScript(successMessage, redirectUrl) {
-  const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png"
+  const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png" /* background by SVGBackgrounds.com */
   return `
       <style>
       body {
