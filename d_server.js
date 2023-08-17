@@ -114,8 +114,8 @@ function sendResetEmail(email, token) {
       <div style="background-color: #f0f0f0; padding: 20px; text-align: center;">
         <h1 style="color: #333;">Slaptažodžio keitimo nuoroda</h1>
         <p style="color: #666;">Norėdami pasikeisti slaptažodį, paspauskite žemiau esantį mygtuką:</p>
-        <a href="${resetLink}" style="display: inline-block; background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Keisti slaptažodį</a>
-        <p style="color: #666; margin-top: 20px;">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</p>
+        <a href="${resetLink}" style="display: inline-block; background-color: #007bff; color: white; padding: 7px 15px; text-decoration: none; border-radius: 5px;">Keisti slaptažodį</a>
+        <h4 style="color: #666; margin-top: 20px;">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</h4>
       </div>
     `,
   }
