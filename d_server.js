@@ -218,40 +218,44 @@ app.post("/reset/:token", (req, res) => {
       const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png"
       const alertScript = `
         <style>
-          body {
-            background-image: url(${backgroundImageUrl});
-          }
+        body {
+          background-image: url(${backgroundImageUrl});
+          margin: 0; /* Reset default margin */
+          display: flex;
+          justify-content: center; /* Center horizontally */
+          align-items: center; /* Center vertically */
+          min-height: 100vh; /* Ensure full viewport height */
+        }
+      
+        .alert-container {
+          background-color: #bfac64;
+          color: white;
+          padding: 20px;
+          border-radius: 8px;
+          text-align: center;
+          font-family: 'Arial', sans-serif;
+          font-size: 18px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          width: 80%;
+          max-width: 400px;
+        }
+      
+        @media screen and (max-width: 480px) {
           .alert-container {
-            background-color: #4caf50;
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            justify-content: center;
-            font-family: 'Arial', sans-serif;
             font-size: 18px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            max-width: 400px;
-            margin: 0 auto;
           }
-
-          @media screen and (max-width: 480px) {
-            .alert-container {
-              font-size: 16px;
-            }
-          }
-        </style>
+        }
+      </style>
         <div class="alert-container">
           <p>${successMessage}</p>
         </div>
         <script>
           setTimeout(function() {
             window.location.href = "${redirectUrl}";
-          }, 3000); // Redirect after 3 seconds
+          }, 300000); // Redirect after 3 seconds +00
         </script>
       `;
-      res.send(alertScript);
+      res.status(200).send(alertScript);
     })
   })
 })
