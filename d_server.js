@@ -58,7 +58,7 @@ app.post("/register", (req, res) => {
   bcrypt.hash(user_password, 10, (err, hashedPassword) => {
     if (err) throw err
 
-    const currentDate = new Date().toISOString().slice(0, 20) 
+    const currentDate = new Date().toISOString().slice(0, 20)
 
     let genderValue = ""
     if (gender === "Other") {
@@ -83,7 +83,7 @@ app.post("/register", (req, res) => {
       } else {
         sendWelcomeEmail(nick_name, user_email, uuid)
 
-        const user_lvl = 0 
+        const user_lvl = 0
         res.redirect(307, `http://localhost/Viktorina.live/a_index.php`)
       }
     })
@@ -175,6 +175,50 @@ app.get("/reset/:token", (req, res) => {
 })
 
 //              USER ENTERS 2 PASW AND DB UPDATES
+function generateAlertScript(successMessage, redirectUrl) {
+  const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png"
+  return `
+      <style>
+      body {
+        background-image: url(${backgroundImageUrl});
+        margin: 0;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        min-height: 100vh; 
+      }
+
+      .alert-container {
+        background-color: #bfac64;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 400px;
+      }
+
+      @media screen and (max-width: 480px) {
+        .alert-container {
+          font-size: 18px;
+        }
+      }
+    </style>
+
+    <div class="alert-container">
+      <p>${successMessage}</p>
+    </div>
+    
+    <script>
+      setTimeout(function() {
+        window.location.href = "${redirectUrl}";
+      }, 5000);
+    </script>`
+}
+
 app.post("/reset/:token", (req, res) => {
   const token = req.params.token
   const newPassword = req.body.password
@@ -186,21 +230,21 @@ app.post("/reset/:token", (req, res) => {
 
   if (newPassword !== confirmPassword) {
     console.log("Passwords do not match")
-    res.render("passw-dont-match")
-    return
+    return res.render("passw-dont-match")
   }
 
   connection.query("SELECT * FROM super_users WHERE reset_token = ?", [token], (err, rows) => {
     if (err) {
       console.error(err)
-      res.status(500).send("Internal server error")
-      return
+      return res.status(500).send("Internal server error")
     }
 
     if (rows.length === 0) {
       console.log("Invalid reset token")
-      res.status(400).send("Pasibaigęs rakto galiojimo laikas.")
-      return
+      const successMessage = "Pasibaigęs rakto galiojimas. Slaptažodžio atkurimo procesą reikia atlikti iš naujo."
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
+      const alertScript = generateAlertScript(successMessage, redirectUrl)
+      return res.status(400).send(alertScript)
     }
 
     const user = rows[0]
@@ -209,58 +253,16 @@ app.post("/reset/:token", (req, res) => {
     connection.query("UPDATE super_users SET user_password = ?, reset_token = NULL, reset_token_expires = NULL WHERE user_id = ?", [hashedPassword, user.user_id], (err, result) => {
       if (err) {
         console.error(err)
-        res.status(500).send("Internal server error")
-        return
+        return res.status(500).send("Internal server error")
       }
 
       const successMessage = "Jūsų slaptažodis buvo sėkmingai pakeistas, dabar galite prisijungti su savo naujuoju slaptažodžiu."
       const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
-      const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png"
-      const alertScript = `
-        <style>
-        body {
-          background-image: url(${backgroundImageUrl});
-          margin: 0; /* Reset default margin */
-          display: flex;
-          justify-content: center; /* Center horizontally */
-          align-items: center; /* Center vertically */
-          min-height: 100vh; /* Ensure full viewport height */
-        }
-      
-        .alert-container {
-          background-color: #bfac64;
-          color: white;
-          padding: 20px;
-          border-radius: 8px;
-          text-align: center;
-          font-family: 'Arial', sans-serif;
-          font-size: 18px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          width: 80%;
-          max-width: 400px;
-        }
-      
-        @media screen and (max-width: 480px) {
-          .alert-container {
-            font-size: 18px;
-          }
-        }
-      </style>
-        <div class="alert-container">
-          <p>${successMessage}</p>
-        </div>
-        <script>
-          setTimeout(function() {
-            window.location.href = "${redirectUrl}";
-          }, 300000); // Redirect after 3 seconds +00
-        </script>
-      `;
-      res.status(200).send(alertScript);
+      const alertScript = generateAlertScript(successMessage, redirectUrl)
+      return res.status(200).send(alertScript)
     })
   })
 })
-
-
 
 //            USER RESPOND, CLICK LINK and UPDATES DB WITH CONFIRMED EMAIL
 // Kai patvirtinamas el pastas nusiusti dar viena zinute su prisijungimo informacija name and email  ARBA sukurti sveikinimo ejs failiuka.VSIO
