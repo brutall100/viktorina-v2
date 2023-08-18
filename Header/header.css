@@ -1,38 +1,50 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
-.menu-container {
+.header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  background-color: rgb(36, 33, 33);
+  opacity: 0.8;
+  padding: 0.3rem;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  left: 0;
 }
 
-.menu-container li {
-  margin-right: 20px;
-}
-
-.logo {
-  width: 3.2em;
-  margin: 2px 0 0 10px;
+/* LOGO */
+.logo-container {
+  margin-left: 1px; /* Adjust the margin as needed */
   cursor: crosshair;
   transition: transform 0.7s;
 }
 
+.logo {
+  width: 3em;
+  margin: 2px 0 0 10px;
+  cursor: crosshair;
+  transition: transform 0.7s;
+}
 .logo:hover {
   transform: scale(2.5) translate(20px, 20px);
 }
 
+
+/* MENU */
+.menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Allow the menu to take available space */
+}
+
 ul {
   display: flex;
- flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   list-style-type: none;
-  background-color: rgb(36, 33, 33);
-  opacity: 0.8;
-  padding: 0.3rem;
+  margin-right: 10px;
 }
 
 li a,
@@ -52,7 +64,7 @@ li a:hover,
 }
 
 li.dropdown {
-  display: inline-block;
+  position: relative;
 }
 
 .dropdown-content {
@@ -82,13 +94,11 @@ li.dropdown {
 }
 
 /* BTN ATSIJUNGTI */
-.header #btn-atsijungti {
+#btn-atsijungti {
   margin-left: 10px;
-  width: 70px;
+  margin-top: 7px;
+  width: 100px;
   height: 40px;
-}
-
-.header #btn-atsijungti {
   visibility: hidden;
   cursor: pointer;
   border-radius: 5px;
