@@ -16,7 +16,6 @@
                         <a href="#">Naujienos</a>
                         <a href="#">Pasiūlymai</a>
                         <a href="#">Puslapio klaidos</a>
-                        <a href="#">Pasiūlymai balsuoti</a>
                         <a href="#">Balsavimas</a>
                         <a href="#">Klaidos klausime</a>
                     </div>
