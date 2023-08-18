@@ -17,7 +17,7 @@
 
 /* LOGO */
 .logo-container {
-  margin-left: 1px; /* Adjust the margin as needed */
+  margin-left: 1px; 
   cursor: crosshair;
   transition: transform 0.7s;
 }
@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-grow: 1; /* Allow the menu to take available space */
+  flex-grow: 1; 
 }
 
 ul {
@@ -112,9 +112,9 @@ li.dropdown {
 /* LOGIN BTN */
 #login-container {
   position: fixed;
-  top: 8px;
+  top: 13px;
   right: 7px;
-  z-index: 9999;
+  z-index: 10;
 }
 
 #login-button {
@@ -125,14 +125,20 @@ li.dropdown {
   border-radius: 4px;
   font-size: 17px;
   cursor: pointer;
+  transition: transform 0.2s ease; 
 }
 
 #login-button:hover {
   background-color: #957545;
-  transform: scale(1.1);
+  transform: scale(1.05);
   cursor: pointer;
 }
 
 #login-button:focus {
   outline: none;
 }
+
+#login-button:active {
+  transform: scale(0.9); 
+}
+
