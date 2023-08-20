@@ -1,3 +1,11 @@
+<?php
+session_start();
+$name = $_SESSION['nick_name'] ?? "";
+$level = $_SESSION['user_lvl'] ?? "";
+$points = $_SESSION['points'] ?? "";
+$user_id = $_SESSION['user_id'] ?? "";
+?>
+
 <!DOCTYPE html>
 <html lang="lt">
 <head>

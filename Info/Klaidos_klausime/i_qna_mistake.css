@@ -1,0 +1,22 @@
+:root {
+  --primary-color: #62a234;
+}
+
+body {
+  background: #e88ab0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.className {
+  border: 1px solid black;
+}
+
+#id {
+  border: 1px dotted green;
+}
+
+div {
+  color: var(--primary-color);
+}

@@ -1,27 +1,28 @@
-<link rel="stylesheet" type="text/css" href="./Header/header.css">
+<link rel="stylesheet" type="text/css" href="/Viktorina.live/Header/header.css">
 <body>
     <header class="header">
         <div class="logo-container">
-            <img class="logo" src="./images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis">
+            <img class="logo" src="/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis">
         </div>
         <nav class="menu-container">
-            <ul>
-                <li><a href="./a_index.php">Viktorina</a></li>
-                <li><a href="#">Forumas</a></li>
-                <li><a href="./c_questionwaiting.php">Naujienos</a></li>
-                <li><a href="./b_newquestionindex.php">Irašyti klausimą</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Info</a>
-                    <div class="dropdown-content">
-                        <a href="Info/Naujienos/i_news.php">Naujienos</a>
-                        <a href="Info/Puslapio_klaidos/i_page_mistake.php">Puslapio klaidos</a>
-                        <a href="Info/Balsavimas/i_vote.php">Balsavimas</a>
-                        <a href="Info/Pasiulymai/i_minds.php">Pasiūlymai</a>
-                        <a href="Info/Klaidos_klausime/i_qna_mistake.php">Klaidos klausime</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+          <ul>
+              <li><a href="/Viktorina.live/a_index.php">Viktorina</a></li>
+              <li><a href="#">Forumas</a></li>
+              <li><a href="/Viktorina.live/c_questionwaiting.php">Naujienos</a></li>
+              <li><a href="/Viktorina.live/b_newquestionindex.php">Irašyti klausimą</a></li>
+              <li class="dropdown">
+                  <a href="#" class="dropbtn">Info</a>
+                  <div class="dropdown-content">
+                      <a href="/Viktorina.live/Info/Naujienos/i_news.php">Naujienos</a>
+                      <a href="/Viktorina.live/Info/Puslapio_klaidos/i_page_mistake.php">Puslapio klaidos</a>
+                      <a href="/Viktorina.live/Info/Balsavimas/i_vote.php">Balsavimas</a>
+                      <a href="/Viktorina.live/Info/Pasiulymai/i_minds.php">Pasiūlymai</a>
+                      <a href="/Viktorina.live/Info/Klaidos_klausime/i_qna_mistake.php">Klaidos klausime</a>
+                  </div>
+              </li>
+          </ul>
+      </nav>
+
         <div id="login-container">
             <?php if (isset($name) && !empty($name)) : ?>
                 <button id="btn-atsijungti">Atsijungti</button>
@@ -36,13 +37,13 @@
             const logoutButton = document.getElementById('btn-atsijungti');
             const name = "<?php echo $name ?>";
             logoutButton.addEventListener('click', () => {
-                window.location.href = `./Statistica/statistic.php`;
+                window.location.href = `/Viktorina.live/Statistica/statistic.php`;
             });
         </script>
     <?php else : ?>
         <script>
             function redirectToLogin() {
-                window.location.href = "./d_regilogi.php";
+                window.location.href = "/Viktorina.live/d_regilogi.php";
             }
         </script>
     <?php endif; ?>
