@@ -13,11 +13,11 @@
                 <li class="dropdown">
                     <a href="#" class="dropbtn">Info</a>
                     <div class="dropdown-content">
-                        <a href="#">Naujienos</a>
-                        <a href="#">Pasiūlymai</a>
-                        <a href="#">Puslapio klaidos</a>
-                        <a href="#">Balsavimas</a>
-                        <a href="#">Klaidos klausime</a>
+                        <a href="Info/Naujienos/i_news.php">Naujienos</a>
+                        <a href="Info/Puslapio_klaidos/i_page_mistake.php">Puslapio klaidos</a>
+                        <a href="Info/Balsavimas/i_vote.php">Balsavimas</a>
+                        <a href="Info/Pasiulymai/i_minds.php">Pasiūlymai</a>
+                        <a href="Info/Klaidos_klausime/i_qna_mistake.php">Klaidos klausime</a>
                     </div>
                 </li>
             </ul>
