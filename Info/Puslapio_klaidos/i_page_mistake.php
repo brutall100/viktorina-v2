@@ -22,8 +22,8 @@ $user_id = $_SESSION['user_id'] ?? "";
     <?php include '../../Header/header.php'; ?>
     </div>
 
-    <h1>Welcome to My Simple PHP Page</h1>
-
+    <div><h1>Welcome to My Simple PHP Page</h1></div>
+    
     <?php
     $message = "Puslapio klaidos!";
     echo "<p>$message</p>";

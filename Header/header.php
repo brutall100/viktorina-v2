@@ -7,7 +7,7 @@
         <nav class="menu-container">
           <ul>
               <li><a href="/Viktorina.live/a_index.php">Viktorina</a></li>
-              <li><a href="#">Forumas</a></li>
+              <li><a href="/Viktorina.live/Forumas/forumas.php">Forumas</a></li>
               <li><a href="/Viktorina.live/c_questionwaiting.php">Naujienos</a></li>
               <li><a href="/Viktorina.live/b_newquestionindex.php">Irašyti klausimą</a></li>
               <li class="dropdown">
