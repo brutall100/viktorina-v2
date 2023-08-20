@@ -21,9 +21,11 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
   <head>
     <title>Viktorina.live</title>
+    <meta name="description" content="Viktorina.live - Testuokite savo žinias ir uždirbkite litus šioje interaktyvioje viktorinoje. Prisijunkite dabar, konkuruokite ir laimėkite!">
+    <meta name="keywords" content="Viktorina.live, protų žaidimas, interaktyvus, žinios, taškai, konkurencija, litai, protmūšis, lrt, draugas, litas, lt">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,19 +53,7 @@ if (isset($name) & !empty($name)) {
 	$_SESSION['points'] = $points;
 	$_SESSION['user_lvl'] = $level;
   }
-      // Nereikia, istraukia auksciau
-  // if (isset($_GET['level']) && isset($_GET['points'])) {
-  //   $level = $_GET['level'];
-  //   $points = $_GET['points'];
-  // }
 }
-
-// if (isset($name)) {
-//   echo "<div id='user-data' data-name='$name' data-level='$level' data-points='$points'></div>";
-// } else {
-//   echo "<button id='login-button'>Login</button>";
-// }
-
 ?>  
 
 <body>
