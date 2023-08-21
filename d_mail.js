@@ -67,7 +67,7 @@ function sendWelcomeEmail(nick_name, user_email, uuid) {
 
   const mailOptions = {
     from: "viktorina.live@gmail.com",
-    to: "viktorina.live@gmail.com",  //user_email,
+    to: user_email,
     subject: "Sveiki prisijunge prie Viktorina.live",
     html: welcomeMessage, // Use HTML content for styled email
   };

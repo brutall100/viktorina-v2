@@ -29,7 +29,6 @@ connection.connect((err) => {
 })
 
 //                     LOGIN
-
 app.post("/login", (req, res) => {
   const { nick_name, user_password } = req.body
   const sql = `SELECT * FROM super_users WHERE nick_name = ?`
@@ -90,15 +89,44 @@ app.post("/register", (req, res) => {
   })
 })
 
-// Generate a random token
+//            MODAL PASSWORD RESET
+app.post("/reset-password", async (req, res) => {
+  try {
+    const userEmail = req.body.user_email
+    const resetToken = generateResetToken()
+    const expires = new Date(Date.now() + 3600000) // Set expiration time to 1 hour
+
+    await updateResetToken(userEmail, resetToken, expires)
+    await sendResetEmail(userEmail, resetToken)
+
+    res.render("modal-reset")
+  } catch (error) {
+    console.error("Error:", error)
+    res.status(500).send("An error occurred.")
+  }
+})
+
+async function updateResetToken(userEmail, resetToken, expires) {
+  return new Promise((resolve, reject) => {
+    const updateQuery = "UPDATE super_users SET reset_token = ?, reset_token_expires = ? WHERE user_email = ?"
+    connection.query(updateQuery, [resetToken, expires, userEmail], (error, results) => {
+      if (error) {
+        console.error("Error updating database:", error)
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
 function generateResetToken() {
   return uuidv4()
 }
 
-// Send password reset email using Nodemailer
-function sendResetEmail(email, token) {
+async function sendResetEmail(email, token) {
   const transporter = nodemailer.createTransport({
-    service: "Gmail", // Use your email service
+    service: "Gmail",
     auth: {
       user: process.env.MAIL_USER,
       pass: process.env.MAIL_PASS
@@ -108,7 +136,7 @@ function sendResetEmail(email, token) {
   const resetLink = `http://localhost:${PORT}/reset/${token}`
   const mailOptions = {
     from: "viktorina.live@gmail.com",
-    to: "brutall100@gmail.com", // `${user_email}`,
+    to: email,
     subject: "Slaptažodžio keitimo nuoroda",
     html: `
       <div style="background-color: #f0f0f0; padding: 20px; text-align: center;">
@@ -117,42 +145,16 @@ function sendResetEmail(email, token) {
         <a href="${resetLink}" style="display: inline-block; background-color: #007bff; color: white; padding: 7px 15px; text-decoration: none; border-radius: 5px;">Keisti slaptažodį</a>
         <h4 style="color: #666; margin-top: 20px;">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</h4>
       </div>
-    `,
+    `
   }
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error)
-    } else {
-      console.log("Email sent: " + info.response)
-    }
-  })
-}
-
-//            MODAL PASSWORD RESET
-app.post("/reset-password", (req, res) => {
   try {
-    const userEmail = req.body.user_email
-
-    const resetToken = generateResetToken()
-
-    const expires = new Date(Date.now() + 86400000) // Set expiration time 24H.
-    const updateQuery = "UPDATE super_users SET reset_token = ?, reset_token_expires = ? WHERE user_email = ?"
-
-    connection.query(updateQuery, [resetToken, expires, userEmail], (error, results) => {
-      if (error) {
-        console.error("Error updating database:", error)
-        res.status(500).send("An error occurred.")
-      } else {
-        sendResetEmail(userEmail, resetToken)
-        res.render("modal-reset.ejs")
-      }
-    })
+    const info = await transporter.sendMail(mailOptions)
+    console.log("Email sent:", info.response)
   } catch (error) {
-    console.error("Error:", error)
-    res.status(500).send("An error occurred.")
+    console.error("Error sending email:", error)
   }
-})
+}
 
 //                USER RESPOND, CLICK LINK and REDIRECTED TO reset-form.ejs
 app.get("/reset/:token", (req, res) => {
