@@ -3,17 +3,17 @@
 
 
 <!-- 1 uzduotis -->
-<!--  Tvarkyti sauguma, uzkoduoti adreso eilute kad nieko negaletum matyti ir keisti ty lvl pointu nieko  -->
+<!--  -->
 
 <!-- 2 -->
-<!-- Skaiciu zaidime padRYTI kad galima btn tik vien kart paspausti -->
+<!--  -->
 
 <!-- 3 -->
 <!-- d_server.js patvirtinus pasta pagrazinti zinute, atskirti mail.js i kita faila prideti papildomas apsaugas 
 per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazodio priminimo Funkcija -->
 
 <!-- 4 -->
-<!--Pagrazinti zinutes klausimo irasymo puslapyje. Kazko truksta-->
+<!--  -->
 
 <!-- 5 -->
 <!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)
