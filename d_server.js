@@ -303,8 +303,7 @@ app.post("/reset/:token", (req, res) => {
   })
 })
 
-//            USER RESPOND, CLICK LINK and UPDATES DB WITH CONFIRMED EMAIL
-// Kai patvirtinamas el pastas nusiusti dar viena zinute su prisijungimo informacija name and email  ARBA sukurti sveikinimo ejs failiuka.VSIO
+//            USER REGISTRATION OK, CLICK LINK IN EMAIL and UPDATES DB WITH CONFIRMED EMAIL
 app.get("/confirm", (req, res) => {
   const { uuid } = req.query
 
@@ -313,7 +312,10 @@ app.get("/confirm", (req, res) => {
     if (err) throw err
 
     if (result.affectedRows === 1) {
-      res.send("El. paštas patvirtintas! Galite prisijungti.")
+      const successMessage = "El. paštas patvirtintas! Galite prisijungti."
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
+      const alertScript = generateAlertScript(successMessage, redirectUrl)
+      return res.status(200).send(alertScript)
     } else {
       res.send("Netaisyklingas arba pasibaigęs patvirtinimo nuorodos terminas.")
     }
