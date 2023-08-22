@@ -51,6 +51,50 @@ app.post("/login", (req, res) => {
 })
 
 //                  REGISTER
+function generateAlertScript(successMessage, redirectUrl) {
+  const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png" /* background by SVGBackgrounds.com */
+  return `
+      <style>
+      body {
+        background-image: url(${backgroundImageUrl});
+        margin: 0;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        min-height: 100vh; 
+      }
+
+      .alert-container {
+        background-color: #bfac64;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 400px;
+      }
+
+      @media screen and (max-width: 480px) {
+        .alert-container {
+          font-size: 18px;
+        }
+      }
+    </style>
+
+    <div class="alert-container">
+      <p>${successMessage}</p>
+    </div>
+    
+    <script>
+      setTimeout(function() {
+        window.location.href = "${redirectUrl}";
+      }, 5000);
+    </script>`
+}
+
 app.post("/register", (req, res) => {
   const { nick_name, user_email, user_password, gender, other_gender } = req.body
 
@@ -73,11 +117,19 @@ app.post("/register", (req, res) => {
     connection.query(sql, [nick_name, user_email, hashedPassword, genderValue, uuid], (err, result) => {
       if (err) {
         if (err.code === "ER_DUP_ENTRY") {
-          // handle duplicate entry error
-          res.send("Ups, jau turime šį vartotoją!  Bandykite kitą vardą!")
+          console.log("Toks vartotojas jau yra")
+          const successMessage = "Viskas būtų kaip ir OK, bet toks vartotojas jau yra 😟."
+          const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
+          const alertScript = generateAlertScript(successMessage, redirectUrl)
+          return res.status(400).send(alertScript)
         } else {
-          // handle other errors
-          throw err
+          console.error("An error occurred in registration system:", err)
+          const successMessage = `
+            Iškilo nenumatyta problema. Jei tokia iškilo, praneškite
+            <a href="mailto:viktorina.live@gmail.com">viktorina.live@gmail.com</a> ir problemą spręsime.
+          `
+          const alertScript = generateAlertScript(successMessage, null)
+          return res.status(500).send(alertScript)
         }
       } else {
         sendWelcomeEmail(nick_name, user_email, uuid)
@@ -177,7 +229,7 @@ app.get("/reset/:token", (req, res) => {
 
     const now = new Date()
     if (resetTokenExpires < now) {
-      return res.render("invalid-token", { errorMessage: "Pasibaigęs nuorodos galiojimo laikas.Nuoroda galioja 1 parą.", yourEmailAddress: "viktorina.live@gmail.com" })
+      return res.render("invalid-token", { errorMessage: "Pasibaigęs nuorodos galiojimo laikas.Nuoroda galioja 1 valandą.", yourEmailAddress: "viktorina.live@gmail.com" })
     }
 
     return res.render("reset-form", { token: resetToken })
@@ -250,7 +302,7 @@ app.post("/reset/:token", (req, res) => {
     }
 
     if (rows.length === 0) {
-      console.log("Invalid reset token")
+      console.log("Pasibaigęs rakto galiojimo laikas.")
       const successMessage = "Pasibaigęs rakto galiojimas. Slaptažodžio atkurimo procesą reikia atlikti iš naujo."
       const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)

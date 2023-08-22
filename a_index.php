@@ -137,7 +137,7 @@ $verify = $verify ?? 0;
             </div>
           </form>
         <?php }
-	elseif(isset($name) && !empty($name) && !isset($error) && $verify==0)  echo "Patvirtinkite el.paštą :)";
+	elseif(isset($name) && !empty($name) && !isset($error) && $verify==0)  echo "Patvirtinkite el.paštą :)";// Cia reikes padirbeti
  ?>
       </div>     
     </main>

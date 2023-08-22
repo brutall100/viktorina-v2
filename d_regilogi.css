@@ -33,7 +33,6 @@ body {
   align-items: center;
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
-  /* height: 100vh; (Duplicate property removed) */
   margin: 0;
   padding: 10%;
 }
@@ -42,7 +41,7 @@ body {
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  border: 3px solid yellowgreen;
+  /* border: 3px solid yellowgreen; */
   width: 770px;
 }
 
@@ -52,7 +51,7 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   align-self: center;
   color: #582c5e;
-  border: 3px solid rgb(58, 79, 17);
+  /* border: 3px solid rgb(58, 79, 17); */
 }
 
 /* Styles for the generate buttons container */
