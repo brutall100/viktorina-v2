@@ -51,49 +51,6 @@ app.post("/login", (req, res) => {
 })
 
 //                  REGISTER
-function generateAlertScript(successMessage, redirectUrl) {
-  const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png" /* background by SVGBackgrounds.com */
-  return `
-      <style>
-      body {
-        background-image: url(${backgroundImageUrl});
-        margin: 0;
-        display: flex;
-        justify-content: center; 
-        align-items: center; 
-        min-height: 100vh; 
-      }
-
-      .alert-container {
-        background-color: #bfac64;
-        color: white;
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        font-family: 'Arial', sans-serif;
-        font-size: 18px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        max-width: 400px;
-      }
-
-      @media screen and (max-width: 480px) {
-        .alert-container {
-          font-size: 18px;
-        }
-      }
-    </style>
-
-    <div class="alert-container">
-      <p>${successMessage}</p>
-    </div>
-    
-    <script>
-      setTimeout(function() {
-        window.location.href = "${redirectUrl}";
-      }, 5000);
-    </script>`
-}
 
 app.post("/register", (req, res) => {
   const { nick_name, user_email, user_password, gender, other_gender } = req.body
@@ -186,17 +143,51 @@ async function sendResetEmail(email, token) {
   })
 
   const resetLink = `http://localhost:${PORT}/reset/${token}`
+  const validityPeriodHours = 1
   const mailOptions = {
     from: "viktorina.live@gmail.com",
     to: email,
     subject: "Slaptažodžio keitimo nuoroda",
     html: `
-      <div style="background-color: #f0f0f0; padding: 20px; text-align: center;">
-        <h1 style="color: #333;">Slaptažodžio keitimo nuoroda</h1>
-        <p style="color: #666;">Norėdami pasikeisti slaptažodį, paspauskite žemiau esantį mygtuką:</p>
-        <a href="${resetLink}" style="display: inline-block; background-color: #007bff; color: white; padding: 7px 15px; text-decoration: none; border-radius: 5px;">Keisti slaptažodį</a>
-        <h4 style="color: #666; margin-top: 20px;">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</h4>
-      </div>
+      <html>
+      <head>
+        <style>
+          .email-container {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            width: 800px;
+            margin: 0 auto; /* Center horizontally */
+          }
+          .button {
+            display: inline-block;
+            background-color: #1155CC !important; 
+            color: #ffffff !important; 
+            padding: 10px 20px; 
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold; /* Make the text bold */
+            transition: background-color 0.3s, color 0.3s; 
+          }
+          .button:hover {
+            background-color: #0E46B3 !important; 
+          }
+          .message {
+            color: #666;
+            margin-top: 20px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="email-container">
+          <h1 style="color: #333;">Slaptažodžio keitimo nuoroda</h1>
+          <p style="color: #666;">Norėdami pasikeisti slaptažodį, paspauskite žemiau esantį mygtuką:</p>
+          <a href="${resetLink}" class="button">Keisti slaptažodį</a>
+          <p class="message">Slaptažodžio keitimo nuoroda galioja ${validityPeriodHours} valandą.</p>
+          <h4 class="message">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</h4>
+        </div>
+      </body>
+      </html>
     `
   }
 
@@ -237,49 +228,6 @@ app.get("/reset/:token", (req, res) => {
 })
 
 //              USER ENTERS 2 PASW AND DB UPDATES
-function generateAlertScript(successMessage, redirectUrl) {
-  const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png" /* background by SVGBackgrounds.com */
-  return `
-      <style>
-      body {
-        background-image: url(${backgroundImageUrl});
-        margin: 0;
-        display: flex;
-        justify-content: center; 
-        align-items: center; 
-        min-height: 100vh; 
-      }
-
-      .alert-container {
-        background-color: #bfac64;
-        color: white;
-        padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        font-family: 'Arial', sans-serif;
-        font-size: 18px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        max-width: 400px;
-      }
-
-      @media screen and (max-width: 480px) {
-        .alert-container {
-          font-size: 18px;
-        }
-      }
-    </style>
-
-    <div class="alert-container">
-      <p>${successMessage}</p>
-    </div>
-    
-    <script>
-      setTimeout(function() {
-        window.location.href = "${redirectUrl}";
-      }, 5000);
-    </script>`
-}
 
 app.post("/reset/:token", (req, res) => {
   const token = req.params.token
@@ -342,6 +290,51 @@ app.get("/confirm", (req, res) => {
     }
   })
 })
+
+//            Alert script message
+function generateAlertScript(successMessage, redirectUrl) {
+  const backgroundImageUrl = "http://localhost/Viktorina.live/images/background/endless-constellation.png" /* background by SVGBackgrounds.com */
+  return `
+      <style>
+      body {
+        background-image: url(${backgroundImageUrl});
+        margin: 0;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        min-height: 100vh; 
+      }
+
+      .alert-container {
+        background-color: #bfac64;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 400px;
+      }
+
+      @media screen and (max-width: 480px) {
+        .alert-container {
+          font-size: 18px;
+        }
+      }
+    </style>
+
+    <div class="alert-container">
+      <p>${successMessage}</p>
+    </div>
+    
+    <script>
+      setTimeout(function() {
+        window.location.href = "${redirectUrl}";
+      }, 5000);
+    </script>`
+}
 
 // Start the server
 const PORT = process.env.PORT4
