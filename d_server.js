@@ -99,34 +99,63 @@ app.post("/register", (req, res) => {
 })
 
 //            MODAL PASSWORD RESET
-app.post("/reset-password", async (req, res) => {
-  try {
-    const userEmail = req.body.user_email
-    const resetToken = generateResetToken()
-    const expires = new Date(Date.now() + 3600000) // Set expiration time to 1 hour
-
-    await updateResetToken(userEmail, resetToken, expires)
-    await sendResetEmail(userEmail, resetToken)
-
-    res.render("modal-reset")
-  } catch (error) {
-    console.error("Error:", error)
-    res.status(500).send("An error occurred.")
-  }
-})
-
 async function updateResetToken(userEmail, resetToken, expires) {
   return new Promise((resolve, reject) => {
-    const updateQuery = "UPDATE super_users SET reset_token = ?, reset_token_expires = ? WHERE user_email = ?"
+    const updateQuery = "UPDATE super_users SET reset_token = ?, reset_token_expires = ? WHERE user_email = ?";
     connection.query(updateQuery, [resetToken, expires, userEmail], (error, results) => {
       if (error) {
-        console.error("Error updating database:", error)
-        reject(error)
+        console.error("Error updating database:", error);
+        reject(error);
       } else {
-        resolve()
+        resolve();
       }
-    })
-  })
+    });
+  });
+}
+
+app.post("/reset-password", async (req, res) => {
+  try {
+    const userEmail = req.body.user_email;
+
+    const user = await getUserByEmail(userEmail);
+
+    if (!user) {
+      return res.status(400).send("User with this email does not exist.");
+    }
+
+    if (!user.email_verified) {
+      return res.status(400).send("Email is not verified.");
+    }
+
+    const resetToken = generateResetToken();
+    const expires = new Date(Date.now() + 3600000); // Set expiration time to 1 hour
+
+    await updateResetToken(userEmail, resetToken, expires);
+    await sendResetEmail(userEmail, resetToken);
+
+    res.render("modal-reset");
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).send("An error occurreddd.");
+  }
+});
+
+async function getUserByEmail(email) {
+  return new Promise((resolve, reject) => {
+    const selectQuery = "SELECT * FROM super_users WHERE user_email = ?";
+    connection.query(selectQuery, [email], (error, results) => {
+      if (error) {
+        console.error("Error querying database:", error);
+        reject(error);
+      } else {
+        if (results.length > 0) {
+          resolve(results[0]);
+        } else {
+          resolve(null);
+        }
+      }
+    });
+  });
 }
 
 function generateResetToken() {
