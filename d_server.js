@@ -1,11 +1,11 @@
-const express = require("express") // Import the Express framework (npm install express)
-const bodyParser = require("body-parser") // Parse HTTP request body (npm install body-parser)
-const nodemailer = require("nodemailer") // Send email (npm install nodemailer)
-const mysql = require("mysql") // MySQL database driver (npm install mysql)
-const bcrypt = require("bcrypt") // Password hashing (npm install bcrypt)
-const { v4: uuidv4 } = require("uuid") // Generate UUIDs (npm install uuid)
-require("dotenv").config() // Load environment variables from .env file (no installation needed)
-const path = require("path") // Import the "path" module for file path manipulation (part of Node.js core)
+const express = require("express") 
+const bodyParser = require("body-parser") 
+const nodemailer = require("nodemailer") 
+const mysql = require("mysql") 
+const bcrypt = require("bcrypt") 
+const { v4: uuidv4 } = require("uuid") 
+require("dotenv").config() 
+const path = require("path") 
 
 const { sendWelcomeEmail } = require("./d_mail")
 const app = express()
@@ -30,25 +30,39 @@ connection.connect((err) => {
 
 //                     LOGIN
 app.post("/login", (req, res) => {
-  const { nick_name, user_password } = req.body
-  const sql = `SELECT * FROM super_users WHERE nick_name = ?`
+  const { nick_name, user_password } = req.body;
+  const sql = `SELECT * FROM super_users WHERE nick_name = ?`;
+
   connection.query(sql, [nick_name], (err, result) => {
-    if (err) throw err
+    if (err) throw err;
+
     if (result.length > 0) {
-      const { user_password: hashedPassword, user_email, user_lvl } = result[0] // get user_lvl from result
+      const { user_password: hashedPassword, user_email, user_lvl } = result[0];
+
       bcrypt.compare(user_password, hashedPassword, (err, match) => {
-        if (err) throw err
+        if (err) throw err;
+
         if (match) {
-          res.redirect(307, `http://localhost/Viktorina.live/a_index.php`)
+          console.log("User logged in:", nick_name);
+          res.redirect(307, `http://localhost/Viktorina.live/a_index.php`); //
         } else {
-          res.send("Invalid username or password")
-        }
-      })
+          console.log("Invalid password for user:", nick_name);
+          const successMessage = `Labas ${nick_name}, įvedei neteisingą slaptažodį.`
+          const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
+          const alertScript = generateAlertScript(successMessage, redirectUrl)
+          return res.status(400).send(alertScript)
+            }
+      });
     } else {
-      res.send("Invalid username or password")
+      console.log("User not found:", nick_name);
+      const successMessage = `Toks vartotojas dar neregistruotas.`
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
+      const alertScript = generateAlertScript(successMessage, redirectUrl)
+      return res.status(400).send(alertScript);
     }
-  })
-})
+  });
+});
+
 
 //                  REGISTER
 
