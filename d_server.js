@@ -134,11 +134,19 @@ app.post("/reset-password", async (req, res) => {
     const user = await getUserByEmail(userEmail)
 
     if (!user) {
-      return res.status(400).send("User with this email does not exist.")
+      // return res.status(400).send("User with this email does not exist.")
+      const successMessage = "Toks el.paštas nėra registruotas."
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
+      const alertScript = generateAlertScript(successMessage, redirectUrl)
+      return res.status(400).send(alertScript)
     }
 
     if (!user.email_verified) {
-      return res.status(400).send("Email is not verified.")
+      // return res.status(400).send("Email is not verified.")
+      const successMessage = "Toks el.paštas nebuvo ir nėra patvirtintas."
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
+      const alertScript = generateAlertScript(successMessage, redirectUrl)
+      return res.status(400).send(alertScript)
     }
 
     const resetToken = generateResetToken()
