@@ -44,13 +44,13 @@ app.post("/login", (req, res) => {
 
         if (match) {
           console.log("User logged in:", nick_name);
-          res.redirect(307, `http://localhost/Viktorina.live/a_index.php`); //
+          res.redirect(307, `http://localhost/Viktorina.live/a_index.php`); 
         } else {
           console.log("Invalid password for user:", nick_name);
           const successMessage = `Labas ${nick_name}, įvedei neteisingą slaptažodį.`
           const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
           const alertScript = generateAlertScript(successMessage, redirectUrl)
-          return res.status(400).send(alertScript)
+          return res.status(401).send(alertScript)
             }
       });
     } else {
@@ -58,7 +58,7 @@ app.post("/login", (req, res) => {
       const successMessage = `Toks vartotojas dar neregistruotas.`
       const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
-      return res.status(400).send(alertScript);
+      return res.status(403).send(alertScript);
     }
   });
 });
