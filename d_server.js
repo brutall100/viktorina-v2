@@ -1,13 +1,15 @@
-const express = require("express") 
-const bodyParser = require("body-parser") 
-const nodemailer = require("nodemailer") 
-const mysql = require("mysql") 
-const bcrypt = require("bcrypt") 
-const { v4: uuidv4 } = require("uuid") 
-require("dotenv").config() 
-const path = require("path") 
+const express = require("express")
+const bodyParser = require("body-parser")
+const nodemailer = require("nodemailer")
+const mysql = require("mysql")
+const bcrypt = require("bcrypt")
+const { v4: uuidv4 } = require("uuid")
+require("dotenv").config()
+const path = require("path")
 
 const { sendWelcomeEmail } = require("./d_mail")
+const emailService = require("./d_mail_reset")
+
 const app = express()
 
 app.set("view engine", "ejs") // Set the directory for views/templates
@@ -30,39 +32,38 @@ connection.connect((err) => {
 
 //                     LOGIN
 app.post("/login", (req, res) => {
-  const { nick_name, user_password } = req.body;
-  const sql = `SELECT * FROM super_users WHERE nick_name = ?`;
+  const { nick_name, user_password } = req.body
+  const sql = `SELECT * FROM super_users WHERE nick_name = ?`
 
   connection.query(sql, [nick_name], (err, result) => {
-    if (err) throw err;
+    if (err) throw err
 
     if (result.length > 0) {
-      const { user_password: hashedPassword, user_email, user_lvl } = result[0];
+      const { user_password: hashedPassword, user_email, user_lvl } = result[0]
 
       bcrypt.compare(user_password, hashedPassword, (err, match) => {
-        if (err) throw err;
+        if (err) throw err
 
         if (match) {
-          console.log("User logged in:", nick_name);
-          res.redirect(307, `http://localhost/Viktorina.live/a_index.php`); 
+          console.log("User logged in:", nick_name)
+          res.redirect(307, `http://localhost/Viktorina.live/a_index.php`)
         } else {
-          console.log("Invalid password for user:", nick_name);
+          console.log("Invalid password for user:", nick_name)
           const successMessage = `Labas ${nick_name}, įvedei neteisingą slaptažodį.`
           const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
           const alertScript = generateAlertScript(successMessage, redirectUrl)
           return res.status(401).send(alertScript)
-            }
-      });
+        }
+      })
     } else {
-      console.log("User not found:", nick_name);
+      console.log("User not found:", nick_name)
       const successMessage = `Toks vartotojas dar neregistruotas.`
       const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
-      return res.status(403).send(alertScript);
+      return res.status(403).send(alertScript)
     }
-  });
-});
-
+  })
+})
 
 //                  REGISTER
 
@@ -149,11 +150,11 @@ app.post("/reset-password", async (req, res) => {
       return res.status(400).send(alertScript)
     }
 
-    const resetToken = generateResetToken()
+    const resetToken = emailService.generateResetToken()
     const expires = new Date(Date.now() + 3600000) // Set expiration time to 1 hour
 
     await updateResetToken(userEmail, resetToken, expires)
-    await sendResetEmail(userEmail, resetToken)
+    await emailService.sendResetEmail(userEmail, resetToken, PORT)
 
     res.render("modal-reset")
   } catch (error) {
@@ -180,75 +181,75 @@ async function getUserByEmail(email) {
   })
 }
 
-function generateResetToken() {
-  return uuidv4()
-}
+// function generateResetToken() {
+//   return uuidv4()
+// }
 
-async function sendResetEmail(email, token) {
-  const transporter = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS
-    }
-  })
+// async function sendResetEmail(email, token) {
+//   const transporter = nodemailer.createTransport({
+//     service: "Gmail",
+//     auth: {
+//       user: process.env.MAIL_USER,
+//       pass: process.env.MAIL_PASS
+//     }
+//   })
 
-  const resetLink = `http://localhost:${PORT}/reset/${token}`
-  const validityPeriodHours = 1
-  const mailOptions = {
-    from: "viktorina.live@gmail.com",
-    to: email,
-    subject: "Slaptažodžio keitimo nuoroda",
-    html: `
-      <html>
-      <head>
-        <style>
-          .email-container {
-            background-color: #f0f0f0;
-            padding: 20px;
-            text-align: center;
-            width: 800px;
-            margin: 0 auto; /* Center horizontally */
-          }
-          .button {
-            display: inline-block;
-            background-color: #1155CC !important; 
-            color: #ffffff !important; 
-            padding: 10px 20px; 
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold; /* Make the text bold */
-            transition: background-color 0.3s, color 0.3s; 
-          }
-          .button:hover {
-            background-color: #0E46B3 !important; 
-          }
-          .message {
-            color: #666;
-            margin-top: 20px;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="email-container">
-          <h1 style="color: #333;">Slaptažodžio keitimo nuoroda</h1>
-          <p style="color: #666;">Norėdami pasikeisti slaptažodį, paspauskite žemiau esantį mygtuką:</p>
-          <a href="${resetLink}" class="button">Keisti slaptažodį</a>
-          <p class="message">Slaptažodžio keitimo nuoroda galioja ${validityPeriodHours} valandą.</p>
-          <h4 class="message">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</h4>
-        </div>
-      </body>
-      </html>
-    `
-  }
+//   const resetLink = `http://localhost:${PORT}/reset/${token}`
+//   const validityPeriodHours = 1
+//   const mailOptions = {
+//     from: "viktorina.live@gmail.com",
+//     to: email,
+//     subject: "Slaptažodžio keitimo nuoroda",
+//     html: `
+//       <html>
+//       <head>
+//         <style>
+//           .email-container {
+//             background-color: #f0f0f0;
+//             padding: 20px;
+//             text-align: center;
+//             width: 800px;
+//             margin: 0 auto; /* Center horizontally */
+//           }
+//           .button {
+//             display: inline-block;
+//             background-color: #1155CC !important;
+//             color: #ffffff !important;
+//             padding: 10px 20px;
+//             text-decoration: none;
+//             border-radius: 5px;
+//             font-weight: bold; /* Make the text bold */
+//             transition: background-color 0.3s, color 0.3s;
+//           }
+//           .button:hover {
+//             background-color: #0E46B3 !important;
+//           }
+//           .message {
+//             color: #666;
+//             margin-top: 20px;
+//           }
+//         </style>
+//       </head>
+//       <body>
+//         <div class="email-container">
+//           <h1 style="color: #333;">Slaptažodžio keitimo nuoroda</h1>
+//           <p style="color: #666;">Norėdami pasikeisti slaptažodį, paspauskite žemiau esantį mygtuką:</p>
+//           <a href="${resetLink}" class="button">Keisti slaptažodį</a>
+//           <p class="message">Slaptažodžio keitimo nuoroda galioja ${validityPeriodHours} valandą.</p>
+//           <h4 class="message">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</h4>
+//         </div>
+//       </body>
+//       </html>
+//     `
+//   }
 
-  try {
-    const info = await transporter.sendMail(mailOptions)
-    console.log("Email sent:", info.response)
-  } catch (error) {
-    console.error("Error sending email:", error)
-  }
-}
+//   try {
+//     const info = await transporter.sendMail(mailOptions)
+//     console.log("Email sent:", info.response)
+//   } catch (error) {
+//     console.error("Error sending email:", error)
+//   }
+// }
 
 //                USER RESPOND, CLICK LINK and REDIRECTED TO reset-form.ejs
 app.get("/reset/:token", (req, res) => {
@@ -317,7 +318,7 @@ app.post("/reset/:token", (req, res) => {
         return res.status(500).send("Internal server error")
       }
 
-      const successMessage = "Jūsų slaptažodis buvo sėkmingai pakeistas, dabar galite prisijungti su savo naujuoju slaptažodžiu."
+      const successMessage = "Jūsų slaptažodis buvo sėkmingai pakeistas. Dabar galite prisijungti su savo naujuoju slaptažodžiu."
       const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(200).send(alertScript)
