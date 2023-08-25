@@ -30,5 +30,9 @@ $user_id = $_SESSION['user_id'] ?? "";
     ?>
 
     <p>This is a basic example of a PHP page.</p>
+    
+    <div class = "footer-wrapper">
+        <?php include './../Footer/footer.php'; ?>
+    </div>
 </body>
 </html>

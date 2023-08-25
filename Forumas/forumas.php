@@ -78,6 +78,13 @@ Meteor: While Meteor is often associated with full-stack JavaScript development,
 <hr>
 Total.js: Total.js is a modern web framework that focuses on simplicity and speed. It provides various features like real-time communication, isomorphic rendering, and a NoSQL database system.
 
+
+
+
+<div class = "footer-wrapper">
+    <?php include './../Footer/footer.php'; ?>
+</div>
+</body>
 </html>
 
 

@@ -1,22 +1,17 @@
-:root {
-  --primary-color: #304783;
-}
-
-body {
-  background: #c5d5bd;
+* {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-.className {
-  border: 1px solid black;
-}
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  }
 
-#id {
-  border: 1px dotted green;
-}
-
-div {
-  color: var(--primary-color);
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
