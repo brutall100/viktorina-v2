@@ -20,6 +20,12 @@ main {
   z-index: 9;
 }
 
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 .table-wrapper {
   position: relative;
   display: inline-block;
@@ -196,12 +202,7 @@ th {
   font-size: 2rem;
 }
 
-.imported-footer {
-  position: fixed;
-  bottom: 0;
-  /* Adjust the bottom value as per your desired spacing */
-  width: 100%;
-}
+
 
 /* Scroolbaro style */
 ::-webkit-scrollbar {

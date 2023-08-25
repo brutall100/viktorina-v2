@@ -226,9 +226,8 @@ input[type="submit"]:active {
   color: #ffa000;
 }
 
-.imported-footer {
+.footer-wrapper {
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: -2;
 }

@@ -146,11 +146,8 @@ $verify = $verify ?? 0;
     </section>
 
     <script type="text/javascript" src="http://localhost/Viktorina.live/a_index.js"></script>
-    <footer class="footer">
-      <object
-        data="http://localhost/Viktorina.live/Footer/footer.html"
-        class="imported-footer">
-      </object>
-    </footer>
+    <div class = "footer-wrapper">
+        <?php include './Footer/footer.php'; ?>
+    </div>
   </body>
 </html>

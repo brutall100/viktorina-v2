@@ -210,12 +210,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
   <?php endif; ?>
 
-  <footer class="footer">
-    <object
-      data="http://localhost/Viktorina.live/Footer/footer.html"
-      class="imported-footer">
-    </object>
-  </footer>  
+  <div class = "footer-wrapper">
+      <?php include './Footer/footer.php'; ?>
+  </div> 
 <script src="http://localhost/Viktorina.live/b_newquestion.js"></script>
 <script>                     <!-- Cia dar neaisku kaip turi buti, pirmai buvo klaida level undefined -->
     if ('<?php echo !empty($level) ? "true" : "false"; ?>' === 'true') {

@@ -30,7 +30,7 @@ body {
   z-index: 9;
 }
 
-.imported-footer {
+.footer-wrapper {
   position: fixed;
   bottom: 0;
   width: 100%;

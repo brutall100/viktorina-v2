@@ -74,12 +74,9 @@ $user_id = $_SESSION['user_id'] ?? "";
     </div>
   </main>  
   
-  <footer class="footer">
-    <object
-      data="http://localhost/Viktorina.live/Footer/footer.html"
-      class="imported-footer">
-    </object>
-  </footer>
+  <div class = "footer-wrapper">
+      <?php include './Footer/footer.php'; ?>
+  </div>
 </body>
 </html>
 <script>
