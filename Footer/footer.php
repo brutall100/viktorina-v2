@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/Viktorina.live/Footer/footer.css" />
-    <title>Document</title>
-    <style>
-      /* Empty */
-    </style>
+    <title>Footer</title>
   </head>
   <body>
     <footer>
@@ -22,13 +19,34 @@
     </footer>
 
     <dialog id="viktorina-dialog">
-      <p>This is the VIKTORINA dialog.</p>
+      <h1>Gilinkite žinias, konkuruokite, sužinokite  – Paremkite projekta šiandien!</h1>
+
+      <div class="donation-content">
+        <div class="donation-text">
+          <p>Sveiki, Viktorinos entuziastai! Ar žinojote, kad jūsų parama turi galią sukelti žinojimą ir paversti mokymasi smagiu?
+          Kiekviena auka skatina mus tobulinti projektą!
+          Remdami, jūs ne tik finansuojate projektą – jūs investuojate į bendruomenę, kuri myli intelektualius iššūkius.</p>
+        </div>
+        <div class="donation-buttons">
+          <hr>
+          <h3>🦸‍♂️ Herojus: Už ledų 🍦 porcijos kainą, gausite išskirtinį šypsenų paketą, bei virtualų garbės ženklą. 
+          <button id="hero-donation" class="donation-button">(PARAMA 1€)</button></h3>
+          <hr>
+          <h3>🌟 Žvaigždė : Už kavos kainą galite mums padėti paruošti daugiau smegenis lavinančių viktorinos klausimų. 
+          <button id="star-donation" class="donation-button">(PARAMA 3€)</button></h3>
+          <hr>
+          <h3>🎖️ Legenda: Parėmę projektą, gausite virtualų garbės ženklą, ir Jūsų vardas bus įamžintas tarp mūsų pagrindinių rėmėjų. 
+          <button id="legend-donation" class="donation-button">(PARAMA 10€)</button></h3>
+          <hr>
+        </div>
+      </div>
+      
       <button id="close-dialog">Uždaryti</button>
     </dialog>
 
-    <script>
-      // empty
-    </script>
   </body>
   <script src="http://localhost/Viktorina.live/Footer/footer.js"></script>
 </html>
+
+
+

@@ -20,7 +20,11 @@ const viktorinaDialog = document.getElementById("viktorina-dialog")
 const closeDialogButton = document.getElementById("close-dialog")
 
 viktorinaLink.addEventListener("click", () => {
-  viktorinaDialog.showModal()
+  if (viktorinaDialog.open) {
+    viktorinaDialog.close()
+  } else {
+    viktorinaDialog.showModal()
+  }
 })
 
 closeDialogButton.addEventListener("click", () => {
