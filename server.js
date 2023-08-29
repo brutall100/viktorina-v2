@@ -1,6 +1,7 @@
 const express = require("express");
 const mysql = require("mysql2");
 require("dotenv").config();
+
 const app = express();
 
 app.use(function (req, res, next) {
@@ -117,7 +118,7 @@ const checkLitaiSum = () => {
         if (previousLitaiSum !== null && totalLitaiSum !== previousLitaiSum) {
           lastRefreshTime = new Date();
           if (cachedData) {
-            saveOldData(connection, cachedData); // Save old data before refreshing
+           
           }
           refreshData((data) => {
             cachedData = data;
