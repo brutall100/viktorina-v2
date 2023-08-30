@@ -88,7 +88,6 @@ let previousLitaiSum = null
 let lastRefreshTime = null
 
 const checkLitaiSum = () => {
-  // Declare the connection variable at the function scope
   const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -144,11 +143,8 @@ const checkLitaiSum = () => {
 
 checkLitaiSum()
 
-
-
-// ... (existing code)
-
-const MAX_OLD_QNA_COUNT = 100;
+//  
+const MAX_OLD_QNA_COUNT = 100
 
 const checkAndManageOldQnaCount = () => {
   const connection = mysql.createConnection({
@@ -156,46 +152,44 @@ const checkAndManageOldQnaCount = () => {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE
-  });
+  })
 
   connection.connect((err) => {
     if (err) {
-      console.error("Error connecting to database:", err);
-      return;
+      console.error("Error connecting to database:", err)
+      return
     }
 
-    const countQuery = "SELECT COUNT(*) AS qnaCount FROM old_qna";
+    const countQuery = "SELECT COUNT(*) AS qnaCount FROM old_qna"
     connection.query(countQuery, (err, results) => {
       if (err) {
-        console.error("Error querying database:", err);
-        connection.end();
-        return;
+        console.error("Error querying database:", err)
+        connection.end()
+        return
       }
 
-      const qnaCount = results[0].qnaCount;
-      if (qnaCount > MAX_OLD_QNA_COUNT) {
-        const deleteQuery = "DELETE FROM old_qna ORDER BY id LIMIT 1";
+      const qnaCount = results[0].qnaCount
+      console.log(`Total IDs in old_qna: ${qnaCount}`)
+
+      const recordsToDelete = qnaCount - MAX_OLD_QNA_COUNT
+
+      if (recordsToDelete > 0) {
+        const deleteQuery = `DELETE FROM old_qna ORDER BY id LIMIT ${recordsToDelete}`
         connection.query(deleteQuery, (err, results) => {
           if (err) {
-            console.error("Error deleting record from old_qna:", err);
+            console.error("Error deleting records from old_qna:", err)
           } else {
-            console.log("Oldest record deleted from old_qna");
+            console.log(`${recordsToDelete} old records deleted from old_qna`)
           }
-          connection.end();
-        });
+          connection.end()
+        })
       } else {
-        connection.end();
+        connection.end()
       }
-    });
-  });
-};
-
-setInterval(checkAndManageOldQnaCount, 10000) /* set an appropriate interval here */
-
-// checkAndManageOldQnaCount()
-
-
-
+    })
+  })
+}
+setInterval(checkAndManageOldQnaCount, 600000) // 10 Minutes
 
 app.get("/data", (req, res) => {
   if (!cachedData) {
