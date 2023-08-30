@@ -54,27 +54,34 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 
 //
 //
-function oldQuestionData() {
+// a_index.js
+
+function fetchNewestOldQuestionData() {
   axios
-    .get("http://localhost:3000/data")
+    .get("http://localhost:3000/old-data")
     .then((response) => {
-      const serverData = response.data.data
-      const serverQuestion = serverData.question
-      const questionId = serverData.id
-      const serverAnswer = serverData.answer
+      const oldData = response.data.oldData;
 
-      console.log("Old question:", serverQuestion, "ID:", questionId, "Answer:", serverAnswer)
+      const newDataDiv = document.getElementById("old-question"); // Replace with your div's ID
 
-      const oldQuestionDiv = document.getElementById("old-question")
-
-      oldQuestionDiv.innerHTML = `Klausimo numeris: <span class="question">${questionId}</span> - <span class="serverQuestion">${serverQuestion}</span> - <span class="serverAnswer">${serverAnswer}</span>`
+      if (oldData && oldData.length > 0) {
+        let newDataHTML = "<ul>";
+        oldData.slice(0, 10).forEach((item) => {
+          newDataHTML += `<li>Question: ${item.old_question}, Answer: ${item.old_answer}</li>`;
+        });
+        newDataHTML += "</ul>";
+        newDataDiv.innerHTML = newDataHTML;
+      } else {
+        newDataDiv.innerHTML = "<p>No new data available.</p>";
+      }
     })
     .catch((error) => {
-      console.error(error)
-    })
+      console.error(error);
+    });
 }
 
-//
+setTimeout(fetchNewestOldQuestionData, 1000)
+//const oldQuestionDiv = document.getElementById("old-question")
 //
 // window.onload = function () {
 //   document.getElementById("answer-input").focus()
@@ -263,7 +270,7 @@ const handleUserAnswer = async (userAnswer) => {
       console.log(`User points updated successfully ${points}`)
       console.log("user_id_name: " + user_id_name)
       console.log("points: " + points)
-      oldQuestionData()
+      // oldQuestionData()
       setTimeout(() => {
         location.reload()
       }, 5000) // Perkrauna page po 5 sekundziu

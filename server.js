@@ -143,7 +143,7 @@ const checkLitaiSum = () => {
 
 checkLitaiSum()
 
-//  
+//
 const MAX_OLD_QNA_COUNT = 100
 
 const checkAndManageOldQnaCount = () => {
@@ -190,6 +190,32 @@ const checkAndManageOldQnaCount = () => {
   })
 }
 setInterval(checkAndManageOldQnaCount, 600000) // 10 Minutes
+
+app.get("/old-data", (req, res) => {
+  console.log("Fetching old question data...")
+
+  connectionPool.getConnection((err, connection) => {
+    if (err) {
+      console.error("Error getting connection:", err)
+      return res.status(500).json({ error: "Error getting database connection" })
+    }
+
+    const sql = "SELECT old_question, old_answer FROM old_qna ORDER BY id DESC LIMIT 10"
+
+    connection.query(sql, (err, results) => {
+      connection.release()
+
+      if (err) {
+        console.error("Error querying old data:", err)
+        return res.status(500).json({ error: "Error querying old data" })
+      }
+
+      console.log("Fetched old question data:", results)
+
+      return res.json({ oldData: results })
+    })
+  })
+})
 
 app.get("/data", (req, res) => {
   if (!cachedData) {
