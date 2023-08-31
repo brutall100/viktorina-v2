@@ -356,26 +356,38 @@ body {
   position: fixed;
   bottom: 10vh;
   right: 2vh;
-  height: 30vh;
-  width: 55vh;
+  height: 32vh;
+  width: 70vh;
   margin: 0.5rem;
   padding: 0.5rem;
+  /* overflow: auto;  */
+  overflow-x: auto;
 }
 
 .old-question-section #old-question {
   border: 1.5px solid rgba(30, 74, 30, 0.864);
 }
 
-.question {
+/* Example CSS styles */
+.question-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.question-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.question-id {
   font-weight: bold;
 }
 
-.serverQuestion {
-  color: blue;
-  font-weight: bold;
+.question-text {
+  font-style: italic;
 }
 
-.serverAnswer {
-  color: rgb(14, 15, 14);
-  font-weight: bold;
+.answer-text {
+  color: green;
 }

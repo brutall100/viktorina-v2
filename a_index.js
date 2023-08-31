@@ -65,9 +65,15 @@ function fetchNewestOldQuestionData() {
       const newDataDiv = document.getElementById("old-question"); // Replace with your div's ID
 
       if (oldData && oldData.length > 0) {
-        let newDataHTML = "<ul>";
+        let newDataHTML = "<ul class='question-list'>";
         oldData.slice(0, 10).forEach((item) => {
-          newDataHTML += ` <li>${item.old_id} Question: ${item.old_question} , Answer: ${item.old_answer}</li>`;
+          newDataHTML += `
+            <li class='question-item'>
+              <span class='question-id'>${item.old_id}</span>
+              <span class='question-text'>Klausimas: ${item.old_question}</span>
+              <hr>
+              <span class='answer-text'>Atsakymas: ${item.old_answer}</span>
+            </li>`;
         });
         newDataHTML += "</ul>";
         newDataDiv.innerHTML = newDataHTML;
@@ -80,7 +86,8 @@ function fetchNewestOldQuestionData() {
     });
 }
 
-setTimeout(fetchNewestOldQuestionData, 1000)
+setTimeout(fetchNewestOldQuestionData, 1000);
+
 
 //
 // Rodyti klausima

@@ -3,7 +3,7 @@
 
 
 <!-- 1 uzduotis -->
-<!--  -->
+<!-- Gal old question section nuo 2 ar 3 lvl???  + btn to hide/show -->
 
 <!-- 2 -->
 <!--  -->
