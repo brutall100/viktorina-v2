@@ -354,40 +354,55 @@ body {
 .old-question-section {
   border: 3px solid rgb(97, 17, 17);
   position: fixed;
-  bottom: 10vh;
+  bottom: 5.6vh;
   right: 2vh;
-  height: 32vh;
+  height: 44vh;
   width: 70vh;
   margin: 0.5rem;
   padding: 0.5rem;
-  /* overflow: auto;  */
-  overflow-x: auto;
 }
 
 .old-question-section #old-question {
   border: 1.5px solid rgba(30, 74, 30, 0.864);
+  height: 100%;
+  overflow: auto;
 }
 
-/* Example CSS styles */
 .question-list {
   list-style-type: none;
   padding: 0;
+  display: flex; /* Use flexbox for arranging items */
+  flex-direction: column; /* Stack items vertically */
 }
 
 .question-item {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px 0;
+  display: flex; /* Use flexbox for layout control */
 }
 
 .question-id {
   font-weight: bold;
+  min-width: 100px; /* Minimum width for question ID */
 }
 
 .question-text {
   font-style: italic;
+  flex-grow: 1; /* Allow question text to take remaining space */
+  padding-left: 10px; /* Add some space between question ID and text */
 }
 
 .answer-text {
   color: green;
 }
+
+/* Adjust the max-width as needed */
+@media (max-width: 600px) {
+  .old-question-section {
+    width: 95%; /* Make the container narrower on smaller screens */
+    max-width: 400px; /* Limit the max width of the container */
+    right: 2%; /* Adjust position accordingly */
+  }
+}
+

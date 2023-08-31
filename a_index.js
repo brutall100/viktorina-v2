@@ -66,7 +66,7 @@ function fetchNewestOldQuestionData() {
 
       if (oldData && oldData.length > 0) {
         let newDataHTML = "<ul class='question-list'>";
-        oldData.slice(0, 10).forEach((item) => {
+        oldData.slice(0, 100).forEach((item) => {
           newDataHTML += `
             <li class='question-item'>
               <span class='question-id'>${item.old_id}</span>
