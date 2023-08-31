@@ -1,5 +1,5 @@
 <!-- 0 uzduotis -->
-<!--   -->
+<!-- In old data then page refresh, data needs to freaze if it posible.  -->
 
 
 <!-- 1 uzduotis -->

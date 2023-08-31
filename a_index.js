@@ -67,7 +67,7 @@ function fetchNewestOldQuestionData() {
       if (oldData && oldData.length > 0) {
         let newDataHTML = "<ul>";
         oldData.slice(0, 10).forEach((item) => {
-          newDataHTML += `<li>Question: ${item.old_question}, Answer: ${item.old_answer}</li>`;
+          newDataHTML += ` <li>${item.old_id} Question: ${item.old_question} , Answer: ${item.old_answer}</li>`;
         });
         newDataHTML += "</ul>";
         newDataDiv.innerHTML = newDataHTML;
@@ -81,11 +81,6 @@ function fetchNewestOldQuestionData() {
 }
 
 setTimeout(fetchNewestOldQuestionData, 1000)
-//const oldQuestionDiv = document.getElementById("old-question")
-//
-// window.onload = function () {
-//   document.getElementById("answer-input").focus()
-// }
 
 //
 // Rodyti klausima
