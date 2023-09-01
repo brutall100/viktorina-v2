@@ -352,6 +352,7 @@ body {
 
 /* .old-question-section */
 .old-question-section {
+  background-color: antiquewhite;
   border: 3px solid rgb(97, 17, 17);
   position: fixed;
   bottom: 5.6vh;
@@ -376,7 +377,7 @@ body {
 }
 
 .question-item {
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   padding: 10px;
   margin: 10px 0;
   display: flex; /* Use flexbox for layout control */
@@ -384,17 +385,25 @@ body {
 
 .question-id {
   font-weight: bold;
-  min-width: 100px; /* Minimum width for question ID */
+  color: #a65b46;
+  min-width: 20px; /* Minimum width for question ID */
+  text-align: right;
 }
 
 .question-text {
   font-style: italic;
+  font-size: 1.1em ;
+  font-weight: 700;
+  line-height: 1.35;
   flex-grow: 1; /* Allow question text to take remaining space */
   padding-left: 10px; /* Add some space between question ID and text */
 }
 
 .answer-text {
-  color: green;
+  color: rgb(41, 90, 41);
+  text-align: center;
+  min-width: 100px;
+  justify-content: flex-end;
 }
 
 /* Adjust the max-width as needed */

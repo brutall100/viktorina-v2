@@ -3,7 +3,8 @@
 
 
 <!-- 1 uzduotis -->
-<!-- Gal old question section nuo 2 ar 3 lvl???  + btn to hide/show OR MAYBE DONATED USER CAN USE THIS FUNCTIONALITY????? -->
+<!-- Gal old question section nuo 2 ar 3 lvl???  + btn to hide/show OR MAYBE DONATED USER CAN USE THIS FUNCTIONALITY????? 
+If donate 1 seen 3 old qna , if 3 seen 10 old qna, if 10 seen 30-->
 
 <!-- 2 -->
 <!--  -->

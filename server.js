@@ -200,7 +200,7 @@ app.get("/old-data", (req, res) => {
       return res.status(500).json({ error: "Error getting database connection" })
     }
 
-    const sql = "SELECT old_id, old_question, old_answer FROM old_qna ORDER BY id DESC LIMIT 100"
+    const sql = "SELECT old_id, old_question, old_answer FROM old_qna ORDER BY id DESC LIMIT 10"
 
     connection.query(sql, (err, results) => {
       connection.release()
