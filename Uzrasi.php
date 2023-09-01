@@ -7,7 +7,7 @@
 If donate 1 seen 3 old qna , if 3 seen 10 old qna, if 10 seen 30-->
 
 <!-- 2 -->
-<!--  -->
+<!-- In old question section need to add time , then question appers hours and minutes maybe -->
 
 <!-- 3 -->
 <!-- d_server.js patvirtinus pasta pagrazinti zinute, atskirti mail.js i kita faila prideti papildomas apsaugas 

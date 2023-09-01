@@ -388,6 +388,8 @@ body {
   color: #a65b46;
   min-width: 20px; /* Minimum width for question ID */
   text-align: right;
+  font-size: 1.1em ;
+  margin-top: 0.5%;
 }
 
 .question-text {
@@ -403,7 +405,8 @@ body {
   color: rgb(41, 90, 41);
   text-align: center;
   min-width: 100px;
-  justify-content: flex-end;
+  margin-top: auto;
+  font-weight: 600;
 }
 
 /* Adjust the max-width as needed */
