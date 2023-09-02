@@ -75,12 +75,16 @@ const refreshData = (callback) => {
 }
 
 const saveOldData = (connection, oldData) => {
-  const sql = "INSERT INTO old_qna (old_id, old_question, old_answer) VALUES (?, ?, ?)"
+  const sql = "INSERT INTO old_qna (old_id, old_question, old_answer, timestamp) VALUES (?, ?, ?, NOW())" // Use NOW() to insert the current timestamp
+
   const values = [oldData.id, oldData.question, oldData.answer]
 
   connection.query(sql, values, (err, results) => {
-    if (err) console.error("Error saving old data:", err)
-    else console.log("Old data saved:", oldData)
+    if (err) {
+      console.error("Error saving old data:", err)
+    } else {
+      console.log("Old data saved:", oldData)
+    }
   })
 }
 
@@ -200,7 +204,7 @@ app.get("/old-data", (req, res) => {
       return res.status(500).json({ error: "Error getting database connection" })
     }
 
-    const sql = "SELECT old_id, old_question, old_answer FROM old_qna ORDER BY id DESC LIMIT 10"
+    const sql = "SELECT old_id, old_question, old_answer, timestamp FROM old_qna ORDER BY id DESC LIMIT 10"
 
     connection.query(sql, (err, results) => {
       connection.release()

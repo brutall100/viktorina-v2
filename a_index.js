@@ -54,42 +54,51 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 
 //
 //
-// a_index.js
+// Old question section
 
 function fetchNewestOldQuestionData() {
   axios
     .get("http://localhost:3000/old-data")
     .then((response) => {
-      const oldData = response.data.oldData
+      const oldData = response.data.oldData;
 
-      const newDataDiv = document.getElementById("old-question")
+      const newDataDiv = document.getElementById("old-question");
 
       if (oldData && oldData.length > 0) {
-        let newDataHTML = "<ul class='question-list'>"
+        let newDataHTML = "<ul class='question-list'>";
         oldData.slice(0, 10).forEach((item) => {
+          // Format the timestamp to hours and minutes with leading zeros
+          const timestamp = new Date(item.timestamp);
+          const hours = timestamp.getHours().toString().padStart(2, '0'); // Ensure two digits
+          const minutes = timestamp.getMinutes().toString().padStart(2, '0'); // Ensure two digits
+          const formattedTimestamp = `${hours}:${minutes}`;
+
           newDataHTML += `
             <li class='question-item'>
               <span class='question-id'>${item.old_id}</span>
               <span class='question-text'>Klausimas: ${item.old_question}</span>
+              <span class='timestamp'>${formattedTimestamp}</span> <!-- Display formatted timestamp -->
               <hr>
               <span class='answer-text'>${item.old_answer}</span>
-            </li>`
-        })
-        newDataHTML += "</ul>"
+            </li>`;
+        });
+        newDataHTML += "</ul>";
 
-        newDataDiv.innerHTML += newDataHTML
+        newDataDiv.innerHTML = newDataHTML; // Update the content instead of appending
       } else {
-        newDataDiv.innerHTML = "<p>No new data available.</p>"
+        newDataDiv.innerHTML = "<p>No new data available.</p>";
       }
     })
     .catch((error) => {
-      console.error(error)
-    })
+      console.error(error);
+    });
 }
 
-fetchNewestOldQuestionData()
+fetchNewestOldQuestionData();
 
-setInterval(fetchNewestOldQuestionData, 45000)
+setInterval(fetchNewestOldQuestionData, 45000);
+
+
 
 //
 // Rodyti klausima
