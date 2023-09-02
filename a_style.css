@@ -364,7 +364,7 @@ body {
 }
 
 .old-question-section #old-question {
-  border: 1.5px solid rgba(30, 74, 30, 0.864);
+  /* border: 1.5px solid rgba(30, 74, 30, 0.864); */
   height: 100%;
   overflow: auto;
 }
@@ -377,9 +377,9 @@ body {
 }
 
 .question-item {
-  border: 2px solid #ccc;
+  /* border: 2px solid #ccc; */
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 5px;
   display: flex; /* Use flexbox for layout control */
 }
 
@@ -393,6 +393,7 @@ body {
 }
 
 .question-text {
+  border-bottom: 1px solid #777;
   font-style: italic;
   font-size: 1.1em ;
   font-weight: 700;

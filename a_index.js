@@ -60,12 +60,12 @@ function fetchNewestOldQuestionData() {
   axios
     .get("http://localhost:3000/old-data")
     .then((response) => {
-      const oldData = response.data.oldData;
+      const oldData = response.data.oldData
 
-      const newDataDiv = document.getElementById("old-question"); // Replace with your div's ID
+      const newDataDiv = document.getElementById("old-question")
 
       if (oldData && oldData.length > 0) {
-        let newDataHTML = "<ul class='question-list'>";
+        let newDataHTML = "<ul class='question-list'>"
         oldData.slice(0, 10).forEach((item) => {
           newDataHTML += `
             <li class='question-item'>
@@ -73,21 +73,23 @@ function fetchNewestOldQuestionData() {
               <span class='question-text'>Klausimas: ${item.old_question}</span>
               <hr>
               <span class='answer-text'>${item.old_answer}</span>
-            </li>`;
-        });
-        newDataHTML += "</ul>";
-        newDataDiv.innerHTML = newDataHTML;
+            </li>`
+        })
+        newDataHTML += "</ul>"
+
+        newDataDiv.innerHTML += newDataHTML
       } else {
-        newDataDiv.innerHTML = "<p>No new data available.</p>";
+        newDataDiv.innerHTML = "<p>No new data available.</p>"
       }
     })
     .catch((error) => {
-      console.error(error);
-    });
+      console.error(error)
+    })
 }
 
-setTimeout(fetchNewestOldQuestionData, 1000);
+fetchNewestOldQuestionData()
 
+setInterval(fetchNewestOldQuestionData, 45000)
 
 //
 // Rodyti klausima
