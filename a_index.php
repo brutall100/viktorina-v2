@@ -141,6 +141,20 @@ $verify = $verify ?? 0;
  ?>
       </div>     
     </main>
+
+    <!-- <section id="chat-container">
+        <div id="chat-box">
+            <?php
+            // $messages = getMessages();
+            // foreach ($messages as $message) {
+                // echo "<div class='message {$message['sender']}'>" . $message['text'] . "</div>";
+            // }
+            ?>
+        </div>
+        <input type="text" id="message-input" placeholder="Type a message">
+        <button id="send-button">Send</button>
+    </section>      -->
+
     <section class="old-question-section">
       <div id="old-question"></div>
     </section>

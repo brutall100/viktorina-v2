@@ -358,7 +358,7 @@ body {
   bottom: 5.6vh;
   right: 2vh;
   height: 44vh;
-  width: 70vh;
+  width: 65vh;
   margin: 0.5rem;
   padding: 0.5rem;
 }
@@ -393,21 +393,46 @@ body {
 }
 
 .question-text {
-  border-bottom: 1px solid #777;
+  /* border-bottom: 1px solid #777;
   font-style: italic;
   font-size: 1.1em ;
   font-weight: 700;
-  line-height: 1.4;
-  flex-grow: 1; /* Allow question text to take remaining space */
+  line-height: 1.4; */
+  border-bottom: 1px solid #777;
+  flex-grow: 1; 
   padding-left: 10px;
   padding-bottom: 6px ;
 }
 
+.question-text > .question-label{
+  color: #4648a6;
+  font-weight: 700;
+  
+}
+
+.question-text > .question-content{
+  
+  font-style: italic;
+  font-size: 1.05em ;
+  font-weight: 700;
+  line-height: 1.4;
+  flex-grow: 1; 
+  padding-bottom: 6px ;
+
+}
+
+.timestamp {
+  margin: auto 7px;
+  font-weight: 600;
+}
+
 .answer-text {
-  color: rgb(41, 90, 41);
+  color: rgb(41, 59, 90);
   text-align: center;
-  min-width: 100px;
-  margin-top: auto;
+  /* min-width: 100px; */
+  padding-left: 20px;
+  /* margin-left: 10px; */
+  margin: auto ;
   font-weight: 600;
 }
 
@@ -420,3 +445,10 @@ body {
   }
 }
 
+#chat-container{
+  border: 3px solid red;
+  height: 50vh;
+  width: 40vw;
+  position: fixed;
+  bottom: 5.6vh;
+}
