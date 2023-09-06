@@ -1,4 +1,4 @@
- <?php
+<?php
 if (session_status()!==2) { session_start();
   foreach ($_POST as $key => $value) {
     ${$key} = $value;
@@ -38,7 +38,7 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
-  <?php
+<?php
 if (isset($name) & !empty($name)) {
   $conn = mysqli_connect("localhost", "root", "", "viktorina");
   $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
@@ -141,24 +141,43 @@ $verify = $verify ?? 0;
  ?>
       </div>     
     </main>
+ 
+    <section id="chat-container">
+      <div id="chat-box">
+        <ul id="messages"></ul>
+        <input id="messageInput" autocomplete="off" type="text" placeholder="Type a messagee"/>
+        <button id="sendButton">Send</button>
+      </div>
+    </section> 
+    
+    <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io(); // Connect to the server
 
-    <!-- <section id="chat-container">
-        <div id="chat-box">
-            <?php
-            // $messages = getMessages();
-            // foreach ($messages as $message) {
-                // echo "<div class='message {$message['sender']}'>" . $message['text'] . "</div>";
-            // }
-            ?>
-        </div>
-        <input type="text" id="message-input" placeholder="Type a message">
-        <button id="send-button">Send</button>
-    </section>      -->
+    // Handle incoming messages
+    socket.on('chat message', (message) => {
+      const ul = document.getElementById('messages');
+      const li = document.createElement('li');
+      li.appendChild(document.createTextNode(message));
+      ul.appendChild(li);
+    });
+
+    // Send a message to the server
+    document.getElementById('sendButton').addEventListener('click', () => {
+      const message = document.getElementById('messageInput').value;
+      socket.emit('chat message', message);
+      document.getElementById('messageInput').value = '';
+    });
+  </script>
+
+
+
+
 
     <section class="old-question-section">
       <div id="old-question"></div>
     </section>
-
+    <script type="text/javascript" src="http://localhost/Viktorina.live/a_chat.js"></script>        
     <script type="text/javascript" src="http://localhost/Viktorina.live/a_index.js"></script>
     <div class = "footer-wrapper">
         <?php include './Footer/footer.php'; ?>

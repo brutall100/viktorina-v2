@@ -447,30 +447,5 @@ function redirectToLogin() {
   window.location.href = "http://localhost/Viktorina.live/d_regilogi.php"
 }
 
-// 
-// 
-// 
-//     Chat
-const chatBox = document.getElementById('chat-box');
-const messageInput = document.getElementById('message-input');
-const sendButton = document.getElementById('send-button');
-
-sendButton.addEventListener('click', () => {
-    const message = messageInput.value.trim();
-    if (message !== '') {
-        chatHistory.push({ text: message, sender: 'user' });
-        displayMessage(message, 'user');
-        messageInput.value = '';
-
-        // Send the message to the server for database insertion
-        fetch('insert_message.php', {
-            method: 'POST',
-            body: JSON.stringify({ message: message, user: 'user' }), // Change 'user' to the actual user
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-    }
-});
 
 
