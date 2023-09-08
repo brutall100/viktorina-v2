@@ -142,43 +142,21 @@ $verify = $verify ?? 0;
       </div>     
     </main>
  
+
+
     <section id="chat-container">
-      <div id="chat-box">
-        <ul id="messages"></ul>
-        <input id="messageInput" autocomplete="off" type="text" placeholder="Type a messagee"/>
-        <button id="sendButton">Send</button>
-      </div>
-    </section> 
+        <?php include("/Chat/chat.html"); ?>
+    </section>
+
     
-    <script src="/socket.io/socket.io.js"></script>
-  <script>
-    const socket = io(); // Connect to the server
-
-    // Handle incoming messages
-    socket.on('chat message', (message) => {
-      const ul = document.getElementById('messages');
-      const li = document.createElement('li');
-      li.appendChild(document.createTextNode(message));
-      ul.appendChild(li);
-    });
-
-    // Send a message to the server
-    document.getElementById('sendButton').addEventListener('click', () => {
-      const message = document.getElementById('messageInput').value;
-      socket.emit('chat message', message);
-      document.getElementById('messageInput').value = '';
-    });
-  </script>
-
-
-
 
 
     <section class="old-question-section">
       <div id="old-question"></div>
     </section>
-    <script type="text/javascript" src="http://localhost/Viktorina.live/a_chat.js"></script>        
+
     <script type="text/javascript" src="http://localhost/Viktorina.live/a_index.js"></script>
+
     <div class = "footer-wrapper">
         <?php include './Footer/footer.php'; ?>
     </div>

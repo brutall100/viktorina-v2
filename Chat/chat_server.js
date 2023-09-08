@@ -1,10 +1,10 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const port = process.env.PORT || 9000;
+const port = 9000;
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + 'http://http://localhost/Viktorina.live/a_index.php');
+  res.sendFile(__dirname + '/chat.html');
 });
 
 io.on('connection', (socket) => {
@@ -18,4 +18,6 @@ http.listen(port, () => {
 });
 
 
-// node a_chat_server.js
+
+// cd C:\xampp\htdocs\aldas\Viktorina.live\Chat
+// node chat_server.js
