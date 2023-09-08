@@ -145,7 +145,7 @@ $verify = $verify ?? 0;
 
 
     <section id="chat-container">
-        <?php include("/Chat/chat.html"); ?>
+        <?php include("Chat/chat.html"); ?>
     </section>
 
     

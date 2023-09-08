@@ -445,10 +445,15 @@ body {
   }
 }
 
+
+
+
+
 #chat-container{
   border: 3px solid red;
   height: 50vh;
   width: 40vw;
   position: fixed;
   bottom: 5.6vh;
+  background-color: white;
 }
