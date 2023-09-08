@@ -1,5 +1,5 @@
 <!-- 0 uzduotis -->
-<!-- In old data then page refresh, data needs to freaze if it posible.  -->
+<!-- Chate uz 10 zinuciu 1 litas, bet niekur neskelbti  -->
 
 
 <!-- 1 uzduotis -->
