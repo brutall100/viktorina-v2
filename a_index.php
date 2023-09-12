@@ -144,10 +144,12 @@ $verify = $verify ?? 0;
  
 
 
-    
+
 
     <section id="chat-container">
       <ul id="chat-messages"></ul>
+      <div id="chat-user-data" data-name="<?php echo isset($name) ? $name : ''; ?>"></div>
+
 
       <form id="chat-form" action="">
         <input id="chat-input" autocomplete="off" />

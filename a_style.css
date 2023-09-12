@@ -452,7 +452,7 @@ body {
 #chat-container{
   border: 3px solid red;
   height: 50vh;
-  width: 40vw;
+  width: 20vw;
   position: fixed;
   bottom: 7vh;
   background-color: white;
