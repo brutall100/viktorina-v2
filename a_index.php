@@ -145,8 +145,16 @@ $verify = $verify ?? 0;
 
 
     <section id="chat-container">
-        <?php include("Chat/chat.html"); ?>
+      <ul id="chat-messages"></ul>
+      
+      <form id="chat-form" action="">
+        <input id="chat-input" autocomplete="off" />
+        <button id="chat-button">Send</button>
+      </form>
     </section>
+
+
+    <script type="text/javascript" src="http://localhost/Viktorina.live/a_chat_client.js"></script>
 
     
 
