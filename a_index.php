@@ -144,9 +144,11 @@ $verify = $verify ?? 0;
  
 
 
+    
+
     <section id="chat-container">
       <ul id="chat-messages"></ul>
-      
+
       <form id="chat-form" action="">
         <input id="chat-input" autocomplete="off" />
         <button id="chat-button">Send</button>
@@ -154,7 +156,7 @@ $verify = $verify ?? 0;
     </section>
 
 
-    <script type="text/javascript" src="http://localhost/Viktorina.live/a_chat_client.js"></script>
+    
 
     
 
@@ -163,6 +165,7 @@ $verify = $verify ?? 0;
       <div id="old-question"></div>
     </section>
 
+    <script type="text/javascript" src="http://localhost/Viktorina.live/a_chat_client.js"></script>
     <script type="text/javascript" src="http://localhost/Viktorina.live/a_index.js"></script>
 
     <div class = "footer-wrapper">
