@@ -449,62 +449,65 @@ body {
 
 
 /* Chat section */
-#chat-container{
+#chat-container {
   border: 3px solid red;
   height: 50vh;
-  width: 20vw;
+  width: 25vw;
   position: fixed;
   bottom: 7vh;
   background-color: white;
+  overflow-y: auto; /* Add scrollbars when content overflows vertically */
+  word-wrap: break-word; /* Wrap long words */
 }
 
-#chat-messages{
-  list-style-type: none; 
-  margin: 0; 
+#chat-messages {
+  list-style-type: none;
+  margin: 0;
   padding: 0;
   display: block;
 }
 
-#chat-messages > li{
+#chat-messages > li {
   padding: 0.5rem 1rem;
 }
 
-#chat-messages > li:nth-child(odd){
-  background: #efefef
+#chat-messages > li:nth-child(odd) {
+  background: #efefef;
 }
 
-#chat-form{
-  background: rgba(0, 0, 0, 0.15); 
-  padding: 0.25rem; 
-  position: absolute; 
+#chat-form {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.25rem;
+  position: absolute;
   width: auto;
-  bottom: 1px; 
-  left: 0; 
-  right: 0; 
-  display: flex; 
-  height: 3rem; 
-  box-sizing: border-box; 
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 3rem;
+  box-sizing: border-box;
   backdrop-filter: blur(10px);
 }
 
-#chat-input{
-  border: none; 
-  padding: 0 1rem; 
-  flex-grow: 1; 
-  border-radius: 2rem; 
+#chat-input {
+  border: none;
+  padding: 0 1rem;
+  flex-grow: 1;
+  border-radius: 2rem;
   margin: 0.25rem;
 }
 
-#chat-input:focus{
+#chat-input:focus {
   outline: none;
 }
 
-#chat-button{
-  background: #333; 
-  border: none; 
-  padding: 0 1rem; 
-  margin: 0.25rem; 
-  border-radius: 3px; 
-  outline: none; 
+#chat-button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
   color: #fff;
 }
+
