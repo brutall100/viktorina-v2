@@ -147,13 +147,17 @@ $verify = $verify ?? 0;
 
 
     <section id="chat-container">
-      <ul id="chat-messages"></ul>
-      <div id="chat-user-data" data-name="<?php echo isset($name) ? $name : ''; ?>"></div>
-      <input type="hidden" id="chat-user-id" value="<?php echo isset($user_id) ? $user_id : ''; ?>"> 
-      <form id="chat-form" action="">
-        <input id="chat-input" autocomplete="off" />
-        <button id="chat-button">Send</button>
-      </form>
+      <div class="chat-container-messages">
+        <ul id="chat-messages"></ul>
+        <div id="chat-user-data" data-name="<?php echo isset($name) ? $name : ''; ?>"></div>
+        <input type="hidden" id="chat-user-id" value="<?php echo isset($user_id) ? $user_id : ''; ?>"> 
+      </div>
+      <div>
+        <form id="chat-form" action="">
+          <input id="chat-input" autocomplete="off" />
+          <button id="chat-button">Send</button>
+        </form>
+      </div>
     </section>
 
 

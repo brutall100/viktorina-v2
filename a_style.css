@@ -456,8 +456,16 @@ body {
   position: fixed;
   bottom: 7vh;
   background-color: white;
-  overflow-y: auto; /* Add scrollbars when content overflows vertically */
   word-wrap: break-word; /* Wrap long words */
+}
+
+.chat-container-messages{
+  background-color: #c6e0e1;
+  height: 42vh;
+  border: 3px dotted greenyellow;
+  /* padding: 10px; */
+  overflow-y: auto;
+
 }
 
 #chat-messages {
@@ -472,22 +480,22 @@ body {
 }
 
 #chat-messages > li:nth-child(odd) {
-  background: #efefef;
+  background: #d8d7d7;
 }
 
 #chat-form {
   background: rgba(0, 0, 0, 0.15);
-  padding: 0.25rem;
-  position: absolute;
-  width: auto;
-  bottom: 1px;
-  left: 0;
-  right: 0;
+  /* padding: 0.25rem; */
+  position: static;
+  width: 100%;
+  bottom: 0; /* Stick to the bottom */
+
   display: flex;
   height: 3rem;
   box-sizing: border-box;
   backdrop-filter: blur(10px);
 }
+
 
 #chat-input {
   border: none;
