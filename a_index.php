@@ -147,7 +147,7 @@ $verify = $verify ?? 0;
 
 
     <section id="chat-container">
-      <div class="chat-container-messages">
+      <div id="chat-container-messages">
         <ul id="chat-messages"></ul>
         <div id="chat-user-data" data-name="<?php echo isset($name) ? $name : ''; ?>"></div>
         <input type="hidden" id="chat-user-id" value="<?php echo isset($user_id) ? $user_id : ''; ?>"> 

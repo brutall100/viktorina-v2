@@ -457,9 +457,10 @@ body {
   bottom: 7vh;
   background-color: white;
   word-wrap: break-word; /* Wrap long words */
+  overflow-y: auto;
 }
 
-.chat-container-messages{
+#chat-container-messages{
   background-color: #c6e0e1;
   height: 42vh;
   border: 3px dotted greenyellow;
