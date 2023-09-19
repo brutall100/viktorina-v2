@@ -154,7 +154,7 @@ $verify = $verify ?? 0;
       <div>
         <form id="chat-form" action="/save-message" method="POST">
           <input id="chat-input-msg" name="message" autocomplete="off" />
-          <input type="hidden" name="user_id" id="chat-user-id" value="<?php echo isset($user_id) ? $user_id : ''; ?>">
+          <input type="hidden" id="chat-user-id" name="user_id" value="<?php echo isset($user_id) ? $user_id : ''; ?>">
           <input type="hidden" id="chat-user-name" name="user_name" value="<?php echo isset($name) ? $name : ''; ?>"> 
           <button id="chat-button" type="submit">Send</button>
         </form>
