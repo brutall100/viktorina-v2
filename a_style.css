@@ -449,7 +449,7 @@ body {
 
 
 /* Chat section */
-#chat-container {
+#chat-container-section {
   /* border: 2px solid rgba(7, 7, 7, 0.15); */
   background: rgba(7, 7, 7, 0.15);
   height: 50vh;
@@ -514,7 +514,7 @@ body {
 }
 
 
-#chat-input {
+#chat-input-msg {
   border: none;
   padding: 0 1rem;
   flex-grow: 1;
@@ -522,7 +522,7 @@ body {
   margin: 0.25rem;
 }
 
-#chat-input:focus {
+#chat-input-msg:focus {
   outline: none;
 }
 

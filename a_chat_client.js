@@ -1,5 +1,5 @@
 const userDataChat = document.getElementById("chat-user-data");
-const username = userDataChat.getAttribute("data-name");
+const username = userDataChat.getAttribute("chat-data-name");
 const chatUserId = document.getElementById("chat-user-id").value;
 
 // Function to scroll to the bottom of the chat messages
@@ -66,7 +66,7 @@ function sendMessage(event) {
     event.preventDefault(); // Prevent form submission and page reload
   }
 
-  const inputElement = document.getElementById("chat-input");
+  const inputElement = document.getElementById("chat-input-msg");
   const message = inputElement.value.trim();
 
   if (message !== "") {
@@ -83,7 +83,7 @@ const chatButton = document.getElementById("chat-button");
 chatButton.addEventListener("click", sendMessage);
 
 // Event listener for pressing Enter in the input field
-const chatInput = document.getElementById("chat-input");
+const chatInput = document.getElementById("chat-input-msg");
 chatInput.addEventListener("keyup", (event) => {
   if (event.key === "Enter") {
     sendMessage(event);
