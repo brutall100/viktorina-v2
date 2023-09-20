@@ -22,7 +22,7 @@ const connectionPool = mysql.createPool({
 })
 
 const generateBonus = () => {
-  const interval = Math.floor(Math.random() * 30000) + 30000
+  const interval = Math.floor(Math.random() * 30000) + 40000
 
   setTimeout(() => {
     bonusLita = Math.floor(Math.random() * 5) * 10 + 10

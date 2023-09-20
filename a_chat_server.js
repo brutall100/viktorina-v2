@@ -1,58 +1,58 @@
-const express = require("express")
-const app = express()
-const mysql = require("mysql") // Include the MySQL module
-require("dotenv").config()
+const express = require("express");
+const app = express();
+const mysql = require("mysql2/promise"); // Note the use of 'mysql2/promise'
+require("dotenv").config();
 
-const port = process.env.PORT || 3333
+const port = process.env.PORT || 9000;
 
-// Create a MySQL database connection
-const db = mysql.createConnection({
+// Create a MySQL database connection pool
+const db = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "",
-  database: "viktorina",
-})
+  database: "viktorina"
+});
 
-// Connect to the database
-db.connect((err) => {
-  if (err) {
-    console.error("Database connection error:", err)
-    throw err
-  }
-  console.log("Connected to the database")
-})
+// Middleware to parse JSON and urlencoded request bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Middleware to parse JSON and form data
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+// Define a route to handle saving messages
+app.post("/save-message", async (req, res) => {
+  try {
+    const { user_id, user_message, user_name } = req.body;
 
-// Route to post new chat messages
-app.post("/save-message", (req, res) => {
-  const { user_id, user_message, user_name } = req.body;
+    // Insert the message into the database
+    const [result] = await db.execute(
+      "INSERT INTO chat_app_db (chat_id, chat_user_id, chat_msg, chat_user_name) VALUES (NULL, ?, ?, ?)",
+      [user_id, user_message, user_name]
+    );
 
-  // Logging the request data
-  console.log("Received request with the following data:");
-  console.log("User ID:", user_id);
-  console.log("user_message:", user_message);
-  console.log("User Name:", user_name);
+    console.log('Query result:', result);
 
-  // Insert the user_message into the database
-  const sql = "INSERT INTO chat_app_db (chat_user_id, chat_msg, chat_user_name) VALUES (?, ?, ?)";
-  db.query(sql, [user_id, user_message, user_name], (err, result) => {
-    if (err) {
-      console.error("Error saving user_message:", err);
-      res.status(500).json({ error: "Internal server error" });
+    if (result.affectedRows === 1) {
+      res.status(200).json({ message: 'Message saved successfully' });
     } else {
-      console.log("user_message saved:", result);
-      res.status(200).json({ user_message: "user_message saved successfully" });
+      console.error('Error saving message:', result.message);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+  } catch (error) {
+    console.error('Error saving message:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+app.get("/", (req, res) => {
+  res.send("Welcome to the chat application!");
 });
 
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`)
-})
+  console.log(`Server is running on port ${port}`);
+});
+
+
 
 // node a_chat_server.js
