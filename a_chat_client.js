@@ -10,34 +10,34 @@ function scrollToBottom() {
   console.log("Scrolled to the bottom");
 }
 
-// Function to add a message to the chat
-function addMessageToChat(message) {
+// Function to add a user_message to the chat
+function addMessageToChat(user_message) {
   const chatMessages = document.getElementById("chat-messages");
   const newMessageItem = document.createElement("li");
-  newMessageItem.textContent = `${username}: ${message}`;
+  newMessageItem.textContent = `${username}: ${user_message}`;
   chatMessages.appendChild(newMessageItem);
 
-  // Save the message to local storage
-  saveMessageToLocal(message);
+  // Save the user_message to local storage
+  saveMessageToLocal(user_message);
 
-  // Scroll to the bottom after adding a message
+  // Scroll to the bottom after adding a user_message
   scrollToBottom();
-  console.log("Added message to chat");
+  console.log("Added user_message to chat");
 }
 
-// Function to save a message to local storage
-function saveMessageToLocal(message) {
+// Function to save a user_message to local storage
+function saveMessageToLocal(user_message) {
   let storedMessages = localStorage.getItem("chatMessages") || [];
   if (typeof storedMessages === "string") {
     storedMessages = JSON.parse(storedMessages);
   }
 
-  // Add the new message to the stored messages
-  storedMessages.push(`${username}: ${message}`);
+  // Add the new user_message to the stored messages
+  storedMessages.push(`${username}: ${user_message}`);
 
   // Store the updated messages back to local storage
   localStorage.setItem("chatMessages", JSON.stringify(storedMessages));
-  console.log("Saved message to local storage");
+  console.log("Saved user_message to local storage");
 }
 
 // Function to load messages from local storage and display them
@@ -51,28 +51,28 @@ function loadMessagesFromLocal() {
   }
 
   // Display the stored messages in the chat
-  storedMessages.forEach((message) => {
+  storedMessages.forEach((user_message) => {
     const newMessageItem = document.createElement("li");
-    newMessageItem.textContent = message;
+    newMessageItem.textContent = user_message;
     chatMessages.appendChild(newMessageItem);
   });
 
   console.log("Loaded messages from local storage");
 }
 
-// Function to handle sending a message
+// Function to handle sending a user_message
 function sendMessage(event) {
   if (event) {
     event.preventDefault(); // Prevent form submission and page reload
   }
 
   const inputElement = document.getElementById("chat-input-msg");
-  const message = inputElement.value.trim();
+  const user_message = inputElement.value.trim();
 
-  if (message !== "") {
-    addMessageToChat(message);
+  if (user_message !== "") {
+    addMessageToChat(user_message);
 
-    // You can send the message to a server or perform other actions here if needed.
+    // You can send the user_message to a server or perform other actions here if needed.
 
     inputElement.value = "";
   }
