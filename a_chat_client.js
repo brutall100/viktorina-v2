@@ -72,11 +72,29 @@ function sendMessage(event) {
   if (user_message !== "") {
     addMessageToChat(user_message);
 
-    // You can send the user_message to a server or perform other actions here if needed.
+    // Send the user_message to the server
+    fetch('http://localhost/Viktorina.live/a_chat_server.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: user_message }),
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log('Message sent to server successfully');
+      } else {
+        console.error('Failed to send message');
+      }
+    })
+    .catch(error => {
+      console.error('Error sending message:', error);
+    });
 
     inputElement.value = "";
   }
 }
+
 
 // Event listener for the "Send" button
 const chatButton = document.getElementById("chat-button");
