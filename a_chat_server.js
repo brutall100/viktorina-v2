@@ -21,12 +21,13 @@ app.use(express.urlencoded({ extended: true }));
 // Define a route to handle saving messages
 app.post("/save-message", async (req, res) => {
   try {
-    const { message } = req.body; // Extract the 'message' property from the request body
+    const {  user_id, message, user_name } = req.body; // Extract the 'message' property from the request body
 
     // Insert the message into the database
     const [result] = await db.execute(
-      "INSERT INTO chat_app_db (chat_id, chat_msg) VALUES (NULL, ?)",
-      [message],
+      // "INSERT INTO chat_app_db (chat_id, chat_msg) VALUES (NULL, ?)",
+      "INSERT INTO chat_app_db (chat_id, chat_user_id, chat_msg, chat_user_name) VALUES (NULL, ?, ?, ?)",
+      [ user_id, message, user_name ],
     );
 
     console.log("Query result:", result);
