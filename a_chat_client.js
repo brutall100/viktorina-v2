@@ -73,7 +73,7 @@ function sendMessage(event) {
     addMessageToChat(user_message);
 
     // Send the user_message to the server
-    fetch('http://localhost/Viktorina.live/a_chat_server.js', {
+    fetch('http://localhost:9000/save-message', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql2/promise");
 require("dotenv").config();
+const cors = require('cors');
+app.use(cors());
 
 const port = process.env.PORT || 9000;
 
@@ -19,16 +21,19 @@ app.use(express.urlencoded({ extended: true }));
 // Define a route to handle saving messages
 app.post("/save-message", async (req, res) => {
   try {
-    const { message } = req.body; // Change 'user_message' to 'message'
+    const { message } = req.body; // Extract the 'message' property from the request body
 
     // Insert the message into the database
     const [result] = await db.execute(
       "INSERT INTO chat_app_db (chat_id, chat_msg) VALUES (NULL, ?)",
-      [user_message],
+      [message],
     );
+
     console.log("Query result:", result);
+
     if (result.affectedRows === 1) {
-      res.status(200);  //res.status(200).json({ message: "Message saved successfully", user_message });
+      // If the message was saved successfully, send a 200 OK response
+      res.status(200).json({ message: "Message saved successfully" });
     } else {
       console.error("Error saving message:", result.message);
       res.status(500).json({ error: "Internal Server Error" });
@@ -39,11 +44,11 @@ app.post("/save-message", async (req, res) => {
   }
 });
 
-
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
 
 
 
