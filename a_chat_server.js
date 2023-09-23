@@ -21,13 +21,10 @@ app.use(express.urlencoded({ extended: true }))
 app.post("/save-message", async (req, res) => {
   try {
     const { user_id, message, user_name } = req.body // Extract the 'message' property from the request body
-    const currentDate = moment().format("YYYY-MM-DD HH:mm:ss");
+    const currentDate = moment().format("YYYY-MM-DD HH:mm:ss")
 
     // Insert the message into the database
-    const [result] = await db.execute(
-      "INSERT INTO chat_app_db (chat_id, chat_user_id, chat_msg, chat_user_name, chat_date) VALUES (NULL, ?, ?, ?, ?)",
-      [user_id, message, user_name, currentDate]
-    );
+    const [result] = await db.execute("INSERT INTO chat_app_db (chat_id, chat_user_id, chat_msg, chat_user_name, chat_date) VALUES (NULL, ?, ?, ?, ?)", [user_id, message, user_name, currentDate])
 
     console.log("Query result:", result)
 
@@ -43,6 +40,22 @@ app.post("/save-message", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" })
   }
 })
+
+// Define a route to fetch older messages (message and user name) from the database
+app.get("/get-older-messages", async (req, res) => {
+  try {
+    // Query the database to fetch the 20 oldest messages
+    const [rows] = await db.execute(
+      "SELECT chat_msg, chat_user_name FROM chat_app_db ORDER BY chat_date DESC LIMIT 5"
+    );
+
+    // Send the fetched messages as a response
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error("Error fetching older messages:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 // Start the server
 const PORT = process.env.PORT5
