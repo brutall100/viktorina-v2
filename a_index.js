@@ -1,7 +1,7 @@
 let data
 async function fetchData() {
   try {
-    const response = await axios.get("http://localhost:3000/data")
+    const response = await axios.get("http://localhost:4001/data")
     return response.data
   } catch (error) {
     console.error(error)
@@ -31,7 +31,7 @@ async function fetchData() {
 //
 function checkServerData() {
   axios
-    .get("http://localhost:3000/data")
+    .get("http://localhost:4001/data")
     .then((response) => {
       const serverData = response.data.data
       const serverId = serverData.id
@@ -58,20 +58,20 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 
 function fetchNewestOldQuestionData() {
   axios
-    .get("http://localhost:3000/old-data")
+    .get("http://localhost:4001/old-data")
     .then((response) => {
-      const oldData = response.data.oldData;
+      const oldData = response.data.oldData
 
-      const newDataDiv = document.getElementById("old-question");
+      const newDataDiv = document.getElementById("old-question")
 
       if (oldData && oldData.length > 0) {
-        let newDataHTML = "<ul class='question-list'>";
+        let newDataHTML = "<ul class='question-list'>"
         oldData.slice(0, 10).forEach((item) => {
           // Format the timestamp to hours and minutes with leading zeros
-          const timestamp = new Date(item.timestamp);
-          const hours = timestamp.getHours().toString().padStart(2, '0'); // Ensure two digits
-          const minutes = timestamp.getMinutes().toString().padStart(2, '0'); // Ensure two digits
-          const formattedTimestamp = `${hours}:${minutes}`;
+          const timestamp = new Date(item.timestamp)
+          const hours = timestamp.getHours().toString().padStart(2, "0") // Ensure two digits
+          const minutes = timestamp.getMinutes().toString().padStart(2, "0") // Ensure two digits
+          const formattedTimestamp = `${hours}:${minutes}`
 
           newDataHTML += `
             <li class='question-item'>
@@ -83,25 +83,23 @@ function fetchNewestOldQuestionData() {
               <span class='answer-text'>${item.old_answer}</span>
               <hr>
               <span class='timestamp'>${formattedTimestamp}</span>   
-            </li>`;
-        });
-        newDataHTML += "</ul>";
+            </li>`
+        })
+        newDataHTML += "</ul>"
 
-        newDataDiv.innerHTML = newDataHTML; // Update the content instead of appending
+        newDataDiv.innerHTML = newDataHTML // Update the content instead of appending
       } else {
-        newDataDiv.innerHTML = "<p>No new data available.</p>";
+        newDataDiv.innerHTML = "<p>No new data available.</p>"
       }
     })
     .catch((error) => {
-      console.error(error);
-    });
+      console.error(error)
+    })
 }
 
-fetchNewestOldQuestionData();
+fetchNewestOldQuestionData()
 
-setInterval(fetchNewestOldQuestionData, 45000);
-
-
+setInterval(fetchNewestOldQuestionData, 45000)
 
 //
 // Rodyti klausima
@@ -265,7 +263,7 @@ const handleUserAnswer = async (userAnswer) => {
 
     playGame() // atsakius teisingai paleidziama funkcija
 
-    const url = "http://localhost:8000/a_points.js"
+    const url = "http://localhost:4004/a_points.js"
     const body = JSON.stringify({
       user_id_name: userData.name,
       points: litaPoints
@@ -446,6 +444,3 @@ document.getElementById("today-top-btn").addEventListener("click", function () {
 function redirectToLogin() {
   window.location.href = "http://localhost/Viktorina.live/d_regilogi.php"
 }
-
-
-

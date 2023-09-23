@@ -79,7 +79,7 @@ function sendMessage(event) {
     addMessageToChat(user_message)
 
     // Send the user_message to the server
-    fetch("http://localhost:9000/save-message", {
+    fetch("http://localhost:4005/save-message", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -87,8 +87,8 @@ function sendMessage(event) {
       body: JSON.stringify({
         message: user_message,
         user_id: user_id,
-        user_name: user_name,
-     }),
+        user_name: user_name
+      })
     })
       .then((response) => {
         if (response.ok) {

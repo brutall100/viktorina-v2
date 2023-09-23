@@ -236,7 +236,7 @@ app.get("/data", (req, res) => {
   }
 })
 
-const PORT = process.env.PORT3
+const PORT = process.env.PORT1
 app.listen(PORT, () => {
   console.log(`Serveris prisijunges on http://localhost:${PORT}`)
 })

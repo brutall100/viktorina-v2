@@ -47,7 +47,7 @@
 <script>
 
   $(document).ready(() => {
-    $.get('http://localhost:7000/game3_server', data => {
+    $.get('http://localhost:4003/game3_server', data => {
       const actualAnswer = data.answer
       const serverAnswer = data.answer.toLowerCase();
       const words = serverAnswer.split(' ');
