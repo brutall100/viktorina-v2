@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 const mysql = require("mysql2/promise")
+const moment = require("moment")
 require("dotenv").config()
 const cors = require("cors")
 app.use(cors())
@@ -20,13 +21,13 @@ app.use(express.urlencoded({ extended: true }))
 app.post("/save-message", async (req, res) => {
   try {
     const { user_id, message, user_name } = req.body // Extract the 'message' property from the request body
+    const currentDate = moment().format("YYYY-MM-DD HH:mm:ss");
 
     // Insert the message into the database
     const [result] = await db.execute(
-      // "INSERT INTO chat_app_db (chat_id, chat_msg) VALUES (NULL, ?)",
-      "INSERT INTO chat_app_db (chat_id, chat_user_id, chat_msg, chat_user_name) VALUES (NULL, ?, ?, ?)",
-      [user_id, message, user_name]
-    )
+      "INSERT INTO chat_app_db (chat_id, chat_user_id, chat_msg, chat_user_name, chat_date) VALUES (NULL, ?, ?, ?, ?)",
+      [user_id, message, user_name, currentDate]
+    );
 
     console.log("Query result:", result)
 
