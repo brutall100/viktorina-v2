@@ -25,15 +25,21 @@ function addMessageToChat(user_message) {
   console.log("Added user_message to chat")
 }
 
-// Function to save a user_message to local storage
+// Function to save a user_message to local storage with a 20-message limit
 function saveMessageToLocal(user_message) {
   let storedMessages = localStorage.getItem("chatMessages") || []
+
   if (typeof storedMessages === "string") {
     storedMessages = JSON.parse(storedMessages)
   }
 
-  // Add the new user_message to the stored messages
+  // Push the new user_message to the end of the array
   storedMessages.push(`${username}: ${user_message}`)
+
+  // Limit the number of stored messages to 20
+  if (storedMessages.length > 20) {
+    storedMessages = storedMessages.slice(-20)
+  }
 
   // Store the updated messages back to local storage
   localStorage.setItem("chatMessages", JSON.stringify(storedMessages))
