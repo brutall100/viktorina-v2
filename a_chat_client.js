@@ -123,7 +123,36 @@ chatInput.addEventListener("keyup", (event) => {
   }
 })
 
-window.addEventListener("load", () => {
-  loadMessagesFromLocal()
+// Function to load messages from the server and display them in reverse order
+async function loadMessagesFromServer() {
+  try {
+    const response = await fetch("http://localhost:4005/get-older-messages")
+    if (!response.ok) {
+      throw new Error("Failed to fetch messages from the server")
+    }
+
+    const messages = await response.json()
+
+    const chatMessages = document.getElementById("chat-messages")
+
+    // Reverse the order of messages and then display them
+    messages.reverse().forEach(({ chat_msg, chat_user_name }) => {
+      const newMessageItem = document.createElement("li")
+      newMessageItem.textContent = `${chat_user_name}: ${chat_msg}`
+      chatMessages.appendChild(newMessageItem)
+    })
+
+    console.log("Loaded messages from the server")
+  } catch (error) {
+    console.error("Error loading messages from the server:", error)
+  }
+}
+
+// Modify the window load event listener
+window.addEventListener("load", async () => {
+  loadMessagesFromLocal() // Load messages from local storage
+
+  // Load and display additional messages from the server
+  await loadMessagesFromServer()
   scrollToBottom()
 })
