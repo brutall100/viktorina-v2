@@ -37,8 +37,8 @@ function saveMessageToLocal(user_message) {
   storedMessages.push(`${username}: ${user_message}`)
 
   // Limit the number of stored messages to 20
-  if (storedMessages.length > 20) {
-    storedMessages = storedMessages.slice(-20)
+  if (storedMessages.length > 30) {
+    storedMessages = storedMessages.slice(-30)
   }
 
   // Store the updated messages back to local storage
@@ -137,9 +137,12 @@ async function loadMessagesFromServer() {
 
     // Reverse the order of messages and then display them
     messages.reverse().forEach(({ chat_msg, chat_user_name }) => {
-      const newMessageItem = document.createElement("li")
-      newMessageItem.textContent = `${chat_user_name}: ${chat_msg}`
-      chatMessages.appendChild(newMessageItem)
+      // Check if the message is not in local storage before displaying it
+      if (!isMessageInLocalStorage(`${chat_user_name}: ${chat_msg}`)) {
+        const newMessageItem = document.createElement("li")
+        newMessageItem.textContent = `${chat_user_name}: ${chat_msg}`
+        chatMessages.appendChild(newMessageItem)
+      }
     })
 
     console.log("Loaded messages from the server")
@@ -148,11 +151,24 @@ async function loadMessagesFromServer() {
   }
 }
 
+// Function to check if a message is in local storage
+function isMessageInLocalStorage(message) {
+  let storedMessages = localStorage.getItem("chatMessages") || []
+
+  if (typeof storedMessages === "string") {
+    storedMessages = JSON.parse(storedMessages)
+  }
+
+  // Check if the message is in the array
+  return storedMessages.includes(message)
+}
+
 // Modify the window load event listener
 window.addEventListener("load", async () => {
-  loadMessagesFromLocal() // Load messages from local storage
-
   // Load and display additional messages from the server
   await loadMessagesFromServer()
+  
+  loadMessagesFromLocal() // Load messages from local storage
+
   scrollToBottom()
 })

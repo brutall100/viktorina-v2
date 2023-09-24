@@ -15,7 +15,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 
 <!-- 4 -->
 <!-- NOW 20 msg from localhost. another 30 from database. database length 10 000 msg. promoted user can see 100msg
-Lvl 1 user can see 20 msg 
+Lvl 1 user can see 8 msg 
 Lvl 2 user can see 50 msg
 Lvl 3 user can see 100 msg  or donated user can see 100msg-->
 

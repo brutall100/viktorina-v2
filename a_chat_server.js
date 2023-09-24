@@ -46,7 +46,7 @@ app.get("/get-older-messages", async (req, res) => {
   try {
     // Query the database to fetch the 20 oldest messages
     const [rows] = await db.execute(
-      "SELECT chat_msg, chat_user_name FROM chat_app_db ORDER BY chat_date DESC LIMIT 5"
+      "SELECT chat_msg, chat_user_name FROM chat_app_db ORDER BY chat_date DESC LIMIT 30"
     );
 
     // Send the fetched messages as a response
