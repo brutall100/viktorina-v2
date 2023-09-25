@@ -1,6 +1,7 @@
 const userDataChat = document.getElementById("chat-user-data")
 const username = userDataChat.getAttribute("chat-data-name")
-const chatUserId = document.getElementById("chat-user-id").value
+const chatUserId = document.getElementById("chat-user-id")
+const userLvl = document.getElementById("chat-user-level")
 
 // Function to scroll to the bottom of the chat messages
 function scrollToBottom() {
@@ -67,47 +68,58 @@ function loadMessagesFromLocal() {
 }
 
 // Function to handle sending a user_message
+let canSendMessage = true; // Flag to control message sending
+
 function sendMessage(event) {
   if (event) {
-    event.preventDefault() // Prevent form submission and page reload
+    event.preventDefault(); // Prevent form submission and page reload
   }
 
-  const inputElement = document.getElementById("chat-input-msg")
-  const user_message = inputElement.value.trim()
+  if (!canSendMessage) {
+    console.log("You can send a message every 10 seconds.");
+    return;
+  }
 
-  const userIdInput = document.getElementById("chat-user-id")
-  const user_id = userIdInput.value
+  const inputElement = document.getElementById("chat-input-msg");
+  const user_message = inputElement.value.trim();
 
-  const userNameInput = document.getElementById("chat-user-name")
-  const user_name = userNameInput.value
+  const userIdInput = document.getElementById("chat-user-id");
+  const user_id = userIdInput.value;
+
+  const userNameInput = document.getElementById("chat-user-name");
+  const user_name = userNameInput.value;
 
   if (user_message !== "") {
-    addMessageToChat(user_message)
+    addMessageToChat(user_message);
 
     // Send the user_message to the server
     fetch("http://localhost:4005/save-message", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         message: user_message,
         user_id: user_id,
-        user_name: user_name
-      })
+        user_name: user_name,
+      }),
     })
       .then((response) => {
         if (response.ok) {
-          console.log("Message sent to server successfully")
+          console.log("Message sent to server successfully");
+          canSendMessage = false; // Disable sending for 10 seconds
+          setTimeout(() => {
+            canSendMessage = true; // Allow sending after 10 seconds
+          }, 10000); // 10 seconds
         } else {
-          console.error("Failed to send message")
+          console.error("Failed to send message");
         }
       })
       .catch((error) => {
-        console.error("Error sending message:", error)
-      })
+        console.error("Error sending message:", error);
+      });
 
-    inputElement.value = ""
+    inputElement.value = "";
   }
 }
 

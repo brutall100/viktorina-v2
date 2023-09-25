@@ -156,6 +156,7 @@ $verify = $verify ?? 0;
           <input id="chat-input-msg" name="user_message" autocomplete="off" />
           <input type="hidden" id="chat-user-id" name="user_id" value="<?php echo isset($user_id) ? $user_id : ''; ?>">
           <input type="hidden" id="chat-user-name" name="user_name" value="<?php echo isset($name) ? $name : ''; ?>"> 
+          <input type="hidden" id="chat-user-level" name="user_level" value="<?php echo isset($level) ? $level : ''; ?>"> 
           <button id="chat-button" type="submit">Send</button>
         </form>
       </div>
