@@ -13,7 +13,6 @@ const db = mysql.createPool({
   database: process.env.DB_DATABASE
 })
 
-// Middleware to parse JSON and urlencoded request bodies
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -41,21 +40,42 @@ app.post("/save-message", async (req, res) => {
   }
 })
 
-// Define a route to fetch older messages (message and user name) from the database
+// Function to check the message count in the database and delete the oldest messages if the count exceeds a limit
+async function checkAndDeleteOldestMessagesIfNeeded() {
+  try {
+    const [countRows] = await db.execute("SELECT COUNT(*) AS messageCount FROM chat_app_db")
+
+    const maxMessageCount = 10000
+
+    const messageCount = countRows[0].messageCount
+
+    if (messageCount > maxMessageCount) {
+      const messagesToDelete = messageCount - maxMessageCount
+
+      await db.execute("DELETE FROM chat_app_db ORDER BY chat_date ASC LIMIT ?", [messagesToDelete])
+
+      console.log(`Deleted ${messagesToDelete} oldest messages`)
+    }
+  } catch (error) {
+    console.error("Error checking and deleting oldest messages:", error)
+  }
+}
+
 app.get("/get-older-messages", async (req, res) => {
   try {
-    // Query the database to fetch the 20 oldest messages
-    const [rows] = await db.execute(
-      "SELECT chat_msg, chat_user_name FROM chat_app_db ORDER BY chat_date DESC LIMIT 30"
-    );
+    // Call the function to check and delete oldest messages
+    await checkAndDeleteOldestMessagesIfNeeded()
+
+    // Query the database to fetch the 100 oldest messages
+    const [rows] = await db.execute("SELECT chat_msg, chat_user_name FROM chat_app_db ORDER BY chat_date DESC LIMIT 100")
 
     // Send the fetched messages as a response
-    res.status(200).json(rows);
+    res.status(200).json(rows)
   } catch (error) {
-    console.error("Error fetching older messages:", error);
-    res.status(500).json({ error: "Internal Server Error" });
+    console.error("Error fetching older messages:", error)
+    res.status(500).json({ error: "Internal Server Error" })
   }
-});
+})
 
 // Start the server
 const PORT = process.env.PORT5

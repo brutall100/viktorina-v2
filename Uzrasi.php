@@ -14,10 +14,7 @@ If donate 1 seen 3 old qna , if 3 seen 10 old qna, if 10 seen 30-->
 per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazodio priminimo Funkcija -->
 
 <!-- 4 -->
-<!-- NOW 20 msg from localhost. another 30 from database. database length 10 000 msg. promoted user can see 100msg
-Lvl 1 user can see 8 msg 
-Lvl 2 user can see 50 msg
-Lvl 3 user can see 100 msg  or donated user can see 100msg-->
+<!-- -->
 
 <!-- 5 -->
 <!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)
@@ -171,10 +168,11 @@ requirements.
 <!-- Statistic.php Viskas OK Šiek tiek CSS reiketų. Kolkas palieku -->
 
 <!-- 7 -->
-<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos -->
+<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos, muzikine -->
 
 <!-- 8 -->
-<!-- Game gal koks zymiu zmoniu foto, gal muzikinis klausimas,  -->
+<!-- Game gal koks zymiu zmoniu foto, gal muzikinis klausimas, 
+Muzikiniai zodziai Q..   O, svajokli mano mielas... A.. svajokli  ir galima paleisti muzika 5 sekundes tos dainos  jei atspejai  -->
 
 <!-- 9 -->
 <!-- Ikonele kokia 1 savatei klausimu irasytojas turetu buti ir kituose puslapiouse ir matoma visur
@@ -186,3 +184,25 @@ Kolkas palieku, nes nebutina. Veikimo neitakoja. Stabilumui nekenkia. tik del gr
 
 <!-- 11 -->
 <!-- Klausimu kurimas pasitelikiant ai klausimo ilgis tokenaais ir atsakymas. Klausimu kurimas pasitelkiant Ai nuo 3 lvl -->
+
+<!-- 12 -->
+<!-- For stoping Span we can create Db in wich we can somehow create <user can write only x mesages per day>
+Lvl 0 user can write 20 msg 
+Lvl 1 user can write 50 msg 
+Lvl 2 user can write 500 msg
+Lvl 3 user can write 5000 msg  or donated user can write Unlimited msg -->
+
+
+
+<!-- TAISYKLES -->
+
+<!-- 0 Lvl -->
+<!-- 1 Lvl -->
+<!-- 2 Lvl -->
+<!-- 3 Lvl -->
+<!-- 4 Lvl -->
+<!-- 5 Lvl -->
+
+
+<!-- Chate matomas zinuciu kiekis
+0Lvl = 8, 1Lvl = 20, 2Lvl = 35, 3Lvl = 50, 4Lvl = 100, 5Lvl = 100, 
