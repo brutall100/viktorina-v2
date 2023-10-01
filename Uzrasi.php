@@ -168,7 +168,7 @@ requirements.
 <!-- Statistic.php Viskas OK Šiek tiek CSS reiketų. Kolkas palieku -->
 
 <!-- 7 -->
-<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos, muzikine -->
+<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos, muzikine, atranka i golden mind , super sunki tik ilgi klausimai ir tik sunkus -->
 
 <!-- 8 -->
 <!-- Game gal koks zymiu zmoniu foto, gal muzikinis klausimas, 
