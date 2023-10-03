@@ -108,7 +108,7 @@ async function loadMessagesFromServer() {
 
     const messages = await response.json()
     const chatMessages = document.getElementById("chat-messages")
-    let messagesToDisplay = messages // Initialize messagesToDisplay with all messages
+    let messagesToDisplay = messages 
 
     const userLvl = parseInt(document.getElementById("chat-user-level").value)
 
@@ -137,7 +137,6 @@ async function loadMessagesFromServer() {
 
     messagesToDisplay = messagesToDisplay.reverse()
 
-    // Clear existing messages in the chatMessages element
     chatMessages.innerHTML = ""
 
     messagesToDisplay.forEach(({ chat_msg, chat_user_name }) => {

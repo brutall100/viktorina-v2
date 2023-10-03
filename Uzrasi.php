@@ -201,8 +201,11 @@ Lvl 3 user can write 5000 msg  or donated user can write Unlimited msg -->
 <!-- 2 Lvl -->
 <!-- 3 Lvl -->
 <!-- 4 Lvl -->
+
 <!-- 5 Lvl -->
+<!-- User with max lvl can block user 0 lvl to write to chat if it not friendly. -->
 
 
 <!-- Chate matomas zinuciu kiekis
-0Lvl = 8, 1Lvl = 20, 2Lvl = 35, 3Lvl = 50, 4Lvl = 100, 5Lvl = 100, 
+0Lvl = 8, 1Lvl = 20, 2Lvl = 35, 3Lvl = 50, 4Lvl = 75, 5Lvl = 100,
+User can write message to chat every 10 second -->
