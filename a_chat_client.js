@@ -7,18 +7,6 @@ console.log("Username:", username)
 console.log("Chat User ID:", chatUserId)
 console.log("User Level:", userLvl)
 
-function getMessageLimit(userLvl) {
-  const messageLimits = {
-    0: 8,
-    1: 20,
-    2: 35,
-    3: 50,
-    4: 100,
-    5: 100
-  }
-  return messageLimits.hasOwnProperty(userLvl) ? messageLimits[userLvl] : 100
-}
-
 function scrollToBottom() {
   const chatMessages = document.getElementById("chat-container-messages")
   console.log(chatMessages)
@@ -113,31 +101,54 @@ chatInput.addEventListener("keyup", (event) => {
 // Function to load messages from the server and display them
 async function loadMessagesFromServer() {
   try {
-    const response = await fetch("http://localhost:4005/get-older-messages");
+    const response = await fetch("http://localhost:4005/get-older-messages")
     if (!response.ok) {
-      throw new Error("Failed to fetch messages from the server");
+      throw new Error("Failed to fetch messages from the server")
     }
 
-    const messages = await response.json();
+    const messages = await response.json()
+    const chatMessages = document.getElementById("chat-messages")
+    let messagesToDisplay = messages // Initialize messagesToDisplay with all messages
 
-    const chatMessages = document.getElementById("chat-messages");
+    const userLvl = parseInt(document.getElementById("chat-user-level").value)
 
-    const messageLimit = getMessageLimit(userLvl);
+    // Adjust the number of messages based on user level
+    if (userLvl === 0) {
+      messagesToDisplay = messagesToDisplay.slice(0, 8) 
+      console.log(`Displaying ${messagesToDisplay.length} messages for user level 0`)
+    } else if (userLvl === 1) {
+      messagesToDisplay = messagesToDisplay.slice(0, 20) 
+      console.log(`Displaying ${messagesToDisplay.length} messages for user level 1`)
+    } else if (userLvl === 2) {
+      messagesToDisplay = messagesToDisplay.slice(0, 35) 
+      console.log(`Displaying ${messagesToDisplay.length} messages for user level 2`)
+    } else if (userLvl === 3) {
+      messagesToDisplay = messagesToDisplay.slice(0, 50) 
+      console.log(`Displaying ${messagesToDisplay.length} messages for user level 3`)
+    } else if (userLvl === 4) {
+      messagesToDisplay = messagesToDisplay.slice(0, 75) 
+      console.log(`Displaying ${messagesToDisplay.length} messages for user level 4`)
+    } else if (userLvl === 5) {
+      messagesToDisplay = messagesToDisplay.slice(0, 100) 
+      console.log(`Displaying ${messagesToDisplay.length} messages for user level 5`)
+    } else {
+      messagesToDisplay = messagesToDisplay.slice(0, 8) 
+    }
 
-    // Filter and display messages based on the user's level
-    const messagesToDisplay = messages
-      .slice(-messageLimit) // Get the latest 'messageLimit' messages
-      .reverse(); // Reverse the order to display the newest first
+    messagesToDisplay = messagesToDisplay.reverse()
+
+    // Clear existing messages in the chatMessages element
+    chatMessages.innerHTML = ""
 
     messagesToDisplay.forEach(({ chat_msg, chat_user_name }) => {
-      const newMessageItem = document.createElement("li");
-      newMessageItem.textContent = `${chat_user_name}: ${chat_msg}`;
-      chatMessages.appendChild(newMessageItem);
-    });
+      const newMessageItem = document.createElement("li")
+      newMessageItem.textContent = `${chat_user_name}: ${chat_msg}`
+      chatMessages.appendChild(newMessageItem)
+    })
 
-    console.log("Loaded messages from the server");
+    console.log("Loaded messages from the server")
   } catch (error) {
-    console.error("Error loading messages from the server:", error);
+    console.error("Error loading messages from the server:", error)
   }
 }
 
