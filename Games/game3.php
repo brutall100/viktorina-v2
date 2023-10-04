@@ -78,7 +78,7 @@
             user_id_name: "<?php echo $name; ?>",
             points: points
           };
-          fetch('http://localhost:5000/playGame.js', {
+          fetch('http://localhost:4002/playGame.js', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -108,7 +108,7 @@
             user_id_name: "<?php echo $name; ?>",
             points: negativePoints
           };
-          fetch('http://localhost:5000/playGame.js', {
+          fetch('http://localhost:4002/playGame.js', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

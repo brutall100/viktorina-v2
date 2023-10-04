@@ -1,5 +1,5 @@
 <!-- 0 uzduotis -->
-<!-- Chate uz 10 zinuciu 1 litas, bet niekur neskelbti  -->
+<!-- Chate uz 10 zinuciu 1 litas, bet niekur neskelbti. Aktyvus ir bendraujantis vartotojas gautu lt to nezinodamas  -->
 
 
 <!-- 1 uzduotis -->

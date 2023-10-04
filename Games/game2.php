@@ -80,7 +80,7 @@
                 points: points
             };
 
-            fetch('http://localhost:5000/playGame.js', {
+            fetch('http://localhost:4002/playGame.js', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
