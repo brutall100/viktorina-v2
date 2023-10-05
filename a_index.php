@@ -38,7 +38,7 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
-<?php
+  <?php
 if (isset($name) & !empty($name)) {
   $conn = mysqli_connect("localhost", "root", "", "viktorina");
   $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
@@ -50,11 +50,19 @@ if (isset($name) & !empty($name)) {
     $user_id = $row['user_id'];
     mysqli_close($conn);
     $_SESSION['user_id'] = $user_id;
-	$_SESSION['points'] = $points;
-	$_SESSION['user_lvl'] = $level;
+    $_SESSION['points'] = $points;
+    $_SESSION['user_lvl'] = $level;
+    
+    // Echo these PHP variables as JavaScript variables . They are sended to client js
+    echo '<script>';
+    echo 'var userLevel = ' . json_encode($level) . ';';
+    echo 'var userPoints = ' . json_encode($points) . ';';
+    echo 'var userId = ' . json_encode($user_id) . ';';
+    echo '</script>';
   }
 }
-?>  
+?>
+
 
 <body>
 <div class="header-wrapper">

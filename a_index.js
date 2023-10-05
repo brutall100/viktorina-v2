@@ -37,7 +37,7 @@ function checkServerData() {
       const serverId = serverData.id
       const clientId = data.data.id
       if (serverId === clientId) {
-        // console.log('Serverio id matches client id.');
+        // console.log('Serverio id matches client id.'); we can crete function with time or time goes back 3.2.1
         // Do something
       } else {
         console.log("Serverio id does not match client id. Reloading in 1 seconds...")
@@ -61,6 +61,14 @@ function fetchNewestOldQuestionData() {
     .get("http://localhost:4001/old-data")
     .then((response) => {
       const oldData = response.data.oldData
+
+
+     // You can access the JavaScript variables here
+     console.log(userLevel);
+     console.log(userPoints);
+     console.log(userId);
+
+
 
       const newDataDiv = document.getElementById("old-question")
 
