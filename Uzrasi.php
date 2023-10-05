@@ -1,5 +1,5 @@
 <!-- 0 uzduotis -->
-<!-- Chate uz 10 zinuciu 1 litas, bet niekur neskelbti. Aktyvus ir bendraujantis vartotojas gautu lt to nezinodamas  -->
+<!-- -->
 
 
 <!-- 1 uzduotis -->
@@ -17,9 +17,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 <!-- -->
 
 <!-- 5 -->
-<!--  Old question sekcija.Sukurti DB kurioje tilptu senu koks 100 klausimu (gal 10)
-Isiraso kai atsakoma i klausima arba kai niekas neatsako. o paskutini klausima 100 istrina is DB
-Taip pat prideti atsakiusio zmoogaus varda, jei toks atsake. Simtas last question bus geriau -->
+<!--  -->
 
 <!-- 6 -->
 <!-- Padarti i statistic.php menesio top 10, savaites top 10, dienos top 10, irasysiu klausimus top 10 nusinulina 1 menesio diena,
@@ -46,7 +44,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
  lvl, points, today points, place, email confirmed Kvadratinis langelis su kazkokiu pazymejimu -->
 
 <!-- 13 -->
-<!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus -->
+<!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus ir dar litai galetu buti mazybiniai random 52 litus, litukus, litelius -->
 
 <!-- 14 -->
 <!--  Uz kieviena prabalsavima gauti 1 lita geriau puse lito. Bet gerai ir litas.-->
@@ -209,3 +207,5 @@ Lvl 3 user can write 5000 msg  or donated user can write Unlimited msg -->
 <!-- Chate matomas zinuciu kiekis
 0Lvl = 8, 1Lvl = 20, 2Lvl = 35, 3Lvl = 50, 4Lvl = 75, 5Lvl = 100,
 User can write message to chat every 10 second -->
+
+<!-- Vartojai uz 10 zinuciu chate gauna 1 lita -->

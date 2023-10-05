@@ -1,14 +1,14 @@
-const beep = require('beepbeep');
+const beep = require("beepbeep")
 function makeBeepSound() {
-  beep();
+  beep()
 }
-makeBeepSound(); // Make a beep sound when the script starts
+makeBeepSound() // Make a beep sound when the script starts
 
-console.log("Message counter script has started.");
+console.log("Message counter script has started.")
 
-const mysql = require("mysql");
-const cron = require("node-cron");
-require("dotenv").config();
+const mysql = require("mysql")
+const cron = require("node-cron")
+require("dotenv").config()
 
 const dbConfig = {
   host: process.env.DB_HOST,
@@ -19,13 +19,13 @@ const dbConfig = {
 
 const pool = mysql.createPool(dbConfig)
 
-// Function to count messages for a specific user within the past minute
+// Function to count messages for a specific user within the past hour
 function countUserMessages(username) {
-  const oneMinuteAgo = new Date()
-  oneMinuteAgo.setMinutes(oneMinuteAgo.getMinutes() - 1)
+  const oneHourAgo = new Date()
+  oneHourAgo.setHours(oneHourAgo.getHours() - 1)
 
   return new Promise((resolve, reject) => {
-    pool.query("SELECT COUNT(*) AS messageCount FROM chat_app_db WHERE chat_user_name = ? AND chat_date >= ?", [username, oneMinuteAgo], (error, results) => {
+    pool.query("SELECT COUNT(*) AS messageCount FROM chat_app_db WHERE chat_user_name = ? AND chat_date >= ?", [username, oneHourAgo], (error, results) => {
       if (error) {
         reject(error)
       } else {
@@ -63,24 +63,43 @@ function updateUserPoints(username, points) {
 }
 
 // Schedule the script to run every hour for counting messages and updating points
+// Define a mapping of message thresholds and points
+const messagePointsMapping = [
+  { threshold: 10, points: 1 },
+  { threshold: 20, points: 2 },
+  { threshold: 30, points: 3 },
+  { threshold: 40, points: 4 },
+  { threshold: 50, points: 5 }, // Example: 50 messages earn 5 points
+];
+
 cron.schedule("0 * * * *", async () => {
   try {
-    const users = await getAllUsers()
+    const users = await getAllUsers();
 
     for (const username of users) {
-      const messageCount = await countUserMessages(username)
-      console.log(`Messages sent by ${username} in the last hour: ${messageCount}`)
+      const messageCount = await countUserMessages(username);
+      console.log(`Messages sent by ${username} in the last hour: ${messageCount}`);
 
-      // Update user points if they sent 10 messages in the last Hour
-      if (messageCount >= 10) {
-        await updateUserPoints(username, 1) // Adjust the points as needed
-        console.log(`${username} earned 1 point.`)
+      // Determine the points to award based on the message count
+      let awardedPoints = 0;
+      for (const { threshold, points } of messagePointsMapping) {
+        if (messageCount >= threshold) {
+          awardedPoints = points;
+        } else {
+          break; // Stop checking once the threshold isn't met
+        }
+      }
+
+      if (awardedPoints > 0) {
+        await updateUserPoints(username, awardedPoints);
+        console.log(`${username} earned ${awardedPoints} point(s).`);
       }
     }
   } catch (error) {
-    console.error("Error:", error)
+    console.error("Error:", error);
   }
-})
+});
+
 
 //
 // node messageCounter.js

@@ -29,7 +29,7 @@ $user_id = $_SESSION['user_id'] ?? "";
     echo "<p>$message</p>";
     ?>
 
-    <p>This is a basic example of a PHP page.</p>
+    <p>Klausimas turi tureti id nr kad apie ji pranesti.</p>
 
     <div class = "footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>
