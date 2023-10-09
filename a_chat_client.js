@@ -3,15 +3,15 @@ const username = userDataChat.getAttribute("chat-data-name")
 const chatUserId = document.getElementById("chat-user-id").value
 const userLvl = parseInt(document.getElementById("chat-user-level").value)
 
-console.log("Username:", username)
-console.log("Chat User ID:", chatUserId)
-console.log("User Level:", userLvl)
+// console.log("Username:", username)
+// console.log("Chat User ID:", chatUserId)
+// console.log("User Level:", userLvl)
 
 function scrollToBottom() {
   const chatMessages = document.getElementById("chat-container-messages")
-  console.log(chatMessages)
+  // console.log(chatMessages)
   chatMessages.scrollTop = chatMessages.scrollHeight
-  console.log("Scrolled to the bottom")
+  // console.log("Scrolled to the bottom")
 }
 
 // Function to add a user_message to the chat
@@ -73,7 +73,7 @@ function sendMessage(event) {
           sendButtonTimeout = setTimeout(() => {
             canSendMessage = true
             chatButton.disabled = false
-          }, 10000) // 10 seconds   // Set a timeout to re-enable the send button after 10 seconds
+          }, 5000) // 5 seconds   // Set a timeout to re-enable the send button after 5 seconds
         } else {
           console.error("Failed to send message")
           chatButton.disabled = false
@@ -115,22 +115,22 @@ async function loadMessagesFromServer() {
     // Adjust the number of messages based on user level
     if (userLvl === 0) {
       messagesToDisplay = messagesToDisplay.slice(0, 8) 
-      console.log(`Displaying ${messagesToDisplay.length} messages for user level 0`)
+      // console.log(`Displaying ${messagesToDisplay.length} messages for user level 0`)
     } else if (userLvl === 1) {
       messagesToDisplay = messagesToDisplay.slice(0, 20) 
-      console.log(`Displaying ${messagesToDisplay.length} messages for user level 1`)
+      // console.log(`Displaying ${messagesToDisplay.length} messages for user level 1`)
     } else if (userLvl === 2) {
       messagesToDisplay = messagesToDisplay.slice(0, 35) 
-      console.log(`Displaying ${messagesToDisplay.length} messages for user level 2`)
+      // console.log(`Displaying ${messagesToDisplay.length} messages for user level 2`)
     } else if (userLvl === 3) {
       messagesToDisplay = messagesToDisplay.slice(0, 50) 
-      console.log(`Displaying ${messagesToDisplay.length} messages for user level 3`)
+      // console.log(`Displaying ${messagesToDisplay.length} messages for user level 3`)
     } else if (userLvl === 4) {
       messagesToDisplay = messagesToDisplay.slice(0, 75) 
-      console.log(`Displaying ${messagesToDisplay.length} messages for user level 4`)
+      // console.log(`Displaying ${messagesToDisplay.length} messages for user level 4`)
     } else if (userLvl === 5) {
       messagesToDisplay = messagesToDisplay.slice(0, 100) 
-      console.log(`Displaying ${messagesToDisplay.length} messages for user level 5`)
+      // console.log(`Displaying ${messagesToDisplay.length} messages for user level 5`)
     } else {
       messagesToDisplay = messagesToDisplay.slice(0, 8) 
     }
@@ -145,7 +145,7 @@ async function loadMessagesFromServer() {
       chatMessages.appendChild(newMessageItem)
     })
 
-    console.log("Loaded messages from the server")
+    // console.log("Loaded messages from the server")
   } catch (error) {
     console.error("Error loading messages from the server:", error)
   }

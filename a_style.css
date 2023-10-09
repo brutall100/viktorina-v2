@@ -366,7 +366,7 @@ body {
 .old-question-section #old-question {
   /* border: 1.5px solid rgba(30, 74, 30, 0.864); */
   height: 100%;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 .question-list {

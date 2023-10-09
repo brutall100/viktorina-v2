@@ -55,6 +55,19 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 //
 //
 // Old question section
+const userLeveli = parseInt(userLevel)
+
+function calculateMaxOldDataCount() {
+  if (userLeveli === 0 || userLeveli === 1 || userLeveli === 2) {
+    return 10
+  } else if (userLeveli === 3 || userLeveli === 4) {
+    return 25
+  } else if (userLeveli === 5) {
+    return 50
+  }
+
+  return 5
+}
 
 function fetchNewestOldQuestionData() {
   axios
@@ -62,21 +75,15 @@ function fetchNewestOldQuestionData() {
     .then((response) => {
       const oldData = response.data.oldData
 
-
-     // You can access the JavaScript variables here
-     console.log(userLevel);
-     console.log(userPoints);
-     console.log(userId);
-
-
-
       const newDataDiv = document.getElementById("old-question")
+      const maxOldDataCount = calculateMaxOldDataCount(userLeveli)
 
       if (oldData && oldData.length > 0) {
+        const slicedOldData = oldData.slice(0, maxOldDataCount)
+
         let newDataHTML = "<ul class='question-list'>"
-        oldData.slice(0, 10).forEach((item) => {
-          // Format the timestamp to hours and minutes with leading zeros
-          const timestamp = new Date(item.timestamp)
+        slicedOldData.forEach((item) => {
+          const timestamp = new Date(item.timestamp) // Format the timestamp to hours and minutes with leading zeros
           const hours = timestamp.getHours().toString().padStart(2, "0") // Ensure two digits
           const minutes = timestamp.getMinutes().toString().padStart(2, "0") // Ensure two digits
           const formattedTimestamp = `${hours}:${minutes}`
@@ -93,9 +100,9 @@ function fetchNewestOldQuestionData() {
               <span class='timestamp'>${formattedTimestamp}</span>   
             </li>`
         })
-        newDataHTML += "</ul>"
 
-        newDataDiv.innerHTML = newDataHTML // Update the content instead of appending
+        // Append the new HTML to the existing content
+        newDataDiv.innerHTML += newDataHTML
       } else {
         newDataDiv.innerHTML = "<p>No new data available.</p>"
       }

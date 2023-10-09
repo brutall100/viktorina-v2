@@ -104,7 +104,10 @@ cron.schedule("0 * * * *", async () => {
 //
 // node messageCounter.js
 
-// Start a Node.js Script: pm2 start app.js
+// Start a Node.js Script: pm2 start server.js messageCounter.js
 // List Running Processes: pm2 list
 // View Logs for a Process: pm2 logs
 // Monitor CPU/Memory Usage: pm2 monit
+// pm2 restart all
+// pm2 delete <pid> 1
+

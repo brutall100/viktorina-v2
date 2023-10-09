@@ -56,8 +56,6 @@ if (isset($name) & !empty($name)) {
     // Echo these PHP variables as JavaScript variables . They are sended to client js
     echo '<script>';
     echo 'var userLevel = ' . json_encode($level) . ';';
-    echo 'var userPoints = ' . json_encode($points) . ';';
-    echo 'var userId = ' . json_encode($user_id) . ';';
     echo '</script>';
   }
 }

@@ -204,7 +204,7 @@ app.get("/old-data", (req, res) => {
       return res.status(500).json({ error: "Error getting database connection" })
     }
 
-    const sql = "SELECT old_id, old_question, old_answer, timestamp FROM old_qna ORDER BY id DESC LIMIT 10"
+    const sql = "SELECT old_id, old_question, old_answer, timestamp FROM old_qna ORDER BY id DESC LIMIT 50" // 50 Old klausimu siuncia i a_index.js
 
     connection.query(sql, (err, results) => {
       connection.release()
@@ -243,3 +243,11 @@ app.listen(PORT, () => {
 
 //
 // C:\xampp\htdocs\aldas\Viktorina.live> node server.js
+
+
+// Start a Node.js Script: pm2 start server.js messageCounter.js
+// List Running Processes: pm2 list
+// View Logs for a Process: pm2 logs
+// Monitor CPU/Memory Usage: pm2 monit
+// pm2 restart all
+// pm2 delete <pid> 1
