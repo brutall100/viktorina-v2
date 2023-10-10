@@ -102,7 +102,7 @@ function fetchNewestOldQuestionData() {
                 <span class='question-content'>${item.old_question}</span>
               </span>
               <span class='answer-text'>${item.old_answer}</span>
-              <hr>
+              <hr class='hr-line'>
               <span class='timestamp'>${formattedTimestamp}</span>   
             </li>`
         })
