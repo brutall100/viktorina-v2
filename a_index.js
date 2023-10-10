@@ -78,11 +78,17 @@ function fetchNewestOldQuestionData() {
       const newDataDiv = document.getElementById("old-question")
       const maxOldDataCount = calculateMaxOldDataCount(userLeveli)
 
+
+
       if (oldData && oldData.length > 0) {
+  
         const slicedOldData = oldData.slice(0, maxOldDataCount)
+
+      
 
         let newDataHTML = "<ul class='question-list'>"
         slicedOldData.forEach((item) => {
+          
           const timestamp = new Date(item.timestamp) // Format the timestamp to hours and minutes with leading zeros
           const hours = timestamp.getHours().toString().padStart(2, "0") // Ensure two digits
           const minutes = timestamp.getMinutes().toString().padStart(2, "0") // Ensure two digits

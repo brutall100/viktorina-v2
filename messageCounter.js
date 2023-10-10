@@ -69,37 +69,63 @@ const messagePointsMapping = [
   { threshold: 20, points: 2 },
   { threshold: 30, points: 3 },
   { threshold: 40, points: 4 },
-  { threshold: 50, points: 5 }, // Example: 50 messages earn 5 points
-];
+  { threshold: 50, points: 5 } // Example: 50 messages earn 5 points
+]
 
 cron.schedule("0 * * * *", async () => {
   try {
-    const users = await getAllUsers();
+    const users = await getAllUsers()
 
     for (const username of users) {
-      const messageCount = await countUserMessages(username);
-      console.log(`Messages sent by ${username} in the last hour: ${messageCount}`);
+      const messageCount = await countUserMessages(username)
+      console.log(`Messages sent by ${username} in the last hour: ${messageCount}`)
 
       // Determine the points to award based on the message count
-      let awardedPoints = 0;
+      let awardedPoints = 0
       for (const { threshold, points } of messagePointsMapping) {
         if (messageCount >= threshold) {
-          awardedPoints = points;
+          awardedPoints = points
         } else {
-          break; // Stop checking once the threshold isn't met
+          break // Stop checking once the threshold isn't met
         }
       }
 
       if (awardedPoints > 0) {
-        await updateUserPoints(username, awardedPoints);
-        console.log(`${username} earned ${awardedPoints} point(s).`);
+        await updateUserPoints(username, awardedPoints)
+        console.log(`${username} earned ${awardedPoints} point(s).`)
       }
     }
   } catch (error) {
-    console.error("Error:", error);
+    console.error("Error:", error)
   }
-});
+})
 
+//
+//
+// Cron script that  Empty litai_sum_today from Super Users Column
+// Schedule a cron job to empty litai_sum_today column every day at midnight (0 0 * * *)
+cron.schedule("0 0 * * *", async () => {
+  try {
+    // Update litai_sum_today for all Super Users to 0
+    await resetLitaiSumToday()
+    console.log("litai_sum_today reset for all Super Users.")
+  } catch (error) {
+    console.error("Error:", error)
+  }
+})
+
+// Function to reset litai_sum_today for all Super Users to 0
+function resetLitaiSumToday() {
+  return new Promise((resolve, reject) => {
+    pool.query("UPDATE super_users SET litai_sum_today = 0", (error, results) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
 
 //
 // node messageCounter.js
@@ -110,4 +136,3 @@ cron.schedule("0 * * * *", async () => {
 // Monitor CPU/Memory Usage: pm2 monit
 // pm2 restart all
 // pm2 delete <pid> 1
-

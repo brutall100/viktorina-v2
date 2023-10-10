@@ -23,7 +23,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 Siuo metu yra tik bendras padarytas top. Aplamai menesio reik padaryti -->
 
 <!-- 7 -->
-<!-- Full screen api ,kad vaizdas butu per visa ekrana -->
+<!--  -->
 
 <!-- 8 -->
 <!-- Css padaryti kad baigiantis laikui klausimas prades nykti ir mazeti ir nubrgs i desny kampa apacioj ????????? Gal -->
@@ -194,7 +194,10 @@ Lvl 3 user can write 5000 msg  or donated user can write Unlimited msg -->
 <!-- TAISYKLES -->
 
 <!-- 0 Lvl -->
+<!-- Katik registruoto vartotojo lygis. 0 Lvl 0 Litu -->
+
 <!-- 1 Lvl -->
+<!-- Siek tiek pazengusio vartotojo levelis. Galima TIK  nusipirkti. 1 lvl visada bus aukstesnis uz 0 lvl, nors nulinis ir turiys daugiau litu.  -->
 <!-- 2 Lvl -->
 <!-- 3 Lvl -->
 <!-- 4 Lvl -->
@@ -202,9 +205,14 @@ Lvl 3 user can write 5000 msg  or donated user can write Unlimited msg -->
 <!-- 5 Lvl -->
 <!-- User with max lvl can block user 0 lvl to write to chat if it not friendly. -->
 
-
+<!-- A -->
 <!-- Chate matomas zinuciu kiekis
 0Lvl = 8, 1Lvl = 20, 2Lvl = 35, 3Lvl = 50, 4Lvl = 75, 5Lvl = 100,
 User can write message to chat every 10 second -->
 
 <!-- Vartojai uz 10 zinuciu chate gauna 1 lita -->
+
+<!-- B -->
+<!-- Old question zinuciu kiekis
+0Lvl = 10, 1Lvl = 10, 2Lvl = 10, 3Lvl = 25, 4Lvl = 25, 5Lvl = 50,
+
