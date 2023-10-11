@@ -52,7 +52,15 @@ function getAllUsers() {
 // Function to update user points in the database
 function updateUserPoints(username, points) {
   return new Promise((resolve, reject) => {
-    pool.query("UPDATE super_users SET litai_sum = litai_sum + ?, litai_sum_today = litai_sum_today + ? WHERE nick_name = ?", [points, points, username], (error, results) => {
+    const query = `
+      UPDATE super_users
+      SET litai_sum = litai_sum + ?,
+          litai_sum_today = litai_sum_today + ?,
+          litai_sum_week = litai_sum_week + ?,
+          litai_sum_month = litai_sum_month + ?
+      WHERE nick_name = ?`
+
+    pool.query(query, [points, points, points, points, username], (error, results) => {
       if (error) {
         reject(error)
       } else {
@@ -102,11 +110,10 @@ cron.schedule("0 * * * *", async () => {
 
 //
 //
-// Cron script that  Empty litai_sum_today from Super Users Column
+// Cron script that  Empty     litai_sum_today, litai_sum_week, litai_sum_month
 // Schedule a cron job to empty litai_sum_today column every day at midnight (0 0 * * *)
 cron.schedule("0 0 * * *", async () => {
   try {
-    // Update litai_sum_today for all Super Users to 0
     await resetLitaiSumToday()
     console.log("litai_sum_today reset for all Super Users.")
   } catch (error) {
@@ -114,7 +121,6 @@ cron.schedule("0 0 * * *", async () => {
   }
 })
 
-// Function to reset litai_sum_today for all Super Users to 0
 function resetLitaiSumToday() {
   return new Promise((resolve, reject) => {
     pool.query("UPDATE super_users SET litai_sum_today = 0", (error, results) => {
@@ -126,6 +132,51 @@ function resetLitaiSumToday() {
     })
   })
 }
+
+// Schedule a cron job to reset litai_sum_week to 0 every Sunday at midnight (0 0 * * 0)
+cron.schedule("0 0 * * 0", async () => {
+  try {
+    await resetLitaiSumWeek()
+    console.log("litai_sum_week reset for all Super Users.")
+  } catch (error) {
+    console.error("Error:", error)
+  }
+})
+
+function resetLitaiSumWeek() {
+  return new Promise((resolve, reject) => {
+    pool.query("UPDATE super_users SET litai_sum_week = 0", (error, results) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
+// Schedule a cron job to reset litai_sum_month to 0 on the last day of the month at midnight (0 0 28-31 * *)
+cron.schedule("0 0 28-31 * *", async () => {
+  try {
+    await resetLitaiSumMonth()
+    console.log("litai_sum_month reset for all Super Users.")
+  } catch (error) {
+    console.error("Error:", error)
+  }
+})
+
+function resetLitaiSumMonth() {
+  return new Promise((resolve, reject) => {
+    pool.query("UPDATE super_users SET litai_sum_month = 0", (error, results) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
 
 //
 // node messageCounter.js

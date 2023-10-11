@@ -1,9 +1,13 @@
 <!-- 0 uzduotis -->
-<!-- Cron to today top -->
+<!-- Cron to today top SUKURTAS. Taigi reikia sukurti savaites top menesio top kurie nusinulins
+Duomenu bazeje sukurti naujas eilutes su savaites top ir menesio top juos atvaizduoti statistic.php ir su cron scriptu nunulinti. 
+Cron scriptas kaip ir sutvarkytas .Liko statistic.php sutvarkyti. ir gerai buti sukurti sio puslapio kopija tik be automatinio isejimo
+tiesiog pasiziureti statistika.  ir BTN sugryzti i main viktorina
+-->
 
 
 <!-- 1 uzduotis -->
-<!---->
+<!--Statistic php. sukurti laiko sustabdyma, kad butu galima patyrineti topus. Sukurti top week and top month-->
 
 <!-- 2 -->
 <!-- Main question and answer has to asynchrounus and dont reload entire page -->
@@ -165,7 +169,8 @@ requirements.
 <!-- Statistic.php Viskas OK Šiek tiek CSS reiketų. Kolkas palieku -->
 
 <!-- 7 -->
-<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos, muzikine, atranka i golden mind , super sunki tik ilgi klausimai ir tik sunkus -->
+<!-- Pagrindiniame puslapyje galima pasirinkti clasikine viktorina, vaiku, seimos, muzikine, atranka i golden mind ,
+ super sunki tik ilgi klausimai ir tik sunkus, Iliustruotoji istorija klausimai  -->
 
 <!-- 8 -->
 <!-- Game gal koks zymiu zmoniu foto, gal muzikinis klausimas, 
