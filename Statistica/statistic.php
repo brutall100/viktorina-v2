@@ -3,13 +3,26 @@ session_start();
 if (isset($_SESSION['nick_name'])) {
   $name = $_SESSION['nick_name'];
   $conn = mysqli_connect("localhost", "root", "", "viktorina");
-  $query = "SELECT user_lvl, litai_sum, litai_sum_today, gender_super, user_email FROM super_users WHERE nick_name = '$name'";
+  $query = "SELECT 
+    user_lvl,
+    litai_sum,
+    litai_sum_today,
+    litai_sum_week,
+    litai_sum_month,
+    gender_super,
+    user_email
+FROM 
+    super_users
+WHERE 
+    nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
     $level = $row['user_lvl'];
     $points = $row['litai_sum'];
     $points_today = $row['litai_sum_today'];
+    $points_week = $row['litai_sum_week'];
+    $points_month = $row['litai_sum_month'];
     $gender = $row['gender_super'];
     $email = $row['user_email'];
 
@@ -63,7 +76,7 @@ if (isset($_SESSION['nick_name'])) {
   }
 
   // Destroy session and clear variables after 15 seconds
-  header('Refresh: 15; URL=http://localhost/Viktorina.live/d_regilogi.php');
+  header('Refresh: 150000; URL=http://localhost/Viktorina.live/d_regilogi.php');
   session_unset();  
   session_destroy();
 
@@ -93,6 +106,12 @@ if (isset($_SESSION['nick_name'])) {
   $query6 = "SELECT nick_name, litai_sum_today FROM super_users ORDER BY litai_sum_today DESC LIMIT 5";
   $result6 = mysqli_query($conn, $query6);
   
+  $query7 = "SELECT nick_name, litai_sum_week FROM super_users ORDER BY litai_sum_week DESC LIMIT 5";
+  $result7 = mysqli_query($conn, $query7);
+
+  $query8 = "SELECT nick_name, litai_sum_month FROM super_users ORDER BY litai_sum_month DESC LIMIT 5";
+  $result8 = mysqli_query($conn, $query8);
+
   echo "<div class='main-info-container'>";
   echo "<div class='table-container left-table'>";
     echo "<h2>Top 10 pagal Litus</h2>";
@@ -158,6 +177,44 @@ if (isset($_SESSION['nick_name'])) {
     }
     echo "</table>";
   echo "</div>";
+
+
+  // Display the additional statistics tables
+echo "<div class='table-container week-table'>";
+echo "<h2>Top 5 pagal Litus šią savaitę</h2>";
+echo "<table class='statistic-table'>";
+echo "<tr>
+        <th>Vardas</th>
+        <th>Litai šią savaitę</th>
+      </tr>";
+while ($row7 = mysqli_fetch_assoc($result7)) {
+    $nickname = $row7['nick_name'];
+    $litai_sum_week = $row7['litai_sum_week'];
+    echo "<tr>
+            <td>$nickname</td>
+            <td class='center-numbers'>$litai_sum_week</td>
+          </tr>";
+}
+echo "</table>";
+echo "</div>";
+
+echo "<div class='table-container month-table'>";
+echo "<h2>Top 5 pagal Litus šį mėnesį</h2>";
+echo "<table class='statistic-table'>";
+echo "<tr>
+        <th>Vardas</th>
+        <th>Litai šį mėnesį</th>
+      </tr>";
+while ($row8 = mysqli_fetch_assoc($result8)) {
+    $nickname = $row8['nick_name'];
+    $litai_sum_month = $row8['litai_sum_month'];
+    echo "<tr>
+            <td>$nickname</td>
+            <td class='center-numbers'>$litai_sum_month</td>
+          </tr>";
+}
+echo "</table>";
+echo "</div>";
   
   echo "</div>";
 
@@ -165,7 +222,7 @@ if (isset($_SESSION['nick_name'])) {
 
   // Countdown timer using JavaScript
   echo "<script>
-          var seconds = 15;
+          var seconds = 150000;
           var countdown = setInterval(function() {
             seconds--;
             document.getElementById('countdown').textContent = seconds;
