@@ -76,9 +76,9 @@ WHERE
   }
 
   // Destroy session and clear variables after 15 seconds
-  header('Refresh: 150000; URL=http://localhost/Viktorina.live/d_regilogi.php');
-  session_unset();  
-  session_destroy();
+  // header('Refresh: 150000; URL=http://localhost/Viktorina.live/d_regilogi.php');
+  // session_unset();  
+  // session_destroy();
 
 
   // Retrieve statistics
@@ -179,42 +179,41 @@ WHERE
   echo "</div>";
 
 
-  // Display the additional statistics tables
-echo "<div class='table-container week-table'>";
-echo "<h2>Top 5 pagal Litus šią savaitę</h2>";
-echo "<table class='statistic-table'>";
-echo "<tr>
-        <th>Vardas</th>
-        <th>Litai šią savaitę</th>
-      </tr>";
-while ($row7 = mysqli_fetch_assoc($result7)) {
-    $nickname = $row7['nick_name'];
-    $litai_sum_week = $row7['litai_sum_week'];
-    echo "<tr>
-            <td>$nickname</td>
-            <td class='center-numbers'>$litai_sum_week</td>
-          </tr>";
-}
-echo "</table>";
-echo "</div>";
+  echo "<div class='table-container week-table'>";
+  echo "<h2>Top 5 pagal Litus šią savaitę</h2>";
+  echo "<table class='statistic-table'>";
+  echo "<tr>
+          <th>Vardas</th>
+          <th>Litai šią savaitę</th>
+        </tr>";
+  while ($row7 = mysqli_fetch_assoc($result7)) {
+      $nickname = $row7['nick_name'];
+      $litai_sum_week = $row7['litai_sum_week'];
+      echo "<tr>
+              <td>$nickname</td>
+              <td class='center-numbers'>$litai_sum_week</td>
+            </tr>";
+  }
+  echo "</table>";
+  echo "</div>";
 
-echo "<div class='table-container month-table'>";
-echo "<h2>Top 5 pagal Litus šį mėnesį</h2>";
-echo "<table class='statistic-table'>";
-echo "<tr>
-        <th>Vardas</th>
-        <th>Litai šį mėnesį</th>
-      </tr>";
-while ($row8 = mysqli_fetch_assoc($result8)) {
-    $nickname = $row8['nick_name'];
-    $litai_sum_month = $row8['litai_sum_month'];
-    echo "<tr>
-            <td>$nickname</td>
-            <td class='center-numbers'>$litai_sum_month</td>
-          </tr>";
-}
-echo "</table>";
-echo "</div>";
+  echo "<div class='table-container month-table'>";
+  echo "<h2>Top 5 pagal Litus šį mėnesį</h2>";
+  echo "<table class='statistic-table'>";
+  echo "<tr>
+          <th>Vardas</th>
+          <th>Litai šį mėnesį</th>
+        </tr>";
+  while ($row8 = mysqli_fetch_assoc($result8)) {
+      $nickname = $row8['nick_name'];
+      $litai_sum_month = $row8['litai_sum_month'];
+      echo "<tr>
+              <td>$nickname</td>
+              <td class='center-numbers'>$litai_sum_month</td>
+            </tr>";
+  }
+  echo "</table>";
+  echo "</div>";
   
   echo "</div>";
 
