@@ -40,7 +40,8 @@ WHERE
     $row_total_users = mysqli_fetch_assoc($result_total_users);
     $total_users = $row_total_users['total_users'];
 
-    echo "<div id='user-info'>
+    echo "<div class='main-container'>
+        <div id='user-info'>
         <h1>Jūs esate atjungiamas nuo Viktorinos, <span class='name'>$name</span> " . ($gender ? $gender : "") . "</h1> 
         <h2 class='time-left'> <span id='countdown'>15</span></h2>
         <p>Jūsų vieta duomenų bazėje: <span class='highlight'>$user_place</span> iš <span class='highlight'>$total_users</span></p>
@@ -66,6 +67,8 @@ WHERE
       echo "<li>$username - $user_points LT</li>";
     }
     echo "</ol>";
+    
+    echo "</div>";
     
     echo "</div>";
     
@@ -112,29 +115,7 @@ WHERE
   $query8 = "SELECT nick_name, litai_sum_month FROM super_users ORDER BY litai_sum_month DESC LIMIT 5";
   $result8 = mysqli_query($conn, $query8);
 
-  echo "<div class='main-info-container'>";
-  echo "<div class='table-container left-table'>";
-    echo "<h2>Top 10 pagal Litus</h2>";
-    echo "<table class='statistic-table'>";
-    echo "<tr>
-            <th>Vardas</th>
-            <th>Litai</th>
-            <th>Lygis</th>
-          </tr>";
-    while ($row4 = mysqli_fetch_assoc($result4)) {
-      $nickname = $row4['nick_name'];
-      $litai_sum = $row4['litai_sum'];
-      $user_lvl = $row4['user_lvl'];
-      echo "<tr>
-              <td>$nickname</td>
-              <td>$litai_sum</td>
-              <td class='center-numbers'>$user_lvl</td>
-            </tr>";
-    }
-    echo "</table>";
-  echo "</div>";
-    
-  echo "<div class='table-container center-table'>";
+  echo "<div class='main-container'>";
     echo "<div class='statistic-info'>
             <h1>Statistika</h1>
             <p>Registruotų vartotojų: $user_count</p>
@@ -160,7 +141,31 @@ WHERE
   echo "</div>";
 
 
-  echo "<div class='table-container right-table'>";
+  echo "<div class='main-container'>";
+    echo "<h2>Top 10 pagal Litus</h2>";
+    echo "<table class='statistic-table'>";
+    echo "<tr>
+            <th>Vardas</th>
+            <th>Litai</th>
+            <th>Lygis</th>
+          </tr>";
+    while ($row4 = mysqli_fetch_assoc($result4)) {
+      $nickname = $row4['nick_name'];
+      $litai_sum = $row4['litai_sum'];
+      $user_lvl = $row4['user_lvl'];
+      echo "<tr>
+              <td>$nickname</td>
+              <td>$litai_sum</td>
+              <td class='center-numbers'>$user_lvl</td>
+            </tr>";
+    }
+    echo "</table>";
+  echo "</div>";
+    
+
+
+
+  echo "<div class='main-container'>";
     echo "<h2>Top 10 klausimų kūrėjų</h2>";
     echo "<table class='statistic-table'>";
     echo "<tr>
@@ -179,7 +184,7 @@ WHERE
   echo "</div>";
 
 
-  echo "<div class='table-container week-table'>";
+  echo "<div class='main-container'>";
   echo "<h2>Top 5 pagal Litus šią savaitę</h2>";
   echo "<table class='statistic-table'>";
   echo "<tr>
@@ -197,7 +202,7 @@ WHERE
   echo "</table>";
   echo "</div>";
 
-  echo "<div class='table-container month-table'>";
+  echo "<div class='main-container'>";
   echo "<h2>Top 5 pagal Litus šį mėnesį</h2>";
   echo "<table class='statistic-table'>";
   echo "<tr>
