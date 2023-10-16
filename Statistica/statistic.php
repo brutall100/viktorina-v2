@@ -122,7 +122,9 @@ WHERE
             <p>Iš viso klausimų: $question_count_main</p>
             <p>Iš viso laukančių patvirtinimo klausimų: $question_count_vaiting</p>
         </div>";
-  
+
+
+    echo "<div class='main-container'>";
     echo "<h2>Top 5 pagal Litus šiandien</h2>";
     echo "<table class='statistic-table'>";
     echo "<tr>
