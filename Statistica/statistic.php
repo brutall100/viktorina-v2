@@ -65,7 +65,8 @@ WHERE
         <div class='main-container'>
             <div id='user-info'>
                 <h1>Jūs esate atjungiamas nuo Viktorinos, <span class='name'>$name</span> " . ($gender ? $gender : "") . "</h1> 
-                <h2 class='time-left'> <span id='countdown'>15</span></h2>
+                <h2 class='time-left'><span id='countdown'>15</span></h2>
+                <button class='stop-time-btn' onclick='toggleCountdown()'>Toggle time</button>
                 <p>Jūsų vieta duomenų bazėje: <span class='highlight'>$user_place</span> iš <span class='highlight'>$total_users</span></p>
                 <p>Šiandien surinkote: <span class='highlight'>$points_today</span> litų.</p>
                 <p>Jūsų surinkta litų suma: <span class='highlight'>$points</span></p>
@@ -234,16 +235,31 @@ WHERE
 
   // Countdown timer using JavaScript
   echo "<script>
-          var seconds = 150000;
-          var countdown = setInterval(function() {
-            seconds--;
-            document.getElementById('countdown').textContent = seconds;
-            if (seconds <= 0) {
-              clearInterval(countdown);
-              window.location.href = 'http://localhost/Viktorina.live/d_regilogi.php';
-            }
-          }, 1000);
-        </script>";
+  var seconds = 15000; // Change this back to 150000 for your original value
+  var countdown;
+
+  function updateCountdown() {
+    seconds--;
+    document.getElementById('countdown').textContent = seconds;
+    if (seconds <= 0) {
+      clearInterval(countdown);
+      window.location.href = 'http://localhost/Viktorina.live/d_regilogi.php';
+    }
+  }
+
+  countdown = setInterval(updateCountdown, 1000);
+
+  function toggleCountdown() {
+    if (countdown) {
+      // If countdown is running, stop it
+      clearInterval(countdown);
+      countdown = null;
+    } else {
+      // If countdown is not running, start it
+      countdown = setInterval(updateCountdown, 1000);
+    }
+  }
+</script>";
 } else {
   echo "Error: missing nickname parameter.";
 }
