@@ -8,7 +8,8 @@ tiesiog pasiziureti statistika.  ir BTN sugryzti i main viktorina
 
 <!-- 1 uzduotis -->
 <!--Statistic php. sukurti laiko sustabdyma, kad butu galima patyrineti topus. Sukurti top week and top month
-Topai ilgesni turetu but, salia laiko sustabdymo btn-->
+Topai ilgesni turetu but, salia laiko sustabdymo btn. Tope rodyti visus iskyrus 0 . Ty sios dienos top rodyti pilna nuliu ne
+btn pagrazinti-->
 
 <!-- 2 -->
 <!-- Main question and answer has to asynchrounus and dont reload entire page -->

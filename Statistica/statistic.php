@@ -79,7 +79,7 @@ WHERE
                 <p>Iš viso laukančių patvirtinimo klausimų: $question_count_vaiting</p>
             </div>";
 
-    echo "<button class='dropdown-btn' onclick='toggleDropdown()'>Pasižiūrėti</button>";
+    echo "<button class='dropdown-btn' onclick='toggleDropdown()'>Konkurentai</button>";
 
     echo "<div id='dropdown' class='dropdown-content' style='display: none;'>";
 
@@ -201,6 +201,7 @@ WHERE
               </tr>";
     }
     echo "</table>";
+    echo "</div>";
 
     
 

@@ -13,22 +13,20 @@ body {
   background-attachment: fixed;
   background-size: cover;
   margin: 0;
-  padding: 10px;
+  padding: 2% 10em;
   font-weight: bold;
   border: 3px solid rgb(0, 255, 132);  
-  display: flex;
-  /* text-align: center; */
-  justify-content: center;
-  /* grid-template-rows: auto auto;
-  grid-template-columns: auto auto ; */
+  display: grid;
+  text-align: center;
+  /* justify-content: center; */
+  /* grid-template-rows: 1fr 1fr; */
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 
 .main-container{
   border: 3px solid rgb(15, 13, 124); 
-  
-  /* width: 80%; */
-  
 
 }
 
