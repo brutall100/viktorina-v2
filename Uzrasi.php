@@ -7,7 +7,8 @@ tiesiog pasiziureti statistika.  ir BTN sugryzti i main viktorina
 
 
 <!-- 1 uzduotis -->
-<!--Statistic php. sukurti laiko sustabdyma, kad butu galima patyrineti topus. Sukurti top week and top month-->
+<!--Statistic php. sukurti laiko sustabdyma, kad butu galima patyrineti topus. Sukurti top week and top month
+Topai ilgesni turetu but, salia laiko sustabdymo btn-->
 
 <!-- 2 -->
 <!-- Main question and answer has to asynchrounus and dont reload entire page -->

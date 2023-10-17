@@ -4,7 +4,6 @@ h1 {
 }
 
 
-
 body {
   text-align: center;
   background-color: lightblue;
@@ -14,17 +13,22 @@ body {
   background-attachment: fixed;
   background-size: cover;
   margin: 0;
-  padding: 0;
+  padding: 10px;
   font-weight: bold;
   border: 3px solid rgb(0, 255, 132);  
+  display: flex;
+  /* text-align: center; */
+  justify-content: center;
+  /* grid-template-rows: auto auto;
+  grid-template-columns: auto auto ; */
 }
 
 
 .main-container{
-  border: 3px solid rgb(29, 33, 31); 
-  display: grid;
-  /* grid-template-rows: auto auto; */
-  grid-template-columns: auto auto ;
+  border: 3px solid rgb(15, 13, 124); 
+  
+  /* width: 80%; */
+  
 
 }
 
@@ -32,7 +36,7 @@ body {
 
 
 #user-info {
-  /* position: relative; */
+  position: relative;
   border: 1px solid rgb(255, 21, 0);
   font-weight: bold;
   /* max-width: 300px;
@@ -116,6 +120,12 @@ body {
   align-items: center;
   border: 1px solid rgb(0, 47, 255);
   padding: 20px;
+}
+
+.statistic-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc; /* Add a border to the table */
 }
 
 .statistic-table th,
