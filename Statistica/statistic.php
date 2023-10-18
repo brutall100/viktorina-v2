@@ -65,8 +65,10 @@ WHERE
         <div class='main-container'>
             <div id='user-info'>
                 <h1>Jūs esate atjungiamas nuo Viktorinos, <span class='name'>$name</span> " . ($gender ? $gender : "") . "</h1> 
-                <h2 class='time-left'><span id='countdown'>15</span></h2>
-                <button class='stop-time-btn' onclick='toggleCountdown()'>Toggle time</button>
+                <div class='time-div'>
+                  <h2 class='time-left'><span id='countdown'>15</span></h2>
+                  <button class='stop-time-btn' onclick='toggleCountdown()'>Toggle time</button>
+                </div>
                 <p>Jūsų vieta duomenų bazėje: <span class='highlight'>$user_place</span> iš <span class='highlight'>$total_users</span></p>
                 <p>Šiandien surinkote: <span class='highlight'>$points_today</span> litų.</p>
                 <p>Jūsų surinkta litų suma: <span class='highlight'>$points</span></p>

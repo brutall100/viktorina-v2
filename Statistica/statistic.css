@@ -147,13 +147,22 @@ body {
 
 
 
-.time-left {
+.time-div{
   position: absolute;
-  /* position: sticky; */
+  top: 1%;
+  right: 1%;
+  border: 1px solid rgb(119, 89, 87);
+  color: rgb(168, 188, 188);
+  padding: .5rem;
+
+}
+
+.time-left {
+  /* position: absolute;
   top: 0;
   right: 20px;
   border: 1px solid rgb(119, 89, 87);
-  color: rgb(168, 188, 188);
+  color: rgb(168, 188, 188); */
 }
 
 #countdown {
