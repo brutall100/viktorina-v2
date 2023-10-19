@@ -66,10 +66,10 @@ WHERE
             <div id='user-info'>
                 <h1>Jūs esate atjungiamas nuo Viktorinos, <span class='name'>$name</span> " . ($gender ? $gender : "") . "</h1> 
                 <div class='time-div'>
-                  <h2 class='time-left'><span id='countdown'>15</span></h2>
+                  <h2 class='time-left'><span id='countdown'>12</span></h2>
                   <button class='time-stop-btn' onclick='toggleCountdown()'>STOP</button>
                 </div>
-                <p>Jūsų vieta duomenų bazėje: <span class='highlight'>$user_place</span> iš <span class='highlight'>$total_users</span></p>
+                <p>Jūsų vieta: <span class='highlight'>$user_place</span> iš <span class='highlight'>$total_users</span></p>
                 <p>Šiandien surinkote: <span class='highlight'>$points_today</span> litų.</p>
                 <p>Jūsų surinkta litų suma: <span class='highlight'>$points</span></p>
                 <p>Jūsų pasiektas lygis: <span class='highlight'>$level</span></p>
@@ -105,10 +105,10 @@ WHERE
     echo "Toks vartotojas nerastas!<br>";
 }
 
-  // Destroy session and clear variables after 15 seconds
-  // header('Refresh: 150000; URL=http://localhost/Viktorina.live/d_regilogi.php');
-  // session_unset();  
-  // session_destroy();
+  // Destroy session and clear variables after 12 seconds
+  header('Refresh: 12; URL=http://localhost/Viktorina.live/d_regilogi.php');
+  session_unset();  
+  session_destroy();
 
 
   // Retrieve statistics
@@ -237,7 +237,7 @@ WHERE
 
   // Countdown timer using JavaScript
   echo "<script>
-  var seconds = 15000; // Change this back to 150000 for your original value
+  var seconds = 12; 
   var countdown;
 
   function updateCountdown() {
@@ -257,7 +257,7 @@ WHERE
       // If countdown is running, stop it
       clearInterval(countdown);
       countdown = null;
-      button.textContent = 'START';
+      button.textContent = 'IŠEITI';
     } else {
       // If countdown is not running, start it
       countdown = setInterval(updateCountdown, 1000);

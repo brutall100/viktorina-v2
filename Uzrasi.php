@@ -1,15 +1,9 @@
 <!-- 0 uzduotis -->
-<!-- Cron to today top SUKURTAS. Taigi reikia sukurti savaites top menesio top kurie nusinulins
-Duomenu bazeje sukurti naujas eilutes su savaites top ir menesio top juos atvaizduoti statistic.php ir su cron scriptu nunulinti. 
-Cron scriptas kaip ir sutvarkytas .Liko statistic.php sutvarkyti. ir gerai buti sukurti sio puslapio kopija tik be automatinio isejimo
-tiesiog pasiziureti statistika.  ir BTN sugryzti i main viktorina
--->
+<!-- -->
 
 
 <!-- 1 uzduotis -->
-<!--Statistic php. sukurti laiko sustabdyma, kad butu galima patyrineti topus. Sukurti top week and top month
-Topai ilgesni turetu but, salia laiko sustabdymo btn. Tope rodyti visus iskyrus 0 . Ty sios dienos top rodyti pilna nuliu ne
-btn pagrazinti-->
+<!-- -->
 
 <!-- 2 -->
 <!-- Main question and answer has to asynchrounus and dont reload entire page -->
@@ -25,8 +19,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 <!--  -->
 
 <!-- 6 -->
-<!-- Padarti i statistic.php menesio top 10, savaites top 10, dienos top 10, irasysiu klausimus top 10 nusinulina 1 menesio diena,
-Siuo metu yra tik bendras padarytas top. Aplamai menesio reik padaryti -->
+<!--  -->
 
 <!-- 7 -->
 <!--  -->
@@ -39,7 +32,7 @@ Siuo metu yra tik bendras padarytas top. Aplamai menesio reik padaryti -->
 nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -->
 
 <!-- 10 -->
-<!-- Paspaudus copyright nukreipiamas i pastabu pasiulymu , saito klaidu, klausimo klaidu puslapy, klausimas turi tureti id nr kad apie ji pranesti -->
+<!--  -->
 
 <!-- 11 -->
 <!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
@@ -88,7 +81,7 @@ Perkelti i html struktura -->
 <!-- -->
 
 <!-- 25 -->
-<!-- -->
+<!-- Statistic php. kolkas palieku. Kai bus monitorius tada imsimes @media queries. -->
 
 
 
