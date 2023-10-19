@@ -8,12 +8,12 @@
           <ul>
               <li><a href="/Viktorina.live/a_index.php">Viktorina</a></li>
               <li><a href="/Viktorina.live/Forumas/forumas.php">Forumas</a></li>
-              <li><a href="/Viktorina.live/c_questionwaiting.php">Naujienos</a></li>
+              <li><a href="/Viktorina.live/c_questionwaiting.php">Balsavimas</a></li>
               <li><a href="/Viktorina.live/b_newquestionindex.php">Irašyti klausimą</a></li>
               <li class="dropdown">
                   <a href="#" class="dropbtn">Info</a>
                   <div class="dropdown-content">
-                      <a href="/Viktorina.live/Info/Naujienos/i_news.php">Naujienos</a>
+                      <a href="/Viktorina.live/Info/Mano_info/i_myInfo.php">Mano info</a>
                       <a href="/Viktorina.live/Info/Puslapio_klaidos/i_page_mistake.php">Puslapio klaidos</a>
                       <a href="/Viktorina.live/Info/Balsavimas/i_vote.php">Balsavimas</a>
                       <a href="/Viktorina.live/Info/Pasiulymai/i_minds.php">Pasiūlymai</a>
