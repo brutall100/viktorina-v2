@@ -1,10 +1,9 @@
 <?php
 session_start();
 $name = $_SESSION['nick_name'] ?? "";
-$user_id = $_SESSION['user_id'] ?? ""; // Original user_id from the session
+$user_id = $_SESSION['user_id'] ?? ""; 
 
-// Connect to your database using the config.php file
-require_once('config.php');
+require_once('config.php'); //Reiks bandyt perkelti kitur
 
 $host = $config['host'];
 $username = $config['username'];
@@ -17,7 +16,6 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Query to retrieve user information from the "super_users" table
 $sql = "SELECT 
             user_lvl,
             litai_sum,
@@ -27,7 +25,7 @@ $sql = "SELECT
             gender_super,
             user_email
         FROM super_users
-        WHERE nick_name = '$name'";
+        WHERE nick_name = '$name' AND user_id = '$user_id'";
 
 $result = mysqli_query($conn, $sql);
 
@@ -36,31 +34,23 @@ if (mysqli_num_rows($result) > 0) {
 
     $level = $row['user_lvl'];
     $points = $row['litai_sum'];
-
-    // Check if 'user_id' exists in the result before overwriting it
-    if (isset($row['user_id'])) {
-        $user_id = $row['user_id'];
-    }
-
-    // Additional fields from the query
     $litai_sum_today = $row['litai_sum_today'];
     $litai_sum_week = $row['litai_sum_week'];
     $litai_sum_month = $row['litai_sum_month'];
-    $gender_super = $row['gender_super'];
+    $gender_super = ($row['gender_super'] == 0) ? "Žmogus" : $row['gender_super'];
     $user_email = $row['user_email'];
 } else {
-    // Handle the case when no data is found
+    // Handle the case when no matching data is found
     $level = "N/A";
     $points = "N/A";
     $litai_sum_today = "N/A";
     $litai_sum_week = "N/A";
     $litai_sum_month = "N/A";
-    $gender_super = "N/A";
+    $gender_super = "Žmogus";
     $user_email = "N/A";
 }
 
 mysqli_close($conn);
-
 ?>
 
 
@@ -84,16 +74,23 @@ mysqli_close($conn);
     <div class="main-content">
         <div class="content">
             <h1>Mano Informacija</h1>
-            <p>Vartotojo vardas: <?php echo $name; ?></p>
-            <p>Lygis: <?php echo $level; ?></p>
-            <p>Litai: <?php echo $points; ?></p>
+            <p>Vartotojo vardas: <?php echo $name; ?> <button id="changeGender">Keisti Vardą</button></p>
+            <p>Lytis: <?php echo $gender_super; ?> <button id="changeGender">Keisti Lytį</button></p>
+            <p>mail: <?php echo $user_email ; ?></p>
+            <p>Lygis: <?php echo $level; ?> <button id="changeGender">Keisti Lvl</button></p> 
             <p>Id: <?php echo $user_id; ?></p>
-            <!-- Display additional information from the database -->
-            <!-- <p>Papildoma informacija: <?php echo $additional_info; ?></p> -->
+            <p>Litai: <?php echo $points; ?></p>
+            <p>Litai snd: <?php echo $litai_sum_today; ?></p>
+            <p>Litai savai: <?php echo $litai_sum_week; ?></p>
+            <p>Litai menesio: <?php echo $litai_sum_month; ?></p>
         </div>
     </div>
+
     <div class="footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>
     </div>
 </body>
 </html>
+
+
+<!-- KIek klausimu irases vartotojas, Kiek is ju patvirtinta, xxx -->
