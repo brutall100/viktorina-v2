@@ -106,9 +106,9 @@ WHERE
 }
 
   // Destroy session and clear variables after 12 seconds
-  header('Refresh: 12; URL=http://localhost/Viktorina.live/d_regilogi.php');
   session_unset();  
   session_destroy();
+  // header('Refresh: 12; URL=http://localhost/Viktorina.live/d_regilogi.php');
 
 
   // Retrieve statistics
