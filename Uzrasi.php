@@ -1,5 +1,7 @@
 <!-- 0 uzduotis -->
-<!-- -->
+<!-- Headeryje kai papaudi iconele kuri padideja , galimai reikia padaryti clickible
+Ten sudeti reikalingas nuorodas is kur panaudoti backroundai kaip PVZ: <a href="https://www.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_12804207.htm#query=svg%20background&position=25&from_view=keyword&track=ais">Image by coolvector</a> on Freepik 
+-->
 
 
 <!-- 1 uzduotis -->
@@ -64,7 +66,7 @@ lyties inputa pagrazinti, pagenetravus name- pasw, neturi judeti visas ekranas, 
 <!-- Padaryti Bad word irasyma i db, nuo 5 lvl.tik nuo 5 lvl -->
 
 <!-- 20 -->
-<!--  -->
+<!-- Maybe need to create minimazid yuotube clip or clip there you can see wiktorina at that moment then you are in your info php -->
 
 <!-- 21 -->
 <!-- Irasant klausima ir atsakyma i db turi buti fiksuojamas zodzio ilgis.

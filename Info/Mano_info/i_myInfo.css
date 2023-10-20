@@ -1,9 +1,32 @@
-body {
-  background: #6b5854;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+*{
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
+body::before {
+  content: "";
+  background-image: url(http://localhost/Viktorina.live/images/background/5073414.jpg);
+  background-size: cover;
+  filter: blur(7px); /* Adjust the blur radius as needed */
+  filter: grayscale(70%); /* 100% grayscale means fully black and white */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place it below the content */
+}
+
+body {
+  background-color: #6b5854;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 
 .header-wrapper {
   position: sticky;
@@ -11,24 +34,56 @@ body {
   z-index: 9;
 }
 
-.main-content{
+.main-content {
   border: 1px solid rgb(31, 30, 24);
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 60vh;
-  margin: 50px;
 }
 
-.content{
+.content {
   border: 1px solid khaki;
   text-align: start;
-  padding: 10% 5%;
+  padding: 5%;
+  margin: 50px;
 }
-
 
 .footer-wrapper {
   position: fixed;
   bottom: 0;
   width: 100%;
 }
+
+.btn {
+  backface-visibility: hidden;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  background: linear-gradient(180deg, #f1e9c4 0%, #fffce2 38%, #debf4d 40%, #efebcf 100%);
+  border-radius: 5px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6), 0px 0px 5px rgba(255, 255, 255, 1), 0px 1px 0px 3px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(255, 255, 255, 1);
+  color: #574317;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  margin-top: 10px; /* Added margin to the top of the button */
+  padding: 10px 15px; /* Adjusted padding for better button size */
+  transition: background-color 0.6s, transform 0.6s, color 0.6s, border 0.6s;
+}
+
+.btn img {
+  width: 15px;
+  margin-left: 3px;
+  margin-right: 3px;
+  flex-direction: row;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #0066cc;
+  border: solid 2px #0066cc;
+  transform: translateY(-3px); /* Improved hover effect */
+}
+
