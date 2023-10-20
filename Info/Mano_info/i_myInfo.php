@@ -74,20 +74,30 @@ mysqli_close($conn);
     <div class="main-content">
         <div class="content">
             <h1>Mano Informacija</h1>
-            <p>Vartotojo vardas: <?php echo $name; ?> <button class="btn" id="changeGender">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button></p>
-            <p>Lytis: <?php echo $gender_super; ?> <button class="btn" id="changeGender">Keisti Lytį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button></p>
-            <p>mail: <?php echo $user_email ; ?><button class="btn" id="changeGender">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button></p> 
-            <p>Lygis: <?php echo $level; ?> <button class="btn" id="changeGender">Keisti Lvl <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button></p> 
-            <p>Id: <?php echo $user_id; ?></p>
-            <p>Litai: <?php echo $points; ?></p>
-            <p>Litai snd: <?php echo $litai_sum_today; ?></p>
-            <p>Litai savai: <?php echo $litai_sum_week; ?></p>
-            <p>Litai menesio: <?php echo $litai_sum_month; ?></p>
+            <div class="content-p">
+                <p>
+                    <button class="btn" id="changeGender">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+                    Vartotojo vardas: <?php echo $name; ?> 
+                </p>
+                <p>
+                    <button class="btn" id="changeGender">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+                    Vartotojo vardas: <?php echo $name; ?>
+                </p>
+                <p>mail: <?php echo $user_email ; ?><button class="btn" id="changeGender">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button></p> 
+                <p>Lygis: <?php echo $level; ?> <button class="btn" id="changeGender">Keisti Lvl <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button></p> 
+                <p>Id: <?php echo $user_id; ?></p>
+                <p>Litai: <?php echo $points; ?></p>
+                <p>Litai snd: <?php echo $litai_sum_today; ?></p>
+                <p>Litai savai: <?php echo $litai_sum_week; ?></p>
+                <p>Litai menesio: <?php echo $litai_sum_month; ?></p>
+            </div>
         </div>
         <div class="content content-response">
             <h1>Mano  Informacija</h1>
+            <div class="content-p">
             <p></p>
             <p></p>
+        </div>
         </div>
     </div>
     <div class="footer-wrapper">

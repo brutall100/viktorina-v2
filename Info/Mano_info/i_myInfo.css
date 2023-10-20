@@ -5,6 +5,51 @@
   margin: 0;
 }
 
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  color: #42161e;
+  text-shadow: 2px 2px 2px #547f9a;
+  box-shadow: inset 2px 2px 4px #000, 2px 2px 4px #999;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #999;
+  background-color: rgba(240, 240, 240, 0.1); /* 50% transparent gray */
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "Helvetica Neue", sans-serif;
+  color: #555;
+  text-align: left;
+  line-height: 1.5;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  /* background-color: #f9f9f9; */
+}
+
+
+/* Header */
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+/* Footer */
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Body */
 body::before {
   content: "";
   background-image: url(http://localhost/Viktorina.live/images/background/5073414.jpg);
@@ -20,7 +65,7 @@ body::before {
 }
 
 body {
-  background-color: #6b5854;
+  background-color: #59879c;
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -28,12 +73,7 @@ body {
 }
 
 
-.header-wrapper {
-  position: sticky;
-  top: 0;
-  z-index: 9;
-}
-
+/* Pagrindinis konteineris */
 .main-content {
   border: 1px solid rgb(31, 30, 24);
   display: flex;
@@ -44,15 +84,25 @@ body {
   border: 1px solid khaki;
   text-align: start;
   padding: 5%;
-  margin: 50px;
+  margin: 0;
+  /* text-shadow: 2px 2px 2px #547f9a;
+  box-shadow: inset 2px 2px 4px #000, 2px 2px 4px #999; */
+  border-radius: 3px;
 }
 
-.footer-wrapper {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+.content-p{
+  border: 2px solid green;
+  display: flex;
+  align-items: center; /* Align text and button vertically */
+  margin: 5px 0; /* Add spacing between paragraphs */
+}
+.content-p .btn {
+  margin-right: 10px; /* Add space to the right of the button */
 }
 
+
+
+/* Button styles */
 .btn {
   backface-visibility: hidden;
   position: relative;
@@ -68,8 +118,9 @@ body {
   font-family: 'Helvetica Neue', sans-serif;
   font-weight: 900;
   font-style: normal;
-  margin-top: 10px; /* Added margin to the top of the button */
-  padding: 10px 15px; /* Adjusted padding for better button size */
+  width: 10em;
+  margin-top: 1px; /* Added margin to the top of the button */
+  padding: 1px 12px; /* Adjusted padding for better button size */
   transition: background-color 0.6s, transform 0.6s, color 0.6s, border 0.6s;
 }
 
@@ -82,8 +133,8 @@ body {
 
 .btn:hover {
   background-color: #fff;
-  color: #0066cc;
-  border: solid 2px #0066cc;
+  color: #1e392b;
+  border: solid 1px #a1bbc3;
   transform: translateY(-3px); /* Improved hover effect */
 }
 
