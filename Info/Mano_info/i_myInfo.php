@@ -75,22 +75,29 @@ mysqli_close($conn);
         <div class="content">
             <h1>Mano Informacija</h1>
             <div class="content-p">
-                <p>
-                    <button class="btn" id="changeGender">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
-                    Vartotojo vardas: <?php echo $name; ?> 
-                </p>
-                <p>
-                    <button class="btn" id="changeGender">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
-                    Vartotojo vardas: <?php echo $name; ?>
-                </p>
-                <p>mail: <?php echo $user_email ; ?><button class="btn" id="changeGender">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button></p> 
-                <p>Lygis: <?php echo $level; ?> <button class="btn" id="changeGender">Keisti Lvl <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button></p> 
+                <div class="content-row">
+                    <p>Dalyvis: <?php echo $name; ?></p>
+                    <button class="btn change-button" data-target="name">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+                </div>
+                <div class="content-row">
+                    <p>Lytis: <?php echo $gender_super; ?></p>
+                    <button class="btn change-button" data-target="gender">Keisti Lytį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+                </div>
+                <div class="content-row">
+                    <p>Email: <?php echo $user_email; ?></p>
+                    <button class="btn change-button" data-target="email">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+                </div>
+                <div class="content-row">
+                    <p>Lygis: <?php echo $level; ?></p>
+                    <button class="btn change-button" data-target="level">Keisti Lygį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+                </div>
                 <p>Id: <?php echo $user_id; ?></p>
                 <p>Litai: <?php echo $points; ?></p>
-                <p>Litai snd: <?php echo $litai_sum_today; ?></p>
-                <p>Litai savai: <?php echo $litai_sum_week; ?></p>
-                <p>Litai menesio: <?php echo $litai_sum_month; ?></p>
+                <p>Litai šiandien: <?php echo $litai_sum_today; ?></p>
+                <p>Litai savaitės: <?php echo $litai_sum_week; ?></p>
+                <p>Litai mėnesio: <?php echo $litai_sum_month; ?></p>
             </div>
+
         </div>
         <div class="content content-response">
             <h1>Mano  Informacija</h1>

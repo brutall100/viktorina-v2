@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+
 *{
   box-sizing: border-box;
   padding: 0;
@@ -24,14 +25,6 @@ h1 {
 p {
   font-size: 16px;
   font-weight: normal;
-  font-family: "Helvetica Neue", sans-serif;
-  color: #555;
-  text-align: left;
-  line-height: 1.5;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  /* background-color: #f9f9f9; */
 }
 
 
@@ -75,29 +68,42 @@ body {
 
 /* Pagrindinis konteineris */
 .main-content {
-  border: 1px solid rgb(31, 30, 24);
   display: flex;
   justify-content: center;
+  align-items: center; /* Vertically center content */
+  min-height: 90vh; /* Ensure the container covers the full viewport height */
+  padding: 1.1em 0 1.5em 0;
+  margin: 0;
+  /* background-color: rgb(45, 18, 199); */
 }
 
 .content {
-  border: 1px solid khaki;
-  text-align: start;
-  padding: 5%;
-  margin: 0;
-  /* text-shadow: 2px 2px 2px #547f9a;
-  box-shadow: inset 2px 2px 4px #000, 2px 2px 4px #999; */
+  border: 3px solid khaki;
+  text-align: center;
+  margin: 0 2em;
+  padding: .4em;
   border-radius: 3px;
+  max-width: 100%;
+  overflow: auto;
+  scroll-behavior: smooth;
+  background-color: white; /* Set the background color for your content */
 }
+
+
 
 .content-p{
   border: 2px solid green;
   display: flex;
+  flex-direction: column;
   align-items: center; /* Align text and button vertically */
   margin: 5px 0; /* Add spacing between paragraphs */
 }
+
+.content-row{
+  margin: 0;
+}
 .content-p .btn {
-  margin-right: 10px; /* Add space to the right of the button */
+  margin-right: 20px; /* Add space to the right of the button */
 }
 
 
