@@ -58,6 +58,7 @@ mysqli_close($conn);
 
 <!DOCTYPE html>
 <html lang="lt">
+
 <head>
     <title>Mano info</title>
     <meta charset="UTF-8">
@@ -67,50 +68,75 @@ mysqli_close($conn);
     <link rel="stylesheet" type="text/css" href="i_myInfo.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <div class="header-wrapper">
         <?php include '../../Header/header.php'; ?>
     </div>
-    <div class="main-content">
-        <div class="content">
+
+    <div class="user-header">
+        <div class="user-header-btn">
+            <button class="btn change-button" data-target="name">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+        </div>
+        <div class="user-header-btn">
+            <button class="btn change-button" data-target="gender">Keisti Lytį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+        </div>        
+        <div class="user-header-btn">
+            <button class="btn change-button" data-target="email">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+        </div>
+        <div class="user-header-btn">
+            <button class="btn change-button" data-target="level">Keisti Lygį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+        </div>
+    </div>
+
+    <div class="conatainer">
+        <div class="content-user">
             <h1>Mano Informacija</h1>
             <div class="content-p">
                 <div class="content-row">
                     <p>Dalyvis: <?php echo $name; ?></p>
-                    <button class="btn change-button" data-target="name">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
                 </div>
                 <div class="content-row">
                     <p>Lytis: <?php echo $gender_super; ?></p>
-                    <button class="btn change-button" data-target="gender">Keisti Lytį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
                 </div>
                 <div class="content-row">
                     <p>Email: <?php echo $user_email; ?></p>
-                    <button class="btn change-button" data-target="email">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
                 </div>
                 <div class="content-row">
                     <p>Lygis: <?php echo $level; ?></p>
-                    <button class="btn change-button" data-target="level">Keisti Lygį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
                 </div>
-                <p>Id: <?php echo $user_id; ?></p>
-                <p>Litai: <?php echo $points; ?></p>
-                <p>Litai šiandien: <?php echo $litai_sum_today; ?></p>
-                <p>Litai savaitės: <?php echo $litai_sum_week; ?></p>
-                <p>Litai mėnesio: <?php echo $litai_sum_month; ?></p>
+                <div class="content-row">
+                    <p>Id: <?php echo $user_id; ?></p>
+                </div>
+                <div class="content-row">
+                    <p>Litai: <?php echo $points; ?></p>
+                </div>
+                <div class="content-row">
+                    <p>Litai šiandien: <?php echo $litai_sum_today; ?></p>
+                </div>
+                <div class="content-row">
+                    <p>Litai savaitės: <?php echo $litai_sum_week; ?></p>
+                </div>
+                <div class="content-row">
+                    <p>Litai mėnesio: <?php echo $litai_sum_month; ?></p>
+                </div>
             </div>
 
         </div>
+
         <div class="content content-response">
-            <h1>Mano  Informacija</h1>
+            <h1>Mano Informacija</h1>
             <div class="content-p">
-            <p></p>
-            <p></p>
-        </div>
+                <p></p>
+                <p></p>
+            </div>
         </div>
     </div>
     <div class="footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>
     </div>
 </body>
+
 </html>
 
 
