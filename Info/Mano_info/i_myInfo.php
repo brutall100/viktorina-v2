@@ -76,16 +76,16 @@ mysqli_close($conn);
 
     <div class="user-header">
         <div class="user-header-btn">
-            <button class="btn change-button" data-target="name">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+            <button class="btn" data-target="name">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
         </div>
         <div class="user-header-btn">
-            <button class="btn change-button" data-target="gender">Keisti Lytį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+            <button class="btn" data-target="gender">Keisti Lytį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
         </div>        
         <div class="user-header-btn">
-            <button class="btn change-button" data-target="email">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+            <button class="btn" data-target="email">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
         </div>
         <div class="user-header-btn">
-            <button class="btn change-button" data-target="level">Keisti Lygį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+            <button class="btn" data-target="level">Keisti Lygį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
         </div>
     </div>
 
@@ -94,44 +94,93 @@ mysqli_close($conn);
             <h1>Mano Informacija</h1>
             <div class="content-p">
                 <div class="content-row">
-                    <p>Dalyvis: <?php echo $name; ?></p>
+                    <p>
+                        <span class="first-span">Dalyvis:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $name; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
                 <div class="content-row">
-                    <p>Lytis: <?php echo $gender_super; ?></p>
+                    <p>
+                        <span class="first-span">Lytis:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $gender_super; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
                 <div class="content-row">
-                    <p>Email: <?php echo $user_email; ?></p>
+                    <p>
+                        <span class="first-span">Email:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $user_email; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
                 <div class="content-row">
-                    <p>Lygis: <?php echo $level; ?></p>
+                    <p>
+                        <span class="first-span">Lygis:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $level; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
                 <div class="content-row">
-                    <p>Id: <?php echo $user_id; ?></p>
+                    <p>
+                        <span class="first-span">Id:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $user_id; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
                 <div class="content-row">
-                    <p>Litai: <?php echo $points; ?></p>
+                    <p>
+                        <span class="first-span">Litai:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $points; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
                 <div class="content-row">
-                    <p>Litai šiandien: <?php echo $litai_sum_today; ?></p>
+                    <p>
+                        <span class="first-span">Litai šiandien:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $litai_sum_today; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
                 <div class="content-row">
-                    <p>Litai savaitės: <?php echo $litai_sum_week; ?></p>
+                    <p>
+                        <span class="first-span">Litai savaitės:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $litai_sum_week; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
                 <div class="content-row">
-                    <p>Litai mėnesio: <?php echo $litai_sum_month; ?></p>
+                    <p>
+                        <span class="first-span">Litai mėnesio:</span>
+                        <span class="middle-span"></span>
+                        <?php echo $litai_sum_month; ?>
+                        <span class="last-span"></span>
+                    </p>
                 </div>
             </div>
+
+
 
         </div>
 
-        <div class="content content-response">
-            <h1>Mano Informacija</h1>
-            <div class="content-p">
+        <div class="content-response">
+            <h1>Keitimo info</h1>
+            <div>
                 <p></p>
                 <p></p>
             </div>
+                
         </div>
     </div>
+
     <div class="footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>
     </div>
@@ -140,4 +189,4 @@ mysqli_close($conn);
 </html>
 
 
-<!-- KIek klausimu irases vartotojas, Kiek is ju patvirtinta, xxx -->
+<!-- KIek klausimu irases vartotojas, Kiek is ju patvirtinta, kokia vieta TOPe, xxx -->

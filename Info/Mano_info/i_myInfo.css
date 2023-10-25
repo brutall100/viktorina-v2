@@ -47,14 +47,14 @@ body::before {
   content: "";
   background-image: url(http://localhost/Viktorina.live/images/background/5073414.jpg);
   background-size: cover;
-  filter: blur(7px); /* Adjust the blur radius as needed */
-  filter: grayscale(70%); /* 100% grayscale means fully black and white */
+  filter: blur(7px); 
+  filter: grayscale(70%); 
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Place it below the content */
+  z-index: -1;
 }
 
 body {
@@ -70,7 +70,7 @@ body {
   display: flex;
   justify-content: center;
   position: sticky;
-  top: 64px;
+  /* top: 64px; */
   background-color: #ffffff1d; /* Add a background color to make it stand out if needed */
   z-index: 1; /* Add a z-index to control stacking with other elements */
 }
@@ -85,20 +85,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center; /* Vertically center content */
-  min-height: 90vh; /* Ensure the container covers the full viewport height */
+  min-height: 72vh; /* Ensure the container covers the full viewport height */
   padding: .8em 0 1.5em 0;
   margin: 0;
-  /* background-color: rgb(45, 18, 199); */
+  background-color: rgb(45, 18, 199);
 }
 
 .content-user {
   border: 3px solid khaki;
-  text-align: center;
+  /* text-align: center; */
   margin: 0 2em;
-  padding: .4em;
-  border-radius: 3px;
-  width: 30rem;
-  height: 60vh;
+  padding: 1em;
+  /* border-radius: 3px; */
+  /* width: 30rem; */
+  /* height: 60vh; */
   overflow: auto;
   scroll-behavior: smooth;
   background-color: white; /* Set the background color for your content */
@@ -110,28 +110,58 @@ body {
   border: 2px solid green;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Align text and button vertically */
-  margin: 5px 0; /* Add spacing between content rows */
+  /* align-items: center;  */
+  margin: 10px 3px;
+ 
 }
 
-.content-row {
+
+
+.content-row p {
   display: flex;
-  justify-content: start;
-  /* align-items: center;  */
-  /* margin: 10px 0;  */
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  overflow: hidden;
+  overflow: auto;
 }
+
+.first-span {
+  background-color: #5b0c0c; /* Color for the first span */
+  padding-left: 10px;
+}
+
+.middle-span {
+  background-color: #258265; /* Color for the middle (empty) span */
+}
+
+.last-span {
+  background-color: #1f315a; /* Color for the last span */
+  border: 1px dotted chocolate;
+  padding-right: 10px;
+  
+}
+
+
+
+
+
+
+
 
 .content-row p{
   border: 1px solid red;
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 600;
-  margin-right:0;
+  /* margin-right:20px; */
 }
 
-
-
-.change-button{
-  border: 1px solid #42161e;
+/* Cia turetu buti keitimo informacija */
+.content-response{
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  background-color: #a1bbc3;
 }
 
 
@@ -169,6 +199,9 @@ body {
   background-color: #fff;
   color: #1e392b;
   border: solid 1px #a1bbc3;
-  transform: translateY(-3px); /* Improved hover effect */
+  transform: translateY(-1px); 
 }
 
+.btn:active {
+  transform: scale(0.95); /* Reduce the size of the button when clicked */
+}
