@@ -92,13 +92,10 @@ body {
 }
 
 .content-user {
-  border: 3px solid khaki;
-  /* text-align: center; */
+  border: 1px solid rgba(240, 230, 140, 0.5);
   margin: 0 2em;
   padding: 1em;
-  /* border-radius: 3px; */
-  /* width: 30rem; */
-  /* height: 60vh; */
+  border-radius: 6px;
   overflow: auto;
   scroll-behavior: smooth;
   background-color: rgba(255, 255, 255, 0.299); /* Set the background color for your content */
@@ -107,7 +104,7 @@ body {
 
 
 .content-p {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   display: flex;
   flex-direction: column;
   padding: 2px;;
@@ -121,6 +118,7 @@ body {
   align-items: center;
   padding: 10px 0;
   overflow: hidden;
+  overflow: auto;
   font-size: 21px;
   font-weight: 600;
   background-color: #2E2E2E; /* Background color for the futuristic look */
@@ -128,11 +126,28 @@ body {
   border: 1px solid #00FFD1; /* Futuristic border with a color of your choice */
   border-radius: 10px; /* Rounded corners for a modern touch */
   box-shadow: 0 0 10px rgba(0, 255, 209, 0.5); /* Add a subtle glow effect */
-  transition: all 0.3s ease; /* Add a smooth transition effect */
+  transition: all 0.3s ease;
+  position: relative;
+  scrollbar-width: thin; /* Create a thin scrollbar (not supported in all browsers) */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.content-row p::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+}
+
+.content-row p::-webkit-scrollbar-thumb {
+  background: #00FFD1; /* Color of the thumb (draggable part) */
+  border-radius: 5px 5px 0 0; /* Rounded corners for the thumb */
+}
+
+.content-row p::-webkit-scrollbar-track {
+  background: #2E2E2E; /* Color of the track (background) */
 }
 
 .content-row p:hover {
-  transform: scale(1.02); /* Scale the element on hover for an interactive feel */
+  transform: scale(1.01); /* Scale the element on hover for an interactive feel */
   box-shadow: 0 0 20px rgba(0, 255, 209, 0.7); /* Enhance the glow effect on hover */
 }
 
@@ -143,7 +158,6 @@ body {
 }
 
 .middle-span {
-  background-color: #258265; 
   color: #e8d897;
 }
 
