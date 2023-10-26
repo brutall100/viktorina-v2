@@ -74,7 +74,7 @@ mysqli_close($conn);
         <?php include '../../Header/header.php'; ?>
     </div>
 
-    <div class="user-header">
+    <nav class="user-header">
         <div class="user-header-btn">
             <button class="btn" data-target="name">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
         </div>
@@ -87,7 +87,7 @@ mysqli_close($conn);
         <div class="user-header-btn">
             <button class="btn" data-target="level">Keisti Lygį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
         </div>
-    </div>
+    </nav>
 
     <div class="conatainer">
         <div class="content-user">
@@ -96,72 +96,63 @@ mysqli_close($conn);
                 <div class="content-row">
                     <p>
                         <span class="first-span">Dalyvis:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $name; ?>
+                        <span class="middle-span"><?php echo $name; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
                 <div class="content-row">
                     <p>
                         <span class="first-span">Lytis:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $gender_super; ?>
+                        <span class="middle-span"><?php echo $gender_super; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
                 <div class="content-row">
                     <p>
                         <span class="first-span">Email:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $user_email; ?>
+                        <span class="middle-span"><?php echo $user_email; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
                 <div class="content-row">
                     <p>
                         <span class="first-span">Lygis:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $level; ?>
+                        <span class="middle-span"><?php echo $level; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
                 <div class="content-row">
                     <p>
                         <span class="first-span">Id:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $user_id; ?>
+                        <span class="middle-span"><?php echo $user_id; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
                 <div class="content-row">
                     <p>
                         <span class="first-span">Litai:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $points; ?>
+                        <span class="middle-span"><?php echo $points; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
                 <div class="content-row">
                     <p>
                         <span class="first-span">Litai šiandien:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $litai_sum_today; ?>
+                        <span class="middle-span"><?php echo $litai_sum_today; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
                 <div class="content-row">
                     <p>
                         <span class="first-span">Litai savaitės:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $litai_sum_week; ?>
+                        <span class="middle-span"><?php echo $litai_sum_week; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
                 <div class="content-row">
                     <p>
                         <span class="first-span">Litai mėnesio:</span>
-                        <span class="middle-span"></span>
-                        <?php echo $litai_sum_month; ?>
+                        <span class="middle-span"><?php echo $litai_sum_month; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
