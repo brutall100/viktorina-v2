@@ -79,6 +79,18 @@ body {
   margin: 20px 16px; /* Add spacing between buttons */
 }
 
+.fa-regular.fa-user,
+.fa-solid.fa-person-half-dress,
+.fa-regular.fa-envelope,
+.fa-solid.fa-up-right-from-square {
+  font-size: 16px; 
+  margin-left: 10px;
+}
+
+
+
+
+
 
 /* Pagrindinis konteineris */
 .conatainer {
@@ -158,8 +170,13 @@ body {
 }
 
 .middle-span {
-  color: #e8d897;
+  color: #e8d897; /* Text color */
+  font-weight: 800; /* Adjust font weight for a bolder look */
+  text-transform: uppercase; /* Uppercase the text for a futuristic feel */
+  letter-spacing: 2px; /* Wider letter spacing for a spaced-out look */
+  text-shadow: 1px 1px 3px rgba(232, 217, 151, 0.6); /* Add a subtle text shadow */
 }
+
 
 .last-span {
   background-color: #1f315a; 

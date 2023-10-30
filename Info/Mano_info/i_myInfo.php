@@ -66,6 +66,7 @@ mysqli_close($conn);
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" type="text/css" href="i_myInfo.css">
+    <script src="https://kit.fontawesome.com/98ec1a4ef1.js" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
 </head>
 
@@ -76,16 +77,16 @@ mysqli_close($conn);
 
     <nav class="user-header">
         <div class="user-header-btn">
-            <button class="btn" data-target="name">Keisti Vardą <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+            <button class="btn" data-target="name">Keisti Vardą <i class="fa-regular fa-user"></i></button>
         </div>
         <div class="user-header-btn">
-            <button class="btn" data-target="gender">Keisti Lytį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+            <button class="btn" data-target="gender">Keisti Lytį <i class="fa-solid fa-person-half-dress"></i></button>
         </div>        
         <div class="user-header-btn">
-            <button class="btn" data-target="email">Keisti email <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+            <button class="btn" data-target="email">Keisti Email <i class="fa-regular fa-envelope"></i></button>
         </div>
         <div class="user-header-btn">
-            <button class="btn" data-target="level">Keisti Lygį <img src="https://www.htmlcssbuttongenerator.com/iconExample-gear-thin.svg"></button>
+            <button class="btn" data-target="level">Keisti Lygį <i class="fa-solid fa-up-right-from-square"></i></button>
         </div>
     </nav>
 
