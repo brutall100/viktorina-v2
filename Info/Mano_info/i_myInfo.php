@@ -67,7 +67,6 @@ mysqli_close($conn);
     <meta name="keywords" content="">
     <link rel="stylesheet" type="text/css" href="i_myInfo.css">
     <script src="https://kit.fontawesome.com/98ec1a4ef1.js" crossorigin="anonymous"></script>
-    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -168,17 +167,16 @@ mysqli_close($conn);
             <div>
                 <p></p>
                 <p></p>
-            </div>
-                
+            </div>  
         </div>
     </div>
 
     <div class="footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>
     </div>
+    <script type="text/javascript" src="http://localhost/Viktorina.live/Info/Mano_info/i_myInfo.js"></script>
 </body>
 
 </html>
-
 
 <!-- KIek klausimu irases vartotojas, Kiek is ju patvirtinta, kokia vieta TOPe, xxx -->
