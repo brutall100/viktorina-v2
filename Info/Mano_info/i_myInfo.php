@@ -174,6 +174,16 @@ mysqli_close($conn);
     <div class="footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>
     </div>
+
+    <script>
+        var userName = <?php echo json_encode($name); ?>;
+        var userGender = <?php echo json_encode($gender_super); ?>;
+        var userEmail = <?php echo json_encode($user_email); ?>;
+        var userLevel = <?php echo json_encode($level); ?>;
+    </script>
+
+
+
     <script type="text/javascript" src="http://localhost/Viktorina.live/Info/Mano_info/i_myInfo.js"></script>
 </body>
 
