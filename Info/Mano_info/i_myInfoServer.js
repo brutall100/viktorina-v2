@@ -35,13 +35,21 @@ app.post("/updateName", async (req, res) => {
       if (userRows.length === 0) {
         res.status(400).json({ message: "Vartotojas su seno vardo, ID ir litai nerastas" });
       } else {
-        // Update the name if the user with the old name, userId, and userLitai exists
-        const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ? WHERE user_id = ? AND litai_sum = ?", [newName, userId, userLitai]);
+        // Check if the new name contains disallowed words from the same database
+        const [badWordsRows] = await connection.execute("SELECT * FROM bad_words WHERE curse_words = ?", [newName]);
 
-        if (updateRows.affectedRows > 0) {
-          res.json({ message: `Jūsų naujasis vardas ${newName}` });
+        if (badWordsRows.length > 0) {
+          console.log(`Warning: User name '${newName}' contains disallowed words`);
+          res.status(400).json({ message: "Vartotojo vardas negali turėti šių žodžių" });
         } else {
-          res.status(400).json({ message: "Nepavyko atnaujinti vardo" });
+          // Update the name if the user with the old name, userId, and userLitai exists
+          const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ? WHERE user_id = ? AND litai_sum = ?", [newName, userId, userLitai]);
+
+          if (updateRows.affectedRows > 0) {
+            res.json({ message: `Jūsų naujasis vardas ${newName}` });
+          } else {
+            res.status(400).json({ message: "Nepavyko atnaujinti vardo" });
+          }
         }
       }
     }
@@ -52,6 +60,7 @@ app.post("/updateName", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
 
 
 
