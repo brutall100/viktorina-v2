@@ -22,19 +22,27 @@ app.post("/updateName", async (req, res) => {
   try {
     const connection = await db.getConnection();
 
-    // Check if the user with the old name exists
-    const [userRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ?", [userName]);
+    // Check if the user with the new name already exists
+    const [duplicateRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ?", [newName]);
 
-    if (userRows.length === 0) {
-      res.status(400).json({ message: "Vartotojas su seno vardo nerastas" });
+    if (duplicateRows.length > 0) {
+      console.log(`Warning: User with name '${newName}' already exists`);
+      res.status(400).json({ message: "Vartotojas su šiuo vardu jau egzistuoja" });
     } else {
-      // Update the name if the user with the old name exists
-      const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ? WHERE user_id = ? AND litai_sum = ?", [newName, userId, userLitai]);
+      // Check if the user with the old name, userId, and userLitai exists
+      const [userRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ? AND user_id = ? AND litai_sum = ?", [userName, userId, userLitai]);
 
-      if (updateRows.affectedRows > 0) {
-        res.json({ message: `Jūsų naujasis vardas ${newName}` });
+      if (userRows.length === 0) {
+        res.status(400).json({ message: "Vartotojas su seno vardo, ID ir litai nerastas" });
       } else {
-        res.status(400).json({ message: "Nepavyko atnaujinti vardo" });
+        // Update the name if the user with the old name, userId, and userLitai exists
+        const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ? WHERE user_id = ? AND litai_sum = ?", [newName, userId, userLitai]);
+
+        if (updateRows.affectedRows > 0) {
+          res.json({ message: `Jūsų naujasis vardas ${newName}` });
+        } else {
+          res.status(400).json({ message: "Nepavyko atnaujinti vardo" });
+        }
       }
     }
 
@@ -44,6 +52,8 @@ app.post("/updateName", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+
 
 const PORT = 4006;
 app.listen(PORT, () => {
@@ -57,3 +67,4 @@ app.listen(PORT, () => {
 
 // Pasizet ar toks vardas jau egzistuoja, jei yra atmesti pakeitimus ir nenuimti litu, jei nera galima keisti ir patikrinti bad words database kad vardas butu atitinkamas.
 // padaryti laiko tarpa po pirmo keitimo kada galima bus vel pasikeisti varda using npm moment gal menesis prideti ar atimti 1 raide pakeisti 3 raides, kad nickas per smarkei nepasikeistu
+// vardo keitimas 100 000 plius laikas 1 men ir raidziu restriction
