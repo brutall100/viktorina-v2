@@ -7,10 +7,12 @@ const paragraph2 = document.querySelector(".content-response p:nth-of-type(2)")
 const contentResponseDiv = document.querySelector(".content-response")
 
 // You can access the variables defined in the <script> tag in your HTML here
-console.log(userName) 
-console.log(userGender) 
-console.log(userEmail) 
-console.log(userLevel) 
+console.log(userName)
+console.log(userId)
+console.log(userLitai)
+console.log(userGender)
+console.log(userEmail)
+console.log(userLevel)
 
 // Function to create a button element
 function createButton(label, onClickHandler) {
@@ -41,7 +43,30 @@ function createNewButton(buttonLabel, buttonAction) {
 nameButton.addEventListener("click", () => {
   updateContent("Keisti vardą", "Additional name info")
   createNewButton("New Name Button", () => {
-    alert(`New Name Button clicked! ${userName}`);
+    const newName = prompt(`Enter new name: ${userName}`)
+    if (newName !== null) {
+      const data = {
+        newName: newName,
+        userName: userName,
+        userId: userId,
+        userLitai: userLitai
+      }
+
+      fetch("http://localhost:4006/updateName", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          alert(data.message)
+        })
+        .catch((error) => {
+          console.error("Error updating name:", error)
+        })
+    }
   })
 })
 
@@ -65,3 +90,5 @@ levelButton.addEventListener("click", () => {
     alert(`New Level Button clicked! ${userName}`)
   })
 })
+
+// Vardo, levelio, lyties, ketimas turetu buti mokamas. LITAIS  bet jeigu ju neturi tai galima isigyti uz eurus.

@@ -177,6 +177,8 @@ mysqli_close($conn);
 
     <script>
         var userName = <?php echo json_encode($name); ?>;
+        var userId = <?php echo json_encode($user_id); ?>;
+        var userLitai = <?php echo json_encode($points); ?>;
         var userGender = <?php echo json_encode($gender_super); ?>;
         var userEmail = <?php echo json_encode($user_email); ?>;
         var userLevel = <?php echo json_encode($level); ?>;

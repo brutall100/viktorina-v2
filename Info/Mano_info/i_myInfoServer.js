@@ -1,22 +1,28 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+const express = require("express")
+const app = express()
+const bodyParser = require("body-parser")
+const cors = require("cors")
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
+app.use(cors())
 
-// Define an API endpoint for updating the name
-app.post('/update-name', (req, res) => {
-  const newName = req.body.newName; // Assuming the client sends the new name in the request body
+app.post("/updateName", (req, res) => {
+  const { newName, userName, userId, userLitai } = req.body
 
-  // Perform the database update here (e.g., using a database library)
-  // Replace the following with your actual database update code
-  // db.updateName(newName);
+  console.log(`Received data: newName=${newName}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
 
-  // Send a response to confirm the update
-  res.json({ message: 'Name updated successfully' });
-});
+  // Simulate an update in the database (replace this with your actual database logic)
+  // ...
 
-const PORT = 4006;
+  res.json({ message: "Name updated successfully" })
+})
+
+const PORT = 4006
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
+  console.log(`Server is listening on port ${PORT}`)
+})
+
+//  C:\xampp\htdocs\aldas\Viktorina.live> cd Info
+//  C:\xampp\htdocs\aldas\Viktorina.live\Info> cd Mano_info
+
+//  C:\xampp\htdocs\aldas\Viktorina.live\Info\Mano_info> node i_myInfoServer.js
