@@ -32,18 +32,15 @@ app.post("/updateName", async (req, res) => {
       // Check if the user with the old name, userId, and userLitai exists
       const [userRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ? AND user_id = ? AND litai_sum = ?", [userName, userId, userLitai])
 
-      if (userRows.length === 0) {
-        res.status(400).json({ message: "Vartotojas su seno vardo, ID ir litai nerastas" })
-      } else {
+      if ((newName.length === userName.length + 1 || newName.length === userName.length - 1) && (newName.startsWith(userName.slice(0, -1)) || newName.startsWith(userName + " "))) {
         // Check if the new name contains disallowed words from the same database
         const [badWordsRows] = await connection.execute("SELECT * FROM bad_words WHERE ? LIKE CONCAT('%', curse_words, '%')", [newName])
 
         if (badWordsRows.length > 0) {
-          const disallowedWord = badWordsRows[0].curse_words // Assuming only one disallowed word for simplicity
+          const disallowedWord = badWordsRows[0].curse_words
           console.log(`Warning: User name '${newName}' contains disallowed word '${disallowedWord}'`)
           res.status(400).json({ message: `Vartotojo vardas negali turėti neleistino žodžio: ${disallowedWord}` })
         } else {
-          // Update the name if the user with the old name, userId, and userLitai exists
           const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ? WHERE user_id = ? AND litai_sum = ?", [newName, userId, userLitai])
 
           if (updateRows.affectedRows > 0) {
@@ -52,6 +49,8 @@ app.post("/updateName", async (req, res) => {
             res.status(400).json({ message: "Nepavyko atnaujinti vardo" })
           }
         }
+      } else {
+        res.status(400).json({ message: "Naujas vardas turi būti tik vieno simbolio pailginimas arba sutrumpinimas senojo vardo" })
       }
     }
 
