@@ -5,7 +5,7 @@ Ten sudeti reikalingas nuorodas is kur panaudoti backroundai kaip PVZ: <a href="
 
 
 <!-- 1 uzduotis -->
-<!-- -->
+<!-- Pakeitus varda ir atsijungiant, meta klaida del vartotojo neegzistavimo. Reikia taisyti-->
 
 <!-- 2 -->
 <!-- Main question and answer has to asynchrounus and dont reload entire page -->
