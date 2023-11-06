@@ -28,6 +28,8 @@ app.post("/updateName", async (req, res) => {
     if (duplicateRows.length > 0) {
       console.log(`Warning: User with name '${newName}' already exists`)
       res.status(400).json({ message: "Vartotojas su šiuo vardu jau egzistuoja" })
+    } else if (newName.length > 15) {
+      res.status(400).json({ message: "Vartotojo vardas per ilgas. Maksimalus ilgis: 15 simbolių" })
     } else {
       // Check if the user with the old name, userId, and userLitai exists
       const [userRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ? AND user_id = ? AND litai_sum = ?", [userName, userId, userLitai])
