@@ -91,4 +91,23 @@ levelButton.addEventListener("click", () => {
   })
 })
 
-// Vardo, levelio, lyties, ketimas turetu buti mokamas. LITAIS  bet jeigu ju neturi tai galima isigyti uz eurus.
+// Vardo, levelio, lyties, ketimas turetu buti mokamas. LITAIS  
+//  Tvarkyti paragrapha 
+
+// Vartotojo vardai negali turėti keturių iš eilės vienodų simbolių.
+// Pavyzdys: "VVVVardas" yra nepriimtinas dėl keturių iš eilės 'V' simbolių.
+
+// Vartotojo vardai negali viršyti 15 simbolių ilgio.
+// Pavyzdys: "aaaaaaaaaaaaaaaaaaaaaaaaa" per ilgas.
+
+// Vartotojo vardai neturi turėti draudžiamų žodžių.
+// Pavyzdys: "Vardas blet" turi draudžiamą žodį "blet".
+
+// Vartotojo vardai turi būti unikalūs, ir vardo, kuris jau egzistuoja, negalima naudoti.
+// Pavyzdys: "Vardas" yra nepriimtinas, nes vartotojas su tokiu vardu jau egzistuoja.
+
+// Vartotojo vardo keitimas kainuoja 10 000 litų. Jums turi būti pakankamai litų sąskaitoje norint tęsti.
+
+// Kai pateikiate tinkamą vartotojo vardą ir jis sėkmingai atnaujinamas, gausite patvirtinimo pranešimą.
+
+// Pavyzdys: "Aldas" buvo sėkmingai atnaujintas į "Aldas."

@@ -35,14 +35,17 @@ app.post("/updateName", async (req, res) => {
       console.log(`Warning: User with name '${newName}' already exists`)
       res.status(400).json({ message: "Vartotojas su šiuo vardu jau egzistuoja" })
     } else if (newName.length > 15) {
+      console.log(`Warning: User name '${newName}' is too long`)
       res.status(400).json({ message: "Vartotojo vardas per ilgas. Maksimalus ilgis: 15 simbolių" })
     } else if (hasFourConsecutiveIdenticalLetters(newName)) {
+      console.log(`Warning: User name '${newName}' contains four consecutive identical letters`)
       res.status(400).json({ message: "Vartotojo vardas negali turėti keturis iš eilės vienodus simbolius" })
     } else {
       // Check if the user with the old name, userId, and userLitai exists
       const [userRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ? AND user_id = ? AND litai_sum = ?", [userName, userId, userLitai])
 
       if (userRows.length === 0) {
+        console.log(`Warning: User with old name '${userName}', user ID '${userId}', and litai '${userLitai}' not found`)
         res.status(400).json({ message: "Vartotojas su seno vardo, ID ir litai nerastas" })
       } else {
         // Check if the new name contains disallowed words from the same database
@@ -61,11 +64,14 @@ app.post("/updateName", async (req, res) => {
             const [subtractRows] = await connection.execute("UPDATE super_users SET litai_sum = litai_sum - 10000 WHERE user_id = ?", [userId])
 
             if (subtractRows.affectedRows > 0) {
+              console.log(`User name updated successfully to '${newName}'`)
               res.json({ message: `Jūsų naujasis vardas ${newName}` })
             } else {
+              console.log("Error subtracting 10,000 from litai_sum")
               res.status(400).json({ message: "Nepavyko atnaujinti vardo" })
             }
           } else {
+            console.log("Error updating user name")
             res.status(400).json({ message: "Nepavyko atnaujinti vardo" })
           }
         }
