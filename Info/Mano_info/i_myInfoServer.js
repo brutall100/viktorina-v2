@@ -19,6 +19,12 @@ app.post("/updateName", async (req, res) => {
 
   console.log(`Received data: newName=${newName}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
 
+  // Function to check if the new name contains four consecutive identical letters
+  function hasFourConsecutiveIdenticalLetters(name) {
+    const regex = /(.)\1{3}/
+    return regex.test(name)
+  }
+
   try {
     const connection = await db.getConnection()
 
@@ -30,6 +36,8 @@ app.post("/updateName", async (req, res) => {
       res.status(400).json({ message: "Vartotojas su šiuo vardu jau egzistuoja" })
     } else if (newName.length > 15) {
       res.status(400).json({ message: "Vartotojo vardas per ilgas. Maksimalus ilgis: 15 simbolių" })
+    } else if (hasFourConsecutiveIdenticalLetters(newName)) {
+      res.status(400).json({ message: "Vartotojo vardas negali turėti keturis iš eilės vienodus simbolius" })
     } else {
       // Check if the user with the old name, userId, and userLitai exists
       const [userRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ? AND user_id = ? AND litai_sum = ?", [userName, userId, userLitai])
