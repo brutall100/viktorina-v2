@@ -1,0 +1,44 @@
+{
+  "apps": [
+    {
+      "name": "server",
+      "script": "server.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
+    },
+    {
+      "name": "myInfoServer",
+      "script": "i_myInfoServer.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/info/Mano_info"
+    },
+    {
+      "name": "dServer",
+      "script": "d_server.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
+    },
+    {
+      "name": "gameServer",
+      "script": "./Games/playGame.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Games/playGame.js"
+    },
+    {
+      "name": "game3Server",
+      "script": "./Games/game3server.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Games/game3server.js"
+    },
+    {
+      "name": "aPointsServer",
+      "script": "a_points.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
+    },
+    {
+      "name": "aChatServer",
+      "script": "a_chat_server.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
+    },
+    {
+      "name": "messageCounter",
+      "script": "messageCounter.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
+    }
+  ]
+}

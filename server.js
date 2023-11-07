@@ -245,7 +245,7 @@ app.listen(PORT, () => {
 // C:\xampp\htdocs\aldas\Viktorina.live> node server.js
 
 
-// Start a Node.js Script: pm2 start server.js messageCounter.js
+// Start a Node.js Script: pm2 start startServers.pm2.json
 // List Running Processes: pm2 list
 // View Logs for a Process: pm2 logs
 // Monitor CPU/Memory Usage: pm2 monit
