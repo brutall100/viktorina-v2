@@ -1,7 +1,10 @@
 const http = require("http")
 const url = require("url")
 const mysql = require("mysql2/promise")
-require("dotenv").config()
+console.log(process.cwd()) // parodo kurioje vietoje ieskomas .env failas
+console.log(__dirname) 
+const path = require("path")
+require("dotenv").config({ path: path.join(__dirname, "../.env") })
 
 const server = http.createServer(async (req, res) => {
   const parsedUrl = url.parse(req.url, true)

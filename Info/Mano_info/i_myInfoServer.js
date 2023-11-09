@@ -3,12 +3,15 @@ const app = express()
 const bodyParser = require("body-parser")
 const mysql = require("mysql2/promise")
 const cors = require("cors")
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+
 
 const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "viktorina"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
 })
 
 app.use(bodyParser.json())
@@ -19,7 +22,7 @@ app.post("/updateName", async (req, res) => {
 
   console.log(`Received data: newName=${newName}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
 
-  // Function to check if the new name contains four consecutive identical letters
+  // Funkcija tikrina 3 iš eilės raidžių egzistavimą.
   function hasFourConsecutiveIdenticalLetters(name) {
     const regex = /(.)\1{3}/
     return regex.test(name)
@@ -85,7 +88,7 @@ app.post("/updateName", async (req, res) => {
   }
 })
 
-const PORT = 4006
+const PORT = process.env.PORT6
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`)
 })

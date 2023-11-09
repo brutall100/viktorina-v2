@@ -1,42 +1,42 @@
 {
   "apps": [
     {
-      "name": "server",
+      "name": "Main server",
       "script": "server.js",
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
     },
     {
-      "name": "myInfoServer",
+      "name": "my Info Server",
       "script": "i_myInfoServer.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/info/Mano_info"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Info/Mano_info"
     },
     {
-      "name": "dServer",
+      "name": "Register Server",
       "script": "d_server.js",
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
     },
     {
-      "name": "gameServer",
-      "script": "./Games/playGame.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Games/playGame.js"
+      "name": "Games Server",
+      "script": "playGame.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Games"
     },
     {
-      "name": "game3Server",
-      "script": "./Games/game3server.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Games/game3server.js"
+      "name": "Game Nr3 Server",
+      "script": "game3server.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Games"
     },
     {
-      "name": "aPointsServer",
+      "name": "Points Update Server",
       "script": "a_points.js",
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
     },
     {
-      "name": "aChatServer",
+      "name": "Chat Server",
       "script": "a_chat_server.js",
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
     },
     {
-      "name": "messageCounter",
+      "name": "message Counter",
       "script": "messageCounter.js",
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live"
     }

@@ -1,7 +1,10 @@
 const express = require("express")
 const mysql = require("mysql")
 const rateLimit = require("express-rate-limit")
-require("dotenv").config()
+console.log(process.cwd()) // parodo kurioje vietoje ieskomas .env failas
+console.log(__dirname) 
+const path = require("path")
+require("dotenv").config({ path: path.join(__dirname, "../.env") })
 
 const app = express()
 
@@ -40,7 +43,7 @@ app.get("/game3_server", (req, res) => {
 })
 
 
-const PORT = process.env.PORT3
+const PORT = process.env.PORT3 
 app.listen(PORT, () => {
   console.log(`Serveris prisijunges on http://localhost:${PORT}`)
 })
