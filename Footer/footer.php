@@ -45,7 +45,7 @@
     </dialog>
 
   </body>
-  <script src="http://localhost/Viktorina.live/Footer/footer.js"></script>
+  <script src=" Footer/footer.js"></script>
 </html>
 
 

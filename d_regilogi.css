@@ -24,7 +24,7 @@ p {
 /* Body styles */
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg");
-  background-image: url("http://localhost/Viktorina.live/images/background/cover5.jpg");
+  background-image: url(" images/background/cover5.jpg");
   height: 90vh;
   padding-top: 5%;
   background-size: cover;

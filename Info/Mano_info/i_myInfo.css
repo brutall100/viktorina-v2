@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap");
 
-*{
+* {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -27,7 +27,6 @@ p {
   font-weight: normal;
 }
 
-
 /* Header */
 .header-wrapper {
   position: sticky;
@@ -45,10 +44,10 @@ p {
 /* Body */
 body::before {
   content: "";
-  background-image: url(http://localhost/Viktorina.live/images/background/5073414.jpg);
+  background-image: url(images/background/5073414.jpg);
   background-size: cover;
-  filter: blur(7px); 
-  filter: grayscale(70%); 
+  filter: blur(7px);
+  filter: grayscale(70%);
   position: fixed;
   top: 0;
   left: 0;
@@ -83,22 +82,17 @@ body {
 .fa-solid.fa-person-half-dress,
 .fa-regular.fa-envelope,
 .fa-solid.fa-up-right-from-square {
-  font-size: 16px; 
+  font-size: 16px;
   margin-left: 10px;
 }
-
-
-
-
-
 
 /* Pagrindinis konteineris */
 .conatainer {
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   min-height: 72vh; /* Ensure the container covers the full viewport height */
-  padding: .8em 0 1.5em 0;
+  padding: 0.8em 0 1.5em 0;
   margin: 0;
   /* background-color: rgb(45, 18, 199); */
 }
@@ -113,15 +107,12 @@ body {
   background-color: rgba(255, 255, 255, 0.299); /* Set the background color for your content */
 }
 
-
-
 .content-p {
   /* border: 2px solid green; */
   display: flex;
   flex-direction: column;
-  padding: 2px;;
+  padding: 2px;
   margin: 10px 3px;
- 
 }
 
 .content-row p {
@@ -133,9 +124,9 @@ body {
   overflow: auto;
   font-size: 21px;
   font-weight: 600;
-  background-color: #2E2E2E; /* Background color for the futuristic look */
-  color: #00FFD1; /* Text color */
-  border: 1px solid #00FFD1; /* Futuristic border with a color of your choice */
+  background-color: #2e2e2e; /* Background color for the futuristic look */
+  color: #00ffd1; /* Text color */
+  border: 1px solid #00ffd1; /* Futuristic border with a color of your choice */
   border-radius: 10px; /* Rounded corners for a modern touch */
   box-shadow: 0 0 10px rgba(0, 255, 209, 0.5); /* Add a subtle glow effect */
   transition: all 0.3s ease;
@@ -150,12 +141,12 @@ body {
 }
 
 .content-row p::-webkit-scrollbar-thumb {
-  background: #00FFD1; /* Color of the thumb (draggable part) */
+  background: #00ffd1; /* Color of the thumb (draggable part) */
   border-radius: 5px 5px 0 0; /* Rounded corners for the thumb */
 }
 
 .content-row p::-webkit-scrollbar-track {
-  background: #2E2E2E; /* Color of the track (background) */
+  background: #2e2e2e; /* Color of the track (background) */
 }
 
 .content-row p:hover {
@@ -163,9 +154,8 @@ body {
   box-shadow: 0 0 20px rgba(0, 255, 209, 0.7); /* Enhance the glow effect on hover */
 }
 
-
 .first-span {
-  background-color: #1815151f; 
+  background-color: #1815151f;
   padding-left: 10px;
 }
 
@@ -177,29 +167,17 @@ body {
   text-shadow: 1px 1px 3px rgba(232, 217, 151, 0.6); /* Add a subtle text shadow */
 }
 
-
 .last-span {
-  background-color: #1f315a; 
+  background-color: #1f315a;
 }
 
-
-
-
-
-
-
-
-
-
 /* Cia turetu buti keitimo informacija */
-.content-response{
+.content-response {
   border-radius: 0 0 1rem 1rem;
   width: 300px;
   height: 300px;
   background-color: #a6cbd6;
 }
-
-
 
 /* Button styles */
 .btn {
@@ -214,7 +192,7 @@ body {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6), 0px 0px 5px rgba(255, 255, 255, 1), 0px 1px 0px 3px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(255, 255, 255, 1);
   color: #574317;
   font-size: 16px;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   font-weight: 900;
   font-style: normal;
   width: 10em;
@@ -234,7 +212,7 @@ body {
   background-color: #fff;
   color: #1e392b;
   border: solid 1px #a1bbc3;
-  transform: translateY(-1px); 
+  transform: translateY(-1px);
 }
 
 .btn:active {

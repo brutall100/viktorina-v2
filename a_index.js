@@ -78,17 +78,11 @@ function fetchNewestOldQuestionData() {
       const newDataDiv = document.getElementById("old-question")
       const maxOldDataCount = calculateMaxOldDataCount(userLeveli)
 
-
-
       if (oldData && oldData.length > 0) {
-  
         const slicedOldData = oldData.slice(0, maxOldDataCount)
-
-      
 
         let newDataHTML = "<ul class='question-list'>"
         slicedOldData.forEach((item) => {
-          
           const timestamp = new Date(item.timestamp) // Format the timestamp to hours and minutes with leading zeros
           const hours = timestamp.getHours().toString().padStart(2, "0") // Ensure two digits
           const minutes = timestamp.getMinutes().toString().padStart(2, "0") // Ensure two digits
@@ -165,25 +159,25 @@ const generateAndDisplayRandomPoint = async (lita) => {
   const litaiImg = document.getElementById("litai-img")
   if (lita === 1) {
     litoVerte = "Litas"
-    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/1Lt.png"
+    imageSrc = " images/ImgLitai/1Lt.png"
   } else if (lita === 2) {
     litoVerte = "Litai"
-    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/1Lt.png"
+    imageSrc = " images/ImgLitai/1Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai1")
-    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/1Lt.png"
+    imageSrc = " images/ImgLitai/1Lt.png"
   } else if (lita === 3) {
     litoVerte = "Litai"
-    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/1Lt.png"
+    imageSrc = " images/ImgLitai/1Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai")
-    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/2Lt.png"
+    imageSrc = " images/ImgLitai/2Lt.png"
   } else if (lita === 4) {
     litoVerte = "Litai"
-    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/2Lt.png"
+    imageSrc = " images/ImgLitai/2Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai")
-    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/2Lt.png"
+    imageSrc = " images/ImgLitai/2Lt.png"
   } else if (lita === 5) {
     litoVerte = "Litai"
-    imageSrc = "http://localhost/Viktorina.live/images/ImgLitai/5Lt.png"
+    imageSrc = " images/ImgLitai/5Lt.png"
   } else {
     litoVerte = ""
     imageSrc = ""
@@ -209,15 +203,15 @@ function generateBonusPoints(bonusLita) {
     pointsElement.innerText = ` + Bonus: ${bonusLita}`
     let images = ""
     if (bonusLita === 10 || bonusLita === 20 || bonusLita === 50) {
-      images += `<img src="http://localhost/Viktorina.live/images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`
+      images += `<img src=" images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`
     } else if (bonusLita === 30) {
       {
-        images += `<img src="http://localhost/Viktorina.live/images/ImgLitai/10Lt.png" alt="Dešimt litų">`
-        images += `<img src="http://localhost/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
+        images += `<img src=" images/ImgLitai/10Lt.png" alt="Dešimt litų">`
+        images += `<img src=" images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
       }
     } else if (bonusLita === 40) {
       for (let i = 0; i < 2; i++) {
-        images += `<img src="http://localhost/Viktorina.live/images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
+        images += `<img src=" images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
       }
     }
     imageElement.innerHTML = images
@@ -399,12 +393,12 @@ function playGame() {
   }
 
   if (gameNo === GAME_A) {
-    const gameWindow1 = window.open(`http://localhost/Viktorina.live/Games/game1.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
+    const gameWindow1 = window.open(` Games/game1.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
   } else if (gameNo === GAME_B) {
-    const gameWindow2 = window.open(`http://localhost/Viktorina.live/Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
+    const gameWindow2 = window.open(` Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
   } else if (gameNo === GAME_C) {
     const gameWindow3 = window.open(
-      `http://localhost/Viktorina.live/Games/game3.php?name=${userData.name}`,
+      ` Games/game3.php?name=${userData.name}`,
       "_blank",
       `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`
     )
@@ -463,5 +457,5 @@ document.getElementById("today-top-btn").addEventListener("click", function () {
 })
 
 function redirectToLogin() {
-  window.location.href = "http://localhost/Viktorina.live/d_regilogi.php"
+  window.location.href = " d_regilogi.php"
 }

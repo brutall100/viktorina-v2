@@ -108,7 +108,7 @@ WHERE
   // Destroy session and clear variables after 12 seconds
   session_unset();  
   session_destroy();
-  // header('Refresh: 12; URL=http://localhost/Viktorina.live/d_regilogi.php');
+  // header('Refresh: 12; URL= d_regilogi.php');
 
 
   // Retrieve statistics
@@ -245,7 +245,7 @@ WHERE
     document.getElementById('countdown').textContent = seconds;
     if (seconds <= 0) {
       clearInterval(countdown);
-      window.location.href = 'http://localhost/Viktorina.live/d_regilogi.php';
+      window.location.href = ' d_regilogi.php';
     }
   }
 

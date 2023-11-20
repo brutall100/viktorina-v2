@@ -14,7 +14,7 @@ $user_id = $_SESSION['user_id'] ?? "";
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="300">
-  <link rel="stylesheet" type="text/css" href="http://localhost/Viktorina.live/c_questionwaiting.css">
+  <link rel="stylesheet" type="text/css" href=" c_questionwaiting.css">
 </head>
 <body>
 <div class="header-wrapper">
@@ -129,7 +129,7 @@ document.querySelectorAll('.downvote').forEach(function(button) {
   $(function() {
     $("#btn-perkelti-klausimus").click(function() {
       $.ajax({
-        url: "http://localhost/Viktorina.live/transferData.php",
+        url: " transferData.php",
         method: "post",
         success: function(response) {
           console.log(response);

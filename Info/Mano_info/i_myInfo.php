@@ -186,7 +186,7 @@ mysqli_close($conn);
 
 
 
-    <script type="text/javascript" src="http://localhost/Viktorina.live/Info/Mano_info/i_myInfo.js"></script>
+    <script type="text/javascript" src=" Info/Mano_info/i_myInfo.js"></script>
 </body>
 
 </html>

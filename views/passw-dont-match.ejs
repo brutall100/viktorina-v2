@@ -35,40 +35,45 @@
       }
 
       #seconds {
-        color: #5c2f2d;      
+        color: #5c2f2d;
       }
     </style>
   </head>
   <body>
     <div id="errorMessage">
-        <p>Ojojoi 😄❌🙈 Atrodo, kad jūsų slaptažodžiai nesutampa. Jie turėtų sutapti. <span class="smiley">🙂</span></p>
-        <p>Kadangi įvedėte skirtingus slaptažodžius, jus busite nukreiptas į prisijungimo puslapį ir reikės atlikti slaptažodžio priminimo veiksmus iš naujo.</p>
-        <p id="countdown">Perkėlimas po <span id="seconds">8</span> sekundžių.</p>
+      <p>
+        Ojojoi 😄❌🙈 Atrodo, kad jūsų slaptažodžiai nesutampa. Jie turėtų sutapti.
+        <span class="smiley">🙂</span>
+      </p>
+      <p>Kadangi įvedėte skirtingus slaptažodžius, jus busite nukreiptas į prisijungimo puslapį ir reikės atlikti slaptažodžio priminimo veiksmus iš naujo.</p>
+      <p id="countdown">
+        Perkėlimas po
+        <span id="seconds">8</span>
+        sekundžių.
+      </p>
     </div>
 
     <script>
-        window.onload = function() {
-          const errorMessageDiv = document.getElementById("errorMessage");
-          errorMessageDiv.style.display = "block";
+      window.onload = function () {
+        const errorMessageDiv = document.getElementById("errorMessage")
+        errorMessageDiv.style.display = "block"
 
-          let secondsLeft = 8;
-          const countdownElement = document.getElementById("seconds");
+        let secondsLeft = 8
+        const countdownElement = document.getElementById("seconds")
 
-          function updateCountdown() {
-            countdownElement.textContent = secondsLeft;
-            secondsLeft--;
+        function updateCountdown() {
+          countdownElement.textContent = secondsLeft
+          secondsLeft--
 
-            if (secondsLeft < 0) {
-              window.location.href = "http://localhost/Viktorina.live/d_regilogi.php";
-            } else {
-              setTimeout(updateCountdown, 1000);
-            }
+          if (secondsLeft < 0) {
+            window.location.href = " d_regilogi.php"
+          } else {
+            setTimeout(updateCountdown, 1000)
           }
+        }
 
-          updateCountdown();
-        };
-      </script>
+        updateCountdown()
+      }
+    </script>
   </body>
 </html>
-
-

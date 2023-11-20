@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="http://localhost/Viktorina.live/d_regilogi.css" />
+  <link rel="stylesheet" href="d_regilogi.css" />
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <meta http-equiv="refresh" content="600"><!-- Auto refresh 10 min -->
   <title>Registracija ir Prisijungimas</title>
@@ -26,7 +26,8 @@
   <div class="container" id="container">
     <!-- Registracija -->
     <div class="form-container sign-up-container">
-      <form method="POST" action="http://localhost:4000/register" id="register-form">
+      <!-- <form method="POST" action="http://localhost:4000/register" id="register-form"> -->
+      <form method="POST" action="https://your-production-domain.com/register" id="register-form">
         <h1 class="main-h1">Registracija</h1>
         <div class="form-group">
           <!-- <label for="gender-select">Lytis:</label> -->
@@ -173,13 +174,13 @@
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
-          <img class="logo" src="http://localhost/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
+          <img class="logo" src=" images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
           <h1>Sveiki sugrįžę!</h1>
           <p>Prašome prisijungti.</p>
           <button class="ghost" id="signIn">Prisijungimas</button>
         </div>
         <div class="overlay-panel overlay-right">
-          <img class="logo" src="http://localhost/Viktorina.live/images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
+          <img class="logo" src=" images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
           <h1>Labas, Drauge!</h1>
           <p>Įveskite savo asmeninius duomenis ir pradėkite kelionę su mumis.</p>
           <button class="ghost" id="signUp">Registracija</button>
@@ -204,8 +205,8 @@
     </div>
   </div>
 
-  <script src="http://localhost/Viktorina.live/d_regilogi.js"></script>
-  <script src="http://localhost/Viktorina.live/d_regilogi_nameGenerator.js"></script>
+  <script src=" d_regilogi.js"></script>
+  <script src=" d_regilogi_nameGenerator.js"></script>
   <footer></footer>
 </body>
 
