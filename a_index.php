@@ -33,7 +33,6 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
-
     <link href="https://fonts.cdnfonts.com/css/neue-metana" rel="stylesheet"> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
@@ -175,8 +174,8 @@ $verify = $verify ?? 0;
       <div id="old-question"></div>
     </section>
 
-    <script type="text/javascript" src=" a_index.js"></script>
-    <script type="text/javascript" src=" a_chat_client.js"></script>
+    <script type="text/javascript" src="a_index.js"></script>
+    <script type="text/javascript" src="a_chat_client.js"></script>
 
     <div class = "footer-wrapper">
         <?php include './Footer/footer.php'; ?>

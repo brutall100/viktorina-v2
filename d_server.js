@@ -46,11 +46,11 @@ app.post("/login", (req, res) => {
 
         if (match) {
           console.log("User logged in:", nick_name)
-          res.redirect(307, `a_index.php`)
+          res.redirect(307, `/a_index.php`)
         } else {
           console.log("Invalid password for user:", nick_name)
           const successMessage = `Labas ${nick_name}, įvedei neteisingą slaptažodį.`
-          const redirectUrl = " d_regilogi.php"
+          const redirectUrl = "d_regilogi.php"
           const alertScript = generateAlertScript(successMessage, redirectUrl)
           return res.status(401).send(alertScript)
         }
@@ -58,7 +58,7 @@ app.post("/login", (req, res) => {
     } else {
       console.log("User not found:", nick_name)
       const successMessage = `Toks vartotojas dar neregistruotas.`
-      const redirectUrl = " d_regilogi.php"
+      const redirectUrl = "d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(403).send(alertScript)
     }

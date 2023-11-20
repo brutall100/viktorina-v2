@@ -1,7 +1,7 @@
 let data
 async function fetchData() {
   try {
-    const response = await axios.get("http://localhost:4001/data")
+    const response = await axios.get("http://***REMOVED***:4001/data")
     return response.data
   } catch (error) {
     console.error(error)
@@ -31,7 +31,7 @@ async function fetchData() {
 //
 function checkServerData() {
   axios
-    .get("http://localhost:4001/data")
+    .get("http://***REMOVED***:4001/data")
     .then((response) => {
       const serverData = response.data.data
       const serverId = serverData.id
@@ -71,7 +71,7 @@ function calculateMaxOldDataCount() {
 
 function fetchNewestOldQuestionData() {
   axios
-    .get("http://localhost:4001/old-data")
+    .get("http://***REMOVED***:4001/old-data")
     .then((response) => {
       const oldData = response.data.oldData
 
@@ -278,7 +278,7 @@ const handleUserAnswer = async (userAnswer) => {
 
     playGame() // atsakius teisingai paleidziama funkcija
 
-    const url = "http://localhost:4004/a_points.js"
+    const url = "http://***REMOVED***:4001/a_points.js"
     const body = JSON.stringify({
       user_id_name: userData.name,
       points: litaPoints
@@ -393,15 +393,11 @@ function playGame() {
   }
 
   if (gameNo === GAME_A) {
-    const gameWindow1 = window.open(` Games/game1.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
+    const gameWindow1 = window.open(`Games/game1.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
   } else if (gameNo === GAME_B) {
-    const gameWindow2 = window.open(` Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
+    const gameWindow2 = window.open(`Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
   } else if (gameNo === GAME_C) {
-    const gameWindow3 = window.open(
-      ` Games/game3.php?name=${userData.name}`,
-      "_blank",
-      `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`
-    )
+    const gameWindow3 = window.open(`Games/game3.php?name=${userData.name}`," _blank", `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`)
   }
 }
 
@@ -457,5 +453,5 @@ document.getElementById("today-top-btn").addEventListener("click", function () {
 })
 
 function redirectToLogin() {
-  window.location.href = " d_regilogi.php"
+  window.location.href = "d_regilogi.php"
 }
