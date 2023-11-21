@@ -77,7 +77,7 @@ Kad nebutu per ilgu zodziu. taip pat galima fiksuoti vienodas raides. ty jei try
 Perkelti i html struktura -->
 
 <!-- 23 -->
-<!-- -->
+<!-- Vietoje forumo reikia daryti Grandinele   nak tas forumas, ir pagrindineje viktorinoje kartais gali iskristi papildomas game grandiinele -->
 
 <!-- 24 -->
 <!-- -->
