@@ -54,7 +54,7 @@ function sendMessage(event) {
     addMessageToChat(user_message)
 
     // Send the user_message to the server
-    fetch("http://localhost:4005/save-message", {
+    fetch("http://***REMOVED***:4005/save-message", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -101,7 +101,7 @@ chatInput.addEventListener("keyup", (event) => {
 // Function to load messages from the server and display them
 async function loadMessagesFromServer() {
   try {
-    const response = await fetch("http://localhost:4005/get-older-messages")
+    const response = await fetch("http://***REMOVED***:4005/get-older-messages")
     if (!response.ok) {
       throw new Error("Failed to fetch messages from the server")
     }

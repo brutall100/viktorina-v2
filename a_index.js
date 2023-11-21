@@ -9,22 +9,22 @@ async function fetchData() {
 }
 ;(async function () {
   data = await fetchData()
-  // console.log('Data:', data);
-  // console.log('Question:', data.data.question);
-  // console.log('ID:', data.data.id);
-  // console.log('Answer:', data.data.answer);
-  // console.log('Litan:', data.data.lita);
-  // console.log('Bonus:', data.data.bonusLita);
-  // const dataContainer = document.getElementById("dataContainer")
-  // dataContainer.innerHTML = JSON.stringify(data)
+  console.log('Data:', data);
+  console.log('Question:', data.data.question);
+  console.log('ID:', data.data.id);
+  console.log('Answer:', data.data.answer);
+  console.log('Litan:', data.data.lita);
+  console.log('Bonus:', data.data.bonusLita);
+  const dataContainer = document.getElementById("dataContainer")
+  dataContainer.innerHTML = JSON.stringify(data)
   displayQuestion(data)
   generateAndDisplayRandomPoint(data.data.lita)
   generateBonusPoints(data.data.bonusLita)
-  // lita = data.data.lita
-  // const litaContainer = document.getElementById("lita")
-  // litaContainer.innerHTML = lita
-  // const bonusLitaContainer = document.getElementById("lita-bonus")
-  // bonusLitaContainer.innerHTML = data.data.bonusLita
+  lita = data.data.lita
+  const litaContainer = document.getElementById("lita")
+  litaContainer.innerHTML = lita
+  const bonusLitaContainer = document.getElementById("lita-bonus")
+  bonusLitaContainer.innerHTML = data.data.bonusLita
 })()
 
 //
@@ -55,6 +55,7 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 //
 //
 // Old question section
+let userLevel; // Add this line to define userLevel
 const userLeveli = parseInt(userLevel)
 
 function calculateMaxOldDataCount() {
