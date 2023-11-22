@@ -39,13 +39,18 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
 
   <?php
 if (isset($name) & !empty($name)) {
-  //$conn = mysqli_connect("127.0.0.1", "***REMOVED***", "***REMOVED***", "viktorina", "3306"); //SERVERIS
-  // $conn = mysqli_connect("localhost", "root", "", "viktorina");
-  $dbhost = 'localhost';
-  $dbuser = 'root';
-  $dbpassword = '';
+  $dbhost = '***REMOVED***'; 
+  $dbuser = '***REMOVED***';
+  $dbpassword = '***REMOVED***';
   $dbname = 'viktorina';
-  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+  $port = 3306;
+  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
+
+  // $dbhost = 'localhost';
+  // $dbuser = 'root';
+  // $dbpassword = '';
+  // $dbname = 'viktorina';
+  // $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
   $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
@@ -87,13 +92,19 @@ if (isset($name) & !empty($name)) {
 
     <?php
 if (isset($name)) {
-  //$conn = mysqli_connect("127.0.0.1", "***REMOVED***", "***REMOVED***", "viktorina", "3306"); //SERVERIS
-  // $conn = mysqli_connect("localhost", "root", "", "viktorina");
-  $dbhost = 'localhost';
-  $dbuser = 'root';
-  $dbpassword = '';
+  $dbhost = '***REMOVED***'; // localhost:3306 or localhost
+  $dbuser = '***REMOVED***';
+  $dbpassword = '***REMOVED***';
   $dbname = 'viktorina';
-  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+  $port = 3306;
+  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
+
+  // $dbhost = 'localhost';
+  // $dbuser = 'root';
+  // $dbpassword = '';
+  // $dbname = 'viktorina';
+  // $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+
   $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
@@ -137,21 +148,28 @@ if (isset($name)) {
       <div class="form-container">
         <?php
   $name = $name ?? "";
-  //$conn = mysqli_connect("127.0.0.1", "***REMOVED***", "***REMOVED***", "viktorina", "3306"); //SERVERIS
-  // $conn = mysqli_connect("localhost", "root", "", "viktorina");
-  $dbhost = 'localhost';
-  $dbuser = 'root';
-  $dbpassword = '';
+
+  $dbhost = '***REMOVED***'; 
+  $dbuser = '***REMOVED***';
+  $dbpassword = '***REMOVED***';
   $dbname = 'viktorina';
-  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
-  $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
-  $result = mysqli_query($conn, $query);
-  if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $verify = $row['email_verified'];
-   mysqli_close($conn); 
-}
-$verify = $verify ?? 0;
+  $port = 3306;
+  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
+
+  // $dbhost = 'localhost';
+  // $dbuser = 'root';
+  // $dbpassword = '';
+  // $dbname = 'viktorina';
+  // $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+
+    $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_assoc($result);
+      $verify = $row['email_verified'];
+    mysqli_close($conn); 
+  }
+  $verify = $verify ?? 0;
         if (isset($name) && !empty($name) && !isset($error) && $verify==1) { ?>
           <form action="a_index.php" id="answer-form" method="post">
             <div class="answer-input">

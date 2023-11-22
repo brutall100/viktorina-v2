@@ -38,12 +38,18 @@ $user_id = $_SESSION['user_id'] ?? "";
           <th>Rezultatas</th>
         </tr>
         <?php
-          $host = 'localhost';
-          $user = 'root';
-          $password = '';
+          $dbhost = '***REMOVED***'; // localhost:3306 or localhost
+          $dbuser = '***REMOVED***';
+          $dbpassword = '***REMOVED***';
           $dbname = 'viktorina';
-
-          $conn = mysqli_connect($host, $user, $password, $dbname);
+          $port = 3306;
+          $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
+        
+          // $dbhost = 'localhost';
+          // $dbuser = 'root';
+          // $dbpassword = '';
+          // $dbname = 'viktorina';
+          // $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
 
           if (!$conn) {
               die("Connection failed: " . mysqli_connect_error());
