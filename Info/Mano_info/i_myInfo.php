@@ -5,12 +5,13 @@ $user_id = $_SESSION['user_id'] ?? "";
 
 require_once('config.php'); //Reiks bandyt perkelti kitur
 
-$host = $config['host'];
-$username = $config['username'];
-$password = $config['password'];
-$database = $config['database'];
+$dbhost = $config['host'];
+$dbuser = $config['username'];
+$dbpassword = $config['password'];
+$dbname = $config['database'];
+$dbport = $config['port'];
 
-$conn = mysqli_connect($host, $username, $password, $database);
+$conn = mysqli_connect($host, $username, $password, $database, $port);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -186,7 +187,7 @@ mysqli_close($conn);
 
 
 
-    <script type="text/javascript" src=" Info/Mano_info/i_myInfo.js"></script>
+    <script type="text/javascript" src="i_myInfo.js"></script>
 </body>
 
 </html>

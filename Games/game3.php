@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href=" Games/gameStyle3.css" />
+    <link rel="stylesheet" href="gameStyle3.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Papildomas Klausimas</title>
   </head>
@@ -45,9 +45,8 @@
 </html>
 
 <script>
-
   $(document).ready(() => {
-    $.get('http://localhost:4003/game3_server', data => {
+    $.get('http://***REMOVED***:4003/game3_server', data => {
       const actualAnswer = data.answer
       const serverAnswer = data.answer.toLowerCase();
       const words = serverAnswer.split(' ');
@@ -78,7 +77,7 @@
             user_id_name: "<?php echo $name; ?>",
             points: points
           };
-          fetch('http://localhost:4002/playGame.js', {
+          fetch('http://***REMOVED***:4002/playGame.js', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -108,7 +107,7 @@
             user_id_name: "<?php echo $name; ?>",
             points: negativePoints
           };
-          fetch('http://localhost:4002/playGame.js', {
+          fetch('http://***REMOVED***:4002/playGame.js', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if (session_status()!==2) { session_start();
   foreach ($_POST as $key => $value) {
     ${$key} = $value;
@@ -29,6 +33,7 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/icons/vk2.jpg" type="image/x-icon">
     <link rel="stylesheet" href=" a_style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
@@ -36,7 +41,6 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
     <link href="https://fonts.cdnfonts.com/css/neue-metana" rel="stylesheet"> 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
-
   <?php
 if (isset($name) & !empty($name)) {
   $dbhost = '***REMOVED***'; 
@@ -46,11 +50,6 @@ if (isset($name) & !empty($name)) {
   $port = 3306;
   $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
 
-  // $dbhost = 'localhost';
-  // $dbuser = 'root';
-  // $dbpassword = '';
-  // $dbname = 'viktorina';
-  // $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
   $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
@@ -63,23 +62,20 @@ if (isset($name) & !empty($name)) {
     $_SESSION['points'] = $points;
     $_SESSION['user_lvl'] = $level;
     
-    // Echo these PHP variables as JavaScript variables . They are sended to client js
+    // Echo these PHP variables as JavaScript variables. They are sent to client js
     echo '<script>';
-    echo 'var userLevel = ' . json_encode($level) . ';';
+    echo 'var userLevelis = ' . json_encode($level) . ';';
     echo '</script>';
   }
 }
 ?>
-
-
 <body>
 <div class="header-wrapper">
   <?php include 'Header/header.php'; ?>
 </div>
 
-
 <div id="login-container" <?php echo isset($name) ? 'style="display: none;"' : ''; ?>>
-  <button id="login-button" onclick="redirectToLogin()">Prisijungti</button>
+  <button type="button" id="login-button" onclick="redirectToLogin()">Prisijungti</button>
 </div>
 <div id="user-data" data-name="<?php echo isset($name) ? $name : ''; ?>" data-level="<?php echo isset($level) ? $level : ''; ?>" data-points="<?php echo isset($points) ? $points : ''; ?>"></div>
 
@@ -99,12 +95,6 @@ if (isset($name)) {
   $port = 3306;
   $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
 
-  // $dbhost = 'localhost';
-  // $dbuser = 'root';
-  // $dbpassword = '';
-  // $dbname = 'viktorina';
-  // $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
-
   $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
@@ -123,7 +113,7 @@ if (isset($name)) {
 ?>
 
     <section class="today-top">
-      <button class="today-top-btn" id="today-top-btn" >Šiandienos TOP 10</button>
+      <button type="button" class="today-top-btn" id="today-top-btn" >Šiandienos TOP 10</button>
     </section>
 
     <section class="litas-container">
@@ -147,37 +137,31 @@ if (isset($name)) {
       </div>
       <div class="form-container">
         <?php
-  $name = $name ?? "";
-
-  $dbhost = '***REMOVED***'; 
-  $dbuser = '***REMOVED***';
-  $dbpassword = '***REMOVED***';
-  $dbname = 'viktorina';
-  $port = 3306;
-  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
-
-  // $dbhost = 'localhost';
-  // $dbuser = 'root';
-  // $dbpassword = '';
-  // $dbname = 'viktorina';
-  // $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
-
-    $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
-    $result = mysqli_query($conn, $query);
-    if (mysqli_num_rows($result) > 0) {
-      $row = mysqli_fetch_assoc($result);
-      $verify = $row['email_verified'];
-    mysqli_close($conn); 
-  }
-  $verify = $verify ?? 0;
-        if (isset($name) && !empty($name) && !isset($error) && $verify==1) { ?>
-          <form action="a_index.php" id="answer-form" method="post">
-            <div class="answer-input">
-              <input type="text" id="answer-input" name="answer-input">
-              <input type="image" src=" images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
-            </div>
-          </form>
-        <?php }
+          $name = $name ?? "";
+        
+          $dbhost = '***REMOVED***'; 
+          $dbuser = '***REMOVED***';
+          $dbpassword = '***REMOVED***';
+          $dbname = 'viktorina';
+          $port = 3306;
+          $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
+        
+          $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
+          $result = mysqli_query($conn, $query);
+          if (mysqli_num_rows($result) > 0) {
+          $row = mysqli_fetch_assoc($result);
+          $verify = $row['email_verified'];
+          mysqli_close($conn); 
+          }
+          $verify = $verify ?? 0;
+                if (isset($name) && !empty($name) && !isset($error) && $verify==1) { ?>
+                  <form action="a_index.php" id="answer-form" method="post">
+                    <div class="answer-input">
+                      <input type="text" id="answer-input" name="answer-input">
+                      <input type="image" src=" images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
+                    </div>
+                  </form>
+         <?php }
 	elseif(isset($name) && !empty($name) && !isset($error) && $verify==0)  echo "Patvirtinkite el.paštą :)";// Cia reikes padirbeti
  ?>
       </div>     
@@ -187,31 +171,32 @@ if (isset($name)) {
 
 
 
-    <section id="chat-container-section">
+    <div id="chat-container-section">
       <div id="chat-container-messages">
         <ul id="chat-messages"></ul>
         <div id="chat-user-data" chat-data-name="<?php echo isset($name) ? $name : ''; ?>"></div>
       </div>
       <div>
         <form id="chat-form" >
-          <input id="chat-input-msg" name="user_message" autocomplete="off" />
+          <input id="chat-input-msg" name="user_message" autocomplete="off">
           <input type="hidden" id="chat-user-id" name="user_id" value="<?php echo isset($user_id) ? $user_id : ''; ?>">
           <input type="hidden" id="chat-user-name" name="user_name" value="<?php echo isset($name) ? $name : ''; ?>"> 
           <input type="hidden" id="chat-user-level" name="user_level" value="<?php echo isset($level) ? $level : ''; ?>"> 
-          <button id="chat-button" type="submit">Send</button>
+          <button type="submit" id="chat-button">Send</button>
         </form>
       </div>
-    </section>
+    </div>
 
 
 
 
-    <section class="old-question-section">
+    <div class="old-question-section">
       <div id="old-question"></div>
-    </section>
+    </div>
 
-    <script type="text/javascript" src="a_index.js"></script>
-    <script type="text/javascript" src="a_chat_client.js"></script>
+
+    <script src="a_index.js"></script>
+    <script src="a_chat_client.js"></script>
 
     <div class = "footer-wrapper">
         <?php include './Footer/footer.php'; ?>

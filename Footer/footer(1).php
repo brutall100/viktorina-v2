@@ -1,4 +1,13 @@
-    <link rel="stylesheet" type="text/css" href="/Footer/footer.css" >
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="Footer/footer.css" />
+    <title>Footer</title>
+  </head>
+  <body>
     <footer>
       <p></p>
       <p id="copyright">
@@ -7,13 +16,14 @@
         <span id="viktorina-link">VIKTORINA</span>
       </p>
       <p id="clock"></p>
+    </footer>
 
     <dialog id="viktorina-dialog">
-      <h1>Gilinkite žinias, konkuruokite, sužinokite  – Paremkite projektą šiandien!</h1>
+      <h1>Gilinkite žinias, konkuruokite, sužinokite  – Paremkite projekta šiandien!</h1>
 
       <div class="donation-content">
         <div class="donation-text">
-          <p>Sveiki, Viktorinos entuziastai! Ar žinojote, kad jūsų parama turi galią... Sukelti žinojimą ir paversti mokymąsi smagiu?
+          <p>Sveiki, Viktorinos entuziastai! Ar žinojote, kad jūsų parama turi galią... Sukelti žinojimą ir paversti mokymasi smagiu?
           Kiekviena parama skatina mus tobulinti projektą!
           Remdami, jūs ne tik finansuojate projektą – jūs investuojate į bendruomenę, kuri myli intelektualius iššūkius.</p>
         </div>
@@ -33,6 +43,10 @@
       
       <button id="close-dialog">Uždaryti</button>
     </dialog>
-    
-    </footer>
-  <script src="/Footer/footer.js"></script>
+
+  </body>
+  <script src="Footer/footer.js"></script>
+</html>
+
+
+

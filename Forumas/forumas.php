@@ -15,11 +15,12 @@ $user_id = $_SESSION['user_id'] ?? "";
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" type="text/css" href="forumas.css">
+       <link rel="stylesheet" type="text/css" href="../a_style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
     <div class="header-wrapper">
-    <?php include './../Header/header.php'; ?>
+    <?php include '../Header/header.php'; ?>
     </div>
 
     <div><h1>Reikia nuspresti ant ko kurti foruma!</h1></div>
@@ -82,7 +83,7 @@ Total.js: Total.js is a modern web framework that focuses on simplicity and spee
 
 
 <div class = "footer-wrapper">
-    <?php include './../Footer/footer.php'; ?>
+    <?php include '../Footer/footer.php'; ?>
 </div>
 </body>
 </html>

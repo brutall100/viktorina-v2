@@ -1,31 +1,57 @@
-let data
+const serverUrl = 'http://***REMOVED***:4007/sensitive-data';
+
+// Make a GET request to the server aaaaaaaaaaaaaaaaa
+fetch(serverUrl)
+  .then(response => response.json())
+  .then(data => {
+    // Log the received data to the console
+    console.log(data);
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the fetch
+    console.error('Error fetching data:', error);
+  });
+
+let data;
 async function fetchData() {
   try {
-    const response = await axios.get("http://***REMOVED***:4001/data")
-    return response.data
+    const response = await axios.get("http://***REMOVED***:4001/data");
+    return response.data;
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
 }
-;(async function () {
-  data = await fetchData()
-  console.log('Data:', data);
+
+// Anonymous async function to execute the code
+(async function () {
+  // Fetch data from the server
+  data = await fetchData();
+
+  // Uncomment the lines below to log specific data fields
+  // console.log('Data:', data);
   // console.log('Question:', data.data.question);
   // console.log('ID:', data.data.id);
   // console.log('Answer:', data.data.answer);
   // console.log('Litan:', data.data.lita);
   // console.log('Bonus:', data.data.bonusLita);
-  const dataContainer = document.getElementById("dataContainer")
-  dataContainer.innerHTML = JSON.stringify(data)
-  displayQuestion(data)
-  generateAndDisplayRandomPoint(data.data.lita)
-  generateBonusPoints(data.data.bonusLita)
-  lita = data.data.lita
-  const litaContainer = document.getElementById("lita")
-  litaContainer.innerHTML = lita
-  const bonusLitaContainer = document.getElementById("lita-bonus")
-  bonusLitaContainer.innerHTML = data.data.bonusLita
-})()
+
+  displayQuestion(data);
+  generateAndDisplayRandomPoint(data.data.lita);
+  generateBonusPoints(data.data.bonusLita);
+
+  const lita = data.data.lita;
+
+  // Uncomment the lines below to update HTML containers with data
+   const dataContainer = document.getElementById("dataContainer");
+   dataContainer.innerHTML = JSON.stringify(data);
+  
+   const litaContainer = document.getElementById("lita");
+   litaContainer.innerHTML = lita;
+
+   const bonusLitaContainer = document.getElementById("lita-bonus");
+   bonusLitaContainer.innerHTML = data.data.bonusLita;
+})();
+
 
 //
 //
@@ -43,7 +69,7 @@ function checkServerData() {
         console.log("Serverio id does not match client id. Reloading in 1 seconds...")
         setTimeout(() => {
           location.reload()
-        }, 5000) // 5 sekundes kolkas paskui 10milsec
+        }, 10) // 5 sekundes kolkas paskui 10milsec
       }
     })
     .catch((error) => {
@@ -55,8 +81,10 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 //
 //
 // Old question section
-let userLevel; // Add this line to define userLevel
-const userLeveli = parseInt(userLevel)
+let userLeveliss = 0
+const userLeveli = parseInt(userLeveliss);
+console.log(userLeveli)
+
 
 function calculateMaxOldDataCount() {
   if (userLeveli === 0 || userLeveli === 1 || userLeveli === 2) {
@@ -279,7 +307,7 @@ const handleUserAnswer = async (userAnswer) => {
 
     playGame() // atsakius teisingai paleidziama funkcija
 
-    const url = "http://***REMOVED***:4001/a_points.js"
+    const url = "http://***REMOVED***:4004/a_points.js"
     const body = JSON.stringify({
       user_id_name: userData.name,
       points: litaPoints
@@ -293,20 +321,29 @@ const handleUserAnswer = async (userAnswer) => {
       method: "POST",
       headers,
       body
-    })
-
+    });
+    
+    console.log("Response status:", response.status);
+    
     if (response.ok) {
-      const { user_id_name, points } = await response.json()
-      console.log(`User points updated successfully ${points}`)
-      console.log("user_id_name: " + user_id_name)
-      console.log("points: " + points)
+      const jsonResponse = await response.json();
+      console.log("JSON Response:", jsonResponse);
+    
+      const { user_id_name, points } = jsonResponse;
+      console.log(`User points updated successfully ${points}`);
+      console.log("user_id_name: " + user_id_name);
+      console.log("points: " + points);
+    
       // oldQuestionData()
       setTimeout(() => {
-        location.reload()
-      }, 5000) // Perkrauna page po 5 sekundziu
+        location.reload();
+      }, 5000); // Perkrauna page po 5 sekundziu
     } else {
-      console.error("Failed to update user points")
+      console.error("Failed to update user pointss");
+      const errorText = await response.text(); // Log the error response text
+      console.error("Error response:", errorText);
     }
+
   } else if (!userAnswerLower.length === 0) {
     setTimeout(oldQuestionData, 3000)
   } else if (userAnswerLower.length < 1) {
@@ -456,3 +493,4 @@ document.getElementById("today-top-btn").addEventListener("click", function () {
 function redirectToLogin() {
   window.location.href = "d_regilogi.php"
 }
+

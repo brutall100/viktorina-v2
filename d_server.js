@@ -46,7 +46,7 @@ app.post("/login", (req, res) => {
 
         if (match) {
           console.log("User logged in:", nick_name)
-          res.redirect(307, `/a_index.php`)
+          res.redirect(307, `a_index.php`)
         } else {
           console.log("Invalid password for user:", nick_name)
           const successMessage = `Labas ${nick_name}, įvedei neteisingą slaptažodį.`

@@ -5,6 +5,7 @@ const levelButton = document.querySelector('button[data-target="level"]')
 const paragraph1 = document.querySelector(".content-response p:nth-of-type(1)")
 const paragraph2 = document.querySelector(".content-response p:nth-of-type(2)")
 const contentResponseDiv = document.querySelector(".content-response")
+import serverConfig from '../../configENV.js';
 
 // You can access the variables defined in the <script> tag in your HTML here
 console.log(userName)
@@ -51,8 +52,8 @@ nameButton.addEventListener("click", () => {
         userId: userId,
         userLitai: userLitai
       }
-
-      fetch("http://localhost:4006/updateName", {
+      const url = `${serverConfig.serverAddress}:${serverConfig.ports.port6}/updateName`
+      fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

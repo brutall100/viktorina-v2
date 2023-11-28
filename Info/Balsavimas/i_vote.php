@@ -19,7 +19,7 @@ $user_id = $_SESSION['user_id'] ?? "";
 </head>
 <body>
     <div class="header-wrapper">
-    <?php include '../../Header/header.php'; ?>
+         <?php include '../../Header/header.php'; ?>
     </div>
 
     <div><h1>Welcome to My Simple PHP Page</h1></div>
