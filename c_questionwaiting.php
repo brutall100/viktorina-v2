@@ -1,4 +1,5 @@
 <?php
+//session_set_cookie_params(['SameSite' => 'none', 'httponly' => true, 'Secure' => true]);
 session_start();
 $name = $_SESSION['nick_name'] ?? "";
 $level = $_SESSION['user_lvl'] ?? "";
@@ -9,11 +10,11 @@ $user_id = $_SESSION['user_id'] ?? "";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Naujai sukurti klausimai</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="refresh" content="300">
+  <title>Naujai sukurti klausimai</title>
   <link rel="stylesheet" type="text/css" href=" c_questionwaiting.css">
 </head>
 <body>
@@ -37,25 +38,27 @@ $user_id = $_SESSION['user_id'] ?? "";
           <th>Atmesti</th>
           <th>Rezultatas</th>
         </tr>
-        <?php
-          $dbhost = '***REMOVED***'; // localhost:3306 or localhost
-          $dbuser = '***REMOVED***';
-          $dbpassword = '***REMOVED***';
-          $dbname = 'viktorina';
-          $port = 3306;
-          $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
+        <?php 
         
-          // $dbhost = 'localhost';
-          // $dbuser = 'root';
-          // $dbpassword = '';
-          // $dbname = 'viktorina';
-          // $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
+          $host='***REMOVED***';
+          $user = '***REMOVED***';
+          $password = '***REMOVED***';
+          $dbname = 'viktorina'; 
+        
+         /*
+          $host='127.0.0.1';
+		  $user = 'u605154248_aldas';
+          $password = '***REMOVED***';
+          $dbname = 'u605154248_viktorina';
+         */
+
+          $conn = mysqli_connect($host, $user, $password, $dbname);
 
           if (!$conn) {
               die("Connection failed: " . mysqli_connect_error());
           }
-
-          $sql = "SELECT id, user, question, answer, vote_count FROM viktorina.question_answer";
+          mysqli_set_charset($conn, "utf8mb4");
+          $sql = "SELECT id, user, question, answer, vote_count FROM $dbname.question_answer";
           $result = mysqli_query($conn, $sql);
 
           if (mysqli_num_rows($result) > 0) {
@@ -64,6 +67,7 @@ $user_id = $_SESSION['user_id'] ?? "";
                 echo "<tr>";
                 echo "<td>" . $row['id'] . "</td>";
                 echo "<td>" . $row['user'] . "</td>";
+                //echo "<td>" . $row['question'] ."  [". mb_detect_encoding($row['question']) . "]</td>";
                 echo "<td>" . $row['question'] . "</td>";
                 echo "<td>" . $row['answer'] . "</td>";
                 echo "<td><button class='upvote' data-id='". $row['id'] ."'></button></td>";
@@ -83,8 +87,7 @@ $user_id = $_SESSION['user_id'] ?? "";
   <div class = "footer-wrapper">
       <?php include './Footer/footer.php'; ?>
   </div>
-</body>
-</html>
+
 <script>
 // UPVOTE
 document.querySelectorAll('.upvote').forEach(function(button) {
@@ -181,4 +184,5 @@ document.querySelectorAll('.downvote').forEach(function(button) {
   })
 </script>
 
-
+</body>
+</html>

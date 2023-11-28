@@ -1,6 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 session_start();
-// Nesaugu naudoti GET metoda kartu su sesijomis
 $name = $_SESSION['nick_name'] ?? "";
 $level = $_SESSION['user_lvl'] ?? "";
 $points = $_SESSION['points'] ?? "";
@@ -8,9 +10,9 @@ $user_id = $_SESSION['user_id'] ?? "";
 $message = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $host = 'localhost';
-    $user = 'root';
-    $password = '';
+    $host = '***REMOVED***';
+    $user = '***REMOVED***';
+    $password = '***REMOVED***';
     $dbname = 'viktorina';
 
     $conn = mysqli_connect($host, $user, $password, $dbname);
@@ -110,8 +112,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     mysqli_close($conn);
 }
 ?>
-<!--  Tagu pabaigose ">" slash "/" jau nebenaudojamas HTML5 puslapiuose, jie skirti tik XHTML puslapiams, kurie turi grieztesnes taisykles
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,14 +123,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href=" b_newguestion.css">
+  <link rel="shortcut icon" href="images/icons/vk2.jpg" type="image/x-icon">
 </head>  
-<body>
+ <body>
 <div class="header-wrapper">
   <?php include 'Header/header.php';
-  include 'dev.php';
  ?>
 </div>
-  
   <main class="main">
     <div class="main-form">
       <form class="main-form-forma" method="post">
@@ -160,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php
         date_default_timezone_set('Europe/Vilnius'); // Set the time zone to "Europe/Vilnius"
 
-        $conn = mysqli_connect("localhost", "root", "", "viktorina");
+        $conn = mysqli_connect("***REMOVED***", "***REMOVED***", "***REMOVED***", "viktorina");
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
@@ -211,8 +210,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <?php endif; ?>
 
   <div class = "footer-wrapper">
-      <?php include './Footer/footer.php'; ?>
+      <?php include 'Footer/footer.php'; ?>
   </div> 
+  
 <script src=" b_newquestion.js"></script>
 <script>                     <!-- Cia dar neaisku kaip turi buti, pirmai buvo klaida level undefined -->
     if ('<?php echo !empty($level) ? "true" : "false"; ?>' === 'true') {
