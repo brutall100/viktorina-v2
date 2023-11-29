@@ -9,12 +9,12 @@ const serverProcess = spawn("node", ["server.js"])
 console.log("server.js started on ........................ PORT1  4001")
 
 // Start /Game/playGame.js
-const gameServerProcess = spawn("node", ["./Games/playGame.js"])
-console.log("/Games/playGame.js started on ............... PORT2  4002")
+const gameServerProcess = spawn("node", ["playGame.js"])
+console.log("playGame.js started on ...................... PORT2  4002")
 
 // Start /Game/game3server.js
-const game3serverProcess = spawn("node", ["./Games/game3server.js"])
-console.log("/Games/game3server.js started on............. PORT3  4003")
+const game3serverProcess = spawn("node", ["game3server.js"])
+console.log("game3server.js started on.................... PORT3  4003")
 
 // Start a_points.js
 const aPointsServerProcess = spawn("node", ["a_points.js"])
@@ -26,11 +26,15 @@ console.log("a_chat_server.js started on ................. PORT5  4005")
 
 // Start messageCounter.js
 const messageCounterProcess = spawn("node", ["messageCounter.js"])
-console.log("messageCounter.js started ....................CRON SCRIPT")
+console.log("messageCounter.js started ................... CRON SCRIPT")
 
 // Start Info/Mano_info/i_myInfoServer.js
-const myInfoServer = spawn("node", ["./Info/Mano_info/i_myInfoServer.js"])
-console.log("/Info/Mano_info/i_myInfoServer.js started on. PORT6  4006")
+const myInfoServer = spawn("node", ["i_myInfoServer.js"])
+console.log("i_myInfoServer.js started on................. PORT6  4006")
+
+// Start Info/Mano_info/i_myInfoServer.js
+// const myInfoServer = spawn("node", ["i_myInfoServer.js"])
+// console.log("i_myInfoServer.js started on................. PORT6  4006")
 
 // Handle errors
 serverProcess.on("error", (err) => {
@@ -97,3 +101,5 @@ messageCounterProcess.on("exit", (code) => {
 myInfoServer.on("exit", (code) => {
   console.log(`i_myInfoServer.js exited with code ${code}`)
 })
+
+// node startServers.js

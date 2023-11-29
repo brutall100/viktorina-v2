@@ -6,6 +6,14 @@ require("dotenv").config()
 const cors = require("cors")
 app.use(cors())
 
+// const db = mysql.createPool({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_DATABASE,
+//   port: process.env.DB_PORT
+// })
+
 const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -76,7 +84,7 @@ app.get("/get-older-messages", async (req, res) => {
 // Start the server
 const PORT = process.env.PORT5
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
+  console.log(`Server a_chat_server.js is running on port ${PORT}`)
 })
 
 // node a_chat_server.js
