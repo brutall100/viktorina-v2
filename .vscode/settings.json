@@ -1,0 +1,8 @@
+{
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+  "liveServer.settings.port": 0,
+  "terminal.integrated.automationProfile.linux": {},
+  "terminal.integrated.automationProfile.osx": {},
+  "terminal.integrated.automationProfile.windows": {},
+  "terminal.integrated.cwd": "${workspaceFolder}/Servers"
+}
