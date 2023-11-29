@@ -12,11 +12,19 @@ const emailService = require("./d_mail_reset")
 
 const app = express()
 
-app.set("view engine", "ejs") // Set the directory for views/templates
+app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+
+// const connection = mysql.createConnection({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASSWORD,
+//   database: process.env.DB_DATABASE,
+//   port: process.env.DB_PORT
+// })
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -46,10 +54,12 @@ app.post("/login", (req, res) => {
 
         if (match) {
           console.log("User logged in:", nick_name)
+          // res.redirect(307, `http://viktorina.live/a_index.php`)
           res.redirect(307, `a_index.php`)
         } else {
           console.log("Invalid password for user:", nick_name)
           const successMessage = `Labas ${nick_name}, įvedei neteisingą slaptažodį.`
+          // const redirectUrl = "http://viktorina.live/d_regilogi.php"
           const redirectUrl = "d_regilogi.php"
           const alertScript = generateAlertScript(successMessage, redirectUrl)
           return res.status(401).send(alertScript)
@@ -58,6 +68,7 @@ app.post("/login", (req, res) => {
     } else {
       console.log("User not found:", nick_name)
       const successMessage = `Toks vartotojas dar neregistruotas.`
+      // const redirectUrl = "http://viktorina.live/d_regilogi.php"
       const redirectUrl = "d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(403).send(alertScript)
@@ -91,7 +102,8 @@ app.post("/register", (req, res) => {
         if (err.code === "ER_DUP_ENTRY") {
           console.log("Toks vartotojas jau yra")
           const successMessage = "Viskas būtų kaip ir OK, bet toks vartotojas jau yra 😟."
-          const redirectUrl = " d_regilogi.php"
+          // const redirectUrl = "http://viktorina.live/d_regilogi.php"
+          const redirectUrl = "d_regilogi.php"
           const alertScript = generateAlertScript(successMessage, redirectUrl)
           return res.status(400).send(alertScript)
         } else {
@@ -107,7 +119,8 @@ app.post("/register", (req, res) => {
         sendWelcomeEmail(nick_name, user_email, uuid)
 
         const user_lvl = 0
-        res.redirect(307, ` a_index.php`)
+        // res.redirect(307, `http://viktorina.live/a_index.php`)
+        res.redirect(307, `a_index.php`)
       }
     })
   })
@@ -135,16 +148,16 @@ app.post("/reset-password", async (req, res) => {
     const user = await getUserByEmail(userEmail)
 
     if (!user) {
-      // return res.status(400).send("User with this email does not exist.")
       const successMessage = "Toks el.paštas nėra registruotas."
+      // const redirectUrl = "http://viktorina.live/d_regilogi.php"
       const redirectUrl = "d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(400).send(alertScript)
     }
 
     if (!user.email_verified) {
-      // return res.status(400).send("Email is not verified.")
       const successMessage = "Toks el.paštas nebuvo ir nėra patvirtintas."
+      // const redirectUrl = "http://viktorina.live/d_regilogi.php"
       const redirectUrl = "d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(400).send(alertScript)
@@ -180,76 +193,6 @@ async function getUserByEmail(email) {
     })
   })
 }
-
-// function generateResetToken() {
-//   return uuidv4()
-// }
-
-// async function sendResetEmail(email, token) {
-//   const transporter = nodemailer.createTransport({
-//     service: "Gmail",
-//     auth: {
-//       user: process.env.MAIL_USER,
-//       pass: process.env.MAIL_PASS
-//     }
-//   })
-
-//   const resetLink = `http://localhost:${PORT}/reset/${token}`
-//   const validityPeriodHours = 1
-//   const mailOptions = {
-//     from: "viktorina.live@gmail.com",
-//     to: email,
-//     subject: "Slaptažodžio keitimo nuoroda",
-//     html: `
-//       <html>
-//       <head>
-//         <style>
-//           .email-container {
-//             background-color: #f0f0f0;
-//             padding: 20px;
-//             text-align: center;
-//             width: 800px;
-//             margin: 0 auto; /* Center horizontally */
-//           }
-//           .button {
-//             display: inline-block;
-//             background-color: #1155CC !important;
-//             color: #ffffff !important;
-//             padding: 10px 20px;
-//             text-decoration: none;
-//             border-radius: 5px;
-//             font-weight: bold; /* Make the text bold */
-//             transition: background-color 0.3s, color 0.3s;
-//           }
-//           .button:hover {
-//             background-color: #0E46B3 !important;
-//           }
-//           .message {
-//             color: #666;
-//             margin-top: 20px;
-//           }
-//         </style>
-//       </head>
-//       <body>
-//         <div class="email-container">
-//           <h1 style="color: #333;">Slaptažodžio keitimo nuoroda</h1>
-//           <p style="color: #666;">Norėdami pasikeisti slaptažodį, paspauskite žemiau esantį mygtuką:</p>
-//           <a href="${resetLink}" class="button">Keisti slaptažodį</a>
-//           <p class="message">Slaptažodžio keitimo nuoroda galioja ${validityPeriodHours} valandą.</p>
-//           <h4 class="message">Jeigu šis laiškas jums nepriklauso arba nežinote, kas jį išsiuntė, prašome ignoruoti šį laišką.</h4>
-//         </div>
-//       </body>
-//       </html>
-//     `
-//   }
-
-//   try {
-//     const info = await transporter.sendMail(mailOptions)
-//     console.log("Email sent:", info.response)
-//   } catch (error) {
-//     console.error("Error sending email:", error)
-//   }
-// }
 
 //                USER RESPOND, CLICK LINK and REDIRECTED TO reset-form.ejs
 app.get("/reset/:token", (req, res) => {
@@ -304,7 +247,8 @@ app.post("/reset/:token", (req, res) => {
     if (rows.length === 0) {
       console.log("Pasibaigęs rakto galiojimo laikas.")
       const successMessage = "Pasibaigęs rakto galiojimas. Slaptažodžio atkurimo procesą reikia atlikti iš naujo."
-      const redirectUrl = " d_regilogi.php"
+      // const redirectUrl = "http://viktorina.live/d_regilogi.php"
+      const redirectUrl = "d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(400).send(alertScript)
     }
@@ -319,7 +263,8 @@ app.post("/reset/:token", (req, res) => {
       }
 
       const successMessage = "Jūsų slaptažodis buvo sėkmingai pakeistas. Dabar galite prisijungti su savo naujuoju slaptažodžiu."
-      const redirectUrl = " d_regilogi.php"
+      // const redirectUrl = "http://viktorina.live/d_regilogi.php"
+      const redirectUrl = "d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(200).send(alertScript)
     })
@@ -336,7 +281,8 @@ app.get("/confirm", (req, res) => {
 
     if (result.affectedRows === 1) {
       const successMessage = "El. paštas patvirtintas! Galite prisijungti."
-      const redirectUrl = " d_regilogi.php"
+      // const redirectUrl = "http://viktorina.live/d_regilogi.php"
+      const redirectUrl = "d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(200).send(alertScript)
     } else {
@@ -347,7 +293,7 @@ app.get("/confirm", (req, res) => {
 
 //            Alert script message
 function generateAlertScript(successMessage, redirectUrl) {
-  const backgroundImageUrl = " images/background/endless-constellation.png" /* background by SVGBackgrounds.com */
+  const backgroundImageUrl = "images/background/endless-constellation.png" /* background by SVGBackgrounds.com */
   return `
       <style>
       body {
@@ -390,8 +336,7 @@ function generateAlertScript(successMessage, redirectUrl) {
     </script>`
 }
 
-// Start the server
 const PORT = process.env.PORT0
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`)
+  console.log(`Server d_server.js listening on port ${PORT}`)
 })
