@@ -43,13 +43,8 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
   </head>
   <?php
 if (isset($name) & !empty($name)) {
-  $dbhost = '***REMOVED***'; 
-  $dbuser = '***REMOVED***';
-  $dbpassword = '***REMOVED***';
-  $dbname = 'viktorina';
-  $port = 3306;
-  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
-
+  require_once 'x_configDB.php';  
+// arba require arba include
   $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
@@ -88,13 +83,8 @@ if (isset($name) & !empty($name)) {
 
     <?php
 if (isset($name)) {
-  $dbhost = '***REMOVED***'; // localhost:3306 or localhost
-  $dbuser = '***REMOVED***';
-  $dbpassword = '***REMOVED***';
-  $dbname = 'viktorina';
-  $port = 3306;
-  $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
-
+  require_once 'x_configDB.php';
+ // arba require arba include
   $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
@@ -139,13 +129,8 @@ if (isset($name)) {
         <?php
           $name = $name ?? "";
         
-          $dbhost = '***REMOVED***'; 
-          $dbuser = '***REMOVED***';
-          $dbpassword = '***REMOVED***';
-          $dbname = 'viktorina';
-          $port = 3306;
-          $conn = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname, $port);
-        
+          require_once 'x_configDB.php';
+          // arba require arba include
           $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
           $result = mysqli_query($conn, $query);
           if (mysqli_num_rows($result) > 0) {
@@ -158,7 +143,7 @@ if (isset($name)) {
                   <form action="a_index.php" id="answer-form" method="post">
                     <div class="answer-input">
                       <input type="text" id="answer-input" name="answer-input">
-                      <input type="image" src=" images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
+                      <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
                     </div>
                   </form>
          <?php }

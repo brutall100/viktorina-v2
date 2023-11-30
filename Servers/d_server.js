@@ -39,7 +39,7 @@ connection.connect((err) => {
 })
 
 //                     LOGIN
-app.post("/login", (req, res) => {
+app.post('/Servers/login', (req, res) => {
   const { nick_name, user_password } = req.body
   const sql = `SELECT * FROM super_users WHERE nick_name = ?`
 
@@ -55,12 +55,12 @@ app.post("/login", (req, res) => {
         if (match) {
           console.log("User logged in:", nick_name)
           // res.redirect(307, `http://viktorina.live/a_index.php`)
-          res.redirect(307, `a_index.php`)
+          res.redirect(307, `http://localhost/Viktorina.live/a_index.php`)
         } else {
           console.log("Invalid password for user:", nick_name)
           const successMessage = `Labas ${nick_name}, įvedei neteisingą slaptažodį.`
           // const redirectUrl = "http://viktorina.live/d_regilogi.php"
-          const redirectUrl = "d_regilogi.php"
+          const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
           const alertScript = generateAlertScript(successMessage, redirectUrl)
           return res.status(401).send(alertScript)
         }
@@ -69,7 +69,7 @@ app.post("/login", (req, res) => {
       console.log("User not found:", nick_name)
       const successMessage = `Toks vartotojas dar neregistruotas.`
       // const redirectUrl = "http://viktorina.live/d_regilogi.php"
-      const redirectUrl = "d_regilogi.php"
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(403).send(alertScript)
     }
@@ -78,7 +78,7 @@ app.post("/login", (req, res) => {
 
 //                  REGISTER
 
-app.post("/register", (req, res) => {
+app.post('/Servers/register', (req, res) => {
   const { nick_name, user_email, user_password, gender, other_gender } = req.body
 
   bcrypt.hash(user_password, 10, (err, hashedPassword) => {
@@ -103,7 +103,7 @@ app.post("/register", (req, res) => {
           console.log("Toks vartotojas jau yra")
           const successMessage = "Viskas būtų kaip ir OK, bet toks vartotojas jau yra 😟."
           // const redirectUrl = "http://viktorina.live/d_regilogi.php"
-          const redirectUrl = "d_regilogi.php"
+          const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
           const alertScript = generateAlertScript(successMessage, redirectUrl)
           return res.status(400).send(alertScript)
         } else {
@@ -120,7 +120,7 @@ app.post("/register", (req, res) => {
 
         const user_lvl = 0
         // res.redirect(307, `http://viktorina.live/a_index.php`)
-        res.redirect(307, `a_index.php`)
+        res.redirect(307, `http://localhost/Viktorina.live/a_index.php`)
       }
     })
   })
@@ -141,7 +141,7 @@ async function updateResetToken(userEmail, resetToken, expires) {
   })
 }
 
-app.post("/reset-password", async (req, res) => {
+app.post('/Servers/reset-password', async (req, res) => {
   try {
     const userEmail = req.body.user_email
 
@@ -150,7 +150,7 @@ app.post("/reset-password", async (req, res) => {
     if (!user) {
       const successMessage = "Toks el.paštas nėra registruotas."
       // const redirectUrl = "http://viktorina.live/d_regilogi.php"
-      const redirectUrl = "d_regilogi.php"
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(400).send(alertScript)
     }
@@ -158,7 +158,7 @@ app.post("/reset-password", async (req, res) => {
     if (!user.email_verified) {
       const successMessage = "Toks el.paštas nebuvo ir nėra patvirtintas."
       // const redirectUrl = "http://viktorina.live/d_regilogi.php"
-      const redirectUrl = "d_regilogi.php"
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(400).send(alertScript)
     }
@@ -248,7 +248,7 @@ app.post("/reset/:token", (req, res) => {
       console.log("Pasibaigęs rakto galiojimo laikas.")
       const successMessage = "Pasibaigęs rakto galiojimas. Slaptažodžio atkurimo procesą reikia atlikti iš naujo."
       // const redirectUrl = "http://viktorina.live/d_regilogi.php"
-      const redirectUrl = "d_regilogi.php"
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(400).send(alertScript)
     }
@@ -264,7 +264,7 @@ app.post("/reset/:token", (req, res) => {
 
       const successMessage = "Jūsų slaptažodis buvo sėkmingai pakeistas. Dabar galite prisijungti su savo naujuoju slaptažodžiu."
       // const redirectUrl = "http://viktorina.live/d_regilogi.php"
-      const redirectUrl = "d_regilogi.php"
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(200).send(alertScript)
     })
@@ -282,7 +282,7 @@ app.get("/confirm", (req, res) => {
     if (result.affectedRows === 1) {
       const successMessage = "El. paštas patvirtintas! Galite prisijungti."
       // const redirectUrl = "http://viktorina.live/d_regilogi.php"
-      const redirectUrl = "d_regilogi.php"
+      const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
       return res.status(200).send(alertScript)
     } else {

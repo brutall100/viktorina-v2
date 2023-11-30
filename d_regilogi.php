@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="d_regilogi.css" />
- <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <meta http-equiv="refresh" content="600"><!-- Auto refresh 10 min -->
   <title>Registracija ir Prisijungimas</title>
 </head>
@@ -26,7 +26,9 @@
   <div class="container" id="container">
     <!-- Registracija -->
     <div class="form-container sign-up-container">
-      <form method="POST" action="http://***REMOVED***:4000/register" id="register-form">
+      <!-- <form method="POST" action="http://***REMOVED***:4000/register" id="register-form"> -->
+        <!-- http://localhost:4000/register" id="register-form" -->
+      <form method="POST" action="http://localhost:4000/Servers/register" id="register-form">
         <h1 class="main-h1">Registracija</h1>
         <div class="form-group">
           <!-- <label for="gender-select">Lytis:</label> -->
@@ -159,7 +161,8 @@
 
     <!-- Prisijungimas -->
     <div class="form-container sign-in-container">
-      <form method="POST" action="http://***REMOVED***:4000/login">
+      <!-- <form method="POST" action="http://***REMOVED***:4000/login"> -->
+        <form method="POST" action="http://localhost:4000/Servers/login">
         <h1 class="main-h1">Prisijungti</h1>
         <!-- <span>or use your account</span> -->
         <input type="text" placeholder="Slapyvardis" name="nick_name" required />
@@ -194,7 +197,8 @@
       <button id="close-modal">✕</button> 
       <h2>Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
       <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jam sugrįžti.</p>
-      <form method="POST" action="http://***REMOVED***:4000/reset-password">  
+      <!-- <form method="POST" action="http://***REMOVED***:4000/reset-password">   -->
+      <form method="POST" action="http://localhost:4000/Servers/reset-password">  
         <label for="email">El. paštas:</label>
         <input type="email" id="email" class="centered-input" name="user_email" required>
         <div class="button-container">
