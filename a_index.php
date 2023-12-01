@@ -26,22 +26,26 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
 ?>
 <!DOCTYPE html>
 <html lang="lt">
-  <head>
-    <title>Viktorina.live</title>
-    <meta name="description" content="Viktorina.live - Testuokite savo žinias ir uždirbkite litus šioje interaktyvioje viktorinoje. Prisijunkite dabar, konkuruokite ir laimėkite!">
-    <meta name="keywords" content="Viktorina.live, protų žaidimas, interaktyvus, žinios, taškai, konkurencija, litai, protmūšis, lrt, draugas, litas, lt">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/icons/vk2.jpg" type="image/x-icon">
-    <link rel="stylesheet" href=" a_style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.cdnfonts.com/css/neue-metana" rel="stylesheet"> 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  </head>
-  <?php
+
+<head>
+  <title>Viktorina.live</title>
+  <meta name="description"
+    content="Viktorina.live - Testuokite savo žinias ir uždirbkite litus šioje interaktyvioje viktorinoje. Prisijunkite dabar, konkuruokite ir laimėkite!">
+  <meta name="keywords"
+    content="Viktorina.live, protų žaidimas, interaktyvus, žinios, taškai, konkurencija, litai, protmūšis, lrt, draugas, litas, lt">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/icons/vk2.jpg" type="image/x-icon">
+  <link rel="stylesheet" href=" a_style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/neue-metana" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<?php
 if (isset($name) & !empty($name)) {
   include 'x_configDB.php';  
 // arba require arba include
@@ -64,27 +68,29 @@ if (isset($name) & !empty($name)) {
   }
 }
 ?>
+
 <body>
-<div class="header-wrapper">
-  <?php include 'Header/header.php'; ?>
-</div>
+  <div class="header-wrapper">
+    <?php include 'Header/header.php'; ?>
+  </div>
 
-<div id="login-container" <?php echo isset($name) ? 'style="display: none;"' : ''; ?>>
-  <button type="button" id="login-button" onclick="redirectToLogin()">Prisijungti</button>
-</div>
-<div id="user-data" data-name="<?php echo isset($name) ? $name : ''; ?>" data-level="<?php echo isset($level) ? $level : ''; ?>" data-points="<?php echo isset($points) ? $points : ''; ?>"></div>
-
+  <div id="login-container" <?php echo isset($name) ? 'style="display: none;"' : ''; ?>>
+    <button type="button" id="login-button" onclick="redirectToLogin()">Prisijungti</button>
+  </div>
+  <div id="user-data" data-name="<?php echo isset($name) ? $name : ''; ?>"
+    data-level="<?php echo isset($level) ? $level : ''; ?>" data-points="<?php echo isset($points) ? $points : ''; ?>">
+  </div>
 
   <!--  Your current level is $level and you have $points points. Today's points: $points_today. Your id: $user_id -->
-    <!-- bandymas -->
-    <div id="dataContainer"></div>
-    <div id="lita"></div>
-    <div id="lita-bonus"></div>
+  <!-- bandymas -->
+  <div id="dataContainer"></div>
+  <div id="lita"></div>
+  <div id="lita-bonus"></div>
 
-    <?php
+  <?php
 if (isset($name)) {
   include 'x_configDB.php';
- // arba require arba include
+ 
   $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
   if (mysqli_num_rows($result) > 0) {
@@ -102,31 +108,30 @@ if (isset($name)) {
 }
 ?>
 
-    <section class="today-top">
-      <button type="button" class="today-top-btn" id="today-top-btn" >Šiandienos TOP 10</button>
-    </section>
+  <section class="today-top">
+    <button type="button" class="today-top-btn" id="today-top-btn">Šiandienos TOP 10</button>
+  </section>
 
-    <section class="litas-container">
-      <div class="litas-container-img" id="litai-img-bonus"></div>
-      <div class="litas-container-img" id="litai-img"></div>
-    </section>
+  <section class="litas-container">
+    <div class="litas-container-img" id="litai-img-bonus"></div>
+    <div class="litas-container-img" id="litai-img"></div>
+  </section>
 
+  <main class="super-container">
+    <div class="points-container">
+      <div id="points"></div>
+      <div id="bonus-points"></div>
+    </div>
 
-    <main class="super-container">
-      <div class="points-container">
-        <div id="points"></div>
-        <div id="bonus-points"></div>
+    <div class="super-container-qna-section">
+      <div id="question"></div>
+      <div id="answer"></div>
+      <div class="answer-section">
+        <div id="answer-msg"></div>
       </div>
-
-      <div class="super-container-qna-section">
-        <div id="question"></div>
-        <div id="answer"></div>
-        <div class="answer-section">
-          <div id="answer-msg"></div>
-        </div>  
-      </div>
-      <div class="form-container">
-        <?php
+    </div>
+    <div class="form-container">
+      <?php
           $name = $name ?? "";
         
           include 'x_configDB.php';
@@ -140,51 +145,44 @@ if (isset($name)) {
           }
           $verify = $verify ?? 0;
                 if (isset($name) && !empty($name) && !isset($error) && $verify==1) { ?>
-                  <form action="a_index.php" id="answer-form" method="post">
-                    <div class="answer-input">
-                      <input type="text" id="answer-input" name="answer-input">
-                      <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
-                    </div>
-                  </form>
-         <?php }
+      <form action="a_index.php" id="answer-form" method="post">
+        <div class="answer-input">
+          <input type="text" id="answer-input" name="answer-input">
+          <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
+        </div>
+      </form>
+      <?php }
 	elseif(isset($name) && !empty($name) && !isset($error) && $verify==0)  echo "Prašome patvirtinti savo el.paštą :)";// Cia reikes padirbeti
  ?>
-      </div>     
-    </main>
- 
-
-
-
-
-    <div id="chat-container-section">
-      <div id="chat-container-messages">
-        <ul id="chat-messages"></ul>
-        <div id="chat-user-data" chat-data-name="<?php echo isset($name) ? $name : ''; ?>"></div>
-      </div>
-      <div>
-        <form id="chat-form" >
-          <input id="chat-input-msg" name="user_message" autocomplete="off">
-          <input type="hidden" id="chat-user-id" name="user_id" value="<?php echo isset($user_id) ? $user_id : ''; ?>">
-          <input type="hidden" id="chat-user-name" name="user_name" value="<?php echo isset($name) ? $name : ''; ?>"> 
-          <input type="hidden" id="chat-user-level" name="user_level" value="<?php echo isset($level) ? $level : ''; ?>"> 
-          <button type="submit" id="chat-button">Send</button>
-        </form>
-      </div>
     </div>
+  </main>
 
-
-
-
-    <div class="old-question-section">
-      <div id="old-question"></div>
+  <div id="chat-container-section">
+    <div id="chat-container-messages">
+      <ul id="chat-messages"></ul>
+      <div id="chat-user-data" chat-data-name="<?php echo isset($name) ? $name : ''; ?>"></div>
     </div>
-
-
-    <script src="a_index.js"></script>
-    <script src="a_chat_client.js"></script>
-
-    <div class = "footer-wrapper">
-        <?php include './Footer/footer.php'; ?>
+    <div>
+      <form id="chat-form">
+        <input id="chat-input-msg" name="user_message" autocomplete="off">
+        <input type="hidden" id="chat-user-id" name="user_id" value="<?php echo isset($user_id) ? $user_id : ''; ?>">
+        <input type="hidden" id="chat-user-name" name="user_name" value="<?php echo isset($name) ? $name : ''; ?>">
+        <input type="hidden" id="chat-user-level" name="user_level" value="<?php echo isset($level) ? $level : ''; ?>">
+        <button type="submit" id="chat-button">Send</button>
+      </form>
     </div>
-  </body>
+  </div>
+
+  <div class="old-question-section">
+    <div id="old-question"></div>
+  </div>
+
+  <script src="a_index.js"></script>
+  <script src="a_chat_client.js"></script>
+
+  <div class="footer-wrapper">
+    <?php include './Footer/footer.php'; ?>
+  </div>
+</body>
+
 </html>

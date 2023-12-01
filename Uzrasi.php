@@ -18,7 +18,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 <!-- Testuoti registracija pilnai-->
 
 <!-- 5 -->
-<!--  -->
+<!-- Reikia images folderi ir images serverio folderi tvarkyti -->
 
 <!-- 6 -->
 <!--  -->

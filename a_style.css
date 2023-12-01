@@ -17,9 +17,9 @@
 body {
   position: relative;
   background-color: lightblue;
-  background: url(images/background/3954450.jpg);
+  background: url(images/background/cover10.jpg);
   background-repeat: no-repeat;
-  background-position: center;
+  /* background-position: center; */
   background-attachment: fixed;
   background-size: cover;
 }
