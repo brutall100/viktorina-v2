@@ -38,7 +38,7 @@
     const logoutButton = document.getElementById('btn-atsijungti');
     const name = "<?php echo $name ?>";
     logoutButton.addEventListener('click', () => {
-        window.location.href = `../statistic.php`;
+        window.location.href = `Statistica/statistic.php`;
     });
 </script>
 <?php else : ?>

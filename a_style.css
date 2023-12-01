@@ -544,3 +544,24 @@ body {
 #chat-button:focus {
   outline: none;
 }
+
+/* Button that confims email */
+
+.confirmation-message {
+  text-align: center;
+}
+
+.confirmation-message p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.confirmation-message button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

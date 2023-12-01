@@ -83,7 +83,8 @@ if (isset($name) & !empty($name)) {
 
   <!--  Your current level is $level and you have $points points. Today's points: $points_today. Your id: $user_id -->
   <!-- bandymas -->
-  <div id="dataContainer"></div>
+  <!-- <div id="dataContainer"></div> -->
+  
   <div id="lita"></div>
   <div id="lita-bonus"></div>
 
@@ -132,29 +133,36 @@ if (isset($name)) {
     </div>
     <div class="form-container">
       <?php
-          $name = $name ?? "";
-        
-          include 'x_configDB.php';
-          // arba require arba include arba require_once arba include_once
-          $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
-          $result = mysqli_query($conn, $query);
-          if (mysqli_num_rows($result) > 0) {
-          $row = mysqli_fetch_assoc($result);
-          $verify = $row['email_verified'];
-          mysqli_close($conn); 
-          }
-          $verify = $verify ?? 0;
-                if (isset($name) && !empty($name) && !isset($error) && $verify==1) { ?>
+  $name = $name ?? "";
+  
+  include 'x_configDB.php';
+  $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
+  $result = mysqli_query($conn, $query);
+  
+  if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $verify = $row['email_verified'];
+    mysqli_close($conn); 
+  }
+  
+  $verify = $verify ?? 0;
+  
+  if (isset($name) && !empty($name) && !isset($error) && $verify == 1) { ?>
       <form action="a_index.php" id="answer-form" method="post">
         <div class="answer-input">
           <input type="text" id="answer-input" name="answer-input">
           <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
         </div>
       </form>
-      <?php }
-	elseif(isset($name) && !empty($name) && !isset($error) && $verify==0)  echo "Prašome patvirtinti savo el.paštą :)";// Cia reikes padirbeti
- ?>
+      <?php } elseif (isset($name) && !empty($name) && !isset($error) && $verify == 0) { ?>
+      <div class="confirmation-message">
+        <p>Prašome patvirtinti savo el.paštą</p>
+        <button type="button" id="confirm-email-button">Patvirtinti</button>
+      </div>
+      <?php } ?>
+
     </div>
+
   </main>
 
   <div id="chat-container-section">

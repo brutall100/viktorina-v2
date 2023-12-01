@@ -1,4 +1,4 @@
-    <link rel="stylesheet" type="text/css" href="footer.css" >
+    <link rel="stylesheet" type="text/css" href="/Footer/footer.css" >
     <footer>
       <p></p>
       <p id="copyright">
@@ -35,4 +35,4 @@
     </dialog>
     
     </footer>
-  <script src="footer.js"></script>
+  <script src="/footer.js"></script>
