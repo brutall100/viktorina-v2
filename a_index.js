@@ -508,7 +508,7 @@ function closeModal() {
 function submitEmail() {
 
   const email = document.getElementById("email").value;
-
+  // Tai turbut siusime i serveri, tada serveris duos uzklausa i database, tada servas issius email useriui (Gal su uuid). Paspaus paste patvitinima vel kreipimasis i serva ir redirectas i viktorina .....
   // For demonstration purposes, just log the email to the console
   console.log("Entered email:", email);
 
