@@ -497,3 +497,20 @@ function redirectToLogin() {
   window.location.href = "d_regilogi.php"
 }
 
+// 
+// Popup Confirm email modal 
+function openModal() {
+  document.getElementById("emailModal").style.display = "flex";
+}
+function closeModal() {
+  document.getElementById("emailModal").style.display = "none";
+}
+function submitEmail() {
+
+  const email = document.getElementById("email").value;
+
+  // For demonstration purposes, just log the email to the console
+  console.log("Entered email:", email);
+
+  closeModal();
+}

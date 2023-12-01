@@ -84,7 +84,7 @@ if (isset($name) & !empty($name)) {
   <!--  Your current level is $level and you have $points points. Today's points: $points_today. Your id: $user_id -->
   <!-- bandymas -->
   <!-- <div id="dataContainer"></div> -->
-  
+
   <div id="lita"></div>
   <div id="lita-bonus"></div>
 
@@ -155,9 +155,17 @@ if (isset($name)) {
         </div>
       </form>
       <?php } elseif (isset($name) && !empty($name) && !isset($error) && $verify == 0) { ?>
+      <div id="emailModal" class="email-modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <label for="email">Enter your email:</label>
+          <input type="email" id="email" name="email">
+          <button type="button" onclick="submitEmail()">Submit</button>
+        </div>
+      </div>
       <div class="confirmation-message">
         <p>Prašome patvirtinti savo el.paštą</p>
-        <button type="button" id="confirm-email-button">Patvirtinti</button>
+        <button type="button" id="confirm-email-button" onclick="openModal()">Patvirtinti</button>
       </div>
       <?php } ?>
 
