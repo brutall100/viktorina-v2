@@ -1,21 +1,21 @@
-const serverUrl = 'http://***REMOVED***:4007/sensitive-data';
+// const serverUrl = "http://***REMOVED***:4007/sensitive-data";
+const serverUrl ="http://localhost:4007/sensitive-data";
 
-// Make a GET request to the server aaaaaaaaaaaaaaaaa
 fetch(serverUrl)
   .then(response => response.json())
   .then(data => {
-    // Log the received data to the console
+
     console.log(data);
   })
   .catch(error => {
-    // Handle any errors that occurred during the fetch
     console.error('Error fetching data:', error);
   });
 
 let data;
 async function fetchData() {
   try {
-    const response = await axios.get("http://***REMOVED***:4001/data");
+    // const response = await axios.get("http://***REMOVED***:4001/data");
+    const response = await axios.get("http://localhost:4001/data");
     return response.data;
   } catch (error) {
     console.error(error);
@@ -57,7 +57,8 @@ async function fetchData() {
 //
 function checkServerData() {
   axios
-    .get("http://***REMOVED***:4001/data")
+    // .get("http://***REMOVED***:4001/data")
+    .get("http://localhost:4001/data")
     .then((response) => {
       const serverData = response.data.data
       const serverId = serverData.id
@@ -100,7 +101,8 @@ function calculateMaxOldDataCount() {
 
 function fetchNewestOldQuestionData() {
   axios
-    .get("http://***REMOVED***:4001/old-data")
+    // .get("http://***REMOVED***:4001/old-data")
+    .get("http://localhost:4001/old-data")
     .then((response) => {
       const oldData = response.data.oldData
 
@@ -188,25 +190,25 @@ const generateAndDisplayRandomPoint = async (lita) => {
   const litaiImg = document.getElementById("litai-img")
   if (lita === 1) {
     litoVerte = "Litas"
-    imageSrc = " images/ImgLitai/1Lt.png"
+    imageSrc = "images/ImgLitai/1Lt.png"
   } else if (lita === 2) {
     litoVerte = "Litai"
-    imageSrc = " images/ImgLitai/1Lt.png"
+    imageSrc = "images/ImgLitai/1Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai1")
-    imageSrc = " images/ImgLitai/1Lt.png"
+    imageSrc = "images/ImgLitai/1Lt.png"
   } else if (lita === 3) {
     litoVerte = "Litai"
-    imageSrc = " images/ImgLitai/1Lt.png"
+    imageSrc = "images/ImgLitai/1Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai")
-    imageSrc = " images/ImgLitai/2Lt.png"
+    imageSrc = "images/ImgLitai/2Lt.png"
   } else if (lita === 4) {
     litoVerte = "Litai"
-    imageSrc = " images/ImgLitai/2Lt.png"
+    imageSrc = "images/ImgLitai/2Lt.png"
     displayImage(imageSrc, litaiImg, "on-off-litai")
-    imageSrc = " images/ImgLitai/2Lt.png"
+    imageSrc = "images/ImgLitai/2Lt.png"
   } else if (lita === 5) {
     litoVerte = "Litai"
-    imageSrc = " images/ImgLitai/5Lt.png"
+    imageSrc = "images/ImgLitai/5Lt.png"
   } else {
     litoVerte = ""
     imageSrc = ""
@@ -307,7 +309,8 @@ const handleUserAnswer = async (userAnswer) => {
 
     playGame() // atsakius teisingai paleidziama funkcija
 
-    const url = "http://***REMOVED***:4004/a_points.js"
+    // const url = "http://***REMOVED***:4004/a_points.js"
+    const url = "http://localhost:4004/a_points.js"
     const body = JSON.stringify({
       user_id_name: userData.name,
       points: litaPoints

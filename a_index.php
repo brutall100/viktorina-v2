@@ -43,7 +43,7 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
   </head>
   <?php
 if (isset($name) & !empty($name)) {
-  require_once 'x_configDB.php';  
+  include 'x_configDB.php';  
 // arba require arba include
   $query = "SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
@@ -83,7 +83,7 @@ if (isset($name) & !empty($name)) {
 
     <?php
 if (isset($name)) {
-  require_once 'x_configDB.php';
+  include 'x_configDB.php';
  // arba require arba include
   $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
   $result = mysqli_query($conn, $query);
@@ -129,8 +129,8 @@ if (isset($name)) {
         <?php
           $name = $name ?? "";
         
-          require_once 'x_configDB.php';
-          // arba require arba include
+          include 'x_configDB.php';
+          // arba require arba include arba require_once arba include_once
           $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
           $result = mysqli_query($conn, $query);
           if (mysqli_num_rows($result) > 0) {
@@ -147,7 +147,7 @@ if (isset($name)) {
                     </div>
                   </form>
          <?php }
-	elseif(isset($name) && !empty($name) && !isset($error) && $verify==0)  echo "Patvirtinkite el.paštą :)";// Cia reikes padirbeti
+	elseif(isset($name) && !empty($name) && !isset($error) && $verify==0)  echo "Prašome patvirtinti savo el.paštą :)";// Cia reikes padirbeti
  ?>
       </div>     
     </main>

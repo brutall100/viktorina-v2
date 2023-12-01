@@ -15,7 +15,7 @@ Ten sudeti reikalingas nuorodas is kur panaudoti backroundai kaip PVZ: <a href="
 per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazodio priminimo Funkcija -->
 
 <!-- 4 -->
-<!-- -->
+<!-- Testuoti registracija pilnai-->
 
 <!-- 5 -->
 <!--  -->

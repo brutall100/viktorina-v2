@@ -6,13 +6,23 @@
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
+      "name": "Reg-Log Server",
+      "script": "d_server.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
+    },
+    {
+      "name": "Points Update Server",
+      "script": "a_points.js",
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
+    },
+    {
       "name": "my Info Server",
       "script": "i_myInfoServer.js",
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
-      "name": "Register Server",
-      "script": "d_server.js",
+      "name": "envServer",
+      "script": "envServer.js",
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
@@ -23,11 +33,6 @@
     {
       "name": "Game Nr3 Server",
       "script": "game3server.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
-    },
-    {
-      "name": "Points Update Server",
-      "script": "a_points.js",
       "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
@@ -42,3 +47,5 @@
     }
   ]
 }
+
+
