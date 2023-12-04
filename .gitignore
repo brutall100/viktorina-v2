@@ -1,11 +1,11 @@
-.env
+#.env
 
 # Ignore Old_files folder
-_NotUse
+#_NotUse
 
 
 # Ignore node_modules
-node_modules
+#node_modules
 
 # Ignore all console.log files
 # *.log

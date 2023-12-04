@@ -1,8 +1,13 @@
 <?php
 $config = array(
-    $dbhost = '***REMOVED***', 
-    $dbuser = '***REMOVED***',
-    $dbpassword = '***REMOVED***',
-    $dbname = 'viktorina',
-    $dbport = '3306'
+    // $dbhost = '***REMOVED***', 
+    // $dbuser = '***REMOVED***',
+    // $dbpassword = '***REMOVED***',
+    // $dbname = 'viktorina',
+    // $dbport = '3306'
+    $dbhost = 'localhost', 
+    $dbuser = 'root',
+    $dbpassword = '',
+    $dbname = 'viktorina'
 );
+
