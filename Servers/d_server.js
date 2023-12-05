@@ -293,7 +293,8 @@ app.get("/confirm", (req, res) => {
 
 //            Alert script message
 function generateAlertScript(successMessage, redirectUrl) {
-  const backgroundImageUrl = "images/background/endless-constellation.png" /* background by SVGBackgrounds.com */
+  const backgroundImageUrl = "/Servers/images/background/endless-constellation.png";
+  /* background by SVGBackgrounds.com */
   return `
       <style>
       body {
