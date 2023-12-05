@@ -1,65 +1,60 @@
 body {
+    background-image: url(images/background/5987100.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    height: 100vh; 
 }
 
 .box {
-    width: 150px;
-    height: 150px;
-    border: 1px solid #ccc;
-    margin: 10px;
+    box-sizing: border-box;
+    min-width: 250px; /* Set your desired minimum width */
+    min-height: 150px; /* Set your desired minimum height */
+    flex: 0 0 calc(50% - 20px);
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none; /* Remove underline from anchor */
-    color: inherit; /* Inherit text color from parent */
+    text-decoration: none;
+    color: #fff;
+    padding: 20px;
+    margin: 20px; /* Adjusted margin for a more spaced-out look */
+    border: 2px solid #a6db34;
+    border-radius: 15px; /* Increased border radius for a more rounded look */
+    box-shadow: 0 8px 16px #c0c091; /* Adjusted box shadow for a softer look */
+    background-color: #a6db34;
+    transition: background-color 0.3s ease;
 }
 
 .box:hover {
-    background-color: #eee; /* Change background color on hover */
+    background-color: #c0c091;
 }
 
-/* Responsive layout for small screens */
-@media (max-width: 480px) {
+@media screen and (min-width: 600px) {
     .box {
-        width: calc(100% - 20px); /* 100% width with margin */
-        flex-direction: column;
-        background-color: aqua;
+        flex: 0 0 calc(50% - 20px);
     }
 }
 
-/* Responsive layout for medium screens */
-@media (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 768px) {
     .box {
-        width: calc(33.33% - 20px); /* 33.33% width with margin */
+        flex: 0 0 calc(33.33% - 20px);
     }
 }
 
-/* Responsive layout for large screens */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 992px) {
     .box {
-        width: calc(25% - 20px); /* 25% width with margin */
+        flex: 0 0 calc(25% - 20px);
     }
 }
 
-/* Responsive layout for extra-large screens */
-@media (min-width: 1025px) and (max-width: 1200px) {
+@media screen and (min-width: 1200px) {
     .box {
-        width: calc(20% - 20px); /* 20% width with margin */
+        flex: 0 0 calc(20% - 20px);
     }
 }
-
-/* Responsive layout for ultra-large screens */
-@media (min-width: 1201px) {
-    .box {
-        width: calc(16.66% - 20px); /* 16.66% width with margin */
-    }
-}
-
-
-
 

@@ -3,47 +3,47 @@
     {
       "name": "Main server",
       "script": "server.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
       "name": "Reg-Log Server",
       "script": "d_server.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
       "name": "Points Update Server",
       "script": "a_points.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
       "name": "my Info Server",
       "script": "i_myInfoServer.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
       "name": "envServer",
       "script": "envServer.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
       "name": "Games Server",
       "script": "playGame.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
       "name": "Game Nr3 Server",
       "script": "game3server.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
       "name": "Chat Server",
       "script": "a_chat_server.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     },
     {
       "name": "message Counter",
       "script": "messageCounter.js",
-      "cwd": "C:/xampp/htdocs/aldas/Viktorina.livee/Servers"
+      "cwd": "C:/xampp/htdocs/aldas/Viktorina.live/Servers"
     }
   ]
 }
