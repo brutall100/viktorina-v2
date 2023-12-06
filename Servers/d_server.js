@@ -39,7 +39,12 @@ connection.connect((err) => {
 })
 
 //                     LOGIN
-app.post('/Servers/login', (req, res) => {
+app.post("/Servers/login", (req, res) => {
+  const allowedHostnames = ["localhost", "viktorina.live", "viktorina.fun"]
+  if (!allowedHostnames.includes(req.hostname)) {
+    throw "Knock knock, FBI!!!"
+  }
+
   const { nick_name, user_password } = req.body
   const sql = `SELECT * FROM super_users WHERE nick_name = ?`
 
@@ -77,8 +82,12 @@ app.post('/Servers/login', (req, res) => {
 })
 
 //                  REGISTER
+app.post("/Servers/register", (req, res) => {
+  const allowedHostnames = ["localhost", "viktorina.live", "viktorina.fun"]
+  if (!allowedHostnames.includes(req.hostname)) {
+    throw "Knock knock, FBI!!!"
+  }
 
-app.post('/Servers/register', (req, res) => {
   const { nick_name, user_email, user_password, gender, other_gender } = req.body
 
   bcrypt.hash(user_password, 10, (err, hashedPassword) => {
@@ -141,7 +150,7 @@ async function updateResetToken(userEmail, resetToken, expires) {
   })
 }
 
-app.post('/Servers/reset-password', async (req, res) => {
+app.post("/Servers/reset-password", async (req, res) => {
   try {
     const userEmail = req.body.user_email
 
@@ -293,7 +302,7 @@ app.get("/confirm", (req, res) => {
 
 //            Alert script message
 function generateAlertScript(successMessage, redirectUrl) {
-  const backgroundImageUrl = "/Servers/images/background/endless-constellation.png";
+  const backgroundImageUrl = "/Servers/images/background/endless-constellation.png"
   /* background by SVGBackgrounds.com */
   return `
       <style>
