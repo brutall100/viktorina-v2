@@ -42,14 +42,14 @@ async function fetchData() {
   const lita = data.data.lita;
 
   // Uncomment the lines below to update HTML containers with data
-   const dataContainer = document.getElementById("dataContainer");
-   dataContainer.innerHTML = JSON.stringify(data);
+  //  const dataContainer = document.getElementById("dataContainer");
+  //  dataContainer.innerHTML = JSON.stringify(data);
   
-   const litaContainer = document.getElementById("lita");
-   litaContainer.innerHTML = lita;
+  //  const litaContainer = document.getElementById("lita");
+  //  litaContainer.innerHTML = lita;
 
-   const bonusLitaContainer = document.getElementById("lita-bonus");
-   bonusLitaContainer.innerHTML = data.data.bonusLita;
+  //  const bonusLitaContainer = document.getElementById("lita-bonus");
+  //  bonusLitaContainer.innerHTML = data.data.bonusLita;
 })();
 
 
@@ -82,8 +82,8 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 //
 //
 // Old question section
-let userLeveliss = 0
-const userLeveli = parseInt(userLeveliss);
+var userLevelis 
+const userLeveli = parseInt(userLevelis);
 console.log(userLeveli)
 
 

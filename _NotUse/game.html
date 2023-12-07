@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Console.log Example</title>
+</head>
+<body>
+  <h1>Hello, World!</h1>
+  <script>
+    fetch('http://localhost:5000/')
+      .then(response => response.json()) // parse the response as JSON
+      .then(data => console.log(data.gameNo)); // access the gameNo property of the response object
+  </script>
+</body>
+</html>
+
