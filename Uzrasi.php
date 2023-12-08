@@ -21,8 +21,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 <!-- Reikia images folderi ir images serverio folderi tvarkyti -->
 
 <!-- 6 -->
-<!-- Vaido koduks ideti ir pratestuoti app.post('/login', (req, res) => {
-  if (req.hostname !== "viktorina.live") throw "Kno😀ck knock, FBI!!!";  -->
+<!-- Prie viktorinu pasirinkimo reikia prideti koki tai image ar icon  -->
 
 <!-- 7 -->
 <!--  -->

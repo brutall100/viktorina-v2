@@ -1,5 +1,5 @@
 *{
-    font-family: 'Shadows Into Light', cursive;
+    font-family: 'Exo 2', 'Montserrat', sans-serif;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     text-align: center;
     display: flex;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.2);
+    /* background-color: rgba(0, 0, 0, 0.2); */
 }
 
 .index-welcome-div {
@@ -88,17 +88,21 @@ p span {
     .main-container {
         grid-template-columns: repeat(2, 1fr); /* Two columns on screens 768px and larger */
         grid-template-rows: repeat(2, 1fr);
-        /* margin: 50px; */
     }
 }
 
-/* Media query for even larger screens */
 @media (min-width: 1200px) {
     .main-container {
-        grid-template-columns: repeat(4, 1fr); /* Four columns on screens 1200px and larger */
-        /* margin: 50px; */
+        grid-template-columns: repeat(4, 1fr);
+        padding: 50px;
+        margin: 50px;
+    }
+    .box-container {
+        max-height: 150px; 
+        padding: 30px;
     }
 }
+
 
 .box-container {
     position: relative;
@@ -111,18 +115,27 @@ p span {
     justify-content: center;
     text-align: center;
     text-decoration: none;
-    color: #fff; /* Change to your preferred text color */
-    background-color: rgba(0, 128, 255, 0.8); /* Change to your preferred box color */
+    color: rgba(6, 6, 6, 0.8);
+    background-color: rgba(0, 46, 60, 0.7);
     padding: 20px;
-    border-radius: 50px;
-    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Combine transitions into one line */
 }
 
 .box:hover {
-    background-color: rgba(0, 128, 255, 1); /* Change to your preferred hover color */
+    background-color: rgba(0, 46, 60, 0.9);
+    transform: scale(1.1);
 }
+
 
 .box-text {
     margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 4px;
 }
 
+.box-text-span {
+    color: #e7ca93;
+    font-weight: 900;
+}
