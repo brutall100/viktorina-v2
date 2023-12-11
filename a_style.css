@@ -17,23 +17,22 @@
 body {
   position: relative;
   background-color: lightblue;
-  background: url(images/background/cover10.jpg);
+  background: url(images/DALLE/DALL·E\ 2023-12-11\ 12.23.50\ -\ .png);
   background-repeat: no-repeat;
   /* background-position: center; */
   background-attachment: fixed;
   background-size: cover;
 }
 
-.header-wrapper {
+.header-wrapper, .footer-wrapper {
   position: sticky;
-  top: 0;
   z-index: 9;
+  top: 0;
+  width: 100%;
 }
 
 .footer-wrapper {
-  position: fixed;
   bottom: 0;
-  width: 100%;
 }
 
 /*  */
@@ -42,53 +41,52 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  top: 4em;
   position: absolute;
+  top: 4em;
   right: 2em;
   height: 3em;
-  /* Set initial height */
-  border: 5px solid rgb(36, 39, 39);
+  border: 5px solid var(--dark);
   width: 260px;
   min-height: 290px;
 }
 
 .today-top-btn {
   background-color: #a65b46;
-  border: none;
-  color: white;
+  color: var(--white);
   padding: 11px 10px;
   text-align: center;
   width: 150px;
-  text-decoration: none;
   font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: var(--border-rad-lg);
+  border: none;
+  text-decoration: none;
 }
 
 .today-top-list-li {
   border: 0.5px solid rgb(11, 5, 37);
   margin: 3px;
-  float: none;
   width: 100%;
 }
 
 /*  */
 /* Pagrindinis question and answer containeris */
 .super-container {
+  background: var(--medium-dark);
   display: flex;
   flex-direction: column;
   position: absolute;
   top: 85%;
   left: 50%;
-  transform: translate(-50%, 0);
-  margin: auto;
+  transform: translateX(-50%);
   padding: 20px;
   width: 50%;
   height: 350px;
   justify-content: center;
   align-items: center;
   border: 1px dotted orangered;
+  z-index: 10;
 }
 
 .points-container {
