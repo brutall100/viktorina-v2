@@ -19,14 +19,13 @@ body {
   background-color: lightblue;
   background: url(images/DALLE/DALL·E\ 2023-12-11\ 12.23.50\ -\ .png);
   background-repeat: no-repeat;
-  /* background-position: center; */
   background-attachment: fixed;
   background-size: cover;
 }
 
 .header-wrapper, .footer-wrapper {
   position: sticky;
-  z-index: 9;
+  z-index: 100;
   top: 0;
   width: 100%;
 }
@@ -73,7 +72,7 @@ body {
 /*  */
 /* Pagrindinis question and answer containeris */
 .super-container {
-  background: var(--medium-dark);
+  background: rgb(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -85,15 +84,15 @@ body {
   height: 350px;
   justify-content: center;
   align-items: center;
-  border: 1px dotted orangered;
   z-index: 10;
 }
 
 .points-container {
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
   margin-bottom: 0;
   padding: 10px;
   margin-top: 50px;
+  color: #d8d7d7;
 }
 
 .hidden-bonus {
@@ -101,7 +100,7 @@ body {
 }
 
 .super-container-qna-section {
-  border: 5px solid rgb(110, 28, 90);
+  /* border: 5px solid rgb(110, 28, 90); */
   margin-top: 5px;
   padding: 15px;
   width: 100%;
@@ -117,7 +116,8 @@ body {
   font-family: "PT Serif", serif;
   font-weight: 600;
   font-style: italic;
-  border: 2px solid rgb(81, 37, 151);
+  color: #d2a981;
+  /* border: 2px solid rgb(81, 37, 151); */
 }
 
 #answer {
@@ -126,17 +126,19 @@ body {
   word-spacing: 0.1em;
   font-family: Arial, sans-serif;
   font-size: 1.3em;
-  color: rgb(34, 34, 34);
+  color: #d2a981;
   /* Set the color of the asterisks */
   padding: 10px;
-  border: 2px solid rgb(151, 117, 37);
+  background: rgb(0, 0, 0, 0.2);;
+  /* border: 2px solid rgb(151, 117, 37); */
 }
 
 /* answer-section */
 .answer-section {
   min-height: 7vh;
   width: auto/2;
-  border: 3px solid rgb(12, 126, 38);
+ 
+  /* border: 3px solid rgb(12, 126, 38); */
   /* position: fixed; */
   /* bottom: -1vh; */
   /* left: 50%; */
@@ -150,8 +152,9 @@ body {
 
 #answer-msg {
   font-family: Georgia, "Times New Roman", Times, serif, sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
+  color: #b1c9d6a8;
 }
 
 .corect-answer-answered {
