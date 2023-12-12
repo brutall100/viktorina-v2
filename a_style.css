@@ -17,7 +17,7 @@
 body {
   position: relative;
   background-color: lightblue;
-  background: url(images/DALLE/DALL·E\ 2023-12-11\ 12.23.50\ -\ .png);
+  background: url(images/DALLE/viktorina.live_world.events1.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -72,20 +72,21 @@ body {
 /*  */
 /* Pagrindinis question and answer containeris */
 .super-container {
-  background: rgb(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 85%;
+  top: 170%;
   left: 50%;
-  transform: translateX(-50%);
-  padding: 20px;
-  width: 50%;
-  height: 350px;
+  transform: translateX(-55%);
+  padding: 40px;
+  max-width: 600px;
+  max-height: 500px;
   justify-content: center;
   align-items: center;
   z-index: 10;
 }
+
 
 .points-container {
   /* border: 1px solid brown; */
@@ -170,7 +171,7 @@ body {
   color: #a65b46;
 }
 
-/* answer-input and btn */
+/* Existing styles */
 .form-container {
   display: flex;
   align-items: center;
@@ -179,7 +180,7 @@ body {
 
 .answer-input {
   flex: 1;
-  height: 4em;
+  height: 2em;
   padding: 5px;
   border: none;
   outline: none;
@@ -199,11 +200,17 @@ body {
   box-shadow: none;
 }
 
+/* Added to remove outline on focus */
+.answer-input input:focus {
+  outline: none;
+}
+
 .submit-icon {
-  width: 2em;
-  padding: 10px;
+  width: 2.3em;
+  height: 2.3em;
+  padding: 14px;
   vertical-align: middle;
-  border: none;
+  border: 2px solid black;
   background: var(--main-btn-color);
   cursor: pointer;
   border-top-right-radius: var(--border-rad-lg);
@@ -228,7 +235,7 @@ body {
   /* Use margin: auto to center the element */
   width: 200px;
   height: 200px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .litas-container-img {
@@ -353,8 +360,7 @@ body {
 
 /* .old-question-section */
 .old-question-section {
-  background-color: antiquewhite;
-  /* border: 2px solid rgb(97, 17, 17); */
+  background-color: rgba(255, 255, 255, 0.4);
   position: fixed;
   bottom: 6.2vh;
   right: 2vh;
@@ -449,7 +455,7 @@ body {
 /* Chat section */
 #chat-container-section {
   /* border: 2px solid rgba(7, 7, 7, 0.15); */
-  background: rgba(7, 7, 7, 0.15);
+  background: rgba(7, 7, 7, 0.2);
   height: 50vh;
   width: 25vw;
   position: fixed;
