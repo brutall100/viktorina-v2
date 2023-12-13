@@ -39,7 +39,7 @@ connection.connect((err) => {
 })
 
 //                     LOGIN
-app.post("/Servers/login", (req, res) => {
+app.post("/login", (req, res) => {
   const allowedHostnames = ["localhost", "viktorina.live", "viktorina.fun"]
   if (!allowedHostnames.includes(req.hostname)) {
     throw "Knock knock, FBI!!!"
@@ -82,7 +82,7 @@ app.post("/Servers/login", (req, res) => {
 })
 
 //                  REGISTER
-app.post("/Servers/register", (req, res) => {
+app.post("/register", (req, res) => {
   const allowedHostnames = ["localhost", "viktorina.live", "viktorina.fun"]
   if (!allowedHostnames.includes(req.hostname)) {
     throw "Knock knock, FBI!!!"
@@ -150,7 +150,7 @@ async function updateResetToken(userEmail, resetToken, expires) {
   })
 }
 
-app.post("/Servers/reset-password", async (req, res) => {
+app.post("/reset-password", async (req, res) => {
   try {
     const userEmail = req.body.user_email
 
