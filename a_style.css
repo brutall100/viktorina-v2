@@ -63,11 +63,39 @@ body {
   text-decoration: none;
 }
 
-.today-top-list-li {
+.php-today-top-list {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.php-today-top-list-li { 
   border: 0.5px solid rgb(11, 5, 37);
   margin: 3px;
   width: 100%;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
 }
+
+/* Reikia sutvarkyti siuos stylus Pagrazinti  */
+.best-player-php {
+  font-weight: bold;
+  color: #007bff;
+  /* Additional styling */
+}
+
+.player-name-hp {
+  font-weight: bold;
+  color: #333;
+  /* Additional styles for the name */
+}
+
+.player-points-hp {
+  color: #d9534f;
+  /* Additional styles for the points */
+}
+
+
 
 /*  */
 /* Pagrindinis question and answer containeris */

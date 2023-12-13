@@ -16,7 +16,6 @@ const server = http.createServer(async (req, res) => {
       const data = JSON.parse(body)
       const { user_id_name, points } = data
 
-      // Update user points logic goes here
       const mysql = require("mysql2/promise")
 
       const connection = await mysql.createConnection({
@@ -26,7 +25,6 @@ const server = http.createServer(async (req, res) => {
         database: process.env.DB_DATABASE
       })
 
-      // Update user points
       const query = `
       UPDATE super_users
       SET litai_sum = litai_sum + ?,
@@ -35,6 +33,9 @@ const server = http.createServer(async (req, res) => {
           litai_sum_month = litai_sum_month + ?
       WHERE nick_name = ?`
       const [rows, fields] = await connection.execute(query, [points, points, points, points, user_id_name])
+
+      // Log the message after updating points
+      console.log(`User: ${user_id_name} gets ${points} points`)
 
       const response = {
         user_id_name,
@@ -46,7 +47,6 @@ const server = http.createServer(async (req, res) => {
       res.writeHead(200)
       res.end(JSON.stringify(response))
 
-      // Close the connection
       connection.end()
     })
   } else {
@@ -57,7 +57,7 @@ const server = http.createServer(async (req, res) => {
 
 const PORT = process.env.PORT4
 server.listen(PORT, () => {
-  console.log(`Server is now listening on http://localhost:${PORT}`)
+  console.log(`Server is now listening on ${PORT}`)
 })
 
 // node a_points.js
