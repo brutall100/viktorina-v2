@@ -22,7 +22,7 @@ if (isset($_GET['get_top_players'])) {
     if ($row = mysqli_fetch_assoc($bestResult)) {
       $bestName = $row['nick_name'];
       $bestPoints = $row['max_points'];
-      echo "<div class='best-player-php'>Best of all: <span class='player-name-hp'>$bestName</span> <span class='player-points-hp'>$bestPoints Litai</span></div>";
+      echo "<div class='best-player-php'>Visų laikų TOP: <br> <span class='player-name-hp'>$bestName</span> <br> <span class='player-points-hp'>$bestPoints Litai</span></div>";
     } else {
       echo "No players found!";
     }

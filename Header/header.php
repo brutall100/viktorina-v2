@@ -1,8 +1,8 @@
 <link rel="stylesheet" type="text/css" href="Header/header.css">
 <header class="header">
     <div class="logo-container">
-        <img class="logo" src="images/icons/vk9.jpg" alt="viktorina-logo"
-            aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis">
+        <img class="logo" src="images/icons/VK_new3.png" alt="viktorina-logo"
+            aria-label="Viktorina logotipas, Išpuošta v raidė">
     </div>
     <nav class="menu-container">
         <ul>

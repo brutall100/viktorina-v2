@@ -44,7 +44,7 @@ body {
   top: 4em;
   right: 2em;
   height: 3em;
-  border: 5px solid var(--dark);
+  background: rgba(4, 4, 4, 0.6);
   width: 260px;
   min-height: 290px;
 }
@@ -58,7 +58,7 @@ body {
   font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: var(--border-rad-lg);
+  border-radius: .6em;
   border: none;
   text-decoration: none;
 }
@@ -80,18 +80,19 @@ body {
 /* Reikia sutvarkyti siuos stylus Pagrazinti  */
 .best-player-php {
   font-weight: bold;
-  color: #007bff;
+  color: #a65b46;
+  font-size: 1.6rem;
   /* Additional styling */
 }
 
 .player-name-hp {
   font-weight: bold;
-  color: #333;
+  color: #ffffff;
   /* Additional styles for the name */
 }
 
 .player-points-hp {
-  color: #d9534f;
+  color: #f8efef;
   /* Additional styles for the points */
 }
 
