@@ -127,7 +127,7 @@ function spawnProcess(scriptName, port) {
 
 const dServerProcess = spawnProcess("d_server.js", 4000)
 const serverProcess = spawnProcess("server.js", 4001)
-const gameServerProcess = spawnProcess("playGame.js", 4002)
+// const gameServerProcess = spawnProcess("playGame.js", 4002)
 const game3serverProcess = spawnProcess("game3server.js", 4003)
 const aPointsServerProcess = spawnProcess("a_points.js", 4004)
 const aChatServerProcess = spawnProcess("a_chat_server.js", 4005)

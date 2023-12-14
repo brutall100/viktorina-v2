@@ -80,7 +80,8 @@
                 points: points
             };
 
-            fetch('http://***REMOVED***:4002/playGame.js', {
+            // fetch('http://***REMOVED***:4002/a_points.js', {
+            fetch('http://localhost:4004/a_points.js', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

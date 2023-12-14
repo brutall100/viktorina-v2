@@ -52,11 +52,11 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- 15 -->
 <!-- Slaptažodžio priminimas būtų kintamasis, kiekvienų metų laiu, būti vis ktoks. ty vasarą vienoks, rudenį kitoks ir t.t-->
 
-<!--16 -->
-<!-- Padaryti kad butu galima isjungti games.Visus game -->
+<!-- 16 -->
+<!-- -->
 
 <!-- 17 -->
-<!--  -->
+<!-- -->
 
 <!-- 18 -->
 <!-- D regi logi Btn su padidinuimu turi buti, keisti spalva siek tiek, pamirsote slaptazody turi nukreipti i priminima, 

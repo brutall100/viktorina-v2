@@ -46,7 +46,8 @@
 
 <script>
   $(document).ready(() => {
-    $.get('http://***REMOVED***:4003/game3_server', data => {
+    // $.get('http://***REMOVED***:4003/game3_server', data => {
+    $.get('http://localhost:4003/game3_server', data => {
       const actualAnswer = data.answer
       const serverAnswer = data.answer.toLowerCase();
       const words = serverAnswer.split(' ');
@@ -77,7 +78,8 @@
             user_id_name: "<?php echo $name; ?>",
             points: points
           };
-          fetch('http://***REMOVED***:4002/playGame.js', {
+          // fetch('http://***REMOVED***:4002/a_points.js', {
+          fetch('http://localhost:4004/a_points.js', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -107,7 +109,8 @@
             user_id_name: "<?php echo $name; ?>",
             points: negativePoints
           };
-          fetch('http://***REMOVED***:4002/playGame.js', {
+          // fetch('http://***REMOVED***:4002/a_points.js', {
+          fetch('http://localhost:4004/a_points.js', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
