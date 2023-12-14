@@ -24,7 +24,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 <!-- Prie viktorinu pasirinkimo reikia prideti koki tai image ar icon  -->
 
 <!-- 7 -->
-<!--  -->
+<!-- GALI buti, kad random game funkcija reikes perkelti i SERVERI. TY. ten generuosis random skaicius ir tik client.js pasiles papildomas game. -->
 
 <!-- 8 -->
 <!-- Css padaryti kad baigiantis laikui klausimas prades nykti ir mazeti ir nubrgs i desny kampa apacioj ????????? Gal -->

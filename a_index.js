@@ -1,16 +1,3 @@
-// const serverUrl = "http://***REMOVED***:4007/sensitive-data";
-const serverUrl ="http://localhost:4007/sensitive-data";
-
-fetch(serverUrl)
-  .then(response => response.json())
-  .then(data => {
-
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
-
 let data;
 async function fetchData() {
   try {
