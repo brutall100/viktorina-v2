@@ -6,7 +6,7 @@ h1 {
 body {
   text-align: center;
   background-color: lightblue;
-  background: url(" images/background/cover8.jpg");
+  background: url("images/background/cover8.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
