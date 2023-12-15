@@ -3,19 +3,7 @@ session_start();
 $name = $_SESSION['nick_name'] ?? "";
 $user_id = $_SESSION['user_id'] ?? ""; 
 
-require_once('config.php'); //Reiks bandyt perkelti kitur
-
-$dbhost = $config['host'];
-$dbuser = $config['username'];
-$dbpassword = $config['password'];
-$dbname = $config['database'];
-$dbport = $config['port'];
-
-$conn = mysqli_connect($host, $username, $password, $database, $port);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include('../../x_configDB.php'); 
 
 $sql = "SELECT 
             user_lvl,
@@ -64,8 +52,8 @@ mysqli_close($conn);
     <title>Mano info</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="Tai yra interaktyvi viktorina, kurioje dalyviai atsako į įvairius klausimus ir gauna virtualius litus kaip atlygį. Ši viktorina yra unikali tuo, kad leidžia vartotojams ne tik atsakinėti į klausimus, bet ir kurti juos.">
+    <meta name="keywords" content="viktorina, litai, bendravimas, mokymasis, smagumas ">
     <link rel="stylesheet" type="text/css" href="i_myInfo.css">
     <script src="https://kit.fontawesome.com/98ec1a4ef1.js" crossorigin="anonymous"></script>
 </head>
