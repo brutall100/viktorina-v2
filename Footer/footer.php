@@ -1,4 +1,4 @@
-    <link rel="stylesheet" type="text/css" href="Footer/footer.css">
+    <link rel="stylesheet" type="text/css" href="/viktorina.live/Footer/footer.css">
     <footer>
       <p></p>
       <p id="copyright">
@@ -38,5 +38,5 @@
         <button id="close-dialog">Uždaryti</button>
       </dialog>
 
-      <script type="text/javascript" src="footer.js"></script>
+      <script type="text/javascript" src="/viktorina.live/Footer/footer.js"></script>
     </footer>
