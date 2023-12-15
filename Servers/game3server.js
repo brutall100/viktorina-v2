@@ -1,5 +1,5 @@
 const express = require("express")
-const mysql = require("mysql2/promise") // Updated to mysql2/promise
+const mysql = require("mysql2/promise")
 const rateLimit = require("express-rate-limit")
 const path = require("path")
 require("dotenv").config({ path: path.join(__dirname, ".env") })
@@ -52,7 +52,7 @@ app.get("/game3_server", async (req, res) => {
 
 const PORT = process.env.PORT3
 app.listen(PORT, () => {
-  console.log(`Server is connected to: http://localhost:${PORT}`)
+  console.log(`Server <game3server> is connected to: http://localhost:${PORT}`)
 })
 
 // node game3server.js

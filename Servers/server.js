@@ -1,14 +1,27 @@
 const express = require("express")
 const mysql = require("mysql2")
-require("dotenv").config()
+const cors = require("cors") 
+const path = require("path")
+require("dotenv").config({ path: path.join(__dirname, ".env") })
 
 const app = express()
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-  next()
-})
+// Define allowed origins
+const allowedOrigins = ["https://www.viktorina.live", "https://www.viktorina.fun", "http://localhost"]
+
+// CORS options
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  }
+}
+
+// Use cors middleware
+app.use(cors(corsOptions))
 
 let cachedData = null
 let bonusLita = 0
@@ -18,7 +31,8 @@ const connectionPool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT
 })
 
 const generateBonus = () => {
@@ -96,7 +110,8 @@ const checkLitaiSum = () => {
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT
   })
 
   setInterval(() => {
@@ -155,7 +170,8 @@ const checkAndManageOldQnaCount = () => {
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_DATABASE
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT
   })
 
   connection.connect((err) => {
@@ -238,12 +254,11 @@ app.get("/data", (req, res) => {
 
 const PORT = process.env.PORT1
 app.listen(PORT, () => {
-  console.log(`Serveris prisijunges on http://localhost:${PORT}`)
+  console.log(`Server <main-server> is connected to: http://localhost:${PORT}`)
 })
 
 //
-// C:\xampp\htdocs\aldas\Viktorina.live> node server.js
-
+//  node server.js
 
 // Start a Node.js Script: pm2 start startServers.pm2.json
 // List Running Processes: pm2 list

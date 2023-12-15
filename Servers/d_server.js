@@ -4,8 +4,8 @@ const nodemailer = require("nodemailer")
 const mysql = require("mysql")
 const bcrypt = require("bcrypt")
 const { v4: uuidv4 } = require("uuid")
-require("dotenv").config()
 const path = require("path")
+require("dotenv").config({ path: path.join(__dirname, ".env") })
 
 const { sendWelcomeEmail } = require("./d_mail")
 const emailService = require("./d_mail_reset")
@@ -18,19 +18,12 @@ app.set("views", path.join(__dirname, "views"))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-// const connection = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD,
-//   database: process.env.DB_DATABASE,
-//   port: process.env.DB_PORT
-// })
-
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT
 })
 
 connection.connect((err) => {
@@ -348,5 +341,5 @@ function generateAlertScript(successMessage, redirectUrl) {
 
 const PORT = process.env.PORT0
 app.listen(PORT, () => {
-  console.log(`Server d_server.js listening on port ${PORT}`)
+  console.log(`Server <d_server> listening on port ${PORT}`)
 })

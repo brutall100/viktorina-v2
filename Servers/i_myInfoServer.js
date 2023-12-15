@@ -3,15 +3,15 @@ const app = express()
 const bodyParser = require("body-parser")
 const mysql = require("mysql2/promise")
 const cors = require("cors")
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../../.env') });
-
+const path = require("path")
+require("dotenv").config({ path: path.join(__dirname, ".env") })
 
 const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT
 })
 
 app.use(bodyParser.json())
@@ -90,13 +90,12 @@ app.post("/updateName", async (req, res) => {
 
 const PORT = process.env.PORT6
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`)
+  console.log(`Server <i_myInfoServer> is connected to: http://localhost:${PORT}`)
 })
 
-//  C:\xampp\htdocs\aldas\Viktorina.live> cd Info
-//  C:\xampp\htdocs\aldas\Viktorina.live\Info> cd Mano_info
 
-//  C:\xampp\htdocs\aldas\Viktorina.live\Info\Mano_info> node i_myInfoServer.js
+
+// node i_myInfoServer.js
 
 // Pasizet ar toks vardas jau egzistuoja, jei yra atmesti pakeitimus ir nenuimti litu, jei nera galima keisti ir patikrinti bad words database kad vardas butu atitinkamas.
 // padaryti laiko tarpa po pirmo keitimo kada galima bus vel pasikeisti varda using npm moment gal menesis prideti ar atimti 1 raide pakeisti 3 raides, kad nickas per smarkei nepasikeistu
