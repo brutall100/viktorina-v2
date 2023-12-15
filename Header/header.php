@@ -2,7 +2,7 @@
 <header class="header">
     <div class="logo-container">
         <img class="logo" src="/viktorina.live/images/icons/VK_new3.png" alt="viktorina-logo"
-            aria-label="Viktorina logotipas, Išpuošta v raidė">
+            aria-label="Viktorina logotipas, Išpuošta V raidė Simbolizuoja Viktorina.live">
     </div>
     <nav class="menu-container">
         <ul>
