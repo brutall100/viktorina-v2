@@ -18,7 +18,7 @@ h1 {
   margin: 0;
   padding: 5px;
   border: 1px solid #999;
-  background-color: rgba(240, 240, 240, 0.1); /* 50% transparent gray */
+  background-color: rgba(240, 240, 240, 0.1); 
   text-transform: uppercase;
 }
 
