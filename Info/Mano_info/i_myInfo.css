@@ -44,7 +44,7 @@ p {
 /* Body */
 body::before {
   content: "";
-  background-image: url(images/background/5073414.jpg);
+  background-image: url(/viktorina.live/images/DALLE/viktorina.live_world.events1.png);
   background-size: cover;
   filter: blur(7px);
   filter: grayscale(70%);
