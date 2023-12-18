@@ -218,3 +218,19 @@ body {
 .btn:active {
   transform: scale(0.95); /* Reduce the size of the button when clicked */
 }
+
+
+/* Keitimo Info */
+.content-response-paragraph{
+  display:grid;
+  justify-content: center;
+  text-align: center;
+}
+
+.pargraph_1{
+  background: #386cbaa3;
+}
+
+.pargraph_2{
+  background: rgb(56, 186, 106);
+}

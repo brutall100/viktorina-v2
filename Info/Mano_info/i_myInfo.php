@@ -153,9 +153,10 @@ mysqli_close($conn);
 
         <div class="content-response">
             <h1>Keitimo info</h1>
-            <div>
-                <p></p>
-                <p></p>
+            <div class="content-response-paragraph">
+                <p class="pargraph_1"></p>
+                <p class="pargraph_2"></p>
+                
             </div>  
         </div>
     </div>
