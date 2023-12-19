@@ -295,8 +295,7 @@ app.get("/confirm", (req, res) => {
 
 //            Alert script message
 function generateAlertScript(successMessage, redirectUrl) {
-  const backgroundImageUrl = "/Servers/images/background/endless-constellation.png"
-  /* background by SVGBackgrounds.com */
+  const backgroundImageUrl = "http://localhost/Viktorina.live/Servers/images/background/endless-constellation.png"
   return `
       <style>
       body {

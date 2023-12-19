@@ -4,40 +4,40 @@
     <title>Slaptažodžio atkurimo procesas</title>
     <style>
       body {
-        background-image: url(images/background/cover7.jpg);
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        background-image: url(http://localhost/Viktorina.live/Servers/images/background/VK_pasw6.png);
         font-family: "Helvetica Neue", Arial, sans-serif;
-        text-align: center;
-        position: relative;
+        background-position: center;
         margin: 0;
         padding: 0;
         height: 100vh;
       }
+
       .message {
-        font-size: 20px;
-        color: #0f0303;
-        position: absolute;
-        bottom: 150px;
-        right: 100px;
-        width: 550px;
-        min-height: 100px;
-        height: auto;
-        padding: 10px;
-        background-color: rgba(255, 255, 255, 0.3);
-        border-radius: 10px;
+        font-size: 1.25rem;
+        color: #fdfdef;
+        width: 34.375rem;
+        padding: 1.25rem;
+        background-color: rgba(14, 13, 13, 0.6);
+        margin-top: 12.4vh;
+        padding: 12.5rem 3.9375rem;
+        border: 0.125rem solid #916e69;
       }
 
       .countdown {
-        font-size: 50px;
+        font-size: 3.125rem;
         font-weight: 700;
-        color: #9f4915;
+        color: #916e69;
         position: absolute;
-        top: 1px;
-        right: 30px;
-        padding: 20px;
+        top: 0.0625rem;
+        right: 1.875rem;
+        padding: 1.25rem;
       }
 
       .emoji {
-        font-size: 40px;
+        font-size: 2.5rem;
       }
     </style>
   </head>
@@ -68,8 +68,8 @@
       if (secondsLeft >= 0) {
         setTimeout(updateCountdown, 1000)
       } else {
-         // window.location.href = "http://viktorina.live/d_regilogi.php"
-        window.location.href = "d_regilogi.php" 
+        // window.location.href = "http://viktorina.live/d_regilogi.php"
+        window.location.href = "http://localhost/Viktorina.live/d_regilogi.php"
       }
     }
     updateCountdown()
