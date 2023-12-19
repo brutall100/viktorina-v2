@@ -70,6 +70,20 @@
       button:active {
         transform: scale(0.95);
       }
+
+      #strengthBar {
+        height: 10px;
+        width: 70%;
+        background-color: #ddd;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      #strengthText {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px;
+      }
     </style>
   </head>
   <body>
@@ -85,12 +99,22 @@
       <input type="password" id="confirmPassword" name="confirmPassword" required />
       <span class="eye-icon" onclick="togglePasswordVisibility('confirmPassword', 'togglePassword2')">👁️</span>
       <br />
+
+      <div class="pasw-strength-container">
+        <div id="strengthBar"></div>
+        <span id="strengthText"></span>
+      </div>
+
       <button id="submitButton" type="submit">Tvirtinu 👍</button>
     </form>
 
+   
+
     <div id="errorMessage" style="display: none; color: red">Slaptažodžiai nesutampa.</div>
-    <!-- Sukurti funkcija Slaptazodzio stiprumui ir dar viena sutapimui zalia reskia sutampa 
-    Jei kas nors nepavyksta sukurti EXITA-->
+   
+   
+
+
     <script>
       function togglePasswordVisibility(inputId, iconId) {
         const passwordInput = document.getElementById(inputId)
@@ -106,6 +130,56 @@
           togglePasswordIcon.textContent = "👁️"
         }
       }
+
+      function updatePasswordStrength() {
+        var strengthBar = document.getElementById('strengthBar');
+        var strengthText = document.getElementById('strengthText');
+        var password = document.getElementById('password').value;
+        var strength = 0;
+
+        if (password.match(/[a-z]+/)) {
+          strength += 1;
+        }
+        if (password.match(/[A-Z]+/)) {
+          strength += 1;
+        }
+        if (password.match(/[0-9]+/)) {
+          strength += 1;
+        }
+        if (password.match(/[$@#&!]+/)) {
+          strength += 1;
+        }
+
+        switch (strength) {
+          case 0:
+            strengthBar.style.backgroundColor = "#ddd";
+            strengthText.textContent = "";
+            break;
+          case 1:
+            strengthBar.style.backgroundColor = "#ff0000";
+            strengthText.textContent = "Weak";
+            break;
+          case 2:
+            strengthBar.style.backgroundColor = "#ff9900";
+            strengthText.textContent = "Moderate";
+            break;
+          case 3:
+            strengthBar.style.backgroundColor = "#00ff00";
+            strengthText.textContent = "Strong";
+            break;
+          case 4:
+            strengthBar.style.backgroundColor = "#00ff00";
+            strengthText.textContent = "Very Strong";
+            break;
+        }
+        strengthBar.style.width = strength * 25 + '%';
+      }
+
+      // Add event listener to password field
+      document.getElementById('password').addEventListener('input', updatePasswordStrength);
+    </script>
+
+
     </script>
   </body>
 </html>
