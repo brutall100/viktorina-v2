@@ -3,11 +3,28 @@
   <head>
     <title>Slaptažodzio atstatymas</title>
     <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        text-rendering: optimizeLegibility;
+        font-size: 100%;
+        line-height: 1.5;
+        color: #333;
+        background: transparent;
+        text-align: center;
+      }
+
       body {
         background-color: #ffc0cb;
-        background-image: url("http://localhost/Viktorina.live/Servers/images/background/varying-stripes.png"); /* background by SVGBackgrounds.com */
+        background-image: url("http://localhost/Viktorina.live/Servers/images/background/VK_pasw4.png");
         text-align: center;
         font-family: "Comic Sans MS", cursive, sans-serif;
+        display: flex; /* Flexbox layout */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        min-height: 100vh; /* Full viewport height */
       }
 
       h1 {
@@ -15,31 +32,44 @@
       }
 
       p {
-        color: #1b0533;
+        color: #a38fb8;
         font-family: "Times New Roman", Times, serif;
-        font-weight: 700;
+        font-weight: 900;
         font-size: larger;
       }
 
+      .main-container {
+        background-color: #1b050fc2;
+        border-radius: 3rem 6rem 3rem 6rem;
+        height: 52vh;
+        padding: 1em;
+        width: 30vw;
+      }
+
       form {
-        background-color: #5b7f9a;
-        padding: 30px;
-        border-radius: 10px;
-        margin: auto;
-        width: 30%;
+        background-color: #2e4e71f1;
+        padding: 2.5em 1em;
+        border-radius: 1.5rem 3rem 1.5rem 3rem;
       }
 
       label {
         display: block;
         margin-bottom: 5px;
+        color: #a38fb8;
       }
 
       input {
         padding: 10px;
         margin-bottom: 10px;
-        border: 1px solid #ff00ff;
+        border: 2px solid #1b050f;
+        background: #1b050f4b;
         border-radius: 5px;
         width: 70%;
+        color: #ff9900;
+      }
+
+      input:focus {
+        outline: 2px solid #1b050f; /* Custom outline color */
       }
 
       input[type="password"] {
@@ -54,7 +84,8 @@
       button {
         background-color: #ff9900;
         color: white;
-        margin-top: 10px;
+        margin-top: 20px;
+        margin-bottom: 0;
         padding: 10px 30px;
         border: none;
         border-radius: 5px;
@@ -71,55 +102,56 @@
         transform: scale(0.95);
       }
 
+      .pasw-strength-container {
+        height: 1.7em;
+      }
+
       #strengthBar {
-        height: 10px;
-        width: 70%;
-        background-color: #ddd;
-        margin-bottom: 10px;
+        height: 1.11em;
+        margin-top: 10px;
+        margin-bottom: 0;
         border-radius: 5px;
+        border: 0.5px solid #ff66001e;
       }
 
       #strengthText {
-        font-size: 14px;
-        color: #333;
-        margin-bottom: 10px;
+        font-size: 17px;
+        font-weight: 700;
+        color: #55186d;
       }
     </style>
   </head>
+
   <body>
-    <h1>Slaptažodzio atstatymas</h1>
-    <p>Įveskite naujajį slaptažodį:</p>
+    <div class="main-container">
+      <h1>Slaptažodzio atstatymas</h1>
+      <p>Įveskite naujajį slaptažodį:</p>
 
-    <form method="POST" action="/reset/<%= token %>">
-      <label for="password">Naujasis slaptažodis:</label>
-      <input type="password" id="password" name="password" required />
-      <span class="eye-icon" onclick="togglePasswordVisibility('password', 'togglePassword1')">👁️</span>
-      <br />
-      <label for="confirmPassword">Patvirtinti slaptažodį:</label>
-      <input type="password" id="confirmPassword" name="confirmPassword" required />
-      <span class="eye-icon" onclick="togglePasswordVisibility('confirmPassword', 'togglePassword2')">👁️</span>
-      <br />
+      <form method="POST" action="/reset/<%= token %>">
+        <label for="password">Naujasis slaptažodis:</label>
+        <input type="password" id="password" name="password" required />
+        <span class="eye-icon" onclick="togglePasswordVisibility('password', 'togglePassword1')">👁️</span>
+        <br />
+        <label for="confirmPassword">Patvirtinti slaptažodį:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required />
+        <span class="eye-icon" onclick="togglePasswordVisibility('confirmPassword', 'togglePassword2')">👁️</span>
+        <br />
 
-      <div class="pasw-strength-container">
-        <div id="strengthBar"></div>
-        <span id="strengthText"></span>
-      </div>
+        <div class="pasw-strength-container">
+          <div id="strengthBar"></div>
+          <span id="strengthText"></span>
+        </div>
 
-      <button id="submitButton" type="submit">Tvirtinu 👍</button>
-    </form>
+        <button id="submitButton" type="submit">Tvirtinu 👍</button>
+      </form>
 
-   
-
-    <div id="errorMessage" style="display: none; color: red">Slaptažodžiai nesutampa.</div>
-   
-   
-
+      <div id="errorMessage" style="display: none; color: red">Slaptažodžiai nesutampa.</div>
+    </div>
 
     <script>
       function togglePasswordVisibility(inputId, iconId) {
         const passwordInput = document.getElementById(inputId)
         const togglePasswordIcon = document.getElementById(iconId)
-
         if (passwordInput.type === "password") {
           passwordInput.type = "text"
           passwordInput.style.textAlign = "center"
@@ -132,54 +164,48 @@
       }
 
       function updatePasswordStrength() {
-        var strengthBar = document.getElementById('strengthBar');
-        var strengthText = document.getElementById('strengthText');
-        var password = document.getElementById('password').value;
-        var strength = 0;
-
+        var strengthBar = document.getElementById("strengthBar")
+        var strengthText = document.getElementById("strengthText")
+        var password = document.getElementById("password").value
+        var strength = 0
         if (password.match(/[a-z]+/)) {
-          strength += 1;
+          strength += 1
         }
         if (password.match(/[A-Z]+/)) {
-          strength += 1;
+          strength += 1
         }
         if (password.match(/[0-9]+/)) {
-          strength += 1;
+          strength += 1
         }
-        if (password.match(/[$@#&!]+/)) {
-          strength += 1;
+        if (password.match(/[$@#&!%^*()\-_+=\[\]{};:'",.<>\/?\\|~`]+/)) {
+          strength += 1
         }
-
         switch (strength) {
           case 0:
-            strengthBar.style.backgroundColor = "#ddd";
-            strengthText.textContent = "";
-            break;
+            strengthBar.style.backgroundColor = "#ffcc80"
+            strengthText.textContent = ""
+            break
           case 1:
-            strengthBar.style.backgroundColor = "#ff0000";
-            strengthText.textContent = "Weak";
-            break;
+            strengthBar.style.backgroundColor = "#ff9999"
+            strengthText.textContent = "Silpnas"
+            break
           case 2:
-            strengthBar.style.backgroundColor = "#ff9900";
-            strengthText.textContent = "Moderate";
-            break;
+            strengthBar.style.backgroundColor = "#ffcc80"
+            strengthText.textContent = "Vidutinis"
+            break
           case 3:
-            strengthBar.style.backgroundColor = "#00ff00";
-            strengthText.textContent = "Strong";
-            break;
+            strengthBar.style.backgroundColor = "#80ff80"
+            strengthText.textContent = "Stiprus"
+            break
           case 4:
-            strengthBar.style.backgroundColor = "#00ff00";
-            strengthText.textContent = "Very Strong";
-            break;
+            strengthBar.style.backgroundColor = "#155715"
+            strengthText.textContent = "Labai stiprus"
+            break
         }
-        strengthBar.style.width = strength * 25 + '%';
+        strengthBar.style.width = strength * 25 + "%"
       }
-
       // Add event listener to password field
-      document.getElementById('password').addEventListener('input', updatePasswordStrength);
-    </script>
-
-
+      document.getElementById("password").addEventListener("input", updatePasswordStrength)
     </script>
   </body>
 </html>
