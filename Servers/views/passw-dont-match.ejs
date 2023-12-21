@@ -1,56 +1,75 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Slaptažodžio atstatymas</title>
-    <style>
-      body {
-        background-color: #c0deba;
-        text-align: center;
-        font-family: "Comic Sans MS", cursive, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-      }
 
-      #errorMessage {
-        text-align: center;
-        background-color: #ffffff;
-        border-radius: 5px;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        max-width: 400px;
-      }
+<head>
+  <title>Slaptažodžio atstatymas</title>
+  <style>
+    body {
+      background-color: #c0deba;
+      background-image: url("http://localhost/Viktorina.live/Servers/images/background/VK_pasw1.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
-      .smiley {
-        font-size: 36px;
-        margin-left: 10px;
-      }
 
-      #countdown {
-        font-weight: bold;
-        font-size: 18px;
-        margin-top: 20px;
-      }
+    .main-container {
+      padding: 3em;
+      background: #19adadcc;
+      border-radius: 5%;
+    }
 
-      #seconds {
-        color: #5c2f2d;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="errorMessage">
-      <p>
-        Ojojoi 😄❌🙈 Atrodo, kad jūsų slaptažodžiai nesutampa. Jie turėtų sutapti.
-        <span class="smiley">🙂</span>
-      </p>
-      <p>Kadangi įvedėte skirtingus slaptažodžius, jus busite nukreiptas į prisijungimo puslapį ir reikės atlikti slaptažodžio priminimo veiksmus iš naujo.</p>
-      <p id="countdown">
-        Perkėlimas po
-        <span id="seconds">8</span>
-        sekundžių.
-      </p>
+    #errorMessage {
+      text-align: center;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 400px;
+      background: #19adadef;
+      outline: 2px solid #1b050f; 
+      border-radius: 5%;
+    }
+
+    .smiley {
+      font-size: 36px;
+      margin-left: 10px;
+    }
+
+    #countdown {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    #seconds {
+      color: #5c2f2d;
+    }
+  </style>
+</head>
+
+<body>
+    <div class="main-container">
+      <div id="errorMessage">
+        <p>
+          Ojojoi 😄❌🙈 Atrodo, kad jūsų slaptažodžiai nesutampa. Jie turėtų sutapti.
+          <span class="smiley">🙂</span>
+        </p>
+        <p>Kadangi įvedėte skirtingus slaptažodžius, jus busite nukreiptas į prisijungimo puslapį ir reikės atlikti
+          slaptažodžio priminimo veiksmus iš naujo.</p>
+        <p id="countdown">
+          Perkėlimas po
+          <span id="seconds">8</span>
+          sekundžių.
+        </p>
+      </div>
     </div>
 
     <script>

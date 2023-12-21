@@ -19,6 +19,7 @@
       body {
         background-color: #ffc0cb;
         background-image: url("http://localhost/Viktorina.live/Servers/images/background/VK_pasw4.png");
+        background-position: center; /* Center the image */
         text-align: center;
         font-family: "Comic Sans MS", cursive, sans-serif;
         display: flex; /* Flexbox layout */
@@ -69,7 +70,7 @@
       }
 
       input:focus {
-        outline: 2px solid #1b050f; /* Custom outline color */
+        outline: 2px solid #1b050f; 
       }
 
       input[type="password"] {
@@ -204,7 +205,6 @@
         }
         strengthBar.style.width = strength * 25 + "%"
       }
-      // Add event listener to password field
       document.getElementById("password").addEventListener("input", updatePasswordStrength)
     </script>
   </body>
