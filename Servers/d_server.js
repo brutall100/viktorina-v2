@@ -35,7 +35,7 @@ connection.connect((err) => {
 app.post("/login", (req, res) => {
   const allowedHostnames = ["localhost", "viktorina.live", "viktorina.fun"]
   if (!allowedHostnames.includes(req.hostname)) {
-    throw "Knock knock, FBI!!!"
+    throw "Knock knock, FBI!!!" // reiks papildyti ejs failiuku, pagrazinti uzdeti baisu background.
   }
 
   const { nick_name, user_password } = req.body
@@ -248,7 +248,7 @@ app.post("/reset/:token", (req, res) => {
 
     if (rows.length === 0) {
       console.log("Pasibaigęs rakto galiojimo laikas.")
-      const successMessage = "Pasibaigęs rakto galiojimas. Slaptažodžio atkurimo procesą reikia atlikti iš naujo."
+      const successMessage = "😔 Pasibaigęs rakto galiojimas. 🗝️ Slaptažodžio atkurimo procesą reikia atlikti iš naujo. 😞"
       // const redirectUrl = "http://viktorina.live/d_regilogi.php"
       const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
@@ -264,7 +264,7 @@ app.post("/reset/:token", (req, res) => {
         return res.status(500).send("Internal server error")
       }
 
-      const successMessage = "Jūsų slaptažodis buvo sėkmingai pakeistas. Dabar galite prisijungti su savo naujuoju slaptažodžiu."
+      const successMessage = "😄 Jūsų slaptažodis buvo sėkmingai pakeistas. 🎉 Dabar galite prisijungti su savo naujuoju slaptažodžiu. 😊"
       // const redirectUrl = "http://viktorina.live/d_regilogi.php"
       const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
       const alertScript = generateAlertScript(successMessage, redirectUrl)
@@ -295,46 +295,93 @@ app.get("/confirm", (req, res) => {
 
 //            Alert script message
 function generateAlertScript(successMessage, redirectUrl) {
-  const backgroundImageUrl = "http://localhost/Viktorina.live/Servers/images/background/endless-constellation.png"
-  return `
-      <style>
-      body {
-        background-image: url(${backgroundImageUrl});
-        margin: 0;
-        display: flex;
-        justify-content: center; 
-        align-items: center; 
-        min-height: 100vh; 
-      }
+const backgroundImageUrl = "http://localhost/Viktorina.live/Servers/images/background/VK_cover9.png"
+return `
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url(${backgroundImageUrl});
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .alert-container {
+      background-color: rgba(101, 224, 238, 0.3);
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-family: 'Arial', sans-serif;
+      font-size: 1em;
+      color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 400px;
+    }
+
+
+    /* Smaller Devices */
+    @media screen and (max-width: 480px) {
       .alert-container {
-        background-color: #bfac64;
-        color: white;
+        font-size: 2em;
+        color: red;
+        padding: 15px;
+      }
+    }
+
+    /* Medium Devices, Tablets */
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+      .alert-container {
+        font-size: 2.3em;
+        color: green;
+        padding: 18px;
+      }
+    }
+
+    /* Larger Devices, Small Laptops */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+      .alert-container {
+        font-size: 2.6em;
+        color: blue;
         padding: 20px;
-        border-radius: 8px;
-        text-align: center;
-        font-family: 'Arial', sans-serif;
-        font-size: 18px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        max-width: 400px;
       }
+    }
 
-      @media screen and (max-width: 480px) {
-        .alert-container {
-          font-size: 18px;
-        }
+    /* Extra Large Devices, Wide Screens */
+    @media screen and (min-width: 1025px) {
+      .alert-container {
+        font-size: 2.7em;
+        color: black;
+        padding: 25px;
       }
-    </style>
+    }
+  </style>
+  <div class="alert-container">
+    <p>${successMessage}</p>
+  </div>
 
-    <div class="alert-container">
-      <p>${successMessage}</p>
-    </div>
-    
-    <script>
-      setTimeout(function() {
-        window.location.href = "${redirectUrl}";
-      }, 5000);
+    // <script>
+      //   setTimeout(function() {
+      //     window.location.href = "${redirectUrl}";
+      //   }, 5000);
+      // 
     </script>`
 }
 

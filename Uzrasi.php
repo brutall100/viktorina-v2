@@ -15,7 +15,7 @@ Ten sudeti reikalingas nuorodas is kur panaudoti backroundai kaip PVZ: <a href="
 per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazodio priminimo Funkcija -->
 
 <!-- 4 -->
-<!-- Testuoti registracija pilnai-->
+<!--  -->
 
 <!-- 5 -->
 <!-- Reikia images folderi ir images serverio folderi tvarkyti -->
@@ -191,6 +191,9 @@ Lvl 1 user can write 50 msg
 Lvl 2 user can write 500 msg
 Lvl 3 user can write 5000 msg  or donated user can write Unlimited msg -->
 
+<!-- 13 -->
+<!--  Prisijungiant ar registruojantis reikes 
+{throw "Knock knock, FBI!!!"   // reiks papildyti ejs failiuku, pagrazinti uzdeti baisu background.} -->
 
 
 <!-- TAISYKLES -->
