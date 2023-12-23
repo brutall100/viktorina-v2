@@ -1,19 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
-/* Set the root font size and height */
 :root {
-  height: 100vh; /* Viewport height */
+  height: 100vh; 
 }
 
-/* Apply box-sizing and reset margins/padding for all elements */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
 }
 
-/* Style for paragraphs */
 p {
   font-size: 14px;
   font-weight: 100;
@@ -24,7 +20,7 @@ p {
 
 /* Body styles */
 body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg");
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg"); */
   background-image: url("images/background/cover5.jpg");
   height: 90vh;
   padding-top: 5%;
@@ -42,7 +38,7 @@ body {
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  /* border: 3px solid yellowgreen; */
+  border: 3px solid rgb(205, 50, 50);
   width: 770px;
 }
 
@@ -55,18 +51,61 @@ body {
   /* border: 3px solid rgb(58, 79, 17); */
 }
 
-/* Styles for the generate buttons container */
 .generate-butons {
   height: 100px;
 }
 
-/* Styles for the generate button */
 .generate-btn {
   width: 22em;
   padding: 1.1em;
   margin: 1em 3em;
   opacity: 0.7;
 }
+
+/* New media query for smaller screens */
+@media (max-width: 1024px) {
+  .container-generator {
+    max-width: 77vw; 
+    border: 3px solid rgb(53, 50, 205);
+    text-align: center;
+    align-self: center;
+  }
+
+  .generate-butons {
+    width: 100%; /* Make the button containers take full width */
+    margin: 0.5em 0; /* Adjust margin for better spacing */
+  }
+
+  .generate-btn {
+    width: auto; /* Allow the button to adjust its width */
+    margin: 0.5em; /* Adjust margin for better spacing */
+  }
+}
+
+/* New media query for smaller screens */
+@media (max-width: 600px) {
+  .container-generator {
+    flex-direction: column;
+    align-items: center;
+    width: auto; /* Adjust the width to fit smaller screens */
+    border: 3px solid rgb(55, 205, 50);
+  }
+
+  .generate-butons {
+    width: 100%; /* Make the button containers take full width */
+    margin: 0.5em 0; /* Adjust margin for better spacing */
+  }
+
+  .generate-btn {
+    width: auto; /* Allow the button to adjust its width */
+    margin: 0.5em; /* Adjust margin for better spacing */
+  }
+}
+
+
+
+
+
 
 /* Common styles for buttons */
 button {
@@ -131,14 +170,13 @@ button.ghost {
 /* Styles for the logo image */
 .logo {
   width: 10em;
-  /* margin-bottom: 25%; */
   cursor: crosshair;
   transition: transform 0.7s;
 }
 
 /* Logo hover effect */
 .logo:hover {
-  transform: scale(1.5);
+  transform: scale(1.6);
 }
 
 /* Styles for the main heading */
