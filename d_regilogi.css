@@ -63,7 +63,7 @@ body {
   opacity: 0.7;
 }
 
-
+/* @media 1024px */
 @media (max-width: 1024px) {
   .container-generator {
     max-width: 77vw; 
@@ -81,7 +81,7 @@ body {
   }
 }
 
-
+/* @media 600px */
 @media (max-width: 600px) {
   .container-generator {
     flex-direction: column;
@@ -94,7 +94,6 @@ body {
     width: 100%;
     margin: 0;
     padding: 0; 
-
   }
   .generate-btn {
     width: 20em; 
@@ -109,23 +108,36 @@ body {
   }
 }
 
+/* @media 480px */
 @media (max-width: 480px) {
   .container-generator {
     flex-direction: column;
-    max-width: 77vw;
-    margin-top: 9vh;
-    border: 3px solid rgb(55, 205, 50);
+    /* max-width: 77vw; */
+    margin-top: 30vh;
+    border: none;
+    /* border: 3px solid rgb(55, 205, 50); */
 
   }
-
   .generate-butons {
-    width: 100%; /* Make the button containers take full width */
-
+    width: 100%;
+    margin: 0;
+    padding: 0; 
   }
-
   .generate-btn {
-    width: 15em; 
-   
+    width: 15em;
+    /* padding: 10px;  */
+    font-size: .7em;
+    max-width: 60vw;
+  }
+  .randomized {
+    text-align: center;
+    align-self: center;
+    color: #582c5e;
+    border: none;
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid rgb(58, 79, 17); */
+
   }
 }
 
