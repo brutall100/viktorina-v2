@@ -328,6 +328,7 @@ return `
       padding: 20px;
       border-radius: 8px;
       text-align: center;
+      word-break: break-word;
       font-family: 'Arial', sans-serif;
       font-size: 1em;
       color: white;
@@ -336,35 +337,38 @@ return `
       max-width: 400px;
     }
 
+    #countdown {
+      font-weight: bold;
+      color: #ffd700; 
+      font-size: 1.2em; 
+    }
 
-    /* Smaller Devices */
+
     @media screen and (max-width: 480px) {
       .alert-container {
-        font-size: 2em;
+        font-size: 1.2em;
         color: red;
         padding: 15px;
+        width: 90%;
       }
     }
 
-    /* Medium Devices, Tablets */
     @media screen and (min-width: 481px) and (max-width: 768px) {
       .alert-container {
-        font-size: 2.3em;
+        font-size: 1.7em;
         color: green;
         padding: 18px;
       }
     }
 
-    /* Larger Devices, Small Laptops */
     @media screen and (min-width: 769px) and (max-width: 1024px) {
       .alert-container {
-        font-size: 2.6em;
+        font-size: 2.2em;
         color: blue;
         padding: 20px;
       }
     }
 
-    /* Extra Large Devices, Wide Screens */
     @media screen and (min-width: 1025px) {
       .alert-container {
         font-size: 2.7em;
@@ -375,13 +379,22 @@ return `
   </style>
   <div class="alert-container">
     <p>${successMessage}</p>
+    <p>Būsite nukreipti po <span id="countdown">7</span> sekundžių.</p>
   </div>
 
-    // <script>
-      //   setTimeout(function() {
-      //     window.location.href = "${redirectUrl}";
-      //   }, 5000);
-      // 
+
+    <script>
+      let timeLeft = 7;
+      const countdownElement = document.getElementById('countdown');
+      const intervalId = setInterval(() => {
+        timeLeft--;
+        countdownElement.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+          clearInterval(intervalId);
+          window.location.href = "${redirectUrl}";
+        }
+      }, 1000);
     </script>`
 }
 
