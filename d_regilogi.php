@@ -31,7 +31,6 @@
       <form method="POST" action="http://localhost:4000/register" id="register-form">
         <h1 class="main-h1">Registracija</h1>
         <div class="form-group">
-          <!-- <label for="gender-select">Lytis:</label> -->
           <select id="gender-select" name="gender">
             <option value="Nepasirinkta">Jūsų lytis?</option>
             <option value="Vyras">Vyras</option>
@@ -176,13 +175,13 @@
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
-          <img class="logo" src="images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
+          <img class="logo" src="images/icons/VK_new3.png" alt="viktorina-logo" aria-label="Viktorina logotipas, Išpuošta, stilizuota V raidė. V simbolizuoja VIKTORINA " />
           <h1>Sveiki sugrįžę!</h1>
           <p>Prašome prisijungti.</p>
           <button class="ghost" id="signIn">Prisijungimas</button>
         </div>
         <div class="overlay-panel overlay-right">
-          <img class="logo" src="images/icons/vk9.jpg" alt="viktorina-logo" aria-label="Viktorina logotipas, kvadratas su išdėstytomis figūromis " />
+        <img class="logo" src="images/icons/VK_new3.png" alt="viktorina-logo" aria-label="Viktorina logotipas, Išpuošta, stilizuota V raidė. V simbolizuoja VIKTORINA " />
           <h1>Labas, Drauge!</h1>
           <p>Įveskite savo asmeninius duomenis ir pradėkite kelionę su mumis.</p>
           <button class="ghost" id="signUp">Registracija</button>

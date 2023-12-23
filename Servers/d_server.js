@@ -56,7 +56,7 @@ app.post("/login", (req, res) => {
           res.redirect(307, `http://localhost/Viktorina.live/a_index.php`)
         } else {
           console.log("Invalid password for user:", nick_name)
-          const successMessage = `Labas ${nick_name}, įvedei neteisingą slaptažodį.`
+          const successMessage = `Labas <span class="nickname">${nick_name}</span>, įvedei neteisingą slaptažodį.`;
           // const redirectUrl = "http://viktorina.live/d_regilogi.php"
           const redirectUrl = "http://localhost/Viktorina.live/d_regilogi.php"
           const alertScript = generateAlertScript(successMessage, redirectUrl)
@@ -343,6 +343,10 @@ return `
       font-size: 1.2em; 
     }
 
+    .nickname {
+      font-weight: bold;
+      color: #a64d89; 
+    }
 
     @media screen and (max-width: 480px) {
       .alert-container {

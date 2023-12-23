@@ -10,6 +10,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 /* Style for paragraphs */
@@ -129,8 +130,8 @@ button.ghost {
 
 /* Styles for the logo image */
 .logo {
-  width: 5em;
-  margin-bottom: 25%;
+  width: 10em;
+  /* margin-bottom: 25%; */
   cursor: crosshair;
   transition: transform 0.7s;
 }
