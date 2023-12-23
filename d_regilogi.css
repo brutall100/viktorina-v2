@@ -20,8 +20,9 @@ p {
 
 /* Body styles */
 body {
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("C:\xampp\htdocs\VK\Viktorina\img_cover\cover5.jpg"); */
   background-image: url("images/background/cover5.jpg");
+  background-size: cover;
+  background-position: center;
   height: 90vh;
   padding-top: 5%;
   background-size: cover;
@@ -38,7 +39,7 @@ body {
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  border: 3px solid rgb(205, 50, 50);
+  /* border: 3px solid rgb(205, 50, 50); */
   width: 770px;
 }
 
@@ -62,43 +63,69 @@ body {
   opacity: 0.7;
 }
 
-/* New media query for smaller screens */
+
 @media (max-width: 1024px) {
   .container-generator {
     max-width: 77vw; 
+    /* word-break: break-all; */
     border: 3px solid rgb(53, 50, 205);
     text-align: center;
     align-self: center;
   }
-
   .generate-butons {
     width: 100%; /* Make the button containers take full width */
     margin: 0.5em 0; /* Adjust margin for better spacing */
   }
-
   .generate-btn {
-    width: auto; /* Allow the button to adjust its width */
-    margin: 0.5em; /* Adjust margin for better spacing */
+    width: 17em; /* Allow the button to adjust its width */
   }
 }
 
-/* New media query for smaller screens */
+
 @media (max-width: 600px) {
   .container-generator {
     flex-direction: column;
+    max-width: 77vw;
     align-items: center;
-    width: auto; /* Adjust the width to fit smaller screens */
+    border: 3px solid rgb(205, 50, 197);
+    margin-top: 10vh;
+  }
+  .generate-butons {
+    width: 100%;
+    margin: 0;
+    padding: 0; 
+
+  }
+  .generate-btn {
+    width: 20em; 
+  }
+  .randomized {
+    text-align: center;
+    align-self: center;
+    color: #582c5e;
+    border: 1px solid rgb(58, 79, 17);
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-generator {
+    flex-direction: column;
+    max-width: 77vw;
+    margin-top: 9vh;
     border: 3px solid rgb(55, 205, 50);
+
   }
 
   .generate-butons {
     width: 100%; /* Make the button containers take full width */
-    margin: 0.5em 0; /* Adjust margin for better spacing */
+
   }
 
   .generate-btn {
-    width: auto; /* Allow the button to adjust its width */
-    margin: 0.5em; /* Adjust margin for better spacing */
+    width: 15em; 
+   
   }
 }
 
