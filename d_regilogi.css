@@ -115,7 +115,7 @@ body {
     /* max-width: 77vw; */
     margin-top: 30vh;
     border: none;
-    /* border: 3px solid rgb(55, 205, 50); */
+    border: 3px solid rgb(55, 205, 50);
 
   }
   .generate-butons {
@@ -213,7 +213,6 @@ button.ghost {
   transition: transform 0.7s;
 }
 
-/* Logo hover effect */
 .logo:hover {
   transform: scale(1.6);
 }
@@ -221,6 +220,32 @@ button.ghost {
 /* Styles for the main heading */
 .main-h1 {
   margin-bottom: 10%;
+}
+@media (max-width: 600px) {
+  .main-h1 {
+    margin-bottom: 10%;
+    font-size: 1.7em;
+  }
+}
+@media (max-width: 480px) {
+  .main-h1 {
+    margin-bottom: 10%;
+    font-size: 1.4em;
+  }
+}
+@media (max-width: 400px) {
+  .main-h1 {
+    margin-bottom: 10%;
+    font-size: 1.1em;
+    font-family: initial;
+  }
+}
+@media (max-width: 320px) {
+  .main-h1 {
+    font-size: .9em;
+    font-family: initial;
+    margin-top: -50px;
+  }
 }
 
 /* Styles for the forgot password link */
@@ -231,7 +256,6 @@ a.forgot-password {
   margin: 15px 0;
 }
 
-/* Form styles */
 form {
   background-color: #ffffff;
   display: flex;
@@ -243,7 +267,6 @@ form {
   text-align: center;
 }
 
-/* Input styles */
 input {
   background-color: #eee;
   border: 1px solid #ccc;
@@ -252,21 +275,29 @@ input {
   margin: 8px 0;
   width: 250px;
 }
+/* @media (max-width: 320px) {
+  input {
+    width: 50%; 
+    height: 30px; 
+    padding: 5px; 
+    font-size: 12px; 
+  }
+} */
 
 /* Tablet Styles (max-width: 768px) */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   input,
   #gender-select {
     width: 200px;
   }
-}
+} */
 
 /* Phone Styles (max-width: 480px) */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   input {
     width: 100px;
   }
-}
+} */
 
 /* Container styles */
 .container {
@@ -437,12 +468,17 @@ input {
 }
 
 .centered-input {
-  width: 250px; /* Adjust the width as needed */
   text-align: center;
+  max-width: max-content;
+}
+@media (max-width: 300px) {
+  .centered-input {
+    width: 70vw;
+  }
 }
 
 .button-container {
-  margin-top: 10px; /* Adjust the margin as needed */
+  margin-top: 10px;
 }
 
 #close-modal {
