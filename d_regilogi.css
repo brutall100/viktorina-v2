@@ -2,6 +2,7 @@
 
 :root {
   height: 100vh; 
+  font-size: 100%;
 }
 
 * {
@@ -11,7 +12,7 @@
 }
 
 p {
-  font-size: 14px;
+  font-size: 0,875em;
   font-weight: 100;
   line-height: 20px;
   letter-spacing: 0.5px;
@@ -43,7 +44,6 @@ body {
   width: 770px;
 }
 
-/* Styles for the randomized element */
 .randomized {
   text-align: center;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -62,13 +62,11 @@ body {
   margin: 1em 3em;
   opacity: 0.7;
 }
-
-/* @media 1024px */
 @media (max-width: 1024px) {
   .container-generator {
     max-width: 77vw; 
     /* word-break: break-all; */
-    border: 3px solid rgb(53, 50, 205);
+    /* border: 3px solid rgb(53, 50, 205); */
     text-align: center;
     align-self: center;
   }
@@ -80,14 +78,12 @@ body {
     width: 17em; /* Allow the button to adjust its width */
   }
 }
-
-/* @media 600px */
 @media (max-width: 600px) {
   .container-generator {
     flex-direction: column;
     max-width: 77vw;
     align-items: center;
-    border: 3px solid rgb(205, 50, 197);
+    /* border: 3px solid rgb(205, 50, 197); */
     margin-top: 10vh;
   }
   .generate-butons {
@@ -102,20 +98,18 @@ body {
     text-align: center;
     align-self: center;
     color: #582c5e;
-    border: 1px solid rgb(58, 79, 17);
+    /* border: 1px solid rgb(58, 79, 17); */
     margin: 0;
     padding: 0;
   }
 }
-
-/* @media 480px */
 @media (max-width: 480px) {
   .container-generator {
     flex-direction: column;
     /* max-width: 77vw; */
     margin-top: 30vh;
     border: none;
-    border: 3px solid rgb(55, 205, 50);
+    /* border: 3px solid rgb(55, 205, 50); */
 
   }
   .generate-butons {
@@ -137,7 +131,6 @@ body {
     margin: 0;
     padding: 0;
     /* border: 1px solid rgb(58, 79, 17); */
-
   }
 }
 
@@ -152,28 +145,52 @@ button {
   border: 1px solid #ff4b2b;
   background-color: #ff4b2b;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 0,750em;
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
   cursor: pointer;
+  width: 25vw;
+  max-width: 270px;
+  min-width: 195px;
+}
+@media (max-width: 600px) {
+  button {
+    font-size: .7em;
+    padding: 8px 10px;
+    max-width: 160px;
+    min-width: 70px;
+  }
+}
+@media (max-width: 450px) {
+  button {
+    font-size: .6em;
+    padding: 8px 10px;
+    word-break: normal;
+    max-width: 160px;
+    min-width: 70px;
+  }
+}
+@media (max-width: 380px) {
+  button {
+    font-size: .5em;
+    padding: 10px 7px;
+    word-break: normal;
+  }
 }
 
-/* Button hover effect */
 button:hover {
   transform: scale(1.05);
   transition: transform 90ms ease-in;
   background-color: #ff411fe9;
 }
 
-/* Remove button outline on focus */
 button:focus {
   outline: none;
 }
 
-/* Button click effect */
 button:active {
   transform: scale(0.9);
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
@@ -185,26 +202,7 @@ button.ghost {
   border-color: #ffffff;
 }
 
-/* Styles for the gender input select */
-#gender-select {
-  width: 250px;
-  height: 40px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5px;
-  background-color: #eee;
-  margin-bottom: 6px;
-}
 
-/* Styles for the gender input select options */
-#gender-select option {
-  background-color: #d6d6d6;
-  color: #333333;
-  font-family: "Arial", sans-serif;
-  font-size: 16px;
-  text-align: center;
-}
 
 /* Styles for the logo image */
 .logo {
@@ -248,14 +246,39 @@ button.ghost {
   }
 }
 
+
 /* Styles for the forgot password link */
 a.forgot-password {
   color: #721313;
-  font-size: 15px;
+  font-size: 1em;
   text-decoration: none;
   margin: 15px 0;
 }
 
+
+/* Styles for the gender input select */
+#gender-select {
+  width: 25vw;
+  max-width: 250px;
+  height: 40px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #eee;
+  margin-bottom: 6px;
+}
+
+#gender-select option {
+  background-color: #d6d6d6;
+  color: #333333;
+  font-family: "Arial", sans-serif;
+  font-size: 1em;
+  text-align: center;
+}
+
+
+/* Main form  */
 form {
   background-color: #ffffff;
   display: flex;
@@ -273,8 +296,10 @@ input {
   border-radius: 4px;
   padding: 12px 15px;
   margin: 8px 0;
-  width: 250px;
+  width: 25vw;
+  max-width: 250px;
 }
+
 /* @media (max-width: 320px) {
   input {
     width: 50%; 
@@ -284,20 +309,7 @@ input {
   }
 } */
 
-/* Tablet Styles (max-width: 768px) */
-/* @media (max-width: 768px) {
-  input,
-  #gender-select {
-    width: 200px;
-  }
-} */
 
-/* Phone Styles (max-width: 480px) */
-/* @media (max-width: 480px) {
-  input {
-    width: 100px;
-  }
-} */
 
 /* Container styles */
 .container {
@@ -309,6 +321,7 @@ input {
   width: 768px;
   max-width: 100%;
   min-height: 480px;
+  border: 1px solid red;
 }
 
 /* Form container styles */
@@ -317,6 +330,7 @@ input {
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
+  border: 1px solid rgb(51, 255, 0);
 }
 
 /* Sign-in container styles */
@@ -324,6 +338,7 @@ input {
   left: 0;
   width: 50%;
   z-index: 2;
+  border: 1px solid rgb(0, 47, 255);
 }
 
 /* Right panel active styles for sign-in container */
@@ -346,8 +361,6 @@ input {
   z-index: 5;
   animation: show 0.6s;
 }
-
-/* Animation for showing sign-up container */
 @keyframes show {
   0%,
   49.99% {
