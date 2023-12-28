@@ -50,6 +50,10 @@ body {
   align-self: center;
   color: #582c5e;
   /* border: 3px solid rgb(58, 79, 17); */
+  /* background: #fcfcfc91; */
+  background: transparent; /* Set background to transparent initially */
+  padding: 1px 0 3px 0;
+  margin-top: -9px;
 }
 
 .generate-butons {
@@ -64,26 +68,47 @@ body {
 }
 @media (max-width: 1024px) {
   .container-generator {
-    max-width: 77vw; 
-    /* word-break: break-all; */
+    max-width: 70vw; 
     /* border: 3px solid rgb(53, 50, 205); */
     text-align: center;
     align-self: center;
   }
+  .randomized {
+    /* text-align: center;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    align-self: center;
+    color: #582c5e; */
+    /* border: 3px solid rgb(58, 79, 17); */
+  }
   .generate-butons {
-    width: 100%; /* Make the button containers take full width */
-    margin: 0.5em 0; /* Adjust margin for better spacing */
+    /* width: 50vw;  */
+    /* margin: 0.5em 0;  */
+    /* border: 3px solid rgb(53, 50, 205); */
   }
   .generate-btn {
-    width: 17em; /* Allow the button to adjust its width */
+    width: 28vw; 
   }
 }
+/* @media (max-width: 750px) {
+  .container-generator {
+    max-width: 60vw; 
+    border: 3px solid rgb(205, 50, 50);
+  }
+  .generate-buttons {
+    padding: 0 1em; 
+  }
+  .generate-btn {
+    width: 100%; 
+    padding: 10px 0; 
+    font-size: 0.9em; 
+  }
+} */
 @media (max-width: 600px) {
   .container-generator {
     flex-direction: column;
     max-width: 77vw;
     align-items: center;
-    /* border: 3px solid rgb(205, 50, 197); */
+    border: 3px solid rgb(205, 50, 197);
     margin-top: 10vh;
   }
   .generate-butons {
@@ -136,7 +161,7 @@ body {
 
 
 
-
+/* Reiketu tuos du butonus generatorius insprudinti i kontenery, kai mazas konteineris */
 
 
 /* Common styles for buttons */

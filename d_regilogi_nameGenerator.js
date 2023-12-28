@@ -15,16 +15,7 @@ let firstNames = ["Aldas","Justė", "AKiss", "Ąžuolas", "Kamilė", "Dalia", "S
 "Rūta", "Rita", "Marius", "Gabrielė", "Tomas", "Laima", "Živilė", "Gediminas", "Kristijonas", "Viktorija", "Vilhelmina", "Ramūnas", "Egidijus", 
 "Sigita", "Algimantas","Emily", "Hannah", "Sarah", "Lauren", "Amber", "Brianna", "Jordan", "Victoria", "Haley", "Megan", "Kayla", "Heather", 
 "Abby", "Kaitlyn", "Allison", "Alexis", "Morgan", "Bailey", "Savannah", "Samantha", "Rachel", "Sydney", "Mackenzie", "Madeline", "Katie", "Erin", 
-"Olivia", "Emma", "Brooke", "Danielle", "Katherine", "Lily", "Hailey", "Jenna", "Chloe", "Isabella", "Mia", "Grace", "Taylor", "Leah","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
-"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","", ];
+"Olivia", "Emma", "Brooke", "Danielle", "Katherine", "Lily", "Hailey", "Jenna", "Chloe", "Isabella", "Mia", "Grace", "Taylor", "Leah"];
 
 let secondNames = ["Uoga","Pupa","Super","Linksmuolis","Bambalinis","Kukli","Paprastutė","Generolas","Nuolanki","Trapi","Išmintinga","Kietasis",
 "1","2","3","69","99","4","","Sasiska","Puikioji","Išmanusis","Piktas","Rusas","Kiškis","Genijus","Babulė","Dundukas","Siaubūnas", "Protinguolis", "Afigienas", 
@@ -50,13 +41,13 @@ let secondNames = ["Uoga","Pupa","Super","Linksmuolis","Bambalinis","Kukli","Pap
 "rožinė", "rožė", "raudė", "geltona", "mėlynai", "purpuriukė", "citrinukė","Spinta","Colis","Džiazas","Mazgas","Lempa","Rūkas","Lizdas","Kedras", 
 "mėlynai persikų", "mėlynojus", "mėlynė", "gintariukas", "žaliojo", "smaragdo", "žalias", "žalioji", 
 "turkio", "akmens", "granato", "rubino", "raudonoji", "topazo","Darbininkas","Sukti","Ropė","Ragauti","Vynuogė","Vijoklis","Kvepalai",
-"Statybininkas","Medikas","Gydytojas","Mokytojas","Programuotojas","Inžinierius","Mokslininkas","Rašytojas","Dailininkas","Muzikantas","Fotografas",
+"Statybininkas","Medikas","Gydytojas","Mokytojas","Pro","jis","Inžinierius","Mokslininkas","Rašytojas","Dailininkas","Muzikantas","Fotografas",
 "Kirpėjas","Konditeris","Vairuotojas","Statybos","vadybininkas","Inžinierius","Analitikas","Verslininkas","Policininkas","Gaisrininkas",
-"Herojus","Žurnalistas","Buhalteris","Direktorius","Technikas","Vadybinis","Sprendimų priėmėjas",
-"Kirpėjas","padėjėjas","Statybos","Darbininkas","Finansininkas","Vadybininkas","Adminas","Policijos", "Komisaras","Gaisrininkas",
-"Režisierius","Žiniukas","Buhalterė","Specialistas","Prognozuotojas","Superman","Batman","Wonder Woman","Akys","Dūmai","Migla","Raidės","Šviesa","Bičių",
-"The Flash","Green Lantern","Spider-Man","Iron Man","Captain","America","Black", "Widow","Hulk","Thor","Aquaman","X-Men","Cyclops","Storm","Wolverine",
-"Rogue","Gambit","Nightcrawler","Daredevil","Punisher","Green Arrow","Black Canary","Starfire","Raven","Beast","Boy","Wonder","Girl","Black","Lightning",
+"Herojus","Žurnalistas","Buhalteris","Direktorius","Technikas","Vadybinis","Sprendimų","priėmėjas",
+"Kirpėjas","padėjėjas","Statybos","Darbininkas","Finansininkas","Vadybininkas","Adminas","Policijos", "Komisaras","Gaisri","ninkas",
+"Režisierius","Žiniukas","Buhalterė","Specialistas","Progno","zuotojas","Superman","Batman","Wonder Woman","Akys","Dūmai","Migla","Raidės","Šviesa","Bičių",
+"The","Flash","Green Lantern","Spider","Man","Iron Man","Captain","America","Black", "Widow","Hulk","Thor","Aquaman","X","Men","Cyclops","Storm","Wolverine",
+"Rogue","Gambit","Nightcrawler","Daredevil","Punisher","Green","Arrow","Black","Canary","Starfire","Raven","Beast","Boy","Wonder","Girl","Black","Lightning",
 "Martian","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
 "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
 "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
@@ -72,83 +63,62 @@ let secondNames = ["Uoga","Pupa","Super","Linksmuolis","Bambalinis","Kukli","Pap
 "Lygus","Gili","Platus","Plonas","Šviesus","Laisvas","Dovana","Viltis","Geras","Malonus","Švelnus","Pūkuotas","Lietus","Daina","Bangos","Platus","Bangos","Šviesa","Užuolaida",
 "Rytas","Kvadratas","Kilti","Katinas","Šuo","Lokys","Liūtas","Vilkas","Tigras","Sliekas","Meška","Gorila","Bebras","Ragana","Šikšnosparnis","Pingvinas","Paukštis","Paukščiukas",
 "Varlė","Uodas","Kurmis","Elnias","Rykliai","Delfinas","Gyvatė","Krokodilas","žuvis","Strutis","Pelikanas","Beždžionė","Skruzdė","Vabzdys","Dėmėtas suo","Pelekas","Zebras",
-"Arklys","triušis","Žiurkėnas","Žirafa","Šikšnosparnis","Paukščiukas","Pūkuotas kiškis","Lapė","Servalas","Orka","Beždžionė","banginis","Pelė","Gyvate","Varlė","Austriakiai",
-"Avis","Ožka","Veršis","Karvė","Paukštis","Jautis","Ežys","Lapė","Meška","Didysis kalnas","Stirna","Sniego leopardas","Žiurkė","Paukščiukas","Stumbro vaikas","Beždžionė",
+"Arklys","triušis","Žiurkėnas","Žirafa","Šikšnosparnis","Paukščiukas","Pūkuotas","kiškis","Lapė","Servalas","Orka","Beždžionė","banginis","Pelė","Gyvate","Varlė","Austriakiai",
+"Avis","Ožka","Veršis","Karvė","Paukštis","Jautis","Ežys","Lapė","Meška","Didysis kalnas","Stirna","Sniego leopardas","Žiurkė","Paukščiukas","Stumbro","vaikas","Beždžionė",
 "Zebras","Sraigė","Lapė","Kengūra","Vilkas","Paukščiukas","Tigras","Lokys","Ragana","Meška","Sliekas","Paukštis","Bebras","Dramblys","Liūtas","Katinas","Šuo","Uodas","Gorila",
-"Elnias","Ragana","Pingvinas","Paukštis","Žiurkė","Krokodilas","Delfinas","Beždžionė","Pelė","Vabzdys","Strutis","Varlė","Vaivorykštės žuvis","Pelekas","Žirafa","Servalas"];
+"Elnias","Ragana","Pingvinas","Paukštis","Žiurkė","Krokodilas","Delfinas","Beždžionė","Pelė","Vabzdys","Strutis","Varlė","Vaivorykštės","žuvis","Pelekas","Žirafa","Servalas","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",
+"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""];
 
+let getRandomNumber = (max) => Math.floor(Math.random() * max)
 
-// THird name reikia generuoti numeri nuo 1 iki 100 ir eliminuoti second name
-
-let getRandomNumber = (max) => Math.floor(Math.random() * max);
-
+// Function to generate a random name
 let getRandomName = () => {
-  const randomNumber = Math.random();
 
-  if (randomNumber < 0.2 && firstNames.length > 0) {
-    return `${firstNames[getRandomNumber(firstNames.length)]}`;
-  } else if (randomNumber < 0.5 && secondNames.length > 0) {
-    return `${secondNames[getRandomNumber(secondNames.length)]}`;
-  } else {
-    if (firstNames.length === 0 && secondNames.length === 0) {
-      return "Fallback Name";
-    }
+  const randomFirstName = firstNames[getRandomNumber(firstNames.length)]
+  const randomSecondName = secondNames[getRandomNumber(secondNames.length)]
 
-    const randomFirstName = firstNames.length > 0 ? firstNames[getRandomNumber(firstNames.length)] : "";
-    const randomSecondName = secondNames.length > 0 ? secondNames[getRandomNumber(secondNames.length)] : "";
+  const fullName = `${randomFirstName} ${randomSecondName}`.trim()
 
-    return `${randomFirstName} ${randomSecondName}`.trim();
+  return fullName
+}
+
+// Function to handle name generation
+let handleNameGeneration = () => {
+  const randomName = getRandomName()
+  document.getElementById("random-name").innerText = randomName
+  document.getElementById("name-input").value = randomName
+  navigator.clipboard.writeText(randomName)
+}
+
+// Function to generate a random password
+let generatePassword = () => {
+  const passwordLength = Math.floor(Math.random() * 9) + 8
+  let password = ""
+  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};':\"\\|,.<>/?`~"
+  for (let i = 0; i < passwordLength; i++) {
+    password += possible.charAt(Math.floor(Math.random() * possible.length))
   }
-};
-
-let setRandomName = () => {
-  const randomName = getRandomName();
-  document.getElementById('random-name').innerText = randomName;
-  document.getElementById("name-input").value = randomName;
-  navigator.clipboard.writeText(randomName);
-};
-
-document.getElementById('generuoti-varda')
-  .addEventListener('click', setRandomName);
-
-
-
-
-document.getElementById('generate-pasword')
-.addEventListener('click',function generatePassword() {
-  var passwordLength = Math.floor(Math.random() * 9) + 8; // Generates a random length between 8 and 16
-  var password = ""
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};':" + "\\|,.<>/?`~"
-
-  for (var i = 0; i < passwordLength; i++) {
-    password += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-
   document.getElementById("password").innerHTML = password
   document.getElementById("password-input").value = password
 
-  // check if the execCommand function is supported
-  if (document.queryCommandSupported('copy')) {
-    // create a temporary input element to hold the password
-    var tempInput = document.createElement("input");
-    // set the value of the input to the password
-    tempInput.value = password;
-    // add the input to the page
-    document.body.appendChild(tempInput);
-    // select the input element
-    tempInput.select();
-    // copy the selected text to the clipboard
-    document.execCommand('copy');
-    // remove the input element
-    document.body.removeChild(tempInput);
+  if (document.queryCommandSupported("copy")) {
+    let tempInput = document.createElement("input")
+    tempInput.value = password
+    document.body.appendChild(tempInput)
+    tempInput.select()
+    document.execCommand("copy")
+    document.body.removeChild(tempInput)
   }
-})
+}
 
-
-
-
-
- 
-
-
-
+// Event listener bindings
+document.getElementById("generuoti-varda").addEventListener("click", handleNameGeneration)
+document.getElementById("generate-pasword").addEventListener("click", generatePassword)
