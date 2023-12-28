@@ -40,7 +40,7 @@ body {
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  /* border: 3px solid rgb(205, 50, 50); */
+  /* border: 1px solid rgb(205, 50, 50); */
   width: 770px;
 }
 
@@ -50,14 +50,12 @@ body {
   align-self: center;
   color: #582c5e;
   /* border: 3px solid rgb(58, 79, 17); */
-  /* background: #fcfcfc91;
-  background: transparent;  */
   padding: 1px 0 3px 0;
   margin-top: -9px;
 }
 
 .generate-butons {
-  height: 100px;
+  height: 12.8vh;
 }
 
 .generate-btn {
@@ -69,21 +67,20 @@ body {
 @media (max-width: 1024px) {
   .container-generator {
     max-width: 70vw; 
-    /* border: 3px solid rgb(53, 50, 205); */
-    text-align: center;
-    align-self: center;
+    /* border: 1px solid rgb(53, 50, 205); */
   }
   .randomized {
     /* text-align: center;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
     align-self: center;
-    color: #582c5e; */
+    color: #582c5e;  */
+    /* width: 50vw;   */
     /* border: 3px solid rgb(58, 79, 17); */
   }
   .generate-butons {
-    /* width: 50vw;  */
-    /* margin: 0.5em 0;  */
-    /* border: 3px solid rgb(53, 50, 205); */
+     /* width: 50vw;   */
+     margin: 0.5em 0;  
+     /* border: 1px solid rgb(11, 11, 15);  */
   }
   .generate-btn {
     width: 28vw; 
