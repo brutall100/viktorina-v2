@@ -50,8 +50,8 @@ body {
   align-self: center;
   color: #582c5e;
   /* border: 3px solid rgb(58, 79, 17); */
-  /* background: #fcfcfc91; */
-  background: transparent; /* Set background to transparent initially */
+  /* background: #fcfcfc91;
+  background: transparent;  */
   padding: 1px 0 3px 0;
   margin-top: -9px;
 }

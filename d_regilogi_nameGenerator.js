@@ -81,7 +81,6 @@ let getRandomNumber = (max) => Math.floor(Math.random() * max)
 
 // Function to generate a random name
 let getRandomName = () => {
-
   const randomFirstName = firstNames[getRandomNumber(firstNames.length)]
   const randomSecondName = secondNames[getRandomNumber(secondNames.length)]
 
@@ -93,9 +92,11 @@ let getRandomName = () => {
 // Function to handle name generation
 let handleNameGeneration = () => {
   const randomName = getRandomName()
-  document.getElementById("random-name").innerText = randomName
+  const randomNameElement = document.getElementById("random-name") 
+  randomNameElement.innerText = randomName
   document.getElementById("name-input").value = randomName
   navigator.clipboard.writeText(randomName)
+  randomNameElement.style.background = "#fcfcfc91"
 }
 
 // Function to generate a random password
@@ -103,11 +104,15 @@ let generatePassword = () => {
   const passwordLength = Math.floor(Math.random() * 9) + 8
   let password = ""
   const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};':\"\\|,.<>/?`~"
+
   for (let i = 0; i < passwordLength; i++) {
     password += possible.charAt(Math.floor(Math.random() * possible.length))
   }
-  document.getElementById("password").innerHTML = password
+
+  const passwordElement = document.getElementById("password") 
+  passwordElement.innerHTML = password
   document.getElementById("password-input").value = password
+  passwordElement.style.background = "#fcfcfc91" 
 
   if (document.queryCommandSupported("copy")) {
     let tempInput = document.createElement("input")
