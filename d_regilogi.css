@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-
+@import url('https://fonts.cdnfonts.com/css/strange');
+/* ! */
+/* ? */
+/* todo */
+/* @ */
+/*  */
 :root {
-  height: 100vh; 
+  height: 100vh;
   font-size: 100%;
 }
 
@@ -12,7 +17,7 @@
 }
 
 p {
-  font-size: 0,875em;
+  font-size: 0, 875em;
   font-weight: 100;
   line-height: 20px;
   letter-spacing: 0.5px;
@@ -40,33 +45,37 @@ body {
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  /* border: 1px solid rgb(205, 50, 50); */
+  border: 1px solid rgb(205, 50, 50);
   width: 770px;
 }
-
-.randomized {
-  text-align: center;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  align-self: center;
-  color: #582c5e;
-  /* border: 3px solid rgb(58, 79, 17); */
-  padding: 1px 0 3px 0;
-  margin-top: -9px;
-}
-
 .generate-butons {
-  height: 12.8vh;
+  height: 11vh;
 }
-
 .generate-btn {
   width: 22em;
   padding: 1.1em;
   margin: 1em 3em;
   opacity: 0.7;
 }
+.randomized {
+  display: none;
+  border: 1px solid purple;
+}
+.randomized-highlighted {
+  text-align: center;
+  font-family: 'Strange', sans-serif;
+  letter-spacing: .1em;
+  align-self: center;
+  color: rgb(197, 146, 61);
+  background: #fcfcfcce;
+  height: 1.5em;
+  padding: 3px ;
+  margin-top: -0.4em;
+}
+/* @ media 1024 */
 @media (max-width: 1024px) {
   .container-generator {
-    max-width: 70vw; 
+    max-width: 70vw;
     /* border: 1px solid rgb(53, 50, 205); */
   }
   .randomized {
@@ -78,12 +87,12 @@ body {
     /* border: 3px solid rgb(58, 79, 17); */
   }
   .generate-butons {
-     /* width: 50vw;   */
-     margin: 0.5em 0;  
-     /* border: 1px solid rgb(11, 11, 15);  */
+    /* width: 50vw;   */
+    margin: 0.5em 0;
+    /* border: 1px solid rgb(11, 11, 15);  */
   }
   .generate-btn {
-    width: 28vw; 
+    width: 28vw;
   }
 }
 /* @media (max-width: 750px) {
@@ -111,10 +120,10 @@ body {
   .generate-butons {
     width: 100%;
     margin: 0;
-    padding: 0; 
+    padding: 0;
   }
   .generate-btn {
-    width: 20em; 
+    width: 20em;
   }
   .randomized {
     text-align: center;
@@ -132,17 +141,16 @@ body {
     margin-top: 30vh;
     border: none;
     /* border: 3px solid rgb(55, 205, 50); */
-
   }
   .generate-butons {
     width: 100%;
     margin: 0;
-    padding: 0; 
+    padding: 0;
   }
   .generate-btn {
     width: 15em;
     /* padding: 10px;  */
-    font-size: .7em;
+    font-size: 0.7em;
     max-width: 60vw;
   }
   .randomized {
@@ -156,10 +164,7 @@ body {
   }
 }
 
-
-
 /* Reiketu tuos du butonus generatorius insprudinti i kontenery, kai mazas konteineris */
-
 
 /* Common styles for buttons */
 button {
@@ -167,7 +172,7 @@ button {
   border: 1px solid #ff4b2b;
   background-color: #ff4b2b;
   color: #ffffff;
-  font-size: 0,750em;
+  font-size: 0, 750em;
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
@@ -180,7 +185,7 @@ button {
 }
 @media (max-width: 600px) {
   button {
-    font-size: .7em;
+    font-size: 0.7em;
     padding: 8px 10px;
     max-width: 160px;
     min-width: 70px;
@@ -188,7 +193,7 @@ button {
 }
 @media (max-width: 450px) {
   button {
-    font-size: .6em;
+    font-size: 0.6em;
     padding: 8px 10px;
     word-break: normal;
     max-width: 160px;
@@ -197,7 +202,7 @@ button {
 }
 @media (max-width: 380px) {
   button {
-    font-size: .5em;
+    font-size: 0.5em;
     padding: 10px 7px;
     word-break: normal;
   }
@@ -223,8 +228,6 @@ button.ghost {
   background-color: transparent;
   border-color: #ffffff;
 }
-
-
 
 /* Styles for the logo image */
 .logo {
@@ -262,12 +265,11 @@ button.ghost {
 }
 @media (max-width: 320px) {
   .main-h1 {
-    font-size: .9em;
+    font-size: 0.9em;
     font-family: initial;
     margin-top: -50px;
   }
 }
-
 
 /* Styles for the forgot password link */
 a.forgot-password {
@@ -276,7 +278,6 @@ a.forgot-password {
   text-decoration: none;
   margin: 15px 0;
 }
-
 
 /* Styles for the gender input select */
 #gender-select {
@@ -298,7 +299,6 @@ a.forgot-password {
   font-size: 1em;
   text-align: center;
 }
-
 
 /* Main form  */
 form {
@@ -330,8 +330,6 @@ input {
     font-size: 12px; 
   }
 } */
-
-
 
 /* Container styles */
 .container {

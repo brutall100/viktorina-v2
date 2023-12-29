@@ -96,7 +96,8 @@ let handleNameGeneration = () => {
   randomNameElement.innerText = randomName
   document.getElementById("name-input").value = randomName
   navigator.clipboard.writeText(randomName)
-  randomNameElement.style.background = "#fcfcfc91"
+  randomNameElement.classList.remove('randomized')
+  randomNameElement.classList.add('randomized-highlighted')
 }
 
 // Function to generate a random password
@@ -112,7 +113,8 @@ let generatePassword = () => {
   const passwordElement = document.getElementById("password") 
   passwordElement.innerHTML = password
   document.getElementById("password-input").value = password
-  passwordElement.style.background = "#fcfcfc91" 
+  passwordElement.classList.remove('randomized')
+  passwordElement.classList.add('randomized-highlighted')
 
   if (document.queryCommandSupported("copy")) {
     let tempInput = document.createElement("input")
