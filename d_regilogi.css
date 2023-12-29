@@ -3,7 +3,7 @@
 /* ! */
 /* ? */
 /* todo */
-/* @ */
+/* // */
 /*  */
 :root {
   height: 100vh;
@@ -29,8 +29,7 @@ body {
   background-image: url("images/background/cover5.jpg");
   background-size: cover;
   background-position: center;
-  height: 90vh;
-  padding-top: 5%;
+  height: 99vh;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -58,8 +57,10 @@ body {
   opacity: 0.7;
 }
 .randomized {
-  display: none;
+  /* display: none; */
   border: 1px solid purple;
+  width: 14em;
+  height: 1.3em;
 }
 .randomized-highlighted {
   text-align: center;
@@ -72,7 +73,7 @@ body {
   padding: 3px ;
   margin-top: -0.4em;
 }
-/* @ media 1024 */
+/* // media 1024 */
 @media (max-width: 1024px) {
   .container-generator {
     max-width: 70vw;
@@ -109,7 +110,7 @@ body {
     font-size: 0.9em; 
   }
 } */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .container-generator {
     flex-direction: column;
     max-width: 77vw;
@@ -129,18 +130,18 @@ body {
     text-align: center;
     align-self: center;
     color: #582c5e;
-    /* border: 1px solid rgb(58, 79, 17); */
+    border: 1px solid rgb(58, 79, 17);
     margin: 0;
     padding: 0;
   }
-}
-@media (max-width: 480px) {
+ } */
+/* @media (max-width: 480px) {
   .container-generator {
     flex-direction: column;
-    /* max-width: 77vw; */
+    max-width: 77vw;
     margin-top: 30vh;
     border: none;
-    /* border: 3px solid rgb(55, 205, 50); */
+    border: 3px solid rgb(55, 205, 50);
   }
   .generate-butons {
     width: 100%;
@@ -149,7 +150,7 @@ body {
   }
   .generate-btn {
     width: 15em;
-    /* padding: 10px;  */
+    padding: 10px; 
     font-size: 0.7em;
     max-width: 60vw;
   }
@@ -160,9 +161,9 @@ body {
     border: none;
     margin: 0;
     padding: 0;
-    /* border: 1px solid rgb(58, 79, 17); */
+    border: 1px solid rgb(58, 79, 17);
   }
-}
+}  */
 
 /* Reiketu tuos du butonus generatorius insprudinti i kontenery, kai mazas konteineris */
 
@@ -338,11 +339,31 @@ input {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
+  overflow-y: auto; /* Add scrollbar if content overflows */
   width: 768px;
   max-width: 100%;
-  min-height: 480px;
-  border: 1px solid red;
+  min-height: 70%;
+  /* border: 1px solid red; */
 }
+/* // max-height: 930px */
+@media screen and (max-height: 930px) {
+  .container {
+    margin-top: 1em;
+    
+  }  
+}
+/* // max-height: 730px */
+/* @media screen and (max-height: 730px) {
+  .container {
+    margin-top: 2em;
+  }  
+} */
+/* // max-height: 570px */
+/* @media screen and (max-height: 570px) {
+  .container {
+    margin-top: 2em;
+  }  
+} */
 
 /* Form container styles */
 .form-container {
@@ -350,7 +371,7 @@ input {
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
-  border: 1px solid rgb(51, 255, 0);
+  /* border: 1px solid rgb(51, 255, 0); */
 }
 
 /* Sign-in container styles */
@@ -358,7 +379,7 @@ input {
   left: 0;
   width: 50%;
   z-index: 2;
-  border: 1px solid rgb(0, 47, 255);
+  /* border: 1px solid rgb(0, 47, 255); */
 }
 
 /* Right panel active styles for sign-in container */
@@ -471,7 +492,7 @@ input {
   transform: translateX(20%);
 }
 
-/* Modal */
+/* ! Modal */
 .modal {
   display: none;
   position: fixed;
@@ -504,6 +525,7 @@ input {
   text-align: center;
   max-width: max-content;
 }
+/* // @media */
 @media (max-width: 300px) {
   .centered-input {
     width: 70vw;
@@ -533,3 +555,4 @@ input {
 #close-modal:hover {
   color: rgb(230, 33, 33);
 }
+/* ! */
