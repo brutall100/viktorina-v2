@@ -195,6 +195,14 @@ Lvl 3 user can write 5000 msg  or donated user can write Unlimited msg -->
 <!--  Prisijungiant ar registruojantis reikes 
 {throw "Knock knock, FBI!!!"   // reiks papildyti ejs failiuku, pagrazinti uzdeti baisu background.} -->
 
+<!-- 14 -->
+<!--  Vartotojas irase 100 ar 1000 kl gaus special emoji prie vardo. Specialgroup t.y tam tikri vartotojai su special group zenkliuku, ju irasyti klausimai bus pazymet ju grupes zenkliuku, like golden mind group. 
+Taip pat galima bus sudaryti speciala grupe is tarkim 3 vatotoju. Day tope bus top Group  -->
+
+<!-- 15 -->
+<!--  Nezinau ar reikia .....   irasant kl i Db pasirinkti klausimo srity, tarkim istorinis , geografinis , krepsinio -->
+
+
 
 <!-- TAISYKLES -->
 
