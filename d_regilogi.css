@@ -16,13 +16,6 @@
   padding: 0;
 }
 
-p {
-  font-size: 0, 875em;
-  font-weight: 100;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  margin: 20px 0 30px;
-}
 
 /* Body styles */
 body {
@@ -180,6 +173,7 @@ button {
   text-transform: uppercase;
   transition: transform 80ms ease-in;
   cursor: pointer;
+  overflow: hidden;
   width: 25vw;
   max-width: 270px;
   min-width: 195px;
@@ -208,6 +202,13 @@ button {
     word-break: normal;
   }
 }
+@media (max-height: 600px) {
+  button {
+    font-size: 0.5em;
+    padding: 10px 7px;
+    width: 15vw;
+  }
+}
 
 button:hover {
   transform: scale(1.05);
@@ -224,17 +225,21 @@ button:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
-/* Styles for ghost buttons */
 button.ghost {
   background-color: transparent;
   border-color: #ffffff;
 }
 
-/* Styles for the logo image */
+/* ! Styles for the logo image */
 .logo {
   width: 10em;
   cursor: crosshair;
   transition: transform 0.7s;
+}
+@media (max-height: 600px) or (max-width: 620px) {
+  .logo {
+    width: 7em;
+  }
 }
 
 .logo:hover {
@@ -245,32 +250,37 @@ button.ghost {
 .main-h1 {
   margin-bottom: 10%;
 }
-@media (max-width: 600px) {
+@media (max-width: 600px) or (max-height: 600px) {
   .main-h1 {
     margin-bottom: 10%;
     font-size: 1.7em;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) or (max-height: 480px) {
   .main-h1 {
     margin-bottom: 10%;
     font-size: 1.4em;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 400px) or (max-height: 400px){
   .main-h1 {
     margin-bottom: 10%;
     font-size: 1.1em;
     font-family: initial;
+    display: none;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 320px) or (max-height: 320px){
   .main-h1 {
     font-size: 0.9em;
     font-family: initial;
     margin-top: -50px;
+    
   }
 }
+
+
+
 
 /* Styles for the forgot password link */
 a.forgot-password {
@@ -322,15 +332,14 @@ input {
   width: 25vw;
   max-width: 250px;
 }
-
-/* @media (max-width: 320px) {
-  input {
-    width: 50%; 
-    height: 30px; 
-    padding: 5px; 
-    font-size: 12px; 
+@media (max-height: 600px) {
+  input, #gender-select{
+    height: 5vh; 
+    padding: 3px; 
+    font-size: 10px; 
+    margin: 0;
   }
-} */
+}
 
 /* Container styles */
 .container {
@@ -339,31 +348,30 @@ input {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   position: relative;
   overflow: hidden;
-  overflow-y: auto; /* Add scrollbar if content overflows */
+  overflow-y: auto; 
   width: 768px;
   max-width: 100%;
-  min-height: 70%;
+  min-height: 80%;
   /* border: 1px solid red; */
 }
 /* // max-height: 930px */
 @media screen and (max-height: 930px) {
   .container {
-    margin-top: 1em;
-    
+    margin-top: 1em;  
   }  
 }
 /* // max-height: 730px */
-/* @media screen and (max-height: 730px) {
+@media screen and (max-height: 730px) {
   .container {
     margin-top: 2em;
   }  
-} */
+}
 /* // max-height: 570px */
-/* @media screen and (max-height: 570px) {
+@media screen and (max-height: 570px) {
   .container {
     margin-top: 2em;
   }  
-} */
+}
 
 /* Form container styles */
 .form-container {
@@ -492,6 +500,32 @@ input {
   transform: translateX(20%);
 }
 
+.overlay-h1{
+  font-size: 200%;
+}
+@media (max-height: 600px) {
+  .overlay-h1{
+    font-size: 100%;
+  }
+}
+
+.overlay-p{
+  font-size: 0.875em;
+  font-weight: 100;
+  line-height: 20px;
+  letter-spacing: 0.5px;
+  margin: 20px 0 30px; 
+}
+@media (max-height: 600px){
+  .overlay-p{
+    font-size: .7em;
+    font-weight: 100;
+    line-height: 15px;
+    letter-spacing: 0.3px;
+    margin: 10px 0 15px;
+  }
+}
+
 /* ! Modal */
 .modal {
   display: none;
@@ -555,4 +589,4 @@ input {
 #close-modal:hover {
   color: rgb(230, 33, 33);
 }
-/* ! */
+

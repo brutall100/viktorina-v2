@@ -176,14 +176,14 @@
       <div class="overlay">
         <div class="overlay-panel overlay-left">
           <img class="logo" src="images/icons/VK_new3.png" alt="viktorina-logo" aria-label="Viktorina logotipas, Išpuošta, stilizuota V raidė. V simbolizuoja VIKTORINA " />
-          <h1>Sveiki sugrįžę!</h1>
-          <p>Prašome prisijungti.</p>
+          <h1 class="overlay-h1">Sveiki sugrįžę!</h1>
+          <p class="overlay-p">Prašome prisijungti.</p>
           <button class="ghost" id="signIn">Prisijungimas</button>
         </div>
         <div class="overlay-panel overlay-right">
         <img class="logo" src="images/icons/VK_new3.png" alt="viktorina-logo" aria-label="Viktorina logotipas, Išpuošta, stilizuota V raidė. V simbolizuoja VIKTORINA " />
-          <h1>Labas, Drauge!</h1>
-          <p>Įveskite savo asmeninius duomenis ir pradėkite kelionę su mumis.</p>
+          <h1 class="overlay-h1">Labas, Drauge!</h1>
+          <p class="overlay-p">Įveskite savo asmeninius duomenis ir pradėkite kelionę su mumis.</p>
           <button class="ghost" id="signUp">Registracija</button>
         </div>
       </div>
@@ -209,7 +209,6 @@
 
   <script src="d_regilogi.js"></script>
   <script src="d_regilogi_nameGenerator.js"></script>
-  <footer></footer>
 </body>
 
 </html>
