@@ -37,24 +37,60 @@ body {
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid rgb(205, 50, 50);
-  width: 770px;
+  /* border: 1px solid rgb(205, 50, 50); */
+  /* padding: 0 3.750em 0 3.750em; */
+  width: 48.125em; /* 770px */ 
+  /* height: auto; */
 }
+@media (max-width: 1024px) {
+  .container-generator {
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+    /* margin: 0 30px 0 30px; */
+    /* border: 1px solid rgb(53, 50, 205); */
+  }
+}
+
 .generate-butons {
   height: 11vh;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
+@media (max-width: 1024px) {
+  .generate-butons {
+    width: 30vw;
+    /* border: 1px solid rgb(10, 10, 15); */
+  }
+}
+
 .generate-btn {
   width: 22em;
+  height: 3em;
   padding: 1.1em;
   margin: 1em 3em;
   opacity: 0.7;
 }
+@media (max-width: 1024px) {
+  .generate-btn {
+    width: 25vw;
+  }
+}
+@media (max-width: 800px) {
+  .generate-btn {
+    width: 20vw;
+    padding: 0;
+    font: 1em;
+  }
+}
+
 .randomized {
   /* display: none; */
-  border: 1px solid purple;
-  width: 14em;
-  height: 1.3em;
+  /* border: 1px solid purple; */
+  width: auto;
+  height: auto;
 }
+
 .randomized-highlighted {
   text-align: center;
   font-family: 'Strange', sans-serif;
@@ -62,103 +98,32 @@ body {
   align-self: center;
   color: rgb(197, 146, 61);
   background: #fcfcfcce;
+  overflow: hidden;
   height: 1.5em;
   padding: 3px ;
   margin-top: -0.4em;
 }
-/* // media 1024 */
 @media (max-width: 1024px) {
-  .container-generator {
-    max-width: 70vw;
-    /* border: 1px solid rgb(53, 50, 205); */
-  }
-  .randomized {
-    /* text-align: center;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    align-self: center;
-    color: #582c5e;  */
-    /* width: 50vw;   */
-    /* border: 3px solid rgb(58, 79, 17); */
-  }
-  .generate-butons {
-    /* width: 50vw;   */
-    margin: 0.5em 0;
-    /* border: 1px solid rgb(11, 11, 15);  */
-  }
-  .generate-btn {
-    width: 28vw;
+  .randomized-highlighted {
+    width: 30vw;
+    height:1.4em;
+    /* border: 1px solid rgb(17, 53, 36); */
+    margin: 0;
+    padding-top: 3px;
   }
 }
-/* @media (max-width: 750px) {
-  .container-generator {
-    max-width: 60vw; 
-    border: 3px solid rgb(205, 50, 50);
+@media (max-width: 800px) {
+  .randomized-highlighted {
+    width: 35vw;
   }
-  .generate-buttons {
-    padding: 0 1em; 
+}
+@media (max-width:600px) {
+  .randomized-highlighted {
+    height: 2.4em;
+    text-justify: distribute;
   }
-  .generate-btn {
-    width: 100%; 
-    padding: 10px 0; 
-    font-size: 0.9em; 
-  }
-} */
-/* @media (max-width: 600px) {
-  .container-generator {
-    flex-direction: column;
-    max-width: 77vw;
-    align-items: center;
-    border: 3px solid rgb(205, 50, 197);
-    margin-top: 10vh;
-  }
-  .generate-butons {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  .generate-btn {
-    width: 20em;
-  }
-  .randomized {
-    text-align: center;
-    align-self: center;
-    color: #582c5e;
-    border: 1px solid rgb(58, 79, 17);
-    margin: 0;
-    padding: 0;
-  }
- } */
-/* @media (max-width: 480px) {
-  .container-generator {
-    flex-direction: column;
-    max-width: 77vw;
-    margin-top: 30vh;
-    border: none;
-    border: 3px solid rgb(55, 205, 50);
-  }
-  .generate-butons {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  .generate-btn {
-    width: 15em;
-    padding: 10px; 
-    font-size: 0.7em;
-    max-width: 60vw;
-  }
-  .randomized {
-    text-align: center;
-    align-self: center;
-    color: #582c5e;
-    border: none;
-    margin: 0;
-    padding: 0;
-    border: 1px solid rgb(58, 79, 17);
-  }
-}  */
+}
 
-/* Reiketu tuos du butonus generatorius insprudinti i kontenery, kai mazas konteineris */
 
 /* Common styles for buttons */
 button {
@@ -166,7 +131,7 @@ button {
   border: 1px solid #ff4b2b;
   background-color: #ff4b2b;
   color: #ffffff;
-  font-size: 0, 750em;
+  font-size: 0.750em;
   font-weight: bold;
   padding: 12px 45px;
   letter-spacing: 1px;
