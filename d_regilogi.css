@@ -16,7 +16,6 @@
   padding: 0;
 }
 
-
 /* Body styles */
 body {
   background-image: url("images/background/cover5.jpg");
@@ -32,25 +31,31 @@ body {
   margin: 0;
   padding: 10%;
 }
-
+/* todo Gal video i centra ir add resposivnes? */
 .header-youtube {
-  display: flex;
-  float: left;
-  left: 800px;
-  top: 20px;
-
+  position: absolute; 
+  right: 1em; 
+  top: 2em; 
 }
 
 .header-youtube iframe {
-
+  width: 560px; 
+  height: 315px; 
+  border: none; 
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(236, 2, 2, 0.589); 
+  background: #020202; 
+  opacity: 0.8;
 }
+
+
 
 
 /* Container styles for the generator */
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid rgb(205, 50, 50); 
+  /* border: 1px solid rgb(205, 50, 50);  */
   margin-top: 100px;
   padding: 0;
   /* padding: 1em 3.750em; */
