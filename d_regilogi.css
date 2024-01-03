@@ -33,13 +33,28 @@ body {
   padding: 10%;
 }
 
+.header-youtube {
+  display: flex;
+  float: left;
+  left: 800px;
+  top: 20px;
+
+}
+
+.header-youtube iframe {
+
+}
+
+
 /* Container styles for the generator */
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  /* border: 1px solid rgb(205, 50, 50); */
-  /* padding: 0 3.750em 0 3.750em; */
-  width: 48.125em; /* 770px */ 
+  border: 1px solid rgb(205, 50, 50); 
+  margin-top: 100px;
+  padding: 0;
+  /* padding: 1em 3.750em; */
+  /*width: 48.125em;  770px */ 
   /* height: auto; */
 }
 @media (max-width: 1024px) {
@@ -53,9 +68,9 @@ body {
 }
 
 .generate-butons {
-  height: 11vh;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  height: 9.5vh;
+  /* margin-bottom: 0;
+  padding-bottom: 0; */
 }
 @media (max-width: 1024px) {
   .generate-butons {
@@ -120,7 +135,7 @@ body {
 @media (max-width:600px) {
   .randomized-highlighted {
     height: 2.4em;
-    text-justify: distribute;
+    font-size: smaller;
   }
 }
 
