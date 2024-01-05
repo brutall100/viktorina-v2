@@ -29,12 +29,12 @@ body {
   flex-direction: column;
   font-family: "Montserrat", sans-serif;
   margin: 0;
-  padding: 10%;
+  padding: 6%;
 }
 /* todo Gal video i centra ir add resposivnes? */
-.header-youtube {
+/* .header-youtube {
   position: absolute; 
-  right: 1em; 
+  right: 30%; 
   top: 2em; 
 }
 
@@ -46,7 +46,7 @@ body {
   box-shadow: 3px 3px 5px rgba(236, 2, 2, 0.589); 
   background: #020202; 
   opacity: 0.8;
-}
+} */
 
 
 
@@ -55,32 +55,23 @@ body {
 .container-generator {
   display: flex;
   justify-content: space-evenly;
-  /* border: 1px solid rgb(205, 50, 50);  */
   margin-top: 100px;
   padding: 0;
-  /* padding: 1em 3.750em; */
-  /*width: 48.125em;  770px */ 
-  /* height: auto; */
 }
 @media (max-width: 1024px) {
   .container-generator {
     display: flex;
     justify-content: space-between;
     width: 70vw;
-    /* margin: 0 30px 0 30px; */
-    /* border: 1px solid rgb(53, 50, 205); */
   }
 }
 
 .generate-butons {
   height: 9.5vh;
-  /* margin-bottom: 0;
-  padding-bottom: 0; */
 }
 @media (max-width: 1024px) {
   .generate-butons {
     width: 30vw;
-    /* border: 1px solid rgb(10, 10, 15); */
   }
 }
 
@@ -104,13 +95,6 @@ body {
   }
 }
 
-.randomized {
-  /* display: none; */
-  /* border: 1px solid purple; */
-  width: auto;
-  height: auto;
-}
-
 .randomized-highlighted {
   text-align: center;
   font-family: 'Strange', sans-serif;
@@ -127,7 +111,6 @@ body {
   .randomized-highlighted {
     width: 30vw;
     height:1.4em;
-    /* border: 1px solid rgb(17, 53, 36); */
     margin: 0;
     padding-top: 3px;
   }
@@ -215,7 +198,7 @@ button.ghost {
   border-color: #ffffff;
 }
 
-/* ! Styles for the logo image */
+/* Styles for the logo image */
 .logo {
   width: 10em;
   cursor: crosshair;
@@ -337,21 +320,17 @@ input {
   width: 768px;
   max-width: 100%;
   min-height: 80%;
-  /* border: 1px solid red; */
 }
-/* // max-height: 930px */
 @media screen and (max-height: 930px) {
   .container {
     margin-top: 1em;  
   }  
 }
-/* // max-height: 730px */
 @media screen and (max-height: 730px) {
   .container {
     margin-top: 2em;
   }  
 }
-/* // max-height: 570px */
 @media screen and (max-height: 570px) {
   .container {
     margin-top: 2em;
@@ -364,7 +343,6 @@ input {
   top: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
-  /* border: 1px solid rgb(51, 255, 0); */
 }
 
 /* Sign-in container styles */
@@ -372,7 +350,6 @@ input {
   left: 0;
   width: 50%;
   z-index: 2;
-  /* border: 1px solid rgb(0, 47, 255); */
 }
 
 /* Right panel active styles for sign-in container */
@@ -511,7 +488,7 @@ input {
   }
 }
 
-/* ! Modal */
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -544,7 +521,6 @@ input {
   text-align: center;
   max-width: max-content;
 }
-/* // @media */
 @media (max-width: 300px) {
   .centered-input {
     width: 70vw;
