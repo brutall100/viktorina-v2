@@ -234,3 +234,8 @@ body {
 .pargraph_2{
   background: rgb(56, 186, 106);
 }
+
+.change-btn {
+  visibility: hidden;
+}
+
