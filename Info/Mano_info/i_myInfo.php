@@ -15,12 +15,14 @@ $sql = "SELECT
         u.user_email,
         (SELECT COUNT(*) + 1 FROM super_users WHERE litai_sum > u.litai_sum) AS rank
         FROM super_users u
-        WHERE u.nick_name = '$name' AND u.user_id = '$user_id'";
+        WHERE u.nick_name = ? AND u.user_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("si", $name, $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
 
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
 
     $level = $row['user_lvl'];
     $points = $row['litai_sum'];
@@ -29,7 +31,7 @@ if (mysqli_num_rows($result) > 0) {
     $litai_sum_month = $row['litai_sum_month'];
     $gender_super = ($row['gender_super'] == 0) ? "Žmogus" : $row['gender_super'];
     $user_email = $row['user_email'];
-    $user_rank = $row['rank']; // Rank added here
+    $user_rank = $row['rank'];
 } else {
     $level = "N/A";
     $points = "N/A";
@@ -43,18 +45,25 @@ if (mysqli_num_rows($result) > 0) {
 
 $sql2 = "SELECT COUNT(*) AS question_count 
          FROM question_answer 
-         WHERE super_users_id = '$user_id'";
-$result2 = mysqli_query($conn, $sql2);
+         WHERE super_users_id = ?";
+$stmt2 = $conn->prepare($sql2);
+$stmt2->bind_param("i", $user_id);
+$stmt2->execute();
+$result2 = $stmt2->get_result();
 
-if ($result2) {
-    $row2 = mysqli_fetch_assoc($result2);
+if ($result2 && $result2->num_rows > 0) {
+    $row2 = $result2->fetch_assoc();
     $question_count = $row2['question_count'];
 } else {
     $question_count = "N/A";
 }
 
+$stmt->close();
+$stmt2->close();
+
 mysqli_close($conn);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="lt">
