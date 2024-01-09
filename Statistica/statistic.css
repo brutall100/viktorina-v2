@@ -1,4 +1,9 @@
-/* statistic.css */
+* {
+  box-sizing: border-box;
+  margin: 0;                               
+  padding: 0;                              
+}
+
 h1 {
   margin-top: 1px;
 }
@@ -6,7 +11,7 @@ h1 {
 body {
   text-align: center;
   background-color: lightblue;
-  background: url("images/background/cover8.jpg");
+  background: url(/viktorina.live/images/DALLE/viktorina.live_world.events2.png);
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;

@@ -1,24 +1,29 @@
 <?php
 session_start();
 if (isset($_SESSION['nick_name'])) {
-  $name = $_SESSION['nick_name'];
+    $name = $_SESSION['nick_name'];
   
-  $conn = mysqli_connect("***REMOVED***", "***REMOVED***", "***REMOVED***", "viktorina");
-  $query = "SELECT 
-    user_lvl,
-    litai_sum,
-    litai_sum_today,
-    litai_sum_week,
-    litai_sum_month,
-    gender_super,
-    user_email
-FROM 
-    super_users
-WHERE 
-    nick_name = '$name'";
-  $result = mysqli_query($conn, $query);
-  if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
+    include('../x_configDB.php'); 
+
+    // Prepare and execute the first SQL statement
+    $query = "SELECT 
+        user_lvl,
+        litai_sum,
+        litai_sum_today,
+        litai_sum_week,
+        litai_sum_month,
+        gender_super,
+        user_email
+        FROM 
+        super_users
+        WHERE 
+        nick_name = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $name);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
     $level = $row['user_lvl'];
     $points = $row['litai_sum'];
     $points_today = $row['litai_sum_today'];
@@ -27,13 +32,20 @@ WHERE
     $gender = $row['gender_super'];
     $email = $row['user_email'];
 
-    echo "<link rel='stylesheet' type='text/css' href='statistic.css'>";
+    $stmt->close();
+
+    echo "<link rel='stylesheet' type='text/css' href='/viktorina.live/Statistica/statistic.css'>";
 
     // Calculate user's place in the database
-    $query_place = "SELECT COUNT(*) AS user_place FROM super_users WHERE litai_sum > $points";
-    $result_place = mysqli_query($conn, $query_place);
-    $row_place = mysqli_fetch_assoc($result_place);
-    $user_place = $row_place['user_place'] ; 
+    $query_place = "SELECT COUNT(*) AS user_place FROM super_users WHERE litai_sum > ?";
+    $stmt_place = $conn->prepare($query_place);
+    $stmt_place->bind_param("i", $points);
+    $stmt_place->execute();
+    $result_place = $stmt_place->get_result();
+    $row_place = $result_place->fetch_assoc();
+    $user_place = $row_place['user_place'] + 1; // Add 1 to account for the user's own place
+
+    $stmt_place->close();
 
     // Retrieve the total number of users
     $query_total_users = "SELECT COUNT(*) AS total_users FROM super_users";
@@ -41,21 +53,33 @@ WHERE
     $row_total_users = mysqli_fetch_assoc($result_total_users);
     $total_users = $row_total_users['total_users'];
     
-    // Retrive statistic
-    $query1 = "SELECT COUNT(*) AS question_count_main FROM main_database";
-    $result1 = mysqli_query($conn, $query1);
-    $row1 = mysqli_fetch_assoc($result1);
-    $question_count_main = $row1['question_count_main'];
+    // Retrieve the total number of users using a prepared statement
+    $query_total_users = "SELECT COUNT(*) AS total_users FROM super_users";
+    $stmt_total_users = $conn->prepare($query_total_users);
+    $stmt_total_users->execute();
+    $result_total_users = $stmt_total_users->get_result();
+    $row_total_users = $result_total_users->fetch_assoc();
+    $total_users = $row_total_users['total_users'];
+
+    $stmt_total_users->close();
     
+    // Query 2: Retrieve count of questions waiting for approval
     $query2 = "SELECT COUNT(*) AS question_count_vaiting FROM question_answer";
-    $result2 = mysqli_query($conn, $query2);
-    $row2 = mysqli_fetch_assoc($result2);
+    $stmt2 = $conn->prepare($query2);
+    $stmt2->execute();
+    $result2 = $stmt2->get_result();
+    $row2 = $result2->fetch_assoc();
     $question_count_vaiting = $row2['question_count_vaiting'];
-  
+    $stmt2->close();
+
+    // Query 3: Retrieve the total number of users
     $query3 = "SELECT COUNT(*) AS user_count FROM super_users";
-    $result3 = mysqli_query($conn, $query3);
-    $row3 = mysqli_fetch_assoc($result3);
+    $stmt3 = $conn->prepare($query3);
+    $stmt3->execute();
+    $result3 = $stmt3->get_result();
+    $row3 = $result3->fetch_assoc();
     $user_count = $row3['user_count'];
+    $stmt3->close();
 
     echo "<!DOCTYPE html>
     <html>
