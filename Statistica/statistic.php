@@ -33,7 +33,7 @@ WHERE
     $query_place = "SELECT COUNT(*) AS user_place FROM super_users WHERE litai_sum > $points";
     $result_place = mysqli_query($conn, $query_place);
     $row_place = mysqli_fetch_assoc($result_place);
-    $user_place = $row_place['user_place'] + 1; // Add 1 to account for the user's own place
+    $user_place = $row_place['user_place'] ; 
 
     // Retrieve the total number of users
     $query_total_users = "SELECT COUNT(*) AS total_users FROM super_users";

@@ -6,15 +6,16 @@ $user_id = $_SESSION['user_id'] ?? "";
 include('../../x_configDB.php'); 
 
 $sql = "SELECT 
-            user_lvl,
-            litai_sum,
-            litai_sum_today,
-            litai_sum_week,
-            litai_sum_month,
-            gender_super,
-            user_email
-        FROM super_users
-        WHERE nick_name = '$name' AND user_id = '$user_id'";
+        u.user_lvl,
+        u.litai_sum,
+        u.litai_sum_today,
+        u.litai_sum_week,
+        u.litai_sum_month,
+        u.gender_super,
+        u.user_email,
+        (SELECT COUNT(*) + 1 FROM super_users WHERE litai_sum > u.litai_sum) AS rank
+        FROM super_users u
+        WHERE u.nick_name = '$name' AND u.user_id = '$user_id'";
 
 $result = mysqli_query($conn, $sql);
 
@@ -28,8 +29,8 @@ if (mysqli_num_rows($result) > 0) {
     $litai_sum_month = $row['litai_sum_month'];
     $gender_super = ($row['gender_super'] == 0) ? "Žmogus" : $row['gender_super'];
     $user_email = $row['user_email'];
+    $user_rank = $row['rank']; // Rank added here
 } else {
-    // Handle the case when no matching data is found
     $level = "N/A";
     $points = "N/A";
     $litai_sum_today = "N/A";
@@ -37,13 +38,23 @@ if (mysqli_num_rows($result) > 0) {
     $litai_sum_month = "N/A";
     $gender_super = "Žmogus";
     $user_email = "N/A";
+    $user_rank = "N/A";
+}
+
+$sql2 = "SELECT COUNT(*) AS question_count 
+         FROM question_answer 
+         WHERE super_users_id = '$user_id'";
+$result2 = mysqli_query($conn, $sql2);
+
+if ($result2) {
+    $row2 = mysqli_fetch_assoc($result2);
+    $question_count = $row2['question_count'];
+} else {
+    $question_count = "N/A";
 }
 
 mysqli_close($conn);
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="lt">
@@ -119,6 +130,13 @@ mysqli_close($conn);
                 </div>
                 <div class="content-row">
                     <p>
+                        <span class="first-span">Vieta TOPe:</span>
+                        <span class="middle-span"><?php echo $user_rank; ?></span>
+                        <span class="last-span"></span>
+                    </p>
+                </div>
+                <div class="content-row">
+                    <p>
                         <span class="first-span">Litai:</span>
                         <span class="middle-span"><?php echo $points; ?></span>
                         <span class="last-span"></span>
@@ -142,6 +160,13 @@ mysqli_close($conn);
                     <p>
                         <span class="first-span">Litai mėnesio:</span>
                         <span class="middle-span"><?php echo $litai_sum_month; ?></span>
+                        <span class="last-span"></span>
+                    </p>
+                </div>
+                <div class="content-row">
+                    <p>
+                        <span class="first-span">Įrašytą klausimų:</span>
+                        <span class="middle-span"><?php echo $question_count; ?></span>
                         <span class="last-span"></span>
                     </p>
                 </div>
@@ -174,11 +199,7 @@ mysqli_close($conn);
         var userLevel = <?php echo json_encode($level); ?>;
     </script>
 
-
-
     <script type="text/javascript" src="i_myInfo.js"></script>
 </body>
 
 </html>
-
-<!-- KIek klausimu irases vartotojas, Kiek is ju patvirtinta, kokia vieta TOPe, xxx -->
