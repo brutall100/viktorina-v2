@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 
 <head>
   <meta name="description"
@@ -11,7 +11,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="d_regilogi.css" />
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <meta http-equiv="refresh" content="600"><!-- Auto refresh 10 min -->
   <title>Registracija ir Prisijungimas</title>
 </head>
 
@@ -33,7 +32,7 @@
   </div>
 
   <div class="container" id="container">
-    <!-- Registracija -->
+    <!--  Registracija -->
     <div class="form-container sign-up-container">
       <!-- <form method="POST" action="http://***REMOVED***:4000/register" id="register-form"> -->
       <form method="POST" action="http://localhost:4000/register" id="register-form">
@@ -195,8 +194,8 @@
   <div class="modal" id="forgotPasswordModal">
     <div class="modal-content">
       <button id="close-modal">✕</button>
-      <h2>Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
-      <p>Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jam sugrįžti.</p>
+      <h2 id="monthlyHeading">Ei, tai slaptažodžio priminimo nuoroda 🕵️‍♂️</h2>
+      <p id="monthlyParagraph">Rodos, tarsi jūsų slaptažodis atostogauja! Padėsime jam sugrįžti.</p>
       <!-- <form method="POST" action="http://***REMOVED***:4000/reset-password">   -->
       <form method="POST" action="http://localhost:4000/reset-password">
         <label for="email">El. paštas:</label>

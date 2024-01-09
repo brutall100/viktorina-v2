@@ -502,13 +502,13 @@ input {
 
 .modal-content {
   background-color: #eee;
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 78%;
   max-width: 500px;
-  padding: 30px;
+  padding: 40px;
   border-radius: 10px;
 }
 
@@ -533,21 +533,23 @@ input {
 
 #close-modal {
   position: absolute;
-  bottom: 14px;
+  bottom: 10px;
   right: 10px;
-  padding: 10px;
-  margin: 10px;
-  width: 5px;
-  height: 5px;
-  font-size: 20px;
-  text-align: center;
-  color: #ff416c;
+  color: rgb(248, 1, 1);
   background-color: transparent;
   border: none;
   cursor: pointer;
+  width: 5px; 
+  transition: transform 0.3s ease; 
 }
 
 #close-modal:hover {
+  transform: scale(1.5); /* Increase size on hover */
   color: rgb(230, 33, 33);
 }
+
+#close-modal:active {
+  transform: scale(1.1); /* Slightly smaller than hover to indicate pressing */
+}
+
 

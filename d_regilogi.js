@@ -14,7 +14,7 @@ signInButton.addEventListener("click", () => {
 document.getElementById("register-form").addEventListener("submit", validateForm)
 
 function validateForm(event) {
-  event.preventDefault() 
+  event.preventDefault()
 
   const nameInput = document.getElementById("name-input")
   const emailInput = document.getElementById("user-email")
@@ -71,3 +71,39 @@ forgotPasswordLink.addEventListener("click", function (event) {
 closeModalButton.addEventListener("click", function () {
   modal.style.display = "none"
 })
+
+//// Function that changes Heading and paragraph every month
+const monthlyHeadings = [
+  "Sausio Sniego Sąmyšis 🌨️⛄😄",
+  "February Heading",
+  "March Heading",
+  "April Heading",
+  "May Heading",
+  "June Heading",
+  "July Heading",
+  "August Heading",
+  "September Heading",
+  "October Heading",
+  "November Heading",
+  "December Heading"
+]
+
+const monthlyParagraphs = [
+  "Sausis atnešė tiek daug sniego ❄️ ir šalčio 🥶 ,kad net pamiršote slaptažodį 🔒",
+  "February Paragraph",
+  "March Paragraph",
+  "April Paragraph",
+  "May Paragraph",
+  "June Paragraph",
+  "July Paragraph",
+  "August Paragraph",
+  "September Paragraph",
+  "October Paragraph",
+  "November Paragraph",
+  "December Paragraph"
+]
+
+const currentMonth = new Date().getMonth()
+
+document.getElementById("monthlyHeading").textContent = monthlyHeadings[currentMonth]
+document.getElementById("monthlyParagraph").textContent = monthlyParagraphs[currentMonth]
