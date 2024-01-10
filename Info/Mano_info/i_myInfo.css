@@ -65,7 +65,7 @@ body {
 }
 
 /* User header with BTN */
-.user-header {
+.user-header-ctn {
   display: flex;
   justify-content: center;
   position: sticky;
@@ -172,7 +172,7 @@ body {
 }
 
 /* Cia turetu buti keitimo informacija */
-.content-response {
+.content-response-ctn {
   border-radius: 0 0 1rem 1rem;
   width: 300px;
   height: 300px;
@@ -221,7 +221,8 @@ body {
 
 
 /* Keitimo Info */
-.content-response-paragraph{
+.content-response-div{
+  background: #333a46a3;
   display:grid;
   justify-content: center;
   text-align: center;
@@ -236,6 +237,8 @@ body {
 }
 
 .change-btn {
-  visibility: hidden;
+  /* visibility: hidden; */
+  background: rgb(186, 56, 132);
+  height: 20px;
 }
 

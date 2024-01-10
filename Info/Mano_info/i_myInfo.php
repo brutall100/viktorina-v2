@@ -83,18 +83,18 @@ mysqli_close($conn);
         <?php include '../../Header/header.php'; ?>
     </div>
 
-    <nav class="user-header">
+    <nav class="user-header-ctn">
         <div class="user-header-btn">
-            <button class="btn" data-target="name">Keisti Vardą <i class="fa-regular fa-user"></i></button>
+            <button id="name-button" class="btn">Keisti Vardą <i class="fa-regular fa-user"></i></button>
         </div>
         <div class="user-header-btn">
-            <button class="btn" data-target="gender">Keisti Lytį <i class="fa-solid fa-person-half-dress"></i></button>
+            <button id="gender-button" class="btn">Keisti Lytį <i class="fa-solid fa-person-half-dress"></i></button>
         </div>        
         <div class="user-header-btn">
-            <button class="btn" data-target="email">Keisti Email <i class="fa-regular fa-envelope"></i></button>
+            <button id="email-button" class="btn">Keisti Email <i class="fa-regular fa-envelope"></i></button>
         </div>
         <div class="user-header-btn">
-            <button class="btn" data-target="level">Keisti Lygį <i class="fa-solid fa-up-right-from-square"></i></button>
+            <button id="level-button" class="btn">Keisti Lygį <i class="fa-solid fa-up-right-from-square"></i></button>
         </div>
     </nav>
 
@@ -185,12 +185,12 @@ mysqli_close($conn);
 
         </div>
 
-        <div class="content-response">
+        <div class="content-response-ctn">
             <h1>Keitimo info</h1>
-            <div class="content-response-paragraph">
-                <p class="pargraph_1"></p>
-                <p class="pargraph_2"></p>
-                <button class="change-btn"></button>  
+            <div class="content-response-div">
+                <p class="pargraph_1">A</p>
+                <p class="pargraph_2">B</p>
+                <button class="change-btn">C</button>  
             </div>  
         </div>
     </div>
