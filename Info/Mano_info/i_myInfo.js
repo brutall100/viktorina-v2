@@ -4,8 +4,8 @@ const emailButton = document.getElementById("email-button")
 const levelButton = document.getElementById("level-button")
 
 const contentDiv = document.querySelector(".content-response-div")
-const paragraph1Elements = contentDiv.getElementsByClassName("pargraph_1")
-const paragraph2Elements = contentDiv.getElementsByClassName("pargraph_2")
+const paragraph1Elements = contentDiv.getElementsByClassName("paragraph_1")
+const paragraph2Elements = contentDiv.getElementsByClassName("paragraph_2")
 const changeButton = contentDiv.querySelector(".change-btn")
 
 //// Variables defined in the <script> tag in HTML
@@ -15,8 +15,6 @@ console.log(userLitai)
 console.log(userGender)
 console.log(userEmail)
 console.log(userLevel)
-
-
 
 nameButton.addEventListener("click", function () {
   console.log("Name button clicked")

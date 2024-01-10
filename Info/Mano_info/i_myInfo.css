@@ -27,6 +27,46 @@ p {
   font-weight: normal;
 }
 
+/* Button styles */
+.btn {
+  backface-visibility: hidden;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  background: linear-gradient(180deg, #f1e9c4 0%, #fffce2 38%, #debf4d 40%, #efebcf 100%);
+  border-radius: 5px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6), 0px 0px 5px rgba(255, 255, 255, 1), 0px 1px 0px 3px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(255, 255, 255, 1);
+  color: #574317;
+  font-size: 16px;
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  width: 10em;
+  margin-top: 1px; 
+  padding: 1px 12px; 
+  transition: background-color 0.6s, transform 0.6s, color 0.6s, border 0.6s;
+}
+
+.btn img {
+  width: 15px;
+  margin-left: 3px;
+  margin-right: 3px;
+  flex-direction: row;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #1e392b;
+  border: solid 1px #a1bbc3;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: scale(0.95); 
+}
+
 /* Header */
 .header-wrapper {
   position: sticky;
@@ -69,13 +109,12 @@ body {
   display: flex;
   justify-content: center;
   position: sticky;
-  /* top: 64px; */
-  background-color: #ffffff1d; /* Add a background color to make it stand out if needed */
-  z-index: 1; /* Add a z-index to control stacking with other elements */
+  background-color: #ffffff1d; 
+  z-index: 1; 
 }
 
 .user-header-btn {
-  margin: 20px 16px; /* Add spacing between buttons */
+  margin: 20px 16px; 
 }
 
 .fa-regular.fa-user,
@@ -91,7 +130,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 72vh; /* Ensure the container covers the full viewport height */
+  min-height: 72vh; 
   padding: 0.8em 0 1.5em 0;
   margin: 0;
   /* background-color: rgb(45, 18, 199); */
@@ -124,34 +163,34 @@ body {
   overflow: auto;
   font-size: 21px;
   font-weight: 600;
-  background-color: #2e2e2e; /* Background color for the futuristic look */
-  color: #00ffd1; /* Text color */
-  border: 1px solid #00ffd1; /* Futuristic border with a color of your choice */
-  border-radius: 10px; /* Rounded corners for a modern touch */
-  box-shadow: 0 0 10px rgba(0, 255, 209, 0.5); /* Add a subtle glow effect */
+  background-color: #2e2e2e; 
+  color: #00ffd1; 
+  border: 1px solid #00ffd1;
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 255, 209, 0.5); 
   transition: all 0.3s ease;
   position: relative;
-  scrollbar-width: thin; /* Create a thin scrollbar (not supported in all browsers) */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: thin; 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 }
 
 .content-row p::-webkit-scrollbar {
-  width: 5px; /* Set the width of the scrollbar */
+  width: 5px;
 }
 
 .content-row p::-webkit-scrollbar-thumb {
-  background: #00ffd1; /* Color of the thumb (draggable part) */
-  border-radius: 5px 5px 0 0; /* Rounded corners for the thumb */
+  background: #00ffd1; 
+  border-radius: 5px 5px 0 0; 
 }
 
 .content-row p::-webkit-scrollbar-track {
-  background: #2e2e2e; /* Color of the track (background) */
+  background: #2e2e2e; 
 }
 
 .content-row p:hover {
-  transform: scale(1.01); /* Scale the element on hover for an interactive feel */
-  box-shadow: 0 0 20px rgba(0, 255, 209, 0.7); /* Enhance the glow effect on hover */
+  transform: scale(1.01); 
+  box-shadow: 0 0 20px rgba(0, 255, 209, 0.7); 
 }
 
 .first-span {
@@ -160,11 +199,11 @@ body {
 }
 
 .middle-span {
-  color: #e8d897; /* Text color */
-  font-weight: 800; /* Adjust font weight for a bolder look */
-  text-transform: uppercase; /* Uppercase the text for a futuristic feel */
-  letter-spacing: 2px; /* Wider letter spacing for a spaced-out look */
-  text-shadow: 1px 1px 3px rgba(232, 217, 151, 0.6); /* Add a subtle text shadow */
+  color: #e8d897; 
+  font-weight: 800; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+  text-shadow: 1px 1px 3px rgba(232, 217, 151, 0.6); 
 }
 
 .last-span {
@@ -177,68 +216,37 @@ body {
   width: 300px;
   height: 300px;
   background-color: #a6cbd6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Button styles */
-.btn {
-  backface-visibility: hidden;
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  white-space: nowrap;
-  background: linear-gradient(180deg, #f1e9c4 0%, #fffce2 38%, #debf4d 40%, #efebcf 100%);
-  border-radius: 5px;
-  border: 0.5px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6), 0px 0px 5px rgba(255, 255, 255, 1), 0px 1px 0px 3px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(255, 255, 255, 1);
-  color: #574317;
-  font-size: 16px;
-  font-family: "Helvetica Neue", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-  width: 10em;
-  margin-top: 1px; /* Added margin to the top of the button */
-  padding: 1px 12px; /* Adjusted padding for better button size */
-  transition: background-color 0.6s, transform 0.6s, color 0.6s, border 0.6s;
+.content-response-ctn h1 {
+  align-self: flex-start; /* Align the h1 to the top of the container */
+  margin-bottom: 40px; /* Add margin for spacing */
 }
 
-.btn img {
-  width: 15px;
-  margin-left: 3px;
-  margin-right: 3px;
-  flex-direction: row;
-}
-
-.btn:hover {
-  background-color: #fff;
-  color: #1e392b;
-  border: solid 1px #a1bbc3;
-  transform: translateY(-1px);
-}
-
-.btn:active {
-  transform: scale(0.95); /* Reduce the size of the button when clicked */
-}
-
-
-/* Keitimo Info */
-.content-response-div{
+.content-response-div {
   background: #333a46a3;
-  display:grid;
+  display: grid;
   justify-content: center;
   text-align: center;
+  padding: 20px; /* Add padding for better visual */
 }
 
-.pargraph_1{
+.pargraph_1 {
   background: #386cbaa3;
 }
 
-.pargraph_2{
+.pargraph_2 {
   background: rgb(56, 186, 106);
 }
 
 .change-btn {
-  /* visibility: hidden; */
   background: rgb(186, 56, 132);
   height: 20px;
 }
+
+
 
