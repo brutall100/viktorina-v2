@@ -16,20 +16,64 @@ console.log(userGender)
 console.log(userEmail)
 console.log(userLevel)
 
+// ! Jei . Galimai bus labai skirtingi div, tai gal kiekvienam div duoti atskira klase .. content-response-div-a-version/name-version..
 
-nameButton.addEventListener("click", function () {
-  console.log("Name button clicked")
-   // ! Jei . Galimai bus labai skirtingi div, tai gal kiekvienam div duoti atskira klase .. content-response-div-a-version/name-version..
-  contentDiv.innerHTML = `
-        <h1>Vardo Keitimas</h1>
-        <div class="content-response-div">
-            <p class="pargraph_1">VARDAS A</p>
-            <p class="pargraph_2">VARDAS B</p>
-            <input type="text" id="inputFieldChange" placeholder="Type new name">
-            <button class="change-btn">Keisti vardą</button>
-        </div>
-    `;
-})
+////  Globali funkcija tikriinanti ar neina 3 vienodos raides is eiles
+function hasConsecutiveLetters(input) {
+    for (let i = 0; i < input.length - 2; i++) {
+      if (input[i] === input[i + 1] && input[i + 1] === input[i + 2]) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  //// Function to display an error message
+  function displayErrorMessage(message) {
+    const errorMsgElement = document.getElementById('error-msg');
+    if (errorMsgElement) {
+      errorMsgElement.textContent = message;
+    }
+  }
+  
+  nameButton.addEventListener('click', function () {
+    console.log('Name button clicked');
+  
+    contentDiv.innerHTML = `
+          <h1>Vardo Keitimas</h1>
+          <div class="content-response-div">
+              <p class="pargraph_1">Lorem ipsium A</p>
+              <p class="pargraph_2">Lorem ipsium B</p>
+              <input type="text" id="inputFieldChange" placeholder="Type new name">
+              <button class="change-btn">Keisti vardą</button>
+              <h3 id='error-msg'></h3>
+          </div>
+      `;
+  
+    const inputField = document.getElementById('inputFieldChange');
+    const errorMsgElement = document.getElementById('error-msg');
+  
+    // Check if the input field exists
+    if (inputField && errorMsgElement) {
+      // Handle input validation on button click
+      document.querySelector('.change-btn').addEventListener('click', function () {
+        const inputValue = inputField.value;
+  
+        // Check if the input has consecutive identical letters
+        if (hasConsecutiveLetters(inputValue)) {
+          displayErrorMessage('Input contains three consecutive identical letters. Please correct.');
+        } else {
+          displayErrorMessage(''); // Clear any existing error message
+          // Continue with your logic here...
+        }
+      });
+    } else {
+      console.error("Input field or error message element not found. Make sure the elements with IDs 'inputFieldChange' and 'error-msg' exist.");
+    }
+  });
+  
+
+
 
 genderButton.addEventListener("click", function () {
   console.log("Gender button clicked")
@@ -42,12 +86,12 @@ genderButton.addEventListener("click", function () {
             <input type="text" id="inputFieldChange" placeholder="Jūsų naujoji lytis">
             <button class="change-btn">Lytis C</button>
         </div>
-    `;
+    `
 })
 
 emailButton.addEventListener("click", function () {
   console.log("Email button clicked")
-  
+
   contentDiv.innerHTML = `
         <h1>Email Keitimas</h1>
         <div class="content-response-div">
@@ -55,12 +99,12 @@ emailButton.addEventListener("click", function () {
             <p class="pargraph_2">email B</p>
             <button class="change-btn">email C</button>
         </div>
-    `;
+    `
 })
 
 levelButton.addEventListener("click", function () {
   console.log("Level button clicked")
-  
+
   contentDiv.innerHTML = `
         <h1>Lygio Keitimas</h1>
         <div class="content-response-div">
@@ -68,13 +112,8 @@ levelButton.addEventListener("click", function () {
             <p class="pargraph_2">LygisB</p>
             <button class="change-btn">Lygis C</button>
         </div>
-    `;
+    `
 })
-
-
-
-
-
 
 // Vardo, levelio, lyties, ketimas turetu buti mokamas. LITAIS
 //  Tvarkyti paragrapha
