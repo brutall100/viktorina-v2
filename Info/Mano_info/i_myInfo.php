@@ -180,12 +180,9 @@ mysqli_close($conn);
                     </p>
                 </div>
             </div>
-
-
-
         </div>
 
-        <div class="content-response-ctn">
+        <div id="updateDiv" class="content-response-ctn">
             <h1>Keitimo info</h1>
             <div class="content-response-div">
                 <p class="pargraph_1">A</p>

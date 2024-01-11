@@ -3,7 +3,7 @@ const genderButton = document.getElementById("gender-button")
 const emailButton = document.getElementById("email-button")
 const levelButton = document.getElementById("level-button")
 
-const contentDiv = document.querySelector(".content-response-div")
+const contentDiv = document.getElementById("updateDiv")
 const paragraph1Elements = contentDiv.getElementsByClassName("paragraph_1")
 const paragraph2Elements = contentDiv.getElementsByClassName("paragraph_2")
 const changeButton = contentDiv.querySelector(".change-btn")
@@ -16,24 +16,57 @@ console.log(userGender)
 console.log(userEmail)
 console.log(userLevel)
 
+
 nameButton.addEventListener("click", function () {
   console.log("Name button clicked")
-  // Add your logic here for the name button
+  
+  contentDiv.innerHTML = `
+        <h1>Updated Keitimo info</h1>
+        <div class="content-response-div">
+            <p class="pargraph_1">VARDAS A</p>
+            <p class="pargraph_2">VARDAS B</p>
+            <button class="change-btn">VARDAS C</button>
+        </div>
+    `;
 })
 
 genderButton.addEventListener("click", function () {
   console.log("Gender button clicked")
-  // Add your logic here for the gender button
+  
+  contentDiv.innerHTML = `
+        <h1>Updated Keitimo info</h1>
+        <div class="content-response-div">
+            <p class="pargraph_1">Lytis A</p>
+            <p class="pargraph_2">Lytis B</p>
+            <button class="change-btn">Lytis C</button>
+        </div>
+    `;
 })
 
 emailButton.addEventListener("click", function () {
   console.log("Email button clicked")
-  // Add your logic here for the email button
+  
+  contentDiv.innerHTML = `
+        <h1>Updated Keitimo info</h1>
+        <div class="content-response-div">
+            <p class="pargraph_1">email A</p>
+            <p class="pargraph_2">email B</p>
+            <button class="change-btn">email C</button>
+        </div>
+    `;
 })
 
 levelButton.addEventListener("click", function () {
   console.log("Level button clicked")
-  // Add your logic here for the level button
+  
+  contentDiv.innerHTML = `
+        <h1>Updated Keitimo info</h1>
+        <div class="content-response-div">
+            <p class="pargraph_1">Lygis A</p>
+            <p class="pargraph_2">LygisB</p>
+            <button class="change-btn">Lygis C</button>
+        </div>
+    `;
 })
 
 
