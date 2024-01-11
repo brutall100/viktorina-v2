@@ -27,7 +27,7 @@ p {
   font-weight: normal;
 }
 
-/* Button styles */
+/*// Button styles */
 .btn {
   backface-visibility: hidden;
   position: relative;
@@ -67,21 +67,21 @@ p {
   transform: scale(0.95); 
 }
 
-/* Header */
+/*// Header */
 .header-wrapper {
   position: sticky;
   top: 0;
   z-index: 9;
 }
 
-/* Footer */
+/*// Footer */
 .footer-wrapper {
   position: fixed;
   bottom: 0;
   width: 100%;
 }
 
-/* Body */
+/*// Body */
 body::before {
   content: "";
   background-image: url(/viktorina.live/images/DALLE/viktorina.live_world.events1.png);
@@ -104,7 +104,7 @@ body {
   background-position: center;
 }
 
-/* User header with BTN */
+/*// User header with BTN */
 .user-header-ctn {
   display: flex;
   justify-content: center;
@@ -125,7 +125,7 @@ body {
   margin-left: 10px;
 }
 
-/* Pagrindinis konteineris */
+/*// Pagrindinis konteineris */
 .conatainer {
   display: flex;
   justify-content: center;
@@ -140,10 +140,10 @@ body {
   border: 1px solid rgba(240, 230, 140, 0.5);
   margin: 0 2em;
   padding: 1em;
-  border-radius: 6px;
+  border-radius: .5em;
   overflow: auto;
   scroll-behavior: smooth;
-  background-color: rgba(255, 255, 255, 0.299); /* Set the background color for your content */
+  background-color: rgba(255, 255, 255, 0.299); 
 }
 
 .content-p {
@@ -210,42 +210,47 @@ body {
   background-color: #1f315a;
 }
 
-/* Cia turetu buti keitimo informacija */
+/* // Cia turetu buti keitimo informacija */
 .content-response-ctn {
-  border-radius: 0 0 1rem 1rem;
-  width: 300px;
-  height: 300px;
-  background-color: #a6cbd6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid rgba(240, 230, 140, 0.5);
+  border-radius: .5rem;
+  width: 400px;
+  height: 400px;
+  background-color: rgba(255, 255, 255, 0.299); 
+  padding: 1em;
 }
 
-.content-response-ctn h1 {
-  align-self: flex-start; /* Align the h1 to the top of the container */
-  margin-bottom: 40px; /* Add margin for spacing */
-}
+/* .content-response-ctn h1 {
+  margin-bottom: 120px; 
+} */
 
 .content-response-div {
   background: #333a46a3;
-  display: grid;
-  justify-content: center;
-  text-align: center;
-  padding: 20px; /* Add padding for better visual */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3.5vh;
+  padding: 3rem;
 }
 
 .pargraph_1 {
   background: #386cbaa3;
+  padding: 10px 5vw;
+  margin-bottom: 1em;
 }
 
 .pargraph_2 {
   background: rgb(56, 186, 106);
+  padding: 10px 7vw;
+  margin-bottom: 1em;
 }
 
 .change-btn {
   background: rgb(186, 56, 132);
-  height: 20px;
+  height: 50px;
+  padding: 10px 9vw;
+  margin-bottom: 1em;
+  cursor: crosshair;
 }
 
 
