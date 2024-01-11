@@ -183,7 +183,7 @@ mysqli_close($conn);
         </div>
 
         <div id="updateDiv" class="content-response-ctn">
-            <h1>Keitimo info</h1>
+            <h1>Keitimo Info</h1>
             <div class="content-response-div">
                 <p class="pargraph_1">A</p>
                 <p class="pargraph_2">B</p>

@@ -19,25 +19,27 @@ console.log(userLevel)
 
 nameButton.addEventListener("click", function () {
   console.log("Name button clicked")
-  
+   // ! Jei . Galimai bus labai skirtingi div, tai gal kiekvienam div duoti atskira klase .. content-response-div-a-version/name-version..
   contentDiv.innerHTML = `
-        <h1>Updated Keitimo info</h1>
+        <h1>Vardo Keitimas</h1>
         <div class="content-response-div">
             <p class="pargraph_1">VARDAS A</p>
             <p class="pargraph_2">VARDAS B</p>
-            <button class="change-btn">VARDAS C</button>
+            <input type="text" id="inputFieldChange" placeholder="Type new name">
+            <button class="change-btn">Keisti vardą</button>
         </div>
     `;
 })
 
 genderButton.addEventListener("click", function () {
   console.log("Gender button clicked")
-  
+
   contentDiv.innerHTML = `
-        <h1>Updated Keitimo info</h1>
+        <h1>Lyties Keitimas</h1>
         <div class="content-response-div">
-            <p class="pargraph_1">Lytis A</p>
-            <p class="pargraph_2">Lytis B</p>
+            <p class="pargraph_1">Jei pasikeitė Jūsų lytis?</p>
+            <p class="pargraph_2">Irašykite savo naujają lytį</p>
+            <input type="text" id="inputFieldChange" placeholder="Jūsų naujoji lytis">
             <button class="change-btn">Lytis C</button>
         </div>
     `;
@@ -47,7 +49,7 @@ emailButton.addEventListener("click", function () {
   console.log("Email button clicked")
   
   contentDiv.innerHTML = `
-        <h1>Updated Keitimo info</h1>
+        <h1>Email Keitimas</h1>
         <div class="content-response-div">
             <p class="pargraph_1">email A</p>
             <p class="pargraph_2">email B</p>
@@ -60,7 +62,7 @@ levelButton.addEventListener("click", function () {
   console.log("Level button clicked")
   
   contentDiv.innerHTML = `
-        <h1>Updated Keitimo info</h1>
+        <h1>Lygio Keitimas</h1>
         <div class="content-response-div">
             <p class="pargraph_1">Lygis A</p>
             <p class="pargraph_2">LygisB</p>

@@ -229,26 +229,33 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3.5vh;
+  margin-top: 2.5vh;
   padding: 3rem;
 }
 
+/* ! Galimai reikes pakeisti width i fiksuotus atmesti padding del teksto perkelimo i new line */
 .pargraph_1 {
   background: #386cbaa3;
-  padding: 10px 5vw;
+  padding: 10px 4vw;
   margin-bottom: 1em;
 }
 
 .pargraph_2 {
   background: rgb(56, 186, 106);
-  padding: 10px 7vw;
+  padding: 10px 5vw;
+  margin-bottom: 1em;
+}
+
+#inputFieldChange{
+  background: rgb(173, 186, 56);
+  padding: 10px 3vw;
   margin-bottom: 1em;
 }
 
 .change-btn {
   background: rgb(186, 56, 132);
   height: 50px;
-  padding: 10px 9vw;
+  padding: 10px 7vw;
   margin-bottom: 1em;
   cursor: crosshair;
 }
