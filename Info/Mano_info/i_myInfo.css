@@ -260,5 +260,9 @@ body {
   cursor: crosshair;
 }
 
+#error-msg{
+  color: #42161e;
+}
+
 
 

@@ -97,7 +97,7 @@ app.listen(PORT, () => {
 
 
 // node i_myInfoServer.js
-
+// ! jei viskas ok nusiusti i email nauja warda
 // Pasizet ar toks vardas jau egzistuoja, jei yra atmesti pakeitimus ir nenuimti litu, jei nera galima keisti ir patikrinti bad words database kad vardas butu atitinkamas.
-// padaryti laiko tarpa po pirmo keitimo kada galima bus vel pasikeisti varda using npm moment gal menesis prideti ar atimti 1 raide pakeisti 3 raides, kad nickas per smarkei nepasikeistu
-// vardo keitimas 100 000 plius laikas 1 men ir raidziu restriction
+// padaryti laiko tarpa po pirmo keitimo kada galima bus vel pasikeisti varda using npm moment gal menesis,
+// vardo keitimas 100 000 plius laikas 1 men 

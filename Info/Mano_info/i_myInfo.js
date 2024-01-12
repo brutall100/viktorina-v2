@@ -18,61 +18,59 @@ console.log(userLevel)
 
 // ! Jei . Galimai bus labai skirtingi div, tai gal kiekvienam div duoti atskira klase .. content-response-div-a-version/name-version..
 
-////  Globali funkcija tikriinanti ar neina 3 vienodos raides is eiles
+////  Globali funkcija tikrina ar neina 3 vienodoi simboliai is eiles
 function hasConsecutiveLetters(input) {
-    for (let i = 0; i < input.length - 2; i++) {
-      if (input[i] === input[i + 1] && input[i + 1] === input[i + 2]) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  //// Function to display an error message
-  function displayErrorMessage(message) {
-    const errorMsgElement = document.getElementById('error-msg');
-    if (errorMsgElement) {
-      errorMsgElement.textContent = message;
+  for (let i = 0; i < input.length - 2; i++) {
+    if (input[i] === input[i + 1] && input[i + 1] === input[i + 2]) {
+      return true
     }
   }
-  
-  nameButton.addEventListener('click', function () {
-    console.log('Name button clicked');
-  
-    contentDiv.innerHTML = `
-          <h1>Vardo Keitimas</h1>
-          <div class="content-response-div">
-              <p class="pargraph_1">Lorem ipsium A</p>
-              <p class="pargraph_2">Lorem ipsium B</p>
-              <input type="text" id="inputFieldChange" placeholder="Type new name">
-              <button class="change-btn">Keisti vardą</button>
-              <h3 id='error-msg'></h3>
-          </div>
-      `;
-  
-    const inputField = document.getElementById('inputFieldChange');
-    const errorMsgElement = document.getElementById('error-msg');
-  
-    // Check if the input field exists
-    if (inputField && errorMsgElement) {
-      // Handle input validation on button click
-      document.querySelector('.change-btn').addEventListener('click', function () {
-        const inputValue = inputField.value;
-  
-        // Check if the input has consecutive identical letters
-        if (hasConsecutiveLetters(inputValue)) {
-          displayErrorMessage('Input contains three consecutive identical letters. Please correct.');
-        } else {
-          displayErrorMessage(''); // Clear any existing error message
-          // Continue with your logic here...
-        }
-      });
-    } else {
-      console.error("Input field or error message element not found. Make sure the elements with IDs 'inputFieldChange' and 'error-msg' exist.");
-    }
-  });
-  
+  return false
+}
 
+//// Globali funkcija tikrina vardo ilgi MAX 21
+function isNameLengthValid(name) {
+  return name.length <= 21
+}
+
+//// Function to display an error message
+function displayErrorMessage(message) {
+  const errorMsgElement = document.getElementById("error-msg")
+  if (errorMsgElement) {
+    errorMsgElement.textContent = message
+  }
+}
+
+nameButton.addEventListener("click", function () {
+  console.log("Name button clicked")
+
+  contentDiv.innerHTML = `
+        <h1>Vardo Keitimas</h1>
+        <div class="content-response-div">
+            <p class="pargraph_1">Lorem ipsium A</p>
+            <p class="pargraph_2">Lorem ipsium B</p>
+            <input type="text" id="inputFieldChange" placeholder="Type new name">
+            <button class="change-btn">Keisti vardą</button>
+            <h3 id='error-msg'></h3>
+        </div>
+    `
+
+  const inputField = document.getElementById("inputFieldChange")
+  const errorMsgElement = document.getElementById("error-msg")
+
+  document.querySelector(".change-btn").addEventListener("click", function () {
+    const inputValue = inputField.value
+
+    if (hasConsecutiveLetters(inputValue)) {
+      displayErrorMessage("😬 Oops! Trys vienodi simboliai iš eilės. Nepraeis! 🚫✏️")
+    } else if (!isNameLengthValid(inputValue)) {
+      displayErrorMessage("🤔 Vardo ilgis viršija 21 simbolį. Trumpinam! 📏✏️")
+    } else {
+      displayErrorMessage("") // Clear any existing error message
+      // Continue with your logic here...
+    }
+  })
+})
 
 
 genderButton.addEventListener("click", function () {
@@ -84,7 +82,7 @@ genderButton.addEventListener("click", function () {
             <p class="pargraph_1">Jei pasikeitė Jūsų lytis?</p>
             <p class="pargraph_2">Irašykite savo naujają lytį</p>
             <input type="text" id="inputFieldChange" placeholder="Jūsų naujoji lytis">
-            <button class="change-btn">Lytis C</button>
+            <button class="change-btn">Lyties keitimas</button>
         </div>
     `
 })
