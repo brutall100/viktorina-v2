@@ -6,7 +6,6 @@ const cors = require("cors")
 const path = require("path")
 require("dotenv").config({ path: path.join(__dirname, ".env") })
 
-
 const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -25,7 +24,7 @@ app.post("/updateName", async (req, res) => {
 
   // Funkcija tikrina 3 iš eilės raidžių egzistavimą.
   function hasFourConsecutiveIdenticalLetters(name) {
-    const regex = /(.)\1{3}/
+    const regex = /(.)\1{2}/
     return regex.test(name)
   }
 
@@ -38,19 +37,19 @@ app.post("/updateName", async (req, res) => {
     if (duplicateRows.length > 0) {
       console.log(`Warning: User with name '${newName}' already exists`)
       res.status(400).json({ message: "Vartotojas su šiuo vardu jau egzistuoja" })
-    } else if (newName.length > 15) {
+    } else if (newName.length > 21) {
       console.log(`Warning: User name '${newName}' is too long`)
-      res.status(400).json({ message: "Vartotojo vardas per ilgas. Maksimalus ilgis: 15 simbolių" })
+      res.status(400).json({ message: "Vartotojo vardas per ilgas. Maksimalus ilgis: 21 simbolis" })
     } else if (hasFourConsecutiveIdenticalLetters(newName)) {
-      console.log(`Warning: User name '${newName}' contains four consecutive identical letters`)
-      res.status(400).json({ message: "Vartotojo vardas negali turėti keturis iš eilės vienodus simbolius" })
+      console.log(`Warning: User name '${newName}' contains 3 consecutive identical letters`)
+      res.status(400).json({ message: "Vartotojo vardas negali turėti tris iš eilės vienodus simbolius" })
     } else {
       // Check if the user with the old name, userId, and userLitai exists
       const [userRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ? AND user_id = ? AND litai_sum = ?", [userName, userId, userLitai])
 
       if (userRows.length === 0) {
         console.log(`Warning: User with old name '${userName}', user ID '${userId}', and litai '${userLitai}' not found`)
-        res.status(400).json({ message: "Vartotojas su seno vardo, ID ir litai nerastas" })
+        res.status(400).json({ message: "Vartotojas su tokiu vardu, ID ir litai nerastas" })
       } else {
         // Check if the new name contains disallowed words from the same database
         const [badWordsRows] = await connection.execute("SELECT * FROM bad_words WHERE ? LIKE CONCAT('%', curse_words, '%')", [newName])
@@ -89,15 +88,50 @@ app.post("/updateName", async (req, res) => {
   }
 })
 
+
+
+
+app.post("/updateGender", async (req, res) => {
+  const { userGender, userName, userId, userLitai } = req.body
+
+  console.log(`Received data: userGender=${userGender}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
+
+  try {
+    const connection = await db.getConnection()
+
+    // Check if the user with the user ID and litai exists
+    const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND litai_sum = ?", [userId, userLitai])
+
+    if (userRows.length === 0) {
+      console.log(`Warning: User with user ID '${userId}' and litai '${userLitai}' not found`)
+      res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" })
+    } else {
+      // Update the gender if the user with the user ID and litai exists
+      const [updateRows] = await connection.execute("UPDATE super_users SET gender_super = ? WHERE user_id = ? AND litai_sum = ?", [userGender, userId, userLitai])
+// ! reikia prideti litu nurasyma 
+      if (updateRows.affectedRows > 0) {
+        console.log(`User gender updated successfully to '${userGender}'`)
+        res.json({ message: `Jūsų naujoji lytis ${userGender}` })
+      } else {
+        console.log("Error updating user gender")
+        res.status(400).json({ message: "Nepavyko atnaujinti lyties" })
+      }
+    }
+
+    connection.release()
+  } catch (error) {
+    console.error("Error updating gender:", error)
+    res.status(500).json({ message: "Server error" })
+  }
+})
+
 const PORT = process.env.PORT6
 app.listen(PORT, () => {
   console.log(`Server <i_myInfoServer> is connected to: http://localhost:${PORT}`)
 })
 
-
-
 // node i_myInfoServer.js
 // ! jei viskas ok nusiusti i email nauja warda
 // Pasizet ar toks vardas jau egzistuoja, jei yra atmesti pakeitimus ir nenuimti litu, jei nera galima keisti ir patikrinti bad words database kad vardas butu atitinkamas.
 // padaryti laiko tarpa po pirmo keitimo kada galima bus vel pasikeisti varda using npm moment gal menesis,
-// vardo keitimas 100 000 plius laikas 1 men 
+// vardo keitimas 100 000 plius laikas 1 men

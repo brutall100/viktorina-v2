@@ -41,32 +41,27 @@ function displayErrorMessage(message) {
   }
 }
 
-// Global function for updating name on the server
-function updateOnServer(newName, userName, userId, userLitai) {
-  const data = {
-    newName: newName,
-    userName: userName,
-    userId: userId,
-    userLitai: userLitai
-  }
-  const url = `http://localhost:4006/updateName`
+// Global function for updating user information on the server
+function updateOnServer(newData, endpoint) {
+  const url = `http://localhost:4006/${endpoint}`
 
   return fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(newData)
   })
     .then((response) => response.json())
     .then((data) => {
       alert(data.message)
     })
     .catch((error) => {
-      console.error("Error updating name:", error)
+      console.error(`Error updating user information (${endpoint}):`, error)
     })
 }
 
+// ? BTN NAME
 nameButton.addEventListener("click", function () {
   console.log("Name button clicked")
 
@@ -93,23 +88,54 @@ nameButton.addEventListener("click", function () {
       displayErrorMessage("🤔 Vardo ilgis viršija 21 simbolį. Trumpinam! 📏✏️")
     } else {
       displayErrorMessage("") // Clear any existing error message
-      updateOnServer(inputValue, userName, userId, userLitai)
+      const newDataForName = {
+        newName: inputValue,
+        userName: userName,
+        userId: userId,
+        userLitai: userLitai
+      }
+      updateOnServer(newDataForName, "updateName")
+      // updateOnServer(inputValue, userName, userId, userLitai, userGender, userEmail, userLevel)
     }
   })
 })
 
+// ? BTN GENDER
 genderButton.addEventListener("click", function () {
   console.log("Gender button clicked")
 
   contentDiv.innerHTML = `
-        <h1>Lyties Keitimas</h1>
-        <div class="content-response-div">
-            <p class="pargraph_1">Jei pasikeitė Jūsų lytis?</p>
-            <p class="pargraph_2">Irašykite savo naujają lytį</p>
-            <input type="text" id="inputFieldChange" placeholder="Jūsų naujoji lytis">
-            <button class="change-btn">Lyties keitimas</button>
-        </div>
-    `
+    <h1>Lyties Keitimas</h1>
+    <div class="content-response-div">
+        <p class="pargraph_1">Jei pasikeitė Jūsų lytis?</p>
+        <p class="pargraph_2">Irašykite savo naujają lytį</p>
+        <input type="text" id="inputFieldChange" placeholder="Jūsų naujoji lytis">
+        <button class="change-btn">Lyties keitimas</button>
+        <h3 id='error-msg'></h3>
+    </div>
+  `
+
+  const inputField = document.getElementById("inputFieldChange")
+  const errorMsgElement = document.getElementById("error-msg")
+
+  document.querySelector(".change-btn").addEventListener("click", function () {
+    const newGenderValue = inputField.value
+
+    if (hasConsecutiveLetters(newGenderValue)) {
+      displayErrorMessage("😬 Oops! Trys vienodi simboliai iš eilės. Nepraeis! 🚫✏️")
+    } else if (!isNameLengthValid(newGenderValue)) {
+      displayErrorMessage("🤔 Vardo ilgis viršija 21 simbolį. Trumpinam! 📏✏️")
+    } else {
+      displayErrorMessage("") // Clear any existing error message
+      const newDataForGender = {
+        userName: userName,
+        userId: userId,
+        userLitai: userLitai,
+        userGender: newGenderValue
+      }
+      updateOnServer(newDataForGender, "updateGender")
+    }
+  })
 })
 
 emailButton.addEventListener("click", function () {
