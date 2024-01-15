@@ -236,13 +236,15 @@ body {
 /* ! Galimai reikes pakeisti width i fiksuotus atmesti padding del teksto perkelimo i new line */
 .pargraph_1 {
   background: #386cbaa3;
-  padding: 10px 4vw;
+  padding: 10px 5px;
+  width: 300px;
   margin-bottom: 1em;
 }
 
 .pargraph_2 {
   background: rgb(56, 186, 106);
-  padding: 10px 5vw;
+  padding: 10px 5px;
+  width: 300px;
   margin-bottom: 1em;
 }
 

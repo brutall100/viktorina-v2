@@ -41,6 +41,32 @@ function displayErrorMessage(message) {
   }
 }
 
+// Global function for updating name on the server
+function updateOnServer(newName, userName, userId, userLitai) {
+  const data = {
+    newName: newName,
+    userName: userName,
+    userId: userId,
+    userLitai: userLitai
+  }
+  const url = `http://localhost:4006/updateName`
+
+  return fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      alert(data.message)
+    })
+    .catch((error) => {
+      console.error("Error updating name:", error)
+    })
+}
+
 nameButton.addEventListener("click", function () {
   console.log("Name button clicked")
 
@@ -67,11 +93,10 @@ nameButton.addEventListener("click", function () {
       displayErrorMessage("🤔 Vardo ilgis viršija 21 simbolį. Trumpinam! 📏✏️")
     } else {
       displayErrorMessage("") // Clear any existing error message
-      // Continue with your logic here...
+      updateOnServer(inputValue, userName, userId, userLitai)
     }
   })
 })
-
 
 genderButton.addEventListener("click", function () {
   console.log("Gender button clicked")
