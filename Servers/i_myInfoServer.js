@@ -67,7 +67,7 @@ app.post("/updateName", async (req, res) => {
             const [subtractRows] = await connection.execute("UPDATE super_users SET litai_sum = litai_sum - 50000 WHERE user_id = ?", [userId])
 
             if (subtractRows.affectedRows > 0) {
-              console.log(`User name updated successfully to '${newName}'`)
+              console.log(`User name updated successfully to '${newName}' and 50,000 litai subtracted`)
               res.json({ message: `Jūsų naujasis vardas ${newName}` })
             } else {
               console.log("Error subtracting 50,000 from litai_sum")
@@ -110,12 +110,50 @@ app.post("/updateGender", async (req, res) => {
         res.json({ message: `Jūsų naujoji lytis ${userGender}` })
       } else {
         console.log("Error updating user gender or subtracting litai")
-        res.status(400).json({ message: "Nepavyko atnaujinti lyties arba atimti litų" })
+        res.status(400).json({ message: "Nepavyko atnaujinti lyties arba nuskaičiouti  litų" })
       }
     }
     connection.release()
   } catch (error) {
     console.error("Error updating gender:", error)
+    res.status(500).json({ message: "Server error" })
+  }
+})
+
+
+app.post("/updateEmail", async (req, res) => {
+  const { userEmail, userName, userId, userLitai } = req.body
+
+  console.log(`Received data: userEmail=${userEmail}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
+
+  try {
+    const connection = await db.getConnection()
+
+    const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND nick_name = ?", [userId, userName])
+
+    if (userRows.length === 0) {
+      console.log(`Warning: User with user ID '${userId}' and litai '${userName}' not found`)
+      res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" })
+    } else {
+      // Update the email and set email_verified to 0 if the user with the user ID and litai exists
+      const [updateRows] = await connection.execute("UPDATE super_users SET user_email = ?, email_verified = 0 WHERE user_id = ? AND nick_name= ?", [userEmail, userId, userName])
+       //! nusiusti zinute i el pasta su patvirtinimo nuoroda
+      if (updateRows.affectedRows > 0) {
+        console.log(`User email updated successfully to '${userEmail}'`);
+        res.json({
+          message: `Jūsų naujas el. paštas ${userEmail}. \
+      Prašome patikrinkite savo el. paštą ir patvirtinkite pakeitimus. \
+      Turėtumėte nueiti į savo el. pašto programą ir paspausti mygtuką "Patvirtinti el. paštą".`
+        });
+      } else {
+        console.log("Error updating user email");
+        res.status(400).json({ message: "Nepavyko atnaujinti el. pašto" });
+      }      
+    }
+
+    connection.release()
+  } catch (error) {
+    console.error("Error updating email:", error)
     res.status(500).json({ message: "Server error" })
   }
 })

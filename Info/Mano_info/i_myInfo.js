@@ -41,6 +41,12 @@ function displayErrorMessage(message) {
   }
 }
 
+//// Function to validate email format
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(email)
+}
+
 // Global function for updating user information on the server
 function updateOnServer(newData, endpoint) {
   const url = `http://localhost:4006/${endpoint}`
@@ -124,9 +130,9 @@ genderButton.addEventListener("click", function () {
     if (hasConsecutiveLetters(newGenderValue)) {
       displayErrorMessage("😬 Oops! Trys vienodi simboliai iš eilės. Nepraeis! 🚫✏️")
     } else if (!isNameLengthValid(newGenderValue)) {
-      displayErrorMessage("🤔 Vardo ilgis viršija 21 simbolį. Trumpinam! 📏✏️")
+      displayErrorMessage("🤔 Tokia lytis neegzistuoja. Viršija 21 simbolį. Trumpinam! 📏✏️")
     } else {
-      displayErrorMessage("") // Clear any existing error message
+      displayErrorMessage("")
       const newDataForGender = {
         userName: userName,
         userId: userId,
@@ -138,17 +144,41 @@ genderButton.addEventListener("click", function () {
   })
 })
 
+// ? BTN Email
 emailButton.addEventListener("click", function () {
   console.log("Email button clicked")
 
   contentDiv.innerHTML = `
-        <h1>Email Keitimas</h1>
-        <div class="content-response-div">
-            <p class="pargraph_1">email A</p>
-            <p class="pargraph_2">email B</p>
-            <button class="change-btn">email C</button>
-        </div>
-    `
+    <h1>Email Keitimas</h1>
+    <div class="content-response-div">
+      <p class="pargraph_1">email A</p>
+      <p class="pargraph_2">email B</p>
+      <input type="text" id="inputFieldChange" placeholder="Type new email">
+      <button class="change-btn">Keisti el. paštą</button>
+      <h3 id='error-msg'></h3>
+    </div>
+  `
+
+  const inputField = document.getElementById("inputFieldChange")
+  const errorMsgElement = document.getElementById("error-msg")
+
+  document.querySelector(".change-btn").addEventListener("click", function () {
+    const newEmailValue = inputField.value
+
+    if (isValidEmail(newEmailValue)) {
+      displayErrorMessage("") 
+
+      const newDataForEmail = {
+        userName: userName,
+        userId: userId,
+        userLitai: userLitai,
+        userEmail: newEmailValue
+      }
+      updateOnServer(newDataForEmail, "updateEmail")
+    } else {
+      displayErrorMessage("Netinkams formatas. Būtinai įveskite savo tikrajį el. paštą")
+    }
+  })
 })
 
 levelButton.addEventListener("click", function () {

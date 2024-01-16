@@ -264,6 +264,7 @@ body {
 
 #error-msg{
   color: #42161e;
+  width: 300px;
 }
 
 
