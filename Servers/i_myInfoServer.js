@@ -63,14 +63,14 @@ app.post("/updateName", async (req, res) => {
           const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ? WHERE user_id = ? AND litai_sum = ?", [newName, userId, userLitai])
 
           if (updateRows.affectedRows > 0) {
-            // Subtract 10,000 from litai_sum
-            const [subtractRows] = await connection.execute("UPDATE super_users SET litai_sum = litai_sum - 10000 WHERE user_id = ?", [userId])
+            //// Subtract 50,000 from litai_sum
+            const [subtractRows] = await connection.execute("UPDATE super_users SET litai_sum = litai_sum - 50000 WHERE user_id = ?", [userId])
 
             if (subtractRows.affectedRows > 0) {
               console.log(`User name updated successfully to '${newName}'`)
               res.json({ message: `Jūsų naujasis vardas ${newName}` })
             } else {
-              console.log("Error subtracting 10,000 from litai_sum")
+              console.log("Error subtracting 50,000 from litai_sum")
               res.status(400).json({ message: "Nepavyko atnaujinti vardo" })
             }
           } else {
@@ -80,16 +80,12 @@ app.post("/updateName", async (req, res) => {
         }
       }
     }
-
     connection.release()
   } catch (error) {
     console.error("Error updating name:", error)
     res.status(500).json({ message: "Server error" })
   }
 })
-
-
-
 
 app.post("/updateGender", async (req, res) => {
   const { userGender, userName, userId, userLitai } = req.body
@@ -106,18 +102,17 @@ app.post("/updateGender", async (req, res) => {
       console.log(`Warning: User with user ID '${userId}' and litai '${userLitai}' not found`)
       res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" })
     } else {
-      // Update the gender if the user with the user ID and litai exists
-      const [updateRows] = await connection.execute("UPDATE super_users SET gender_super = ? WHERE user_id = ? AND litai_sum = ?", [userGender, userId, userLitai])
-// ! reikia prideti litu nurasyma 
+      //// Update the gender and subtract 100,000 litai if the user with the user ID and litai exists
+      const [updateRows] = await connection.execute("UPDATE super_users SET gender_super = ?, litai_sum = litai_sum - 100000 WHERE user_id = ? AND litai_sum = ?", [userGender, userId, userLitai])
+
       if (updateRows.affectedRows > 0) {
-        console.log(`User gender updated successfully to '${userGender}'`)
+        console.log(`User gender updated successfully to '${userGender}' and 100,000 litai subtracted`)
         res.json({ message: `Jūsų naujoji lytis ${userGender}` })
       } else {
-        console.log("Error updating user gender")
-        res.status(400).json({ message: "Nepavyko atnaujinti lyties" })
+        console.log("Error updating user gender or subtracting litai")
+        res.status(400).json({ message: "Nepavyko atnaujinti lyties arba atimti litų" })
       }
     }
-
     connection.release()
   } catch (error) {
     console.error("Error updating gender:", error)
