@@ -8,7 +8,7 @@ let transporter = nodemailer.createTransport({
     pass: process.env.MAIL_PASS,
   },
 });
-
+// todo ikelus i web keisti localhost i real addres
 function sendWelcomeEmail(nick_name, user_email, uuid) {
   const welcomeMessage = `
 <html>

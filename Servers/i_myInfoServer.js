@@ -2,6 +2,8 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const mysql = require("mysql2/promise")
+const { v4: uuidv4 } = require("uuid")
+const nodemailer = require("nodemailer")
 const cors = require("cors")
 const path = require("path")
 require("dotenv").config({ path: path.join(__dirname, ".env") })
@@ -17,6 +19,10 @@ const db = mysql.createPool({
 app.use(bodyParser.json())
 app.use(cors())
 
+const verificationUUID = uuidv4() // Generate a unique identifier
+let connection //Global conection. This way, it can be used across different endpoints
+
+// ? UPDATE NAME
 app.post("/updateName", async (req, res) => {
   const { newName, userName, userId, userLitai } = req.body
 
@@ -87,6 +93,7 @@ app.post("/updateName", async (req, res) => {
   }
 })
 
+// ? UPDATE GENDER
 app.post("/updateGender", async (req, res) => {
   const { userGender, userName, userId, userLitai } = req.body
 
@@ -121,13 +128,15 @@ app.post("/updateGender", async (req, res) => {
 })
 
 
+// ? UPDATE EMAIL
 app.post("/updateEmail", async (req, res) => {
   const { userEmail, userName, userId, userLitai } = req.body
 
   console.log(`Received data: userEmail=${userEmail}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
 
   try {
-    const connection = await db.getConnection()
+    // Remove the 'const' keyword to use the global connection variable
+    connection = await db.getConnection()
 
     const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND nick_name = ?", [userId, userName])
 
@@ -136,24 +145,112 @@ app.post("/updateEmail", async (req, res) => {
       res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" })
     } else {
       // Update the email and set email_verified to 0 if the user with the user ID and litai exists
-      const [updateRows] = await connection.execute("UPDATE super_users SET user_email = ?, email_verified = 0 WHERE user_id = ? AND nick_name= ?", [userEmail, userId, userName])
-       //! nusiusti zinute i el pasta su patvirtinimo nuoroda
-      if (updateRows.affectedRows > 0) {
-        console.log(`User email updated successfully to '${userEmail}'`);
-        res.json({
-          message: `Jūsų naujas el. paštas ${userEmail}. \
-      Prašome patikrinkite savo el. paštą ir patvirtinkite pakeitimus. \
-      Turėtumėte nueiti į savo el. pašto programą ir paspausti mygtuką "Patvirtinti el. paštą".`
-        });
-      } else {
-        console.log("Error updating user email");
-        res.status(400).json({ message: "Nepavyko atnaujinti el. pašto" });
-      }      
-    }
+      const [updateRows] = await connection.execute("UPDATE super_users SET user_email = ?, email_verified = 0, uuid = ? WHERE user_id = ? AND nick_name= ?", [
+        userEmail,
+        verificationUUID,
+        userId,
+        userName
+      ])
 
-    connection.release()
+      // Send a verification email
+      if (updateRows.affectedRows > 0) {
+        let transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS
+          }
+        })
+        // todo ikelus i web keisti localhost i real addres
+        const mailOptions = {
+          from: "viktorina.live@gmail.com",
+          to: userEmail,
+          subject: "Pasikeitusio elektoninio pašto patvirtinimas",
+          html: `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Email Verification</title>
+              <style>
+                body {
+                  font-family: 'Arial', sans-serif;
+                  background-color: #f4f4f4;
+                  color: #333;
+                  margin: 0;
+                  padding: 0;
+                }
+                p {
+                  font-size: 16px;
+                  line-height: 1.5;
+                  margin-bottom: 10px;
+                }
+                a {
+                  color: #007BFF;
+                  text-decoration: none;
+                }
+              </style>
+            </head>
+            <body>
+              <p>Sveiki,</p>
+              <p>Norėdami patvirtinti savo naują el. paštą, spustelėkite žemiau esančią nuorodą:</p>
+              <a href="http://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
+              <p>Jeigu negalite paspausti nuorodos, nukopijuokite šią nuorodą į savo naršyklę:</p>
+              <p>http://localhost:4006/verify/${verificationUUID}</p>
+              <p>Dėkojame,</p>
+              <p>Jūsų Viktorina.live komanda</p>
+            </body>
+            </html>
+          `
+        }
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.error("Error sending email:", error)
+            res.status(500).json({ message: "Error sending verification email" })
+          } else {
+            console.log("Email sent:", info.response)
+            res.json({
+              message: `Jūsų naujas el. paštas ${userEmail}. \
+              Prašome patikrinkite savo el. paštą ir patvirtinkite pakeitimus. \
+              Turėtumėte nueiti į savo el. pašto programą ir paspausti mygtuką "Patvirtinti el. paštą".`
+            })
+          }
+        })
+      } else {
+        console.log("Error updating user email")
+        res.status(400).json({ message: "Nepavyko atnaujinti el. pašto" })
+      }
+    }
   } catch (error) {
     console.error("Error updating email:", error)
+    res.status(500).json({ message: "Server error" })
+  } finally {
+    // Release the connection in the 'finally' block
+    if (connection) {
+      connection.release()
+    }
+  }
+})
+
+// ? UPDATE EMAIL press BTN inside email and go here
+app.get("/verify/:uuid", async (req, res) => {
+  const { uuid } = req.params
+
+  try {
+    // Use the same connection instance
+    const [userRows] = await connection.execute("SELECT * FROM super_users WHERE uuid = ?", [uuid])
+
+    if (userRows.length === 1) {
+      // Update email_verified to 1
+      await connection.execute("UPDATE super_users SET email_verified = 1 WHERE uuid = ?", [uuid])
+      res.send("Email verified successfully!")
+    } else {
+      res.status(400).send("Invalid verification link.")
+    }
+  } catch (error) {
+    console.error("Error verifying email:", error)
     res.status(500).json({ message: "Server error" })
   }
 })
