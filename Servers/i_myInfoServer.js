@@ -167,41 +167,72 @@ app.post("/updateEmail", async (req, res) => {
           to: userEmail,
           subject: "Pasikeitusio elektoninio pašto patvirtinimas",
           html: `
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Email Verification</title>
-              <style>
-                body {
-                  font-family: 'Arial', sans-serif;
-                  background-color: #f4f4f4;
-                  color: #333;
-                  margin: 0;
-                  padding: 0;
-                }
-                p {
-                  font-size: 16px;
-                  line-height: 1.5;
-                  margin-bottom: 10px;
-                }
-                a {
-                  color: #007BFF;
-                  text-decoration: none;
-                }
-              </style>
-            </head>
-            <body>
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Email patvirtinimas</title>
+            <style>
+              body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f9f9f9; /* Softer background color */
+                color: #333;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh; /* Use min-height to ensure it covers the whole viewport */
+              }
+              .email-box {
+                background-color: #ffffff;
+                border-radius: 15px; /* Increased border-radius for a softer look */
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+                padding: 30px; /* Increased padding for a more spacious feel */
+                text-align: center;
+              }
+              p {
+                font-size: 16px;
+                line-height: 1.5;
+                margin-bottom: 15px; /* Increased margin-bottom for better spacing */
+              }
+              a {
+                display: inline-block;
+                color: #ffffff;
+                background-color: #4caf50; /* Soft green color for the button */
+                text-decoration: none;
+                padding: 15px 30px; /* Increased padding for a larger button */
+                border-radius: 8px; /* Rounded corners for a modern look */
+                transition: background-color 0.3s;
+              }
+              a:hover {
+                background-color: #45a049; /* Darker green color on hover for a subtle effect */
+              }
+              .thank-you {
+                position: absolute;
+                bottom: 1em;
+                right: 5em;
+                padding: 10px;
+                font-family: 'Pacifico', cursive; /* Handwritten-style font */
+                font-size: 18px;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="email-box">
               <p>Sveiki,</p>
               <p>Norėdami patvirtinti savo naują el. paštą, spustelėkite žemiau esančią nuorodą:</p>
               <a href="http://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
               <p>Jeigu negalite paspausti nuorodos, nukopijuokite šią nuorodą į savo naršyklę:</p>
               <p>http://localhost:4006/verify/${verificationUUID}</p>
+            </div>
+            <div class="thank-you">
               <p>Dėkojame,</p>
               <p>Jūsų Viktorina.live komanda</p>
-            </body>
-            </html>
+            </div>
+          </body>
+          </html>          
           `
         }
 
@@ -235,15 +266,14 @@ app.post("/updateEmail", async (req, res) => {
 })
 
 // ? UPDATE EMAIL press BTN inside email and go here
+// todo Patvirtinus email pateikti grazia zinut su background ir auto nukreipimas i main page regilogo gal ???
 app.get("/verify/:uuid", async (req, res) => {
   const { uuid } = req.params
 
   try {
-    // Use the same connection instance
     const [userRows] = await connection.execute("SELECT * FROM super_users WHERE uuid = ?", [uuid])
 
     if (userRows.length === 1) {
-      // Update email_verified to 1
       await connection.execute("UPDATE super_users SET email_verified = 1 WHERE uuid = ?", [uuid])
       res.send("Email verified successfully!")
     } else {
