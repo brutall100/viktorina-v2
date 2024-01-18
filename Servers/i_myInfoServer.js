@@ -127,7 +127,6 @@ app.post("/updateGender", async (req, res) => {
   }
 })
 
-
 // ? UPDATE EMAIL
 app.post("/updateEmail", async (req, res) => {
   const { userEmail, userName, userId, userLitai } = req.body
@@ -135,8 +134,16 @@ app.post("/updateEmail", async (req, res) => {
   console.log(`Received data: userEmail=${userEmail}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
 
   try {
-    // Remove the 'const' keyword to use the global connection variable
     connection = await db.getConnection()
+
+    // Check if the new email already exists in the database
+    const [emailCheckRows] = await connection.execute("SELECT * FROM super_users WHERE user_email = ?", [userEmail])
+
+    if (emailCheckRows.length > 0) {
+      console.log(`Warning: Email '${userEmail}' already exists in the database`)
+      res.status(400).json({ message: "El. paštas jau egzistuoja duomenų bazėje." })
+      return // Stop execution if the email already exists
+    }
 
     const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND nick_name = ?", [userId, userName])
 
@@ -152,7 +159,7 @@ app.post("/updateEmail", async (req, res) => {
         userName
       ])
 
-      // Send a verification email
+      //// Send a verification email
       if (updateRows.affectedRows > 0) {
         let transporter = nodemailer.createTransport({
           service: "gmail",
@@ -161,7 +168,7 @@ app.post("/updateEmail", async (req, res) => {
             pass: process.env.MAIL_PASS
           }
         })
-       
+
         const mailOptions = {
           from: "viktorina.live@gmail.com",
           to: userEmail,
@@ -259,9 +266,9 @@ app.post("/updateEmail", async (req, res) => {
               <div class="email-box">
                   <h1>Sveiki, ${userName}</h1>
                   <p>Norėdami patvirtinti savo naują el. paštą, spustelėkite žemiau esantį mygtuką:</p>
-                  <a href="http://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
+                  <a href="https://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
                   <p>Jeigu negalite paspausti nuorodos, nukopijuokite šią nuorodą į savo naršyklę:</p>
-                  <p class="verification-link">http://localhost:4006/verify/${verificationUUID}</p>
+                  <p class="verification-link">https://localhost:4006/verify/${verificationUUID}</p>
                   <p class="custom-class">Ar gavote šį laišką per klaidą? Tiesiog ignoruokite!</p>
                   <div class="thank-you">
                       <h5 class="thank-you-p">Dėkojame,</h5>
@@ -282,7 +289,7 @@ app.post("/updateEmail", async (req, res) => {
             console.log("Email sent:", info.response)
             res.json({
               message: `Jūsų naujas el. paštas ${userEmail}. \
-              Nueikite į savo el. pašto programą ir paspausti mygtuką "Patvirtinti el. paštą".`
+              Savo el. pašto programoje spauskite mygtuką "Patvirtinti el. paštą".`
             })
           }
         })
@@ -295,7 +302,6 @@ app.post("/updateEmail", async (req, res) => {
     console.error("Error updating email:", error)
     res.status(500).json({ message: "Server error" })
   } finally {
-    // Release the connection in the 'finally' block
     if (connection) {
       connection.release()
     }
