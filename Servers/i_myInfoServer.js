@@ -161,7 +161,7 @@ app.post("/updateEmail", async (req, res) => {
             pass: process.env.MAIL_PASS
           }
         })
-        // todo ikelus i web keisti localhost i real addres
+       
         const mailOptions = {
           from: "viktorina.live@gmail.com",
           to: userEmail,
@@ -169,70 +169,108 @@ app.post("/updateEmail", async (req, res) => {
           html: `
           <!DOCTYPE html>
           <html lang="en">
+          
           <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Email patvirtinimas</title>
-            <style>
-              body {
-                font-family: 'Arial', sans-serif;
-                background-color: #f9f9f9; /* Softer background color */
-                color: #333;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 100vh; /* Use min-height to ensure it covers the whole viewport */
-              }
-              .email-box {
-                background-color: #ffffff;
-                border-radius: 15px; /* Increased border-radius for a softer look */
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-                padding: 30px; /* Increased padding for a more spacious feel */
-                text-align: center;
-              }
-              p {
-                font-size: 16px;
-                line-height: 1.5;
-                margin-bottom: 15px; /* Increased margin-bottom for better spacing */
-              }
-              a {
-                display: inline-block;
-                color: #ffffff;
-                background-color: #4caf50; /* Soft green color for the button */
-                text-decoration: none;
-                padding: 15px 30px; /* Increased padding for a larger button */
-                border-radius: 8px; /* Rounded corners for a modern look */
-                transition: background-color 0.3s;
-              }
-              a:hover {
-                background-color: #45a049; /* Darker green color on hover for a subtle effect */
-              }
-              .thank-you {
-                position: absolute;
-                bottom: 1em;
-                right: 5em;
-                padding: 10px;
-                font-family: 'Pacifico', cursive; /* Handwritten-style font */
-                font-size: 18px;
-              }
-            </style>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
+              <title>Email patvirtinimas</title>
+              <style>
+                  * {
+                      box-sizing: border-box;
+                      padding: 0;
+                      margin: 0;
+                  }
+          
+                  body {
+                      font-family: 'Arial', sans-serif;
+                      background-color: #054878;
+                      color: #333;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      min-height: 100vh;
+                  }
+          
+                  .email-box {
+                      background-color: #c0dcf0;
+                      border-radius: 15px;
+                      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+                      padding: 30px;
+                      text-align: center;
+                  }
+          
+                  p {
+                      font-size: 16px;
+                      line-height: 1.5;
+                      margin-bottom: 20px;
+                      margin-top: 15px;
+                  }
+          
+                  a {
+                      display: inline-block;
+                      color: #28df89;
+                      background-color: #2f2a61;
+                      text-decoration: none;
+                      padding: 15px 30px;
+                      border-radius: 8px;
+                      transition: background-color 0.3s;
+                      margin-bottom: 10px;
+                  }
+          
+                  a:hover {
+                      background-color: #554f98;
+                      border-radius: 9px;
+                  }
+          
+                  .verification-link {
+                      display: block;
+                      font-size: 18px;
+                      color: #28df89;
+                      text-decoration: underline;
+                      margin-top: 15px;
+                      padding: 10px;
+                      box-shadow: 5px 2px 4px rgba(0, 0, 0, 0.5);
+                      margin-bottom: 50px;
+                  }
+          
+                  .custom-class {
+                      margin-top: -20px;
+                  }
+          
+                  .thank-you {
+                      font-family: 'Noto Sans', sans-serif;
+                      margin-top: 10px;
+                  }
+          
+                  .thank-you {
+                      margin-top: 30px; 
+                      /* line-height: 0.1; */
+                  }
+          
+                  .thank-you-p {
+                      /* line-height: 0.1; */
+                      color: #554f98;
+                  }
+              </style>
           </head>
+          
           <body>
-            <div class="email-box">
-              <p>Sveiki,</p>
-              <p>Norėdami patvirtinti savo naują el. paštą, spustelėkite žemiau esančią nuorodą:</p>
-              <a href="http://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
-              <p>Jeigu negalite paspausti nuorodos, nukopijuokite šią nuorodą į savo naršyklę:</p>
-              <p>http://localhost:4006/verify/${verificationUUID}</p>
-            </div>
-            <div class="thank-you">
-              <p>Dėkojame,</p>
-              <p>Jūsų Viktorina.live komanda</p>
-            </div>
+              <div class="email-box">
+                  <h1>Sveiki, ${userName}</h1>
+                  <p>Norėdami patvirtinti savo naują el. paštą, spustelėkite žemiau esantį mygtuką:</p>
+                  <a href="http://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
+                  <p>Jeigu negalite paspausti nuorodos, nukopijuokite šią nuorodą į savo naršyklę:</p>
+                  <p class="verification-link">http://localhost:4006/verify/${verificationUUID}</p>
+                  <p class="custom-class">Ar gavote šį laišką per klaidą? Tiesiog ignoruokite!</p>
+                  <div class="thank-you">
+                      <h5 class="thank-you-p">Dėkojame,</h5>
+                      <h5 class="thank-you-p">Jūsų Viktorina.live komanda</h5>
+                  </div>
+              </div>
           </body>
-          </html>          
+          
+          </html>
           `
         }
 
@@ -244,8 +282,7 @@ app.post("/updateEmail", async (req, res) => {
             console.log("Email sent:", info.response)
             res.json({
               message: `Jūsų naujas el. paštas ${userEmail}. \
-              Prašome patikrinkite savo el. paštą ir patvirtinkite pakeitimus. \
-              Turėtumėte nueiti į savo el. pašto programą ir paspausti mygtuką "Patvirtinti el. paštą".`
+              Nueikite į savo el. pašto programą ir paspausti mygtuką "Patvirtinti el. paštą".`
             })
           }
         })

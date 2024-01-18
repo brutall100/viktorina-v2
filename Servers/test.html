@@ -1,92 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- ! prideti p ar h1 kad jei gavote per klaida tai bekreipti demesio, pridejott taipat kad  kazkkaa dar 
-more place in verification link send backround??-->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
     <title>Email patvirtinimas</title>
     <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f9f9f9;
-            /* Softer background color */
+            background-color: #054878;
             color: #333;
-            margin: 0;
-            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            /* Use min-height to ensure it covers the whole viewport */
         }
 
         .email-box {
-            background-color: #ffffff;
+            background-color: #c0dcf0;
             border-radius: 15px;
-            /* Increased border-radius for a softer look */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
             padding: 30px;
-            /* Increased padding for a more spacious feel */
             text-align: center;
         }
 
         p {
             font-size: 16px;
             line-height: 1.5;
-            margin-bottom: 15px;
-            /* Increased margin-bottom for better spacing */
+            margin-bottom: 20px;
+            margin-top: 15px;
         }
 
         a {
             display: inline-block;
-            color: #ffffff;
-            background-color: #4caf50;
-            /* Soft green color for the button */
+            color: #28df89;
+            background-color: #2f2a61;
             text-decoration: none;
             padding: 15px 30px;
-            /* Increased padding for a larger button */
             border-radius: 8px;
-            /* Rounded corners for a modern look */
             transition: background-color 0.3s;
+            margin-bottom: 10px;
         }
 
         a:hover {
-            background-color: #45a049;
-            /* Darker green color on hover for a subtle effect */
-        }
-
-        .thank-you {
-            padding: 20px;
-            font-family: 'Pacifico', cursive;
-
+            background-color: #554f98;
+            border-radius: 9px;
         }
 
         .verification-link {
             display: block;
-            font-size: 14px;
-            color: #007BFF;
+            font-size: 18px;
+            color: #28df89;
             text-decoration: underline;
             margin-top: 15px;
-            padding: 5px;
-            background: #45a049;
+            padding: 10px;
+            box-shadow: 5px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
+        }
+
+        .custom-class {
+            margin-top: -20px;
+        }
+
+        .thank-you {
+            font-family: 'Noto Sans', sans-serif;
+            margin-top: 10px;
+        }
+
+        .thank-you {
+            margin-top: 30px; 
+            /* line-height: 0.1; */
+        }
+
+        .thank-you-p {
+            /* line-height: 0.1; */
+            color: #554f98;
         }
     </style>
 </head>
 
 <body>
     <div class="email-box">
-        <p>Sveiki,</p>
-        <p>Norėdami patvirtinti savo naują el. paštą, spustelėkite žemiau esančią nuorodą:</p>
+        <h1>Sveiki, ${userName}</h1>
+        <p>Norėdami patvirtinti savo naują el. paštą, spustelėkite žemiau esantį mygtuką:</p>
         <a href="http://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
         <p>Jeigu negalite paspausti nuorodos, nukopijuokite šią nuorodą į savo naršyklę:</p>
         <p class="verification-link">http://localhost:4006/verify/${verificationUUID}</p>
-
+        <p class="custom-class">Ar gavote šį laišką per klaidą? Tiesiog ignoruokite!</p>
         <div class="thank-you">
-            <p>Dėkojame,</p>
-            <p>Jūsų Viktorina.live komanda</p>
+            <h5 class="thank-you-p">Dėkojame,</h5>
+            <h5 class="thank-you-p">Jūsų Viktorina.live komanda</h5>
         </div>
     </div>
 </body>
 
 </html>
+
+
+
