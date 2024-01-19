@@ -102,7 +102,6 @@ app.post("/updateGender", async (req, res) => {
   try {
     const connection = await db.getConnection()
 
-    // Check if the user with the user ID and litai exists
     const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND litai_sum = ?", [userId, userLitai])
 
     if (userRows.length === 0) {
@@ -136,21 +135,25 @@ app.post("/updateEmail", async (req, res) => {
   try {
     connection = await db.getConnection()
 
-    // Check if the new email already exists in the database
-    const [emailCheckRows] = await connection.execute("SELECT * FROM super_users WHERE user_email = ?", [userEmail])
-
-    if (emailCheckRows.length > 0) {
-      console.log(`Warning: Email '${userEmail}' already exists in the database`)
-      res.status(400).json({ message: "El. paštas jau egzistuoja duomenų bazėje." })
-      return // Stop execution if the email already exists
-    }
-
+    // Check if the new email is different from the existing one
     const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND nick_name = ?", [userId, userName])
 
     if (userRows.length === 0) {
       console.log(`Warning: User with user ID '${userId}' and litai '${userName}' not found`)
       res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" })
     } else {
+      // If the new email is different, perform the duplicate email check
+      if (userEmail !== userRows[0].user_email) {
+        // Check if the new email already exists in the database
+        const [emailCheckRows] = await connection.execute("SELECT * FROM super_users WHERE user_email = ?", [userEmail])
+
+        if (emailCheckRows.length > 0) {
+          console.log(`Warning: Email '${userEmail}' already exists in the database`)
+          res.status(400).json({ message: "El. paštas jau egzistuoja duomenų bazėje." })
+          return // Stop execution if the email already exists
+        }
+      }
+
       // Update the email and set email_verified to 0 if the user with the user ID and litai exists
       const [updateRows] = await connection.execute("UPDATE super_users SET user_email = ?, email_verified = 0, uuid = ? WHERE user_id = ? AND nick_name= ?", [
         userEmail,
@@ -266,9 +269,9 @@ app.post("/updateEmail", async (req, res) => {
               <div class="email-box">
                   <h1>Sveiki, ${userName}</h1>
                   <p>Norėdami patvirtinti savo naują el. paštą, spustelėkite žemiau esantį mygtuką:</p>
-                  <a href="https://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
+                  <a href="http://localhost:4006/verify/${verificationUUID}">Patvirtinti el. paštą</a>
                   <p>Jeigu negalite paspausti nuorodos, nukopijuokite šią nuorodą į savo naršyklę:</p>
-                  <p class="verification-link">https://localhost:4006/verify/${verificationUUID}</p>
+                  <p class="verification-link">http://localhost:4006/verify/${verificationUUID}</p>
                   <p class="custom-class">Ar gavote šį laišką per klaidą? Tiesiog ignoruokite!</p>
                   <div class="thank-you">
                       <h5 class="thank-you-p">Dėkojame,</h5>
@@ -308,19 +311,135 @@ app.post("/updateEmail", async (req, res) => {
   }
 })
 
-// ? UPDATE EMAIL press BTN inside email and go here
 // todo Patvirtinus email pateikti grazia zinut su background ir auto nukreipimas i main page regilogo gal ???
+// todo paskirti diena email ir klaidu grazinimui responsui ir tt..  Dar node moment prideti kad fiksuotusi laikas
+// ? UPDATE EMAIL press BTN inside email and go here
 app.get("/verify/:uuid", async (req, res) => {
   const { uuid } = req.params
-
   try {
     const [userRows] = await connection.execute("SELECT * FROM super_users WHERE uuid = ?", [uuid])
 
     if (userRows.length === 1) {
       await connection.execute("UPDATE super_users SET email_verified = 1 WHERE uuid = ?", [uuid])
-      res.send("Email verified successfully!")
+      res.send(`
+      <!DOCTYPE html>
+      <html lang="lt">
+      
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Elektroninis paštas patvitintas</title>
+        <style>
+          body {
+            font-family: 'Arial', sans-serif;
+            background-color: #054878;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+          }
+      
+          .success-message {
+            background-color: #ffdbdb;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+          }
+
+          #countdown {
+            color:red;
+          }
+        </style>
+      </head>
+      
+      <body>
+        <div class="success-message">
+          <h1>Elektroninis paštas patvirtintas!</h1>
+          <h2>Būsite nukreipti į prisijungimo puslapį po <span id="countdown">5</span> sekundžių</h2>
+        </div>
+      
+        <script>
+          function redirectToLoginPage() {
+            let countdown = 5; 
+      
+            const countdownElement = document.getElementById("countdown");
+            const countdownInterval = setInterval(() => {
+              countdownElement.textContent = countdown;
+      
+              if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = "http://localhost/Viktorina.live/d_regilogi.php" 
+              }
+      
+              countdown--;
+            }, 1000);
+          }
+      
+          // Call the function when the page is loaded
+          document.addEventListener("DOMContentLoaded", redirectToLoginPage);
+        </script>
+      </body>
+      
+      </html>
+      
+      `)
     } else {
-      res.status(400).send("Invalid verification link.")
+      res.status(400).send(`
+      <!DOCTYPE html>
+      <html lang="lt">
+      
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Pasibaigusi arba neteisinga patvitinimo nuoroda</title>
+          <style>
+              body {
+                  font-family: 'Arial', sans-serif;
+                  background-color: #dc3545;
+                  color: #ffffff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  min-height: 100vh;
+                  margin: 0;
+              }
+      
+              .error-message {
+                  background-color: #dc3545;
+                  border-radius: 8px;
+                  padding: 20px;
+                  text-align: center;
+              }
+          </style>
+      </head>
+      
+      <body>
+          <div class="error-message">
+              <h1>Pasibaigusi arba neteisinga patvitinimo nuoroda.</h1>
+              <h2>Būsite nukreipti į prisijungimo puslapį po <span id="countdown">5</span> sekundžių.</h2>
+          </div>
+      
+          <script>
+              let countdown = 5;
+      
+              const countdownElement = document.getElementById('countdown');
+              const countdownInterval = setInterval(() => {
+                  countdown--;
+                  countdownElement.textContent = countdown;
+      
+                  if (countdown <= 0) {
+                      clearInterval(countdownInterval);
+                      window.location.href = "http://localhost/Viktorina.live/d_regilogi.php"
+                  }
+              }, 1000);
+          </script>
+      </body>
+      
+      </html>
+      
+      `)
     }
   } catch (error) {
     console.error("Error verifying email:", error)
