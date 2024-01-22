@@ -326,64 +326,79 @@ app.get("/verify/:uuid", async (req, res) => {
       <html lang="lt">
       
       <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Elektroninis paštas patvitintas</title>
-        <style>
-          body {
-            font-family: 'Arial', sans-serif;
-            background-color: #054878;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-          }
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Elektroninis paštas patvitintas</title>
+          <style>
+              body {
+                  font-family: 'Arial', sans-serif;
+                  background-color: #054878;
+                  color: #2a2a2a;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  min-height: 100vh;
+                  margin: 0;
+              }
       
-          .success-message {
-            background-color: #ffdbdb;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-          }
-
-          #countdown {
-            color:red;
-          }
-        </style>
+              .success-message {
+                  background-color: #ffdbdb;
+                  padding: 5em 1em;
+                  border-radius: 8px;
+                  text-align: center;
+                  word-wrap: break-word; 
+              }
+      
+              @media screen and (max-width: 800px) {
+                  .success-message {
+                      padding: 2em 1em;
+                      max-width: 20em;
+                  }
+              }
+              
+              @media screen and (max-width: 400px) {
+                  .success-message {
+                      padding: 4em .5em;
+                      margin: 2em;
+                      max-width: 20em;
+                  }
+              }
+      
+              #countdown {
+                  color: #600200;
+              }
+      
+          </style>
       </head>
       
       <body>
-        <div class="success-message">
-          <h1>Elektroninis paštas patvirtintas!</h1>
-          <h2>Būsite nukreipti į prisijungimo puslapį po <span id="countdown">5</span> sekundžių</h2>
-        </div>
+          <div class="success-message">
+              <h1>Elektroninis paštas patvirtintas!</h1>
+              <h2>Būsite nukreipti į prisijungimo puslapį po <span id="countdown">5</span> sekundžių.</h2>
+          </div>
       
-        <script>
-          function redirectToLoginPage() {
-            let countdown = 5; 
+          <script>
+              function redirectToLoginPage() {
+                  let countdown = 5;
       
-            const countdownElement = document.getElementById("countdown");
-            const countdownInterval = setInterval(() => {
-              countdownElement.textContent = countdown;
+                  const countdownElement = document.getElementById("countdown");
+                  const countdownInterval = setInterval(() => {
+                      countdownElement.textContent = countdown;
       
-              if (countdown <= 0) {
-                clearInterval(countdownInterval);
-                window.location.href = "http://localhost/Viktorina.live/d_regilogi.php" 
+                      if (countdown <= 0) {
+                          clearInterval(countdownInterval);
+                          window.location.href = "http://localhost/Viktorina.live/d_regilogi.php";
+                      }
+      
+                      countdown--;
+                  }, 1000);
               }
-      
-              countdown--;
-            }, 1000);
-          }
-      
-          // Call the function when the page is loaded
-          document.addEventListener("DOMContentLoaded", redirectToLoginPage);
-        </script>
+              
+              document.addEventListener("DOMContentLoaded", redirectToLoginPage);
+          </script>
       </body>
       
       </html>
-      
       `)
     } else {
       res.status(400).send(`
@@ -397,8 +412,8 @@ app.get("/verify/:uuid", async (req, res) => {
           <style>
               body {
                   font-family: 'Arial', sans-serif;
-                  background-color: #dc3545;
-                  color: #ffffff;
+                  background-color: #3c181c;
+                  color: #121212;
                   display: flex;
                   align-items: center;
                   justify-content: center;
@@ -407,28 +422,48 @@ app.get("/verify/:uuid", async (req, res) => {
               }
       
               .error-message {
-                  background-color: #dc3545;
+                  background-color: #afc1cb;
                   border-radius: 8px;
-                  padding: 20px;
+                  padding: 5em 1em;
+                  border-radius: 8px;
                   text-align: center;
+                  word-wrap: break-word;
+                  text-align: center;
+              }
+      
+              @media screen and (max-width: 800px) {
+                  .error-message {
+                      padding: 2em 1em;
+                      max-width: 20em;
+                  }
+              }
+      
+              @media screen and (max-width: 400px) {
+                  .error-message {
+                      padding: 4em .5em;
+                      margin: 2em;
+                      max-width: 20em;
+                  }
+              }
+      
+              #countdown {
+                  color: #600200;
               }
           </style>
       </head>
       
       <body>
           <div class="error-message">
-              <h1>Pasibaigusi arba neteisinga patvitinimo nuoroda.</h1>
+              <h1>Pasibaigusi arba neteisinga patvitinimo nuoroda!</h1>
               <h2>Būsite nukreipti į prisijungimo puslapį po <span id="countdown">5</span> sekundžių.</h2>
           </div>
       
           <script>
               let countdown = 5;
-      
               const countdownElement = document.getElementById('countdown');
               const countdownInterval = setInterval(() => {
                   countdown--;
                   countdownElement.textContent = countdown;
-      
                   if (countdown <= 0) {
                       clearInterval(countdownInterval);
                       window.location.href = "http://localhost/Viktorina.live/d_regilogi.php"
