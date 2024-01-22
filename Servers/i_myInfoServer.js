@@ -20,19 +20,26 @@ app.use(bodyParser.json())
 app.use(cors())
 
 const verificationUUID = uuidv4() // Generate a unique identifier
-let connection //Global conection. This way, it can be used across different endpoints
+let connection // Global connection. This way, it can be used across different endpoints
+
+// Function to check if a month has passed
+function hasMonthPassed(lastUpdateTimestamp) {
+  const now = new Date().getTime()
+  const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000 // Approximate one month in milliseconds
+  return now - lastUpdateTimestamp >= oneMonthInMillis
+}
+
+// Funkcija tikrina 3 iš eilės raidžių egzistavimą.
+function hasFourConsecutiveIdenticalLetters(name) {
+  const regex = /(.)\1{2}/
+  return regex.test(name)
+}
 
 // ? UPDATE NAME
 app.post("/updateName", async (req, res) => {
   const { newName, userName, userId, userLitai } = req.body
 
   console.log(`Received data: newName=${newName}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
-
-  // Funkcija tikrina 3 iš eilės raidžių egzistavimą.
-  function hasFourConsecutiveIdenticalLetters(name) {
-    const regex = /(.)\1{2}/
-    return regex.test(name)
-  }
 
   try {
     const connection = await db.getConnection()
@@ -55,18 +62,17 @@ app.post("/updateName", async (req, res) => {
 
       if (userRows.length === 0) {
         console.log(`Warning: User with old name '${userName}', user ID '${userId}', and litai '${userLitai}' not found`)
-        res.status(400).json({ message: "Vartotojas su tokiu vardu, ID ir litai nerastas" })
+        res.status(400).json({ message: "Vartotojas su tokiu vardu, ID ir litais nerastas" })
       } else {
-        // Check if the new name contains disallowed words from the same database
-        const [badWordsRows] = await connection.execute("SELECT * FROM bad_words WHERE ? LIKE CONCAT('%', curse_words, '%')", [newName])
+        const lastUpdateTimestamp = userRows[0].last_name_update_timestamp || 0
 
-        if (badWordsRows.length > 0) {
-          const disallowedWord = badWordsRows[0].curse_words // Assuming only one disallowed word for simplicity
-          console.log(`Warning: User name '${newName}' contains disallowed word '${disallowedWord}'`)
-          res.status(400).json({ message: `Vartotojo vardas negali turėti neleistino žodžio: ${disallowedWord}` })
-        } else {
-          // Update the name if the user with the old name, userId, and userLitai exists
-          const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ? WHERE user_id = ? AND litai_sum = ?", [newName, userId, userLitai])
+        if (hasMonthPassed(lastUpdateTimestamp)) {
+          // Continue with the name update logic
+          const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ?, last_name_update_timestamp = CURRENT_TIMESTAMP WHERE user_id = ? AND litai_sum = ?", [
+            newName,
+            userId,
+            userLitai
+          ])
 
           if (updateRows.affectedRows > 0) {
             //// Subtract 50,000 from litai_sum
@@ -83,6 +89,9 @@ app.post("/updateName", async (req, res) => {
             console.log("Error updating user name")
             res.status(400).json({ message: "Nepavyko atnaujinti vardo" })
           }
+        } else {
+          console.log("Error: User can only update name once a month")
+          res.status(400).json({ message: "Vartotojas gali keisti vardą tik kartą per mėnesį" })
         }
       }
     }
@@ -178,7 +187,7 @@ app.post("/updateEmail", async (req, res) => {
           subject: "Pasikeitusio elektoninio pašto patvirtinimas",
           html: `
           <!DOCTYPE html>
-          <html lang="en">
+          <html lang="lt">
           
           <head>
               <meta charset="UTF-8">
@@ -311,8 +320,6 @@ app.post("/updateEmail", async (req, res) => {
   }
 })
 
-// todo Patvirtinus email pateikti grazia zinut su background ir auto nukreipimas i main page regilogo gal ???
-// todo paskirti diena email ir klaidu grazinimui responsui ir tt..  Dar node moment prideti kad fiksuotusi laikas
 // ? UPDATE EMAIL press BTN inside email and go here
 app.get("/verify/:uuid", async (req, res) => {
   const { uuid } = req.params
