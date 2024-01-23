@@ -56,7 +56,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Rasyti bad words i database tik nuo 3 ir 4 lvl plius 100litu , bet tik po to kai patvitina 5 lvl-->
 
 <!-- 17 -->
-<!-- -->
+<!-- Padaryti taip kad vartotojas turintis -1000000 (-1 milijona) butu visiskai istrintas is db-->
 
 <!-- 18 -->
 <!-- D regi logi Btn su padidinuimu turi buti, keisti spalva siek tiek, pamirsote slaptazody turi nukreipti i priminima, 
