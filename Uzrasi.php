@@ -34,7 +34,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -->
 
 <!-- 10 -->
-<!--  -->
+<!-- Yra klaidu siandienos top 10 nusinulinus nakti rodo neteisinga top -->
 
 <!-- 11 -->
 <!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
@@ -53,7 +53,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Slaptažodžio priminimas būtų kintamasis, kiekvienų metų laiu, būti vis ktoks. ty vasarą vienoks, rudenį kitoks ir t.t-->
 
 <!-- 16 -->
-<!-- -->
+<!-- Rasyti bad words i database tik nuo 3 ir 4 lvl plius 100litu , bet tik po to kai patvitina 5 lvl-->
 
 <!-- 17 -->
 <!-- -->

@@ -35,6 +35,22 @@ function hasFourConsecutiveIdenticalLetters(name) {
   return regex.test(name)
 }
 
+// Function to check if the new name contains disallowed words
+async function hasDisallowedWords(newName, connection) {
+  const [badWordsRows] = await connection.execute("SELECT * FROM bad_words")
+  
+  for (const badWordRow of badWordsRows) {
+    const disallowedWord = badWordRow.curse_words
+    
+    if (newName.toLowerCase().includes(disallowedWord.toLowerCase())) {
+      return true 
+    }
+  }
+  
+  return false 
+}
+
+
 // ? UPDATE NAME
 app.post("/updateName", async (req, res) => {
   const { newName, userName, userId, userLitai } = req.body
@@ -56,6 +72,9 @@ app.post("/updateName", async (req, res) => {
     } else if (hasFourConsecutiveIdenticalLetters(newName)) {
       console.log(`Warning: User name '${newName}' contains 3 consecutive identical letters`)
       res.status(400).json({ message: "Vartotojo vardas negali turėti tris iš eilės vienodus simbolius" })
+    } else if (await hasDisallowedWords(newName, connection)) {
+      console.log(`Warning: User name '${newName}' contains disallowed words`)
+      res.status(400).json({ message: "Vartotojo vardas negali turėti neleistinų žodžių" })
     } else {
       // Check if the user with the old name, userId, and userLitai exists
       const [userRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ? AND user_id = ? AND litai_sum = ?", [userName, userId, userLitai])

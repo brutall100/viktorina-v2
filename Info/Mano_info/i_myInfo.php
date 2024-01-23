@@ -186,7 +186,7 @@ mysqli_close($conn);
             <h1>Keitimo Info</h1>
             <div class="content-response-div">
                 <p class="pargraph_1">Cia galima pasikeisti varda, lyti, email, lygi.</p>
-                <p class="pargraph_2">Varda galima keisti karta per menesi, bet kainuos 10 000 litu. Lyties keitimas x litu . </p>
+                <p class="pargraph_2">Varda galima keisti karta per menesi, kainuos 50 000 litu. Lyties keitimas 100 000 litu . </p>
                 <!-- <button class="change-btn">C</button>   -->
             </div>  
         </div>
