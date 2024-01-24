@@ -133,56 +133,37 @@ app.post("/updateName", async (req, res) => {
   }
 })
 
-// ? BTN GENDER
-genderButton.addEventListener("click", function () {
-  console.log("Gender button clicked")
+// ? UPDATE GENDER
+app.post("/updateGender", async (req, res) => {
+  const { userGender, userName, userId, userLitai } = req.body
 
-  contentDiv.innerHTML = `
-    <h1>Lyties Keitimas</h1>
-    <div class="content-response-div">
-        <p class="pargraph_1">Jei pasikeitė Jūsų lytis?</p>
-        <p class="pargraph_2">Irašykite savo naujają lytį</p>
-        <input type="text" id="inputFieldChange" placeholder="Jūsų naujoji lytis">
-        <button class="change-btn">Lyties keitimas</button>
-        <h3 id='error-msg'></h3>
-    </div>
-  `
+  console.log(`Received data: userGender=${userGender}, userName=${userName}, userId=${userId}, userLitai=${userLitai}`)
 
-  const inputField = document.getElementById("inputFieldChange")
-  const errorMsgElement = document.getElementById("error-msg")
+  try {
+    const connection = await db.getConnection()
 
-  document.querySelector(".change-btn").addEventListener("click", async function () {
-    const newGenderValue = inputField.value
+    const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND litai_sum = ?", [userId, userLitai])
 
-    if (hasConsecutiveLetters(newGenderValue)) {
-      displayErrorMessage("😬 Oops! Trys vienodi simboliai iš eilės. Nepraeis! 🚫✏️")
-    } else if (!isNameLengthValid(newGenderValue)) {
-      displayErrorMessage("🤔 Tokia lytis neegzistuoja. Viršija 21 simbolį. Trumpinam! 📏✏️")
-    } else if (await hasDisallowedWordsForGender(newGenderValue, connection)) {
-      displayErrorMessage("⚠️ Naujoji lytis negali turėti neleistinų žodžių! 🚫✏️")
+    if (userRows.length === 0) {
+      console.log(`Warning: User with user ID '${userId}' and litai '${userLitai}' not found`)
+      res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" })
     } else {
-      displayErrorMessage("")
-      const newDataForGender = {
-        userName: userName,
-        userId: userId,
-        userLitai: userLitai,
-        userGender: newGenderValue
-      }
+      //// Update the gender and subtract 100,000 litai if the user with the user ID and litai exists
+      const [updateRows] = await connection.execute("UPDATE super_users SET gender_super = ?, litai_sum = litai_sum - 100000 WHERE user_id = ? AND litai_sum = ?", [userGender, userId, userLitai])
 
-      const success = await updateOnServer(newDataForGender, "updateGender")
-
-      if (success) {
-        //// Subtract 100,000 litu_sum 
-        const [subtractRows] = await connection.execute("UPDATE super_users SET litai_sum = litai_sum - 100000 WHERE user_id = ?", [userId])
-
-        if (subtractRows.affectedRows > 0) {
-          console.log("Successfully subtracted 100,000 litu from litai_sum")
-        } else {
-          console.log("Error subtracting 100,000 litu from litai_sum")
-        }
+      if (updateRows.affectedRows > 0) {
+        console.log(`User gender updated successfully to '${userGender}' and 100,000 litai subtracted`)
+        res.json({ message: `Jūsų naujoji lytis ${userGender}` })
+      } else {
+        console.log("Error updating user gender or subtracting litai")
+        res.status(400).json({ message: "Nepavyko atnaujinti lyties arba nuskaičiouti  litų" })
       }
     }
-  })
+    connection.release()
+  } catch (error) {
+    console.error("Error updating gender:", error)
+    res.status(500).json({ message: "Server error" })
+  }
 })
 
 // ? UPDATE EMAIL
