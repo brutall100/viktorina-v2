@@ -144,6 +144,7 @@ genderButton.addEventListener("click", function () {
   })
 })
 
+
 // ? BTN Email
 emailButton.addEventListener("click", function () {
   console.log("Email button clicked")
@@ -181,8 +182,13 @@ emailButton.addEventListener("click", function () {
   })
 })
 
-// ? LEVEL Email
-const userExistingLevel = userLevel -3 // sumazintas levelis testinimui
+
+//! esamas levelis turi iisiskirti, buve uztamseje not clikble
+//! levelio negalima persokti nei client side nei server side 0-1, 1-2, 2-3, 3-4, 4-5
+//! max levelis jau nemato btn tik labai grazia zinute Jusu lvl xxx bla maksimalus 5
+//! prideti kokku norrs iconu brie btn
+// ? BTN Level
+const userExistingLevel = userLevel 
 
 levelButton.addEventListener("click", function () {
   console.log("Level button clicked")
@@ -205,7 +211,13 @@ levelButton.addEventListener("click", function () {
       const level = this.dataset.level
       console.log(`Button clicked for level ${level}`)
 
-      // Add your logic here for handling the click event for each level
+      const newDataForLevel = {
+        userId: userId,
+        userLitai: userLitai,
+        newLevel: level
+      }
+
+      updateOnServer(newDataForLevel, "updateLevel")
     })
   })
 })
@@ -230,61 +242,3 @@ levelButton.addEventListener("click", function () {
 // Kai pateikiate tinkamą vartotojo vardą ir jis sėkmingai atnaujinamas, gausite patvirtinimo pranešimą.
 
 // Pavyzdys: "Aldas" buvo sėkmingai atnaujintas į "Aldas."
-
-// !nameButton.addEventListener("click", () => {
-//   updateContent("Keisti vardą", "Additional name info")
-//   createNewButton("New Name Button", () => {
-//     const newName = prompt(`Enter new name: ${userName}`)
-//     if (newName !== null) {
-//       const data = {
-//         newName: newName,
-//         userName: userName,
-//         userId: userId,
-//         userLitai: userLitai
-//       }
-//       const url = `${serverConfig.serverAddress}:${serverConfig.ports.port6}/updateName`
-//       fetch(url, {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(data)
-//       })
-//         .then((response) => response.json())
-//         .then((data) => {
-//           alert(data.message)
-//         })
-//         .catch((error) => {
-//           console.error("Error updating name:", error)
-//         })
-//     }
-//   })
-// })
-
-// nameButton.addEventListener("click", () => {
-//   updateContent("Keisti varda", "Additional name info")
-//   createNewButton("New name Button", () => {
-//     alert(`New name Button clicked! ${userName}`)
-//   })
-// })
-
-// genderButton.addEventListener("click", () => {
-//   updateContent("Keisti lytį", "Additional gender info")
-//   createNewButton("New Gender Button", () => {
-//     alert(`New Gender Button clicked! ${userName}`)
-//   })
-// })
-
-// emailButton.addEventListener("click", () => {
-//   updateContent("Keisti el. paštą", "Additional email info")
-//   createNewButton("New Email Button", () => {
-//     alert(`New Email Button clicked! ${userName}`)
-//   })
-// })
-
-// levelButton.addEventListener("click", () => {
-//   updateContent("Keisti lygį", "Additional level info")
-//   createNewButton("New Level Button", () => {
-//     alert(`New Level Button clicked! ${userName}`)
-//   })
-// })
