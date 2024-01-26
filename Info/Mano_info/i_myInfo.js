@@ -166,7 +166,7 @@ emailButton.addEventListener("click", function () {
     const newEmailValue = inputField.value
 
     if (isValidEmail(newEmailValue)) {
-      displayErrorMessage("") 
+      displayErrorMessage("")
 
       const newDataForEmail = {
         userName: userName,
@@ -181,17 +181,33 @@ emailButton.addEventListener("click", function () {
   })
 })
 
+// ? LEVEL Email
+const userExistingLevel = userLevel -3 // sumazintas levelis testinimui
+
 levelButton.addEventListener("click", function () {
   console.log("Level button clicked")
 
   contentDiv.innerHTML = `
-        <h1>Lygio Keitimas</h1>
-        <div class="content-response-div">
-            <p class="pargraph_1">Lygis A</p>
-            <p class="pargraph_2">LygisB</p>
-            <button class="change-btn">Lygis C</button>
-        </div>
-    `
+    <h1>Lygio Keitimas</h1>
+    <div class="content-response-div">
+      <button class="level-button" data-level="5" ${userExistingLevel >= 5 ? "disabled" : ""}>Lygis 5 - 1000 000 <span class="label">[Ekspertas]</span></button>
+      <button class="level-button" data-level="4" ${userExistingLevel >= 4 ? "disabled" : ""}>Lygis 4 - 500 000 <span class="label">[Patyręs]</span></button>
+      <button class="level-button" data-level="3" ${userExistingLevel >= 3 ? "disabled" : ""}>Lygis 3 - 300 000 <span class="label">[Vidutiniokas]</span></button>
+      <button class="level-button" data-level="2" ${userExistingLevel >= 2 ? "disabled" : ""}>Lygis 2 - 200 000 <span class="label">[Pradedantysis]</span></button>
+      <button class="level-button" data-level="1" ${userExistingLevel >= 1 ? "disabled" : ""}>Lygis 1 - 100 000 <span class="label">[Naujokas]</span></button>
+    </div>
+  `
+
+  const levelButtons = document.querySelectorAll(".level-button")
+
+  levelButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const level = this.dataset.level
+      console.log(`Button clicked for level ${level}`)
+
+      // Add your logic here for handling the click event for each level
+    })
+  })
 })
 
 // Vardo, levelio, lyties, ketimas turetu buti mokamas. LITAIS

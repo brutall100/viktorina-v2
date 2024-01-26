@@ -271,5 +271,17 @@ body {
   width: 300px;
 }
 
+.level-button{
+  width: 20em;
+}
+
+.label {
+  display: none;
+}
+
+.level-button:hover .label {
+  display: inline-block;
+}
+
 
 
