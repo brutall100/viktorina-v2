@@ -195,7 +195,7 @@ levelButton.addEventListener("click", function () {
     contentDiv.innerHTML = `
       <h1>Lygio Keitimas</h1>
       <div class="content-response-div">
-        <p class="expert-lvl">Sveikiname! Jūs jau pasiekėte maksimalų lygį - Ekspertas!</p>
+        <p class="expert-lvl">Sveikiname! Jūs jau pasiekėte maksimalų lygį <span class="level-number">Ekspertas (Lygis 5)</span>! 💃🕺🎉</p>
       </div>
     `
   } else {

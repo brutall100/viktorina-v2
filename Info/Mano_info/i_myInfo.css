@@ -301,5 +301,17 @@ body {
 }
 
 .expert-lvl {
-  background-color: #1e392b;
+  font-size: 1.9em;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 10px;
+  /* Add any other styles you desire */
 }
+
+.level-number {
+  color: #ffcc00; /* Customize the color for the level number */
+  /* Add additional styles for the level number */
+}
+
+
