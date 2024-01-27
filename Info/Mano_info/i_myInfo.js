@@ -237,7 +237,7 @@ levelButton.addEventListener("click", function () {
             displayErrorMessage(error.message)
           }
         } else {
-          displayErrorMessage("📛 Negalima persokti lygio. Galima tik pasikelti 1 lygiu. 🆙")
+          displayErrorMessage("📛 Negalima peršokti lygio. Galima tik pasikelti 1 lygiu. 🆙")
         }
       })
     })

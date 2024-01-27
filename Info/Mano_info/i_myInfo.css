@@ -268,14 +268,28 @@ body {
   color: #eecbd1;
   width: 300px;
   text-align: center;
-  margin-bottom: 10px;
   font-family: "Playfair Display", serif;
   font-weight: 600;
-  padding: 1em;
+  margin-bottom: 0;
+  /* padding: 1em; */
+  background: #333a46d7;
 }
 
 .level-button {
-  width: 20em;
+  min-width: 16em;
+  margin: .5em;
+  padding: .5em 0;
+  border-radius: .5em;
+  background: #2e2e2e;
+  color: #c8bbc7;
+  font-size: 1.2em;
+  transition: all 0.3s; /* Add transition for a smoother effect */
+}
+
+.level-button:hover {
+  background-color: #3e3e3e; 
+  color: #8b828a; 
+  transform: scale(1.01); 
 }
 
 .label {
@@ -286,6 +300,6 @@ body {
   display: inline-block;
 }
 
-.expert-lvl{
+.expert-lvl {
   background-color: #1e392b;
 }
