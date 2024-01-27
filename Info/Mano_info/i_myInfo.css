@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap");
-
-
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /*! pagrazinti alert labiau i centra didesni + @media */
 
@@ -22,7 +21,7 @@ h1 {
   margin: 0;
   padding: 5px;
   border: 1px solid #999;
-  background-color: rgba(240, 240, 240, 0.1); 
+  background-color: rgba(240, 240, 240, 0.1);
   text-transform: uppercase;
 }
 
@@ -48,8 +47,8 @@ p {
   font-weight: 900;
   font-style: normal;
   width: 10em;
-  margin-top: 1px; 
-  padding: 1px 12px; 
+  margin-top: 1px;
+  padding: 1px 12px;
   transition: background-color 0.6s, transform 0.6s, color 0.6s, border 0.6s;
 }
 
@@ -68,7 +67,7 @@ p {
 }
 
 .btn:active {
-  transform: scale(0.95); 
+  transform: scale(0.95);
 }
 
 /*// Header */
@@ -113,12 +112,12 @@ body {
   display: flex;
   justify-content: center;
   position: sticky;
-  background-color: #ffffff1d; 
-  z-index: 1; 
+  background-color: #ffffff1d;
+  z-index: 1;
 }
 
 .user-header-btn {
-  margin: 20px 16px; 
+  margin: 20px 16px;
 }
 
 .fa-regular.fa-user,
@@ -134,7 +133,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 72vh; 
+  min-height: 72vh;
   padding: 0.8em 0 1.5em 0;
   margin: 0;
   /* background-color: rgb(45, 18, 199); */
@@ -144,10 +143,10 @@ body {
   border: 1px solid rgba(240, 230, 140, 0.5);
   margin: 0 2em;
   padding: 1em;
-  border-radius: .5em;
+  border-radius: 0.5em;
   overflow: auto;
   scroll-behavior: smooth;
-  background-color: rgba(255, 255, 255, 0.299); 
+  background-color: rgba(255, 255, 255, 0.299);
 }
 
 .content-p {
@@ -167,16 +166,16 @@ body {
   overflow: auto;
   font-size: 21px;
   font-weight: 600;
-  background-color: #2e2e2e; 
-  color: #00ffd1; 
+  background-color: #2e2e2e;
+  color: #00ffd1;
   border: 1px solid #00ffd1;
-  border-radius: 10px; 
-  box-shadow: 0 0 10px rgba(0, 255, 209, 0.5); 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 209, 0.5);
   transition: all 0.3s ease;
   position: relative;
-  scrollbar-width: thin; 
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .content-row p::-webkit-scrollbar {
@@ -184,17 +183,17 @@ body {
 }
 
 .content-row p::-webkit-scrollbar-thumb {
-  background: #00ffd1; 
-  border-radius: 5px 5px 0 0; 
+  background: #00ffd1;
+  border-radius: 5px 5px 0 0;
 }
 
 .content-row p::-webkit-scrollbar-track {
-  background: #2e2e2e; 
+  background: #2e2e2e;
 }
 
 .content-row p:hover {
-  transform: scale(1.01); 
-  box-shadow: 0 0 20px rgba(0, 255, 209, 0.7); 
+  transform: scale(1.01);
+  box-shadow: 0 0 20px rgba(0, 255, 209, 0.7);
 }
 
 .first-span {
@@ -203,11 +202,11 @@ body {
 }
 
 .middle-span {
-  color: #e8d897; 
-  font-weight: 800; 
-  text-transform: uppercase; 
-  letter-spacing: 2px; 
-  text-shadow: 1px 1px 3px rgba(232, 217, 151, 0.6); 
+  color: #e8d897;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 3px rgba(232, 217, 151, 0.6);
 }
 
 .last-span {
@@ -217,20 +216,18 @@ body {
 /* // Cia turetu buti keitimo informacija */
 .content-response-ctn {
   border: 1px solid rgba(240, 230, 140, 0.5);
-  border-radius: .5rem;
+  border-radius: 0.5em;
   width: 400px;
-  height: 400px;
-  background-color: rgba(255, 255, 255, 0.299); 
+  height: auto; 
+  background-color: rgba(255, 255, 255, 0);
   padding: 1em;
 }
 
-/* .content-response-ctn h1 {
-  margin-bottom: 120px; 
-} */
 
 .content-response-div {
   background: #333a46a3;
   display: flex;
+  border-radius: .5em;
   flex-direction: column;
   align-items: center;
   margin-top: 2.5vh;
@@ -238,6 +235,7 @@ body {
 }
 
 /* ! Galimai reikes pakeisti width i fiksuotus atmesti padding del teksto perkelimo i new line */
+/* ! style alert make biger center text */
 .pargraph_1 {
   background: #386cbaa3;
   padding: 10px 5px;
@@ -252,7 +250,7 @@ body {
   margin-bottom: 1em;
 }
 
-#inputFieldChange{
+#inputFieldChange {
   background: rgb(173, 186, 56);
   padding: 10px 3vw;
   margin-bottom: 1em;
@@ -266,12 +264,17 @@ body {
   cursor: crosshair;
 }
 
-#error-msg{
-  color: #42161e;
+#error-msg {
+  color: #eecbd1;
   width: 300px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  padding: 1em;
 }
 
-.level-button{
+.level-button {
   width: 20em;
 }
 
@@ -283,5 +286,6 @@ body {
   display: inline-block;
 }
 
-
-
+.expert-lvl{
+  background-color: #1e392b;
+}

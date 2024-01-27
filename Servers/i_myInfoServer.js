@@ -63,6 +63,35 @@ async function hasDisallowedWordsForGender(newGenderValue, connection) {
   return false
 }
 
+//// LVL kainos
+function calculateLitaiSubtract(currentLevel, newLevel) {
+  let litaiSubtract = 0
+
+  for (let level = currentLevel; level < newLevel; level++) {
+    switch (level) {
+      case 0:
+        litaiSubtract += 100000
+        break
+      case 1:
+        litaiSubtract += 200000
+        break
+      case 2:
+        litaiSubtract += 300000
+        break
+      case 3:
+        litaiSubtract += 500000
+        break
+      case 4:
+        litaiSubtract += 1000000
+        break
+      default:
+        break
+    }
+  }
+
+  return litaiSubtract
+}
+
 // ? UPDATE NAME
 app.post("/updateName", async (req, res) => {
   const { newName, userName, userId, userLitai } = req.body
@@ -520,77 +549,60 @@ app.get("/verify/:uuid", async (req, res) => {
   }
 })
 
+
 // ? UPDATE LEVEL
 app.post("/updateLevel", async (req, res) => {
-  const { newLevel, userId, userLitai } = req.body;
+  const { newLevel, userId, userLitai } = req.body
 
-  console.log(`Received data: newLevel=${newLevel}, userId=${userId}, userLitai=${userLitai}`);
+  console.log(`Received data: newLevel=${newLevel}, userId=${userId}, userLitai=${userLitai}`)
 
   try {
-    const connection = await db.getConnection();
+    const connection = await db.getConnection()
 
     // Check if the user with the given userId and userLitai exists
-    const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND litai_sum = ?", [userId, userLitai]);
+    const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND litai_sum = ?", [userId, userLitai])
 
     if (userRows.length === 0) {
-      console.log(`Warning: User with user ID '${userId}' and litai '${userLitai}' not found`);
-      res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" });
+      console.log(`Warning: User with user ID '${userId}' and litai '${userLitai}' not found`)
+      res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" })
     } else {
-      const currentUserLevel = userRows[0].user_lvl || 0;
-      const litaiSubtract = calculateLitaiSubtract(currentUserLevel, newLevel);
+      const currentUserLevel = userRows[0].user_lvl || 0
 
-      // Check if the user has enough litai_sum
-      if (userRows[0].litai_sum < litaiSubtract) {
-        console.log(`Warning: User with user ID '${userId}' does not have enough litai`);
-        res.status(400).json({ message: "Nepakanka litų šiam veiksmui atlikti" });
+      // Check if the user is trying to update to a higher level
+      if (newLevel > currentUserLevel + 1) {
+        console.log(`Warning: User with user ID '${userId}' cannot directly update to level '${newLevel}'`)
+        res.status(400).json({ message: "Negalima tiesiogiai pereiti į šį lygį" })
       } else {
-        // Update the user's level and subtract litai if the user with the userId and litai exists
-        const [updateRows] = await connection.execute("UPDATE super_users SET user_lvl = ?, litai_sum = litai_sum - ? WHERE user_id = ? AND litai_sum = ?", [newLevel, litaiSubtract, userId, userLitai]);
+        const litaiSubtract = calculateLitaiSubtract(currentUserLevel, newLevel)
 
-        if (updateRows.affectedRows > 0) {
-          console.log(`User level updated successfully to '${newLevel}' and ${litaiSubtract} litai subtracted`);
-          res.json({ message: `Jūsų naujas lygis ${newLevel}` });
+        // Check if the user has enough litai_sum
+        if (userRows[0].litai_sum < litaiSubtract) {
+          console.log(`Warning: User with user ID '${userId}' does not have enough litai`)
+          res.status(400).json({ message: "Nepakanka litų šiam veiksmui atlikti" })
         } else {
-          console.log("Error updating user level or subtracting litai");
-          res.status(400).json({ message: "Nepavyko atnaujinti lygio arba nuskaičiuoti litų" });
+          const [updateRows] = await connection.execute("UPDATE super_users SET user_lvl = ?, litai_sum = litai_sum - ? WHERE user_id = ? AND litai_sum = ?", [
+            newLevel,
+            litaiSubtract,
+            userId,
+            userLitai
+          ])
+
+          if (updateRows.affectedRows > 0) {
+            console.log(`User level updated successfully to '${newLevel}' and ${litaiSubtract} litai subtracted`)
+            res.json({ message: `Jūsų naujas lygis ${newLevel}` })
+          } else {
+            console.log("Error updating user level or subtracting litai")
+            res.status(400).json({ message: "Nepavyko atnaujinti lygio arba nuskaičiuoti litų" })
+          }
         }
       }
     }
-    connection.release();
+    connection.release()
   } catch (error) {
-    console.error("Error updating level:", error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Error updating level:", error)
+    res.status(500).json({ message: "Server error" })
   }
-});
-
-// Function to calculate litai subtract based on level change
-function calculateLitaiSubtract(currentLevel, newLevel) {
-  let litaiSubtract = 0;
-
-  for (let level = currentLevel; level < newLevel; level++) {
-    switch (level) {
-      case 0:
-        litaiSubtract += 100000;
-        break;
-      case 1:
-        litaiSubtract += 200000;
-        break;
-      case 2:
-        litaiSubtract += 300000;
-        break;
-      case 3:
-        litaiSubtract += 500000;
-        break;
-      case 4:
-        litaiSubtract += 1000000;
-        break;
-      default:
-        break;
-    }
-  }
-
-  return litaiSubtract;
-}
+})
 
 
 const PORT = process.env.PORT6

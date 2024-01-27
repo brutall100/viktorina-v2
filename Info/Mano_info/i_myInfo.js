@@ -144,7 +144,6 @@ genderButton.addEventListener("click", function () {
   })
 })
 
-
 // ? BTN Email
 emailButton.addEventListener("click", function () {
   console.log("Email button clicked")
@@ -182,44 +181,67 @@ emailButton.addEventListener("click", function () {
   })
 })
 
-
 //! esamas levelis turi iisiskirti, buve uztamseje not clikble
-//! levelio negalima persokti nei client side nei server side 0-1, 1-2, 2-3, 3-4, 4-5
 //! max levelis jau nemato btn tik labai grazia zinute Jusu lvl xxx bla maksimalus 5
 //! prideti kokku norrs iconu brie btn
 // ? BTN Level
-const userExistingLevel = userLevel 
+const userExistingLevel = userLevel
 
 levelButton.addEventListener("click", function () {
   console.log("Level button clicked")
 
-  contentDiv.innerHTML = `
-    <h1>Lygio Keitimas</h1>
-    <div class="content-response-div">
-      <button class="level-button" data-level="5" ${userExistingLevel >= 5 ? "disabled" : ""}>Lygis 5 - 1000 000 <span class="label">[Ekspertas]</span></button>
-      <button class="level-button" data-level="4" ${userExistingLevel >= 4 ? "disabled" : ""}>Lygis 4 - 500 000 <span class="label">[Patyręs]</span></button>
-      <button class="level-button" data-level="3" ${userExistingLevel >= 3 ? "disabled" : ""}>Lygis 3 - 300 000 <span class="label">[Vidutiniokas]</span></button>
-      <button class="level-button" data-level="2" ${userExistingLevel >= 2 ? "disabled" : ""}>Lygis 2 - 200 000 <span class="label">[Pradedantysis]</span></button>
-      <button class="level-button" data-level="1" ${userExistingLevel >= 1 ? "disabled" : ""}>Lygis 1 - 100 000 <span class="label">[Naujokas]</span></button>
-    </div>
-  `
+  if (userExistingLevel >= 5) {
+    // If user level is max, display a different message
+    contentDiv.innerHTML = `
+      <h1>Lygio Keitimas</h1>
+      <div class="content-response-div">
+        <p class="expert-lvl">Sveikiname! Jūs jau pasiekėte maksimalų lygį - Ekspertas!</p>
+      </div>
+    `
+  } else {
+    // Display the regular level buttons
+    contentDiv.innerHTML = `
+      <h1>Lygio Keitimas</h1>
+      <div class="content-response-div">
+        <button class="level-button" data-level="5" ${userExistingLevel >= 5 ? "disabled" : ""}>Lygis 5 - 1000 000 <span class="label">[Ekspertas]</span></button>
+        <button class="level-button" data-level="4" ${userExistingLevel >= 4 ? "disabled" : ""}>Lygis 4 - 500 000 <span class="label">[Patyręs]</span></button>
+        <button class="level-button" data-level="3" ${userExistingLevel >= 3 ? "disabled" : ""}>Lygis 3 - 300 000 <span class="label">[Vidutiniokas]</span></button>
+        <button class="level-button" data-level="2" ${userExistingLevel >= 2 ? "disabled" : ""}>Lygis 2 - 200 000 <span class="label">[Pradedantysis]</span></button>
+        <button class="level-button" data-level="1" ${userExistingLevel >= 1 ? "disabled" : ""}>Lygis 1 - 100 000 <span class="label">[Naujokas]</span></button>
+        <h3 id='error-msg'></h3>
+      </div>
+    `
 
-  const levelButtons = document.querySelectorAll(".level-button")
+    const levelButtons = document.querySelectorAll(".level-button")
+    const errorMsgElement = document.getElementById("error-msg")
 
-  levelButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      const level = this.dataset.level
-      console.log(`Button clicked for level ${level}`)
+    levelButtons.forEach((button) => {
+      button.addEventListener("click", async function () {
+        const level = this.dataset.level
+        console.log(`Button clicked for level ${level}`)
 
-      const newDataForLevel = {
-        userId: userId,
-        userLitai: userLitai,
-        newLevel: level
-      }
+        // Check if the new level is valid (only increase allowed)
+        if (parseInt(level) <= parseInt(userExistingLevel) + 1) {
+          const newDataForLevel = {
+            userId: userId,
+            userLitai: userLitai,
+            newLevel: level
+          }
 
-      updateOnServer(newDataForLevel, "updateLevel")
+          try {
+            await updateOnServer(newDataForLevel, "updateLevel")
+            // If successful, clear any previous error messages
+            displayErrorMessage("")
+          } catch (error) {
+            // If an error occurs, display the error message
+            displayErrorMessage(error.message)
+          }
+        } else {
+          displayErrorMessage("📛 Negalima persokti lygio. Galima tik pasikelti 1 lygiu. 🆙")
+        }
+      })
     })
-  })
+  }
 })
 
 // Vardo, levelio, lyties, ketimas turetu buti mokamas. LITAIS
