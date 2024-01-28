@@ -270,8 +270,9 @@ body {
   text-align: center;
   font-family: "Playfair Display", serif;
   font-weight: 600;
-  margin-bottom: 0;
-  /* padding: 1em; */
+  margin-top: 2em;
+  padding: 1em;
+  border-radius: .5em;
   background: #333a46d7;
 }
 
@@ -283,13 +284,38 @@ body {
   background: #2e2e2e;
   color: #c8bbc7;
   font-size: 1.2em;
-  transition: all 0.3s; /* Add transition for a smoother effect */
+  transition: all 0.3s; 
 }
 
 .level-button:hover {
   background-color: #3e3e3e; 
   color: #8b828a; 
   transform: scale(1.01); 
+  cursor: pointer;
+}
+
+.level-button:active {
+  background-color: #262525; 
+  color: #a796a5; 
+  transform: scale(0.95); 
+}
+
+.level-button[disabled] {
+  background-color: #6c757d; 
+  cursor: not-allowed;
+}
+
+.emoji {
+  margin-left: -70px;
+  position: absolute;
+  display: inline;
+  /* filter: grayscale(100%); */
+  box-shadow: -4px -4px 5px #e8d897; 
+}
+
+
+.level-button:hover .emoji {
+  display: none;
 }
 
 .label {
@@ -306,12 +332,10 @@ body {
   color: #ffffff;
   text-align: center;
   margin-top: 10px;
-  /* Add any other styles you desire */
 }
 
 .level-number {
-  color: #ffcc00; /* Customize the color for the level number */
-  /* Add additional styles for the level number */
+  color: #ffcc00; 
 }
 
 

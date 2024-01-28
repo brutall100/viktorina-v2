@@ -181,44 +181,45 @@ emailButton.addEventListener("click", function () {
   })
 })
 
-//! esamas levelis turi iisiskirti, buve uztamseje not clikble
-//! max levelis jau nemato btn tik labai grazia zinute Jusu lvl xxx bla maksimalus 5
 //! prideti kokku norrs iconu brie btn
 // ? BTN Level
-const userExistingLevel = userLevel
+const userExistingLevel = userLevel;
+
+// Function to get the user's level class
+function getUserLevelClass(buttonLevel, userLevel) {
+  return userLevel >= buttonLevel ? "user-level" : "";
+}
 
 levelButton.addEventListener("click", function () {
-  console.log("Level button clicked")
+  console.log("Level button clicked");
 
   if (userExistingLevel >= 5) {
-    // If user level is max, display a different message
     contentDiv.innerHTML = `
       <h1>Lygio Keitimas</h1>
       <div class="content-response-div">
         <p class="expert-lvl">Sveikiname! Jūs jau pasiekėte maksimalų lygį <span class="level-number">Ekspertas (Lygis 5)</span>! 💃🕺🎉</p>
       </div>
-    `
+    `;
   } else {
-    // Display the regular level buttons
     contentDiv.innerHTML = `
       <h1>Lygio Keitimas</h1>
       <div class="content-response-div">
-        <button class="level-button" data-level="5" ${userExistingLevel >= 5 ? "disabled" : ""}>Lygis 5 - 1000 000 <span class="label">[Ekspertas]</span></button>
-        <button class="level-button" data-level="4" ${userExistingLevel >= 4 ? "disabled" : ""}>Lygis 4 - 500 000 <span class="label">[Patyręs]</span></button>
-        <button class="level-button" data-level="3" ${userExistingLevel >= 3 ? "disabled" : ""}>Lygis 3 - 300 000 <span class="label">[Vidutiniokas]</span></button>
-        <button class="level-button" data-level="2" ${userExistingLevel >= 2 ? "disabled" : ""}>Lygis 2 - 200 000 <span class="label">[Pradedantysis]</span></button>
-        <button class="level-button" data-level="1" ${userExistingLevel >= 1 ? "disabled" : ""}>Lygis 1 - 100 000 <span class="label">[Naujokas]</span></button>
+        <button class="level-button ${getUserLevelClass(5, userExistingLevel)}" data-level="5" ${userExistingLevel >= 5 ? "disabled" : ""}><span class="emoji">🏅</span> Lygis 5 - 999 999 <span class="label">[Ekspertas]</span></button>
+        <button class="level-button ${getUserLevelClass(4, userExistingLevel)}" data-level="4" ${userExistingLevel >= 4 ? "disabled" : ""}><span class="emoji">👊</span> Lygis 4 - 500 000 <span class="label">[Patyręs]</span></button>
+        <button class="level-button ${getUserLevelClass(3, userExistingLevel)}" data-level="3" ${userExistingLevel >= 3 ? "disabled" : ""}><span class="emoji">❤️‍🔥</span> Lygis 3 - 300 000 <span class="label">[Vidutiniokas]</span></button>
+        <button class="level-button ${getUserLevelClass(2, userExistingLevel)}" data-level="2" ${userExistingLevel >= 2 ? "disabled" : ""}><span class="emoji">👏</span> Lygis 2 - 200 000 <span class="label">[Pradedantysis]</span></button>
+        <button class="level-button ${getUserLevelClass(1, userExistingLevel)}" data-level="1" ${userExistingLevel >= 1 ? "disabled" : ""}><span class="emoji">👌</span> Lygis 1 - 100 000 <span class="label">[Naujokas]</span></button>
         <h3 id='error-msg'></h3>
       </div>
-    `
+    `;
 
-    const levelButtons = document.querySelectorAll(".level-button")
-    const errorMsgElement = document.getElementById("error-msg")
+    const levelButtons = document.querySelectorAll(".level-button");
+    const errorMsgElement = document.getElementById("error-msg");
 
     levelButtons.forEach((button) => {
       button.addEventListener("click", async function () {
-        const level = this.dataset.level
-        console.log(`Button clicked for level ${level}`)
+        const level = this.dataset.level;
+        console.log(`Button clicked for level ${level}`);
 
         // Check if the new level is valid (only increase allowed)
         if (parseInt(level) <= parseInt(userExistingLevel) + 1) {
@@ -226,23 +227,25 @@ levelButton.addEventListener("click", function () {
             userId: userId,
             userLitai: userLitai,
             newLevel: level
-          }
+          };
 
           try {
-            await updateOnServer(newDataForLevel, "updateLevel")
+            await updateOnServer(newDataForLevel, "updateLevel");
             // If successful, clear any previous error messages
-            displayErrorMessage("")
+            displayErrorMessage("");
           } catch (error) {
             // If an error occurs, display the error message
-            displayErrorMessage(error.message)
+            displayErrorMessage(error.message);
           }
         } else {
-          displayErrorMessage("📛 Negalima peršokti lygio. Galima tik pasikelti 1 lygiu. 🆙")
+          displayErrorMessage("📛 Negalima peršokti lygio. Galima tik pasikelti 1 lygiu. 🆙");
         }
-      })
-    })
+      });
+    });
   }
-})
+});
+
+
 
 // Vardo, levelio, lyties, ketimas turetu buti mokamas. LITAIS
 //  Tvarkyti paragrapha
