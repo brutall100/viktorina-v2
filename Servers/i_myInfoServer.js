@@ -82,7 +82,7 @@ function calculateLitaiSubtract(currentLevel, newLevel) {
         litaiSubtract += 500000
         break
       case 4:
-        litaiSubtract += 1000000
+        litaiSubtract += 999999
         break
       default:
         break

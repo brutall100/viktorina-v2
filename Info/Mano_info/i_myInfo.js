@@ -35,9 +35,16 @@ function isNameLengthValid(name) {
 
 //// Function to display an error message
 function displayErrorMessage(message) {
-  const errorMsgElement = document.getElementById("error-msg")
+  const errorMsgElement = document.getElementById("error-msg");
+
   if (errorMsgElement) {
-    errorMsgElement.textContent = message
+    errorMsgElement.textContent = message;
+
+    if (message) {
+      errorMsgElement.style.display = "block";
+    } else {
+      errorMsgElement.style.display = "none";
+    }
   }
 }
 
@@ -47,7 +54,7 @@ function isValidEmail(email) {
   return emailRegex.test(email)
 }
 
-// Global function for updating user information on the server
+//// Global function for updating user information on the server
 function updateOnServer(newData, endpoint) {
   const url = `http://localhost:4006/${endpoint}`
 
@@ -93,7 +100,7 @@ nameButton.addEventListener("click", function () {
     } else if (!isNameLengthValid(inputValue)) {
       displayErrorMessage("🤔 Vardo ilgis viršija 21 simbolį. Trumpinam! 📏✏️")
     } else {
-      displayErrorMessage("") // Clear any existing error message
+      displayErrorMessage("") 
       const newDataForName = {
         newName: inputValue,
         userName: userName,
@@ -101,7 +108,6 @@ nameButton.addEventListener("click", function () {
         userLitai: userLitai
       }
       updateOnServer(newDataForName, "updateName")
-      // updateOnServer(inputValue, userName, userId, userLitai, userGender, userEmail, userLevel)
     }
   })
 })
@@ -181,11 +187,9 @@ emailButton.addEventListener("click", function () {
   })
 })
 
-//! prideti kokku norrs iconu brie btn
 // ? BTN Level
 const userExistingLevel = userLevel;
 
-// Function to get the user's level class
 function getUserLevelClass(buttonLevel, userLevel) {
   return userLevel >= buttonLevel ? "user-level" : "";
 }
@@ -221,7 +225,6 @@ levelButton.addEventListener("click", function () {
         const level = this.dataset.level;
         console.log(`Button clicked for level ${level}`);
 
-        // Check if the new level is valid (only increase allowed)
         if (parseInt(level) <= parseInt(userExistingLevel) + 1) {
           const newDataForLevel = {
             userId: userId,
@@ -231,10 +234,8 @@ levelButton.addEventListener("click", function () {
 
           try {
             await updateOnServer(newDataForLevel, "updateLevel");
-            // If successful, clear any previous error messages
             displayErrorMessage("");
           } catch (error) {
-            // If an error occurs, display the error message
             displayErrorMessage(error.message);
           }
         } else {

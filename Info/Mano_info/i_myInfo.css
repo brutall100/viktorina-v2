@@ -274,6 +274,7 @@ body {
   padding: 1em;
   border-radius: .5em;
   background: #333a46d7;
+  display: none; 
 }
 
 .level-button {
