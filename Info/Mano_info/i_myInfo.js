@@ -16,8 +16,6 @@ console.log(userGender)
 console.log(userEmail)
 console.log(userLevel)
 
-// ! Jei . Galimai bus labai skirtingi div, tai gal kiekvienam div duoti atskira klase .. content-response-div-a-version/name-version..
-
 ////  Globali funkcija tikrina ar neina 3 vienodoi simboliai is eiles
 function hasConsecutiveLetters(input) {
   for (let i = 0; i < input.length - 2; i++) {

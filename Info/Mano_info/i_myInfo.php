@@ -89,7 +89,7 @@ mysqli_close($conn);
         </div>
         <div class="user-header-btn">
             <button id="gender-button" class="btn">Keisti Lytį <i class="fa-solid fa-person-half-dress"></i></button>
-        </div>        
+        </div>
         <div class="user-header-btn">
             <button id="email-button" class="btn">Keisti Email <i class="fa-regular fa-envelope"></i></button>
         </div>
@@ -183,26 +183,28 @@ mysqli_close($conn);
         </div>
 
         <div id="updateDiv" class="content-response-ctn">
-            <h1>Keitimo Info</h1>
-            <div class="content-response-div">
-                <p class="pargraph_1">Cia galima pasikeisti varda, lyti, email, lygi.</p>
-                <p class="pargraph_2">Varda galima keisti karta per menesi, kainuos 50 000 litu. Lyties keitimas 100 000 litu . </p>
-                <!-- <button class="change-btn">C</button>   -->
-            </div>  
-        </div>
-    </div>
+       <h1>Keitimo Info</h1>
+       <div class="content-response-div">
+           <p class="pargraph_1">Čia galite pasikeisti vardą, lytį, el. paštą ir lygį.</p>
+           <p class="pargraph_2"><span class="paragraph_2_sp">Vardą</span> galite keisti vieną kartą per mėnesį.</p>
+           <p class="pargraph_2"><span class="paragraph_2_sp">Lytį</span> galite keisti tik jei pasikeitė jūsų lytis.</p>
+           <p class="pargraph_2"><span class="paragraph_2_sp">El. paštą</span> galima keisti nors ir keiekvieną dieną.</p>
+           <p class="pargraph_2"><span class="paragraph_2_sp">Lygio</span> keitimas kainuoja šiek tiek Litų.</p>
+       </div>
+   </div>
+   </div>
 
     <div class="footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>
     </div>
 
     <script>
-        var userName = <?php echo json_encode($name); ?>;
-        var userId = <?php echo json_encode($user_id); ?>;
-        var userLitai = <?php echo json_encode($points); ?>;
-        var userGender = <?php echo json_encode($gender_super); ?>;
-        var userEmail = <?php echo json_encode($user_email); ?>;
-        var userLevel = <?php echo json_encode($level); ?>;
+        var userName = < ? php echo json_encode($name); ? > ;
+        var userId = < ? php echo json_encode($user_id); ? > ;
+        var userLitai = < ? php echo json_encode($points); ? > ;
+        var userGender = < ? php echo json_encode($gender_super); ? > ;
+        var userEmail = < ? php echo json_encode($user_email); ? > ;
+        var userLevel = < ? php echo json_encode($level); ? > ;
     </script>
 
     <script type="text/javascript" src="i_myInfo.js"></script>
