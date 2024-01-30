@@ -236,7 +236,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin-top: 2.5vh;
-  padding: 3rem;
+  padding: 2em;
   overflow: hidden;
 }
 
@@ -245,7 +245,7 @@ body {
   border-radius: .3em;
   padding: 20px;
   width: 300px;
-  margin-bottom: 1em;
+  margin-bottom:.5em;
   color: #e8d897;
   font-size: 1.5em;
   text-align: center;
@@ -276,18 +276,48 @@ body {
 }
 
 #inputFieldChange {
-  background: rgb(173, 186, 56);
-  padding: 10px 3vw;
+  background: #d9d287;
+  width: 300px;
+  padding: 12px;
   margin-bottom: 1em;
+  margin-top: 1em;
+  border-radius: .5em;
+  font-size: 1.2em;
+  text-align: center;
+  outline: none;
+  border: 2px solid #b7ad7e; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+}
+
+#inputFieldChange:hover,
+#inputFieldChange:focus {
+  border-color: #7d753f; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); 
 }
 
 .change-btn {
-  background: rgb(186, 56, 132);
+  background: #00ffd1;
+  width: 60%;
   height: 50px;
-  padding: 10px 7vw;
-  margin-bottom: 1em;
-  cursor: crosshair;
+  cursor: pointer;
+  border-radius: .5em;
+  font-size: 1.2em;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(0, 255, 209, 0.6); 
 }
+
+.change-btn:hover {
+  transform: scale(1.02);
+  transition: all 0.3s; 
+  box-shadow: 0 0 15px rgba(0, 255, 209, 0.8); 
+}
+
+.change-btn:active {
+  transform: scale(0.99);
+  transition: all 0.3s; 
+  box-shadow: none; 
+}
+
 
 #error-msg {
   color: #eecbd1;
@@ -295,7 +325,7 @@ body {
   text-align: center;
   font-family: "Playfair Display", serif;
   font-weight: 600;
-  margin-top: 2em;
+  margin-top: 1em;
   padding: 1em;
   border-radius: .5em;
   background: #333a46d7;

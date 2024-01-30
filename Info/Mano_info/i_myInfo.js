@@ -79,10 +79,10 @@ nameButton.addEventListener("click", function () {
   contentDiv.innerHTML = `
         <h1>Vardo Keitimas</h1>
         <div class="content-response-div">
-            <p class="pargraph_1">Lorem ipsium A</p>
-            <p class="pargraph_2">Lorem ipsium B</p>
-            <input type="text" id="inputFieldChange" placeholder="Type new name">
-            <button class="change-btn">Keisti vardą</button>
+            <p class="pargraph_1">Jums nepatinka Jūsų vardas?</p>
+            <p class="pargraph_2">Galite nesunkiai pasikeisti vardą čia.Vardo keitimas jums kainuos <br> 50 000 Litų. Keisti vardą galima vieną kartą per mėnesį.</p>
+            <input type="text" id="inputFieldChange" placeholder="Gražiausias vardas">
+            <button class="change-btn">Vardo keitimas</button>
             <h3 id='error-msg'></h3>
         </div>
     `
@@ -93,7 +93,9 @@ nameButton.addEventListener("click", function () {
   document.querySelector(".change-btn").addEventListener("click", function () {
     const inputValue = inputField.value
 
-    if (hasConsecutiveLetters(inputValue)) {
+    if (inputValue.length <= 2) {
+      displayErrorMessage("⚠️ Vardas turi būti bent 3 simbolių ilgio! ✋🚫")
+    } else if (hasConsecutiveLetters(inputValue)) {
       displayErrorMessage("😬 Oops! Trys vienodi simboliai iš eilės. Nepraeis! 🚫✏️")
     } else if (!isNameLengthValid(inputValue)) {
       displayErrorMessage("🤔 Vardo ilgis viršija 21 simbolį. Trumpinam! 📏✏️")
@@ -110,6 +112,7 @@ nameButton.addEventListener("click", function () {
   })
 })
 
+
 // ? BTN GENDER
 genderButton.addEventListener("click", function () {
   console.log("Gender button clicked")
@@ -117,8 +120,10 @@ genderButton.addEventListener("click", function () {
   contentDiv.innerHTML = `
     <h1>Lyties Keitimas</h1>
     <div class="content-response-div">
-        <p class="pargraph_1">Jei pasikeitė Jūsų lytis?</p>
-        <p class="pargraph_2">Irašykite savo naujają lytį</p>
+        <p class="pargraph_1">Pasikeitė Jūsų lytis?</p>
+        <p class="pargraph_2">Kam nepasitaiko?<br>
+             Tiesiog įrašykite savo naujają lytį.Beje lyties keitimas <br> 100 000 Litų.
+        </p>
         <input type="text" id="inputFieldChange" placeholder="Jūsų naujoji lytis">
         <button class="change-btn">Lyties keitimas</button>
         <h3 id='error-msg'></h3>
@@ -155,10 +160,13 @@ emailButton.addEventListener("click", function () {
   contentDiv.innerHTML = `
     <h1>Email Keitimas</h1>
     <div class="content-response-div">
-      <p class="pargraph_1">email A</p>
-      <p class="pargraph_2">email B</p>
-      <input type="text" id="inputFieldChange" placeholder="Type new email">
-      <button class="change-btn">Keisti el. paštą</button>
+      <p class="pargraph_1">Pasikeitė El. paštas?</p>
+      <p class="pargraph_2">Elektroninį paštą galima pasikeisti čia. Įveskite naujajį savo el. pašto adresą.
+         Jums ateis patvirtinimo nuoroda į el. pašto dežutę.
+         Ją reikės būtinai paspausti.
+         Kartais laiškai nueina į spam folderį.</p>
+      <input type="text" id="inputFieldChange" placeholder="Naujasis email">
+      <button class="change-btn">El. pašto keitimas</button>
       <h3 id='error-msg'></h3>
     </div>
   `
