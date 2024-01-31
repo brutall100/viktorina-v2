@@ -98,7 +98,7 @@ mysqli_close($conn);
         </div>
     </nav>
 
-    <div class="conatainer">
+    <div class="container">
         <div class="content-user">
             <h1>Mano Informacija</h1>
             <div class="content-p">
