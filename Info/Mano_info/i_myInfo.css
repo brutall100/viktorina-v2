@@ -13,7 +13,7 @@
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 1.5em;
   font-weight: bold;
   font-family: "Arial", sans-serif;
   color: #42161e;
@@ -27,9 +27,16 @@ h1 {
   background-color: rgba(240, 240, 240, 0.1);
   text-transform: uppercase;
 }
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1em;
+    font-weight: 700;
+    overflow-wrap: break-word;
+  }
+}
 
 p {
-  font-size: 16px;
+  font-size: 1em;
   font-weight: normal;
 }
 
@@ -140,14 +147,13 @@ body {
   min-height: 72vh;
   padding: 0.8em 0 1.5em 0;
   margin: 0;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 @media (max-width: 1024px) {
   .container {
     flex-direction: column-reverse;
   }
 }
-
 
 .content-user {
   border: 1px solid rgba(240, 230, 140, 0.5);
@@ -157,7 +163,7 @@ body {
   overflow: auto;
   scroll-behavior: smooth;
   background-color: rgba(255, 255, 255, 0.299);
-  border: 1px solid rgb(230, 0, 255);
+  /* border: 1px solid rgb(230, 0, 255); */
   width: 40em;
 }
 @media (max-width: 1024px) {
@@ -166,8 +172,6 @@ body {
     max-width: 40em; 
   }
 }
-
-
 
 .content-p {
   border: 2px solid green;
@@ -184,7 +188,7 @@ body {
   padding: 10px 0;
   overflow: hidden;
   overflow: auto;
-  font-size: 21px;
+  font-size: 1.3em;
   font-weight: 600;
   background-color: #2e2e2e;
   color: #00ffd1;
@@ -196,6 +200,12 @@ body {
   scrollbar-width: thin;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+@media (max-width: 400px) {
+  .content-row p {
+    font-size: .9em;
+    
+  }
 }
 
 .content-row p::-webkit-scrollbar {
@@ -216,25 +226,45 @@ body {
   box-shadow: 0 0 20px rgba(0, 255, 209, 0.7);
 }
 
+/* ? First span */
 .first-span {
   background-color: #1815151f;
   padding-left: 10px;
-  border: 1px solid red;
+}
+@media (max-width:360px) {
+  .first-span {
+    display: none;
+  }
 }
 
+/* ? Middle span */
 .middle-span {
   color: #e8d897;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-shadow: 1px 1px 3px rgba(232, 217, 151, 0.6);
-  border: 1px solid red;
-  
+  overflow-x: auto;
+  word-break: break-all;
+}
+@media (max-width: 360px) {
+  .middle-span {
+    margin: 0 auto;
+    font-size: 0.9em;
+  }
+  .middle-span::-webkit-scrollbar-thumb {
+    width: 3px; 
+  }
 }
 
+/* ? Last span */
 .last-span {
   background-color: #1f315a;
-  border: 1px solid red;
+}
+@media (max-width:360px) {
+  .last-span {
+    display: none;
+  }
 }
 
 /* // Keitimo informacija */
@@ -255,6 +285,7 @@ body {
     margin-bottom: 3em;
   }
 }
+
 
 
 .content-response-div {
@@ -282,6 +313,13 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 255, 209, 0.5);
 }
+@media (max-width: 400px) {
+  .pargraph_1{
+    font-size: 1.2em;
+    width: auto;
+    padding: .8em;
+  }
+}
 
 
 .pargraph_2 {
@@ -294,6 +332,14 @@ body {
   font-family: 'Dancing Script', cursive;
   font-size: 1.2em;
   font-weight: 700;
+}
+@media (max-width: 400px) {
+  .pargraph_2{
+    padding: 1em;
+    font-size: 1em;
+    width: auto;
+
+  }
 }
 
 .paragraph_2_sp {
@@ -313,8 +359,20 @@ body {
   font-size: 1.2em;
   text-align: center;
   outline: none;
-  border: 2px solid #b7ad7e; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  border: 2px solid #b7ad7e;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 400px) {
+  #inputFieldChange {
+    width: 100%;
+    font-size: .8em;
+    box-sizing: border-box;
+  }
+/* ! Neveikia */
+  #inputFieldChange::placeholder {
+    display: none !important; 
+  }
 }
 
 #inputFieldChange:hover,
@@ -323,6 +381,10 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); 
 }
 
+#inputFieldChange::placeholder {
+  color: #000; 
+}
+/* ! fix btn 1024 400 */
 .change-btn {
   background: #00ffd1;
   width: 60%;
@@ -333,6 +395,8 @@ body {
   font-weight: 600;
   box-shadow: 0 0 10px rgba(0, 255, 209, 0.6); 
 }
+
+
 
 .change-btn:hover {
   transform: scale(1.02);
