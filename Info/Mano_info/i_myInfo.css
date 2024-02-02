@@ -57,8 +57,8 @@ p {
   font-weight: 900;
   font-style: normal;
   width: 10em;
-  margin-top: 1px;
-  padding: 1px 12px;
+  margin-top: .1em;
+  padding: .4em .9em;
   transition: background-color 0.6s, transform 0.6s, color 0.6s, border 0.6s;
 }
 
@@ -120,23 +120,52 @@ body {
 /*// User header with BTN */
 .user-header-ctn {
   display: flex;
-  justify-content: center;
-  position: sticky;
-  background-color: #ffffff1d;
+  flex-wrap: wrap;
   z-index: 1;
+  justify-content: center; /* Center the items horizontally */
+  text-align: center;
 }
 
-.user-header-btn {
-  margin: 20px 16px;
+@media (max-width: 1024px) {
+  .user-header-ctn {
+   margin:0 200px;
+   padding: 0;
+  }
 }
+
+@media (max-width: 600px) {
+  .user-header-ctn {
+    flex-direction: column; 
+    border: 1px solid green;
+  }
+}
+
+
+
+.user-header-btn {
+  padding: 20px;
+  border: 1px solid rgb(79, 0, 128);
+  margin: 0;
+  
+}
+@media (max-width: 1042px){
+  .user-header-btn{
+    flex: 50%;
+  }
+}
+
 
 .fa-regular.fa-user,
 .fa-solid.fa-person-half-dress,
 .fa-regular.fa-envelope,
 .fa-solid.fa-up-right-from-square {
   font-size: 16px;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  /* padding: .5em; */
 }
+
+
+
 
 /*// Pagrindinis konteineris */
 /* Pagrindinis konteineris */
