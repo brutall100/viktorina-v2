@@ -138,7 +138,7 @@ app.post("/updateName", async (req, res) => {
 
             if (subtractRows.affectedRows > 0) {
               console.log(`User name updated successfully to '${newName}' and 50,000 litai subtracted`)
-              res.json({ message: `Jūsų naujasis vardas ${newName}` })
+              res.json({ message: `Jūsų naujasis vardas: ${newName}` })
             } else {
               console.log("Error subtracting 50,000 from litai_sum")
               res.status(400).json({ message: "Nepavyko atnaujinti vardo" })
@@ -180,7 +180,7 @@ app.post("/updateGender", async (req, res) => {
 
       if (updateRows.affectedRows > 0) {
         console.log(`User gender updated successfully to '${userGender}' and 100,000 litai subtracted`)
-        res.json({ message: `Jūsų naujoji lytis ${userGender}` })
+        res.json({ message: `Jūsų naujoji lytis: ${userGender}` })
       } else {
         console.log("Error updating user gender or subtracting litai")
         res.status(400).json({ message: "Nepavyko atnaujinti lyties arba nuskaičiouti  litų" })

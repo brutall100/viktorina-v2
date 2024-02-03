@@ -521,7 +521,8 @@ body {
   border-radius: .5em;
   padding: 1.5em;
   max-width: 25em; 
-  min-height: 15em; 
+  height: 25%;
+  /* max-height: 15em;  */
   text-align: center;
   z-index: 2;
 }
