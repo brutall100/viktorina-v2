@@ -83,6 +83,11 @@ mysqli_close($conn);
         <?php include '../../Header/header.php'; ?>
     </div>
 
+    <div id="customAlert" class="hidden">
+        <p id="alertMessage"></p>
+        <button id="closeAlert">Uždaryti</button>
+    </div>
+
     <nav class="user-header-ctn">
         <div class="user-header-btn">
             <button id="name-button" class="btn">Keisti Vardą <i class="fa-regular fa-user"></i></button>

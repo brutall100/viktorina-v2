@@ -19,13 +19,13 @@ const db = mysql.createPool({
 app.use(bodyParser.json())
 app.use(cors())
 
-const verificationUUID = uuidv4() // Generate a unique identifier
-let connection // Global connection. This way, it can be used across different endpoints
+const verificationUUID = uuidv4() 
+let connection 
 
 //// Function to check if a month has passed
 function hasMonthPassed(lastUpdateTimestamp) {
   const now = new Date().getTime()
-  const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000 // Approximate one month in milliseconds
+  const oneMonthInMillis = 30 * 24 * 60 * 60 * 1000 
   return now - lastUpdateTimestamp >= oneMonthInMillis
 }
 
@@ -101,7 +101,6 @@ app.post("/updateName", async (req, res) => {
   try {
     const connection = await db.getConnection()
 
-    // Check if the user with the new name already exists
     const [duplicateRows] = await connection.execute("SELECT * FROM super_users WHERE nick_name = ?", [newName])
 
     if (duplicateRows.length > 0) {
@@ -127,7 +126,6 @@ app.post("/updateName", async (req, res) => {
         const lastUpdateTimestamp = userRows[0].last_name_update_timestamp || 0
 
         if (hasMonthPassed(lastUpdateTimestamp)) {
-          // Continue with the name update logic
           const [updateRows] = await connection.execute("UPDATE super_users SET nick_name = ?, last_name_update_timestamp = CURRENT_TIMESTAMP WHERE user_id = ? AND litai_sum = ?", [
             newName,
             userId,
@@ -204,14 +202,12 @@ app.post("/updateEmail", async (req, res) => {
   try {
     connection = await db.getConnection()
 
-    // Check if the new email is different from the existing one
     const [userRows] = await connection.execute("SELECT * FROM super_users WHERE user_id = ? AND nick_name = ?", [userId, userName])
 
     if (userRows.length === 0) {
       console.log(`Warning: User with user ID '${userId}' and litai '${userName}' not found`)
       res.status(400).json({ message: "Vartotojas su tokiu ID ir litais nerastas" })
     } else {
-      // If the new email is different, perform the duplicate email check
       if (userEmail !== userRows[0].user_email) {
         // Check if the new email already exists in the database
         const [emailCheckRows] = await connection.execute("SELECT * FROM super_users WHERE user_email = ?", [userEmail])
@@ -611,7 +607,4 @@ app.listen(PORT, () => {
 })
 
 // node i_myInfoServer.js
-// ! jei viskas ok nusiusti i email nauja warda
-// Pasizet ar toks vardas jau egzistuoja, jei yra atmesti pakeitimus ir nenuimti litu, jei nera galima keisti ir patikrinti bad words database kad vardas butu atitinkamas.
-// padaryti laiko tarpa po pirmo keitimo kada galima bus vel pasikeisti varda using npm moment gal menesis,
-// vardo keitimas 100 000 plius laikas 1 men
+
