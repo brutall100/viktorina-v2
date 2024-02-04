@@ -1,6 +1,13 @@
 <?php
-//session_set_cookie_params(['SameSite' => 'none', 'httponly' => true, 'Secure' => true]);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_set_cookie_params(['SameSite' => 'none', 'httponly' => true, 'Secure' => true]);
+
 session_start();
+
+include 'x_configDB.php';
+
 $name = $_SESSION['nick_name'] ?? "";
 $level = $_SESSION['user_lvl'] ?? "";
 $points = $_SESSION['points'] ?? "";
@@ -40,10 +47,11 @@ $user_id = $_SESSION['user_id'] ?? "";
         </tr>
         <?php 
         
-          $host='***REMOVED***';
-          $user = '***REMOVED***';
-          $password = '***REMOVED***';
-          $dbname = 'viktorina'; 
+        // // Conection from Include
+          // $host='***REMOVED***';
+          // $user = '***REMOVED***';
+          // $password = '***REMOVED***';
+          // $dbname = 'viktorina'; 
         
          /*
           $host='127.0.0.1';
@@ -52,11 +60,11 @@ $user_id = $_SESSION['user_id'] ?? "";
           $dbname = 'u605154248_viktorina';
          */
 
-          $conn = mysqli_connect($host, $user, $password, $dbname);
+          // $conn = mysqli_connect($host, $user, $password, $dbname);
 
-          if (!$conn) {
-              die("Connection failed: " . mysqli_connect_error());
-          }
+          // if (!$conn) {
+          //     die("Connection failed: " . mysqli_connect_error());
+          // }
           mysqli_set_charset($conn, "utf8mb4");
           $sql = "SELECT id, user, question, answer, vote_count FROM $dbname.question_answer";
           $result = mysqli_query($conn, $sql);
@@ -89,7 +97,8 @@ $user_id = $_SESSION['user_id'] ?? "";
   </div>
 
 <script>
-// UPVOTE
+  // ! Padaryti normalu balsavima atbalsavima prideti lita uz balsavima
+//// UPVOTE
 document.querySelectorAll('.upvote').forEach(function(button) {
   button.addEventListener('click', function() {
     var id = this.dataset.id;
@@ -110,7 +119,7 @@ document.querySelectorAll('.upvote').forEach(function(button) {
   });
 });
 
-// DOWNVOTE
+//// DOWNVOTE
 document.querySelectorAll('.downvote').forEach(function(button) {
   button.addEventListener('click', function() {
     var id = this.dataset.id;

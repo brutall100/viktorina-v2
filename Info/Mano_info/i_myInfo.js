@@ -9,12 +9,12 @@ const paragraph2Elements = contentDiv.getElementsByClassName("paragraph_2")
 const changeButton = contentDiv.querySelector(".change-btn")
 
 //// Variables defined in the <script> tag in HTML
-// console.log(userName)
-// console.log(userId)
-// console.log(userLitai)
-// console.log(userGender)
-// console.log(userEmail)
-// console.log(userLevel)
+console.log(userName)
+console.log(userId)
+console.log(userLitai)
+console.log(userGender)
+console.log(userEmail)
+console.log(userLevel)
 
 ////  Globali funkcija tikrina ar neina 3 vienodoi simboliai is eiles
 function hasConsecutiveLetters(input) {

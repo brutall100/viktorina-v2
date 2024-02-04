@@ -2,104 +2,116 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+session_set_cookie_params(['SameSite' => 'none', 'httponly' => true, 'Secure' => true]);
+
 session_start();
-$name = $_SESSION['nick_name'] ?? "";
-$level = $_SESSION['user_lvl'] ?? "";
-$points = $_SESSION['points'] ?? "";
-$user_id = $_SESSION['user_id'] ?? "";
-$message = ""; 
+
+include 'x_configDB.php';
+
+$name = htmlspecialchars($_SESSION['nick_name'] ?? "", ENT_QUOTES, 'UTF-8');
+$level = htmlspecialchars($_SESSION['user_lvl'] ?? "", ENT_QUOTES, 'UTF-8');
+$points = htmlspecialchars($_SESSION['points'] ?? "", ENT_QUOTES, 'UTF-8');
+$user_id = htmlspecialchars($_SESSION['user_id'] ?? "", ENT_QUOTES, 'UTF-8');
+$message = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $host = '***REMOVED***';
-    $user = '***REMOVED***';
-    $password = '***REMOVED***';
-    $dbname = 'viktorina';
 
-    $conn = mysqli_connect($host, $user, $password, $dbname);
+    // // Conection from Include
+    // $host = '***REMOVED***';
+    // $user = '***REMOVED***';
+    // $password = '***REMOVED***';
+    // $dbname = 'viktorina';
 
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
+    // $conn = mysqli_connect($host, $user, $password, $dbname);
 
-    $name = $_POST['name'];
-    $user_id = $_POST['user_id'];
-    $question = $_POST['question'] ?? "";
-    $answer = $_POST['answer'] ?? "";
+    // if (!$conn) {
+    //     die("Connection failed: " . mysqli_connect_error());
+    // }
+
+    $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+    $user_id = htmlspecialchars($_POST['user_id'], ENT_QUOTES, 'UTF-8');
+    $question = htmlspecialchars($_POST['question'] ?? "", ENT_QUOTES, 'UTF-8');
+    $answer = htmlspecialchars($_POST['answer'] ?? "", ENT_QUOTES, 'UTF-8');
     $date_inserted = date("Y-m-d"); // current date
     $ip = $_SERVER['REMOTE_ADDR'];
 
-	if (empty($name)) { // Neprisijungus spaudziant irasyti nemes klaidos
-		$message = '<span class="empty-fields">Klaida:</br> Turite prisijungti.</span>'; }
-    elseif (empty($question) || empty($answer)) {
+    if (empty($name)) {
+        $message = '<span class="empty-fields">Klaida:</br> Turite prisijungti.</span>';
+    } elseif (empty($question) || empty($answer)) {
         $message = '<span class="empty-fields">Klaida:</br> Ne visi laukai užpildyti. Klausimas ir atsakymas yra būtini.</span>';
     } else {
-        // Check if answer contains bad words
-        $bad_words_sql = "SELECT curse_words FROM bad_words";
-        $bad_words_result = mysqli_query($conn, $bad_words_sql);
+        // Use prepared statements to prevent SQL injection
+        $stmt = $conn->prepare("SELECT curse_words FROM bad_words");
+        $stmt->execute();
+        $bad_words_result = $stmt->get_result();
         $bad_words_array = array();
 
-        if (mysqli_num_rows($bad_words_result) > 0) {
-            while($row = mysqli_fetch_assoc($bad_words_result)) {
-                $bad_words_array[] = $row["curse_words"];
-            }
+        while ($row = $bad_words_result->fetch_assoc()) {
+            $bad_words_array[] = $row["curse_words"];
         }
 
         foreach ($bad_words_array as $bad_word) {
             if (strpos($question, $bad_word) !== false || strpos($answer, $bad_word) !== false) {
                 $message = '<span class="bad-word-message">Klaida:</br> Klausime arba atsakyme yra nepriimtinų žodžių.</span>';
-                break; // Stop the loop after finding the first bad word
+                break;
             }
-        
+
             // Check for three or more consecutive same letters in question or answer
             if (preg_match('/(.)\1{2,}/', $question) || preg_match('/(.)\1{2,}/', $answer)) {
                 $message = '<span class="consecutive-letters-message">Klaida:</br> Klausime arba atsakyme yra trys ar daugiau iš eilės einančios tokios pačios raidės.</span>';
-                break; // Stop the loop after finding three or more consecutive same letters
+                break;
             }
-        
+
             // Check if any word has more than 21 letters in question or answer
             $words = preg_split('/\s+/', $question);
             $words = array_merge($words, preg_split('/\s+/', $answer));
-        
+
             foreach ($words as $word) {
-                if (strlen($word) > 21) {
+                if (mb_strlen($word, 'UTF-8') > 21) {
                     $message = '<span class="long-word-message">Klaida:</br> Klausime arba atsakyme yra žodis, turintis daugiau nei 21 raidę.</span>';
-                    break 2; // Stop the loop and exit the outer loop after finding a long word
+                    break 2;
                 }
             }
         }
 
         if (empty($message)) {
             // Check user level
-            $check_level_sql = "SELECT user_lvl FROM super_users WHERE user_id = '$user_id'";
-            $check_level_result = mysqli_query($conn, $check_level_sql);
+            $stmt = $conn->prepare("SELECT user_lvl FROM super_users WHERE user_id = ?");
+            $stmt->bind_param("s", $user_id);
+            $stmt->execute();
+            $check_level_result = $stmt->get_result();
 
-            if (mysqli_num_rows($check_level_result) > 0) {
-                $row = mysqli_fetch_assoc($check_level_result);
+            if ($check_level_result->num_rows > 0) {
+                $row = $check_level_result->fetch_assoc();
                 $user_lvl = $row['user_lvl'];
 
                 if ($user_lvl <= 1) {
                     $message = '<span class="user-level-error">Klaida:</br> Jūs neturite leidimo įrašyti klausimo ir atsakymo į duomenų bazę.</span>';
                 } else {
-                    // Check if the same question and answer already exist
-                    $check_sql = "SELECT * FROM question_answer WHERE question = '$question' AND answer = '$answer'";
-                    $check_result = mysqli_query($conn, $check_sql);
+                    // Use prepared statement to prevent SQL injection
+                    $stmt = $conn->prepare("SELECT * FROM question_answer WHERE question = ? AND answer = ?");
+                    $stmt->bind_param("ss", $question, $answer);
+                    $stmt->execute();
+                    $check_result = $stmt->get_result();
 
-                    if (mysqli_num_rows($check_result) > 0) {
+                    if ($check_result->num_rows > 0) {
                         $message = "Toks klausimas jau egzistuoja.";
                     } else {
                         // Insert the data into the database
-                        $sql = "INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES ('$name', '$user_id', '$question', '$answer', '$date_inserted','$ip')";
-                        if (mysqli_query($conn, $sql)) {
-                            $message = '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums bus suteikta 10 LITŲ.</span>';
-                            $sql = "UPDATE super_users SET litai_sum = litai_sum + 10, timestamp_icon = CURRENT_TIMESTAMP WHERE nick_name = '$name'";
+                        $stmt = $conn->prepare("INSERT INTO question_answer (user, super_users_id, question, answer, date_inserted, ip) VALUES (?, ?, ?, ?, ?, ?)");
+                        $stmt->bind_param("ssssss", $name, $user_id, $question, $answer, $date_inserted, $ip);
 
-                            if (mysqli_query($conn, $sql)) {
-                                // Success
+                        if ($stmt->execute()) {
+                            $message = '<span class="good-question">Naujas klausimas sukurtas sėkmingai. Klausimas irašytas į laikinają duomenų bazę. Kur bus balsuojama. Už įrašytą klausimą jums bus suteikta 10 LITŲ.</span>';
+                            $stmt = $conn->prepare("UPDATE super_users SET litai_sum = litai_sum + 10, timestamp_icon = CURRENT_TIMESTAMP WHERE nick_name = ?");
+                            $stmt->bind_param("s", $name);
+
+                            if ($stmt->execute()) {
                             } else {
-                                $message = "Error updating litai_sum: " . mysqli_error($conn);
+                                $message = "Error updating litai_sum: " . $stmt->error;
                             }
                         } else {
-                            $message = "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            $message = "Error: " . $stmt->error;
                         }
                     }
                 }
@@ -109,11 +121,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    mysqli_close($conn);
+    $stmt->close();
+    $conn->close();
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -155,44 +168,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
     
     <div class="main-info">
-      <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
-        <?php
-        date_default_timezone_set('Europe/Vilnius'); // Set the time zone to "Europe/Vilnius"
+        <?php if (!empty($name) && !empty($level) && !empty($points) && !empty($user_id)): ?>
+            <?php
+            // // Conection from Include
+            include 'x_configDB.php';
 
-        $conn = mysqli_connect("***REMOVED***", "***REMOVED***", "***REMOVED***", "viktorina");
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-        }
+            $stmt = $conn->prepare("SELECT timestamp_icon FROM super_users WHERE user_id = ?");
+            $stmt->bind_param("s", $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
 
-        // Get the timestamp from the database
-        $sql = "SELECT timestamp_icon FROM super_users WHERE user_id = '$user_id'";
-        $result = mysqli_query($conn, $sql);
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $timestamp_icon = strtotime($row['timestamp_icon']); // Convert timestamp to UNIX timestamp
+            } else {
+                $timestamp_icon = 0; // If no timestamp is found, assign a default value
+            }
 
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            $timestamp_icon = strtotime($row['timestamp_icon']); // Convert timestamp to UNIX timestamp
-            //echo "Timestamp from database: " . date('Y-m-d H:i:s', $timestamp_icon) . "<br>"; // Debugging statement
-            //echo "Current time: " . date('Y-m-d H:i:s') . "<br>"; // Debugging statement
-        } else {
-            $timestamp_icon = 0; // If no timestamp is found, assign a default value
-        }
+            $oneWeekAgo = strtotime('-1 week'); // Calculate the timestamp 1 week ago
+            $iconAddress = " images/icons/question_master6.jpg";
+            // Check if the timestamp is within the last 1 week
+            if ($timestamp_icon > $oneWeekAgo) {
+                echo '<p>Autorius: ' . $name . ' <img src="' . $iconAddress . '" alt="icon" width="21" height="21" class="question_master_icon"></p>';
+            } else {
+                echo '<p>Autorius: ' . $name . '</p>';
+            }
 
-        $oneWeekAgo = strtotime('-1 week'); // Calculate the timestamp 1 week ago
-        $iconAddress = " images/icons/question_master6.jpg";
-        // Check if the timestamp is within the last 1 week
-        if ($timestamp_icon > $oneWeekAgo) {
-            echo '<p>Autorius: ' . $name . ' <img src="' . $iconAddress . '" alt="icon" width="21" height="21" class="question_master_icon"></p>'; 
-        } else {
-            echo '<p>Autorius: ' . $name . '</p>';
-        }
-
-        mysqli_close($conn);
-        ?>
-        <p>Lygis: <?php echo $level; ?></p>
-        <p>Litai: <?php echo $points; ?></p>
-        <p>Id: <?php echo $user_id; ?></p>
-      <?php endif; ?>
+            $stmt->close();
+            ?>
+            <p>Lygis: <?php echo $level; ?></p>
+            <p>Litai: <?php echo $points; ?></p>
+            <p>Id: <?php echo $user_id; ?></p>
+        <?php endif; ?>
     </div>
+
   </main>
 
   <?php if (!empty($message)): ?>
@@ -226,7 +235,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       document.getElementById("question").disabled = true;
       document.getElementById("answer").disabled = true;
     }
-</script>   <!-- Skriptai dokumento viduje turi buti -->	
+</script>   
 </body>
 </html>
+
+
 <!-- <p>Jūs esate perkkeliamas atgal. Gal įrašysite dar vieną klausimą?  <span id="countdown">30</span> seconds.</p> -->
