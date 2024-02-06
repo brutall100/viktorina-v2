@@ -84,45 +84,65 @@ $user_id = $_SESSION['user_id'] ?? "";
   // ! Padaryti normalu balsavima atbalsavima prideti lita uz balsavima
 //// UPVOTE
 document.querySelectorAll('.upvote').forEach(function(button) {
-  button.addEventListener('click', function() {
-    var id = this.dataset.id;
-    var user_id = "<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>";
-    fetch('c_upvote.php?id=' + id + '&user_id=' + user_id)
-      .then(function(response) {
-        return response.text();
-      })
-      .then(function(text) {
-        console.log(text);
-        setTimeout(function(){
-          location.reload();
-        }, 50);
-      })
-      .catch(function(error) {
-        console.log('Request failed', error);
-      });
-  });
+    button.addEventListener('click', function() {
+        var id = this.dataset.id;
+        var user_id = "<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>";
+        fetch('c_upvote.php?id=' + id + '&user_id=' + user_id)
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(text) {
+                console.log(text);
+                if (text === "Success") {
+                    if (button.classList.contains("upvoted")) {
+                        button.classList.remove("upvoted");
+                        button.textContent = "Upvote";
+                    } else {
+                        button.classList.add("upvoted");
+                        button.textContent = "Cancel Vote";
+                    }
+                }
+                setTimeout(function() {
+                    location.reload();
+                }, 50);
+            })
+            .catch(function(error) {
+                console.log('Request failed', error);
+            });
+    });
 });
+
 
 //// DOWNVOTE
 document.querySelectorAll('.downvote').forEach(function(button) {
-  button.addEventListener('click', function() {
-    var id = this.dataset.id;
-    var user_id = "<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>";
-    fetch('c_downvote.php?id=' + id + '&user_id=' + user_id)
-      .then(function(response) {
-        return response.text();
-      })
-      .then(function(text) {
-        console.log(text);
-        setTimeout(function(){
-          location.reload();
-        }, 50);
-      })
-      .catch(function(error) {
-        console.log('Request failed', error);
-      });
-  });
+    button.addEventListener('click', function() {
+        var id = this.dataset.id;
+        var user_id = "<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>";
+        fetch('c_downvote.php?id=' + id + '&user_id=' + user_id)
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(text) {
+                console.log(text);
+                if (text === "Success") {
+                    if (button.classList.contains("downvoted")) {
+                        button.classList.remove("downvoted");
+                        button.textContent = "Downvote";
+                    } else {
+                        button.classList.add("downvoted");
+                        button.textContent = "Cancel Vote";
+                    }
+                }
+                setTimeout(function() {
+                    location.reload();
+                }, 50);
+            })
+            .catch(function(error) {
+                console.log('Request failed', error);
+            });
+    });
 });
+
 </script>
 
              <!-- perkelia klausimus i kita DB naudojant transferData.php -->
