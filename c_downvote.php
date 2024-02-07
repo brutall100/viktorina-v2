@@ -22,11 +22,11 @@ $existingVote = hasUserVoted($conn, $userId, $id);
 if ($existingVote) {
     if ($existingVote['minus'] == 1) {
         // User previously upvoted, now changing to downvote
-        $sql = "UPDATE question_answer SET vote_count = vote_count + 1 WHERE id = ?";
+        $sql = "UPDATE question_answer SET vote_count = vote_count 0 WHERE id = ?";
         $sql2 = "UPDATE user_votes SET minus = 0 WHERE user_id = ? AND question_id = ?";
     } else {
         // User already downvoted, so remove the downvote
-        $sql = "UPDATE question_answer SET vote_count = vote_count - 2 WHERE id = ?";
+        $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
         $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
     }
 } else {
