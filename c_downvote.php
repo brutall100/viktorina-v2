@@ -21,16 +21,16 @@ $existingVote = hasUserVoted($conn, $userId, $id);
 
 if ($existingVote) {
     if ($existingVote['minus'] == 1) {
-        // User previously upvoted, now changing to downvote
+        //// User previously upvoted, now changing to downvote
         $sql = "UPDATE question_answer SET vote_count = vote_count 0 WHERE id = ?";
-        $sql2 = "UPDATE user_votes SET minus = 0 WHERE user_id = ? AND question_id = ?";
+        $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
     } else {
-        // User already downvoted, so remove the downvote
+        //// User already downvoted, so remove the downvote
         $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
         $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
     }
 } else {
-    // User has not voted yet, so downvote
+    //// User has not voted yet, so downvote
     $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
     $sql2 = "INSERT INTO user_votes (user_id, question_id, minus) VALUES (?, ?, 1)";
 }

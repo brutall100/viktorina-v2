@@ -21,16 +21,16 @@ $existingVote = hasUserVoted($conn, $userId, $id);
 
 if ($existingVote) {
     if ($existingVote['plius'] == 1) {
-        // User already upvoted, so remove the upvote
-        $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
+        //// User already upvoted, so remove the upvote
+        $sql = "UPDATE question_answer SET vote_count = vote_count 0 WHERE id = ?";
         $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
     } else {
-        // User previously downvoted, now changing to upvote
-        $sql = "UPDATE question_answer SET vote_count = vote_count + 2 WHERE id = ?";
-        $sql2 = "UPDATE user_votes SET plius = 1 WHERE user_id = ? AND question_id = ?";
+        //// User previously downvoted, now changing to upvote
+        $sql = "UPDATE question_answer SET vote_count = vote_count + 1 WHERE id = ?";
+        $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
     }
 } else {
-    // User has not voted yet, so upvote
+    //// User has not voted yet, so upvote
     $sql = "UPDATE question_answer SET vote_count = vote_count + 1 WHERE id = ?";
     $sql2 = "INSERT INTO user_votes (user_id, question_id, plius) VALUES (?, ?, 1)";
 }
