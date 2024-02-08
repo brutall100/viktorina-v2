@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 function hasUserVoted($conn, $userId, $questionId) {
-    $sql = "SELECT * FROM user_votes WHERE user_id = ? AND question_id = ?";
+    $sql = "SELECT *, UNIX_TIMESTAMP(vote_lock_time) AS vote_lock_timestamp FROM user_votes WHERE user_id = ? AND question_id = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "ii", $userId, $questionId);
     mysqli_stmt_execute($stmt);
@@ -20,19 +20,28 @@ $userId = $_GET['user_id'];
 $existingVote = hasUserVoted($conn, $userId, $id);
 
 if ($existingVote) {
-    if ($existingVote['minus'] == 1) {
-        //// User previously upvoted, now changing to downvote
-        $sql = "UPDATE question_answer SET vote_count = vote_count 0 WHERE id = ?";
-        $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
+    $currentTime = time();
+    $voteTime = strtotime($existingVote['vote_lock_time']);
+    $timeDifference = $currentTime - $voteTime;
+    $lockPeriod = 5 * 3600; 
+
+    if ($timeDifference >= $lockPeriod) {
+        // Allow changing vote as the lock period has passed
+        if ($existingVote['minus'] == 1) {
+            $sql = "UPDATE question_answer SET vote_count = vote_count + 1 WHERE id = ?";
+            $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
+        } else {
+            $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
+            $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
+        }
     } else {
-        //// User already downvoted, so remove the downvote
-        $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
-        $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
+        // Lock period not expired, reject vote change
+        echo "Vote cannot be changed at this time.";
+        exit();
     }
 } else {
-    //// User has not voted yet, so downvote
     $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
-    $sql2 = "INSERT INTO user_votes (user_id, question_id, minus) VALUES (?, ?, 1)";
+    $sql2 = "INSERT INTO user_votes (user_id, question_id, minus, vote_lock_time) VALUES (?, ?, 1, NOW())";
 }
 
 $stmt = mysqli_prepare($conn, $sql);
