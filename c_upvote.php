@@ -20,26 +20,17 @@ $userId = $_GET['user_id'];
 $existingVote = hasUserVoted($conn, $userId, $id);
 
 if ($existingVote) {
-    $currentTime = time();
-    $voteTime = strtotime($existingVote['vote_lock_time']);
-    $timeDifference = $currentTime - $voteTime;
-    $lockPeriod = 5 * 3600; 
-
-    if ($timeDifference >= $lockPeriod) {
-        // Allow changing vote as the lock period has passed
-        if ($existingVote['plius'] == 1) {
-            $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
-            $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
-        } else {
-            $sql = "UPDATE question_answer SET vote_count = vote_count + 1 WHERE id = ?";
-            $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
-        }
+    if ($existingVote['plius'] == 1) {
+        //// User already upvoted, so remove the upvote
+        $sql = "UPDATE question_answer SET vote_count = vote_count 0 WHERE id = ?";
+        $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
     } else {
-        // Lock period not expired, reject vote change
-        echo "Vote cannot be changed at this time.";
-        exit();
+        //// User previously downvoted, now changing to upvote
+        $sql = "UPDATE question_answer SET vote_count = vote_count + 1 WHERE id = ?";
+        $sql2 = "DELETE FROM user_votes WHERE user_id = ? AND question_id = ?";
     }
 } else {
+    //// User has not voted yet, so upvote
     $sql = "UPDATE question_answer SET vote_count = vote_count + 1 WHERE id = ?";
     $sql2 = "INSERT INTO user_votes (user_id, question_id, plius, vote_lock_time) VALUES (?, ?, 1, NOW())";
 }
@@ -56,7 +47,6 @@ echo "Success";
 
 mysqli_close($conn);
 ?>
-
 
 
 
