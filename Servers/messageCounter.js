@@ -1,24 +1,79 @@
-const beep = require("beepbeep")
-function makeBeepSound() {
-  beep()
-}
-makeBeepSound() // Make a beep sound when the script starts
-
-console.log("Message counter script has started.")
-
 const mysql = require("mysql")
 const cron = require("node-cron")
-require("dotenv").config()
+const path = require("path")
+require("dotenv").config({ path: path.join(__dirname, ".env") })
+
+//? Log message that script is working
+cron.schedule("* * * * *", () => {
+  console.log("Message counter script is running...")
+})
 
 const dbConfig = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT
+  database: process.env.DB_DATABASE
+  // port: process.env.DB_PORT
 }
 
 const pool = mysql.createPool(dbConfig)
+
+// Function to count votes for each user
+function countUserVotes() {
+  return new Promise((resolve, reject) => {
+    const query = `
+      SELECT user_id, COUNT(voted) AS voteCount 
+      FROM user_votes 
+      GROUP BY user_id`
+
+    pool.query(query, (error, results) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve(results)
+      }
+    })
+  })
+}
+// !delete all old votes
+// Function to update litai_sum for a user
+function updateLitaiSum(userId, voteCount) {
+  return new Promise((resolve, reject) => {
+    const query = `
+      UPDATE super_users
+      SET litai_sum = litai_sum + ?,
+          litai_sum_today = litai_sum_today + ?,
+          litai_sum_week = litai_sum_week + ?,
+          litai_sum_month = litai_sum_month + ?,
+          vote_litai = vote_litai + ?
+      WHERE user_id = ?`
+
+    const params = [voteCount, voteCount, voteCount, voteCount, voteCount, userId]
+
+    pool.query(query, params, (error, results) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
+// Schedule a cron job to update super_users with vote counts every 5 minutes
+cron.schedule("*/5 * * * *", async () => {
+  try {
+    const userVotes = await countUserVotes()
+    console.log("User Vote Counts:")
+    userVotes.forEach(async ({ user_id, voteCount }) => {
+      console.log(`User ${user_id} has ${voteCount} votes.`)
+      await updateLitaiSum(user_id, voteCount)
+      console.log(`litai_sum updated for User ${user_id}.`)
+    })
+  } catch (error) {
+    console.error("Error:", error)
+  }
+})
 
 // Function to count messages for a specific user within the past hour
 function countUserMessages(username) {
@@ -178,6 +233,7 @@ function resetLitaiSumMonth() {
   })
 }
 
+console.log("Message counter script has started.")
 
 //
 // node messageCounter.js
