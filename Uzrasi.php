@@ -15,7 +15,8 @@ Ten sudeti reikalingas nuorodas is kur panaudoti backroundai kaip PVZ: <a href="
 per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazodio priminimo Funkcija -->
 
 <!-- 4 -->
-<!--  -->
+<!-- Sukurti scripta kuris 12 nakties patikrintu user vote_litai ir pervestu to litai_sum ir delete vote_litai...
+Taipogi user_votes tikrintu table voted If voted 0 it dosent update database,. -->
 
 <!-- 5 -->
 <!-- Reikia images folderi ir images serverio folderi tvarkyti -->

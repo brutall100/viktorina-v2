@@ -32,7 +32,7 @@ if ($existingVote) {
 } else {
     //// User has not voted yet, so downvote
     $sql = "UPDATE question_answer SET vote_count = vote_count - 1 WHERE id = ?";
-    $sql2 = "INSERT INTO user_votes (user_id, question_id, minus, vote_lock_time) VALUES (?, ?, 1, NOW())";
+    $sql2 = "INSERT INTO user_votes (user_id, question_id, minus, vote_lock_time, voted) VALUES (?, ?, 1, NOW(), 1)";
 }
 
 $stmt = mysqli_prepare($conn, $sql);
