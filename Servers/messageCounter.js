@@ -1,19 +1,16 @@
-const mysql = require("mysql")
 const cron = require("node-cron")
+const mysql = require("mysql")
 const path = require("path")
 require("dotenv").config({ path: path.join(__dirname, ".env") })
 
-//? Log message that script is working
-cron.schedule("* * * * *", () => {
-  console.log("Message counter script is running...")
-})
+console.log("Message counter script has started.")
 
 const dbConfig = {
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE
-  // port: process.env.DB_PORT
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT
 }
 const pool = mysql.createPool(dbConfig)
 
@@ -21,7 +18,7 @@ const pool = mysql.createPool(dbConfig)
 function countUserVotes() {
   return new Promise((resolve, reject) => {
     const query = `
-      SELECT user_id, COUNT(voted) AS voteCount 
+      SELECT user_id, COUNT(id_of_vote) AS voteCount 
       FROM user_votes 
       GROUP BY user_id`
 
@@ -30,23 +27,6 @@ function countUserVotes() {
         reject(error)
       } else {
         resolve(results)
-      }
-    })
-  })
-}
-
-// Function to delete old votes
-function deleteOldVotes() {
-  return new Promise((resolve, reject) => {
-    const query = `
-      DELETE FROM user_votes 
-      WHERE voted < DATE_SUB(NOW(), INTERVAL 1 HOUR)`
-
-    pool.query(query, (error, results) => {
-      if (error) {
-        reject(error)
-      } else {
-        resolve()
       }
     })
   })
@@ -76,8 +56,25 @@ function updateLitaiSum(userId, voteCount) {
   })
 }
 
-// Schedule a cron job to update super_users with vote counts every 5 minutes
-cron.schedule("*/5 * * * *", async () => {
+// Function to delete old votes
+function deleteOldVotes() {
+  return new Promise((resolve, reject) => {
+    const query = `
+      DELETE FROM user_votes 
+      WHERE id_of_vote < DATE_SUB(NOW(), INTERVAL 1 HOUR)`
+
+    pool.query(query, (error, results) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
+// Schedule a cron job to update super_users and delete old votes every day at midnight
+cron.schedule("0 0 * * *", async () => {
   try {
     const userVotes = await countUserVotes()
     console.log("User Vote Counts:")
@@ -251,7 +248,10 @@ function resetLitaiSumMonth() {
   })
 }
 
-console.log("Message counter script has started.")
+//? Log message that script is working
+cron.schedule("* * * * *", () => {
+  console.log("Message counter script is running...")
+})
 
 //
 // node messageCounter.js
