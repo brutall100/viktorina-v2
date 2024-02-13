@@ -15,7 +15,6 @@ const dbConfig = {
   database: process.env.DB_DATABASE
   // port: process.env.DB_PORT
 }
-
 const pool = mysql.createPool(dbConfig)
 
 // Function to count votes for each user
@@ -35,7 +34,24 @@ function countUserVotes() {
     })
   })
 }
-// !delete all old votes
+
+// Function to delete old votes
+function deleteOldVotes() {
+  return new Promise((resolve, reject) => {
+    const query = `
+      DELETE FROM user_votes 
+      WHERE voted < DATE_SUB(NOW(), INTERVAL 1 HOUR)`
+
+    pool.query(query, (error, results) => {
+      if (error) {
+        reject(error)
+      } else {
+        resolve()
+      }
+    })
+  })
+}
+
 // Function to update litai_sum for a user
 function updateLitaiSum(userId, voteCount) {
   return new Promise((resolve, reject) => {
@@ -70,6 +86,8 @@ cron.schedule("*/5 * * * *", async () => {
       await updateLitaiSum(user_id, voteCount)
       console.log(`litai_sum updated for User ${user_id}.`)
     })
+    await deleteOldVotes() // Delete old votes after updating super_users
+    console.log("Old votes deleted.")
   } catch (error) {
     console.error("Error:", error)
   }
