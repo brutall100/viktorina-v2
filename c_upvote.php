@@ -41,7 +41,13 @@ mysqli_stmt_execute($stmt);
 
 $stmt2 = mysqli_prepare($conn, $sql2);
 mysqli_stmt_bind_param($stmt2, "ii", $userId, $id);
-mysqli_stmt_execute($stmt2);
+$result = mysqli_stmt_execute($stmt2);
+
+if (!$result) {
+    echo "Error occurred while updating user_votes table. Operation aborted.";
+    mysqli_close($conn);
+    exit();
+}
 
 echo "Success";
 

@@ -15,8 +15,7 @@ Ten sudeti reikalingas nuorodas is kur panaudoti backroundai kaip PVZ: <a href="
 per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazodio priminimo Funkcija -->
 
 <!-- 4 -->
-<!-- Sukurti scripta kuris 12 nakties patikrintu user vote_litai ir pervestu to litai_sum ir delete vote_litai...
-Taipogi user_votes tikrintu table voted If voted 0 it dosent update database,. -->
+<!-- Create voting system simplyfield with examples js html and php in GITHUB -->
 
 <!-- 5 -->
 <!-- Reikia images folderi ir images serverio folderi tvarkyti -->
@@ -48,7 +47,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus ir dar litai galetu buti mazybiniai random 52 litus, litukus, litelius -->
 
 <!-- 14 -->
-<!--  Uz kieviena prabalsavima gauti 1 lita geriau puse lito. Bet gerai ir litas.-->
+<!--  -->
 
 <!-- 15 -->
 <!-- Slaptažodžio priminimas būtų kintamasis, kiekvienų metų laiu, būti vis ktoks. ty vasarą vienoks, rudenį kitoks ir t.t-->
