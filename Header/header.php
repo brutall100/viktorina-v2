@@ -7,8 +7,6 @@
     <nav class="menu-container">
         <ul>
             <li><a href="/viktorina.live/a_index.php">Viktorina</a></li>
-            <!--<li><a href="/Forumas/forumas.php">Forumas</a></li>-->
-            <!-- Nemanau kad reikia to forumo -->
             <li><a href="/viktorina.live/c_questionwaiting.php">Balsavimas</a></li>
             <li><a href="/viktorina.live/b_newquestionindex.php">Irašyti klausimą</a></li>
             <li class="dropdown">
@@ -19,6 +17,14 @@
                     <a href="/viktorina.live/Info/Balsavimas/i_vote.php">Balsavimas</a>
                     <a href="/viktorina.live/Info/Pasiulymai/i_minds.php">Pasiūlymai</a>
                     <a href="/viktorina.live/Info/Klaidos_klausime/i_qna_mistake.php">Klaidos klausime</a>
+                    <div class="dropdown-submenu-svarbu">
+                        <a href="#">Svarbu</a>
+                        <div class="dropdown-submenu-content-svarbu">
+                            <a href="/viktorina.live/Info/Svarbu/Rules/rules.php">Taisyklės</a>
+                            <a href="#">Folder X</a>
+                            <a href="#">Folder Y</a>
+                        </div>
+                    </div>
                 </div>
             </li>
         </ul>
