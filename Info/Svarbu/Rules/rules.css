@@ -1,8 +1,11 @@
 /* Variables */
 :root {
     --primary-color: #ffffff;
+    --primary-color-dark: #242424;
     --secondary-color: #34c3eb;
+    --secondary-color-dark: #0f2632;
     --accent-color: #f72585;
+    --hover-color: #ffcc00;
 }
 
 /* Reset */
@@ -14,17 +17,38 @@
 
 /* Typography */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     font-size: 16px;
     color: var(--primary-color);
     background-color: #18273e;
     line-height: 1.6;
 }
 
-h1,
+h1 {
+    margin-bottom: .5em;
+    font-size: 2em;
+    color: #ffd4fc;
+}
+
 h2 {
     color: var(--secondary-color);
+    text-align: left;
 }
+
+p {
+    color: var(--primary-color);
+}
+
+
+div:hover h2,
+div:hover p {
+    color: var(--primary-color-dark);
+    --primary-color: var(--primary-color-dark);
+    --secondary-color: var(--secondary-color-dark);
+
+}
+
+
 
 /* Layout */
 .header-wrapper {
@@ -32,34 +56,51 @@ h2 {
     z-index: 100;
     top: 0;
     width: 100%;
-  }
+}
 
 main {
-    height:90vh
+    display: flex;
+    justify-content: center;
 }
-@media screen and (min-width: 768px) {
+
+@media screen and (max-width: 768px) {
     main {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        flex-wrap: wrap;
     }
 }
 
-
-
 /* Rules */
-.site-rules-section {
+.site-rules-section,
+.general-rules-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: .5px solid goldenrod;
+    border: 2px solid transparent;
+    padding: 20px;
+    margin: 20px;
+    transition: border-color 0.3s ease;
 }
 
-.site-rules, .general-rules {
+.site-rules-section:hover,
+.general-rules-section:hover {
+    border-color: var(--hover-color);
+}
+
+.site-rules,
+.general-rules {
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 40em;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
     background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.site-rules:hover,
+.general-rules:hover {
+    background-color: var(--hover-color);
+    cursor: pointer;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    transform: skew(-2deg) scale(1.05); 
+}
