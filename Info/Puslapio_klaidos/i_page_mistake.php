@@ -2,7 +2,6 @@
 session_start();
 $name = $_SESSION['nick_name'] ?? "";
 $level = $_SESSION['user_lvl'] ?? "";
-$points = $_SESSION['points'] ?? "";
 $user_id = $_SESSION['user_id'] ?? "";
 ?>
 
@@ -15,24 +14,32 @@ $user_id = $_SESSION['user_id'] ?? "";
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" type="text/css" href="i_page_mistake.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="header-wrapper">
-    <?php include '../../Header/header.php'; ?>
+        <?php include '../../Header/header.php'; ?>
     </div>
 
-    <div><h1>Welcome to My Simple PHP Page</h1></div>
-    
-    <?php
-    $message = "Puslapio klaidos!";
-    echo "<p>$message</p>";
-    ?>
+    <div class="form-wrapper">
+        <h2>Pranešti apie klaidą</h2>
+        <form action="page_mistake_form.php" method="POST">
+            <label for="name">Vardas:</label>
+            <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly><br><br>
+            
+            <label for="level">Lygis:</label>
+            <input type="text" id="level" name="level" value="<?php echo $level; ?>" readonly><br><br>
+            
+            <label for="mistakes">Klaida:</label><br>
+            <textarea id="mistakes" name="mistakes" rows="8" cols="50" required></textarea><br><br>
+            
+            <button type="submit">Siųsti</button>
+        </form>
+    </div>
 
-    <p>This is a basic example of a PHP page.</p>
-
-    <div class = "footer-wrapper">
+    <div class="footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>
     </div>
 </body>
+<script src="script.js" defer></script>
 </html>
+

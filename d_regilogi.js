@@ -74,36 +74,37 @@ closeModalButton.addEventListener("click", function () {
 
 //// Function that changes Heading and paragraph every month
 const monthlyHeadings = [
-  "Sausio Sniego Sąmyšis 🌨️⛄😄",
-  "February Heading",
-  "March Heading",
-  "April Heading",
-  "May Heading",
-  "June Heading",
-  "July Heading",
-  "August Heading",
-  "September Heading",
-  "October Heading",
-  "November Heading",
-  "December Heading"
-]
+  "Sausis - Sniego Sąmyšis 🌨️⛄😄",
+  "Vasario Smagumas 🍹🤦‍♂️",
+  "Kovas - Pavasario Šauklys 🌳🤔",
+  "Balandžio Dienos Šiltėja 🐰🌳",
+  "Gegužės Gražumas 🌷🌳🧘‍♂️",
+  "Birželio Svaja 🏖️👙🍹",
+  "Liepos Karštumas🍁🦃",
+  "Rugpjūčio Žavesys 😎👓",
+  "Rugsėjo Stresas 🔄🛠️",
+  "Spalis Neramusis 🍂🕵️‍♀️",
+  "Lapkritis Šlapusis 🦃🥧",
+  "Gruodžio Šventės 🎄🔒"
+];
 
 const monthlyParagraphs = [
-  "Sausis atnešė tiek daug sniego ❄️ ir šalčio 🥶 ,kad net pamiršote slaptažodį 🔒",
-  "February Paragraph",
-  "March Paragraph",
-  "April Paragraph",
-  "May Paragraph",
-  "June Paragraph",
-  "July Paragraph",
-  "August Paragraph",
-  "September Paragraph",
-  "October Paragraph",
-  "November Paragraph",
-  "December Paragraph"
-]
+  "Sausis atnešė tiek daug sniego ❄️ ir šalčio 🥶, kad net pamiršote slaptažodį 🔒",
+  "Vasaris - trumpas, slaptažodis - ilgas! Bet svarbiausia, kad banko sąskaita būtų pilna! 😎💰🔒🤦‍♂️",
+  "Kovas. Pavasaris: trūksta dienų, slaptažodis per ilgas, o oras visiškai neprognozuojamas!  😂📚📆🔐🌦️",
+  "Balandį būkite atidūs, nes slaptažodis gali nuspręsti daryti pavasario šokį! 😂💃🔒",
+  "Gegužė gamta žydi, o slaptažodis pasislėpęs kažkur tarp gėlių ir medžių! 🌷🌳🧘‍♂️",
+  "Birželis - atostogų metas, jau ir slaptažodis pasiruošęs ilsėtis! 🏖️🔐👙",
+  "Liepa kaip slaptažodis: šilta, lietinga ir visada neįprasta! 🌞🌧️🔐",
+  "Rugpjūtis karštas, drėgnas... kaip slaptažodis po pamiršimo! 🌞💦🔐😅",
+  "Rugsėjis naujų mokslo metų pradžia, taip pat ir naujų slaptažodžių pradžia! Teks prisiminti, kur jie visi pasislėpė po vasaros atostogų! 🔄🛠️🔍😄",
+  "Spalis. Lapai krinta, o slaptažodžiai užmiršti! Atrodo, kad ne tik medžiai meta lapus šiuo metų laiku! 🍂🕵️‍♀️🔐😄",
+  "Lapkritis. Niūrus, šaltas ir šlapias... kaip ir pamiršti slaptažodžiai, kurie praslysta pro pirštus kaip vanduo per rankovę! 🌧️🔑💦😄",
+  "Gruodis. Greit Kalėdos. Laikas prisiminti slaptažodžį, kuris pasislėpė kaip dovana po eglute! 🎄🔒🎁😄"
+];
 
-const currentMonth = new Date().getMonth()
+const currentMonth = new Date().getMonth();
 
-document.getElementById("monthlyHeading").textContent = monthlyHeadings[currentMonth]
-document.getElementById("monthlyParagraph").textContent = monthlyParagraphs[currentMonth]
+document.getElementById("monthlyHeading").textContent = monthlyHeadings[currentMonth];
+document.getElementById("monthlyParagraph").textContent = monthlyParagraphs[currentMonth];
+
