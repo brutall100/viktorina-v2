@@ -14,7 +14,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssss", $reported_name, $reported_level, $user_id, $mistakes);
 
     if ($stmt->execute()) {
-        echo "<p>Ačiū už pastebėtą ir pateiktą klaidą! Mes patys būtume ją pastebėję, bet mūsų klaidų aptikimo algoritmas pats pradėjo darbą nuo savęs.</p>";
+        echo "<style>
+             body { background: url('/viktorina.live/images/background/dark2.png') center center/cover; }
+
+            .message-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            .message {
+                text-align: center;
+                background-color: #200306;
+                font-size: 2em;
+                color: #ffffff;
+                border: 1px solid #ddd;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 80%;
+                width: 400px;
+            }
+        </style>";
+        echo "<div class='message-container'>";
+        echo "<div class='message'>";
+        echo "<p>Ačiū už pastebėtą ir pateiktą klaidą! Mes patys būtume ją pastebėję, bet Jūs sutaupėte mums laiko 🕰️.</p>";
+        echo "<p></p>";
+        echo "</div>";
+        echo "</div>";
+        echo "<script>setTimeout(function() { window.history.go(-1); }, 500000);</script>";
     } else {
         echo "<p>Oops! Something went wrong. Please try again later.</p>";
     }

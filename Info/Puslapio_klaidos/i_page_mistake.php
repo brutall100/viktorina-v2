@@ -40,6 +40,6 @@ $user_id = $_SESSION['user_id'] ?? "";
         <?php include '../../Footer/footer.php'; ?>
     </div>
 </body>
-<script src="script.js" defer></script>
+<!-- <script src="script.js" defer></script> -->
 </html>
 
