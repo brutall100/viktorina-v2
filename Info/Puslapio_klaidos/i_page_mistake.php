@@ -30,7 +30,6 @@ $user_id = $_SESSION['user_id'] ?? "";
         <!-- Modal -->
         <div id="modal" class="modal">
             <div class="modal-content">
-                <span class="close">&times;</span>
                 <p>Paspaudus ant šio mygtuko bus pranešta apie rasta klaidą, kuri bus peržiūrėta administratorių.</p>
             </div>
         </div>
