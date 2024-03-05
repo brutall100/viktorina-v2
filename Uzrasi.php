@@ -47,7 +47,7 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus ir dar litai galetu buti mazybiniai random 52 litus, litukus, litelius -->
 
 <!-- 14 -->
-<!--  -->
+<!-- page_mistake_form.php    GAl reikes prideti restrictiion. Klaidas galima irasyti nuo 1 lvl (Prideti info zenliuka kuriame nurodyta,, kad apie klaidas galima irasyti nuo 1 lvl)-->
 
 <!-- 15 -->
 <!-- Slaptažodžio priminimas būtų kintamasis, kiekvienų metų laiu, būti vis ktoks. ty vasarą vienoks, rudenį kitoks ir t.t-->
