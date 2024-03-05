@@ -15,7 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "<style>
-             body { background: url('/viktorina.live/images/background/dark2.png') center center/cover; }
+             body {
+                 background: url('/viktorina.live/images/background/dark2.png') center center/cover;
+                 background-color: coral;
+            }
 
             .message-container {
                 display: flex;
@@ -42,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<p></p>";
         echo "</div>";
         echo "</div>";
-        echo "<script>setTimeout(function() { window.history.go(-1); }, 500000);</script>";
+        echo "<script>setTimeout(function() { window.history.go(-1); }, 3000);</script>";
     } else {
         echo "<p>Oops! Something went wrong. Please try again later.</p>";
     }

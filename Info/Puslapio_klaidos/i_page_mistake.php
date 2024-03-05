@@ -7,6 +7,7 @@ $user_id = $_SESSION['user_id'] ?? "";
 
 <!DOCTYPE html>
 <html lang="lt">
+
 <head>
     <title>Puslapio klaidos</title>
     <meta charset="UTF-8">
@@ -14,7 +15,10 @@ $user_id = $_SESSION['user_id'] ?? "";
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" type="text/css" href="i_page_mistake.css">
+    <link href="https://fonts.cdnfonts.com/css/tt-drugs-trial?styles=152889,152886,152891,152890,152888,152887,152885,152884,152883,152882,152899,152892,152901,152900,152898,152897,152896,152895,152894,152893" rel="stylesheet">          
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"  rel="stylesheet">
 </head>
+
 <body>
     <div class="header-wrapper">
         <?php include '../../Header/header.php'; ?>
@@ -23,15 +27,22 @@ $user_id = $_SESSION['user_id'] ?? "";
     <div class="form-wrapper">
         <h2>Pranešti apie klaidą</h2>
         <form action="page_mistake_form.php" method="POST">
-            <label for="name">Vardas:</label>
-            <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly><br><br>
-            
-            <label for="level">Lygis:</label>
-            <input type="text" id="level" name="level" value="<?php echo $level; ?>" readonly><br><br>
-            
-            <label for="mistakes">Klaida:</label><br>
-            <textarea id="mistakes" name="mistakes" rows="8" cols="50" required></textarea><br><br>
-            
+            <div class="input-group-inline">
+                <div class="input-group">
+                    <label for="name"><i class="fas fa-user"></i></label>
+                    <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly>
+                </div>
+                <div class="input-group">
+                    <label for="level"><i class="fas fa-level-up-alt"></i></label>
+                    <input type="text" id="level" name="level" value="<?php echo $level; ?>" readonly>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="mistakes"><i class="fas fa-exclamation-circle"></i></label>
+                <textarea id="mistakes" name="mistakes" rows="8" cols="50" placeholder="Apibūdinkite pastebėtą klaidą"
+                    required></textarea>
+            </div>
             <button type="submit">Siųsti</button>
         </form>
     </div>
@@ -40,6 +51,7 @@ $user_id = $_SESSION['user_id'] ?? "";
         <?php include '../../Footer/footer.php'; ?>
     </div>
 </body>
-<!-- <script src="script.js" defer></script> -->
+
 </html>
+
 

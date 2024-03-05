@@ -24,20 +24,85 @@
 body {
   margin: 0;
   padding: 0;
-  background: #714315;
-}
-
-.className {
-  border: 1px solid rgba(235, 12, 12, 0.805);
-}
-
-#id {
-  border: 1px dotted rgba(34, 242, 34, 0.874);
-}
-
-div {
-  color: var(--primary-color);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(184deg, rgba(2, 0, 36, 1) 0%, rgba(113, 67, 21, 1) 54%, rgba(51, 26, 14, 1) 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
 }
 
 
+.form-wrapper {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 7em auto;
+  max-width: 500px;
+}
 
+.form-wrapper h2 {
+  text-align: center;
+  color: #714315;
+  margin-bottom: 1em;
+  font-size: 1.3em;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group-inline {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-group {
+  flex: 1;
+  margin-right: 10px;
+}
+
+
+.input-group label {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  color: #555;
+}
+
+.input-group input,
+.input-group textarea {
+  width: calc(100% - 40px);
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: 'TT Drugs Trial', sans-serif;
+  font-family: 'TT Drugs Trl Cnd', sans-serif;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #714315;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+button:hover {
+  background-color: #5c3810;
+}
+
+button:active {
+  transform: translateY(2px);
+  background-color: #45270d;
+}
