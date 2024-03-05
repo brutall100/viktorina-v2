@@ -25,7 +25,16 @@ $user_id = $_SESSION['user_id'] ?? "";
     </div>
 
     <div class="form-wrapper">
-        <h2>Pranešti apie klaidą</h2>
+        <h2>Pranešti apie klaidą <img src="/viktorina.live/images/images_/small_info2.png" alt="Info" id="info-icon"></h2>
+
+        <!-- Modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Paspaudus ant šio mygtuko bus pranešta apie rasta klaidą, kuri bus peržiūrėta administratorių.</p>
+            </div>
+        </div>
+
         <form action="page_mistake_form.php" method="POST">
             <div class="input-group-inline">
                 <div class="input-group">
@@ -51,7 +60,7 @@ $user_id = $_SESSION['user_id'] ?? "";
         <?php include '../../Footer/footer.php'; ?>
     </div>
 </body>
-
+<script type="text/javascript" src="/viktorina.live/Info/Klaidos_klausime/i_page-mistake.js" defer></script>
 </html>
 
 
