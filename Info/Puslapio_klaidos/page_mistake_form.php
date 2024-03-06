@@ -11,25 +11,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mistakes = $_POST['mistakes'] ?? "";
     include '../../x_configDB.php';
 
-    $stmt = $conn->prepare("SELECT mistake_text FROM page_mistakes WHERE mistake_text = ?");
-    $stmt->bind_param("s", $mistakes);
-    $stmt->execute();
-    $stmt->store_result();
-    
-    if ($stmt->num_rows > 0) {
-        $message = "Klaidą kurią bandote įrašyti jau egzistuoja duomenų bazėje.";
-    } else {
-        $stmt = $conn->prepare("INSERT INTO page_mistakes (name, level, user_id, mistake_text) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $reported_name, $reported_level, $user_id, $mistakes);
-
-        if ($stmt->execute()) {
-            $message = "Ačiū už pastebėtą ir pateiktą klaidą! Mes patys būtume ją pastebėję, bet Jūs sutaupėte mums laiko 🕰️.";
+    // Check if user's level is 1 or higher
+    if ($level >= 1) {
+        $stmt = $conn->prepare("SELECT mistake_text FROM page_mistakes WHERE mistake_text = ?");
+        $stmt->bind_param("s", $mistakes);
+        $stmt->execute();
+        $stmt->store_result();
+        
+        if ($stmt->num_rows > 0) {
+            $message = "Klaidą, kurią bandote įrašyti, jau egzistuoja duomenų bazėje.";
         } else {
-            $message = "Oops! Something went wrong. Please try again later.";
+            $stmt = $conn->prepare("INSERT INTO page_mistakes (name, level, user_id, mistake_text) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $reported_name, $reported_level, $user_id, $mistakes);
+
+            if ($stmt->execute()) {
+                $message = "Ačiū už pastebėtą ir pateiktą klaidą! Mes patys būtume ją pastebėję, bet Jūs sutaupėte mums laiko 🕰️.";
+            } else {
+                $message = "Oops! Kažkas nutiko neteisingai. Bandykite dar kartą vėliau.";
+            }
         }
+        $stmt->close(); // Close statement if it's initialized
+    } else {
+        $message = "Jūsų lygis per žemas, kad galėtumėte įvesti duomenis.";
     }
 
-    $stmt->close();
     $conn->close();
 
     echo "<style>
@@ -66,5 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "<script>setTimeout(function() { window.history.go(-1); }, 3000);</script>";
 }
 ?>
+
+
 
 
