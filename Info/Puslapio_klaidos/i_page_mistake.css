@@ -34,32 +34,8 @@ body {
 
 
 
-#info-icon {
-  display: inline;
-  vertical-align: middle;
-  height: 1em;
-}
 
-.modal {
-  display: none;
-  position: absolute;
-  z-index: 9999;
-  top: calc(11% + 100px);
-  right: 17%;
-  /* Center the modal horizontally */
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 5px;
-  padding: 10px;
-}
 
-.modal-content {
-  background-color: #fefefe;
-  border: 1px solid #888;
-  border-radius: 5px;
-  padding: 20px;
-  width: 300px;
-}
 
 
 
@@ -76,7 +52,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  margin: 7em auto;
+  margin: 9.5em auto;
   max-width: 500px;
 }
 
@@ -143,4 +119,50 @@ button:hover {
 button:active {
   transform: translateY(2px);
   background-color: #45270d;
+}
+
+
+/* // Modal */
+#info-icon {
+  display: inline;
+  vertical-align: middle;
+  height: 1em;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  top: 8.7em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 5px solid #0f0822;
+  border-radius: 7px;
+  max-width: 90%;
+}
+
+.modal-content {
+  background-color: var(--primary-color);
+  border: 1px solid #888;
+  padding: 17px;
+  max-width: 700px;
+  text-align: center;
+}
+
+.modal-title {
+  font-size:20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+
+}
+
+.modal-text {
+  font-size: 14px;
+  line-height:.8;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.modal-text:before {
+  content: "📌 ";
 }
