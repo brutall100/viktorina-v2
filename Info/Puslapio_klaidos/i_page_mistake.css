@@ -42,6 +42,22 @@ body {
   max-width: 500px;
 }
 
+@media (max-width: 560px) {
+  .form-wrapper {
+    margin: 5em auto;
+    padding: 10% 1%;
+    min-width: 250px;
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 600px) AND (max-height: 600px) {
+  .form-wrapper {
+    margin: 1em auto;
+    padding: 5%;
+  }
+}
+
 .form-wrapper h2 {
   text-align: center;
   color: #714315;
@@ -84,6 +100,18 @@ body {
   font-family: 'TT Drugs Trl Cnd', sans-serif;
   letter-spacing: 2px;
   line-height: 1.2;
+  overflow: auto;
+}
+
+@media screen AND (max-width: 760px) {
+
+  .input-group input,
+  .input-group textarea {
+    font-size: 1em;
+
+  }
+
+
 }
 
 button {
@@ -159,29 +187,35 @@ button:active {
     padding: 10px;
     min-width: 500px;
   }
+
   .modal-title {
     font-size: 18px;
     margin-bottom: 15px;
   }
+
   .modal-text {
     font-size: 12px;
     line-height: 1.2;
     margin-bottom: 5px;
   }
 }
+
 @media screen and (max-width: 600px) {
   .modal {
     border: 1px solid #0f0822;
     width: 87%;
   }
+
   .modal-content {
     margin: 0;
     min-width: 200px;
   }
+
   .modal-title {
     font-size: 16px;
     margin-bottom: 12px;
   }
+
   .modal-text {
     font-size: 11px;
     line-height: 1.5;

@@ -1,10 +1,15 @@
-var modal = document.getElementById("modal");
-var img = document.getElementById("info-icon");
+const modal = document.getElementById("modal");
+const img = document.getElementById("info-icon");
+let timeoutId;
 
 img.onmouseover = modal.onmouseover = function() {
   modal.style.display = "block";
+  clearTimeout(timeoutId); 
 }
-// img.onmouseout = function() {
-//   modal.style.display = "none";
-// }
+
+img.onmouseout = modal.onmouseout = function() {
+  timeoutId = setTimeout(function() {
+    modal.style.display = "none";
+  }, 4000); 
+}
 

@@ -51,8 +51,7 @@ $user_id = $_SESSION['user_id'] ?? "";
 
             <div class="input-group">
                 <label for="mistakes"><i class="fas fa-exclamation-circle"></i></label>
-                <textarea id="mistakes" name="mistakes" rows="8" cols="50" placeholder="Apibūdinkite pastebėtą klaidą"
-                    required></textarea>
+                <textarea id="mistakes" name="mistakes" rows="8" cols="50" placeholder="Apibūdinkite pastebėtą klaidą" required></textarea>
             </div>
             <button type="submit">Siųsti</button>
         </form>
