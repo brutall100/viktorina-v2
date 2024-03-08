@@ -61,7 +61,7 @@ $user_id = $_SESSION['user_id'] ?? "";
         <?php include '../../Footer/footer.php'; ?>
     </div>
 </body>
-<script type="text/javascript" src="/viktorina.live/Info/Klaidos_klausime/i_page-mistake.js" defer></script>
+<script type="text/javascript" src="i_page-mistake.js" defer></script>
 
 </html>
 
