@@ -19,8 +19,13 @@ body {
   background: linear-gradient(to bottom, #a2ab58, #636363);
 }
 
-/*// Form styling */
-.container {
+main{
+  display: flex;
+  border: 1px solid red;
+}
+
+/*// Form styling A*/
+.container-a {
   display: flex;
   justify-content: center;
   text-align: center;
@@ -134,4 +139,18 @@ button[type="submit"]:hover {
   border: 5px solid #0f0822;
   border-radius: 7px;
   max-width: 90%;
+}
+
+/*// Form styling B*/
+.container-b {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 7em auto;
+}
+
+.imported-questions{
+  width: 600px;
+  height: 600px;
+  border: 1px solid green;
 }

@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if user's level is 1 or higher
     if ($level >= 1) {
-        $stmt = $conn->prepare("SELECT mistake_text FROM page_mistakes WHERE mistake_text = ?");
+        $stmt = $conn->prepare("SELECT mistake_text FROM x_page_mistakes WHERE mistake_text = ?");
         $stmt->bind_param("s", $mistakes);
         $stmt->execute();
         $stmt->store_result();
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->num_rows > 0) {
             $message = "Klaidą, kurią bandote įrašyti, jau egzistuoja duomenų bazėje.";
         } else {
-            $stmt = $conn->prepare("INSERT INTO page_mistakes (name, level, user_id, mistake_text) VALUES (?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO x_page_mistakes (name, level, user_id, mistake_text) VALUES (?, ?, ?, ?)");
             $stmt->bind_param("ssss", $reported_name, $reported_level, $user_id, $mistakes);
 
             if ($stmt->execute()) {
