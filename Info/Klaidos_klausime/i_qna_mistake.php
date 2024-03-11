@@ -1,8 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
-$user_name = $_SESSION['nick_name'] ?? "";
+$name = $_SESSION['nick_name'] ?? "";
 $level = $_SESSION['user_lvl'] ?? "";
-$points = $_SESSION['points'] ?? "";
 $user_id = $_SESSION['user_id'] ?? "";
 ?>
 
@@ -17,7 +20,7 @@ $user_id = $_SESSION['user_id'] ?? "";
     <meta name="keywords" content="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="i_qna_mistake.css">
-    <script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -40,8 +43,8 @@ $user_id = $_SESSION['user_id'] ?? "";
 
                 <form action="i_qna_mistake_form.php" method="POST">
                     <div class="input-group-inline">
-                        <label for="user_name"><i class="fas fa-user"></i></label>
-                        <input type="text" id="user_name" name="user_name" value="<?php echo $user_name; ?>" readonly>
+                        <label for="name"><i class="fas fa-user"></i></label>
+                        <input type="text" id="name" name="name" value="<?php echo $name; ?>" readonly>
 
                         <label for="user_id"><i class="far fa-id-card"></i></label>
                         <input type="text" id="user_id" name="user_id" value="<?php echo $user_id; ?>" readonly>
@@ -67,19 +70,10 @@ $user_id = $_SESSION['user_id'] ?? "";
                 </form>
             </div>
         </div>
-        <div class="container-b">
-    <div class="imported-questions">
-        <div class="question">
-            <label for="question1">Question 1:</label>
-            <input type="text" id="question1" name="question1_answer">
-        </div>
-        <div class="question">
-            <label for="question2">Question 2:</label>
-            <input type="text" id="question2" name="question2_answer">
-        </div>
-
+        <div class="container-b" id="container-b">
+        <!-- Content of container B will be loaded dynamically here -->
     </div>
-</div>
+
 
     </main>
     <div class="footer-wrapper">

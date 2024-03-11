@@ -1,42 +1,35 @@
 <?php
-session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+session_start();
+
+$name = $_SESSION['nick_name'] ?? "";
+$level = $_SESSION['user_lvl'] ?? "";
+$user_id = $_SESSION['user_id'] ?? "";
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_id = $_SESSION['user_id'] ?? "";
-    $user_name = $_POST['user_name'] ?? "";
+    $user_id = $_POST['user_id'] ?? "";
+    $user_name = $_POST['name'] ?? "";
     $question_id = $_POST['question_id'] ?? "";
     $mistake = $_POST['mistake_description'] ?? "";
     $additional_comment = $_POST['additional_comment'] ?? "";
     include '../../x_configDB.php';
 
-
-
-
-    // Prepare SQL statement to insert data into database
- // Prepare SQL statement to insert data into database
 $sql = "INSERT INTO x_question_mistakes (user_id, user_name, question_id, mistake, additional_comment) VALUES (?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 
-// Bind parameters
 $stmt->bind_param("isiss", $user_id, $user_name, $question_id, $mistake, $additional_comment);
 
-
-
-
-
-// Execute the statement
 if ($stmt->execute()) {
     $message = "Ačiū už pastebėtą ir pateiktą klaidą! Mes patys būtume ją pastebėję, bet Jūs sutaupėte mums laiko 🕰️.";
 } else {
     $message = "Oops! Kažkas nutiko neteisingai. Bandykite dar kartą vėliau.";
 }
 
-
-    // Close statement and connection
-    $stmt->close();
+$stmt->close();
 
 }
 $conn->close();
@@ -73,5 +66,15 @@ echo "<p>$message</p>";
 echo "</div>";
 echo "</div>";
 echo "<script>setTimeout(function() { window.history.go(-1); }, 3000);</script>";
+
+
+
+
+
+
+
+
+
+
 
 ?>

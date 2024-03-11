@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $message = "Oops! Kažkas nutiko neteisingai. Bandykite dar kartą vėliau.";
             }
         }
-        $stmt->close(); // Close statement if it's initialized
+        $stmt->close(); 
     } else {
         $message = "Jūsų lygis per žemas, kad galėtumėte įvesti duomenis.";
     }
