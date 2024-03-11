@@ -8,8 +8,8 @@ if ($result->num_rows > 0) {
     echo "<table border='1'>
             <tr>
                 <th>id</th>
-                <th>Question</th>
-                <th>Answer</th>
+                <th>Klausimas</th>
+                <th>Atsakymas</th>
             </tr>";
 
     while ($row = $result->fetch_assoc()) {
