@@ -19,9 +19,12 @@ body {
   background: linear-gradient(to bottom, #a2ab58, #636363);
 }
 
-main{
+main {
   display: flex;
+  margin: 0 auto;
+  justify-content: space-around;
   border: 1px solid red;
+  max-width: 90em;
 }
 
 /*// Form styling A*/
@@ -31,15 +34,16 @@ main{
   text-align: center;
   margin: 7em auto;
 
+
 }
 
 .form-wrapper {
-  background: var(--primary-color);
+  background: rgba(255, 255, 255, 0.5);
   border: 2px solid #060a05;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: 600px;
+  max-width: 600px;
 }
 
 
@@ -47,9 +51,8 @@ main{
   display: flex;
   justify-content: center;
   margin: .8em auto;
-
-  width: 100%;
-
+  /* background: #162c12; */
+  /* width: 100%; */
 }
 
 .input-group-inline label {
@@ -60,20 +63,34 @@ main{
 
 .input-group-inline input[type="text"] {
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.4em;
   border: 2px solid rgb(11, 10, 10);
+  background: #6a7668;
+  color: var(--primary-color);
+}
+
+label[for="name"] i.fas.fa-user {
+  font-size: 1.15em;
+}
+
+label[for="user_id"] i.far.fa-id-card {
+  font-size: 1.2em;
+}
+
+label[for="user_level"] .fas.fa-level-up-alt {
+  font-size: 1em;
 }
 
 #user_name {
   width: 60%;
-  /* Adjust the width as needed */
 }
 
 #user_id,
 #user_level {
   width: 20%;
-  /* Adjust the width as needed */
 }
+
+
 
 
 
@@ -83,7 +100,8 @@ main{
   text-align: left;
 
 }
-.input-group-block-main{
+
+.input-group-block-main {
   border: 1px solid green
 }
 
@@ -99,6 +117,7 @@ textarea {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background: rgba(255, 255, 255, 0.7);
   box-sizing: border-box;
 }
 
@@ -125,35 +144,42 @@ button[type="submit"]:hover {
   background-color: #060a05;
 }
 
+/*// Form styling B*/
+.container-b {
+  display: flex;
+  border: 2px solid #060a05;
+  border-radius: 10px;
+  margin: 7em auto;
+  max-width: 600px;
+}
+
 /*// Modal */
 #info-icon {
   display: inline;
   vertical-align: middle;
   height: 1em;
+  border-radius: 50%;
 }
 
 .modal {
   display: none;
   position: fixed;
+  padding: 1em;
   z-index: 200;
-  top: 9.5em;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 5px solid #0f0822;
-  border-radius: 7px;
+  background: #0b140a;
+  border: 1px solid #0f0822;
+  border-radius: 10px;
   max-width: 90%;
+  color:#99ab5b;
+  line-height: 1.5;
 }
 
-/*// Form styling B*/
-.container-b {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin: 7em auto;
+.modal-title{
+  color: var(--primary-color);
+  margin-bottom: .5em;
+  font-size: 1.3em;
 }
 
-.imported-questions{
-  width: 600px;
-  height: 600px;
-  border: 1px solid green;
+.modal-text{
+  text-align: left;
 }

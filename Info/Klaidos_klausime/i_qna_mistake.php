@@ -30,8 +30,7 @@ $user_id = $_SESSION['user_id'] ?? "";
     <main>
         <div class="container-a">
             <div class="form-wrapper">
-                <h2>Pranešti apie klaidą klausime <img src="/viktorina.live/images/images_/small_info2.png" alt="Info"
-                        id="info-icon"></h2>
+                <h2>Pranešti apie klaidą klausime <img src="/viktorina.live/images/images_/small_info2.png" alt="Info" id="info-icon" aria-label="Info ženkliukas informuojantis kad šiame puslapyje galima pataisyti ar patobulinti esamus klausimus."></h2>
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <h1 class="modal-title">Radote klaidą?</h1>
