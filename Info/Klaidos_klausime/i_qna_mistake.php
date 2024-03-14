@@ -82,7 +82,7 @@ $user_id = $_SESSION['user_id'] ?? "";
                 </form>
             </div>
         </div>
-        <?php if ($level == 4 || $level == 5): ?>
+        <?php if ($level >=3): ?>
             <div class="container-b" id="container-b">
                 <!-- Content of container B will be loaded dynamically here -->
             </div>

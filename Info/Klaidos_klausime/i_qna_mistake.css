@@ -19,6 +19,13 @@ body {
   background: linear-gradient(to bottom, #a2ab58, #636363);
 }
 
+@media screen and (max-width: 1250px) {
+  body {
+    height: auto;
+  }
+
+}
+
 main {
   display: flex;
   margin: 0 auto;
@@ -27,14 +34,50 @@ main {
   max-width: 90em;
 }
 
+@media screen and (max-width:1250px) {
+  main {
+    margin-left: 3%;
+    margin-right: 3%;
+    border: 1px solid rgb(0, 89, 255);
+    min-width: 50em;
+  }
+
+}
+
+@media screen and (max-width:860px) {
+  main {
+    flex-direction: column;
+    margin: 2em auto;
+    border: 1px solid rgb(255, 0, 174);
+    min-width: 20em;
+    margin: 0 .7em;
+  }
+}
+
 /*// Form styling A*/
 .container-a {
   display: flex;
   justify-content: center;
   text-align: center;
-  margin: 7em auto;
+  margin: 6em auto;
+  max-height: 700px;
+}
 
+@media screen and (max-width: 1250px) {
+  .container-a {
+    margin: 4em 1em;
+  }
+}
 
+@media screen and (max-width: 860px) {
+  .container-a {
+    margin: 3em 5em;
+  }
+}
+@media screen and (max-width: 580px) {
+  .container-a {
+    margin: 2em 3em;
+  }
 }
 
 .form-wrapper {
@@ -88,6 +131,7 @@ label[for="user_level"] .fas.fa-level-up-alt {
 #user_id,
 #user_level {
   width: 20%;
+  min-width: 57px;
 }
 
 
@@ -150,7 +194,25 @@ button[type="submit"]:hover {
   border: 2px solid #060a05;
   border-radius: 10px;
   margin: 7em auto;
-  max-width: 600px;
+  max-width: 700px;
+}
+
+@media screen and (max-width: 1250px) {
+  .container-b {
+    margin: 4em 1em;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .container-b {
+    margin: 0 5em;
+  }
+}
+@media screen and (max-width: 580px) {
+  .container-b {
+    margin: 0 3em 5em;
+    min-width: 300px;
+  }
 }
 
 /*// Modal */
@@ -170,16 +232,16 @@ button[type="submit"]:hover {
   border: 1px solid #0f0822;
   border-radius: 10px;
   max-width: 90%;
-  color:#99ab5b;
+  color: #99ab5b;
   line-height: 1.5;
 }
 
-.modal-title{
+.modal-title {
   color: var(--primary-color);
   margin-bottom: .5em;
   font-size: 1.3em;
 }
 
-.modal-text{
+.modal-text {
   text-align: left;
 }
