@@ -5,8 +5,8 @@ let timeoutId
 
 function positionModal() {
   const iconRect = img.getBoundingClientRect()
-  modal.style.top = iconRect.top + window.pageYOffset - 45 + "px"
-  modal.style.left = iconRect.left + window.pageXOffset + 20 + "px"
+  modal.style.top = iconRect.top + window.pageYOffset + 20 + "px"
+  modal.style.left = iconRect.left + window.pageXOffset - 50 + "px"
 }
 
 img.onmouseover = modal.onmouseover = function () {
@@ -21,7 +21,6 @@ img.onmouseout = modal.onmouseout = function () {
   }, 4000)
 }
 
-// Update modal position on window resize
 window.addEventListener("resize", function () {
   positionModal()
 })

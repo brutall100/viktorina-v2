@@ -35,9 +35,13 @@ $user_id = $_SESSION['user_id'] ?? "";
                     <div class="modal-content">
                         <h1 class="modal-title">Radote klaidą?</h1>
                         <p class="modal-text">Pranešti apie klaidą galima nuo 2 lygio. </p>
+                        <hr>
                         <p class="modal-text">Taisyti ar atnaujinti klausimus gali vartotojai nuo 4 lygio. </p>
+                        <hr>
                         <p class="modal-text">Būtina nurodyti teisingą Id.</p>
+                        <hr>
                         <p class="modal-text">Klausimai ir atsakymai turi būti idealiai tvarkingi, nes be patikros bus keliami į duomenų bazę.</p>
+                        <hr>
                     </div>
                 </div>
 
@@ -65,14 +69,14 @@ $user_id = $_SESSION['user_id'] ?? "";
                             <input type="number" id="question_id" name="question_id" required placeholder="0" min="1"><br>
 
                             <label for="klausimas"><i class="fas fa-question-circle"></i>Atnaujintas klausimas:</label><br>
-                            <input type="text" id="klausimas" name="klausimas" placeholder="Įveskite naują klausimą" <?php echo $disabled; ?>><br>
+                            <input type="text" id="klausimas" name="klausimas" placeholder="Įveskite atnaujintą klausimą" <?php echo $disabled; ?>><br>
 
                             <label for="atsakymas"><i class="fas fa-exclamation-circle"></i> Atnaujintas atsakymas:</label><br>
-                            <input type="text" id="atsakymas" name="atsakymas" placeholder="Įveskite naują atsakymą" <?php echo $disabled; ?>><br>
+                            <input type="text" id="atsakymas" name="atsakymas" placeholder="Įveskite atnaujintą atsakymą" <?php echo $disabled; ?>><br>
                         </div>
 
                         <label for="mistake_description"><i class="fas fa-comment"></i> Klaidos aprašymas:</label><br>
-                        <textarea id="mistake_description" name="mistake_description" rows="6" cols="50" required placeholder="Įveskite klaidos aprašymą"></textarea><br>
+                        <textarea id="mistake_description" name="mistake_description" rows="4" cols="50" required placeholder="Įveskite klaidos aprašymą"></textarea><br>
 
                         <label for="additional_comment"><i class="fas fa-comment"></i> Papildomas komentaras:</label><br>
                         <input type="text" id="additional_comment" name="additional_comment" placeholder="Įveskite papildomą komentarą"><br>
