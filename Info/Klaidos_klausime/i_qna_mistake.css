@@ -54,6 +54,13 @@ main {
   }
 }
 
+@media screen and (max-width:480px) {
+  main {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 /*// Form styling A*/
 .container-a {
   display: flex;
@@ -74,9 +81,32 @@ main {
     margin: 3em 5em;
   }
 }
+
 @media screen and (max-width: 580px) {
   .container-a {
     margin: 2em 3em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container-a {
+    margin: 2em auto;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 380px) {
+  .container-a {
+    margin: 1em;
+    width: 93%;
+    font-size: .8em;
+  }
+}
+@media screen and (max-width: 330px) {
+  .container-a {
+    margin-left:.1em;
+    padding: .4em;
+    border: none;
+    width: 95%;
   }
 }
 
@@ -208,12 +238,32 @@ button[type="submit"]:hover {
     margin: 0 5em;
   }
 }
+
 @media screen and (max-width: 580px) {
   .container-b {
     margin: 0 3em 5em;
-    min-width: 300px;
+    min-width: 200px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .container-b {
+    margin: 1em;
+    width: 93%;
+    font-size: .8em;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .container-b {
+    margin-left:.1em;
+    padding: .4em;
+    border: none;
+    width: 95%; 
+  }
+}
+
+
 
 /*// Modal */
 #info-icon {

@@ -28,7 +28,7 @@ $conn->close();
 ?>
 <style>
     table {
-        width: 100%;
+        /* width: 100%; */
         /* max-width: 600px;  */
         border-collapse: collapse;
         background-color: rgba(255, 255, 255, 0.5); 
@@ -38,7 +38,9 @@ $conn->close();
         padding: 8px;
         text-align: left;
         border-bottom:1px solid white;
+       
     }
+
     td:first-child,
     td:last-child {
         border-bottom: none; 
@@ -53,6 +55,11 @@ $conn->close();
     th:last-child {
         border-radius: 0 10px 0 0;
     }
+    
+    td{
+        padding-top: 1em;
+    }
+
 </style>
 
 
