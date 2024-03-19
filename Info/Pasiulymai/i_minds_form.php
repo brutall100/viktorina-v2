@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_POST['user_id'] ?? "";
     $idea_title = $_POST['idea_title'] ?? "";
     $idea_description = $_POST['idea_description'] ?? "";
+    include '../../x_configDB.php';
 
     if (!empty($user_name) && !empty($user_id) && !empty($idea_title) && !empty($idea_description)) {
 
@@ -19,43 +20,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $data .= "Idea Title: $idea_title\n";
         $data .= "Idea Description: $idea_description\n\n";
 
-        // File path
-        $file = 'ideas.txt';
-
         // Save data to file
+        $file = 'ideas.txt';
         file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
 
-        // Display Thank You message
+        $sql = "INSERT INTO x_minds (vardas, user_id, idea_title, idea_description, submission_date)
+                VALUES ('$user_name', '$user_id', '$idea_title', '$idea_description', '$current_date')";
+
+        if ($conn->query($sql) === TRUE) {
+            // echo "New record created successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        $conn->close();
         ?>
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="lt">
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Thank You</title>
+            <title>Ačiū už idėją</title>
             <style>
-                body {
-                    font-family: Arial, sans-serif;
+                 body {
                     background: url('/viktorina.live/images/background/dark2.png') center center/cover;
                     background-color: coral;
-                    text-align: center;
-                    padding: 50px;
+                }
+
+                .message-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
                 }
                 .message {
-                    background-color: #fff;
+                    text-align: center;
+                    background-color: #200306;
+                    font-size: 2em;
+                    color: #ffffff;
+                    border: 1px solid #ddd;
                     padding: 20px;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    max-width: 80%;
+                    width: 400px;
                 }
             </style>
         </head>
         <body>
-            <div class="message">
-                <h2>Thank You!</h2>
-                <p>Your idea has been submitted successfully.</p>
+            <div class="message-container">
+                <div class="message">
+                    <h2>Ačiū!</h2>
+                    <p>Už Jūsų mintis ir idėjas.</p>
+                    <p>Jūsų idėja įrašyta. Netrukus ji bus aptarta.</p>
+                </div>
             </div>
             <?php
-            echo "<script>setTimeout(function() { window.history.go(-1); }, 3000);</script>";
+            echo "<script>setTimeout(function() { window.history.go(-1); }, 30000);</script>";
             ?>
         </body>
         </html>
