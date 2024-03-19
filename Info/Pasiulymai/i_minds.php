@@ -1,8 +1,6 @@
 <?php
 session_start();
 $name = $_SESSION['nick_name'] ?? "";
-$level = $_SESSION['user_lvl'] ?? "";
-$points = $_SESSION['points'] ?? "";
 $user_id = $_SESSION['user_id'] ?? "";
 ?>
 
@@ -24,21 +22,19 @@ $user_id = $_SESSION['user_id'] ?? "";
     </div>
 
     <div class="content">
-        <h2>Suggest an Idea</h2>
+        <h1>Siūlyti Idėją</h1>
         <form action="i_minds_form.php" method="post">
             <div class="user-container">
                 <label for="user_name"><i class="fas fa-user"></i> Autorius:</label><br>
                 <input type="text" id="user_name" name="user_name" value="<?php echo $name; ?>" readonly><br><br>
 
                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                <input type="hidden" name="points" value="<?php echo $points; ?>">
-                <input type="hidden" name="level" value="<?php echo $level; ?>">
             </div>
             
-            <label for="idea_title"><i class="fas fa-lightbulb"></i> Idea Title:</label><br>
+            <label for="idea_title"><i class="fas fa-lightbulb"></i> Pavadinimas:</label><br>
             <input type="text" id="idea_title" name="idea_title" required><br><br>
 
-            <label for="idea_description"><i class="fas fa-comment-alt"></i> Idea Description:</label><br>
+            <label for="idea_description"><i class="fas fa-comment-alt"></i> Aprašymas:</label><br>
             <textarea id="idea_description" name="idea_description" rows="4" required></textarea><br><br>
 
             <input type="submit" value="Submit">
