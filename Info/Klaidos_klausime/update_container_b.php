@@ -28,8 +28,6 @@ $conn->close();
 ?>
 <style>
     table {
-        /* width: 100%; */
-        /* max-width: 600px;  */
         border-collapse: collapse;
         background-color: rgba(255, 255, 255, 0.5); 
         border-radius: 10px; 
