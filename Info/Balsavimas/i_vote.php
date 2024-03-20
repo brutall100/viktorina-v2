@@ -22,14 +22,32 @@ $user_id = $_SESSION['user_id'] ?? "";
          <?php include '../../Header/header.php'; ?>
     </div>
 
-    <div><h1>Welcome to My Simple PHP Page</h1></div>
+    <main class="main-content">
+        <section id="vote-section" class="vote-section">
+            <!-- Content related to the ongoing vote -->
+            <!-- Include elements to display vote progress, options, etc. -->
+        </section>
 
-    <?php
-    $message = "Balsavimas!";
-    echo "<p>$message</p>";
-    ?>
+        <div class="right-sections">
+            <section id="vote-suggestions" class="vote-suggestions">
+                <!-- Form for users to suggest voting options -->
+                <!-- You can have input fields, buttons, etc. -->
+                <form action="process_vote_suggestion.php" method="post" class="vote-suggestion-form">
+                    <input type="text" name="suggestion" placeholder="Your suggestion" class="suggestion-input">
+                    <button type="submit" class="submit-button">Submit</button>
+                </form>
+            </section>
 
-    <p>This is a basic example of a PHP page.</p>
+            <section id="view-suggestions" class="view-suggestions">
+                <!-- Display vote suggestions retrieved from the database -->
+                <!-- You need to fetch and display suggestions here -->
+            </section>
+        </div>
+    </main>
+
+
+
+
 
     <div class = "footer-wrapper">
         <?php include '../../Footer/footer.php'; ?>

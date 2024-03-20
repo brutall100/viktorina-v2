@@ -17,6 +17,37 @@ body {
   width: 100%;
 }
 
+.main-content {
+  display: flex;
+  border: 10px solid rgb(51, 165, 26);
+  height: 70vh;
+  margin: 2em auto;
+}
+
+.vote-section {
+  flex: 1;
+  margin-right: 20px;
+  /* Add spacing between the sections */
+}
+
+.right-sections {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vote-suggestions,
+.view-suggestions {
+  flex: 1;
+}
 
 
+.vote-section,
+.right-sections,
+.vote-suggestions,
+.view-suggestions {
+  border: 1px solid black;
+  margin: 5px;
 
+
+}
