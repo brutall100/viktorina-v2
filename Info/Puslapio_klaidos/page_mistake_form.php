@@ -38,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 
     echo "<style>
-             body {
-                 background: url('/viktorina.live/images/background/dark2.png') center center/cover;
-                 background-color: coral;
+            body {
+                background: url('/viktorina.live/images/background/dark2.png') center center/cover;
+                background-color: coral;
             }
 
             .message-container {
@@ -49,17 +49,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 align-items: center;
                 height: 100vh;
             }
+            @media screen and (max-width: 600px) {
+                .message-container {
+                    align-items: start;
+                    margin-top: 5em;
+                }
+            }
+
             .message {
                 text-align: center;
                 background-color: #200306;
-                font-size: 2em;
                 color: #ffffff;
-                border: 1px solid #ddd;
+                border: 2px solid #ff69b4; /* Pink border */
                 padding: 20px;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 15px; 
+                box-shadow: 0 0 20px rgba(255, 105, 180, 0.5); /* Pink drop shadow */
                 max-width: 80%;
                 width: 400px;
+                font-size: 2em;
+            }
+
+            @media screen and (max-width: 600px) {
+                .message {
+                    font-size: 1.5em;
+                    width: 80%; 
+                }
             }
         </style>";
 

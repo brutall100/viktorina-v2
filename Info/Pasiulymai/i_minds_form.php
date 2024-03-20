@@ -10,17 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($user_name) && !empty($user_id) && !empty($idea_title) && !empty($idea_description)) {
 
-        // Get current date and time
         $current_date = date("Y-m-d H:i:s");
 
-        // Prepare data with date
         $data = "Date: $current_date\n";
         $data .= "User Name: $user_name\n";
         $data .= "User ID: $user_id\n"; 
         $data .= "Idea Title: $idea_title\n";
         $data .= "Idea Description: $idea_description\n\n";
 
-        // Save data to file
         $file = 'ideas.txt';
         file_put_contents($file, $data, FILE_APPEND | LOCK_EX);
 
@@ -42,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Ačiū už idėją</title>
             <style>
-                 body {
+                body {
                     background: url('/viktorina.live/images/background/dark2.png') center center/cover;
                     background-color: coral;
                 }
@@ -53,17 +50,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     align-items: center;
                     height: 100vh;
                 }
+                @media screen and (max-width: 600px) {
+                    .message-container {
+                        align-items: start;
+                        margin-top: 5em;
+                    }
+                }
+
                 .message {
                     text-align: center;
                     background-color: #200306;
-                    font-size: 2em;
                     color: #ffffff;
-                    border: 1px solid #ddd;
+                    border: 2px solid #ff69b4; /* Pink border */
                     padding: 20px;
-                    border-radius: 5px;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    border-radius: 15px; 
+                    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5); /* Pink drop shadow */
                     max-width: 80%;
                     width: 400px;
+                    font-size: 2em;
+                }
+
+                @media screen and (max-width: 600px) {
+                    .message {
+                        font-size: 1.5em;
+                        width: 80%; 
+                    }
                 }
             </style>
         </head>
@@ -76,15 +87,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <?php
-            echo "<script>setTimeout(function() { window.history.go(-1); }, 30000);</script>";
+            echo "<script>setTimeout(function() { window.history.go(-1); }, 3000000);</script>";
             ?>
         </body>
         </html>
         <?php
         exit; 
     } else {
-        // Handle form validation errors
+        //// Handle form validation errors
         echo "Please fill out all the required fields.";
+        echo "<script>setTimeout(function() { window.history.go(-1); }, 3000);</script>";
     }
 }
 ?>
