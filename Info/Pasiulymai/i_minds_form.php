@@ -25,79 +25,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ('$user_name', '$user_id', '$idea_title', '$idea_description', '$current_date')";
 
         if ($conn->query($sql) === TRUE) {
-            // echo "New record created successfully";
+            $message = "<h2>Ačiū!</h2>
+                        <p>Už Jūsų mintis ir idėjas.</p>
+                        <p>Jūsų idėja įrašyta. Netrukus ji bus aptarta.</p>";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            $message = "Error: " . $sql . "<br>" . $conn->error;
         }
 
         $conn->close();
-        ?>
-        <!DOCTYPE html>
-        <html lang="lt">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Ačiū už idėją</title>
-            <style>
-                body {
-                    background: url('/viktorina.live/images/background/dark2.png') center center/cover;
-                    background-color: coral;
-                }
+        
+        include '../style.php';
 
-                .message-container {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100vh;
-                }
-                @media screen and (max-width: 600px) {
-                    .message-container {
-                        align-items: start;
-                        margin-top: 5em;
-                    }
-                }
-
-                .message {
-                    text-align: center;
-                    background-color: #200306;
-                    color: #ffffff;
-                    border: 2px solid #ff69b4; /* Pink border */
-                    padding: 20px;
-                    border-radius: 15px; 
-                    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5); /* Pink drop shadow */
-                    max-width: 80%;
-                    width: 400px;
-                    font-size: 2em;
-                }
-
-                @media screen and (max-width: 600px) {
-                    .message {
-                        font-size: 1.5em;
-                        width: 80%; 
-                    }
-                }
-            </style>
-        </head>
-        <body>
-            <div class="message-container">
-                <div class="message">
-                    <h2>Ačiū!</h2>
-                    <p>Už Jūsų mintis ir idėjas.</p>
-                    <p>Jūsų idėja įrašyta. Netrukus ji bus aptarta.</p>
-                </div>
-            </div>
-            <?php
-            echo "<script>setTimeout(function() { window.history.go(-1); }, 3000000);</script>";
-            ?>
-        </body>
-        </html>
-        <?php
         exit; 
     } else {
-        //// Handle form validation errors
-        echo "Please fill out all the required fields.";
-        echo "<script>setTimeout(function() { window.history.go(-1); }, 3000);</script>";
+        $message = "Please fill out all the required fields.";
     }
 }
+echo $message;
 ?>
+
 
