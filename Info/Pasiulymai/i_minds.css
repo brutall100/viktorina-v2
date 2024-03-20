@@ -35,10 +35,39 @@ body {
   padding: 40px;
 }
 
+@media screen and (max-width: 680px) {
+  .content {
+    /* border: 1px double tomato; */
+    margin: 2em auto;
+    max-width: 450px;
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content {
+    /* border: 1px double rgb(90, 32, 101); */
+    margin: 1.5em auto;
+    width: 90%;
+    min-width: 200px;
+    padding: 1em;
+  }
+}
+@media screen and (max-width: 380px) {
+  .content {
+    margin: .5em auto;
+  }
+}
+
 h1 {
-  color: #fff;
+  color: #192b44;
   text-align: center;
   margin-bottom: 1em;
+}
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5em;
+  }
 }
 
 form {
@@ -51,14 +80,20 @@ form {
 }
 
 label {
-  font-size: 18px;
+  font-size: 1.1em;
   margin-bottom: 10px;
   color: #fff;
+}
+@media screen and (max-width: 480px) {
+  label {
+    font-size: .9em;
+    margin: 0;
+  }
 }
 
 label i {
   margin-right: 10px;
-  font-size: 18px;
+  font-size: 1.1em;
   color: #18273e;
 }
 
@@ -67,9 +102,14 @@ label i {
   border: none;
   border-radius: 8px;
   font-size: 1em;
-  min-width: 100px;
+  min-width: 70px;
   max-width: 200px;
   text-align: center;
+}
+@media screen and (max-width: 300px) {
+  #user_name {
+    width: 75%;
+  }
 }
 
 #idea_title,
@@ -88,6 +128,23 @@ textarea {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
 }
+@media screen and (max-width: 680px) {
+  input[type="text"], textarea {
+    font-size: 1em; 
+    padding: 0.9em;
+    border-radius: .5em;
+    margin: .2em;
+  }
+}
+@media screen and (max-width: 480px) {
+  input[type="text"], textarea {
+    font-size: .8em; 
+    padding: 0.7em;
+    border-radius: .3em;
+    margin: 0;
+  }
+}
+
 
 input[type="text"]:focus,
 textarea:focus {

@@ -37,7 +37,7 @@ $user_id = $_SESSION['user_id'] ?? "";
             <label for="idea_description"><i class="fas fa-comment-alt"></i> Aprašymas:</label><br>
             <textarea id="idea_description" name="idea_description" rows="4" required></textarea><br><br>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Siūsti">
         </form>
     </div>
 
