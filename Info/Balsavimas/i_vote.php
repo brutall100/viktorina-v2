@@ -37,21 +37,19 @@ $user_id = $_SESSION['user_id'] ?? "";
                     <div class="form-inline">
                         <div class="label-block">
                             <label for="username"><i class="fas fa-user"></i> Username</label>
-                            <input type="text" id="username" name="username"
-                                value="<?php echo htmlspecialchars($name); ?>" readonly>
+                            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($name); ?>" readonly>
                         </div>
                         <div class="label-block">
                             <label for="userlevel"><i class="fas fa-level-up-alt"></i> User Level</label>
-                            <input type="text" id="userlevel" name="userlevel"
-                                value="<?php echo htmlspecialchars($level); ?>" readonly>
+                            <input type="text" id="userlevel" name="userlevel" value="<?php echo htmlspecialchars($level); ?>" readonly>
                         </div>
                         <input type="hidden" name="userid" value="<?php echo htmlspecialchars($user_id); ?>">
+                        <input type="hidden" name="points" value="<?php echo htmlspecialchars($points); ?>">
                     </div>
 
                     <div class="form-block">
                         <label for="suggestion"><i class="fas fa-comment"></i> Suggestion</label>
-                        <textarea id="suggestion" name="suggestion" placeholder="Your suggestion"
-                            class="suggestion-textarea"></textarea>
+                        <textarea id="suggestion" name="suggestion" placeholder="Your suggestion" class="suggestion-textarea"></textarea>
 
                         <button type="submit" class="submit-button"><i class="fas fa-check"></i> Submit</button>
                     </div>
