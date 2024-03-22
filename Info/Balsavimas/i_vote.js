@@ -5,7 +5,7 @@ $(document).ready(function () {
         url: "update_vote.php", 
         method: "GET",
         success: function (response) {
-          $("#view-suggestions").html(response) 
+          $("#view-it").html(response) 
         },
         error: function (xhr, status, error) {
           console.error("Error:", error)

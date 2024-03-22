@@ -33,6 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
+  /* overflow: hidden; */
 }
 
 .vote-suggestions,
@@ -106,13 +107,18 @@ body {
 
 
 
-
 .vote-section,
 .right-sections,
 .vote-suggestions,
 .view-suggestions {
   border: 1px solid black;
-  margin: 5px;
+  overflow: auto;
 
 
 }
+
+/* 
+.view-suggestions {
+  overflow: hidden;
+
+} */
