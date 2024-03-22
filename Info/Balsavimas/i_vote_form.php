@@ -13,33 +13,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $points = $_POST["points"] ?? "";
 
     if (!empty($suggestion) && !empty($username) && !empty($userlevel) && !empty($userid) && !empty($points)) {
-        $query = "SELECT litai_sum AS points FROM super_users WHERE user_id = ?";
+        //// Check if the user has 100,000 points and level 3 or above
+        $query = "SELECT litai_sum AS points, user_lvl AS user_level FROM super_users WHERE user_id = ?";
         $statement = $conn->prepare($query);
         $statement->bind_param("i", $userid);
         $statement->execute();
         $result = $statement->get_result();
         $row = $result->fetch_assoc();
         $userPoints = $row['points'];
+        $userLevel = $row['user_level'];
 
-        echo "User Points: " . $userPoints . "<br>";
+        if ($userPoints >= 100000 && $userLevel >= 3) {
+            $insert_query = "INSERT INTO x_vote (usname, usid, suggestion) VALUES (?, ?, ?)";
+            $insert_statement = $conn->prepare($insert_query);
+            $insert_statement->bind_param("sis", $username, $userid, $suggestion);
+            $insert_statement->execute();
+            $insert_statement->close();
 
-        if ($userPoints >= 100000) {
-            // User has 100,000 or more points, proceed with the form submission
-            // You can perform additional processing or database operations here
+            $message = "Balsavimo pasiūlymas įrašytas.";
         } else {
-            $message = "You need at least 100,000 points to submit a suggestion.";
+            $message = "You need at least 100,000 points and level 3 or above to submit a suggestion.";
         }
 
-        // Close the database connection
+        include '../style.php';
+
         $statement->close();
         $conn->close();
-
-        // include '../style.php';
     } else {
-        echo "Please fill out all fields.";
+        $message = "Please fill out all fields.";
     }
 } else {
-    echo "Form not submitted.";
+    $message = "Form not submitted.";
 }
+echo $message;
 ?>
-

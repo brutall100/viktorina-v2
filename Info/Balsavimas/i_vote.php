@@ -17,7 +17,7 @@ $user_id = $_SESSION['user_id'] ?? "";
     <meta name="keywords" content="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="i_vote.css">
-    <script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -57,8 +57,9 @@ $user_id = $_SESSION['user_id'] ?? "";
             </section>
 
             <section id="view-suggestions" class="view-suggestions">  <!-- Wiev suggestions -->
-                <!-- Display vote suggestions retrieved from the database -->
-                <!-- You need to fetch and display suggestions here -->
+                <!-- <div class="vote-suggestions" id="vote-suggestions">
+                    
+                </div> -->
             </section>
         </div>
     </main>
@@ -67,5 +68,5 @@ $user_id = $_SESSION['user_id'] ?? "";
         <?php include '../../Footer/footer.php'; ?>
     </div>
 </body>
-
+<script type="text/javascript" src="i_vote.js" defer></script>
 </html>
