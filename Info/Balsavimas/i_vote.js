@@ -14,6 +14,8 @@ $(document).ready(function () {
     }
   
     updateVotes()
-  
-    setInterval(updateVotes, 5000)
+  // laikas 5sec = 5000
+    setInterval(updateVotes, 500000)
   })
+
+

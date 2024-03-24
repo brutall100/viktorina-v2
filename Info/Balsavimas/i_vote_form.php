@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userLevel = $row['user_level'];
 
         if ($userPoints >= 100000 && $userLevel >= 3) {
-            $insert_query = "INSERT INTO x_vote (usname, usid, suggestion) VALUES (?, ?, ?)";
+            $insert_query = "INSERT INTO x_vote_suggestion (usname, usid, suggestion) VALUES (?, ?, ?)";
             $insert_statement = $conn->prepare($insert_query);
             $insert_statement->bind_param("sis", $username, $userid, $suggestion);
             $insert_statement->execute();

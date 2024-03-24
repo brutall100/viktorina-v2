@@ -61,24 +61,6 @@ $user_id = $_SESSION['user_id'] ?? "";
                     
                 </div>
             </section>
-            <!-- <style>
-            /* Define styles for the "view-it" div */
-            #view-it {
-                margin-top: 10px;
-                padding: 10px;
-                background-color: #f0f0f0;
-                border: 1px solid #ccc;
-            }
-
-            /* Define styles for the individual vote entries */
-            .vote-entry {
-                margin-bottom: 5px;
-            }
-
-            .vote-entry span {
-                font-weight: bold;
-            }
-        </style> -->
         </div>
     </main>
 
