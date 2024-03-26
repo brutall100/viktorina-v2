@@ -105,7 +105,13 @@ $(document).ready(function() {
 
 include '../../x_configDB.php'; 
 
-$sql = "SELECT * FROM x_vote_suggestion ORDER BY id DESC LIMIT 12";
+$sql = "SELECT x_vote_suggestion.*, COUNT(x_vote.vote_suggest_id) AS yes_vote_count
+        FROM x_vote_suggestion
+        LEFT JOIN x_vote ON x_vote_suggestion.id = x_vote.vote_suggest_id
+        GROUP BY x_vote_suggestion.id
+        ORDER BY yes_vote_count DESC, x_vote_suggestion.id DESC
+        LIMIT 50";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
