@@ -1,4 +1,75 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
+$user_id = $_SESSION['user_id'] ?? "";
+
+include '../../x_configDB.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $voteId = $_POST['voteId'];
+    $voteType = $_POST['voteType'];
+    $userId = $_POST['userId'];
+
+    if ($voteType === 'yes') {
+        $sql = "INSERT INTO x_vote (voter_id, vote_suggest_id, yes_votes, vote_type) VALUES (?, ?, 1, ?)";
+    } elseif ($voteType === 'no') {
+        $sql = "INSERT INTO x_vote (voter_id, vote_suggest_id, no_votes, vote_type)  VALUES (?, ?, 1, ?)";
+    } else {
+        echo 'Invalid vote type';
+        exit;
+    }
+
+    $statement = $conn->prepare($sql);
+    $statement->bind_param("iis", $userId, $voteId, $voteType);
+    $statement->execute();
+    $statement->close();
+
+    echo 'Vote submitted successfully';
+} else {
+    if ($_SERVER["REQUEST_METHOD"] != "GET") {
+        echo 'Invalid request';
+    }
+}
+?>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    var userId = <?php echo json_encode($user_id); ?>;
+
+    $('.vote-yes, .vote-no').click(function() {
+        var voteId = $(this).data('vote-id');
+        var voteType = $(this).hasClass('vote-yes') ? 'yes' : 'no';
+
+        console.log('Vote ID:', voteId);
+        console.log('Vote Type:', voteType);
+        console.log('User ID:', userId);
+
+        $.ajax({
+            url: 'update_vote.php',
+            method: 'POST',
+            data: { voteId: voteId, voteType: voteType, userId: userId }, 
+            success: function(response) {
+                console.log('Vote submitted successfully');
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+});
+</script>
+
+
+
+
+<?php
+
 include '../../x_configDB.php'; 
 
 $sql = "SELECT * FROM x_vote_suggestion ORDER BY id DESC LIMIT 12";
@@ -36,119 +107,56 @@ $conn->close();
 
 
 <style>
-.vote-container {
-    border: 1px solid green;
+    .vote-container {
+        border: 1px solid green;
 
-}
+    }
 
-.vote-entry {
-    margin-bottom: 10px;
-    padding: 5px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    display: flex; 
-    border: 1px solid blue;
-    text-wrap: wrap;
-}
+    .vote-entry {
+        margin-bottom: 10px;
+        padding: 5px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        display: flex; 
+        border: 1px solid blue;
+        text-wrap: wrap;
+    }
 
-.vote-left {
-    flex: 3;
-}
+    .vote-left {
+        flex: 3;
+    }
 
-.vote-right {
-    flex: 1;
-    border: 1px solid black;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-}
+    .vote-right {
+        flex: 1;
+        border: 1px solid black;
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+    }
 
-.vote-entry p {
-    text
-}
+    .vote-entry p {
+        text
+    }
 
-.vote-entry p strong {
-    font-weight: bold;
-}
+    .vote-entry p strong {
+        font-weight: bold;
+    }
 
-.vote-buttons {
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-    border: 1px solid red;
-}
+    .vote-buttons {
+        display: flex; 
+        flex-direction: column;
+        align-items: center; 
+        border: 1px solid red;
+    }
 
-.vote-buttons button {
-    margin: .3em 0;
-    width: 50px;
-}
+    .vote-buttons button {
+        margin: .3em 0;
+        width: 50px;
+    }
 
 </style>
 
 
 
-<?php
-session_start();
-$user_id = $_SESSION['user_id'] ?? "";
 
-include '../../x_configDB.php';
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $voteId = $_POST['voteId'];
-    $voteType = $_POST['voteType'];
-
-        // Prepare and execute the insert statement
-        if ($voteType === 'yes') {
-            $sql = "INSERT INTO x_vote (yes_votes, vote_type, voter_id) VALUES (1, ?, ?)";
-        } elseif ($voteType === 'no') {
-            $sql = "INSERT INTO x_vote (no_votes, vote_type, voter_id) VALUES (1, ?, ?)";
-        } else {
-            echo 'Invalid vote type';
-            exit;
-        }
-
-        $statement = $conn->prepare($sql);
-        $statement->bind_param("si", $voteType, $user_id);
-        $statement->execute();
-        $statement->close();
-
-
-    // Send response
-    echo 'Vote submitted successfully';
-} else {
-    echo 'Invalid request';
-}
-?>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    // PHP session variable user_id echoed into JavaScript
-    var userId = <?php echo json_encode($user_id); ?>;
-
-    $('.vote-yes, .vote-no').click(function() {
-        var voteId = $(this).data('vote-id');
-        var voteType = $(this).hasClass('vote-yes') ? 'yes' : 'no';
-
-        // Log the vote ID, vote type, and user ID before submitting
-        console.log('Vote ID:', voteId);
-        console.log('Vote Type:', voteType);
-        console.log('User ID:', userId);
-
-        $.ajax({
-            url: 'update_vote.php',
-            method: 'POST',
-            data: { voteId: voteId, voteType: voteType },
-            success: function(response) {
-                console.log('Vote submitted successfully');
-                // Optionally, you can update the UI or display a message to the user here
-            },
-            error: function(xhr, status, error) {
-                console.error('Error:', error);
-            }
-        });
-    });
-});
-</script>
 
