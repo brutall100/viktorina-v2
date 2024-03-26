@@ -12,27 +12,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $voteType = $_POST['voteType'];
     $userId = $_POST['userId'];
 
-    if ($voteType === 'yes') {
-        $sql = "INSERT INTO x_vote (voter_id, vote_suggest_id, yes_votes, vote_type) VALUES (?, ?, 1, ?)";
-    } elseif ($voteType === 'no') {
-        $sql = "INSERT INTO x_vote (voter_id, vote_suggest_id, no_votes, vote_type)  VALUES (?, ?, 1, ?)";
+    // Check if the user has already voted for this suggestion
+    $checkSql = "SELECT * FROM x_vote WHERE vote_suggest_id = ? AND voter_id = ?";
+    $checkStatement = $conn->prepare($checkSql);
+    $checkStatement->bind_param("ii", $voteId, $userId);
+    $checkStatement->execute();
+    $checkResult = $checkStatement->get_result();
+    $existingVote = $checkResult->fetch_assoc();
+
+    if ($existingVote) {
+        // User has already voted for this suggestion, update the existing vote
+        if ($existingVote['vote_type'] === $voteType) {
+            // User is trying to vote for the same option again, no need to update the vote
+            echo 'You have already voted for ' . ($voteType === 'yes' ? 'Yes' : 'No') . '.';
+            exit;
+        } else {
+            // User is changing their vote, update the existing vote record
+            $updateSql = "UPDATE x_vote SET ";
+            if ($voteType === 'yes') {
+                $updateSql .= "yes_votes = yes_votes + 1, no_votes = GREATEST(no_votes - 1, 0), vote_type = 'yes' ";
+            } elseif ($voteType === 'no') {
+                $updateSql .= "no_votes = no_votes + 1, yes_votes = GREATEST(yes_votes - 1, 0), vote_type = 'no' ";
+            }
+            $updateSql .= "WHERE id = ?";
+            $updateStatement = $conn->prepare($updateSql);
+            $updateStatement->bind_param("i", $existingVote['id']);
+            $updateStatement->execute();
+            $updateStatement->close();
+            echo 'Vote updated successfully';
+        }
     } else {
-        echo 'Invalid vote type';
-        exit;
+        // User has not voted for this suggestion before, insert a new vote
+        if ($voteType === 'yes') {
+            $sql = "INSERT INTO x_vote (voter_id, vote_suggest_id, yes_votes, vote_type) VALUES (?, ?, 1, 'yes')";
+        } elseif ($voteType === 'no') {
+            $sql = "INSERT INTO x_vote (voter_id, vote_suggest_id, no_votes, vote_type) VALUES (?, ?, 1, 'no')";
+        } else {
+            echo 'Invalid vote type';
+            exit;
+        }
+
+        $statement = $conn->prepare($sql);
+        $statement->bind_param("ii", $userId, $voteId);
+        $statement->execute();
+        $statement->close();
+
+        echo 'Vote submitted successfully';
     }
-
-    $statement = $conn->prepare($sql);
-    $statement->bind_param("iis", $userId, $voteId, $voteType);
-    $statement->execute();
-    $statement->close();
-
-    echo 'Vote submitted successfully';
 } else {
     if ($_SERVER["REQUEST_METHOD"] != "GET") {
         echo 'Invalid request';
     }
 }
 ?>
+
 
 
 
