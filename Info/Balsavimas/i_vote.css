@@ -117,8 +117,14 @@ body {
 
 }
 
-/* 
-.view-suggestions {
-  overflow: hidden;
 
-} */
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  z-index: 9999;
+  text-align: center;
+}

@@ -31,7 +31,7 @@ $user_id = $_SESSION['user_id'] ?? "";
             <!-- Include elements to display vote progress, options, etc. -->
         </section>
 
-        <div class="right-sections">  <!-- Vote suggestions -->
+        <div class="right-sections">                                       <!-- Vote suggestions -->
             <section id="vote-suggestions" class="vote-suggestions">
                 <form action="i_vote_form.php" method="post" class="vote-suggestion-form">
                     <div class="form-inline">
@@ -47,7 +47,7 @@ $user_id = $_SESSION['user_id'] ?? "";
                         <input type="hidden" name="points" value="<?php echo htmlspecialchars($points); ?>">
                     </div>
 
-                    <div class="form-block">
+                    <div class="form-block"  data-tooltip="Siūlymas balsuoti kainuoja 100 000 Litų. </br> Galima įrašyti nuo 3 lygio.">
                         <label for="suggestion"><i class="fas fa-comment"></i> Suggestion</label>
                         <textarea id="suggestion" name="suggestion" placeholder="Your suggestion" class="suggestion-textarea"></textarea>
 
@@ -56,7 +56,8 @@ $user_id = $_SESSION['user_id'] ?? "";
                 </form>
             </section>
 
-            <section id="view-suggestions" class="view-suggestions">  <!-- Wiev suggestions -->
+
+            <section id="view-suggestions" class="view-suggestions">       <!-- Wiev suggestions -->
                 <div class="view-it" id="view-it">
                     
                 </div>

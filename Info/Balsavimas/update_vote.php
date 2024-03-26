@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $voteType = $_POST['voteType'];
     $userId = $_POST['userId'];
 
-    // Check if the user has already voted for this suggestion
     $checkSql = "SELECT * FROM x_vote WHERE vote_suggest_id = ? AND voter_id = ?";
     $checkStatement = $conn->prepare($checkSql);
     $checkStatement->bind_param("ii", $voteId, $userId);
@@ -21,13 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $existingVote = $checkResult->fetch_assoc();
 
     if ($existingVote) {
-        // User has already voted for this suggestion, update the existing vote
         if ($existingVote['vote_type'] === $voteType) {
-            // User is trying to vote for the same option again, no need to update the vote
             echo 'You have already voted for ' . ($voteType === 'yes' ? 'Yes' : 'No') . '.';
             exit;
         } else {
-            // User is changing their vote, update the existing vote record
             $updateSql = "UPDATE x_vote SET ";
             if ($voteType === 'yes') {
                 $updateSql .= "yes_votes = yes_votes + 1, no_votes = GREATEST(no_votes - 1, 0), vote_type = 'yes' ";
@@ -42,7 +38,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo 'Vote updated successfully';
         }
     } else {
-        // User has not voted for this suggestion before, insert a new vote
         if ($voteType === 'yes') {
             $sql = "INSERT INTO x_vote (voter_id, vote_suggest_id, yes_votes, vote_type) VALUES (?, ?, 1, 'yes')";
         } elseif ($voteType === 'no') {
