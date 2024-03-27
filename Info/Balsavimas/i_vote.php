@@ -47,9 +47,9 @@ $user_id = $_SESSION['user_id'] ?? "";
                         <input type="hidden" name="points" value="<?php echo htmlspecialchars($points); ?>">
                     </div>
 
-                    <div class="form-block"  data-tooltip="Siūlymas balsuoti kainuoja 100 000 Litų. </br> Galima įrašyti nuo 3 lygio.">
-                        <label for="suggestion"><i class="fas fa-comment"></i> Suggestion</label>
-                        <textarea id="suggestion" name="suggestion" placeholder="Your suggestion" class="suggestion-textarea"></textarea>
+                    <div class="form-block"  data-tooltip="Siūlymas balsuoti galima pateikti turint 100 000 Litų. </br> Galima įrašyti nuo 3 lygio.">
+                        <label for="suggestion"><i class="fas fa-comment"></i>Siūlymas balsuoti</label>
+                        <textarea id="suggestion" name="suggestion" placeholder="Klausimas turi skambėti taip, kad atsakymas butų TAIP arba NE." class="suggestion-textarea"></textarea>
 
                         <button type="submit" class="submit-button"><i class="fas fa-check"></i> Submit</button>
                     </div>
