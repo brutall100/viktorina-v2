@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($userLevel >= 3 || $userPoints >= 100000) {
             if ($userLevel < 3) {
-                // If the user level is less than 3, deduct 100,000 litai from their account
+                //// If the user level is less than 3, deduct 100,000 litai from their account
                 $deduct_query = "UPDATE super_users SET litai_sum = litai_sum - 100000 WHERE user_id = ?";
                 $deduct_statement = $conn->prepare($deduct_query);
                 $deduct_statement->bind_param("i", $userid);
@@ -33,15 +33,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $deduct_statement->close();
             }
 
-            $insert_query = "INSERT INTO x_vote_suggestion (usname, usid, suggestion) VALUES (?, ?, ?)";
-            $insert_statement = $conn->prepare($insert_query);
-            $insert_statement->bind_param("sis", $username, $userid, $suggestion);
-            $insert_statement->execute();
-            $insert_statement->close();
+            //// Check for duplicate suggestion
+            $duplicate_query = "SELECT COUNT(*) AS count FROM x_vote_suggestion WHERE usid = ? AND suggestion = ?";
+            $duplicate_statement = $conn->prepare($duplicate_query);
+            $duplicate_statement->bind_param("is", $userid, $suggestion);
+            $duplicate_statement->execute();
+            $duplicate_result = $duplicate_statement->get_result();
+            $duplicate_row = $duplicate_result->fetch_assoc();
+            $duplicate_count = $duplicate_row['count'];
+            $duplicate_statement->close();
 
-            $message = "Balsavimo pasiūlymas įrašytas.";
+            if ($duplicate_count == 0) {
+                //// Insert the suggestion into the database
+                $insert_query = "INSERT INTO x_vote_suggestion (usname, usid, suggestion) VALUES (?, ?, ?)";
+                $insert_statement = $conn->prepare($insert_query);
+                $insert_statement->bind_param("sis", $username, $userid, $suggestion);
+                $insert_statement->execute();
+                $insert_statement->close();
+
+                $message = "Balsavimo pasiūlymas įrašytas.";
+            } else {
+                $message = "Toks balsavimo siūlymas jau egzistuoja.";
+            }
         } else {
-            $message = "You need at least 100,000 points or level 3 or above to submit a suggestion.";
+            $message = "Norėdami teikti siūlymą balsavimui, jums reikia turėti bent 100 000 Litų arba būti 3 lygio.";
         }
 
         include '../style.php';
@@ -56,5 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 echo $message;
 ?>
+
 
 
