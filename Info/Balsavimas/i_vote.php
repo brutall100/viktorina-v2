@@ -40,6 +40,10 @@ $user_id = $_SESSION['user_id'] ?? "";
                             <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($name); ?>" readonly>
                         </div>
                         <div class="label-block">
+                            <label for="litai"><i class="fas fa-money-bill-alt"></i> Litai</label>
+                            <input type="text" id="litai" name="litai" value="<?php echo htmlspecialchars($points); ?>" readonly>
+                        </div>
+                        <div class="label-block">
                             <label for="userlevel"><i class="fas fa-level-up-alt"></i> User Level</label>
                             <input type="text" id="userlevel" name="userlevel" value="<?php echo htmlspecialchars($level); ?>" readonly>
                         </div>
@@ -47,7 +51,7 @@ $user_id = $_SESSION['user_id'] ?? "";
                         <input type="hidden" name="points" value="<?php echo htmlspecialchars($points); ?>">
                     </div>
 
-                    <div class="form-block"  data-tooltip="Siūlymas balsuoti galima pateikti turint 100 000 Litų. </br> Galima įrašyti nuo 3 lygio.">
+                    <div class="form-block"  data-tooltip="Siūlymas balsuoti galima pateikti turint 100 000 Litų. </br> Galima įrašyti nuo 3 lygio nemokamai.">
                         <label for="suggestion"><i class="fas fa-comment"></i>Siūlymas balsuoti</label>
                         <textarea id="suggestion" name="suggestion" placeholder="Klausimas turi skambėti taip, kad atsakymas butų TAIP arba NE." class="suggestion-textarea"></textarea>
 
