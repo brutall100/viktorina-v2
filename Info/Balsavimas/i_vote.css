@@ -3,6 +3,9 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  background: #FFA17F;
+  background: -webkit-linear-gradient(to right, #00223E, #FFA17F);
+  background: linear-gradient(to right, #00223E, #FFA17F);
 }
 
 .header-wrapper {
@@ -128,3 +131,24 @@ body {
   z-index: 9999;
   text-align: center;
 }
+
+
+.view-main-vote {
+  background: #1b1716;
+  color: #000;
+  border: 5px solid red;
+  padding: 1em;
+}
+
+/* styles.css */
+.vote-entry {
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.vote-left {
+  font-weight: bold;
+}
+
+/* Add more styles as needed */

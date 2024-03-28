@@ -25,10 +25,11 @@ $user_id = $_SESSION['user_id'] ?? "";
         <?php include '../../Header/header.php'; ?>
     </div>
 
-    <main class="main-content">
+    <main class="main-content">                                            <!-- Main vote [ Imported from update_vote.php ] -->
         <section id="vote-section" class="vote-section">
-            <!-- Content related to the ongoing vote -->
-            <!-- Include elements to display vote progress, options, etc. -->
+            <div class="view-main-vote" id="view-main-vote">
+                        
+            </div>
         </section>
 
         <div class="right-sections">                                       <!-- Vote suggestions -->
@@ -61,7 +62,7 @@ $user_id = $_SESSION['user_id'] ?? "";
             </section>
 
 
-            <section id="view-suggestions" class="view-suggestions">       <!-- Wiev suggestions -->
+            <section id="view-suggestions" class="view-suggestions">       <!-- Wiev suggestions [ Imported from update_vote.php ] -->
                 <div class="view-it" id="view-it">
                     
                 </div>

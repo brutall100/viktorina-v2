@@ -2,9 +2,10 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 session_start();
 $user_id = $_SESSION['user_id'] ?? "";
-
+// Votes system
 include '../../x_configDB.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -61,10 +62,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-
-
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -95,9 +92,8 @@ $(document).ready(function() {
 
 
 
-
+<!-- View vote suggestions  -->
 <?php
-
 include '../../x_configDB.php'; 
 
 $sql = "SELECT x_vote_suggestion.*, COUNT(x_vote.vote_suggest_id) AS yes_vote_count
@@ -138,8 +134,6 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
-
 <style>
     .vote-container {
         border: 1px solid green;
