@@ -11,12 +11,15 @@ $(document).ready(function () {
         if (data.length > 0) {
           data.forEach(function(item) {
             var html = `<div class="vote-entry">
-                  <p><strong>Vote IDD:</strong> ${item.id}</p>
-                  <p><strong>Username:</strong> ${item.usname}</p>
-                  <p><strong>User ID:</strong> ${item.usid}</p>
-                  <p><strong>Suggestion:</strong> ${item.suggestion}</p>
-              </div>`;
-          voteSection.append(html);
+                          <p class="vote-entry-p">Balsavimas: ${item.suggestion}</p>
+                          <button class="vote-button" data-id="${item.id}" data-vote="yes">Pritariu</button>
+                          <button class="vote-button" data-id="${item.id}" data-vote="no">Nepritariu</button>
+                        </div>
+                        <div class="vote-bars" id="vote-bars-${item.id}">
+                          <div class="yes-bar"></div>
+                          <div class="no-bar"></div>
+                        </div>`;
+            voteSection.append(html);
           });
         } else {
           voteSection.html('<p>No votes found.</p>');
@@ -29,9 +32,11 @@ $(document).ready(function () {
   }
 
   updateVotes();
-  // laikas 5sec = 5000
   setInterval(updateVotes, 5000);
 });
+
+
+
 
 
 //// Function update_vote.php container C witg AJAX
@@ -51,7 +56,7 @@ $(document).ready(function () {
 
   updateVotes()
   // laikas 5sec = 5000
-  setInterval(updateVotes, 500000)
+  setInterval(updateVotes, 50000)
 })
 
 //// ToolTip

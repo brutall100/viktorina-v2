@@ -1,5 +1,5 @@
 body {
-  background: #fffbfb;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -132,23 +132,56 @@ body {
   text-align: center;
 }
 
+/* // main vote A */
+#vote-section {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+
+
+}
 
 .view-main-vote {
-  background: #1b1716;
-  color: #000;
-  border: 5px solid red;
+  background: #ddd6d4;
+  color: #3f2727;
+  border: 1px solid red;
   padding: 1em;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* margin: 5em 1em;
+  z-index: -5; */
 }
 
-/* styles.css */
+
 .vote-entry {
-  background-color: #f0f0f0;
+  background-color: #5a2ba7;
   padding: 10px;
   margin-bottom: 10px;
+
 }
 
-.vote-left {
-  font-weight: bold;
+.vote-entry-p {
+  background: #d7dadc;
 }
 
-/* Add more styles as needed */
+.vote-bars {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  z-index: 100;
+}
+
+.vote-bars .yes-bar,
+.vote-bars .no-bar {
+  height: 50px;
+  width: 50px;
+  margin-bottom: 5px;
+}
+
+.yes-bar {
+  background-color: green;
+}
+
+.no-bar {
+  background-color: red;
+}
