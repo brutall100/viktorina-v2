@@ -64,10 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $statement->close();
         $conn->close();
     } else {
-        $message = "Please fill out all fields.";
+        $message = "Oi nei! Atrodo, kad pamiršote užpildyti kai kuriuos laukus!";
+        include '../style.php';
     }
 } else {
     $message = "Form not submitted.";
+    include '../style.php';
 }
 echo $message;
 ?>

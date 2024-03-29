@@ -10,10 +10,12 @@ $(document).ready(function () {
         var data = JSON.parse(response);
         if (data.length > 0) {
           data.forEach(function(item) {
-            var html = `<div class="vote-entry">
-                          <p class="vote-entry-p">Balsavimas: ${item.suggestion}</p>
-                          <button class="vote-button" data-id="${item.id}" data-vote="yes">Pritariu</button>
-                          <button class="vote-button" data-id="${item.id}" data-vote="no">Nepritariu</button>
+            var html = `<div class="voter-entry">
+                          <p class="voter-entry-p">Balsavimas: ${item.suggestion}</p>
+                          <div class="voter-entry-buttons">
+                            <button class="vote-button" data-id="${item.id}" data-vote="yes">Pritariu</button>
+                            <button class="vote-button" data-id="${item.id}" data-vote="no">Nepritariu</button>
+                          </div>
                         </div>
                         <div class="vote-bars" id="vote-bars-${item.id}">
                           <div class="yes-bar"></div>
@@ -32,7 +34,7 @@ $(document).ready(function () {
   }
 
   updateVotes();
-  setInterval(updateVotes, 5000);
+  setInterval(updateVotes, 50000);
 });
 
 

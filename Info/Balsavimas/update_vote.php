@@ -137,16 +137,17 @@ $conn->close();
 <style>
     .vote-container {
         border: 1px solid green;
+        border: none;
 
     }
 
     .vote-entry {
-        margin-bottom: 10px;
-        padding: 5px;
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
+        /* margin-bottom: 10px; */
+        /* padding: 5px; */
+        /* background-color: #f0f0f0; */
         display: flex; 
-        border: 1px solid blue;
+        border: 10px solid blue;
+        border: none;
         text-wrap: wrap;
     }
 
@@ -156,7 +157,8 @@ $conn->close();
 
     .vote-right {
         flex: 1;
-        border: 1px solid black;
+        border: 10px solid black;
+        border: none;
         display: flex; 
         justify-content: center; 
         align-items: center; 
@@ -175,6 +177,7 @@ $conn->close();
         flex-direction: column;
         align-items: center; 
         border: 1px solid red;
+        border: none;
     }
 
     .vote-buttons button {
