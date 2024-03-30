@@ -171,25 +171,29 @@ button:focus {
   display: flex;
   justify-content: center;
   align-self: center;
-
-
+  border: 10px solid red;
+  height: 100%;
 }
 
 .view-main-vote {
-  background: #ddd6d4;
-  /* color: #3f2727; */
-  /* border: 1px solid red; */
+  background: #9d3f25;
   padding: 1em;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  /* margin: 55em 11em; */
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 
 .voter-entry {
   background-color: #5a2ba7;
-  /* display: flex;
-  flex-direction: column; */
+  height: 80%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+
   padding: 100px;
   margin-bottom: 10px;
 
@@ -197,24 +201,43 @@ button:focus {
 
 .voter-entry-p {
   background: #d7dadc;
+  text-align: center;
+  align-self: center;
 }
 
 .voter-entry-buttons {
   display: flex;
+  justify-content: center;
+  margin: 1em;
 }
 
+.voter-entry-buttons .vote-button:first-child {
+  margin-right: 10px;
+}
+
+.voter-entry-buttons .vote-button:nth-child(2) {
+  margin-left: 10px;
+}
+
+
+
+
+
+
 .vote-bars {
+  border: 3px solid black;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  z-index: 100;
+  align-self: start;
+  width: 100%;
 }
 
 .vote-bars .yes-bar,
 .vote-bars .no-bar {
   height: 50px;
-  width: 50px;
+  width: 200px;
   margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .yes-bar {
