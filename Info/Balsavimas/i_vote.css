@@ -199,8 +199,13 @@ button:focus {
 
 }
 
-.voter-entry-p {
+.voter-entry-title {
   background: #d7dadc;
+  text-align: center;
+  align-self: center;
+}
+.voter-entry-name {
+  background: #2c5068;
   text-align: center;
   align-self: center;
 }

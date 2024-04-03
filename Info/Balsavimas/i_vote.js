@@ -6,12 +6,13 @@ $(document).ready(function () {
       method: "GET",
       success: function (response) {
         var voteSection = $("#view-main-vote");
-        voteSection.empty(); // Clear existing content
+        voteSection.empty(); 
         var data = JSON.parse(response);
         if (data.length > 0) {
           data.forEach(function(item) {
             var html = `<div class="voter-entry">
-                          <p class="voter-entry-p">Balsavimas: ${item.suggestion}</p>
+                          <h1 class="voter-entry-title">Balsavimas: ${item.suggestion}</h1>
+                          <h3 class="voter-entry-name">Balsavimo autorius: ${item.usname}</h3>
                           <div class="voter-entry-buttons">
                             <button class="vote-button" data-id="${item.id}" data-vote="yes">Pritariu</button>
                             <button class="vote-button" data-id="${item.id}" data-vote="no">Nepritariu</button>
@@ -40,7 +41,7 @@ $(document).ready(function () {
     });
   }
 
-  // Function to send the vote to the server
+  //// Function to send the vote to the server
   function castVote(suggestionId, voteType) {
     $.ajax({
       url: "update_main_vote.php",
