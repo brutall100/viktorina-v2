@@ -25,8 +25,7 @@ if ($result->num_rows > 0) {
             "id" => $row["id"],
             "usname" => $row["usname"],
             "usid" => $row["usid"],
-            "suggestion" => $row["suggestion"],
-            "user_id" => $user_id // Include user_id in the response
+            "suggestion" => $row["suggestion"]
         );
     }
 } else {
@@ -39,11 +38,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $suggestionId = mysqli_real_escape_string($conn, $_POST['suggestionId']);
         $voteType = mysqli_real_escape_string($conn, $_POST['voteType']);
 
-        $sql = "INSERT INTO x_vote_main (vote_suggest_id, vote_type, user_id) VALUES ('$suggestionId', '$voteType', '$user_id')";
-        if(mysqli_query($conn, $sql)) {
-            echo json_encode(array("success" => true));
+        // Check if the user has already voted for this suggestion
+        $checkSql = "SELECT * FROM x_vote_main WHERE vote_suggest_id = '$suggestionId' AND user_id = '$user_id'";
+        $checkResult = $conn->query($checkSql);
+        if ($checkResult->num_rows > 0) {
+            // Update the existing vote record
+            $updateSql = "UPDATE x_vote_main SET vote_type = '$voteType' WHERE vote_suggest_id = '$suggestionId' AND user_id = '$user_id'";
+            if(mysqli_query($conn, $updateSql)) {
+                echo json_encode(array("success" => true));
+            } else {
+                echo json_encode(array("success" => false, "error" => "Failed to update vote: " . mysqli_error($conn)));
+            }
         } else {
-            echo json_encode(array("success" => false, "error" => "Failed to vote: " . mysqli_error($conn)));
+            // Insert a new vote record
+            $insertSql = "INSERT INTO x_vote_main (vote_suggest_id, vote_type, user_id) VALUES ('$suggestionId', '$voteType', '$user_id')";
+            if(mysqli_query($conn, $insertSql)) {
+                echo json_encode(array("success" => true));
+            } else {
+                echo json_encode(array("success" => false, "error" => "Failed to vote: " . mysqli_error($conn)));
+            }
         }
         exit(); // Stop further execution
     } else {
@@ -56,6 +69,8 @@ echo json_encode($response);
 
 $conn->close();
 ?>
+
+
 
 
 
