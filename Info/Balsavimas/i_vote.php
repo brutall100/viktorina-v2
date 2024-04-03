@@ -25,7 +25,7 @@ $user_id = $_SESSION['user_id'] ?? "";
         <?php include '../../Header/header.php'; ?>
     </div>
 
-    <main class="main-content">                                            <!-- Main vote [ Imported from update_vote.php ] -->
+    <main class="main-content">                                            <!-- Main vote [ Imported from update_main_vote.php ] -->
         <section id="vote-section" class="vote-section">
             <div class="view-main-vote" id="view-main-vote">
                         

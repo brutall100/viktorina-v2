@@ -228,8 +228,8 @@ button:focus {
   border: 3px solid black;
   display: flex;
   flex-direction: column;
-  align-self: start;
-  width: 100%;
+  align-self: center;
+  width: 90%;
 }
 
 .vote-bars .yes-bar,

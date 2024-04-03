@@ -23,6 +23,13 @@ $(document).ready(function () {
                         </div>`;
             voteSection.append(html);
           });
+
+          // Attach event listeners to vote buttons
+          $(".vote-button").on("click", function() {
+            var suggestionId = $(this).data("id");
+            var voteType = $(this).data("vote");
+            castVote(suggestionId, voteType);
+          });
         } else {
           voteSection.html('<p>No votes found.</p>');
         }
@@ -33,9 +40,27 @@ $(document).ready(function () {
     });
   }
 
+  // Function to send the vote to the server
+  function castVote(suggestionId, voteType) {
+    $.ajax({
+      url: "update_main_vote.php",
+      method: "POST",
+      data: { suggestionId: suggestionId, voteType: voteType },
+      success: function(response) {
+        // Handle success response
+        // For example, you can update the UI to reflect the new vote count
+        updateVotes();
+      },
+      error: function(xhr, status, error) {
+        console.error("Error:", error);
+      }
+    });
+  }
+
   updateVotes();
   setInterval(updateVotes, 50000);
 });
+
 
 
 
