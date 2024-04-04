@@ -9,7 +9,7 @@ $(document).ready(function () {
         var voteSection = $("#view-main-vote");
         voteSection.empty(); 
         var data = JSON.parse(json_response);
-        if (data.votes.length > 0) { // Check the length of the 'votes' array
+        if (data.votes.length > 0) {
           data.votes.forEach(function(item) {
             var html = `<div class="voter-entry">
                           <h1 class="voter-entry-title">Balsavimas: ${item.suggestion}</h1>
@@ -21,15 +21,30 @@ $(document).ready(function () {
                         </div>
                         <div class="vote-bars" id="vote-bars-${item.id}">
                           <div class="yes-bar"></div>
+                          <div class="no-bar"></div>
                         </div>
                         `;
             voteSection.append(html);
             
-            // Update the width of the yes-bar
-            // You may need to update this part based on your data structure
-            const yesPercentage = item.yes_percentage; // Assuming you have a field for yes percentage in your response data
-            const yesBar = $(`#vote-bars-${item.id} .yes-bar`);
-            yesBar.css("width", `${yesPercentage}%`);
+            // Calculate and update the width of the vote bars
+            if (item.vote_types && item.vote_types.length > 0) {
+              const yesType = item.vote_types.find(type => type.vote_type === 'yes');
+              const noType = item.vote_types.find(type => type.vote_type === 'no');
+              if (yesType && noType) {
+                const yesCount = parseInt(yesType.vote_count);
+                const noCount = parseInt(noType.vote_count);
+                const totalVotes = yesCount + noCount;
+                const yesPercentage = (yesCount / totalVotes) * 100;
+                const noPercentage = (noCount / totalVotes) * 100;
+                const yesBar = $(`#vote-bars-${item.id} .yes-bar`);
+                const noBar = $(`#vote-bars-${item.id} .no-bar`);
+                yesBar.css("width", `${yesPercentage}%`);
+                noBar.css("width", `${noPercentage}%`);
+
+                console.log(`Yes bar width: ${yesPercentage}%`);
+                console.log(`No bar width: ${noPercentage}%`);
+              }
+            }
           });
 
           // Attach event listeners to vote buttons
@@ -39,7 +54,7 @@ $(document).ready(function () {
             castVote(suggestionId, voteType);
           });
         } else {
-          voteSection.html('<p>No votes found.</p>'); // Update message here
+          voteSection.html('<p>No votes found.</p>');
         }
       },
       error: function (xhr, status, error) {
@@ -48,7 +63,7 @@ $(document).ready(function () {
     });
   }
 
-  //// Function to cast a vote
+  // Function to cast a vote
   function castVote(suggestionId, voteType) {
     $.ajax({
       url: "update_main_vote.php",
@@ -69,6 +84,7 @@ $(document).ready(function () {
   updateVotes();
   setInterval(updateVotes, 50000);
 });
+
 
 
 

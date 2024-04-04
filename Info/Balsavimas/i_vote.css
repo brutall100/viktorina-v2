@@ -230,16 +230,21 @@ button:focus {
 
 
 .vote-bars {
-  border: 3px solid black;
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  width: 90%;
+  width: 90%; /* Adjust the width as needed */
+  height: 20px; /* Adjust the height as needed */
+  background-color: #f0f0f0; /* Background color of the vote bars container */
+  margin-top: 10px; /* Adjust the margin as needed */
 }
 
-.vote-bars .yes-bar {
-  height: 50px;
-  margin-bottom: 5px;
-  margin-top: 5px;
-  background-color: green;
+.yes-bar, .no-bar {
+  height: 100%;
 }
+
+.yes-bar {
+  background-color: #4caf50; /* Color of the 'yes' votes */
+}
+
+.no-bar {
+  background-color: #f44336; /* Color of the 'no' votes */
+}
+
