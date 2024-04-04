@@ -237,18 +237,9 @@ button:focus {
   width: 90%;
 }
 
-.vote-bars .yes-bar,
-.vote-bars .no-bar {
+.vote-bars .yes-bar {
   height: 50px;
-  width: 200px;
   margin-bottom: 5px;
   margin-top: 5px;
-}
-
-.yes-bar {
   background-color: green;
-}
-
-.no-bar {
-  background-color: red;
 }

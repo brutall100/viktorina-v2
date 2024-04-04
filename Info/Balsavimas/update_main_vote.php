@@ -7,10 +7,12 @@ $user_id = $_SESSION['user_id'] ?? "";
 
 include '../../x_configDB.php'; 
 
-//// Shows main vote with Buttons
-$sql = "SELECT x_vote_suggestion.*, COUNT(x_vote.vote_suggest_id) AS yes_vote_count
+// First SQL query to fetch data from the primary database
+$sql = "SELECT x_vote_suggestion.*, COUNT(x_vote.vote_suggest_id) AS yes_vote_count,
+               x_vote_main.vote_type
         FROM x_vote_suggestion
         LEFT JOIN x_vote ON x_vote_suggestion.id = x_vote.vote_suggest_id
+        LEFT JOIN x_vote_main ON x_vote_suggestion.id = x_vote_main.vote_suggest_id AND x_vote_main.user_id = '$user_id'
         GROUP BY x_vote_suggestion.id
         ORDER BY yes_vote_count DESC, x_vote_suggestion.id DESC
         LIMIT 1";
@@ -25,12 +27,31 @@ if ($result->num_rows > 0) {
             "id" => $row["id"],
             "usname" => $row["usname"],
             "usid" => $row["usid"],
-            "suggestion" => $row["suggestion"]
+            "suggestion" => $row["suggestion"],
         );
     }
 } else {
     $response["error"] = "No votes found.";
 }
+
+// Second SQL query to count the occurrences of each vote type from x_vote_main
+$sql2 = "SELECT vote_type, COUNT(*) AS vote_count FROM x_vote_main GROUP BY vote_type";
+$result2 = $conn->query($sql2);
+$response2 = array();
+
+if ($result2->num_rows > 0) {
+    while ($row = $result2->fetch_assoc()) {
+        $response2[] = array(
+            "vote_type" => $row["vote_type"],
+            "vote_count" => $row["vote_count"]
+        );
+    }
+} else {
+    // Don't set an error message here, as it might interfere with the JSON response
+}
+
+// Combine both responses into one JSON object
+$json_response = array("votes" => $response, "vote_types" => $response2);
 
 //// If it's a POST request, handle the vote
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -65,10 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-echo json_encode($response);
+echo json_encode($json_response);
 
 $conn->close();
 ?>
+
 
 
 

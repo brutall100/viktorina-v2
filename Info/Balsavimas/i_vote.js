@@ -4,12 +4,13 @@ $(document).ready(function () {
     $.ajax({
       url: "update_main_vote.php",
       method: "GET",
-      success: function (response) {
+      success: function (json_response) {
+        console.log(json_response);
         var voteSection = $("#view-main-vote");
         voteSection.empty(); 
-        var data = JSON.parse(response);
-        if (data.length > 0) {
-          data.forEach(function(item) {
+        var data = JSON.parse(json_response);
+        if (data.votes.length > 0) { // Check the length of the 'votes' array
+          data.votes.forEach(function(item) {
             var html = `<div class="voter-entry">
                           <h1 class="voter-entry-title">Balsavimas: ${item.suggestion}</h1>
                           <h3 class="voter-entry-name">Balsavimo autorius: ${item.usname}</h3>
@@ -20,9 +21,15 @@ $(document).ready(function () {
                         </div>
                         <div class="vote-bars" id="vote-bars-${item.id}">
                           <div class="yes-bar"></div>
-                          <div class="no-bar"></div>
-                        </div>`;
+                        </div>
+                        `;
             voteSection.append(html);
+            
+            // Update the width of the yes-bar
+            // You may need to update this part based on your data structure
+            const yesPercentage = item.yes_percentage; // Assuming you have a field for yes percentage in your response data
+            const yesBar = $(`#vote-bars-${item.id} .yes-bar`);
+            yesBar.css("width", `${yesPercentage}%`);
           });
 
           // Attach event listeners to vote buttons
@@ -32,7 +39,7 @@ $(document).ready(function () {
             castVote(suggestionId, voteType);
           });
         } else {
-          voteSection.html('<p>No votes found.</p>');
+          voteSection.html('<p>No votes found.</p>'); // Update message here
         }
       },
       error: function (xhr, status, error) {
@@ -41,7 +48,7 @@ $(document).ready(function () {
     });
   }
 
-  //// Function to send the vote to the server
+  //// Function to cast a vote
   function castVote(suggestionId, voteType) {
     $.ajax({
       url: "update_main_vote.php",
@@ -58,9 +65,16 @@ $(document).ready(function () {
     });
   }
 
+  // Call updateVotes function initially
   updateVotes();
   setInterval(updateVotes, 50000);
 });
+
+
+
+
+
+
 
 
 
