@@ -39,9 +39,9 @@ $(document).ready(function () {
             const yesCountItem = parseInt(voteTypes['yes']);
             const noCountItem = parseInt(voteTypes['no']);
             const totalVotesItem = yesCountItem + noCountItem;
-            const yesPercentage = (yesCountItem / totalVotesItem) * 100;
-            const noPercentage = (noCountItem / totalVotesItem) * 100;
-        
+            const yesPercentage = Math.floor((yesCountItem / totalVotesItem) * 100);
+            const noPercentage = Math.floor((noCountItem / totalVotesItem) * 100);
+
             console.log(`Yes bar width: ${yesPercentage}%`);
             console.log(`No bar width: ${noPercentage}%`);
           });
