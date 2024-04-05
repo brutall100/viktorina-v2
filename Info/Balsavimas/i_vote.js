@@ -1,4 +1,3 @@
-//// Function update_main_vote.php container A witg AJAX
 $(document).ready(function () {
   function updateVotes() {
     $.ajax({
@@ -20,27 +19,36 @@ $(document).ready(function () {
           console.log("Overall Yes vote count:", yesCount);
           console.log("Overall No vote count:", noCount);
           
+          // Define HTML template
+          var htmlTemplate = `
+            <div class="voter-entry">
+              <h1 class="voter-entry-title">Balsavimas: {suggestion}</h1>
+              <h3 class="voter-entry-name">Balsavimo autorius: {usname}</h3>
+              <div class="voter-entry-buttons">
+                <button class="vote-button" data-id="{id}" data-vote="yes">Pritariu</button>
+                <button class="vote-button" data-id="{id}" data-vote="no">Nepritariu</button>
+              </div>
+            </div>
+            <div class="vote-bars" id="vote-bars-{id}">
+              <div class="yes-bar"></div>
+              <div class="no-bar"></div>
+            </div>
+          `;
+          
           data.votes.forEach(function(item) {
-            var html = `<div class="voter-entry">
-                          <h1 class="voter-entry-title">Balsavimas: ${item.suggestion}</h1>
-                          <h3 class="voter-entry-name">Balsavimo autorius: ${item.usname}</h3>
-                          <div class="voter-entry-buttons">
-                            <button class="vote-button" data-id="${item.id}" data-vote="yes">Pritariu</button>
-                            <button class="vote-button" data-id="${item.id}" data-vote="no">Nepritariu</button>
-                          </div>
-                        </div>
-                        <div class="vote-bars" id="vote-bars-${item.id}">
-                          <div class="yes-bar"></div>
-                          <div class="no-bar"></div>
-                        </div>
-                        `;
-            voteSection.append(html);
+            // Fill HTML template with item data
+            var filledHtml = htmlTemplate
+              .replace(/{suggestion}/g, item.suggestion)
+              .replace(/{usname}/g, item.usname)
+              .replace(/{id}/g, item.id);
+            
+            voteSection.append(filledHtml);
             
             const yesCountItem = parseInt(voteTypes['yes']);
             const noCountItem = parseInt(voteTypes['no']);
             const totalVotesItem = yesCountItem + noCountItem;
-            const yesPercentage = Math.floor((yesCountItem / totalVotesItem) * 100);
-            const noPercentage = Math.floor((noCountItem / totalVotesItem) * 100);
+            const yesPercentage = Math.round((yesCountItem / totalVotesItem) * 100);
+            const noPercentage = Math.round((noCountItem / totalVotesItem) * 100);
 
             console.log(`Yes bar width: ${yesPercentage}%`);
             console.log(`No bar width: ${noPercentage}%`);
@@ -55,8 +63,6 @@ $(document).ready(function () {
         } else {
           voteSection.html('<p>No votes found.</p>');
         }
-        
-        
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
