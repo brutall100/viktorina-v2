@@ -5,11 +5,21 @@ $(document).ready(function () {
       url: "update_main_vote.php",
       method: "GET",
       success: function (json_response) {
-        console.log(json_response);
+        var data = JSON.parse(json_response);
+        console.log("Data received from server:", data);
         var voteSection = $("#view-main-vote");
         voteSection.empty(); 
-        var data = JSON.parse(json_response);
         if (data.votes.length > 0) {
+          // Log the overall vote counts
+          var voteTypes = data.vote_types.reduce((acc, curr) => {
+            acc[curr.vote_type] = curr.vote_count;
+            return acc;
+          }, {});
+          var yesCount = parseInt(voteTypes['yes']);
+          var noCount = parseInt(voteTypes['no']);
+          console.log("Overall Yes vote count:", yesCount);
+          console.log("Overall No vote count:", noCount);
+          
           data.votes.forEach(function(item) {
             var html = `<div class="voter-entry">
                           <h1 class="voter-entry-title">Balsavimas: ${item.suggestion}</h1>
@@ -26,29 +36,18 @@ $(document).ready(function () {
                         `;
             voteSection.append(html);
             
-            // Calculate and update the width of the vote bars
-            if (item.vote_types && item.vote_types.length > 0) {
-              const yesType = item.vote_types.find(type => type.vote_type === 'yes');
-              const noType = item.vote_types.find(type => type.vote_type === 'no');
-              if (yesType && noType) {
-                const yesCount = parseInt(yesType.vote_count);
-                const noCount = parseInt(noType.vote_count);
-                const totalVotes = yesCount + noCount;
-                const yesPercentage = (yesCount / totalVotes) * 100;
-                const noPercentage = (noCount / totalVotes) * 100;
-                const yesBar = $(`#vote-bars-${item.id} .yes-bar`);
-                const noBar = $(`#vote-bars-${item.id} .no-bar`);
-                yesBar.css("width", `${yesPercentage}%`);
-                noBar.css("width", `${noPercentage}%`);
-
-                console.log(`Yes bar width: ${yesPercentage}%`);
-                console.log(`No bar width: ${noPercentage}%`);
-              }
-            }
+            const yesCountItem = parseInt(voteTypes['yes']);
+            const noCountItem = parseInt(voteTypes['no']);
+            const totalVotesItem = yesCountItem + noCountItem;
+            const yesPercentage = (yesCountItem / totalVotesItem) * 100;
+            const noPercentage = (noCountItem / totalVotesItem) * 100;
+        
+            console.log(`Yes bar width: ${yesPercentage}%`);
+            console.log(`No bar width: ${noPercentage}%`);
           });
-
+        
           // Attach event listeners to vote buttons
-          $(".vote-button").on("click", function() {
+          $(".vote-button").off("click").on("click", function() {
             var suggestionId = $(this).data("id");
             var voteType = $(this).data("vote");
             castVote(suggestionId, voteType);
@@ -56,6 +55,8 @@ $(document).ready(function () {
         } else {
           voteSection.html('<p>No votes found.</p>');
         }
+        
+        
       },
       error: function (xhr, status, error) {
         console.error("Error:", error);
