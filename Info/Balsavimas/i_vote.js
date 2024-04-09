@@ -1,3 +1,4 @@
+//// Function update_main_vote.php container A witg AJAX
 $(document).ready(function () {
   function updateVotes() {
     $.ajax({
@@ -9,7 +10,6 @@ $(document).ready(function () {
         var voteSection = $("#view-main-vote");
         voteSection.empty(); 
         if (data.votes.length > 0) {
-          // Log the overall vote counts
           var voteTypes = data.vote_types.reduce((acc, curr) => {
             acc[curr.vote_type] = curr.vote_count;
             return acc;
@@ -19,7 +19,6 @@ $(document).ready(function () {
           console.log("Overall Yes vote count:", yesCount);
           console.log("Overall No vote count:", noCount);
           
-          // Define HTML template
           var htmlTemplate = `
             <div class="voter-entry">
               <h1 class="voter-entry-title">Balsavimas: {suggestion}</h1>
@@ -36,7 +35,7 @@ $(document).ready(function () {
           `;
           
           data.votes.forEach(function(item) {
-            // Fill HTML template with item data
+            //? Fill HTML template with item data
             var filledHtml = htmlTemplate
               .replace(/{suggestion}/g, item.suggestion)
               .replace(/{usname}/g, item.usname)
@@ -49,10 +48,15 @@ $(document).ready(function () {
             const totalVotesItem = yesCountItem + noCountItem;
             const yesPercentage = Math.round((yesCountItem / totalVotesItem) * 100);
             const noPercentage = Math.round((noCountItem / totalVotesItem) * 100);
-
+        
+            // Update the widths and text for the vote bars
+            $(`#vote-bars-${item.id} .yes-bar`).css('width', yesPercentage + '%').text(yesPercentage + '%');
+            $(`#vote-bars-${item.id} .no-bar`).css('width', noPercentage + '%').text(noPercentage + '%');
+        
             console.log(`Yes bar width: ${yesPercentage}%`);
             console.log(`No bar width: ${noPercentage}%`);
-          });
+        });
+        
         
           // Attach event listeners to vote buttons
           $(".vote-button").off("click").on("click", function() {

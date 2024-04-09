@@ -56,9 +56,9 @@ button:focus {
 /* // Main */
 .main-content {
   display: flex;
-  border: 1px solid rgb(165, 58, 26);
+  /* border: 1px solid rgb(165, 58, 26); */
   height: 70vh;
-  margin: 2em auto;
+  margin: 3em auto;
 }
 
 .vote-section {
@@ -171,12 +171,12 @@ button:focus {
   display: flex;
   justify-content: center;
   align-self: center;
-  border: 10px solid red;
+  /* border: 10px solid red; */
   height: 100%;
 }
 
 .view-main-vote {
-  background: #9d3f25;
+  /* background: #9d3f25; */
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -188,7 +188,7 @@ button:focus {
 
 
 .voter-entry {
-  background-color: #5a2ba7;
+  /* background-color: #5a2ba7; */
   height: 80%;
   width: 90%;
   display: flex;
@@ -230,21 +230,47 @@ button:focus {
 
 
 .vote-bars {
-  width: 90%; /* Adjust the width as needed */
-  height: 20px; /* Adjust the height as needed */
-  background-color: #f0f0f0; /* Background color of the vote bars container */
-  margin-top: 10px; /* Adjust the margin as needed */
+  display: flex;
+  width: 100%;
+  background-color: #f1f1f1; 
+  margin: 10px 0;
+  border-radius: 10px; 
+  box-shadow: inset 5px 5px 10px #e1e1e1, 
+              inset -5px -5px 10px #ffffff; 
 }
 
 .yes-bar, .no-bar {
-  height: 100%;
+  height: 3em;
+  color: white;
+  line-height: 3em;
+  text-align: center;
+  border-radius: 10px; 
 }
 
 .yes-bar {
-  background-color: #4caf50; /* Color of the 'yes' votes */
+  background-color: #ffd700; 
+  border-radius: 10px 0 0 10px;
+  box-shadow: 5px 5px 10px #b89b00, 
+              -1px -1px 10px #ffff4d;
+}
+.yes-bar:hover {
+  background-color: #ffec00; 
+  box-shadow: 0px 0px 12px #ffec00; 
+  transform: scale(1.01); 
+  transition: all 0.5s ease; 
 }
 
 .no-bar {
-  background-color: #f44336; /* Color of the 'no' votes */
+  background-color: #000000; 
+  border-radius: 0 10px 10px 0;
+  box-shadow: 5px 5px 10px #262626, 
+              -1px -1px 10px #4d4d4d; 
 }
+.no-bar:hover {
+  background-color: #333333;
+  box-shadow: 0px 0px 12px #333333; 
+  transform: scale(1.01); 
+  transition: all 0.5s ease; 
+}
+
 
