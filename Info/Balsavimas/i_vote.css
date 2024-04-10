@@ -87,23 +87,27 @@ button:focus {
 
 
 /* // Vote Suggestions form */
-/* Vote Suggestions form */
 .vote-suggestions {
-  /* border: 4px solid #7d5a50;  */
   border-radius: 1em;
   padding: 1em 2em 2em 2em;
   margin-bottom: 1em;
   background: #141E30;
-  background: -webkit-linear-gradient(to right, #243B55, #141E30);
-  background: linear-gradient(to right, #243B55, #141E30);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+  background: -webkit-linear-gradient(to left, #243B55, #141E30);
+  background: linear-gradient(to left, #243B55, #141E30);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* Enhancing the depth and contrast of form elements */
-.form-inline, .label-block, .form-block {
+.form-inline,
+.label-block,
+.form-block {
   border-radius: .5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent shadow for depth */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: -webkit-linear-gradient(to right, #324461, #1e2f3a);
+  background: linear-gradient(to right, #324461, #1e2f3a);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+
 
 .form-inline {
   padding: 1em;
@@ -116,77 +120,86 @@ button:focus {
 .label-block {
   display: flex;
   flex-direction: column;
-  /* border: 5px solid #ffec00;  */
+  border: 1px solid #ffec00;
   margin: 0 1em 0 1em;
   font-family: 'Arial', sans-serif;
   padding: 1em;
-  background-color: #f0e4d7; /* Light background for contrast */
+  background-color: #f0e4d7;
 }
 
 .label-block input[type="text"] {
-  background: #fcf8e3; /* Softer yellow */
-  color: #333; /* Enhanced text contrast */
+  background: #fcf8e3;
+  color: #333;
   font-size: 1em;
-  padding: 1em 0;
+  padding: .3em 0;
   text-align: center;
   border-radius: .5em;
+  margin-top: .5em;
 }
 
 label[for="suggestion"] {
-  font-family: Arial, sans-serif; 
-  color: #000000; 
-  font-size: 1.1em; 
+  font-family: Arial, sans-serif;
+  color: #000000;
+  font-size: 1.1em;
 }
 
 label[for="suggestion"] i.fas.fa-comment {
-  color: #fbff00; 
-  font-size: 1em; 
+  color: #fbff00;
+  font-size: 1em;
   margin-right: .5em;
   margin-bottom: .6em;
 }
 
 label[for="suggestion"]:hover {
-  color: #fbff00; 
+  color: #fbff00;
 }
 
 label[for="suggestion"]:hover i.fas.fa-comment {
-  color: #000000; 
+  color: #000000;
 }
-
 
 
 
 .form-block {
- 
   display: flex;
   flex-direction: column;
   margin-top: .5em;
   font-family: 'Arial', sans-serif;
   padding: 1em;
- 
-
+  justify-content: center;
 }
 
 .form-block .suggestion-textarea {
-  border: 2px solid #ccc; /* Slightly thicker border for definition */
-  padding: 5px;
+  border: 2px solid #ccc;
+  padding: .5em;
   margin-bottom: 1.5em;
-  background-color: #ffffff; /* Pure white for contrast */
+  background-color: #ffffff;
 }
 
 .form-block .submit-button {
-  background-color: #007bff; /* Primary button color */
-  border-radius: .3em; /* Rounded corners */
+  margin: 0 auto;
+  border-radius: .3em;
   padding: 10px 20px;
   cursor: pointer;
-  font-family: 'Arial', sans-serif;
-  transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-block .submit-button i {
+  margin-right: .5em;
 }
 
 .form-block .submit-button:hover {
-  background-color: #0056b3; /* Darker on hover for interactive feel */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Elevated shadow on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.03);
 }
+
+.form-block .submit-button:active {
+  transform: scale(0.95);
+  border: 2px solid #00264d;
+  outline: none;
+}
+
 
 
 
@@ -219,7 +232,7 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 }
 
 .yellow-span {
-  color: #ff0; 
+  color: #ff0;
 }
 
 

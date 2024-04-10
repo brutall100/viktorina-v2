@@ -56,7 +56,7 @@ $user_id = $_SESSION['user_id'] ?? "";
                         <label for="suggestion"><i class="fas fa-comment"></i>Siūlymas balsuoti</label>
                         <textarea id="suggestion" name="suggestion" placeholder="Klausimas turi skambėti taip, kad atsakymas butų TAIP arba NE." class="suggestion-textarea"></textarea>
 
-                        <button type="submit" class="submit-button"><i class="fas fa-check"></i> Submit</button>
+                        <button type="submit" class="submit-button"><i class="fas fa-check"></i> pateikti</button>
                     </div>
                 </form>
             </section>
