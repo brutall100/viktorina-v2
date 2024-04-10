@@ -37,7 +37,7 @@ $user_id = $_SESSION['user_id'] ?? "";
                 <form action="i_vote_form.php" method="post" class="vote-suggestion-form">
                     <div class="form-inline">
                         <div class="label-block">
-                            <label for="username"><i class="fas fa-user"></i> Username</label>
+                            <label for="username"><i class="fas fa-user"></i> Vardas</label>
                             <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($name); ?>" readonly>
                         </div>
                         <div class="label-block">
@@ -45,14 +45,14 @@ $user_id = $_SESSION['user_id'] ?? "";
                             <input type="text" id="litai" name="litai" value="<?php echo htmlspecialchars($points); ?>" readonly>
                         </div>
                         <div class="label-block">
-                            <label for="userlevel"><i class="fas fa-level-up-alt"></i> User Level</label>
+                            <label for="userlevel"><i class="fas fa-level-up-alt"></i> Lygis</label>
                             <input type="text" id="userlevel" name="userlevel" value="<?php echo htmlspecialchars($level); ?>" readonly>
                         </div>
                         <input type="hidden" name="userid" value="<?php echo htmlspecialchars($user_id); ?>">
                         <input type="hidden" name="points" value="<?php echo htmlspecialchars($points); ?>">
                     </div>
 
-                    <div class="form-block"  data-tooltip="Siūlymas balsuoti galima pateikti turint 100 000 Litų. </br> Galima įrašyti nuo 3 lygio nemokamai.">
+                    <div class="form-block" data-tooltip="Pasiūlymą balsuoti galima pateikti turint <span class='yellow-span'>100 000</span> Litų. </br> Arba </br> Nemokamai galima įrašyti turint <span class='yellow-span'>3</span> lygį.">
                         <label for="suggestion"><i class="fas fa-comment"></i>Siūlymas balsuoti</label>
                         <textarea id="suggestion" name="suggestion" placeholder="Klausimas turi skambėti taip, kad atsakymas butų TAIP arba NE." class="suggestion-textarea"></textarea>
 

@@ -1,4 +1,5 @@
-body {
+body,
+html {
   font-family: "Comic Sans MS", cursive, sans-serif;
   box-sizing: border-box;
   padding: 0;
@@ -86,8 +87,25 @@ button:focus {
 
 
 /* // Vote Suggestions form */
+/* Vote Suggestions form */
+.vote-suggestions {
+  /* border: 4px solid #7d5a50;  */
+  border-radius: 1em;
+  padding: 1em 2em 2em 2em;
+  margin-bottom: 1em;
+  background: #141E30;
+  background: -webkit-linear-gradient(to right, #243B55, #141E30);
+  background: linear-gradient(to right, #243B55, #141E30);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+
+/* Enhancing the depth and contrast of form elements */
+.form-inline, .label-block, .form-block {
+  border-radius: .5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent shadow for depth */
+}
+
 .form-inline {
-  /* border: 1px solid rgb(255, 105, 105); */
   padding: 1em;
   display: flex;
   flex-direction: row;
@@ -98,52 +116,76 @@ button:focus {
 .label-block {
   display: flex;
   flex-direction: column;
-  border: 1px solid rgb(150, 255, 105);
+  /* border: 5px solid #ffec00;  */
   margin: 0 1em 0 1em;
   font-family: 'Arial', sans-serif;
   padding: 1em;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
+  background-color: #f0e4d7; /* Light background for contrast */
 }
 
 .label-block input[type="text"] {
-  border: 1px solid greenyellow;
-  background: #007bff;
+  background: #fcf8e3; /* Softer yellow */
+  color: #333; /* Enhanced text contrast */
+  font-size: 1em;
+  padding: 1em 0;
   text-align: center;
-
+  border-radius: .5em;
 }
 
+label[for="suggestion"] {
+  font-family: Arial, sans-serif; 
+  color: #000000; 
+  font-size: 1.1em; 
+}
+
+label[for="suggestion"] i.fas.fa-comment {
+  color: #fbff00; 
+  font-size: 1em; 
+  margin-right: .5em;
+  margin-bottom: .6em;
+}
+
+label[for="suggestion"]:hover {
+  color: #fbff00; 
+}
+
+label[for="suggestion"]:hover i.fas.fa-comment {
+  color: #000000; 
+}
+
+
+
+
 .form-block {
-  border: 1px solid rgb(255, 105, 200);
-  padding: .5em;
+ 
   display: flex;
   flex-direction: column;
   margin-top: .5em;
   font-family: 'Arial', sans-serif;
-  /* Change to your futuristic font */
   padding: 1em;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-  /* Add shadow effect with depth */
+ 
+
 }
 
 .form-block .suggestion-textarea {
-  width: 100%;
-  height: 100px;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc; /* Slightly thicker border for definition */
   padding: 5px;
   margin-bottom: 1.5em;
+  background-color: #ffffff; /* Pure white for contrast */
 }
 
 .form-block .submit-button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+  background-color: #007bff; /* Primary button color */
+  border-radius: .3em; /* Rounded corners */
   padding: 10px 20px;
   cursor: pointer;
   font-family: 'Arial', sans-serif;
-  /* Change to your futuristic font */
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-  /* Add shadow effect */
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.form-block .submit-button:hover {
+  background-color: #0056b3; /* Darker on hover for interactive feel */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Elevated shadow on hover */
 }
 
 
@@ -151,7 +193,8 @@ button:focus {
 
 
 
-.vote-section,
+
+/* .vote-section,
 .right-sections,
 .vote-suggestions,
 .view-suggestions {
@@ -159,27 +202,24 @@ button:focus {
   overflow: auto;
 
 
-}
+} */
 
-.right-sections,
-.vote-suggestions,
-.view-suggestions {
-  border: 1px solid black;
-  overflow: auto;
-
-
-}
 
 
 .tooltip {
   position: absolute;
-  background-color: #333;
+  background-color: #243B55;
   color: #fff;
-  padding: 5px 10px;
+  padding: 2em;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 1em;
   z-index: 9999;
   text-align: center;
+  line-height: 2;
+}
+
+.yellow-span {
+  color: #ff0; 
 }
 
 
