@@ -110,21 +110,25 @@ if ($result->num_rows > 0) {
 
     while ($row = $result->fetch_assoc()) {
         echo '<div class="vote-entry">';
-        echo '<div class="vote-left">'; // Left section
-        echo '<p><strong>Vote ID:</strong> ' . $row["id"] . '</p>';
-        echo '<p><strong>Username:</strong> ' . $row["usname"] . '</p>';
-        echo '<p><strong>User ID:</strong> ' . $row["usid"] . '</p>';
-        echo '<p><strong>Suggestion:</strong> ' . $row["suggestion"] . '</p>';
-        echo '</div>'; // End of vote-left
+        
+        // Left section with details
+        echo '<div class="vote-details">';
+        echo '<p><strong>Vote ID:</strong> ' . htmlspecialchars($row["id"], ENT_QUOTES, 'UTF-8') . '</p>';
+        echo '<p><strong>Username:</strong> ' . htmlspecialchars($row["usname"], ENT_QUOTES, 'UTF-8') . '</p>';
+        echo '<p><strong>User ID:</strong> ' . htmlspecialchars($row["usid"], ENT_QUOTES, 'UTF-8') . '</p>';
+        echo '</div>'; // End of vote-details
 
-        echo '<div class="vote-right">'; // Right section
-        // Add buttons for Yes and No
+        // Suggestion section
+        echo '<div class="vote-suggestion">';
+        echo '<p><strong>Suggestion:</strong> ' . htmlspecialchars($row["suggestion"], ENT_QUOTES, 'UTF-8') . '</p>';
+        echo '</div>'; // End of vote-suggestion
+
+        // Right section with buttons
         echo '<div class="vote-buttons">';
-        echo '<button class="vote-yes" data-vote-id="' . $row["id"] . '">Yes</button>';
-        echo '<button class="vote-no" data-vote-id="' . $row["id"] . '">No</button>';        
+        echo '<button class="vote-yes" data-vote-id="' . htmlspecialchars($row["id"], ENT_QUOTES, 'UTF-8') . '">TAIP</button>';
+        echo '<button class="vote-no" data-vote-id="' . htmlspecialchars($row["id"], ENT_QUOTES, 'UTF-8') . '">NE</button>';
         echo '</div>'; // End of vote-buttons
-        echo '</div>'; // End of vote-right
-
+        
         echo '</div>'; // End of vote-entry
     }
 
@@ -132,58 +136,11 @@ if ($result->num_rows > 0) {
 } else {
     echo "No votes found.";
 }
+
 $conn->close();
 ?>
 <style>
-    .vote-container {
-        border: 1px solid green;
-        border: none;
-
-    }
-
-    .vote-entry {
-        /* margin-bottom: 10px; */
-        /* padding: 5px; */
-        /* background-color: #f0f0f0; */
-        display: flex; 
-        border: 10px solid blue;
-        border: none;
-        text-wrap: wrap;
-    }
-
-    .vote-left {
-        flex: 3;
-    }
-
-    .vote-right {
-        flex: 1;
-        border: 10px solid black;
-        border: none;
-        display: flex; 
-        justify-content: center; 
-        align-items: center; 
-    }
-
-    .vote-entry p {
-        text
-    }
-
-    .vote-entry p strong {
-        font-weight: bold;
-    }
-
-    .vote-buttons {
-        display: flex; 
-        flex-direction: column;
-        align-items: center; 
-        border: 1px solid red;
-        border: none;
-    }
-
-    .vote-buttons button {
-        margin: .3em 0;
-        width: 50px;
-    }
+    
 
 </style>
 

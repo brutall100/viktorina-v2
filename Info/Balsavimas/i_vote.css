@@ -203,21 +203,81 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 
 
 
-
-
-
-
-/* .vote-section,
-.right-sections,
-.vote-suggestions,
+/*//  View suggestions C */
 .view-suggestions {
-  border: 1px solid black;
-  overflow: auto;
+  background: -webkit-linear-gradient(to right, #324461, #1e2f3a);
+  background: linear-gradient(to right, #324461, #1e2f3a);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1em;
+  overflow: auto; 
+  
+}
+
+.view-it {
+  height: 355px;
+}
+
+.vote-container {
+  padding: 1em;
+  background: rgba(46, 49, 49, 0.2); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 0.8em; 
+}
+
+.vote-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ffec00;
+  border-top: 1px solid #ffec00;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #d6d2d2;
+}
+
+.vote-details {
+  flex-grow: 1;
+}
+
+.vote-suggestion {
+  flex-grow: 2;
+  text-align: start;
+  padding: 0 1.5em;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-y: auto;
+}
+.vote-details strong, .vote-suggestion strong {
+  color: #9ca0a6; 
+}
 
 
-} */
+.vote-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.vote-buttons button {
+  margin: .2em 0;
+  max-width: 100px;
+  border-radius: .4em;
+  background: -webkit-linear-gradient(to left, #324461, #1e2f3a);
+  background: linear-gradient(to left, #324461, #1e2f3a);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+  filter: drop-shadow(1px 1px 1px #ffffff);
+  letter-spacing:1px;
+}
 
+.vote-yes:hover, .vote-no:hover {
+  transform: scale(1.05);
+}
+
+.vote-yes:active, .vote-no:active {
+  transform: scale(0.97);
+}
 
 .tooltip {
   position: absolute;
@@ -314,6 +374,7 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   justify-content: center;
   margin: 2em auto;
   gap: 20px;
+  filter: drop-shadow(1px 1px 1px #ffffff);
 }
 
 .vote-button,
