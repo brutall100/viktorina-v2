@@ -10,8 +10,10 @@ h1 {
 
 body {
   text-align: center;
-  background-color: lightblue;
-  background: url(/viktorina.live/images/DALLE/viktorina.live_world.events2.png);
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000); 
+  background: linear-gradient(to right, #434343, #000000); 
+  /* background: url(/viktorina.live/images/DALLE/viktorina.live_world.events2.png); */
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;

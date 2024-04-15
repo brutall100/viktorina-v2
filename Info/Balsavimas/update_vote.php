@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 
 session_start();
 $user_id = $_SESSION['user_id'] ?? "";
-// Votes system
 include '../../x_configDB.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

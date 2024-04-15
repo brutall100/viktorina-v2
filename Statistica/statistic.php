@@ -5,7 +5,6 @@ if (isset($_SESSION['nick_name'])) {
   
     include('../x_configDB.php'); 
 
-    // Prepare and execute the first SQL statement
     $query = "SELECT 
         user_lvl,
         litai_sum,
@@ -270,7 +269,7 @@ if (isset($_SESSION['nick_name'])) {
     document.getElementById('countdown').textContent = seconds;
     if (seconds <= 0) {
       clearInterval(countdown);
-      window.location.href = '/d_regilogi.php';
+      window.location.href = `/viktorina.live/d_regilogi.php`;
     }
   }
 
@@ -291,7 +290,7 @@ if (isset($_SESSION['nick_name'])) {
   }
 </script>";
 } else {
-  echo "Error: missing nickname parameter.";
+  echo "<script>window.location.href = '/viktorina.live/d_regilogi.php';</script>";
 }
 
 echo "<script>

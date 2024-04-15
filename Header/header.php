@@ -50,7 +50,7 @@
 <?php else : ?>
 <script>
     function redirectToLogin() {
-        window.location.href = "/viktorina.live/d_regilogi.php";
+        window.location.href = `/viktorina.live/d_regilogi.php`;
     }
 </script>
 <?php endif; ?>
