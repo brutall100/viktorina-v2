@@ -41,37 +41,28 @@ button {
   text-shadow: 0 1px #fff;
 }
 
-button:hover {
-  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 3px 3px #CECFD1;
-}
-
-button:active {
-  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
-}
-
-button:focus {
-  box-shadow: 0 4px 3px 1px #FCFCFC, 0 6px 8px #D6D7D9, 0 -4px 4px #CECFD1, 0 -6px 4px #FEFEFE, inset 0 0 5px 3px #999, inset 0 0 30px #aaa;
-}
-
-
 /* // Main */
 .main-content {
   display: flex;
-  /* border: 1px solid rgb(165, 58, 26); */
-  height: 70vh;
+  
+  height: 80vh;
   margin: 3em auto;
 }
+@media (max-width: 1024px) {
+  .main-content {
+    flex-direction: column;
+  }
+}
+
 
 .vote-section {
   flex: 1;
-  margin-right: 20px;
 }
 
 .right-sections {
   display: flex;
   flex-direction: column;
   flex: 1;
-  /* overflow: hidden; */
 }
 
 .vote-suggestions,
@@ -79,9 +70,10 @@ button:focus {
   flex: 1;
 }
 
+
 /* // */
 .right-sections {
-  margin: auto .5em;
+  margin: auto 1.5em;
 
 }
 
@@ -89,26 +81,50 @@ button:focus {
 /* // Vote Suggestions form */
 .vote-suggestions {
   border-radius: 1em;
-  padding: 1em 2em 2em 2em;
+  padding: 2em;
   margin-bottom: 1em;
-  background: #141E30;
-  background: -webkit-linear-gradient(to left, #243B55, #141E30);
   background: linear-gradient(to left, #243B55, #141E30);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width:100%; 
+  max-width: 60em; 
+  min-width: 15em; 
+  margin: 1em auto;
 }
+
+@media (max-width: 1540px) {
+  .vote-suggestions {
+    padding: 1.8em; 
+    max-width: 45em; 
+    min-width: 10em;
+    border: 1px solid rgb(165, 58, 26); 
+  }
+}
+
+@media (max-width: 1024px) {
+  .vote-suggestions {
+    padding: 1.5; 
+  }
+}
+
+@media (max-width: 768px) {
+  .vote-suggestions {
+    padding: 1em; 
+    border-radius: 0.5em; 
+    margin-bottom: 0.5em; 
+  }
+}
+
+
 
 .form-inline,
 .label-block,
 .form-block {
-  border-radius: .5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background: -webkit-linear-gradient(to right, #324461, #1e2f3a);
+  border-radius: 0.5em;
   background: linear-gradient(to right, #324461, #1e2f3a);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-
-
+/* Inline form layout */
 .form-inline {
   padding: 1em;
   display: flex;
@@ -116,77 +132,98 @@ button:focus {
   justify-content: center;
   text-align: center;
 }
+@media (max-width: 768px) {
+  .form-inline {
+    flex-direction: column;
+    padding: 0.5em;
+  }
+}
 
+/* Styles for label blocks */
 .label-block {
   display: flex;
   flex-direction: column;
   border: 1px solid #ffec00;
-  margin: 0 1em 0 1em;
-  font-family: 'Arial', sans-serif;
+  margin: 0 1em;
+  font-family: Arial, sans-serif;
   padding: 1em;
   background-color: #f0e4d7;
+  width: 100%;
+
+}
+@media (max-width:1540px) {
+    .label-block{
+      width:30%;
+      padding: .5em;
+      margin: .5em;
+      /* min-width: 180px; */
+    }
+
+  
+}
+@media (max-width: 768px) {
+  .label-block {
+    margin: 0.5em;
+
+  }
+
 }
 
 .label-block input[type="text"] {
   background: #fcf8e3;
   color: #333;
   font-size: 1em;
-  padding: .3em 0;
+  padding: 0.3em 0;
   text-align: center;
-  border-radius: .5em;
-  margin-top: .5em;
+  border-radius: 0.5em;
+  margin-top: 0.5em;
 }
 
+/* Styles for form labels */
 label[for="suggestion"] {
   font-family: Arial, sans-serif;
-  color: #000000;
+  color: #000;
   font-size: 1.1em;
 }
 
 label[for="suggestion"] i.fas.fa-comment {
   color: #fbff00;
   font-size: 1em;
-  margin-right: .5em;
+  margin-right: 0.5em;
   margin-bottom: .6em;
 }
 
-label[for="suggestion"]:hover {
+/* Hover effects for labels */
+label[for="suggestion"]:hover,
+label[for="suggestion"]:hover i.fas.fa-comment {
   color: #fbff00;
 }
 
-label[for="suggestion"]:hover i.fas.fa-comment {
-  color: #000000;
-}
-
-
-
+/* Block form layout */
 .form-block {
   display: flex;
   flex-direction: column;
-  margin-top: .5em;
-  font-family: 'Arial', sans-serif;
+  margin-top: 0.5em;
+  font-family: Arial, sans-serif;
   padding: 1em;
   justify-content: center;
 }
 
+/* Textarea and submit button styles */
 .form-block .suggestion-textarea {
   border: 2px solid #ccc;
-  padding: .5em;
+  padding: 0.5em;
   margin-bottom: 1.5em;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .form-block .submit-button {
   margin: 0 auto;
-  border-radius: .3em;
+  border-radius: 0.3em;
   padding: 10px 20px;
   cursor: pointer;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
-}
-
-.form-block .submit-button i {
-  margin-right: .5em;
 }
 
 .form-block .submit-button:hover {
@@ -197,8 +234,9 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 .form-block .submit-button:active {
   transform: scale(0.95);
   border: 2px solid #00264d;
-  outline: none;
 }
+
+
 
 
 
