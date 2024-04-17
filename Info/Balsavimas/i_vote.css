@@ -178,12 +178,22 @@ button {
   border-radius: 0.5em;
   margin-top: 0.5em;
 }
+@media (max-width: 1540px) {
+  .label-block input[type="text"] {
+    font-size: .8em;
+  }
+}
 
 /* Styles for form labels */
 label[for="suggestion"] {
   font-family: Arial, sans-serif;
   color: #000;
   font-size: 1.1em;
+}
+@media (max-width: 1540px) {
+  label[for="suggestion"] {
+    font-size: 1em;
+  }
 }
 
 label[for="suggestion"] i.fas.fa-comment {
@@ -192,8 +202,12 @@ label[for="suggestion"] i.fas.fa-comment {
   margin-right: 0.5em;
   margin-bottom: .6em;
 }
+@media (max-width: 1540px) {
+  label[for="suggestion"] i.fas.fa-comment {
+    font-size: .9em; 
+  }
+}
 
-/* Hover effects for labels */
 label[for="suggestion"]:hover,
 label[for="suggestion"]:hover i.fas.fa-comment {
   color: #fbff00;
@@ -225,6 +239,17 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
 }
+@media (max-width: 1540px) {
+  .form-block .submit-button {
+    font-size: .8em;
+    padding: 7px 15px;
+
+  }
+}
+.form-block .submit-button i.fas.fa-check {
+  margin-right: 8px; 
+}
+
 
 .form-block .submit-button:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -234,87 +259,6 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 .form-block .submit-button:active {
   transform: scale(0.95);
   border: 2px solid #00264d;
-}
-
-
-
-
-
-
-/*//  View suggestions C */
-.view-suggestions {
-  background: -webkit-linear-gradient(to right, #324461, #1e2f3a);
-  background: linear-gradient(to right, #324461, #1e2f3a);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 1em;
-  overflow: auto; 
-  
-}
-
-.view-it {
-  height: 355px;
-}
-
-.vote-container {
-  padding: 1em;
-  background: rgba(46, 49, 49, 0.2); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  border-radius: 0.8em; 
-}
-
-.vote-entry {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #ffec00;
-  border-top: 1px solid #ffec00;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  color: #d6d2d2;
-}
-
-.vote-details {
-  flex-grow: 1;
-}
-
-.vote-suggestion {
-  flex-grow: 2;
-  text-align: start;
-  padding: 0 1.5em;
-  word-wrap: break-word;
-  word-break: break-word;
-  overflow-y: auto;
-}
-.vote-details strong, .vote-suggestion strong {
-  color: #9ca0a6; 
-}
-
-
-.vote-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.vote-buttons button {
-  margin: .2em 0;
-  max-width: 100px;
-  border-radius: .4em;
-  background: -webkit-linear-gradient(to left, #324461, #1e2f3a);
-  background: linear-gradient(to left, #324461, #1e2f3a);
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: #fff;
-  filter: drop-shadow(1px 1px 1px #ffffff);
-  letter-spacing:1px;
-}
-
-.vote-yes:hover, .vote-no:hover {
-  transform: scale(1.05);
-}
-
-.vote-yes:active, .vote-no:active {
-  transform: scale(0.97);
 }
 
 .tooltip {
@@ -332,6 +276,126 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 .yellow-span {
   color: #ff0;
 }
+
+
+
+
+
+/*//  View suggestions C */
+.view-suggestions {
+  background: linear-gradient(to right, #324461, #1e2f3a);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 1em;
+  overflow: auto;
+  font-size: 1.1em;
+  width: 100%;
+}
+@media (max-width: 1300px){
+  .view-suggestions{
+    font-size: .9em;
+    margin: 0;
+    padding: 0;
+    /* width: 90%; */
+    /* min-width: 300px; */
+  }
+}
+
+.view-it {
+  max-height: 370px;
+}
+/* @media (max-width: 1024px) {
+  .view-it {
+    height: auto;
+  }
+} */
+
+.vote-container {
+  padding: 1em;
+  background: rgba(46, 49, 49, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.8em;
+
+}
+
+.vote-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ffec00;
+  border-top: 1px solid #ffec00;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #d6d2d2;
+}
+
+.vote-details,
+.vote-suggestion {
+  word-wrap: break-word;
+  overflow-y: auto;
+}
+
+.vote-suggestion {
+  flex-grow: 2;
+  text-align: start;
+  padding: 0 1.5em;
+}
+
+/* .vote-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid red;
+}
+@media (max-width: 1300px) {
+  .vote-buttons{
+    border: 1px solid green;
+    padding: 0;
+    margin: 0;
+
+  }
+} */
+
+.vote-buttons button {
+  margin: .4em 0;
+  max-width: 100px;
+  border-radius: 0.4em;
+  background: linear-gradient(to left, #324461, #1e2f3a);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+  filter: drop-shadow(1px 1px 1px #ffffff);
+  letter-spacing: 1px;
+}
+@media (max-width: 1300px){
+  .vote-buttons button{
+    /* font-size: .9em; */
+    margin: .5em 0;
+    /* width: 90%; */
+    /* min-width: 300px; */
+  }
+}
+
+.vote-yes, .vote-no{
+  font-size: 1em;
+}
+@media (max-width: 1300px) {
+  .vote-yes, .vote-no{
+    width: 100px;
+    height: 30px;
+
+  }
+
+}
+
+/* Hover effects for buttons */
+.vote-yes:hover, .vote-no:hover {
+  transform: scale(1.05);
+}
+
+.vote-yes:active, .vote-no:active {
+  transform: scale(0.97);
+}
+
 
 
 
