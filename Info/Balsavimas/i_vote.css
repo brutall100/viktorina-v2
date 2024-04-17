@@ -283,38 +283,39 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 
 /*//  View suggestions C */
 .view-suggestions {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: start; 
   background: linear-gradient(to right, #324461, #1e2f3a);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 1em;
   overflow: auto;
   font-size: 1.1em;
-  width: 100%;
 }
-@media (max-width: 1300px){
-  .view-suggestions{
-    font-size: .9em;
-    margin: 0;
-    padding: 0;
-    /* width: 90%; */
-    /* min-width: 300px; */
+
+.view-suggestions > * {
+  flex-shrink: 1; 
+  border: 10px silid orangered;
+}
+
+@media (max-width: 1300px) {
+  .view-suggestions {
+    font-size: 0.9em; 
+    padding: 10px; 
+    max-width: 600px;
   }
 }
 
 .view-it {
   max-height: 370px;
 }
-/* @media (max-width: 1024px) {
-  .view-it {
-    height: auto;
-  }
-} */
 
 .vote-container {
   padding: 1em;
   background: rgba(46, 49, 49, 0.2);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 0.8em;
-
 }
 
 .vote-entry {
@@ -336,28 +337,13 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 }
 
 .vote-suggestion {
-  flex-grow: 2;
+  flex-shrink: 1;
   text-align: start;
   padding: 0 1.5em;
 }
 
-/* .vote-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid red;
-}
-@media (max-width: 1300px) {
-  .vote-buttons{
-    border: 1px solid green;
-    padding: 0;
-    margin: 0;
-
-  }
-} */
-
 .vote-buttons button {
-  margin: .4em 0;
+  margin: 0.4em 0;
   max-width: 100px;
   border-radius: 0.4em;
   background: linear-gradient(to left, #324461, #1e2f3a);
@@ -366,28 +352,18 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   filter: drop-shadow(1px 1px 1px #ffffff);
   letter-spacing: 1px;
 }
-@media (max-width: 1300px){
-  .vote-buttons button{
-    /* font-size: .9em; */
-    margin: .5em 0;
-    /* width: 90%; */
-    /* min-width: 300px; */
-  }
-}
 
-.vote-yes, .vote-no{
-  font-size: 1em;
-}
 @media (max-width: 1300px) {
-  .vote-yes, .vote-no{
+  .vote-buttons button {
+    margin: 0.5em 0;
+  }
+
+  .vote-yes, .vote-no {
     width: 100px;
     height: 30px;
-
   }
-
 }
 
-/* Hover effects for buttons */
 .vote-yes:hover, .vote-no:hover {
   transform: scale(1.05);
 }
@@ -395,6 +371,7 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 .vote-yes:active, .vote-no:active {
   transform: scale(0.97);
 }
+
 
 
 
