@@ -44,39 +44,58 @@ button {
 /* // Main */
 .main-content {
   display: flex;
-  height: 80vh;
+  /* height: 80vh; */
   /* margin: 3em auto; */
 }
 @media (max-width: 1024px) {
   .main-content {
     flex-direction: column;
-    width: 100%;
+    width: 90vw;
+     margin: 0 auto;
+     /* justify-content: center; */
+     align-items: center;
+     padding: 0;
+     border: 2px solid #00264d;
   }
 }
 
 
 .vote-section {
-  width:50vw;
+  width:53vw;
+}
+@media (max-width:1300px) {
+  .vote-section {
+    width:55vw;
+  }
+  
 }
 
 .right-sections {
   display: flex;
   flex-direction: column; 
   margin: auto 1.5em;
-  width: 50vw;
+ 
 }
 @media (max-width:1300px) {
   .right-sections {
-    margin: auto 1em;
-    width: 45vw;
+    /* border: 2px solid #00264d;
+    width:10000px; */
+    /* padding-right: 3em;
+    margin-right: 3em; */
   }
   
 }
 
-/* .vote-suggestions,
-.view-suggestions {
-  width: 40vw;
-} */
+.vote-suggestions, .view-suggestions {
+  width: 45vw;
+  margin: 1em auto;
+}
+@media (max-width:1300px) {
+  .vote-suggestions, .view-suggestions {
+    width: 37vw;
+  }
+  
+}
 
 
 /* // */
@@ -84,15 +103,15 @@ button {
 
 /* // Vote Suggestions form */
 .vote-suggestions {
-  border-radius: 1em;
+  border-radius:1em;
   padding: 2em;
   margin-bottom: 1em;
   background: linear-gradient(to left, #243B55, #141E30);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width:100%; 
+  /* width:100%; 
   max-width: 60em; 
-  min-width: 12em; 
-  margin: 1em auto;
+  min-width: 12em;  */
+  
 }
 /* 
 @media (max-width: 1540px) {
@@ -146,11 +165,16 @@ button {
 .label-block {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
+ 
+
+  
   border: 1px solid #ffec00;
   margin: 0 1em;
   font-family: Arial, sans-serif;
   padding: 1em;
-  background-color: #f0e4d7;
+  /* background-color: #f0e4d7; */
   width: 12vw;
 
 }
@@ -170,6 +194,20 @@ button {
   }
 
 } */
+
+.label-block label {
+  white-space: nowrap;
+}
+@media (max-width:1024px) {
+  .label-block label {
+    white-space: wrap; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+
 
 .label-block input[type="text"] {
   background: #fcf8e3;
@@ -291,7 +329,7 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   justify-content: start; 
   background: linear-gradient(to right, #324461, #1e2f3a);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 1em;
+  border-radius: 1em 0 0 1em;
   overflow: auto;
   font-size: 1.1em;
 }
@@ -307,10 +345,10 @@ label[for="suggestion"]:hover i.fas.fa-comment {
     padding: 10px; 
     max-width: 600px;
   }
-}
+} 
 
 .view-it {
-  max-height: 370px;
+  max-height: 42vh;
 }
 
 .vote-container {

@@ -33,6 +33,7 @@ $user_id = $_SESSION['user_id'] ?? "";
         </section>
 
         <div class="right-sections">                                       <!-- Vote suggestions -->
+
             <section id="vote-suggestions" class="vote-suggestions">
                 <form action="i_vote_form.php" method="post" class="vote-suggestion-form">
                     <div class="form-inline">
@@ -61,12 +62,12 @@ $user_id = $_SESSION['user_id'] ?? "";
                 </form>
             </section>
 
-
             <section id="view-suggestions" class="view-suggestions">       <!-- Wiev suggestions [ Imported from update_vote.php ] -->
                 <div class="view-it" id="view-it">
                     
                 </div>
             </section>
+            
         </div>
     </main>
 
