@@ -113,28 +113,29 @@ button {
   min-width: 12em;  */
   
 }
-/* 
-@media (max-width: 1540px) {
+
+/* @media (max-width: 1540px) {
   .vote-suggestions {
     padding: 1.8em; 
     width: 50vw;
     border: 1px solid rgb(165, 58, 26); 
   }
-}
+} */
 
 @media (max-width: 1024px) {
   .vote-suggestions {
-    padding: 1.5; 
+    padding: 1.5;
+    width: 80vw; 
   }
-}
+} 
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .vote-suggestions {
     padding: 1em; 
     border-radius: 0.5em; 
     margin-bottom: 0.5em; 
   }
-} */
+}  */
 
 
 
@@ -334,16 +335,19 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   font-size: 1.1em;
 }
 
-.view-suggestions > * {
-  flex-shrink: 1; 
-  border: 10px silid orangered;
-}
-
-@media (max-width: 1300px) {
+/* @media (max-width: 1300px) {
   .view-suggestions {
     font-size: 0.9em; 
     padding: 10px; 
     max-width: 600px;
+  }
+}  */
+
+@media (max-width: 1024px) {
+  .view-suggestions {
+    padding: .5em;
+    width: 80vw; 
+
   }
 } 
 
@@ -417,11 +421,20 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 
 
 /* // main vote A */
-#vote-section {
+.vote-section {
   display: flex;
   margin: auto 0.5em;
   border-radius: 1em;
   border: none;
+}
+
+@media (max-width: 1024px) {
+  .vote-section {
+    padding: .5em;
+    margin: 1em;
+    width: 85vw; 
+
+  }
 }
 
 .view-main-vote,
