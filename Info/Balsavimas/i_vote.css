@@ -374,7 +374,7 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   border-bottom: 1px solid #ffec00;
   border-top: 1px solid #ffec00;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 1em;
   margin-bottom: 10px;
   color: #d6d2d2;
 }
@@ -390,7 +390,10 @@ label[for="suggestion"]:hover i.fas.fa-comment {
 .vote-details{
   display: flex;
   flex-direction: column;
-  border: #00264d 1px solid;
+  border-right: 1px solid #ffec00;
+  border-left: 1px solid #ffec00;
+  border-radius: .5em;
+  padding: 0 1em;
 }
 @media (max-width: 1024px) {
   .vote-details {
