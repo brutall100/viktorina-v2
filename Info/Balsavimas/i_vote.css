@@ -339,19 +339,17 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   overflow: auto;
   font-size: 1.1em;
 }
-
 @media (max-width: 1300px) {
   .view-suggestions {
     font-size: 0.9em; 
     padding: 10px; 
   }
 } 
-
 @media (max-width: 1024px) {
   .view-suggestions {
     padding: .5em;
     width: 80vw; 
-
+    
   }
 } 
 
@@ -364,10 +362,13 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   background: rgba(46, 49, 49, 0.2);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 0.8em;
+  
 }
+
 
 .vote-entry {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #ffec00;
@@ -377,18 +378,65 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   margin-bottom: 10px;
   color: #d6d2d2;
 }
+@media (max-width: 1024px) {
+  .vote-entry {
+    flex-direction: column;
+ 
+  }
+}
 
-.vote-details,
+
+
+.vote-details{
+  display: flex;
+  flex-direction: column;
+  border: #00264d 1px solid;
+}
+@media (max-width: 1024px) {
+  .vote-details {
+    flex-direction: row;
+    gap: 2em;
+    font-size: 1.5em;
+    margin:.8em;
+ 
+  }
+}
+
+
+
+
 .vote-suggestion {
   word-wrap: break-word;
   overflow-y: auto;
-}
-
-.vote-suggestion {
-  flex-shrink: 1;
+   /* border: #9aaec2 1px solid; */
+  /* flex-shrink: 1; */
   text-align: start;
   padding: 0 1.5em;
 }
+@media (max-width: 1024px) {
+  .vote-suggestion {
+    font-size: x-large;
+  }
+  
+}
+
+
+
+.vote-buttons {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 1024px) {
+  .vote-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-top: 1em;
+  }
+  
+}
+
+
 
 .vote-buttons button {
   margin: 0.4em 0;
@@ -405,7 +453,6 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   .vote-buttons button {
     margin: 0.5em 0;
   }
-
   .vote-yes, .vote-no {
     width: 100px;
     height: 30px;
