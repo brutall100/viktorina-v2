@@ -55,7 +55,7 @@ button {
      /* justify-content: center; */
      align-items: center;
      padding: 0;
-     border: 2px solid #00264d;
+     /* border: 2px solid #00264d; */
   }
 }
 
@@ -108,36 +108,18 @@ button {
   margin-bottom: 1em;
   background: linear-gradient(to left, #243B55, #141E30);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  /* width:100%; 
-  max-width: 60em; 
-  min-width: 12em;  */
-  
 }
-
-/* @media (max-width: 1540px) {
-  .vote-suggestions {
-    padding: 1.8em; 
-    width: 50vw;
-    border: 1px solid rgb(165, 58, 26); 
-  }
-} */
-
 @media (max-width: 1024px) {
   .vote-suggestions {
-    padding: 1.5;
+    padding: 1em;
     width: 80vw; 
   }
 } 
-
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .vote-suggestions {
-    padding: 1em; 
-    border-radius: 0.5em; 
-    margin-bottom: 0.5em; 
+    padding: .7em; 
   }
-}  */
-
-
+} 
 
 .form-inline,
 .label-block,
@@ -147,7 +129,6 @@ button {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/* Inline form layout */
 .form-inline {
   padding: 1em;
   display: flex;
@@ -158,57 +139,74 @@ button {
 @media (max-width: 768px) {
   .form-inline {
     flex-direction: column;
-    padding: 0.5em;
+    padding: .5em;
   }
 }
 
-/* Styles for label blocks */
 .label-block {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
- 
-
-  
   border: 1px solid #ffec00;
   margin: 0 1em;
   font-family: Arial, sans-serif;
   padding: 1em;
-  /* background-color: #f0e4d7; */
   width: 12vw;
-
 }
 @media (max-width:1540px) {
     .label-block{
       width:30%;
       padding: .5em;
       margin: .5em;
-    }
-
-  
+    }  
 }
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .label-block {
-    margin: 0.5em;
-
+    margin: .6em;
+    width: 72vw;
   }
-
-} */
+}
+@media (max-width: 650px) {
+  .label-block {
+    width: 70vw;
+  }
+}
+@media (max-width: 550px) {
+  .label-block {
+    width:68vw;
+  }
+}
+@media (max-width: 450px) {
+  .label-block {
+    width:66vw;
+  }
+}
+@media (max-width: 370px) {
+  .label-block {
+    width:64vw;
+  }
+}
 
 .label-block label {
   white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  gap: .6em;
 }
 @media (max-width:1024px) {
   .label-block label {
     white-space: wrap; 
-    display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: .1em;
   }
 }
-
-
+@media (max-width:768px) {
+  .label-block label {
+    white-space: nowrap; 
+    flex-direction: row-reverse;
+    gap: .5em;
+  }
+}
 
 .label-block input[type="text"] {
   background: #fcf8e3;
@@ -225,7 +223,6 @@ button {
   }
 }
 
-/* Styles for form labels */
 label[for="suggestion"] {
   font-family: Arial, sans-serif;
   color: #000;
@@ -254,7 +251,6 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   color: #fbff00;
 }
 
-/* Block form layout */
 .form-block {
   display: flex;
   flex-direction: column;
@@ -264,12 +260,16 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   justify-content: center;
 }
 
-/* Textarea and submit button styles */
 .form-block .suggestion-textarea {
   border: 2px solid #ccc;
   padding: 0.5em;
   margin-bottom: 1.5em;
   background-color: #fff;
+}
+@media (max-width: 1540px) {
+  .form-block .suggestion-textarea {
+    height: 7vh;
+  }
 }
 
 .form-block .submit-button {
@@ -284,13 +284,18 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   .form-block .submit-button {
     font-size: .8em;
     padding: 7px 15px;
-
   }
 }
+@media (max-width: 1024px) {
+  .form-block .submit-button {
+    font-size: .9em;
+    padding: 7px 15px;
+  }
+}
+
 .form-block .submit-button i.fas.fa-check {
   margin-right: 8px; 
 }
-
 
 .form-block .submit-button:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -335,13 +340,12 @@ label[for="suggestion"]:hover i.fas.fa-comment {
   font-size: 1.1em;
 }
 
-/* @media (max-width: 1300px) {
+@media (max-width: 1300px) {
   .view-suggestions {
     font-size: 0.9em; 
     padding: 10px; 
-    max-width: 600px;
   }
-}  */
+} 
 
 @media (max-width: 1024px) {
   .view-suggestions {
