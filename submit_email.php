@@ -1,55 +1,69 @@
 <?php
-// It goes from a_index.php > a_index.js > submit_email.php[Here]
+//? It goes from a_index.php > a_index.js > submit_email.php[Here]
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 session_start();
 
-// Verify the method and required fields
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'], $_POST['user_id'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $user_id = filter_var($_POST['user_id'], FILTER_SANITIZE_NUMBER_INT); // Assuming user_id should be an integer
+    $user_id = filter_var($_POST['user_id'], FILTER_SANITIZE_NUMBER_INT);
 
-    // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo json_encode(['success' => false, 'error' => 'Invalid email']);
         exit;
     }
 
-    // Optionally, validate the user ID if needed
     if (!$user_id) {
         echo json_encode(['success' => false, 'error' => 'Invalid user ID']);
         exit;
     }
 
-    // Process the email (store in database, send confirmation, etc.)
-    // Note: Here you would typically:
-    // 1. Store the email in your database linked to the user_id
-    // 2. Send a confirmation email with a unique link the user can click to verify
+    include 'x_configDB.php'; 
 
-    // Mock response to simulate email processing
-    // Uncomment and modify this section according to your actual database handling
-    /*
-    try {
-        // $pdo = new PDO('mysql:host=your_host;dbname=your_db', 'username', 'password');
-        // $stmt = $pdo->prepare("UPDATE users SET email = :email WHERE user_id = :user_id");
-        // $stmt->execute(['email' => $email, 'user_id' => $user_id]);
-        echo json_encode(['success' => true]);
-    } catch (PDOException $e) {
-        // Handle any errors such as database connection issues
-        error_log('Database error: ' . $e->getMessage());
-        echo json_encode(['success' => false, 'error' => 'Database error']);
-        exit;
+    // Attempt to update the user's email in the database
+    $query = "UPDATE users SET email = ? WHERE user_id = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "si", $email, $user_id);
+        mysqli_stmt_execute($stmt);
+        if (mysqli_stmt_affected_rows($stmt) > 0) {
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+            
+            // If update is successful, send a confirmation email
+            if (sendConfirmationEmail($email)) {
+                $_SESSION['email'] = $email; // Store email in session
+                echo json_encode(['success' => true, 'message' => 'Email updated and confirmation sent']);
+            } else {
+                echo json_encode(['success' => false, 'error' => 'Failed to send confirmation email']);
+            }
+        } else {
+            mysqli_stmt_close($stmt);
+            mysqli_close($conn);
+            echo json_encode(['success' => false, 'error' => 'No update performed']);
+        }
+    } else {
+        mysqli_close($conn);
+        echo json_encode(['success' => false, 'error' => 'Database query preparation failed']);
     }
-    */
-
-    $_SESSION['email'] = $email; // Store email in session or use it as needed
-
-    // Temporary response for demonstration
-    echo json_encode(['success' => true]);
 } else {
     echo json_encode(['success' => false, 'error' => 'Invalid request']);
 }
+
+function sendConfirmationEmail($email) {
+    $verificationCode = bin2hex(random_bytes(16)); // Generate a random verification code
+    $verificationLink = "https://yourdomain.com/verify_email.php?code=$verificationCode";
+
+    $subject = 'Confirm your email';
+    $message = "Please click on this link to confirm your email: $verificationLink";
+    $headers = 'From: noreply@yourdomain.com' . "\r\n" .
+               'X-Mailer: PHP/' . phpversion();
+
+    return mail($email, $subject, $message, $headers);
+}
 ?>
+
 
