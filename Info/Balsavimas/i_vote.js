@@ -130,38 +130,64 @@ $(document).ready(function () {
 
 //// ToolTip
 document.addEventListener("DOMContentLoaded", function () {
-  const labelBlocks = document.querySelectorAll(".form-block")
+  const labelBlocks = document.querySelectorAll(".form-block");
 
   labelBlocks.forEach(function (labelBlock) {
-    const label = labelBlock.querySelector("label")
-    const tooltipText = labelBlock.getAttribute("data-tooltip")
+    const label = labelBlock.querySelector("label");
+    const tooltipText = labelBlock.getAttribute("data-tooltip");
 
     label.addEventListener("mouseenter", function () {
-      showTooltip(label, tooltipText)
-    })
+      showTooltip(label, tooltipText);
+    });
 
     label.addEventListener("mouseleave", function () {
-      hideTooltip()
-    })
-  })
+      hideTooltip();
+    });
+  });
 
   function showTooltip(label, text) {
-    const tooltip = document.createElement("div")
-    tooltip.classList.add("tooltip")
-    tooltip.innerHTML = text
-    document.body.appendChild(tooltip)
+    let tooltip = document.querySelector(".tooltip");
+    if (!tooltip) {
+      tooltip = document.createElement("div");
+      tooltip.classList.add("tooltip");
+      document.body.appendChild(tooltip);
+    }
+    tooltip.innerHTML = text;
 
-    const labelRect = label.getBoundingClientRect()
-    const tooltipRect = tooltip.getBoundingClientRect()
-
-    tooltip.style.top = labelRect.top - tooltipRect.height - 10 + "px"
-    tooltip.style.left = labelRect.left + (labelRect.width - tooltipRect.width) / 2 + "px"
+    updateTooltipPosition(label, tooltip);
   }
 
   function hideTooltip() {
-    const tooltip = document.querySelector(".tooltip")
+    const tooltip = document.querySelector(".tooltip");
     if (tooltip) {
-      tooltip.parentNode.removeChild(tooltip)
+      tooltip.parentNode.removeChild(tooltip);
     }
   }
-})
+
+  function updateTooltipPosition(label, tooltip) {
+    const labelRect = label.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const offset = 10; // Space above the label
+
+    tooltip.style.top = window.scrollY + labelRect.top - tooltipRect.height - offset + "px";
+    tooltip.style.left = labelRect.left + (labelRect.width - tooltipRect.width) / 2 + "px";
+  }
+
+  // Handle window resize or scroll
+  window.addEventListener('resize', function () {
+    const visibleTooltip = document.querySelector('.tooltip');
+    const activeLabel = document.querySelector('label:hover');
+    if (visibleTooltip && activeLabel) {
+      updateTooltipPosition(activeLabel, visibleTooltip);
+    }
+  });
+
+  window.addEventListener('scroll', function () {
+    const visibleTooltip = document.querySelector('.tooltip');
+    const activeLabel = document.querySelector('label:hover');
+    if (visibleTooltip && activeLabel) {
+      updateTooltipPosition(activeLabel, visibleTooltip);
+    }
+  });
+});
+
