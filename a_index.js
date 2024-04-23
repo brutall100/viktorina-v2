@@ -484,20 +484,59 @@ function redirectToLogin() {
   window.location.href = "d_regilogi.php"
 }
 
+
 // 
-// Popup Confirm email modal 
+//// Popup Confirm email modal 
 function openModal() {
+  console.log("Opening the modal...");
   document.getElementById("emailModal").style.display = "flex";
+  console.log("Modal is now displayed.");
 }
+
 function closeModal() {
+  console.log("Closing the modal...");
   document.getElementById("emailModal").style.display = "none";
+  console.log("Modal is now hidden.");
 }
+
 function submitEmail() {
-
+  console.log("Submitting the email...");
   const email = document.getElementById("email").value;
-  // Tai turbut siusime i serveri, tada serveris duos uzklausa i database, tada servas issius email useriui (Gal su uuid). Paspaus paste patvitinima vel kreipimasis i serva ir redirectas i viktorina .....
-  // For demonstration purposes, just log the email to the console
-  console.log("Entered email:", email);
+  const userId = document.getElementById("user-id").value;
 
-  closeModal();
+  if (!email) {
+    console.log("No email entered.");
+    alert("Please enter an email address.");
+    return;
+  }
+
+  // Prepare the data to be sent to the server
+  const formData = new FormData();
+  formData.append('email', email);
+  formData.append('user_id', userId);
+  console.log("Email and User ID entered:", email, userId);
+
+  // Create an AJAX request to send the email and user_id
+  fetch('submit_email.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    console.log("Received response from the server.");
+    return response.json();
+  })
+  .then(data => {
+    if (data.success) {
+      console.log("Confirmation email sent successfully.");
+      alert('Confirmation email sent! Please check your inbox.');
+      closeModal();
+    } else {
+      console.log("Failed to send confirmation email.");
+      alert('Failed to send confirmation email. Please try again.');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('There was a problem with your request. Please try again.');
+  });
 }

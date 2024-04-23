@@ -159,14 +159,15 @@ if (isset($name)) {
           <span class="close-btn" onclick="closeModal()">&times;</span>
           <label for="email">Enter your email:</label>
           <input type="email" id="email" name="email">
+          <input type="hidden" id="user-id" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
           <button type="button" onclick="submitEmail()">Submit</button>
-        </div>
+      </div>
       </div>
       <div class="confirmation-message">
         <p>Prašome patvirtinti savo el.paštą</p>
         <button type="button" id="confirm-email-button" onclick="openModal()">Patvirtinti</button>
       </div>
-      <?php } ?>
+      <?php }?> 
 
     </div>
 
