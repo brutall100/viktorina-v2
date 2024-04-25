@@ -597,49 +597,54 @@ body {
 
 
 
-/* Button that confims email */
-.confirmation-message {
-  text-align: center;
+/*// A HREF link that confims email */
+.email-confirmation-message {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 1.25rem; 
+  border-radius: 0.625rem; 
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  margin: 1.25rem; 
+  text-align: center; 
 }
 
-.confirmation-message p {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 10px;
+.email-confirmation-message::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -50%;
+  bottom: -50%; left: -50%;
+  background: linear-gradient(45deg, #06f, #12c, #f80, #f0f);
+  z-index: -1;
+  border-radius: 0.3125rem; 
+  transition: all 0.75s;
 }
 
-.confirmation-message button {
-  padding: 10px 15px;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.email-confirmation-message:hover::before {
+  top: 0; right: 0;
+  bottom: 0; left: 0;
 }
 
-.email-modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
+.email-confirmation-span {
+  font-weight: bold;
+  color: #00ffcc;
+  text-shadow: 0.0625rem 0.0625rem 0.125rem rgba(0, 0, 0, 0.7);
 }
 
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
+.email-confirmation-link {
+  color: #00ffcc;
+  text-decoration: underline;
 }
 
-.close-btn {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.email-confirmation-link:hover {
+  color: #ffcc00;
+  text-decoration: none;
 }
+
+.email-confirmation-link:active {
+  color: #074b3d;
+}
+
+

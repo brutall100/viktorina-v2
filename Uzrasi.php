@@ -145,12 +145,15 @@ requirements.
 <!-- 1 -->
 <!-- Gal GALBUT ateiciai reikes padaryti ,jei atsakymas iš 2 ar daugiau zodziu, kad ir tie zodziai atsiverstu kaip dabar pirmas zodis. -->
 
-<!-- 2 -->
+<!-- 2A -->
 <!-- Trecias game (Galimai 4) bus zodziu grandinele. Reikia sukurti DB grandinelei. ir zaidima ir t.t -->
 <!-- PVZ: Vieno perejimo pauksciai?   VADA
                    Arimo griovelis?   VAGA
                 Drabuzius susegame?   SAGA
                isegamas papuosalas?   SAGĖ -->
+<!-- 2b -->
+<!-- (Galimai 4) ban galima uzdeti laikinai pasalinus email verified to 0. -->
+
 
 <!-- 3 -->
 <!-- Paspaudus irasyti klausima iskristu dropdown'as su Irasyti klausima

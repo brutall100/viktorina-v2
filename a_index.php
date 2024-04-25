@@ -118,60 +118,53 @@ if (isset($name)) {
   </section>
 
   <main class="super-container">
-    <div class="points-container">
-      <div id="points"></div>
-      <div id="bonus-points"></div>
-    </div>
+      <div class="points-container">
+          <div id="points"></div>
+          <div id="bonus-points"></div>
+      </div>
 
-    <div class="super-container-qna-section">
-      <div id="question"></div>
-      <div id="answer"></div>
-      <div class="answer-section">
-        <div id="answer-msg"></div>
+      <div class="super-container-qna-section">
+          <div id="question"></div>
+          <div id="answer"></div>
+          <div class="answer-section">
+              <div id="answer-msg"></div>
+          </div>
       </div>
-    </div>
-    <div class="form-container">
-      <?php
-  $name = $name ?? "";
-  
-  include 'x_configDB.php';
-  $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
-  $result = mysqli_query($conn, $query);
-  
-  if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $verify = $row['email_verified'];
-    mysqli_close($conn); 
-  }
-  
-  $verify = $verify ?? 0;
-  
-  if (isset($name) && !empty($name) && !isset($error) && $verify == 1) { ?>
-      <form action="a_index.php" id="answer-form" method="post">
-        <div class="answer-input">
-          <input type="text" id="answer-input" name="answer-input">
-          <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
-        </div>
-      </form>
-      <?php } elseif (isset($name) && !empty($name) && !isset($error) && $verify == 0) { ?>
-      <div id="emailModal" class="email-modal">
-        <div class="modal-content">
-          <span class="close-btn" onclick="closeModal()">&times;</span>
-          <label for="email">Enter your email:</label>
-          <input type="email" id="email" name="email">
-          <input type="hidden" id="user-id" name="user_id" value="<?php echo htmlspecialchars($user_id); ?>">
-          <button type="button" onclick="submitEmail()">Submit</button>
-      </div>
-      </div>
-      <div class="confirmation-message">
-        <p>Prašome patvirtinti savo el.paštą</p>
-        <button type="button" id="confirm-email-button" onclick="openModal()">Patvirtinti</button>
-      </div>
-      <?php }?> 
 
-    </div>
+      <div class="form-container">
+          <?php
+          $name = $name ?? "";
+          include 'x_configDB.php';
+          $query = "SELECT email_verified FROM super_users WHERE nick_name = '$name'";
+          $result = mysqli_query($conn, $query);
+          $verify = 0;  // Default to not verified
+          
+          if (mysqli_num_rows($result) > 0) {
+              $row = mysqli_fetch_assoc($result);
+              $verify = $row['email_verified'];
+          }
+          mysqli_close($conn);
+          
+          if (!empty($name) && $verify == 1) { ?>
+              <form action="a_index.php" id="answer-form" method="post">
+                  <div class="answer-input">
+                      <input type="text" id="answer-input" name="answer-input">
+                      <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
+                  </div>
+              </form>
+          <?php } elseif (!empty($name) && $verify == 0) { ?>
+              <div class="email-confirmation-message">
+                <p>Prašome patikrinti savo el. paštą ir paspausti nuorodą, kad galėtumėte dalyvauti 
+                    <span class="email-confirmation-span">Viktorinos</span> žaidime. 
+                    <a href="mailto:" class="email-confirmation-link">Jūsų el. paštas</a>
+                </p>
+              </div>
+          <?php } ?>
+      </div>
 
   </main>
+
+
 
   <div id="chat-container-section">
     <div id="chat-container-messages">
