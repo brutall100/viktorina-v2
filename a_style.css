@@ -37,6 +37,80 @@ body {
   bottom: 0;
 }
 
+/* //Mini user-info/welcome container */
+/* ??Mini user-info/welcome container A */
+.user-info {
+  width: 10em;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.welcome-message {
+  color: green;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#temp-greeting {
+  color: red; 
+  font-style: italic;
+}
+
+#temp-exclamation {
+  color: blue;
+  font-size: 20px;
+}
+
+.points-info {
+  color: blue;
+  font-size: 14px;
+}
+
+.position-highlight {
+  color: #ff4500; 
+  font-weight: bold;
+}
+
+.points-highlight {
+  color: #32cd32; 
+  font-style: italic;
+}
+
+.level-highlight {
+  color: #1e90ff; 
+  text-decoration: underline;
+}
+
+/* ?? Mini user-info/welcome container B */
+.greeting-message {
+  color: darkred;
+  font-size: 14px;
+}
+
+.greeting-message img {
+  width: 50px; 
+  height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*  */
 /* Today Top section */
 .today-top {

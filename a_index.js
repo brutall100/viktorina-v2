@@ -485,4 +485,12 @@ function redirectToLogin() {
 }
 
 
-
+// // Hide Welcome word Labas and exclamation after 5min
+  setTimeout(function() {
+    let greeting = document.getElementById('temp-greeting')
+    let exclamation = document.getElementById('temp-exclamation')
+    if (greeting) {
+      greeting.style.display = 'none'
+      exclamation.style.display = 'none'
+    }
+  }, 5000) // 300000 milliseconds = 5 minutes  // Kolkas palieku, kai bus sutvarkyta kad puslapis nebepersikrautu pats , bus ok.

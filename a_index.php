@@ -88,25 +88,33 @@ if (isset($name) & !empty($name)) {
   <div id="lita-bonus"></div>
 
   <?php
-if (isset($name)) {
-  include 'x_configDB.php';
- 
-  $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
-  $result = mysqli_query($conn, $query);
-  if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $level = $row['user_lvl'];
-    $points = $row['litai_sum'];
-    $points_today = $row['litai_sum_today'];
-    $user_id = $row['user_id'];
-    $position = $row['position'];
-      echo "Welcome, $name! Your level is $level. You have $points points. Your position in the database is $position.";
+    if (isset($name)) {
+        include 'x_configDB.php';
+
+        $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $level = $row['user_lvl'];
+            $points = $row['litai_sum'];
+            $points_today = $row['litai_sum_today'];
+            $user_id = $row['user_id'];
+            $position = $row['position'];
+            echo "<div class='user-info'>";
+            echo "<div class='welcome-message'><span id='temp-greeting'>Labas,</span> $name <span id='temp-exclamation'>!</span></div>";
+            echo "<div class='points-info'>Vieta tope <span class='position-highlight'>$position</span>.</div>";
+            echo "<div class='points-info'>Turite <span class='points-highlight'>$points LT</span>.</div>";
+            echo "<div class='points-info'>Lygis <span class='level-highlight'>$level</span>.</div>";
+            echo "</div>";
+        }
+        mysqli_close($conn);
+    } else {
+        echo "<div class='user-info'>"; 
+        echo "<div class='greeting-message'>Labas! <img src='images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.</div>";
+        echo "</div>";
     }
-  mysqli_close($conn);
-} else {
-    echo "Labas! <img src=' images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.";
-}
-?>
+   ?>
+
 
   <section class="today-top">
     <button type="button" class="today-top-btn" id="today-top-btn">Šiandienos TOP 10</button>
