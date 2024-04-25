@@ -110,7 +110,13 @@ if (isset($name) & !empty($name)) {
         mysqli_close($conn);
     } else {
         echo "<div class='user-info'>"; 
-        echo "<div class='greeting-message'>Labas! <img src='images/images_/smile.jpg' alt='Image description' style='width: 50px; height: auto;'> Norėdami pradėti rinkti Litus prisijunkite.</div>";
+        echo "<div class='greeting-message'>
+                  Labas! 
+                  <img src='images/images_/smile.jpg'
+                      alt='Šypsenėlė su tekstu, kuriame sakoma, kad norint žaisti reikia prisijungti.' 
+                      aria-label='Šypsenėlė su tekstu, kuriame sakoma, kad norint žaisti reikia prisijungti.'> 
+                  Norėdami pradėti rinkti Litus prisijunkite.
+              </div>";
         echo "</div>";
     }
    ?>
