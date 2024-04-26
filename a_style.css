@@ -15,7 +15,9 @@
 }
 
 body {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* position: relative; */
   background: #1F1C2C;
   background: -webkit-linear-gradient(to right, #928DAB, #1F1C2C);
   background: linear-gradient(to right, #928DAB, #1F1C2C);
@@ -25,8 +27,7 @@ body {
   background-size: cover;
 }
 
-.header-wrapper,
-.footer-wrapper {
+.header-wrapper {
   position: sticky;
   z-index: 100;
   top: 0;
@@ -34,11 +35,47 @@ body {
 }
 
 .footer-wrapper {
+  position: absolute;
   bottom: 0;
+  width: 100%;
 }
+
+.containers-abc{
+  display: flex;
+  flex-direction: row;
+  /* border: 5px solid green; */
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.container-a {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid rgb(128, 0, 109);
+}
+.container-b {
+  display: flex;
+  border: 5px solid rgb(21, 0, 128);
+}
+.container-c {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid rgb(100, 128, 0);
+}
+
+
+
+
+
+
 
 /* //Mini user-info/welcome container */
 /* ??Mini user-info/welcome container A */
+.user-info-container{
+  border: 1px solid red;
+}
+
 .user-info {
   width: 10em;
   padding: 10px;
@@ -117,7 +154,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
   top: 4em;
   right: 2em;
   height: 3em;
@@ -181,10 +218,10 @@ body {
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  position: absolute;
-  top: 170%;
-  left: 50%;
-  transform: translateX(-55%);
+  /* position: absolute; */
+  /* top: 170%;
+  left: 50%; */
+  /* transform: translateX(-55%); */
   padding: 40px;
   max-width: 600px;
   max-height: 500px;
@@ -286,7 +323,7 @@ body {
 }
 
 .answer-input {
-  flex: 1;
+  /* flex: 1; */
   height: 2em;
   padding: 5px;
   border: none;
@@ -298,7 +335,7 @@ body {
 }
 
 .answer-input input {
-  flex: 1;
+  /* flex: 1; */
   font-size: 26px;
   font-family: "Arial", sans-serif;
   border: none;
@@ -329,11 +366,11 @@ body {
 }
 
 .litas-container {
-  position: absolute;
+  /* position: absolute; */
   /* bottom: 22%; */
-  left: 10%;
+  /* left: 10%; */
   /* Change the left position to 50% */
-  transform: translate(-50%, 0);
+  /* transform: translate(-50%, 0); */
   /* Use translate to adjust the element's position */
   /* display: block;
   justify-content: center; */
@@ -468,7 +505,7 @@ body {
 /* .old-question-section */
 .old-question-section {
   background-color: rgba(255, 255, 255, 0.4);
-  position: fixed;
+  /* position: fixed; */
   bottom: 6.2vh;
   right: 2vh;
   height: 44vh;
@@ -514,7 +551,7 @@ body {
   font-weight: 700;
   line-height: 1;
   border-bottom: 1px solid #777;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   padding-left: 10px;
   padding-bottom: 8px;
 }
@@ -529,7 +566,7 @@ body {
   font-size: 1.05em;
   font-weight: 700;
   line-height: 1.1;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   padding-bottom: 6px;
 }
 
@@ -570,7 +607,7 @@ body {
   background: rgba(7, 7, 7, 0.2);
   height: 50vh;
   width: 25vw;
-  position: fixed;
+  /* position: fixed; */
   bottom: 6.85vh;
   /* background-color: white; */
   word-wrap: break-word;
@@ -623,7 +660,7 @@ body {
   background: rgba(7, 7, 7, 0.15);
   width: 100%;
   /* bottom: 0; */
-  position: relative;
+  /* position: relative; */
   top: 1px;
   display: flex;
   height: 3.2rem;
@@ -635,7 +672,7 @@ body {
 #chat-input-msg {
   border: none;
   padding: 0 1rem;
-  flex-grow: 1;
+  /* flex-grow: 1; */
   border-radius: 2rem;
   margin: 0.25rem;
 }
