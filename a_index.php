@@ -73,9 +73,12 @@ if (isset($name) & !empty($name)) {
     <?php include 'Header/header.php'; ?>
   </div>
 
-  <div id="login-container" <?php echo isset($name) ? 'style="display: none;"' : ''; ?>>
+  <!-- Galimai sis bus nereikalingas  -->
+  <!-- <div id="login-container" <?php echo isset($name) ? 'style="display: none;"' : ''; ?>>
     <button type="button" id="login-button" onclick="redirectToLogin()">Prisijungti</button>
-  </div>
+  </div> -->
+
+
   <div id="user-data" data-name="<?php echo isset($name) ? $name : ''; ?>"
     data-level="<?php echo isset($level) ? $level : ''; ?>" data-points="<?php echo isset($points) ? $points : ''; ?>">
   </div>
@@ -84,8 +87,7 @@ if (isset($name) & !empty($name)) {
   <!-- bandymas -->
   <!-- <div id="dataContainer"></div> -->
 
-  <div id="lita"></div>
-  <div id="lita-bonus"></div>
+
 
   <?php
     if (isset($name)) {
@@ -120,6 +122,12 @@ if (isset($name) & !empty($name)) {
         echo "</div>";
     }
    ?>
+
+
+  <div class="show-money-container">
+    <div id="lita"></div>
+    <div id="lita-bonus"></div>
+  </div>
 
 
   <section class="today-top">
@@ -200,12 +208,12 @@ if (isset($name) & !empty($name)) {
     <div id="old-question"></div>
   </div>
 
-  <script src="a_index.js"></script>
-  <script src="a_chat_client.js"></script>
-
   <div class="footer-wrapper">
     <?php include './Footer/footer.php'; ?>
   </div>
+
+  <script src="a_index.js"></script>
+  <script src="a_chat_client.js"></script>
 </body>
 
 </html>

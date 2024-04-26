@@ -671,7 +671,7 @@ body {
 
 
 
-/*// A HREF link that confims email */
+/*// A HREF link that confims email .Seen then user didint confirmed email*/
 .email-confirmation-message {
   background-color: #1e1e1e;
   color: #ffffff;
