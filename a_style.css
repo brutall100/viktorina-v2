@@ -62,20 +62,213 @@ body {
   
 }
 
-/*?? Chat section  A1*/
+/* ??Mini user-info/welcome container A1 */
 .user-info-container{
   height: 16vh;
   border: 3px solid rgb(140, 107, 0);
   width: 100%;
 }
 
-/*?? Chat section  A2*/
+.user-info {
+  width: 50%;
+  border: 1px solid #611313;
+  background-color: #f9f9f9;
+  margin: 1em;
+  justify-content: center;
+  padding: 1em 4em;
+}
+
+.welcome-message {
+  color: green;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#temp-greeting {
+  color: red; 
+  font-style: italic;
+}
+
+#temp-exclamation {
+  color: blue;
+  font-size: 20px;
+}
+
+.points-info {
+  color: blue;
+  font-size: 14px;
+}
+
+.position-highlight {
+  color: #ff4500; 
+  font-weight: bold;
+}
+
+.points-highlight {
+  color: #32cd32; 
+  font-style: italic;
+}
+
+.level-highlight {
+  color: #1e90ff; 
+  text-decoration: underline;
+}
+
+.greeting-message {
+  color: darkred;
+  font-size: 14px;
+}
+
+.greeting-message img {
+  width: 50px; 
+  height: auto;
+}
+
+
+
+/*?? Money section  A2*/
 .show-money-container{
   height: 22vh;
   border: 3px solid rgb(140, 107, 0);
   width: 100%;
-
 }
+
+.litas-container {
+  /* position: absolute; */
+  /* bottom: 22%; */
+  /* left: 10%; */
+  /* Change the left position to 50% */
+  /* transform: translate(-50%, 0); */
+  /* Use translate to adjust the element's position */
+  /* display: block;
+  justify-content: center; */
+  padding: 5px;
+  margin: 10px auto;
+  /* Use margin: auto to center the element */
+  width: 200px;
+  height: 200px;
+  /* border: 1px solid black; */
+}
+
+.litas-container-img {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+@media (max-width: 550px) {
+  section {
+    display: none;
+  }
+}
+
+@media (max-width: 550px) {
+  /* img {
+        width: 100px;
+        opacity: 0.8; 
+        box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5); 
+      } */
+}
+
+
+
+/* Plevesuojantys litai siektiek */
+#litai-img {
+  width: 200px;
+  opacity: 0.8;
+  /* Set the transparency to 70% */
+  box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5);
+  animation: flag-wave 7s infinite;
+}
+
+@keyframes flag-wave {
+  0% {
+    transform: rotate(0deg) translateX(0);
+    background-position: center;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  5% {
+    transform: rotate(0deg) translateX(-5px);
+    background-position: center;
+    visibility: visible;
+    opacity: 0.8;
+  }
+
+  10% {
+    transform: rotate(-5deg) translateX(0);
+    background-position: calc(100% - 5px) 5px;
+    visibility: visible;
+    opacity: 0.6;
+  }
+
+  15% {
+    transform: rotate(0deg) translateX(5px);
+    background-position: center;
+    visibility: visible;
+    opacity: 0.8;
+  }
+
+  20% {
+    transform: rotate(5deg) translateX(0);
+    background-position: 5px calc(100% - 5px);
+    visibility: visible;
+    opacity: 1;
+  }
+
+  25% {
+    transform: rotate(0deg) translateX(0);
+    background-position: center;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  75% {
+    transform: rotate(0deg) translateX(0);
+    background-position: center;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  80% {
+    transform: rotate(-5deg) translateX(0);
+    background-position: calc(100% - 5px) 5px;
+    visibility: visible;
+    opacity: 0.8;
+  }
+
+  85% {
+    transform: rotate(0deg) translateX(-5px);
+    background-position: center;
+    visibility: visible;
+    opacity: 0.6;
+  }
+
+  90% {
+    transform: rotate(5deg) translateX(0);
+    background-position: 5px calc(100% - 5px);
+    visibility: visible;
+    opacity: 0.8;
+  }
+
+  95% {
+    transform: rotate(0deg) translateX(5px);
+    background-position: center;
+    visibility: visible;
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: rotate(0deg) translateX(0);
+    background-position: center;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
 
 /*?? Chat section  A3*/
 #chat-container-section {
@@ -196,168 +389,10 @@ body {
   display: flex;
   border: 5px solid rgb(21, 0, 128);
   width: 35%; /* 20% of the page */
-}
-.container-c {
-  display: flex;
-  flex-direction: column;
-  border: 5px solid rgb(100, 128, 0);
-  width: 32.5%; /* 20% of the page */
-}
-
-/* .user-info-container, .show-money-container, #chat-container-section{
-  border: 3px solid black;
-
-} */
-
-
-
-
-
-
-
-/* //Mini user-info/welcome container */
-/* ??Mini user-info/welcome container A */
-/* .user-info-container{
-  border: 1px solid red;
-} */
-
-.user-info {
-  width: 10em;
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  background-color: #f9f9f9;
-}
-
-.welcome-message {
-  color: green;
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-#temp-greeting {
-  color: red; 
-  font-style: italic;
-}
-
-#temp-exclamation {
-  color: blue;
-  font-size: 20px;
-}
-
-.points-info {
-  color: blue;
-  font-size: 14px;
-}
-
-.position-highlight {
-  color: #ff4500; 
-  font-weight: bold;
-}
-
-.points-highlight {
-  color: #32cd32; 
-  font-style: italic;
-}
-
-.level-highlight {
-  color: #1e90ff; 
-  text-decoration: underline;
-}
-
-/* ?? Mini user-info/welcome container B */
-.greeting-message {
-  color: darkred;
-  font-size: 14px;
-}
-
-.greeting-message img {
-  width: 50px; 
-  height: auto;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*  */
-/* Today Top section */
-.today-top {
-  display: flex;
-  flex-direction: column;
+  height: 88vh;
+  justify-content: center;
   align-items: center;
-  /* position: absolute; */
-  top: 4em;
-  right: 2em;
-  height: 3em;
-  background: rgba(4, 4, 4, 0.6);
-  width: 260px;
-  min-height: 290px;
 }
-
-.today-top-btn {
-  background-color: #a65b46;
-  color: var(--white);
-  padding: 11px 10px;
-  text-align: center;
-  width: 150px;
-  font-size: 14px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: .6em;
-  border: none;
-  text-decoration: none;
-}
-
-.php-today-top-list {
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.php-today-top-list-li {
-  border: 0.5px solid rgb(11, 5, 37);
-  margin: 3px;
-  width: 100%;
-  background-color: #f2f2f2;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-/* Reikia sutvarkyti siuos stylus Pagrazinti  */
-.best-player-php {
-  font-weight: bold;
-  color: #a65b46;
-  font-size: 1.6rem;
-  /* Additional styling */
-}
-
-.player-name-hp {
-  font-weight: bold;
-  color: #ffffff;
-  /* Additional styles for the name */
-}
-
-.player-points-hp {
-  color: #f8efef;
-  /* Additional styles for the points */
-}
-
-
-
-/*  */
 /* Pagrindinis question and answer containeris */
 .super-container {
   background: rgba(0, 0, 0, 0.6);
@@ -368,8 +403,10 @@ body {
   left: 50%; */
   /* transform: translateX(-55%); */
   padding: 40px;
-  max-width: 600px;
-  max-height: 500px;
+  width: 50vw;
+  height:52vh;
+  /* max-width: 600px;
+  max-height: 500px; */
   justify-content: center;
   align-items: center;
   z-index: 10;
@@ -510,142 +547,124 @@ body {
   background-color: var(--dark);
 }
 
-.litas-container {
-  /* position: absolute; */
-  /* bottom: 22%; */
-  /* left: 10%; */
-  /* Change the left position to 50% */
-  /* transform: translate(-50%, 0); */
-  /* Use translate to adjust the element's position */
-  /* display: block;
-  justify-content: center; */
-  padding: 5px;
-  margin: 10px auto;
-  /* Use margin: auto to center the element */
-  width: 200px;
-  height: 200px;
-  /* border: 1px solid black; */
-}
 
-.litas-container-img {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container-c {
   display: flex;
   flex-direction: column;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  border: 5px solid rgb(100, 128, 0);
+  width: 32.5%; /* 20% of the page */
+  height: 88vh;
 }
 
-@media (max-width: 550px) {
-  section {
-    display: none;
-  }
+/* .user-info-container, .show-money-container, #chat-container-section{
+  border: 3px solid black;
+
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  */
+/* Today Top section */
+.today-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* position: absolute; */
+  top: 4em;
+  right: 2em;
+  height: 3em;
+  background: rgba(4, 4, 4, 0.6);
+  width: 260px;
+  min-height: 290px;
 }
 
-@media (max-width: 550px) {
-  /* img {
-        width: 100px;
-        opacity: 0.8; 
-        box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5); 
-      } */
+.today-top-btn {
+  background-color: #a65b46;
+  color: var(--white);
+  padding: 11px 10px;
+  text-align: center;
+  width: 150px;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: .6em;
+  border: none;
+  text-decoration: none;
 }
 
-.section-answer {
-  border: 1px solid red;
+.php-today-top-list {
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
-/* Plevesuojantys litai siektiek */
-#litai-img {
-  width: 200px;
-  opacity: 0.8;
-  /* Set the transparency to 70% */
-  box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5);
-  animation: flag-wave 7s infinite;
+.php-today-top-list-li {
+  border: 0.5px solid rgb(11, 5, 37);
+  margin: 3px;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding: 5px;
+  border-radius: 5px;
 }
 
-@keyframes flag-wave {
-  0% {
-    transform: rotate(0deg) translateX(0);
-    background-position: center;
-    visibility: visible;
-    opacity: 1;
-  }
-
-  5% {
-    transform: rotate(0deg) translateX(-5px);
-    background-position: center;
-    visibility: visible;
-    opacity: 0.8;
-  }
-
-  10% {
-    transform: rotate(-5deg) translateX(0);
-    background-position: calc(100% - 5px) 5px;
-    visibility: visible;
-    opacity: 0.6;
-  }
-
-  15% {
-    transform: rotate(0deg) translateX(5px);
-    background-position: center;
-    visibility: visible;
-    opacity: 0.8;
-  }
-
-  20% {
-    transform: rotate(5deg) translateX(0);
-    background-position: 5px calc(100% - 5px);
-    visibility: visible;
-    opacity: 1;
-  }
-
-  25% {
-    transform: rotate(0deg) translateX(0);
-    background-position: center;
-    visibility: visible;
-    opacity: 1;
-  }
-
-  75% {
-    transform: rotate(0deg) translateX(0);
-    background-position: center;
-    visibility: visible;
-    opacity: 1;
-  }
-
-  80% {
-    transform: rotate(-5deg) translateX(0);
-    background-position: calc(100% - 5px) 5px;
-    visibility: visible;
-    opacity: 0.8;
-  }
-
-  85% {
-    transform: rotate(0deg) translateX(-5px);
-    background-position: center;
-    visibility: visible;
-    opacity: 0.6;
-  }
-
-  90% {
-    transform: rotate(5deg) translateX(0);
-    background-position: 5px calc(100% - 5px);
-    visibility: visible;
-    opacity: 0.8;
-  }
-
-  95% {
-    transform: rotate(0deg) translateX(5px);
-    background-position: center;
-    visibility: visible;
-    opacity: 0.6;
-  }
-
-  100% {
-    transform: rotate(0deg) translateX(0);
-    background-position: center;
-    visibility: visible;
-    opacity: 1;
-  }
+/* Reikia sutvarkyti siuos stylus Pagrazinti  */
+.best-player-php {
+  font-weight: bold;
+  color: #a65b46;
+  font-size: 1.6rem;
+  /* Additional styling */
 }
+
+.player-name-hp {
+  font-weight: bold;
+  color: #ffffff;
+  /* Additional styles for the name */
+}
+
+.player-points-hp {
+  color: #f8efef;
+  /* Additional styles for the points */
+}
+
+
+
+/*  */
+
 
 /* .old-question-section */
 .old-question-section {
@@ -802,3 +821,9 @@ body {
 }
 
 
+
+
+/* Nezinau kas cia */
+/* .section-answer {
+  border: 100px solid red;
+} */
