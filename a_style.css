@@ -40,6 +40,7 @@ body {
   width: 100%;
 }
 
+/* // Containers ABC */
 .containers-abc{
   display: flex;
   flex-direction: row;
@@ -53,16 +54,160 @@ body {
   display: flex;
   flex-direction: column;
   border: 5px solid rgb(128, 0, 109);
+  width: 30%;
+  height: 88vh;
+  gap: .5em; 
+  justify-content: center;
+  align-items: center;
+  
 }
+
+/*?? Chat section  A1*/
+.user-info-container{
+  height: 16vh;
+  border: 3px solid rgb(140, 107, 0);
+  width: 100%;
+}
+
+/*?? Chat section  A2*/
+.show-money-container{
+  height: 22vh;
+  border: 3px solid rgb(140, 107, 0);
+  width: 100%;
+
+}
+
+/*?? Chat section  A3*/
+#chat-container-section {
+  height: 50vh;
+  width: 100%;
+  border: 3px solid rgb(140, 107, 0);
+  background: rgba(7, 7, 7, 0.2);
+  /* position: fixed; */
+  bottom: 6.85vh;
+  /* background-color: white; */
+  word-wrap: break-word;
+  /* overflow-y: auto; */
+}
+
+#chat-container-messages {
+  background-color: #c6e0e1;
+  height: 42vh;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* Style the scrollbar track (the background) */
+#chat-container-messages::-webkit-scrollbar {
+  width: 14px;
+  /* Width of the scrollbar */
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+#chat-container-messages::-webkit-scrollbar-thumb {
+  background-color: #888;
+  /* Color of the thumb */
+  border-radius: 2px;
+  /* Rounded corners of the thumb */
+}
+
+/* Style the scrollbar track when it's hovered over */
+#chat-container-messages::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+  /* Color of the thumb on hover */
+}
+
+#chat-messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#chat-messages>li {
+  padding: 0.5rem 1rem;
+}
+
+#chat-messages>li:nth-child(odd) {
+  background: #d8d7d7;
+}
+
+#chat-form {
+  background: rgba(7, 7, 7, 0.15);
+  width: 100%;
+  /* bottom: 0; */
+  /* position: relative; */
+  top: 1px;
+  display: flex;
+  height: 3.2rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(7, 7, 7, 0.15);
+}
+
+#chat-input-msg {
+  border: none;
+  padding: 0 1rem;
+  /* flex-grow: 1; */
+  border-radius: 2rem;
+  margin: 0.25rem;
+}
+
+#chat-input-msg:focus {
+  outline: none;
+}
+
+#chat-button {
+  background: #333;
+  border: none;
+  padding: 0 1rem;
+  margin: 0.25rem;
+  border-radius: 3px;
+  outline: none;
+  color: #fff;
+  transition: transform 0.2s;
+}
+
+#chat-button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+#chat-button:active {
+  transform: scale(0.9);
+}
+
+#chat-button:focus {
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .container-b {
   display: flex;
   border: 5px solid rgb(21, 0, 128);
+  width: 35%; /* 20% of the page */
 }
 .container-c {
   display: flex;
   flex-direction: column;
   border: 5px solid rgb(100, 128, 0);
+  width: 32.5%; /* 20% of the page */
 }
+
+/* .user-info-container, .show-money-container, #chat-container-section{
+  border: 3px solid black;
+
+} */
 
 
 
@@ -72,9 +217,9 @@ body {
 
 /* //Mini user-info/welcome container */
 /* ??Mini user-info/welcome container A */
-.user-info-container{
+/* .user-info-container{
   border: 1px solid red;
-}
+} */
 
 .user-info {
   width: 10em;
@@ -601,109 +746,7 @@ body {
   }
 }
 
-/* Chat section */
-#chat-container-section {
-  /* border: 2px solid rgba(7, 7, 7, 0.15); */
-  background: rgba(7, 7, 7, 0.2);
-  height: 50vh;
-  width: 25vw;
-  /* position: fixed; */
-  bottom: 6.85vh;
-  /* background-color: white; */
-  word-wrap: break-word;
-  /* overflow-y: auto; */
-}
 
-#chat-container-messages {
-  background-color: #c6e0e1;
-  height: 42vh;
-  padding: 10px;
-  overflow-y: auto;
-}
-
-/* Style the scrollbar track (the background) */
-#chat-container-messages::-webkit-scrollbar {
-  width: 14px;
-  /* Width of the scrollbar */
-}
-
-/* Style the scrollbar thumb (the draggable part) */
-#chat-container-messages::-webkit-scrollbar-thumb {
-  background-color: #888;
-  /* Color of the thumb */
-  border-radius: 2px;
-  /* Rounded corners of the thumb */
-}
-
-/* Style the scrollbar track when it's hovered over */
-#chat-container-messages::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-  /* Color of the thumb on hover */
-}
-
-#chat-messages {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  display: block;
-}
-
-#chat-messages>li {
-  padding: 0.5rem 1rem;
-}
-
-#chat-messages>li:nth-child(odd) {
-  background: #d8d7d7;
-}
-
-#chat-form {
-  background: rgba(7, 7, 7, 0.15);
-  width: 100%;
-  /* bottom: 0; */
-  /* position: relative; */
-  top: 1px;
-  display: flex;
-  height: 3.2rem;
-  box-sizing: border-box;
-  backdrop-filter: blur(10px);
-  border: 3px solid rgba(7, 7, 7, 0.15);
-}
-
-#chat-input-msg {
-  border: none;
-  padding: 0 1rem;
-  /* flex-grow: 1; */
-  border-radius: 2rem;
-  margin: 0.25rem;
-}
-
-#chat-input-msg:focus {
-  outline: none;
-}
-
-#chat-button {
-  background: #333;
-  border: none;
-  padding: 0 1rem;
-  margin: 0.25rem;
-  border-radius: 3px;
-  outline: none;
-  color: #fff;
-  transition: transform 0.2s;
-}
-
-#chat-button:hover {
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-#chat-button:active {
-  transform: scale(0.9);
-}
-
-#chat-button:focus {
-  outline: none;
-}
 
 
 
