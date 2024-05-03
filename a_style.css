@@ -14,19 +14,6 @@
   padding: 0;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  /* position: relative; */
-  background: #1F1C2C;
-  background: -webkit-linear-gradient(to right, #928DAB, #1F1C2C);
-  background: linear-gradient(to right, #928DAB, #1F1C2C);
-  /* background: url(images/DALLE/viktorina.live_world.events1.png); */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
 .header-wrapper {
   position: sticky;
   z-index: 100;
@@ -39,6 +26,19 @@ body {
   bottom: 0;
   width: 100%;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: #1F1C2C;
+  background: -webkit-linear-gradient(to right, #928DAB, #1F1C2C);
+  background: linear-gradient(to right, #928DAB, #1F1C2C);
+  /* background: url(images/DALLE/viktorina.live_world.events1.png); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 
 /* // Containers ABC */
 .containers-abc{
@@ -130,58 +130,48 @@ body {
 /*?? Money section  A2*/
 .show-money-container{
   height: 22vh;
-  border: 3px solid rgb(140, 107, 0);
+  /* border: 1px solid rgb(0, 21, 140); */
   width: 100%;
 }
 
 .litas-container {
-  /* position: absolute; */
-  /* bottom: 22%; */
-  /* left: 10%; */
-  /* Change the left position to 50% */
-  /* transform: translate(-50%, 0); */
-  /* Use translate to adjust the element's position */
-  /* display: block;
-  justify-content: center; */
-  padding: 5px;
-  margin: 10px auto;
-  /* Use margin: auto to center the element */
-  width: 200px;
-  height: 200px;
-  /* border: 1px solid black; */
+  /* border: 0.5px solid black;
+  margin: 0.1em; */
+  height: 12.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
 }
 
 .litas-container-img {
   display: flex;
   flex-direction: column;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  gap: 0.3em;
+  /* border: 5px solid rgb(29, 140, 19); */
+  justify-content: center;
+  align-items: center; 
+  overflow: hidden; 
 }
 
-@media (max-width: 550px) {
-  section {
-    display: none;
-  }
-}
-
-@media (max-width: 550px) {
-  /* img {
-        width: 100px;
-        opacity: 0.8; 
-        box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5); 
-      } */
-}
-
-
-
-/* Plevesuojantys litai siektiek */
-#litai-img {
-  width: 200px;
+#litai-img, #litai-img-bonus {
+  width: 100%; 
+  max-width: 150px; 
   opacity: 0.8;
-  /* Set the transparency to 70% */
-  box-shadow: 0 0 10px 5px rgba(38, 66, 64, 0.5);
   animation: flag-wave 7s infinite;
 }
+
+#litai-img-bonus{
+  margin-top: 5px;
+}
+
+img {
+  width: 100%; 
+  height: auto; 
+}
+
+
 
 @keyframes flag-wave {
   0% {
@@ -388,7 +378,7 @@ body {
 .container-b {
   display: flex;
   border: 5px solid rgb(21, 0, 128);
-  width: 35%; /* 20% of the page */
+  width: 35%; 
   height: 88vh;
   justify-content: center;
   align-items: center;
@@ -398,15 +388,9 @@ body {
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  /* position: absolute; */
-  /* top: 170%;
-  left: 50%; */
-  /* transform: translateX(-55%); */
   padding: 40px;
   width: 50vw;
   height:52vh;
-  /* max-width: 600px;
-  max-height: 500px; */
   justify-content: center;
   align-items: center;
   z-index: 10;

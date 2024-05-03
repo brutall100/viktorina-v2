@@ -26,7 +26,7 @@ async function fetchData() {
   generateAndDisplayRandomPoint(data.data.lita);
   generateBonusPoints(data.data.bonusLita);
 
-  const lita = data.data.lita;
+  // const lita = data.data.lita;
 
   // Uncomment the lines below to update HTML containers with data
   //  const dataContainer = document.getElementById("dataContainer");
@@ -172,71 +172,66 @@ async function displayQuestion(data) {
 //
 //                    LITAI
 const generateAndDisplayRandomPoint = async (lita) => {
-  litoVerte = ""
-  imageSrc = ""
-  const litaiImg = document.getElementById("litai-img")
-  if (lita === 1) {
-    litoVerte = "Litas"
-    imageSrc = "images/ImgLitai/1Lt.png"
-  } else if (lita === 2) {
-    litoVerte = "Litai"
-    imageSrc = "images/ImgLitai/1Lt.png"
-    displayImage(imageSrc, litaiImg, "on-off-litai1")
-    imageSrc = "images/ImgLitai/1Lt.png"
-  } else if (lita === 3) {
-    litoVerte = "Litai"
-    imageSrc = "images/ImgLitai/1Lt.png"
-    displayImage(imageSrc, litaiImg, "on-off-litai")
-    imageSrc = "images/ImgLitai/2Lt.png"
-  } else if (lita === 4) {
-    litoVerte = "Litai"
-    imageSrc = "images/ImgLitai/2Lt.png"
-    displayImage(imageSrc, litaiImg, "on-off-litai")
-    imageSrc = "images/ImgLitai/2Lt.png"
-  } else if (lita === 5) {
-    litoVerte = "Litai"
-    imageSrc = "images/ImgLitai/5Lt.png"
-  } else {
-    litoVerte = ""
-    imageSrc = ""
-  }
+  const imageConfig = {
+      1: { label: "Litas", src: "images/ImgLitai/1Lt.png" },
+      2: { label: "Litai", src: ["images/ImgLitai/1Lt.png", "images/ImgLitai/1Lt.png"] },
+      3: { label: "Litai", src: ["images/ImgLitai/1Lt.png", "images/ImgLitai/2Lt.png"] },
+      4: { label: "Litai", src: ["images/ImgLitai/2Lt.png", "images/ImgLitai/2Lt.png"] },
+      5: { label: "Litai", src: "images/ImgLitai/5Lt.png" }
+  };
 
-  displayImage(imageSrc, litaiImg, "new-class1")
-  document.getElementById("points").innerHTML = `Verte: ${lita} ${litoVerte}&nbsp;  `
+  const config = imageConfig[lita] || { label: "", src: "" };
+  const litaiImg = document.getElementById("litai-img");
+  litaiImg.innerHTML = '';  
+
+  const srcs = Array.isArray(config.src) ? config.src : [config.src];
+  srcs.forEach(src => {
+      displayImage(src, litaiImg, "new-class1");
+  });
+
+  document.getElementById("points").innerHTML = `Verte: ${lita} ${config.label}&nbsp;`;
 }
+
 
 const displayImage = (src, parent, className) => {
-  const imageElement = document.createElement("img")
-  imageElement.src = src
-  imageElement.alt = `${lita} Litai`
-  imageElement.classList.add(className)
-  parent.appendChild(imageElement)
+  const imageElement = document.createElement("img");
+  imageElement.src = src;
+  imageElement.alt = `${src} Lito vertė pavaizduota`;  
+  imageElement.classList.add(className);
+  parent.appendChild(imageElement);
 }
+
 
 //  BONUS-LITAI
 function generateBonusPoints(bonusLita) {
-  const pointsElement = document.getElementById("bonus-points")
-  const imageElement = document.getElementById("litai-img-bonus")
+  const pointsElement = document.getElementById("bonus-points");
+  const imageElement = document.getElementById("litai-img-bonus");
+
+  // Reset the display style of pointsElement for each function call
+  pointsElement.style.display = "block";
+
   if (bonusLita > 0) {
-    pointsElement.innerText = ` + Bonus: ${bonusLita}`
-    let images = ""
+    pointsElement.innerText = `+ Bonus: ${bonusLita}`;
+    let images = "";
+
     if (bonusLita === 10 || bonusLita === 20 || bonusLita === 50) {
-      images += `<img src=" images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`
+      images += `<img src="images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`;
     } else if (bonusLita === 30) {
-      {
-        images += `<img src=" images/ImgLitai/10Lt.png" alt="Dešimt litų">`
-        images += `<img src=" images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
-      }
+      images += `<img src="images/ImgLitai/10Lt.png" alt="Dešimt litų">`;
+      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`;
     } else if (bonusLita === 40) {
-      for (let i = 0; i < 2; i++) {
-        images += `<img src=" images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
-      }
+      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`;
+      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`;
     }
-    imageElement.innerHTML = images
+
+    imageElement.innerHTML = images;
+    imageElement.style.display = "block"; // Make the div visible when there are images to show
   } else {
-    pointsElement.style.display = "none"
+    pointsElement.style.display = "none";
+    imageElement.style.display = "none"; // Hide the div when there are no bonus points
   }
 }
+
 
 // reikia prideti zinute ,niekas neatsake ,kitas klausimas po 3 sek
 // vietoi kluasimo zinute,parodomas atsakumas atsakymas buvo blalal

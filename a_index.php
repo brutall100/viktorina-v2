@@ -131,12 +131,12 @@ if (isset($name) & !empty($name)) {
      <!-- A2 -->
      <div class="show-money-container">  <!-- Sie 2 conteineriai turi susieiti i viena . Vienas be kito negali-->
         
-          <div id="lita"></div>
-          <div id="lita-bonus"></div>
+          <!-- <div id="lita"></div>
+          <div id="lita-bonus"></div> -->
 
         <section class="litas-container">
-          <div class="litas-container-img" id="litai-img-bonus"></div>
           <div class="litas-container-img" id="litai-img"></div>
+          <div class="litas-container-img" id="litai-img-bonus" style="display: none"></div>
         </section>
      </div>
      <!-- A3 -->
