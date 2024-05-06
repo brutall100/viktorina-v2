@@ -50,6 +50,7 @@ body {
   
 }
 
+/* // Container A*/
 .container-a {
   display: flex;
   flex-direction: column;
@@ -374,7 +375,7 @@ img {
 
 
 
-
+/* // Container B*/
 .container-b {
   display: flex;
   border: 5px solid rgb(21, 0, 128);
@@ -448,14 +449,6 @@ img {
 .answer-section {
   min-height: 7vh;
   width: auto/2;
-
-  /* border: 3px solid rgb(12, 126, 38); */
-  /* position: fixed; */
-  /* bottom: -1vh; */
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
-  /* display: flex; */
-  /* justify-content: center; */
   align-items: center;
   margin: 0.5rem;
   padding: 0.5rem;
@@ -545,10 +538,12 @@ img {
 
 
 
-
+/* // Container C*/
 .container-c {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   border: 5px solid rgb(100, 128, 0);
   width: 32.5%; /* 20% of the page */
   height: 88vh;
@@ -561,41 +556,11 @@ img {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*  */
-/* Today Top section */
+/*?? Chat section  C1*/
 .today-top {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* position: absolute; */
-  top: 4em;
-  right: 2em;
-  height: 3em;
-  background: rgba(4, 4, 4, 0.6);
-  width: 260px;
-  min-height: 290px;
 }
 
 .today-top-btn {
@@ -614,7 +579,7 @@ img {
 
 .php-today-top-list {
   font-family: Arial, sans-serif;
-  color: #333;
+  color: #000000;
 }
 
 .php-today-top-list-li {
@@ -650,16 +615,16 @@ img {
 /*  */
 
 
-/* .old-question-section */
+/*?? Chat section  C2*/
 .old-question-section {
   background-color: rgba(255, 255, 255, 0.4);
-  /* position: fixed; */
-  bottom: 6.2vh;
-  right: 2vh;
   height: 44vh;
-  width: 65vh;
-  margin: 0.5rem;
   padding: 0.5rem;
+  /* position: fixed; */
+  /* bottom: 6.2vh; */
+  /* right: 2vh; */
+  /* width: 65vh; */
+  /* margin: 0.5rem; */
 }
 
 .old-question-section #old-question {
@@ -738,16 +703,16 @@ img {
 }
 
 /* Adjust the max-width as needed */
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   .old-question-section {
     width: 95%;
-    /* Make the container narrower on smaller screens */
+    
     max-width: 400px;
-    /* Limit the max width of the container */
+
     right: 2%;
-    /* Adjust position accordingly */
+
   }
-}
+} */
 
 
 
