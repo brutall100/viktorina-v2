@@ -169,9 +169,6 @@ if (isset($name) & !empty($name)) {
             <div class="super-container-qna-section">
                 <div id="question"></div>
                 <div id="answer"></div>
-                <div class="answer-section">
-                    <div id="answer-msg"></div>
-                </div>
             </div>
 
             <div class="form-container">
@@ -193,6 +190,9 @@ if (isset($name) & !empty($name)) {
                         <div class="answer-input">
                             <input type="text" id="answer-input" name="answer-input">
                             <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
+                        </div>
+                        <div class="answer-section">
+                            <div id="answer-msg"></div>
                         </div>
                     </form>
                 <?php } elseif (!empty($name) && $verify == 0) { ?>

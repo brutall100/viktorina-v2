@@ -40,14 +40,35 @@ body {
 }
 
 
-/* // Containers ABC */
-.containers-abc{
+/* Containers ABC */
+.containers-abc {
   display: flex;
   flex-direction: row;
-  /* border: 5px solid green; */
+  border: 5px solid green;
   justify-content: space-between;
   align-items: center;
-  
+}
+
+@media (max-width:1400px) {
+  .containers-abc {
+    font-size: small;
+  }
+}
+
+@media (max-width:800px) {
+  .containers-abc {
+    flex-direction: column;
+  }
+  /* Prie labai mazu ekranu */
+  .container-a {
+    order: 2; 
+  }
+  .container-b {
+    order: 1; 
+  }
+  .container-c {
+    order: 3; 
+  }
 }
 
 /* // Container A*/
@@ -378,7 +399,7 @@ img {
 /* // Container B*/
 .container-b {
   display: flex;
-  border: 5px solid rgb(21, 0, 128);
+  /* border: 5px solid rgb(21, 0, 128); */
   width: 35%; 
   height: 88vh;
   justify-content: center;
@@ -390,7 +411,7 @@ img {
   display: flex;
   flex-direction: column;
   padding: 40px;
-  width: 50vw;
+  /* width: 50vw; */
   height:52vh;
   justify-content: center;
   align-items: center;
@@ -447,8 +468,6 @@ img {
 
 /* answer-section */
 .answer-section {
-  min-height: 7vh;
-  width: auto/2;
   align-items: center;
   margin: 0.5rem;
   padding: 0.5rem;
@@ -478,7 +497,7 @@ img {
 .form-container {
   display: flex;
   align-items: center;
-  margin-top: auto;
+  /* margin-top: auto; */
 }
 
 .answer-input {
