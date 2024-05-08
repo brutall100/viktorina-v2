@@ -399,78 +399,136 @@ img {
 /* // Container B*/
 .container-b {
   display: flex;
-  /* border: 5px solid rgb(21, 0, 128); */
-  width: 35%; 
-  height: 88vh;
   justify-content: center;
   align-items: center;
+  width: 35%; 
+  height: 88vh;
+  border: 5px solid rgb(21, 0, 128);
 }
-/* Pagrindinis question and answer containeris */
+
 .super-container {
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
-  padding: 40px;
+  align-items: center;
+  padding: 3em;
   /* width: 50vw; */
   height:52vh;
-  justify-content: center;
-  align-items: center;
   z-index: 10;
+  border: 1px solid rgb(13, 128, 0);
 }
 
 
 .points-container {
   /* border: 1px solid brown; */
-  margin-bottom: 0;
-  padding: 10px;
-  margin-top: 50px;
+  /* margin-bottom: 1em; */
+  /* padding: 40px; */
+  /* margin-top:20px; */
   color: #d8d7d7;
+  border: 1px solid rgb(21, 0, 128);
 }
 
 .hidden-bonus {
-  display: none;
+  /* display: none; */
 }
 
+/* Main container */
+/* Keyframe animation for border color and shadow movement */
+@keyframes movingBorder {
+  0% {
+    border-color: rgba(110, 28, 90, 0.9);
+    box-shadow: 0 0 10px rgba(110, 28, 90, 0.7);
+  }
+  25% {
+    border-color: rgba(28, 110, 54, 0.9);
+    box-shadow: 0 0 15px rgba(28, 110, 54, 0.7);
+  }
+  50% {
+    border-color: rgba(110, 28, 110, 0.9);
+    box-shadow: 0 0 20px rgba(110, 28, 110, 0.7);
+  }
+  75% {
+    border-color: rgba(28, 54, 110, 0.9);
+    box-shadow: 0 0 15px rgba(28, 54, 110, 0.7);
+  }
+  100% {
+    border-color: rgba(110, 28, 90, 0.9);
+    box-shadow: 0 0 10px rgba(110, 28, 90, 0.7);
+  }
+}
+
+/* Main container */
 .super-container-qna-section {
-  /* border: 5px solid rgb(110, 28, 90); */
-  margin-top: 5px;
-  padding: 15px;
-  width: 100%;
+  border: 2px solid rgba(110, 28, 90, 0.7);
+  margin: auto;
+  padding: 20px;
+  width: 80%;
+  border-radius: 15px;
+  background-color: #f7f2f8;
+  animation: movingBorder 10s linear infinite;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Common styles for both question and answer */
 #question,
 #answer {
   font-size: 24px;
   text-align: center;
+  border: 2px solid rgba(28, 110, 54, 0.7);
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 15px;
+  width: 80%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  animation: movingBorder 5s linear infinite;
 }
 
+/* Question styles */
 #question {
   font-family: "PT Serif", serif;
   font-weight: 600;
   font-style: italic;
   color: #d2a981;
-  /* border: 2px solid rgb(81, 37, 151); */
+  background-color: rgba(110, 28, 90, 0.1);
+  transition: all 0.3s ease;
+  animation: movingBorder 5s linear infinite;
 }
 
+#question:hover {
+  border-color: rgba(110, 28, 90, 0.9);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Answer styles */
 #answer {
-  margin-top: 0.7em;
   letter-spacing: 0.4em;
   word-spacing: 0.1em;
   font-family: Arial, sans-serif;
   font-size: 1.3em;
   color: #d2a981;
-  /* Set the color of the asterisks */
-  padding: 10px;
-  background: rgb(0, 0, 0, 0.2);
-  ;
-  /* border: 2px solid rgb(151, 117, 37); */
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: movingBorder 5s linear infinite;
 }
+
+#answer:hover {
+  border-color: rgba(28, 110, 54, 0.9);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
 
 /* answer-section */
 .answer-section {
   align-items: center;
   margin: 0.5rem;
   padding: 0.5rem;
+  border: 1px solid rgb(55, 28, 110);
 }
 
 #answer-msg {
@@ -502,8 +560,8 @@ img {
 
 .answer-input {
   /* flex: 1; */
-  height: 2em;
-  padding: 5px;
+  /* height: 20em; */
+  padding: 1.7em;
   border: none;
   outline: none;
   margin-right: -5px;
@@ -514,10 +572,10 @@ img {
 
 .answer-input input {
   /* flex: 1; */
-  font-size: 26px;
+  font-size: 1.5em;
   font-family: "Arial", sans-serif;
   border: none;
-  height: 47px;
+  /* height: 47px; */
   text-align: center;
   box-shadow: none;
 }
