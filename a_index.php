@@ -191,8 +191,10 @@ if (isset($name) & !empty($name)) {
                             <input type="text" id="answer-input" name="answer-input">
                             <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
                         </div>
-                        <div class="answer-section">
-                            <div id="answer-msg"></div>
+                        <div class="answer-section">   <!-- prideti var kas atsake ir koks buvo pakutinis atsakymas  -->
+                            <div id="answer-msg">Paskutinį klausimą atsakė <span class=" USERIS "></span><br>
+                                Atsakymas buvo <span class="answer-msg-span"></span>                                  
+                            </div>
                         </div>
                     </form>
                 <?php } elseif (!empty($name) && $verify == 0) { ?>
