@@ -70,7 +70,7 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 // Old question section
 var userLevelis
 const userLeveli = parseInt(userLevelis)
-console.log(userLeveli)
+// console.log(userLeveli)
 
 function calculateMaxOldDataCount() {
   if (userLeveli === 0 || userLeveli === 1 || userLeveli === 2) {
@@ -488,14 +488,14 @@ function firstUserAnswer() {
         document.getElementById("answerer-name").textContent = atsakesDalyvis
         document.getElementById("answer-content").textContent = firstData.old_answer
 
-        console.log("First old data fetched successfully:", firstData)
+        // console.log("First old data fetched successfully:", firstData)
       } else {
-        console.log("No data available in oldData array")
+        // console.log("No data available in oldData array")
         document.getElementById("answer-msg").textContent = "No data available."
       }
     })
     .catch((error) => {
-      console.error("Failed to fetch data:", error)
+      // console.error("Failed to fetch data:", error)
       document.getElementById("answer-msg").textContent = "Error fetching data."
     })
 }

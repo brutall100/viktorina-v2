@@ -37,7 +37,7 @@ echo '<br>Request method: '. $_SERVER['REQUEST_METHOD']."</b><br>";
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/icons/vk2.jpg" type="image/x-icon">
-  <link rel="stylesheet" href=" a_style.css">
+  <link rel="stylesheet" href="a_style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -192,13 +192,13 @@ if (isset($name) & !empty($name)) {
                             <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
                         </div>
                         <!-- <div class="answer-section">
-                            <div id="answer-msg">Paskutinį klausimą atsakė <span class=""></span><br>
+                            <div id="answer-msg">Paskutinis teisingai atsakęs <span class=""></span><br>
                                 Atsakymas buvo <span class="answer-msg-span"></span>                                  
                             </div>
                         </div> -->
                         <div class="answer-section">
                           <div id="answer-msg">
-                              Paskutinį klausimą atsakė <span id="answerer-name"></span><br>
+                              Paskutinis teisingai atsakęs <span id="answerer-name"></span><br>
                               Atsakymas buvo <span id="answer-content"></span>                                  
                           </div>
                         </div>
