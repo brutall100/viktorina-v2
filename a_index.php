@@ -198,8 +198,8 @@ if (isset($name) & !empty($name)) {
                         </div> -->
                         <div class="answer-section">
                           <div id="answer-msg">
-                              Paskutinis teisingai atsakęs <span id="answerer-name"></span><br>
-                              Atsakymas buvo <span id="answer-content"></span>                                  
+                              Paskutinis teisingai atsakęs: <span id="answerer-name"></span><br>
+                              Atsakymas buvo: <span id="answer-content"></span>                                  
                           </div>
                         </div>
                     </form>

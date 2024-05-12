@@ -585,7 +585,7 @@ img {
   background-color: #1a1a1a; 
   border: 3px solid #ffd700; 
   padding: 20px;
-  margin: 20px 0;
+  /* margin: 20px 0; */
   border-radius: 8px;
   box-shadow: 0 0 10px #ffd700; 
 }
@@ -602,17 +602,27 @@ img {
   line-height: 1.5;
 }
 
-.corect-answer-answered {
+.correct-answer-answered-user {
+  font-family: "Roboto", sans-serif; 
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #d4b712; 
+}
+
+.correct-answer-answered {
   color: #00ff00; 
   font-weight: bold;
   text-transform: uppercase;
 }
 
-.corect-answer-answered-user {
-  font-family: "Roboto", sans-serif; 
-  text-transform: capitalize;
+.correct-answer-ltnumber {
+  color: #ffd700; 
   font-weight: bold;
-  color: #c0c0c0; 
+}
+
+.correct-answer-litaform {
+  color: #ad3ee0; 
+  font-weight: bold;
 }
 
 

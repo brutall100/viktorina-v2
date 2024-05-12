@@ -267,91 +267,124 @@ window.onload = function () {
   }
 }
 
-const handleUserAnswer = async (userAnswer) => {
-  const data = await fetchData()
-  if (!data || !data.data || !data.data.answer) {
-    console.error("Answer not found in data object")
-    return
-  }
-  const correctAnswer = data.data.answer.toLowerCase()
-  const userAnswerLower = userAnswer.toLowerCase()
 
-  const isAnswerCorrect = checkLettersAndCompare(userAnswerLower, correctAnswer)
+
+
+
+//// Main function to handle user answers
+const handleUserAnswer = async (userAnswer) => {
+  const data = await fetchData();
+  if (!validateData(data)) {
+    console.error("Answer not found in data object");
+    return;
+  }
+
+  const correctAnswer = data.data.answer.toLowerCase();
+  const userAnswerLower = userAnswer.toLowerCase();
+  processAnswer(userAnswerLower, correctAnswer, data);
+};
+
+//?? Validate fetched data
+function validateData(data) {
+  return data && data.data && data.data.answer;
+}
+
+//?? Process the user's answer
+async function processAnswer(userAnswerLower, correctAnswer, data) {
+  const isAnswerCorrect = checkLettersAndCompare(userAnswerLower, correctAnswer);
 
   if (isAnswerCorrect) {
-    const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10)
-    userData.points = litaPoints.toString()
-    const successMsg = `<span class="corect-answer-answered-user">${userData.name}</span> atsakė teisingai: <span class="corect-answer-answered">${userAnswer}</span>  <br> ir uždirba ${litaPoints} litų` // tvarkyti kintamaji litas lita litu
-    document.getElementById("answer-msg").innerHTML = successMsg
-
-    playGame() // atsakius teisingai paleidziama funkcija
-
-    // const url = "http://***REMOVED***:4004/a_points.js"
-    const url = "http://localhost:4004/a_points.js"
-    const body = JSON.stringify({
-      user_id_name: userData.name,
-      points: litaPoints
-    })
-
-    const headers = {
-      "Content-Type": "application/x-www-form-urlencoded"
-    }
-
-    const response = await fetch(url, {
-      method: "POST",
-      headers,
-      body
-    })
-
-    console.log("Response status:", response.status)
-
-    if (response.ok) {
-      const jsonResponse = await response.json()
-      console.log("JSON Response:", jsonResponse)
-
-      const { user_id_name, points } = jsonResponse
-      console.log(`User points updated successfully ${points}`)
-      console.log("user_id_name: " + user_id_name)
-      console.log("points: " + points)
-
-      // oldQuestionData()
-      setTimeout(() => {
-        location.reload()
-      }, 5000) // Perkrauna page po 5 sekundziu
-    } else {
-      console.error("Failed to update user pointss")
-      const errorText = await response.text() // Log the error response text
-      console.error("Error response:", errorText)
-    }
-  } else if (!userAnswerLower.length === 0) {
-    setTimeout(oldQuestionData, 3000)
-  } else if (userAnswerLower.length < 1) {
-    const answerInput = document.getElementById("answer-input")
-    answerInput.disabled = true
-    const MsgNoAnswer = `Atsakymas negali būti tuščias.`
-    document.getElementById("answer-msg").textContent = MsgNoAnswer
-    setTimeout(() => {
-      answerInput.disabled = false
-    }, 2500) // Disable answerInput for 2.5 seconds
-    setTimeout(() => {
-      location.reload()
-    }, 1000) // Reload after 2 seconds
+    await handleCorrectAnswer(userAnswerLower, data);
   } else {
-    const answerInputBad = document.getElementById("answer-input")
-    answerInputBad.disabled = true
-    const errorMsg = `Atsakymas "${userAnswer}" yra neteisingas. Bandykite dar kartą.`
-    document.getElementById("answer-msg").textContent = errorMsg
-    setTimeout(() => {
-      answerInputBad.disabled = false
-    }, 3000) // Disable answerInput for 2.5 seconds
+    handleIncorrectAnswer(userAnswerLower);
+  }
+  document.getElementById("answer-input").value = "";
+}
 
-    setTimeout(() => {
-      location.reload()
-    }, 3000) // Reload after 2 seconds
+//?? Handle correct answers
+async function handleCorrectAnswer(userAnswerLower, data) {
+  const litaPoints = parseInt(data.data.lita, 10) + parseInt(data.data.bonusLita, 10);
+  userData.points = litaPoints.toString();
+  displaySuccessMessage(userAnswerLower, userData, litaPoints);
+  playGame(); // function triggered when answer is correct
+
+  // Delay sending points to server by 2 seconds
+  setTimeout(() => {
+    postPoints(userData.name, litaPoints);
+  }, 1000);
+}
+
+//?? Post points to server
+async function postPoints(userName, points) {
+  const url = "http://localhost:4004/a_points.js";
+  const body = JSON.stringify({ user_id_name: userName, points });
+  const headers = { "Content-Type": "application/x-www-form-urlencoded" };
+
+  try {
+    const response = await fetch(url, { method: "POST", headers, body });
+    await handleResponse(response);
+  } catch (error) {
+    console.error("Failed to update user points", error);
+  }
+}
+
+//?? Handle server response
+async function handleResponse(response) {
+  if (response.ok) {
+    const jsonResponse = await response.json();
+    console.log("User points updated successfully", jsonResponse.points);
+  } else {
+    console.error("Failed to update user points");
+    const errorText = await response.text();
+    console.error("Error response:", errorText);
+  }
+}
+
+//?? Function to determine the correct form of "litas" 
+// todo Reikia patikrinti ar gerai atiduoda litu galunes 1 lita, 2-5 litus, 10-600 litu.
+function getLitasForm(points) {
+  if ((points % 100 === 11) && (points <= 511)) {
+    return "litų"; 
+  }
+  if (points % 10 === 1 && points !== 11 && points <= 600) {
+    return "litą"; 
+  }
+  if (points % 10 === 0 && points <= 600) {
+    return "litų"; 
+  }
+  return "litus"; 
+}
+
+//?? Display success message
+// Display success message
+function displaySuccessMessage(userAnswerLower, userData, litaPoints) {
+  const litaForm = getLitasForm(litaPoints);
+  const successMsg = `<span class="correct-answer-answered-user">${userData.name}</span> atsakė tesingai: <span class="correct-answer-answered">${userAnswerLower}</span><br> ir uždirba <span class="correct-answer-ltnumber">${litaPoints}</span> <span class="correct-answer-litaform">${litaForm}</span>!`;
+  document.getElementById("answer-msg").innerHTML = successMsg;
+}
+
+//?? Handle incorrect answers
+function handleIncorrectAnswer(userAnswerLower) {
+  const answerInput = document.getElementById("answer-input");
+  answerInput.disabled = true;
+  let errorMsg = `Atsakymas "${userAnswerLower}" yra netesingas. Bandykite dar kartą.`;
+
+  if (userAnswerLower.length === 0) {
+    errorMsg = "Atsakymas negali būti tusčias.";
   }
 
-  document.getElementById("answer-input").value = ""
+  document.getElementById("answer-msg").textContent = errorMsg;
+  setTimeout(() => {
+    answerInput.disabled = false;
+    location.reload();
+  }, 3000);
 }
+
+
+
+
+
+
 
 function checkLettersAndCompare(str1, str2) {
   const letterMap = {
