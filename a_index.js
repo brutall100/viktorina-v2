@@ -1,18 +1,18 @@
-let data;
+let data
 async function fetchData() {
   try {
     // const response = await axios.get("http://***REMOVED***:4001/data");
-    const response = await axios.get("http://localhost:4001/data");
-    return response.data;
+    const response = await axios.get("http://localhost:4001/data")
+    return response.data
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 }
 
 // Anonymous async function to execute the code
-(async function () {
+;(async function () {
   // Fetch data from the server
-  data = await fetchData();
+  data = await fetchData()
 
   // Uncomment the lines below to log specific data fields
   // console.log('Data:', data);
@@ -22,23 +22,22 @@ async function fetchData() {
   // console.log('Litan:', data.data.lita);
   // console.log('Bonus:', data.data.bonusLita);
 
-  displayQuestion(data);
-  generateAndDisplayRandomPoint(data.data.lita);
-  generateBonusPoints(data.data.bonusLita);
+  displayQuestion(data)
+  generateAndDisplayRandomPoint(data.data.lita)
+  generateBonusPoints(data.data.bonusLita)
 
   // const lita = data.data.lita;
 
   // Uncomment the lines below to update HTML containers with data
   //  const dataContainer = document.getElementById("dataContainer");
   //  dataContainer.innerHTML = JSON.stringify(data);
-  
+
   //  const litaContainer = document.getElementById("lita");
   //  litaContainer.innerHTML = lita;
 
   //  const bonusLitaContainer = document.getElementById("lita-bonus");
   //  bonusLitaContainer.innerHTML = data.data.bonusLita;
-})();
-
+})()
 
 //
 //
@@ -69,10 +68,9 @@ setInterval(checkServerData, 1000) // call the function every 1 seconds
 //
 //
 // Old question section
-var userLevelis 
-const userLeveli = parseInt(userLevelis);
+var userLevelis
+const userLeveli = parseInt(userLevelis)
 console.log(userLeveli)
-
 
 function calculateMaxOldDataCount() {
   if (userLeveli === 0 || userLeveli === 1 || userLeveli === 2) {
@@ -173,65 +171,62 @@ async function displayQuestion(data) {
 //                    LITAI
 const generateAndDisplayRandomPoint = async (lita) => {
   const imageConfig = {
-      1: { label: "Litas", src: "images/ImgLitai/1Lt.png" },
-      2: { label: "Litai", src: ["images/ImgLitai/1Lt.png", "images/ImgLitai/1Lt.png"] },
-      3: { label: "Litai", src: ["images/ImgLitai/1Lt.png", "images/ImgLitai/2Lt.png"] },
-      4: { label: "Litai", src: ["images/ImgLitai/2Lt.png", "images/ImgLitai/2Lt.png"] },
-      5: { label: "Litai", src: "images/ImgLitai/5Lt.png" }
-  };
+    1: { label: "Litas", src: "images/ImgLitai/1Lt.png" },
+    2: { label: "Litai", src: ["images/ImgLitai/1Lt.png", "images/ImgLitai/1Lt.png"] },
+    3: { label: "Litai", src: ["images/ImgLitai/1Lt.png", "images/ImgLitai/2Lt.png"] },
+    4: { label: "Litai", src: ["images/ImgLitai/2Lt.png", "images/ImgLitai/2Lt.png"] },
+    5: { label: "Litai", src: "images/ImgLitai/5Lt.png" }
+  }
 
-  const config = imageConfig[lita] || { label: "", src: "" };
-  const litaiImg = document.getElementById("litai-img");
-  litaiImg.innerHTML = '';  
+  const config = imageConfig[lita] || { label: "", src: "" }
+  const litaiImg = document.getElementById("litai-img")
+  litaiImg.innerHTML = ""
 
-  const srcs = Array.isArray(config.src) ? config.src : [config.src];
-  srcs.forEach(src => {
-      displayImage(src, litaiImg, "new-class1");
-  });
+  const srcs = Array.isArray(config.src) ? config.src : [config.src]
+  srcs.forEach((src) => {
+    displayImage(src, litaiImg, "new-class1")
+  })
 
-  document.getElementById("points").innerHTML = `Verte: ${lita} ${config.label}&nbsp;`;
+  document.getElementById("points").innerHTML = `Verte: ${lita} ${config.label}&nbsp;`
 }
-
 
 const displayImage = (src, parent, className) => {
-  const imageElement = document.createElement("img");
-  imageElement.src = src;
-  imageElement.alt = `${src} Lito vertė pavaizduota`;  
-  imageElement.classList.add(className);
-  parent.appendChild(imageElement);
+  const imageElement = document.createElement("img")
+  imageElement.src = src
+  imageElement.alt = `${src} Lito vertė pavaizduota`
+  imageElement.classList.add(className)
+  parent.appendChild(imageElement)
 }
-
 
 //  BONUS-LITAI
 function generateBonusPoints(bonusLita) {
-  const pointsElement = document.getElementById("bonus-points");
-  const imageElement = document.getElementById("litai-img-bonus");
+  const pointsElement = document.getElementById("bonus-points")
+  const imageElement = document.getElementById("litai-img-bonus")
 
   // Reset the display style of pointsElement for each function call
-  pointsElement.style.display = "block";
+  pointsElement.style.display = "block"
 
   if (bonusLita > 0) {
-    pointsElement.innerText = `+ Bonus: ${bonusLita}`;
-    let images = "";
+    pointsElement.innerText = `+ Bonus: ${bonusLita}`
+    let images = ""
 
     if (bonusLita === 10 || bonusLita === 20 || bonusLita === 50) {
-      images += `<img src="images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`;
+      images += `<img src="images/ImgLitai/${bonusLita}Lt.png" alt="${bonusLita} Litų">`
     } else if (bonusLita === 30) {
-      images += `<img src="images/ImgLitai/10Lt.png" alt="Dešimt litų">`;
-      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`;
+      images += `<img src="images/ImgLitai/10Lt.png" alt="Dešimt litų">`
+      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
     } else if (bonusLita === 40) {
-      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`;
-      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`;
+      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
+      images += `<img src="images/ImgLitai/20Lt.png" alt="Dvidešimt litų">`
     }
 
-    imageElement.innerHTML = images;
-    imageElement.style.display = "block"; // Make the div visible when there are images to show
+    imageElement.innerHTML = images
+    imageElement.style.display = "block" // Make the div visible when there are images to show
   } else {
-    pointsElement.style.display = "none";
-    imageElement.style.display = "none"; // Hide the div when there are no bonus points
+    pointsElement.style.display = "none"
+    imageElement.style.display = "none" // Hide the div when there are no bonus points
   }
 }
-
 
 // reikia prideti zinute ,niekas neatsake ,kitas klausimas po 3 sek
 // vietoi kluasimo zinute,parodomas atsakumas atsakymas buvo blalal
@@ -306,29 +301,28 @@ const handleUserAnswer = async (userAnswer) => {
       method: "POST",
       headers,
       body
-    });
-    
-    console.log("Response status:", response.status);
-    
+    })
+
+    console.log("Response status:", response.status)
+
     if (response.ok) {
-      const jsonResponse = await response.json();
-      console.log("JSON Response:", jsonResponse);
-    
-      const { user_id_name, points } = jsonResponse;
-      console.log(`User points updated successfully ${points}`);
-      console.log("user_id_name: " + user_id_name);
-      console.log("points: " + points);
-    
+      const jsonResponse = await response.json()
+      console.log("JSON Response:", jsonResponse)
+
+      const { user_id_name, points } = jsonResponse
+      console.log(`User points updated successfully ${points}`)
+      console.log("user_id_name: " + user_id_name)
+      console.log("points: " + points)
+
       // oldQuestionData()
       setTimeout(() => {
-        location.reload();
-      }, 5000); // Perkrauna page po 5 sekundziu
+        location.reload()
+      }, 5000) // Perkrauna page po 5 sekundziu
     } else {
-      console.error("Failed to update user pointss");
-      const errorText = await response.text(); // Log the error response text
-      console.error("Error response:", errorText);
+      console.error("Failed to update user pointss")
+      const errorText = await response.text() // Log the error response text
+      console.error("Error response:", errorText)
     }
-
   } else if (!userAnswerLower.length === 0) {
     setTimeout(oldQuestionData, 3000)
   } else if (userAnswerLower.length < 1) {
@@ -420,7 +414,11 @@ function playGame() {
   } else if (gameNo === GAME_B) {
     const gameWindow2 = window.open(`Games/game2.php?name=${userData.name}`, "_blank", `width=${widths},height=${heights},left=${lefts},top=${tops}`)
   } else if (gameNo === GAME_C) {
-    const gameWindow3 = window.open(`Games/game3.php?name=${userData.name}`," _blank", `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`)
+    const gameWindow3 = window.open(
+      `Games/game3.php?name=${userData.name}`,
+      " _blank",
+      `width=600, height=600, left=${lefts},top=${tops},screenX=${screenX + (window.innerWidth - widths) / 2},screenY=${screenY + (window.innerHeight - heights) / 2}`
+    )
   }
 }
 
@@ -479,13 +477,36 @@ function redirectToLogin() {
   window.location.href = "d_regilogi.php"
 }
 
+//// Funkcija parodanti kas paskutinis atsake ir koks buvo atsakymas
+function firstUserAnswer() {
+  axios
+    .get("http://localhost:4001/old-data")
+    .then((response) => {
+      if (response.data.oldData && response.data.oldData.length > 0) {
+        const firstData = response.data.oldData[0]
+        const atsakesDalyvis = userData.name
+        document.getElementById("answerer-name").textContent = atsakesDalyvis
+        document.getElementById("answer-content").textContent = firstData.old_answer
+
+        console.log("First old data fetched successfully:", firstData)
+      } else {
+        console.log("No data available in oldData array")
+        document.getElementById("answer-msg").textContent = "No data available."
+      }
+    })
+    .catch((error) => {
+      console.error("Failed to fetch data:", error)
+      document.getElementById("answer-msg").textContent = "Error fetching data."
+    })
+}
+firstUserAnswer()
 
 // // Hide Welcome word Labas and exclamation after 5min
-  setTimeout(function() {
-    let greeting = document.getElementById('temp-greeting')
-    let exclamation = document.getElementById('temp-exclamation')
-    if (greeting) {
-      greeting.style.display = 'none'
-      exclamation.style.display = 'none'
-    }
-  }, 5000) // 300000 milliseconds = 5 minutes  // Kolkas palieku, kai bus sutvarkyta kad puslapis nebepersikrautu pats , bus ok.
+setTimeout(function () {
+  let greeting = document.getElementById("temp-greeting")
+  let exclamation = document.getElementById("temp-exclamation")
+  if (greeting) {
+    greeting.style.display = "none"
+    exclamation.style.display = "none"
+  }
+}, 5000) // 300000 milliseconds = 5 minutes  // Kolkas palieku, kai bus sutvarkyta kad puslapis nebepersikrautu pats , bus ok.
