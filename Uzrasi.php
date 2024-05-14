@@ -5,17 +5,16 @@ Ten sudeti reikalingas nuorodas is kur panaudoti backroundai kaip PVZ: <a href="
 
 
 <!-- 1 uzduotis -->
-<!-- Pakeitus varda ir atsijungiant, meta klaida del vartotojo neegzistavimo. Reikia taisyti-->
+<!-- -->
 
 <!-- 2 -->
-<!-- Main question and answer has to asynchrounus and dont reload entire page -->
+<!--  -->
 
 <!-- 3 -->
-<!-- d_server.js patvirtinus pasta pagrazinti zinute, atskirti mail.js i kita faila prideti papildomas apsaugas 
-per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazodio priminimo Funkcija -->
+<!--  -->
 
 <!-- 4 -->
-<!-- Create voting system simplyfield with examples js html and php in GITHUB -->
+<!--  -->
 
 <!-- 5 -->
 <!-- Reikia images folderi ir images serverio folderi tvarkyti -->
@@ -27,7 +26,7 @@ per ilgas email per ilga lytis . Slaptazodis belenkokio ilgio. Sukurti slaptazod
 <!-- GALI buti, kad random game funkcija reikes perkelti i SERVERI. TY. ten generuosis random skaicius ir tik client.js pasiles papildomas game. -->
 
 <!-- 8 -->
-<!-- Css padaryti kad baigiantis laikui klausimas prades nykti ir mazeti ir nubrgs i desny kampa apacioj ????????? Gal -->
+<!--  -->
 
 <!-- 9 -->
 <!-- sukurti ikoneles useriams su daug litu,galima butu
@@ -37,20 +36,20 @@ nusipirkti is storo uz litus,plius gender ikoneles.Taippat galima pirkti store -
 <!-- Yra klaidu siandienos top 10 nusinulinus nakti rodo neteisinga top -->
 
 <!-- 11 -->
-<!-- Reikia else dadeti, niekas neatsake teisingai. Kitas klausimas po 3 sekundziu -->
+<!--  -->
 
 <!-- 12 -->
 <!-- Sukurti user info issokanti langa , jis kaip ir yra tik reikia tinkamai sutvarkyti.
  lvl, points, today points, place, email confirmed Kvadratinis langelis su kazkokiu pazymejimu -->
 
 <!-- 13 -->
-<!-- Sutvarkyti litu galunes  Teisingai atsakė tadas: Gagarinas tadas gauna 52 litus ir dar litai galetu buti mazybiniai random 52 litus, litukus, litelius -->
+<!--  -->
 
 <!-- 14 -->
-<!-- DONE-->
+<!-- E-->
 
 <!-- 15 -->
-<!-- DONE-->
+<!-- -->
 
 <!-- 16 -->
 <!-- Rasyti bad words i database tik nuo 3 ir 4 lvl plius 100litu , bet tik po to kai patvitina 5 lvl-->
