@@ -191,15 +191,10 @@ if (isset($name) & !empty($name)) {
                             <input type="text" id="answer-input" name="answer-input">
                             <input type="image" src="images/images_/send-btn-icon.png" alt="Submit" class="submit-icon">
                         </div>
-                        <!-- <div class="answer-section">
-                            <div id="answer-msg">Paskutinis teisingai atsakęs <span class=""></span><br>
-                                Atsakymas buvo <span class="answer-msg-span"></span>                                  
-                            </div>
-                        </div> -->
                         <div class="answer-section">
                           <div id="answer-msg">
-                              Paskutinis teisingai atsakęs: <span id="answerer-name"></span><br>
-                              Atsakymas buvo: <span id="answer-content"></span>                                  
+                              <p>Paskutinis teisingai atsakęs: <span id="answerer-name"></span></p>
+                              <p>Atsakymas buvo: <span id="answer-content"></span></p>                                  
                           </div>
                         </div>
                     </form>
