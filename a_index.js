@@ -9,12 +9,9 @@ async function fetchData() {
   }
 }
 
-// Anonymous async function to execute the code
-;(async function () {
-  // Fetch data from the server
+//// Anonymous async function to execute the code
+(async function () {
   data = await fetchData()
-
-  // Uncomment the lines below to log specific data fields
   // console.log('Data:', data);
   // console.log('Question:', data.data.question);
   // console.log('ID:', data.data.id);
@@ -25,45 +22,38 @@ async function fetchData() {
   displayQuestion(data)
   generateAndDisplayRandomPoint(data.data.lita)
   generateBonusPoints(data.data.bonusLita)
-
-  // const lita = data.data.lita;
-
-  // Uncomment the lines below to update HTML containers with data
-  //  const dataContainer = document.getElementById("dataContainer");
-  //  dataContainer.innerHTML = JSON.stringify(data);
-
-  //  const litaContainer = document.getElementById("lita");
-  //  litaContainer.innerHTML = lita;
-
-  //  const bonusLitaContainer = document.getElementById("lita-bonus");
-  //  bonusLitaContainer.innerHTML = data.data.bonusLita;
 })()
 
-//
-//
+
+
 function checkServerData() {
   axios
     // .get("http://***REMOVED***:4001/data")
     .get("http://localhost:4001/data")
     .then((response) => {
-      const serverData = response.data.data
-      const serverId = serverData.id
-      const clientId = data.data.id
-      if (serverId === clientId) {
-        // console.log('Serverio id matches client id.'); we can crete function with time or time goes back 3.2.1
-        // Do something
-      } else {
-        console.log("Serverio id does not match client id. Reloading in 1 seconds...")
-        setTimeout(() => {
-          location.reload()
-        }, 10) // 5 sekundes kolkas paskui 10milsec
+      const serverData = response.data.data;
+      const serverId = serverData.id;
+      const clientId = data.data.id;
+      if (serverId !== clientId) {
+        console.log("Server ID does not match client ID. Updating content...");
+        updateContent(serverData);
       }
     })
     .catch((error) => {
-      console.log(error)
-    })
+      console.log(error);
+    });
 }
-setInterval(checkServerData, 1000) // call the function every 1 seconds
+setInterval(checkServerData, 1000);
+
+function updateContent(serverData) {
+  // Update the data object
+  data.data = serverData;
+  
+  // Update the question and answer
+  displayQuestion(data);
+  generateAndDisplayRandomPoint(data.data.lita);
+  generateBonusPoints(data.data.bonusLita);
+}
 
 //
 //
@@ -135,35 +125,19 @@ setInterval(fetchNewestOldQuestionData, 45000)
 //
 // Rodyti klausima
 async function displayQuestion(data) {
-  const question = document.getElementById("question")
-  const answer = document.getElementById("answer")
-  const answerString = data.data.answer
+  const question = document.getElementById("question");
+  const answer = document.getElementById("answer");
+  const answerString = data.data.answer;
 
-  // Display the question immediately
-  question.textContent = data.data.question
+  question.textContent = data.data.question;
 
-  // Hide the answer with asterisks
-  const asterisks = answerString.replace(/\S/g, "*")
-  answer.textContent = asterisks
+  const asterisks = answerString.replace(/\S/g, "*");
+  answer.textContent = asterisks;
 
-  // Show the answer letters one by one with an 8-second delay
   for (let i = 0; i < 4 && i < answerString.length; i++) {
-    await new Promise((resolve) => setTimeout(resolve, 8000))
-    const letter =
-      answerString[i] === " "
-        ? " "
-        : answerString[i] === "\n"
-        ? "\n"
-        : answerString[i] === "\t"
-        ? "\t"
-        : answerString[i] === "\r"
-        ? "\r"
-        : answerString[i] === "\f"
-        ? "\f"
-        : answerString[i] === "\v"
-        ? "\v"
-        : answerString[i]
-    answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1)
+    await new Promise((resolve) => setTimeout(resolve, 8000));
+    const letter = answerString[i];
+    answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1);
   }
 }
 
@@ -193,7 +167,7 @@ const generateAndDisplayRandomPoint = async (lita) => {
 const displayImage = (src, parent, className) => {
   const imageElement = document.createElement("img")
   imageElement.src = src
-  imageElement.alt = `${src} Lito vertė pavaizduota`
+  imageElement.alt = `${src} Paveikslėlje pavaizduoti Lietuvos litai`
   imageElement.classList.add(className)
   parent.appendChild(imageElement)
 }
@@ -203,7 +177,6 @@ function generateBonusPoints(bonusLita) {
   const pointsElement = document.getElementById("bonus-points")
   const imageElement = document.getElementById("litai-img-bonus")
 
-  // Reset the display style of pointsElement for each function call
   pointsElement.style.display = "block"
 
   if (bonusLita > 0) {
@@ -367,19 +340,21 @@ function displaySuccessMessage(userAnswerLower, userData, litaPoints) {
 function handleIncorrectAnswer(userAnswerLower) {
   const answerInput = document.getElementById("answer-input");
   answerInput.disabled = true;
-  let errorMsg = `Atsakymas "${userAnswerLower}" yra netesingas. Bandykite dar kartą.`;
+  let errorMsg = `Answer "${userAnswerLower}" is incorrect. Try again.`;
 
   if (userAnswerLower.length === 0) {
-    errorMsg = "Atsakymas negali būti tusčias.";
+    errorMsg = "Answer cannot be empty.";
   }
 
   document.getElementById("answer-msg").textContent = errorMsg;
   setTimeout(() => {
     answerInput.disabled = false;
-    location.reload();
+    // Instead of reloading, fetch new data and update the content
+    fetchData().then((newData) => {
+      updateContent(newData.data);
+    });
   }, 3000);
 }
-
 
 
 
