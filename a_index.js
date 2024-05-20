@@ -124,10 +124,14 @@ setInterval(fetchNewestOldQuestionData, 45000)
 
 //
 // Rodyti klausima
+let currentTaskId = 0;
+
 async function displayQuestion(data) {
+  const taskId = ++currentTaskId;  // Increment and store the current task ID
   const question = document.getElementById("question");
   const answer = document.getElementById("answer");
   const answerString = data.data.answer;
+  console.log(taskId)
 
   question.textContent = data.data.question;
 
@@ -136,10 +140,16 @@ async function displayQuestion(data) {
 
   for (let i = 0; i < 4 && i < answerString.length; i++) {
     await new Promise((resolve) => setTimeout(resolve, 8000));
+
+    if (taskId !== currentTaskId) {
+      return; 
+    }
+
     const letter = answerString[i];
     answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1);
   }
 }
+
 
 //
 //                    LITAI
