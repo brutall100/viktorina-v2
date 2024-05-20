@@ -127,7 +127,7 @@ setInterval(fetchNewestOldQuestionData, 45000)
 let currentTaskId = 0;
 
 async function displayQuestion(data) {
-  const taskId = ++currentTaskId;  // Increment and store the current task ID
+  const taskId = ++currentTaskId;  //Stebi id ir neleidzia raidems maisytis
   const question = document.getElementById("question");
   const answer = document.getElementById("answer");
   const answerString = data.data.answer;
