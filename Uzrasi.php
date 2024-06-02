@@ -231,3 +231,34 @@ User can write message to chat every 10 second -->
 <!-- Old question zinuciu kiekis
 0Lvl = 10, 1Lvl = 10, 2Lvl = 10, 3Lvl = 25, 4Lvl = 25, 5Lvl = 50,
 
+
+
+
+GERI STILIAI
+.user-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f0f0f0; 
+  margin: 1.5em;
+  padding: 1.5em; 
+  border: 2px solid transparent; 
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2), inset 2px 2px 4px #000, 2px 2px 4px #999;
+  border-radius: 20px; 
+}
+
+.user-info  {
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  color: #42161e;
+  text-shadow: 2px 2px 2px #547f9a;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0;
+  padding: 5px;
+  border: 1px solid #999;
+  background-color: rgba(240, 240, 240, 0.1);
+  text-transform: uppercase;
+} 
