@@ -5,6 +5,7 @@
   --medium-dark: #777;
   --dark: #242526;
   font-size: 100%;
+  
 }
 
 * {
@@ -676,23 +677,18 @@ img {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  width: 32.5%; 
+  height: 87vh;
   /* border: 5px solid rgb(100, 128, 0); */
-  width: 32.5%; /* 20% of the page */
-  height: 88vh;
 }
 
-/* .user-info-container, .show-money-container, #chat-container-section{
-  border: 3px solid black;
-
-} */
-
-
-
-/*?? Chat section  C1*/
+/*?? Today top  C1*/
 .today-top {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 3em;
+  background-color: #f80;
 }
 
 .today-top-btn {
@@ -709,13 +705,14 @@ img {
   text-decoration: none;
 }
 
-.php-today-top-list {
+/* .php-today-top-list {
   font-family: Arial, sans-serif;
   color: #000000;
-}
+} */
 
 .php-today-top-list-li {
   border: 0.5px solid rgb(11, 5, 37);
+  list-style-type: none;
   margin: 3px;
   width: 100%;
   background-color: #f2f2f2;
@@ -733,12 +730,12 @@ img {
 
 .player-name-hp {
   font-weight: bold;
-  color: #ffffff;
+  color: #ab4747;
   /* Additional styles for the name */
 }
 
 .player-points-hp {
-  color: #f8efef;
+  color: #391616;
   /* Additional styles for the points */
 }
 

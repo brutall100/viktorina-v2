@@ -1,5 +1,5 @@
 <?php
-include 'x_configDB.php'; // or use require 'x_configDB.php';
+include 'x_configDB.php'; 
 
 if (isset($_GET['get_top_players'])) {
 
