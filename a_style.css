@@ -1,4 +1,5 @@
 :root {
+  --spacing: 6em; /* Tarpas tarp ABC konteineriu. */
   --white: #ffffff;
   --light: whitesmoke;
   --light-grey: #e8e8e8;
@@ -53,6 +54,8 @@ body {
   /* border: 5px solid green; */
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  padding: 0 2em;
 }
 
 /* @media (max-width:1400px) {
@@ -81,13 +84,14 @@ body {
 .container-a {
   display: flex;
   flex-direction: column;
-  /* border: 5px solid rgb(128, 0, 109); */
-  width: 30%;
+  width: calc(30% - (var(--spacing) * 0.3));
+  /* margin-right: var(--spacing); */
   height: 88vh;
   gap: .5em; 
   justify-content: center;
   align-items: center;
   
+  /* border: 5px solid rgb(128, 0, 109); */
 }
 
 /* ??Mini user-info/welcome container A1 */
@@ -429,9 +433,11 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2em;
+  width: calc(40% - (var(--spacing) * 0.4));
+  /* margin: 2em; */
   /* width: 35%;  */
   /* height: 100vh; */
+
   /* border: 2px solid rgb(21, 0, 128); */
 }
 
@@ -677,8 +683,9 @@ img {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 32.5%; 
+  width: calc(30% - (var(--spacing) * 0.3));
   height: 87vh;
+
   /* border: 5px solid rgb(100, 128, 0); */
 }
 
@@ -692,7 +699,7 @@ img {
 }
 
 .today-top-btn {
-  background-color: #a65b46;
+  background-color: #876c65;
   color: var(--white);
   padding: 11px 10px;
   text-align: center;
@@ -744,7 +751,7 @@ img {
 /*  */
 
 
-/*?? Chat section  C2*/
+/*?? OLD QnA section  C2*/
 .old-question-section {
   background-color: rgba(255, 255, 255, 0.4);
   height: 44vh;

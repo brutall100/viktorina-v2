@@ -223,10 +223,11 @@ if (isset($name) & !empty($name)) {
   
     </div> <!-- END of containers-abc -->
   
-    <div class="footer-wrapper">
-      <?php include './Footer/footer.php'; ?>
-    </div>
-
+    
+  </div>
+  
+  <div class="footer-wrapper">
+    <?php include './Footer/footer.php'; ?>
   </div>
 
   <script src="a_index.js"></script>
