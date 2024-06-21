@@ -9,10 +9,10 @@
                 <img class="logo" src="/viktorina.live/images/icons/VK_new3.png" alt="viktorina-logo"
                     aria-label="Viktorina logotipas, Išpuošta V raidė Simbolizuoja Viktorina.live">
             </div>
-            <a class="navbar-brand cs-navbar-brand" href="#">𝕍𝕀𝕂𝕋𝕆ℝ𝕀ℕ𝔸.𝕃𝕀𝕍𝔼</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            <a class="navbar-brand cs-navbar-brand no-outline" href="#">𝕍𝕀𝕂𝕋𝕆ℝ𝕀ℕ𝔸.𝕃𝕀𝕍𝔼</a>
+            <button class="navbar-toggler bg-warning uotli" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon no-outline"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav justify-content-center w-100 cs-navbar-nav">
