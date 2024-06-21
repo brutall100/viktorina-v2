@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="/viktorina.live/Header/header.css">
 
 <header class="header">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div class="logo-container">
                 <img class="logo" src="/viktorina.live/images/icons/VK_new3.png" alt="viktorina-logo"
@@ -15,7 +15,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav justify-content-center w-100">
+                <ul class="navbar-nav justify-content-center w-100 cs-navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/viktorina.live/a_index.php">Viktorina</a>
                     </li>

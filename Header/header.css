@@ -1,10 +1,8 @@
-
 .header {
   background-color: rgb(36, 33, 33);
   opacity: 0.8;
   width: 100%;
   z-index: 1;
-
 }
 
 /* LOGO */
@@ -48,6 +46,29 @@
 .logo-container:hover .logo {
   animation: fadeOut 1s forwards;
 }
+
+.cs-navbar-nav{
+  margin-right: 5%;
+  padding-right: 14%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* MENU */
