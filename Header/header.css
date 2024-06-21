@@ -1,37 +1,52 @@
-* {
-  margin: 0;
-  padding: 0;
-}
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: rgb(36, 33, 33);
   opacity: 0.8;
-  padding: 0.3rem;
   width: 100%;
   z-index: 1;
-  top: 0;
-  left: 0;
+
 }
 
 /* LOGO */
 .logo-container {
-  margin-left: 1px;
-  cursor: crosshair;
-  transition: transform 0.7s;
+  margin-left: 1em;
 }
 
 .logo {
   width: 3em;
   margin: 2px 0 0 10px;
-  cursor: crosshair;
   transition: transform 0.7s;
 }
 
 .logo:hover {
   transform: scale(2.5) translate(20px, 20px);
+}
+
+.cs-navbar-brand {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: rgb(200, 148, 64);
+  filter: drop-shadow(1px 1px 2px black);
+  cursor: crosshair;
+  transition: transform 0.9s, filter 0.9s;
+}
+
+.cs-navbar-brand:hover {
+  transform: scale(1.38) translateX(-.01%);
+  filter: drop-shadow(1px 1px 2px rgb(200, 148, 64));
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.logo-container:hover .logo {
+  animation: fadeOut 1s forwards;
 }
 
 

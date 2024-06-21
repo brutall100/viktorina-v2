@@ -1,44 +1,79 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 <link rel="stylesheet" type="text/css" href="/viktorina.live/Header/header.css">
+
 <header class="header">
-    <div class="logo-container">
-        <img class="logo" src="/viktorina.live/images/icons/VK_new3.png" alt="viktorina-logo"
-            aria-label="Viktorina logotipas, Išpuošta V raidė Simbolizuoja Viktorina.live">
-    </div>
-    <nav class="menu-container">
-        <ul>
-            <li><a href="/viktorina.live/a_index.php">Viktorina</a></li>
-            <li><a href="/viktorina.live/c_questionwaiting.php">Balsavimas</a></li>
-            <li><a href="/viktorina.live/b_newquestionindex.php">Irašyti klausimą</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropbtn">Info</a>
-                <div class="dropdown-content">
-                    <a href="/viktorina.live/Info/Mano_info/i_myInfo.php">Mano info</a>
-                    <a href="/viktorina.live/Info/Puslapio_klaidos/i_page_mistake.php">Puslapio klaidos</a>
-                    <a href="/viktorina.live/Info/Balsavimas/i_vote.php">Balsavimas</a>
-                    <a href="/viktorina.live/Info/Pasiulymai/i_minds.php">Pasiūlymai</a>
-                    <a href="/viktorina.live/Info/Klaidos_klausime/i_qna_mistake.php">Klaidos klausime</a>
-                    <div class="dropdown-submenu-svarbu">
-                        <a href="#">Svarbu</a>
-                        <div class="dropdown-submenu-content-svarbu">
-                            <a href="/viktorina.live/Info/Svarbu/Rules/rules.php">Taisyklės</a>
-                            <a href="#">Folder X</a>
-                            <a href="#">Folder Y</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="logo-container">
+                <img class="logo" src="/viktorina.live/images/icons/VK_new3.png" alt="viktorina-logo"
+                    aria-label="Viktorina logotipas, Išpuošta V raidė Simbolizuoja Viktorina.live">
+            </div>
+            <a class="navbar-brand cs-navbar-brand" href="#">𝕍𝕀𝕂𝕋𝕆ℝ𝕀ℕ𝔸.𝕃𝕀𝕍𝔼</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav justify-content-center w-100">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/viktorina.live/a_index.php">Viktorina</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/viktorina.live/c_questionwaiting.php">Balsavimas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/viktorina.live/b_newquestionindex.php">Irašyti klausimą</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Info
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/viktorina.live/Info/Mano_info/i_myInfo.php">Mano
+                                    info</a></li>
+                            <li><a class="dropdown-item"
+                                    href="/viktorina.live/Info/Puslapio_klaidos/i_page_mistake.php">Puslapio klaidos</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="/viktorina.live/Info/Balsavimas/i_vote.php">Balsavimas</a></li>
+                            <li><a class="dropdown-item"
+                                    href="/viktorina.live/Info/Pasiulymai/i_minds.php">Pasiūlymai</a></li>
+                            <li><a class="dropdown-item"
+                                    href="/viktorina.live/Info/Klaidos_klausime/i_qna_mistake.php">Klaidos klausime</a>
+                            </li>
+                            <li>
+                                <div class="dropdown-submenu-svarbu">
+                                    <a href="#" class="dropdown-item">Svarbu</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item"
+                                                href="/viktorina.live/Info/Svarbu/Rules/rules.php">Taisyklės</a></li>
+                                        <li><a class="dropdown-item" href="#">Folder X</a></li>
+                                        <li><a class="dropdown-item" href="#">Folder Y</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <?php if (isset($name) && !empty($name)) : ?>
+                <button class="btn btn-primary ms-auto" id="btn-atsijungti" type="button">Atsijungti</button>
+                <?php else : ?>
+                <button class="btn btn-primary ms-auto" id="login-button" type="button"
+                    onclick="redirectToLogin()">Prisijungti</button>
+                <?php endif; ?>
+            </div>
+        </div>
     </nav>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
 
-    <div id="login-container">
-        <?php if (isset($name) && !empty($name)) : ?>
-        <button id="btn-atsijungti">Atsijungti</button>
-        <?php else : ?>
-        <button id="login-button" onclick="redirectToLogin()">Prisijungti</button>
-        <?php endif; ?>
-    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
 </header>
-
 <?php if (isset($name) && !empty($name)) : ?>
 <script>
     const logoutButton = document.getElementById('btn-atsijungti');
@@ -54,3 +89,24 @@
     }
 </script>
 <?php endif; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
