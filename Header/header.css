@@ -1,8 +1,6 @@
 .header {
   background-color: rgb(36, 33, 33);
   opacity: 0.8;
-  width: 100%;
-  z-index: 1;
 }
 
 /* LOGO */
@@ -52,10 +50,53 @@
   padding-right: 14%;
 }
 
+@media (max-width: 450px) {
+  .cs-navbar-brand {
+    font-size: 1em;
+  } 
+}
+@media (max-width: 350px) {
+  .cs-navbar-brand {
+    display: none;
+  }
+  
+}
 
 
 
 
+/* !! Nav linkams gal reikes custom spalvu? */
+/* !! Sunku perrasyti daug kur !important */
+/* !! Kolkas palieku */
+/* NAV LINKS */
+.cs-anchor {
+  color: #dab730;
+  font-size: 1.2em;
+  font-weight: bold;
+  filter: drop-shadow(1px 1px 2px black);
+  transition: transform 0.9s, filter 0.9s, border-radius 0.5s, text-decoration 0.5s;
+}
+
+.cs-anchor:hover {
+  transform: scale(1.05);
+  color: #dada95;
+  filter: drop-shadow(2px 3px 5px #dab730);
+  border-radius: 0.4em;
+  padding-bottom: 2px;
+  text-decoration: underline;
+  text-decoration-color: #6b6344;
+  text-decoration-thickness: 0.03em;
+}
+
+.cs-anchor:active {
+  transform: scale(1.05);
+  filter: drop-shadow(2px 3px 5px #dab730);
+  border-radius: 0.4em;
+  padding-bottom: 2px;
+  text-decoration: underline;
+  text-decoration-color: #6b6344;
+  text-decoration-thickness: 0.03em;
+}
 
 
 
@@ -72,38 +113,24 @@
 
 
 /* MENU */
-.menu-container {
+/* .menu-container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-grow: 1;
-}
+} */
 
-ul {
+/* ul {
   display: flex;
   list-style-type: none;
   margin-right: 10px;
-}
+} */
 
-li a,
-.dropbtn {
-  display: inline-block;
-  color: rgb(214, 237, 243);
-  text-align: center;
-  font-weight: bold;
-  padding: 14px 16px;
-  text-decoration: none;
-}
 
-li a:hover,
-.dropdown:hover .dropbtn {
-  background-color: rgb(1, 17, 10);
-  border-radius: 0.4em;
-}
 
-li.dropdown {
+/* li.dropdown {
   position: relative;
-}
+} */
 
 .dropdown-content {
   display: none;
@@ -132,7 +159,7 @@ li.dropdown {
 }
 
 /* // Add styles for the submenu */
-.dropdown-submenu-content-svarbu {
+/* .dropdown-submenu-content-svarbu {
   display: none;
   position: absolute;
   left: 100%;
@@ -146,10 +173,10 @@ li.dropdown {
 
 .dropdown-submenu-svarbu:hover .dropdown-submenu-content-svarbu {
   display: block;
-}
+} */
 
 /* BTN ATSIJUNGTI */
-#btn-atsijungti {
+/* #btn-atsijungti {
   margin-left: 10px;
   width: 100px;
   height: 40px;
@@ -161,10 +188,10 @@ li.dropdown {
 .header:hover #btn-atsijungti {
   visibility: visible;
   opacity: 0.1;
-}
+} */
 
 /* LOGIN BTN */
-#login-container {
+/* #login-container {
   position: fixed;
   top: 13px;
   right: 7px;
@@ -194,4 +221,4 @@ li.dropdown {
 
 #login-button:active {
   transform: scale(0.9);
-}
+} */

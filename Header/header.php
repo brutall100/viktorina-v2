@@ -17,16 +17,16 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav justify-content-center w-100 cs-navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/viktorina.live/a_index.php">Viktorina</a>
+                        <a class="nav-link fs-5 fw-semibold cs-anchor  " aria-current="page" href="/viktorina.live/a_index.php">Viktorina</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/viktorina.live/c_questionwaiting.php">Balsavimas</a>
+                        <a class="nav-link fs-5 fw-semibold cs-anchor  " href="/viktorina.live/c_questionwaiting.php">Balsavimas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/viktorina.live/b_newquestionindex.php">Irašyti klausimą</a>
+                        <a class="nav-link fs-5 fw-semibold cs-anchor  " href="/viktorina.live/b_newquestionindex.php">Irašyti klausimą</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link fs-5 fw-semibold cs-anchor   dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Info
                         </a>
