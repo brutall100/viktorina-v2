@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #dab730;
+  --secondary-color: #6b6344;
+  --tertiary-color: #d1b284;
+  --quaternary-color: #957545;
+  --quinary-color: #f9f9f9;
+  --senary-color: #e0d7d7;
+}
+
 .header {
   background-color: rgb(36, 33, 33);
   opacity: 0.8;
@@ -81,7 +90,7 @@
 }
 
 .cs-anchor:hover {
-  transform: scale(1.05);
+  transform: translateX(2px);
   color: #dada95;
   filter: drop-shadow(2px 3px 5px #dab730);
   border-radius: 0.4em;
@@ -92,7 +101,6 @@
 }
 
 .cs-anchor:active {
-  transform: scale(1.05);
   filter: drop-shadow(2px 3px 5px #dab730);
   border-radius: 0.4em;
   padding-bottom: 2px;
@@ -179,8 +187,9 @@
 } */
 
 /* BTN ATSIJUNGTI */
-/* #btn-atsijungti {
-  margin-left: 10px;
+/* !! hover ant button turi matytis */
+#btn-atsijungti, #login-button {
+  color: #000;
   width: 100px;
   height: 40px;
   visibility: hidden;
@@ -190,8 +199,15 @@
 
 .header:hover #btn-atsijungti {
   visibility: visible;
+  opacity: 0.3;
+}
+
+#btn-atsijungti:hover {
+  background-color: #dab730;
+  visibility: visible;
+  color: #fff;
   opacity: 0.1;
-} */
+}
 
 /* LOGIN BTN */
 /* #login-container {

@@ -58,9 +58,9 @@
                     </li>
                 </ul>
                 <?php if (isset($name) && !empty($name)) : ?>
-                <button class="btn btn-primary ms-auto" id="btn-atsijungti" type="button">Atsijungti</button>
+                <button class="btn btn-primary ms-auto cs-bg-warning" id="btn-atsijungti" type="button">Atsijungti</button>
                 <?php else : ?>
-                <button class="btn btn-primary ms-auto" id="login-button" type="button"
+                <button class="btn btn-primary ms-auto text-warning" id="login-button" type="button"
                     onclick="redirectToLogin()">Prisijungti</button>
                 <?php endif; ?>
             </div>
