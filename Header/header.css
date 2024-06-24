@@ -124,120 +124,95 @@
 
 
 /* MENU */
-/* .menu-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-} */
+ul.dropdown-menu {
+  background-color: transparent;
+  border: none;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
 
-/* ul {
-  display: flex;
-  list-style-type: none;
-  margin-right: 10px;
-} */
+ul.dropdown-menu li {
+  margin-left: 1em;
+  transition: margin-left 0.3s ease;
+}
 
+ul.dropdown-menu li a {
+  color: #dab730;
+  display: inline;
+  transition: color 0.3s ease, background-color 0.3s ease, margin-left 0.3s ease;
+}
 
+ul.dropdown-menu li a:hover {
+  color: #ffffff;
+  background-color: rgb(52, 48, 53);
+  border-radius: .3em;
+  margin-left: .4em;
+}
 
-/* li.dropdown {
+.dropdown-submenu-svarbu {
   position: relative;
-} */
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 143px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
-  border-radius: 0 0 10px 10px;
-  z-index: 1;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #e0d7d7;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* // Add styles for the submenu */
-/* .dropdown-submenu-content-svarbu {
-  display: none;
-  position: absolute;
+.dropdown-submenu-svarbu .dropdown-menu {
+  top: 0;
   left: 100%;
-  bottom: -15%;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-radius: 10px;
+  margin-top: -1px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.dropdown-submenu-svarbu:hover .dropdown-submenu-content-svarbu {
+.dropdown-submenu-svarbu:hover .dropdown-menu {
   display: block;
-} */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: Adding a fade-in effect for the submenu */
+.dropdown-submenu-svarbu .dropdown-menu {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.dropdown-submenu-svarbu:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+
 
 /* BTN ATSIJUNGTI */
 /* !! hover ant button turi matytis */
 #btn-atsijungti, #login-button {
   color: #000;
-  width: 100px;
-  height: 40px;
+  border-color: #dab730;
   visibility: hidden;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.header:hover #btn-atsijungti {
+.header:hover #btn-atsijungti, .header:hover #login-button{
   visibility: visible;
   opacity: 0.3;
 }
 
-#btn-atsijungti:hover {
+#btn-atsijungti:hover, #login-button:hover{
   background-color: #dab730;
   visibility: visible;
   color: #fff;
   opacity: 0.1;
 }
 
-/* LOGIN BTN */
-/* #login-container {
-  position: fixed;
-  top: 13px;
-  right: 7px;
-  z-index: 10;
+/* @media (max-width: 992px) {
+  #btn-atsijungti, #login-button {
+    display: flex;
+    justify-content: right;
+    text-align: right;
+    margin-right: 1em;
+  }
+  
 }
 
-#login-button {
-  padding: 10px 30px;
-  background-color: #d1b284;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 17px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-#login-button:hover {
-  background-color: #957545;
-  transform: scale(1.05);
-  cursor: pointer;
-}
-
-#login-button:focus {
-  outline: none;
-}
-
-#login-button:active {
-  transform: scale(0.9);
+div#navbarNavDropdown {
+  display: flex;
 } */
