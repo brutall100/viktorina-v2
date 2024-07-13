@@ -426,7 +426,10 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(40% - (var(--spacing) * 0.4));
+  width: calc(60% - (var(--spacing) * 0.4));
+
+
+
   /* margin: 2em; */
   /* width: 35%;  */
   /* height: 100vh; */
@@ -435,7 +438,6 @@ img {
 }
 
 .super-container {
-  background: #e0ddff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -443,14 +445,17 @@ img {
   width: 100%;
   height: 60%;
   z-index: 10;
+
+
   /* border: 4px solid rgb(13, 128, 0); */
+  /* background: #e0ddff; */
 }
 
 
 .points-container {
   margin-bottom: 1em;
   padding: 1em;
-  /* margin-top:20px; */
+  margin-top:20px;
   display: flex;
   flex-direction: row;
   color: #2b2424;
@@ -461,10 +466,7 @@ img {
 
 /* Main container */
 .super-container-qna-section {
-  border: 2px solid rgba(110, 28, 90, 0.7);
   padding: 3em;
-  /* width: 100%; */
-  /* height: 25em; */
   border-radius: 15px;
   background-color: #f7f2f8;
   animation: movingBorder 30s linear infinite;
@@ -472,6 +474,11 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
+  
+  /* border: 2px solid rgba(110, 28, 90, 0.7); */
+  /* width: 100%; */
+  /* height: 25em; */
 }
 
 
@@ -551,20 +558,23 @@ img {
 }
 
 
-/* .form-container {
-  display: flex;
-  align-items: center;
-} */
+.form-container {
+  width: 100%;
+}
 
 .answer-input {
-  padding: 1.7em;
-  border: none;
-  outline: none;
-  margin-right: -5px;
+  padding: 2em 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  
+  
+  
+  /* border: none; */
+  /* outline: none; */
+  /* margin-right: -5px; */
+  /* height: 100%; */
+  /* width: 100%; */
   /* border: 2px solid #00ff00; */
 }
 
@@ -572,14 +582,15 @@ img {
   padding: .45em 0;
   font-size: 1.5em;
   font-family: "Arial", sans-serif;
-  border: none;
-  /* height: 47px; */
   text-align: center;
-  box-shadow: none;
-  /* width: 50%; */
-  height: 100%;
-  border: 2px solid black;
+  border: none;
   border-radius: .5em 0 0 .5em;
+  width: 75%;
+
+
+
+  /* height: 47px; */
+  /* height: 100%; */
 }
 
 .answer-input input:focus {
@@ -587,11 +598,9 @@ img {
 }
 
 .submit-icon {
-  /* width: 3.9em;  */
-  height: 4em;
+  height: 3.7em;
   padding: .9em;
   vertical-align: middle;
-  border: 2px solid black;
   background: #b1c9d6a8;
   cursor: pointer;
   border-top-right-radius: .8em;
@@ -609,10 +618,13 @@ img {
 
 
 /*?? answer-section */
-form#answer-form {
+#answer-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* width: 100%;
+  border: 1px solid #ffd700; */
 }
 
 
@@ -949,7 +961,7 @@ form#answer-form {
 
 
 
-    border: 3px solid red;
+    /* border: 3px solid red; */
   }
 
   .super-container-qna-section {
