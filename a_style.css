@@ -474,6 +474,7 @@ img {
   justify-content: center;
 }
 
+
 /* Common styles for both question and answer */
 #question,
 #answer {
@@ -509,9 +510,9 @@ img {
   letter-spacing: 0.4em;
   word-spacing: 0.1em;
   font-family: Arial, sans-serif;
-  font-size: 1.3em;
+  /* font-size: 1.3em; */
   color: #d2a981;
-  padding: 20px;
+  /* padding: 20px; */
   background: rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   animation: movingBorder 5s linear infinite;
@@ -608,6 +609,15 @@ img {
 
 
 /*?? answer-section */
+form#answer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+
 .answer-section {
   display: flex;
   align-items: center;
@@ -615,8 +625,8 @@ img {
   text-align: center;
   background-color: #1a1a1a;
   /* border: 3px solid #ffd700;  */
-  width: 30.208vw;
-  height: 11vh;
+  /* width: 30.208vw;
+  height: 11vh; */
   padding: 1em;
   margin: .8em 0;
   border-radius: 1em;
@@ -628,12 +638,18 @@ img {
   color: #ffffff;
   font-size: 1.2em;
 }
+#answer-msg p{
+  font-size: clamp(.7em, 2vw, 1.5em);
+  margin: 0 ;
+  padding: 0;
+}
 
 #answerer-name,
 #answer-content {
   font-weight: bold;
   color: #ffd700;
   line-height: 1.5;
+
 }
 
 .correct-answer-answered-user {
@@ -935,6 +951,13 @@ img {
 
     border: 3px solid red;
   }
+
+  .super-container-qna-section {
+    margin-top: 5vw;
+    width: 100%;
+
+  }
+  
 
   .container-a {
     order: 2;
