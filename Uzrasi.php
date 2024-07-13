@@ -262,3 +262,32 @@ GERI STILIAI
   background-color: rgba(240, 240, 240, 0.1);
   text-transform: uppercase;
 } 
+
+
+<!-- Kodas atvercia visas raides palaipsniui -->
+
+async function displayQuestion(data) {
+    const taskId = ++currentTaskId;
+    const question = document.getElementById("question");
+    const answer = document.getElementById("answer");
+    const answerString = data.data.answer;
+
+    question.textContent = data.data.question;
+
+    const asterisks = answerString.replace(/\S/g, "*");
+    answer.textContent = asterisks;
+
+    for (let i = 0; i < answerString.length; i++) {
+        await new Promise((resolve) => setTimeout(resolve, 800)); // laukti 0,8 sekundes
+
+        if (taskId !== currentTaskId) {
+            return; // jei taip, išeiti iš funkcijos
+        }
+
+        const letter = answerString[i];
+        answer.textContent = answer.textContent.substring(0, i) + letter + answer.textContent.substring(i + 1);
+        adjustFontSize(answer);
+    }
+}
+
+
