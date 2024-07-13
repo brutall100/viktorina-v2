@@ -94,51 +94,54 @@ if (isset($name) & !empty($name)) {
     <div class="containers-abc">  <!--start of  A B C container -->
       <div class="container-a">                                         <!-- Start of A  -->
       <!-- A1 -->
-        <div class="user-info-container">
-          <?php
-          if (isset($name)) {
-              include 'x_configDB.php';
-  
-              $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
-              $result = mysqli_query($conn, $query);
-              if (mysqli_num_rows($result) > 0) {
-                  $row = mysqli_fetch_assoc($result);
-                  $level = $row['user_lvl'];
-                  $points = $row['litai_sum'];
-                  $points_today = $row['litai_sum_today'];
-                  $user_id = $row['user_id'];
-                  $position = $row['position'];
-                  echo "<div class='user-info'>";
-                  echo "<div class='welcome-message'><span id='temp-greeting'>Labas,</span> $name <span id='temp-exclamation'>!</span></div>";
-                  echo "<div class='points-info'>Vieta tope <span class='position-highlight'>$position</span></div>";
-                  echo "<div class='points-info'>Turite <span class='points-highlight'>$points LT</span></div>";
-                  echo "<div class='points-info'>Lygis <span class='level-highlight'>$level</span></div>";
-                  echo "</div>";
-              }
-              mysqli_close($conn);
-          } else {
-              echo "<div class='user-info'>"; 
-              echo "<div class='greeting-message'>
-                        Labas! 
-                        <img src='images/images_/smile.jpg'
-                            alt='Šypsenėlė su tekstu.' 
-                            aria-label='Šypsenėlė su tekstu, kuriame sakoma, kad norint žaisti reikia prisijungti.'> 
-                        Norėdami pradėti rinkti Litus prisijunkite.
-                    </div>";
-              echo "</div>";
-          }
-          ?>
-       </div>
-       <!-- A2 -->
-       <div class="show-money-container">  <!-- Sie 2 conteineriai turi susieiti i viena . Vienas be kito negali-->
-          
-            <!-- <div id="lita"></div>
-            <div id="lita-bonus"></div> -->
-  
-          <section class="litas-container">
-            <div class="litas-container-img" id="litai-img"></div>
-            <div class="litas-container-img" id="litai-img-bonus" style="display: none"></div>
-          </section>
+       <div class="response800">
+         <div class="user-info-container">
+           <?php
+           if (isset($name)) {
+               include 'x_configDB.php';
+   
+               $query = "SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = '$name'";
+               $result = mysqli_query($conn, $query);
+               if (mysqli_num_rows($result) > 0) {
+                   $row = mysqli_fetch_assoc($result);
+                   $level = $row['user_lvl'];
+                   $points = $row['litai_sum'];
+                   $points_today = $row['litai_sum_today'];
+                   $user_id = $row['user_id'];
+                   $position = $row['position'];
+                   echo "<div class='user-info'>";
+                   echo "<div class='welcome-message'><span id='temp-greeting'>Labas,</span> $name <span id='temp-exclamation'>!</span></div>";
+                   echo "<div class='points-info'>Vieta tope <span class='position-highlight'>$position</span></div>";
+                   echo "<div class='points-info'>Turite <span class='points-highlight'>$points LT</span></div>";
+                   echo "<div class='points-info'>Lygis <span class='level-highlight'>$level</span></div>";
+                   echo "</div>";
+               }
+               mysqli_close($conn);
+           } else {
+               echo "<div class='user-info'>"; 
+               echo "<div class='greeting-message'>
+                         Labas! 
+                         <img src='images/images_/smile.jpg'
+                             alt='Šypsenėlė su tekstu.' 
+                             aria-label='Šypsenėlė su tekstu, kuriame sakoma, kad norint žaisti reikia prisijungti.'> 
+                         Norėdami pradėti rinkti Litus prisijunkite.
+                     </div>";
+               echo "</div>";
+           }
+           ?>
+        </div>
+        <!-- A2 -->
+        <div class="show-money-container">  <!-- Sie 2 conteineriai turi susieiti i viena . Vienas be kito negali-->
+           
+             <!-- <div id="lita"></div>
+             <div id="lita-bonus"></div> -->
+   
+           <section class="litas-container">
+             <div class="litas-container-img" id="litai-img"></div>
+             <div class="litas-container-img" id="litai-img-bonus" style="display: none"></div>
+           </section>
+        </div>
+
        </div>
        <!-- A3 -->
        <div id="chat-container-section">
