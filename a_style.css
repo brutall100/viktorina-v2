@@ -2,6 +2,8 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
@@ -13,14 +15,13 @@
   --medium-dark: #777;
   --dark: #242526;
   /* font-size: 100%; */
-
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+ol,
+ul {
+  padding: 0 !important;
 }
+
 
 /* .continent{
   max-width: 1500px;
@@ -455,7 +456,7 @@ img {
 .points-container {
   margin-bottom: 1em;
   padding: 1em;
-  margin-top:20px;
+  margin-top: 20px;
   display: flex;
   flex-direction: row;
   color: #2b2424;
@@ -474,8 +475,8 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
-  
+
+
   /* border: 2px solid rgba(110, 28, 90, 0.7); */
   /* width: 100%; */
   /* height: 25em; */
@@ -567,9 +568,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  
-  
+
+
+
   /* border: none; */
   /* outline: none; */
   /* margin-right: -5px; */
@@ -650,9 +651,10 @@ img {
   color: #ffffff;
   font-size: 1.2em;
 }
-#answer-msg p{
+
+#answer-msg p {
   font-size: clamp(.7em, 2vw, 1.5em);
-  margin: 0 ;
+  margin: 0;
   padding: 0;
 }
 
@@ -720,8 +722,11 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 3em;
-  background-color: #f80;
+  width: 100%;
+
+
+  /* padding: 0 3em; */
+  /* background-color: #f80; */
 }
 
 .today-top-btn {
@@ -942,40 +947,44 @@ img {
 
 
 
-
-/* Containers ABC */
 @media (max-width:800px) {
+  /*// Containers ABC */
   .containers-abc {
     flex-direction: column;
-    /* position: relative;
-    top: 0; */
-
-
     padding: 0;
-    /* width:800px; */
-    /* border: 1px solid red; */
   }
+
+  /* // MAin-middle container */
   .container-b {
     order: 1;
-    width: 100%;
-
-
-
-    /* border: 3px solid red; */
+    width: 100%;/
   }
 
   .super-container-qna-section {
     margin-top: 5vw;
     width: 100%;
-
   }
-  
 
+   /*// Left container A */
   .container-a {
     order: 2;
     width: 100%;
+    padding: 0 2em;
+    height: auto;
   }
 
+  #chat-container-section {
+    background: transparent;
+  }
+
+  #chat-container-messages {
+    background-color: #c6e0e1;
+    max-height: 42vh;
+    border-radius: 1.5% 1.5% 0 0;
+    overflow-y: auto;
+  }
+
+   /* ?? Left container, Bet tampa middle container absolute */
   .response800 {
     position: absolute;
     width: 100%;
@@ -987,55 +996,77 @@ img {
     align-items: center;
   }
 
-  .user-info-container{
+  .user-info-container {
     height: auto;
     width: 30%;
     padding: 0;
     margin: 0;
-
-    /* border: 2px solid red; */
   }
+
   .user-info {
     align-items: flex-start;
-    padding:0.5em;
+    padding: 0.5em;
     font-size: clamp(.5em, 5vw, 1em);
     border-radius: 5%;
     background-color: transparent;
   }
- .show-money-container {
+
+  .show-money-container {
     width: 40%;
     margin-right: 1vw;
     height: auto;
+  }
+
+  #litai-img,
+  #litai-img-bonus {
+    max-width: 6.25em;
+
+  }
+
+  .litas-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 0;
+
+  }
 
 
-    /* border: 1px solid rgb(0, 21, 140); */
-    }
-
-    #litai-img,
-    #litai-img-bonus {
-      max-width: 6.25em;
-
-    }
-
-    .litas-container {
-      display: flex;
-      flex-direction: column;
-      height: auto;
-      gap: 0;
-
-    }
-
-
+  /* // Container C*/
   .container-c {
     order: 3;
+    width: 96%;
+    flex-direction: row;
+    align-items: flex-start;
+    column-gap: 1em;
+  }
+
+  .old-question-section {
+    width: 50vw;
+    margin: 0.5rem;
+    order: 1;
   }
 }
 
 
+@media (max-width:500px) {
+  .container-c {
+    /* // Container C*/
+    flex-direction: column;
+  }
 
+  .old-question-section {
+    order: 1;
+    width: 100%;
+    margin: 0;
+    padding: 1em;
 
+  }
 
-
+  .today-top {
+    order: 2;
+  }
+}
 
 
 
