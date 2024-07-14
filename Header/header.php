@@ -30,16 +30,16 @@
                             aria-expanded="false">
                             Info
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu mb-2">
                             <li><a class="dropdown-item" href="/viktorina.live/Info/Mano_info/i_myInfo.php">Mano info</a></li>
                             <li><a class="dropdown-item" href="/viktorina.live/Info/Puslapio_klaidos/i_page_mistake.php">Puslapio klaidos</a></li>
                             <li><a class="dropdown-item" href="/viktorina.live/Info/Balsavimas/i_vote.php">Balsavimas</a></li>
                             <li><a class="dropdown-item" href="/viktorina.live/Info/Pasiulymai/i_minds.php">Pasiūlymai</a></li>
                             <li><a class="dropdown-item" href="/viktorina.live/Info/Klaidos_klausime/i_qna_mistake.php">Klaidos klausime</a></li>
                             <li>
-                                <div class="dropdown-submenu-svarbu">
-                                    <a href="#" class="dropdown-item">Svarbu</a>
-                                    <ul class="dropdown-menu">
+                                <div class="dropdown-submenu-svarbu mb-1">
+                                    <a href="#" class="dropdown-item ">Svarbu</a>
+                                    <ul class="dropdown-menu ">
                                         <li><a class="dropdown-item" href="/viktorina.live/Info/Svarbu/Rules/rules.php">Taisyklės</a></li>
                                         <li><a class="dropdown-item" href="#">Folder X</a></li>
                                         <li><a class="dropdown-item" href="#">Folder Y</a></li>
@@ -48,11 +48,12 @@
                             </li>
                         </ul>
                     </li>
+
                 </ul>
                 <?php if (isset($name) && !empty($name)) : ?>
-                <button class="btn btn-primary cs-bg-warning mt-2" id="btn-atsijungti" type="button">Atsijungti</button>
+                <button class="btn btn-primary cs-bg-warning" id="btn-atsijungti" type="button">Atsijungti</button>
                 <?php else : ?>
-                <button class="btn btn-primary cs-bg-warning mt-2" id="login-button" type="button" onclick="redirectToLogin()">Prisijungti</button>
+                <button class="btn btn-primary cs-bg-warning" id="login-button" type="button" onclick="redirectToLogin()">Prisijungti</button>
                 <?php endif; ?>
             </div>
         </div>
@@ -84,15 +85,16 @@
     const logoutButton = document.getElementById('btn-atsijungti');
     const name = "<?php echo $name ?>";
     logoutButton.addEventListener('click', () => {
-        window.location.href = `/viktorina.live/Statistica/statistic.php`;
+        window.location.href = `./viktorina.live/Statistica/statistic.php`;
     });
 </script>
 <?php else : ?>
 <script>
     function redirectToLogin() {
-        window.location.href = `/viktorina.live/d_regilogi.php`;
+        window.location.href = `./viktorina.live/d_regilogi.php`;
     }
 </script>
+
 <?php endif; ?>
 
 

@@ -7,12 +7,13 @@
   --senary-color: #e0d7d7;
 }
 
+/* Header */
 .header {
   background-color: rgb(36, 33, 33);
   opacity: 0.8;
 }
 
-/* LOGO */
+/* Logo */
 .logo-container {
   margin-left: 1em;
 }
@@ -27,18 +28,19 @@
   transform: scale(2.5) translate(20px, 20px);
 }
 
+/* Navbar Brand */
 .cs-navbar-brand {
   font-size: 1.4em;
   font-weight: bold;
-  color: rgb(200, 148, 64);
+  color: var(--primary-color);
   filter: drop-shadow(1px 1px 2px black);
   cursor: crosshair;
   transition: transform 0.9s, filter 0.9s;
 }
 
 .cs-navbar-brand:hover {
-  transform: scale(1.38) translateX(-.01%);
-  filter: drop-shadow(1px 1px 2px rgb(200, 148, 64));
+  transform: scale(1.38) translateX(-0.01%);
+  filter: drop-shadow(1px 1px 2px var(--primary-color));
 }
 
 @keyframes fadeOut {
@@ -54,7 +56,7 @@
   animation: fadeOut 1s forwards;
 }
 
-.cs-navbar-nav{
+.cs-navbar-nav {
   margin-right: 5%;
   padding-right: 14%;
 }
@@ -62,27 +64,23 @@
 @media (max-width: 450px) {
   .cs-navbar-brand {
     font-size: 1em;
-  } 
+  }
 }
+
 @media (max-width: 350px) {
   .cs-navbar-brand {
     display: none;
   }
-  
 }
 
+/* Background Warning */
 .cs-bg-warning {
-  background-color: rgb(200, 148, 64);
+  background-color: var(--primary-color);
 }
 
-
-
-/* !! Nav linkams gal reikes custom spalvu? */
-/* !! Sunku perrasyti daug kur !important */
-/* !! Kolkas palieku */
-/* NAV LINKS */
+/* Nav Links */
 .cs-anchor {
-  color: #dab730;
+  color: var(--primary-color);
   font-size: 1.2em;
   font-weight: bold;
   filter: drop-shadow(1px 1px 2px black);
@@ -92,51 +90,46 @@
 .cs-anchor:hover {
   transform: translateX(2px);
   color: #dada95;
-  filter: drop-shadow(2px 3px 5px #dab730);
+  filter: drop-shadow(2px 3px 5px var(--primary-color));
   border-radius: 0.4em;
-  padding-bottom: 2px;
   text-decoration: underline;
-  text-decoration-color: #6b6344;
+  text-decoration-color: var(--secondary-color);
   text-decoration-thickness: 0.03em;
 }
 
 .cs-anchor:active {
-  filter: drop-shadow(2px 3px 5px #dab730);
+  filter: drop-shadow(2px 3px 5px var(--primary-color));
   border-radius: 0.4em;
   padding-bottom: 2px;
   text-decoration: underline;
-  text-decoration-color: #6b6344;
+  text-decoration-color: var(--secondary-color);
   text-decoration-thickness: 0.03em;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* MENU */
+/* Dropdown Menu */
 ul.dropdown-menu {
-  background-color: transparent;
+  background-color: var(--secondary-color);
   border: none;
-  transition: background-color 0.3s ease, border 0.3s ease;
+  border-radius: 0 0.3em 0.3em 0.3em;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease, border-radius 0.3s ease;
+}
+
+ul.dropdown-menu.show {
+  max-height: 500px;
+  opacity: 1;
+  max-width: 23%;
 }
 
 ul.dropdown-menu li {
-  margin-left: 1em;
+  margin-left: 0.5em;
   transition: margin-left 0.3s ease;
 }
 
 ul.dropdown-menu li a {
-  color: #dab730;
+  color: var(--primary-color);
   display: inline;
   transition: color 0.3s ease, background-color 0.3s ease, margin-left 0.3s ease;
 }
@@ -144,10 +137,17 @@ ul.dropdown-menu li a {
 ul.dropdown-menu li a:hover {
   color: #ffffff;
   background-color: rgb(52, 48, 53);
-  border-radius: .3em;
-  margin-left: .4em;
+  padding: 0 0.5em;
+  border-radius: 0.2em;
+  margin-left: 0.2em;
 }
 
+a.dropdown-item {
+  margin: 0;
+  padding: 0;
+}
+
+/* Dropdown Submenu */
 .dropdown-submenu-svarbu {
   position: relative;
 }
@@ -167,7 +167,6 @@ ul.dropdown-menu li a:hover {
   visibility: visible;
 }
 
-/* Optional: Adding a fade-in effect for the submenu */
 .dropdown-submenu-svarbu .dropdown-menu {
   transition: opacity 0.3s ease-in-out;
 }
@@ -177,42 +176,26 @@ ul.dropdown-menu li a:hover {
   visibility: visible;
 }
 
-
-
-
-
-/* BTN ATSIJUNGTI */
-/* !! hover ant button turi matytis */
-#btn-atsijungti, #login-button {
+/* Button */
+#btn-atsijungti,
+#login-button {
   color: #000;
-  border-color: #dab730;
+  border-color: var(--primary-color);
   visibility: hidden;
   cursor: pointer;
   border-radius: 5px;
 }
 
-.header:hover #btn-atsijungti, .header:hover #login-button{
+.header:hover #btn-atsijungti,
+.header:hover #login-button {
   visibility: visible;
   opacity: 0.3;
 }
 
-#btn-atsijungti:hover, #login-button:hover{
-  background-color: #dab730;
+#btn-atsijungti:hover,
+#login-button:hover {
+  background-color: var(--primary-color);
   visibility: visible;
   color: #fff;
   opacity: 0.1;
 }
-
-/* @media (max-width: 992px) {
-  #btn-atsijungti, #login-button {
-    display: flex;
-    justify-content: right;
-    text-align: right;
-    margin-right: 1em;
-  }
-  
-}
-
-div#navbarNavDropdown {
-  display: flex;
-} */
