@@ -28,6 +28,19 @@
   transform: scale(2.5) translate(20px, 20px);
 }
 
+.logo-container:hover .logo {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* Navbar Brand */
 .cs-navbar-brand {
   font-size: 1.4em;
@@ -43,24 +56,6 @@
   filter: drop-shadow(1px 1px 2px var(--primary-color));
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-.logo-container:hover .logo {
-  animation: fadeOut 1s forwards;
-}
-
-.cs-navbar-nav {
-  margin-right: 5%;
-  padding-right: 14%;
-}
-
 @media (max-width: 450px) {
   .cs-navbar-brand {
     font-size: 1em;
@@ -71,6 +66,12 @@
   .cs-navbar-brand {
     display: none;
   }
+}
+
+/* Navbar */
+.cs-navbar-nav {
+  margin-right: 5%;
+  padding-right: 14%;
 }
 
 /* Background Warning */
@@ -113,7 +114,6 @@ ul.dropdown-menu {
   border-radius: 0 0.3em 0.3em 0.3em;
   max-height: 0;
   opacity: 0;
-  overflow: hidden;
   transition: max-height 0.5s ease, opacity 0.5s ease, border-radius 0.3s ease;
 }
 
@@ -176,7 +176,7 @@ a.dropdown-item {
   visibility: visible;
 }
 
-/* Button */
+/* Buttons */
 #btn-atsijungti,
 #login-button {
   color: #000;
