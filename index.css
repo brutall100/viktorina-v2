@@ -3,8 +3,7 @@
 }
 
 body {
-    background-color: #121212; 
-    background-image: url(images/background/5987100.jpg);
+    background-image: linear-gradient(to right top, #5c5157, #5c4f5a, #594e5e, #554d62, #4d4d67, #48526d, #415672, #395b75, #3a6579, #406e7b, #49777c, #567f7d);
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
