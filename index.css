@@ -1,5 +1,5 @@
-*{
-    font-family: 'Exo 2', 'Montserrat', sans-serif;
+*, ::before, ::after{
+    box-sizing: border-box;
 }
 
 body {
@@ -8,8 +8,8 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    margin: 0;
-    padding: 0;
+    font-family: 'Exo 2', 'Montserrat', sans-serif;
+}
 }
 
 /* HEADER welcome MSG */
