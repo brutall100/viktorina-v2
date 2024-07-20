@@ -27,6 +27,7 @@
                             <li><a class="dropdown-item" href="#">Šeimos..kuriama</a></li>
                             <li><a class="dropdown-item" href="#">Grandinėlė..kuriama</a></li>
                             <li><a class="dropdown-item" href="#">Golden mind..kuriama</a></li>
+                            <li><a class="dropdown-item" href="#">Muzikinė..kuriama</a></li>
                         </ul>
                     </li>
 
