@@ -75,8 +75,8 @@ p span {
 /* MAIN GRID */
 .main-container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: minmax(50px, auto); /* Adjust the minimum and maximum height as needed */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-rows: minmax(1fr, auto); /* Adjust the minimum and maximum height as needed */
     gap: 20px; /* Adjust the gap between boxes */
     padding: 10px; /* Adjust the overall padding */
     margin: 10px 50px; /* Adjust the margin from the edges of the screen */
