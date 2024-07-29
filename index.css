@@ -36,22 +36,29 @@ body {
 /* Header Styles */
 .header-container {
     display: flex;
-    align-items: end; 
+    align-items: center; 
     justify-content: center; 
     margin-bottom: 2em;
 }
 
 .site-logo {
-    max-width: 100%;
+    max-width: 100px;
     height: auto;
     vertical-align: middle; 
+}
+@media (max-width: 400px) {
+    .site-logo {
+        max-width: 80px;
+        height: auto;
+        vertical-align: middle; 
+    }
 }
 
 .index-welcome-msg {
     color: #d4be94;
-    margin: .4em;
+    margin: .4em 0;
     letter-spacing: 0.2em;
-    font-size: clamp(1.5em, 2vw + 1em, 3em);
+    font-size: clamp(1.1em, 2vw + 1em, 3em);
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
