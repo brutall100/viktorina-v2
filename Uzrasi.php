@@ -204,6 +204,9 @@ Taip pat galima bus sudaryti speciala grupe is tarkim 3 vatotoju. Day tope bus t
 <!-- 15 -->
 <!--  Nezinau ar reikia .....   irasant kl i Db pasirinkti klausimo srity, tarkim istorinis , geografinis , krepsinio -->
 
+<!-- 16 -->
+<!-- Panaudoti imdb arba darkoki idomu Api vaizdu ar muzikos -->
+
 
 
 <!-- TAISYKLES -->
