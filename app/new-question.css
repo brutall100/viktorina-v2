@@ -1,0 +1,233 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffffff url(/viktorina-v2/images/backgrounds/cover-0.webp) center center fixed;
+  background-size: cover;
+}
+
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
+
+/* Klausimo irasymo imputs + button */
+/* Default styles for all devices */
+.main {
+  width: 30%;
+  margin: 2% auto;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-form {
+  /* border: 1px solid rgb(56, 83, 17); */
+  display: flex;
+}
+
+.main-form-forma {
+  justify-content: center;
+  /* border: 1px solid rgb(25, 19, 86); */
+  display: flex;
+  flex-direction: column;
+}
+
+.question-resizable {
+  width: 700px;
+  height: 265px;
+  overflow-y: auto;
+  resize: both;
+  -webkit-resize: both;
+  -moz-resize: both;
+  -o-resize: both;
+}
+
+.answer-not-resizable {
+  display: inline-block;
+  min-width: 700px;
+  height: 50px;
+}
+
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin: 1px 0;
+}
+
+input[type="text"],
+textarea {
+  margin-bottom: 20px;
+  width: 400px;
+  padding: 10px;
+  /* border: 5px solid rgb(28, 26, 26);   */
+  font-size: 1.2rem;
+}
+
+input[type="submit"] {
+  font-weight: bold;
+  background-color: rgb(144, 94, 241);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+  transform: scale(1.05);
+}
+
+input[type="submit"]:active {
+  transform: scale(1);
+}
+
+#info-icon {
+  position: absolute;
+  display: inline-block;
+}
+
+#info-icon img {
+  position: relative;
+  width: 27px;
+  height: 27px;
+  right: 35px;
+  top: 10px;
+  cursor: pointer;
+}
+
+#info-text {
+  display: none;
+  position: absolute;
+  bottom: -27px;
+  left: 3px;
+  width: 400px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  /* z-index: 1000; */
+}
+
+.litai-text-color {
+  color: rgb(105, 97, 193);
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Main info Autorius */
+.main-info {
+  position: absolute;
+  left: 13.65%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  background-color: #dd1afa;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  color: #222;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.main-info p {
+  margin: 20px 0;
+  line-height: 1.5;
+  color: #555;
+}
+
+.main-info p:first-child {
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.main-info p:last-child {
+  margin-bottom: 0;
+}
+
+.main-info a {
+  display: block;
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #ffc107;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.main-info a:hover {
+  background-color: #ffa000;
+  color: #fff;
+}
+
+.question_master_icon {
+  transition: transform 0.3s;
+  border-radius: 3.3px;
+}
+
+.question_master_icon:hover {
+  transform: scale(3.5) translateX(8px);
+}
+
+.message-container {
+  width: 260px;
+  height: 260px;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  background-color: #459ce3;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message {
+  font-family: "Amatic SC", cursive;
+  /* font-family: 'Pacifico', cursive; */
+  font-weight: 900;
+  font-size: 30px;
+  color: #333333;
+  padding: 5px;
+  text-align: center;
+}
+
+.empty-fields {
+  color: #bd1717;
+}
+
+.bad-word-message {
+  color: red;
+}
+
+.user-level-error {
+  color: rgb(68, 2, 2);
+}
+
+.good-question {
+  color: #ffa000;
+}
+
+.footer-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
