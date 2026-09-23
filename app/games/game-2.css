@@ -1,0 +1,129 @@
+/* game-2.php*/ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 87vh;
+    background-color: #ffbdbd;
+    overflow: hidden; /* hide the scroll bar */
+}
+
+#greeting {
+    background-color: #ffda79;
+    padding: 20px;
+    text-align: center;
+    margin-top: 1px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 20px;
+    color: purple;
+    text-shadow: 2px 2px 0px #f7df1e;
+}
+
+
+.container {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    padding: 19px;
+    text-align: center;
+    width: 400px;
+    max-height: 220px;
+}
+
+
+button {
+    background-color: #ff7171; 
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #f93e3e; 
+}
+
+
+input[type=number] {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 30%;
+    text-align: center; /* center the input text */
+}
+
+input[type=number]:focus {
+    outline: none;
+    border-bottom: 1px solid #ff7171;
+}
+
+input {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Move the input to the left if the value is 100 or greater */
+input#answer[value="100"] {
+    text-align: left;
+}
+
+/* Move the input to the right if the value is less than 100 */
+input#answer[value="99"] {
+    text-align: right;
+}
+
+#timer {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffda79;
+    text-shadow: 1px 1px 2px #000000;
+  }
+  
+  
+
+.message-style {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(140, 0, 255);
+  }
+
+
+#closeBtn {
+    width: 17%;
+    position: absolute;
+    bottom: 2.5%;
+    right: 5%;
+    background-color: #f93e3e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#closeBtn:hover {
+    background-color: #ffda79;
+}
+        

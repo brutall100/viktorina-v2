@@ -1,0 +1,37 @@
+{
+  "name": "viktorina-v2-server",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Node.js servers for the full (database) version of Viktorina v2: quiz rounds, auth, chat, points and profile.",
+  "main": "start-servers.js",
+  "scripts": {
+    "start": "node start-servers.js",
+    "start:quiz": "node quiz-server.js",
+    "start:auth": "node auth-server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brutall100/viktorina-v2.git"
+  },
+  "author": "brutall100",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brutall100/viktorina-v2/issues"
+  },
+  "homepage": "https://brutall100.github.io/viktorina-v2/",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "moment": "^2.29.4",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.5",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.7",
+    "uuid": "^9.0.1"
+  }
+}

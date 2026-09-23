@@ -1,0 +1,41 @@
+{
+  "apps": [
+    {
+      "name": "Reg-Log Server",
+      "script": "auth-server.js",
+      "cwd": "."
+    },
+    {
+      "name": "Main server",
+      "script": "quiz-server.js",
+      "cwd": "."
+    },
+    {
+      "name": "Game Nr3 Server",
+      "script": "game-3-server.js",
+      "cwd": "."
+    },
+    {
+      "name": "Points Update Server",
+      "script": "points-server.js",
+      "cwd": "."
+    },
+    {
+      "name": "Chat Server",
+      "script": "chat-server.js",
+      "cwd": "."
+    },
+    {
+      "name": "my Info Server",
+      "script": "my-info-server.js",
+      "cwd": "."
+    },
+    {
+      "name": "message Counter",
+      "script": "message-counter.js",
+      "cwd": "."
+    }
+  ]
+}
+
+

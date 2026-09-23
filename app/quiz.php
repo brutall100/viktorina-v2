@@ -1,0 +1,238 @@
+<?php
+session_start();
+
+// auth-server.js forwards the login form here (307 redirect).
+// Keep only the fields we need – never store the password.
+foreach (['nick_name', 'user_email', 'gender', 'other_gender'] as $key) {
+  if (isset($_POST[$key])) {
+    $_SESSION[$key] = $_POST[$key];
+  }
+}
+
+if (!empty($_SESSION['nick_name'])) {
+  $name = $_SESSION['nick_name'];
+  $email = $_SESSION['user_email'] ?? '';
+  $gender = $_SESSION['gender'] ?? $_SESSION['other_gender'] ?? '';
+}
+?>
+<!DOCTYPE html>
+<html lang="lt">
+
+<head>
+  <title>Viktorina.live</title>
+  <meta name="description"
+    content="Viktorina.live - Testuokite savo žinias ir uždirbkite litus šioje interaktyvioje viktorinoje. Prisijunkite dabar, konkuruokite ir laimėkite!">
+  <meta name="keywords"
+    content="Viktorina.live, protų žaidimas, interaktyvus, žinios, taškai, konkurencija, litai, protmūšis, lrt, draugas, litas, lt">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/viktorina-v2/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="quiz.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/neue-metana" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<?php
+if (isset($name) & !empty($name)) {
+  include 'config-db.php';  
+// arba require arba include
+  $stmt = $conn->prepare("SELECT user_lvl, litai_sum, user_id FROM super_users WHERE nick_name = ?");
+  $stmt->bind_param("s", $name);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  if ($result->num_rows > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $level = $row['user_lvl'];
+    $points = $row['litai_sum'];
+    $user_id = $row['user_id'];
+    mysqli_close($conn);
+    $_SESSION['user_id'] = $user_id;
+    $_SESSION['points'] = $points;
+    $_SESSION['user_lvl'] = $level;
+    
+    // Echo these PHP variables as JavaScript variables. They are sent to client js
+    echo '<script>';
+    echo 'var userLevelis = ' . json_encode($level) . ';';
+    echo '</script>';
+  }
+}
+?>
+
+
+
+<body>
+  <div class="continent">
+    <div class="header-wrapper">
+      <?php include 'header/header.php'; ?>
+    </div>
+  
+    <!-- Galimai sis bus nereikalingas  -->
+    <!-- <div id="login-container" <?php echo isset($name) ? 'style="display: none;"' : ''; ?>>
+      <button type="button" id="login-button" onclick="redirectToLogin()">Prisijungti</button>
+    </div> -->
+  
+  
+    <div id="user-data" data-name="<?php echo isset($name) ? htmlspecialchars($name, ENT_QUOTES, 'UTF-8') : ''; ?>"
+      data-level="<?php echo isset($level) ? $level : ''; ?>" data-points="<?php echo isset($points) ? $points : ''; ?>">
+    </div>
+  
+    <!--  Your current level is $level and you have $points points. Today's points: $points_today. Your id: $user_id -->
+    <!-- bandymas -->
+    <!-- <div id="dataContainer"></div> -->
+  
+  
+    <div class="containers-abc">  <!--start of  A B C container -->
+      <div class="container-a">                                         <!-- Start of A  -->
+      <!-- A1 -->
+       <div class="response800">
+         <div class="user-info-container">
+           <?php
+           if (isset($name)) {
+               include 'config-db.php';
+   
+               $stmt = $conn->prepare("SELECT user_lvl, litai_sum, litai_sum_today, user_id, (SELECT COUNT(*) FROM super_users WHERE litai_sum > su.litai_sum) + 1 AS position FROM super_users su WHERE nick_name = ?");
+               $stmt->bind_param("s", $name);
+               $stmt->execute();
+               $result = $stmt->get_result();
+               if ($result->num_rows > 0) {
+                   $row = mysqli_fetch_assoc($result);
+                   $level = $row['user_lvl'];
+                   $points = $row['litai_sum'];
+                   $points_today = $row['litai_sum_today'];
+                   $user_id = $row['user_id'];
+                   $position = $row['position'];
+                   echo "<div class='user-info'>";
+                   $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+                   echo "<div class='welcome-message'><span id='temp-greeting'>Labas,</span> $safeName <span id='temp-exclamation'>!</span></div>";
+                   echo "<div class='points-info'>Vieta tope <span class='position-highlight'>$position</span></div>";
+                   echo "<div class='points-info'>Turite <span class='points-highlight'>$points LT</span></div>";
+                   echo "<div class='points-info'>Lygis <span class='level-highlight'>$level</span></div>";
+                   echo "</div>";
+               }
+               mysqli_close($conn);
+           } else {
+               echo "<div class='user-info'>"; 
+               echo "<div class='greeting-message'>
+                         Labas! 
+                         <img src='/viktorina-v2/images/icons/smile.webp'
+                             alt='Šypsenėlė su tekstu.' 
+                             aria-label='Šypsenėlė su tekstu, kuriame sakoma, kad norint žaisti reikia prisijungti.'> 
+                         Norėdami pradėti rinkti Litus prisijunkite.
+                     </div>";
+               echo "</div>";
+           }
+           ?>
+        </div>
+        <!-- A2 -->
+        <div class="show-money-container">  <!-- Sie 2 conteineriai turi susieiti i viena . Vienas be kito negali-->
+           
+             <!-- <div id="lita"></div>
+             <div id="lita-bonus"></div> -->
+   
+           <section class="litas-container">
+             <div class="litas-container-img" id="litai-img"></div>
+             <div class="litas-container-img" id="litai-img-bonus" style="display: none"></div>
+           </section>
+        </div>
+
+       </div>
+       <!-- A3 -->
+       <div id="chat-container-section">
+        <div id="chat-container-messages">
+          <ul id="chat-messages"></ul>
+          <div id="chat-user-data" chat-data-name="<?php echo isset($name) ? htmlspecialchars($name, ENT_QUOTES, 'UTF-8') : ''; ?>"></div>
+        </div>
+        <div>
+          <form id="chat-form">
+            <input id="chat-input-msg" name="user_message" autocomplete="off">
+            <input type="hidden" id="chat-user-id" name="user_id" value="<?php echo isset($user_id) ? $user_id : ''; ?>">
+            <input type="hidden" id="chat-user-name" name="user_name" value="<?php echo isset($name) ? htmlspecialchars($name, ENT_QUOTES, 'UTF-8') : ''; ?>">
+            <input type="hidden" id="chat-user-level" name="user_level" value="<?php echo isset($level) ? $level : ''; ?>">
+            <button type="submit" id="chat-button">Send</button>
+          </form>
+        </div>
+      </div>
+  
+     </div>                                                           <!-- END of A -->
+  
+     <div class="container-b">                                       <!-- Start of B  -->
+     <!-- B1 -->
+        <main class="super-container">
+              <div class="points-container">
+                  <div id="points"></div>
+                  <div id="bonus-points"></div>
+              </div>
+  
+              <div class="super-container-qna-section">
+                  <div id="question"></div>
+                  <div id="answer"></div>
+              </div>
+  
+              <div class="form-container">
+                  <?php
+                  $name = $name ?? "";
+                  include 'config-db.php';
+                  $stmt = $conn->prepare("SELECT email_verified FROM super_users WHERE nick_name = ?");
+                  $stmt->bind_param("s", $name);
+                  $stmt->execute();
+                  $result = $stmt->get_result();
+                  $verify = 0;  // Default to not verified
+
+                  if ($result->num_rows > 0) {
+                      $row = mysqli_fetch_assoc($result);
+                      $verify = $row['email_verified'];
+                  }
+                  mysqli_close($conn);
+                  
+                  if (!empty($name) && $verify == 1) { ?>
+                      <form action="quiz.php" id="answer-form" method="post">
+                          <div class="answer-input">
+                              <input type="text" id="answer-input" name="answer-input">
+                              <input type="image" src="/viktorina-v2/images/icons/send.webp" alt="Submit" class="submit-icon">
+                          </div>
+                          <div class="answer-section">
+                            <div id="answer-msg">
+                                <p>Paskutinis teisingai atsakęs: <span id="answerer-name"></span></p>
+                                <p>Atsakymas buvo: <span id="answer-content"></span></p>                                  
+                            </div>
+                          </div>
+                      </form>
+                  <?php } elseif (!empty($name) && $verify == 0) { ?>
+                      <div class="email-confirmation-message">
+                        <p>Prašome patikrinti savo el. paštą ir paspausti nuorodą, kad galėtumėte dalyvauti 
+                            <span class="email-confirmation-span">Viktorinos</span> žaidime. 
+                            <a href="mailto:" class="email-confirmation-link">Jūsų el. paštas</a>
+                        </p>
+                      </div>
+                  <?php } ?>
+              </div>
+          </main>
+     </div>                                                     <!-- END of B -->
+  
+     <div class="container-c">                                  <!-- Start of C  -->
+     <!-- C1 -->
+        <section class="today-top">
+          <button type="button" class="today-top-btn" id="today-top-btn">Šiandienos TOP 10</button>
+        </section>
+       <!-- C2  -->
+      <div class="old-question-section">
+        <div id="old-question"></div>
+      </div>
+  
+    </div> <!-- END of containers-abc -->
+  
+    
+  </div>
+  
+  <div class="footer-wrapper">
+    <?php include './footer/footer.php'; ?>
+  </div>
+
+  <script src="quiz.js"></script>
+  <script src="chat-client.js"></script>
+</body>
+
+</html>

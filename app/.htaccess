@@ -1,0 +1,10 @@
+Options -Indexes
+
+# Never serve secrets, configs or Node files from the full version
+<FilesMatch "\.(env|json|md|lock|log)$|^\.">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_alias.c>
+    RedirectMatch 404 ^/.*/app/server/.*$
+</IfModule>

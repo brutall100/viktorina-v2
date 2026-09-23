@@ -1,96 +1,165 @@
 <!DOCTYPE html>
 <html lang="lt">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Viktorina.live - Testuokite savo žinias ir uždirbkite litus šioje interaktyvioje viktorinoje. Prisijunkite dabar, konkuruokite ir laimėkite!">
-    <meta name="keywords"
-        content="Viktorina.live, protų žaidimas, interaktyvus, žinios, taškai, konkurencija, litai, protmūšis, lrt, draugas, litas, lt">
-    <meta name="author" content="Aldas">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Lietuvių">
-    <meta name="subject" content="Viktorinos, Protų žaidimas, Lietuva">
-    <meta name="geo.placename" content="Jonava">
-    <meta name="geo.region" content="LT">
-    <meta name="category" content="Žaidimai">
-    <meta name="og:title" content="Viktorina.live">
-    <meta name="og:description"
-        content="Testuokite savo žinias ir uždirbkite litus šioje interaktyvioje viktorinoje. Prisijunkite dabar, konkuruokite ir laimėkite!">
-    <meta name="og:image" content="url_to_your_image.jpg">
-    <meta name="og:url" content="https://www.viktorina.live">
-    <meta name="og:type" content="website">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <title>Viktorina.live</title>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://www.viktorina.live",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://www.viktorina.live/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            },
-            "image": "https://www.viktorina.live/vk2.jpg"
-        }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viktorina v2 – atsakyk ir rink litus</title>
+  <meta name="description" content="Lietuviška viktorina: atsakyk į klausimus ir rink virtualius litus. Demo versija veikia naršyklėje, pilna versija – su PHP, Node.js ir MySQL.">
+  <meta name="theme-color" content="#2f3e4f">
+  <meta property="og:title" content="Viktorina v2">
+  <meta property="og:description" content="Atsakyk į klausimus ir rink virtualius litus.">
+  <meta property="og:image" content="https://brutall100.github.io/viktorina-v2/docs/screenshot.webp">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Sansation:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <div class="container">
+  <a class="skip-link" href="#main">Pereiti prie turinio</a>
 
-        <header class="header-container">
-            <img src="/images/icons/VK_main_logo100px.webp" alt="Puslapio logotipas V raidė simbolizuojanti viktotina" class="site-logo">
-            <h1 class="index-welcome-msg">Viktorina.live</h1>
-        </header>
+  <div class="live-bg" id="live-bg" aria-hidden="true">
+    <div class="live-bg__glow live-bg__glow--1"></div>
+    <div class="live-bg__glow live-bg__glow--2"></div>
+    <div class="live-bg__rosette" id="rosette"></div>
+  </div>
 
-        <main class="main-container">
-            <div class="box-container">
-                <video class="background-video" muted autoplay loop>
-                    <source src="/images/video/11254215-uhd_3840_2160_30fps.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="/d_regilogi.php" class="box">
-                    <p class="box-text"><span class="box-text-span">Klasikinė</span></p>
-                </a>
-            </div>
-            <div class="box-container">
-                <video class="background-video" muted autoplay loop>
-                    <source src="/images/video/8174327-uhd_3840_2160_25fps.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="#" class="box">
-                    <p class="box-text"><span class="box-text-span">Šeimynos</span><br> Kuriama...</p>
-                </a>
-            </div>
-            <div class="box-container">
-                <video class="background-video" muted autoplay loop>
-                    <source src="/images/video/5092620-hd_1920_1080_24fps.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="#" class="box">
-                    <p class="box-text"><span class="box-text-span">Golden Mind</span><br> Kuriama...</p>
-                </a>
-            </div>
-            <div class="box-container">
-                <video class="background-video" muted autoplay loop>
-                    <source src="/images/video/9945021-uhd_3840_2160_24fps.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="#" class="box">
-                    <p class="box-text"><span class="box-text-span">Grandinėlė</span><br> Kuriama...</p>
-                </a>
-            </div>
-        </main>
-
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="#top" aria-label="Viktorina v2 – į pradžią">
+        <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="30" fill="var(--coin-fill)" stroke="var(--coin-edge)" stroke-width="3"/>
+          <circle cx="32" cy="32" r="23" fill="none" stroke="var(--coin-edge)" stroke-width="1.5" stroke-dasharray="2 3"/>
+          <path d="M20 19h7l5 17 5-17h7l-9 26h-6z" fill="var(--espresso)"/>
+        </svg>
+        <span class="brand__text">Viktorina</span>
+        <span class="brand__version">v2</span>
+      </a>
+      <div class="header-actions">
+        <a class="icon-btn" href="https://github.com/brutall100/viktorina-v2" aria-label="Kodas GitHub'e">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+        </a>
+        <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Perjungti šviesų / tamsų režimą" aria-pressed="false">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+        </button>
+      </div>
     </div>
-</body>
+  </header>
 
+  <main id="main">
+    <section class="wrap hero" id="top">
+      <div>
+        <p class="eyebrow">Lietuviška viktorina</p>
+        <h1>Atsakyk ir rink <span class="accent">litus</span></h1>
+        <p class="hero__lead">Kiekvienas teisingas atsakymas į tavo piniginę įkrenta 1–5 virtualius litus. Litai jau seniai dingo iš parduotuvių, bet čia jie vis dar lyja.</p>
+        <div class="hero__cta">
+          <a class="btn" href="#quiz"><span class="btn__coin" aria-hidden="true">Lt</span>Pradėti žaidimą</a>
+          <a class="btn btn--ghost" href="#full-version">Kas yra pilnoje versijoje?</a>
+        </div>
+      </div>
+      <div class="showcase" aria-hidden="true">
+        <img src="images/litai/10-lt.webp" width="480" height="227" alt="">
+        <img src="images/litai/20-lt.webp" width="480" height="231" alt="">
+        <span class="showcase__stamp"><span><strong data-count="10">0</strong>klausimų</span></span>
+      </div>
+    </section>
+
+    <div class="wrap stats">
+      <div class="stat reveal"><span class="stat__num" data-count="10">0</span><span class="stat__label">klausimų demo žaidime</span></div>
+      <div class="stat reveal"><span class="stat__num"><span data-count="5">0</span> Lt</span><span class="stat__label">daugiausia už vieną atsakymą</span></div>
+      <div class="stat reveal"><span class="stat__num" data-count="50">0</span><span class="stat__label">litų gali surinkti iš viso</span></div>
+    </div>
+
+    <section class="section" id="quiz" aria-labelledby="quiz-title">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <h2 id="quiz-title">Demo viktorina</h2>
+          <p>Pasirink vieną iš keturių atsakymų. Po kiekvieno klausimo pamatysi, kiek litų uždirbai.</p>
+        </div>
+
+        <article class="note-card reveal" id="quiz-card">
+          <div class="note-card__top">
+            <span class="serial" id="serial">Nr. VK-01 / 10</span>
+            <span class="wallet" id="wallet" aria-live="polite">
+              <span class="btn__coin" aria-hidden="true">Lt</span>
+              <span>Piniginė: <span id="wallet-sum">0</span> Lt</span>
+            </span>
+          </div>
+          <div class="progress" aria-hidden="true"><div class="progress__bar" id="progress"></div></div>
+
+          <div id="quiz-body">
+            <div class="quiz-grid">
+              <div>
+                <h3 class="question" id="question" tabindex="-1">Kraunama…</h3>
+                <ul class="options" id="options"></ul>
+                <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+              </div>
+              <aside class="prize" aria-label="Klausimo vertė">
+                <p class="prize__label">Šis klausimas vertas</p>
+                <p class="prize__value"><span id="prize-value">0</span> Lt</p>
+                <img id="prize-img" src="images/litai/1-lt.webp" width="360" height="173" alt="Vieno lito banknotas" loading="lazy">
+              </aside>
+            </div>
+            <div class="quiz-actions">
+              <button class="btn" id="next-btn" type="button" disabled>Kitas klausimas <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+
+          <div class="result" id="result" hidden>
+            <h3>Žaidimas baigtas!</h3>
+            <p>Teisingai atsakei į <strong id="result-correct">0</strong> iš 10 klausimų ir surinkai:</p>
+            <p class="result__sum"><span id="result-sum">0</span> Lt</p>
+            <button class="btn" id="restart-btn" type="button"><span class="btn__coin" aria-hidden="true">Lt</span>Žaisti dar kartą</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="full-version" aria-labelledby="full-title">
+      <div class="wrap">
+        <div class="section__head reveal">
+          <h2 id="full-title">Pilna versija su serveriu</h2>
+          <p>Šis puslapis yra demo. Pilna versija (<code>app/</code> aplankas) veikia su PHP, Node.js ir MySQL ir turi daug daugiau.</p>
+        </div>
+        <div class="features">
+          <div class="feature reveal">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <h3>Gyvi raundai</h3>
+            <p>Serveris kas kelias sekundes duoda naują klausimą visiems žaidėjams vienu metu.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
+            <h3>Pokalbiai</h3>
+            <p>Žaidėjai kalbasi čate ir dalinasi patarimais žaidimo metu.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 11l5-6 5 6M12 5v14"/></svg></div>
+            <h3>Balsavimas</h3>
+            <p>Žaidėjai kuria savo klausimus, o kiti balsuoja, kurie pateks į žaidimą.</p>
+          </div>
+          <div class="feature reveal">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M8 21h8M12 17v4M6 4h12v4a6 6 0 0 1-12 0z"/></svg></div>
+            <h3>TOP 10 ir lygiai</h3>
+            <p>Dienos, savaitės ir mėnesio lyderiai, lygiai ir mini žaidimai su premijomis.</p>
+          </div>
+        </div>
+        <p class="server-note reveal">Kaip paleisti pilną versiją savo kompiuteryje, rasi <a href="https://github.com/brutall100/viktorina-v2#run-it-locally">README faile</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <p>© 2024–2026 brutall100 · <a href="https://github.com/brutall100/viktorina-v2/blob/main/LICENSE">MIT licencija</a></p>
+      <p>Litų banknotų vaizdai – Lietuvos bankas (istoriniai banknotai).</p>
+    </div>
+  </footer>
+
+  <script src="js/background.js" defer></script>
+  <script src="js/questions.js" defer></script>
+  <script src="js/quiz.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
 </html>

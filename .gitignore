@@ -1,14 +1,17 @@
+# Dependencies
+node_modules/
+
+# Secrets – copy app/.env.example to app/.env
 .env
+**/.env
+*.env
+!.env.example
 
-**/*.env
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
 
-
-# Ignore Old_files folder
-_NotUse
-
-
-# Ignore node_modules
-node_modules
-
-# Ignore all console.log files
-# *.log
+# Editor settings
+.vscode/
+.idea/

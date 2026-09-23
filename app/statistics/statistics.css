@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+  margin: 0;                               
+  padding: 0;                              
+}
+
+h1 {
+  margin-top: 1px;
+}
+
+body {
+  text-align: center;
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000); 
+  background: linear-gradient(to right, #434343, #000000); 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 2% 10em;
+  font-weight: bold;
+  border: 3px solid rgb(0, 255, 132);
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.main-container {
+  border: 3px solid rgb(15, 13, 124);
+}
+
+/* Media Query 1: Extra Small Devices (Phones) */
+@media screen and (max-width: 576px) {
+  body {
+    padding: 2% 1em; /* Further adjust padding for extra small screens */
+    grid-template-columns: 1fr; /* Change to a single column layout for extra small screens */
+    border: 3px solid rgb(9, 9, 9);
+  }
+
+  .main-container {
+    border: 3px solid rgb(68, 124, 13);
+    margin: 10px;
+  }
+}
+
+/* Media Query 2: Small Devices (Small Tablets) */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  body {
+    padding: 2% 2em; /* Adjust padding for small tablets */
+    grid-template-columns: 1fr; /* Continue with a single column layout for small tablets */
+    border: 3px solid rgb(112, 39, 167);
+  }
+
+  .main-container {
+    border: 3px solid rgb(0, 142, 255);
+    margin: 10px;
+  }
+
+  /* Additional styles for small tablets if needed */
+}
+
+/* Media Query 3: Medium Devices (Laptops) */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  body {
+    padding: 2% 4em; /* Adjust padding for medium-sized screens (laptops) */
+    grid-template-columns: 1fr 1fr; /* Use a two-column layout for laptops */
+    border: 3px solid rgb(255, 0, 0);
+  }
+
+  .main-container {
+    border: 3px solid rgb(255, 255, 0);
+    margin: 20px;
+  }
+
+  /* Additional styles for medium-sized screens (laptops) if needed */
+}
+
+/* Media Query 4: Large Devices (Desktops) */
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+  body {
+    padding: 2% 6em; /* Adjust padding for large screens (desktops) */
+    grid-template-columns: 1fr 1fr 1fr; /* Use a three-column layout for desktops */
+    border: 3px solid rgb(0, 255, 0);
+  }
+
+  .main-container {
+    border: 3px solid rgb(0, 0, 255);
+    margin: 30px;
+  }
+
+  /* Additional styles for large screens (desktops) if needed */
+}
+
+/* Media Query 5: Extra Large Devices (Large Desktops) */
+@media screen and (min-width: 1201px) {
+  body {
+    padding: 2% 8em; /* Further adjust padding for extra large screens (large desktops) */
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Use a four-column layout for large desktops */
+    border: 3px solid rgb(255, 0, 255);
+  }
+
+  .main-container {
+    border: 3px solid rgb(255, 128, 0);
+    margin: 40px;
+  }
+
+  /* Additional styles for extra large screens (large desktops) if needed */
+}
+
+#user-info {
+  /* position: relative; */
+  font-weight: bold;
+  max-width: 300px;
+  margin: auto;
+  padding: 20px;
+}
+#user-info p {
+  border: 1px solid gold;
+}
+#user-info .name {
+  font-style: italic;
+}
+.highlight {
+  color: #384027;
+  font-weight: bolder;
+}
+
+/*  */
+/* DROPDOWN BTN SU VARTOTOJAIS */
+.dropdown-btn {
+  background-color: #333;
+  font-style: italic;
+  font-weight: 600;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  letter-spacing: 2px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown-title {
+  background-color: #333;
+  border-radius: 5px 5px 2px 2px;
+  color: #fff;
+  padding: 8px 16px;
+  margin: 0;
+}
+
+.dropdown-list {
+  list-style-type: decimal;
+  padding-left: 20px;
+  margin: 5px 10px;
+}
+
+.dropdown-list li {
+  padding: 8px 16px;
+  color: #333;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #333;
+}
+
+.dropdown-list li:nth-child(odd) {
+  background-color: #ddd;
+}
+
+.dropdown-list li:hover {
+  background-color: #ccc;
+}
+
+/*  */
+/* Statistikos lenteles */
+.statistic-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc; /* Add a border to the table */
+}
+
+.statistic-table th,
+.statistic-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.statistic-table th {
+  background-color: #bcf4ae57;
+}
+
+.statistic-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.statistic-table tr:hover {
+  background-color: #e5e5e5;
+}
+
+.center-numbers {
+  text-align: center;
+}
+
+/*  */
+/* TIME div with time and button */
+.time-div {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  color: rgb(168, 188, 188);
+  padding: 0.4rem;
+}
+
+/* .start-text {
+  content: "START";
+} */
+
+.time-stop-btn {
+  width: 100px;
+  height: 40px;
+  padding: 5px 10px;
+  border: 2px solid #2d341f;
+  border-radius: 8px;
+  background: #bcf4ae57;
+  color: rgb(52, 55, 55);
+  font-weight: 700;
+  box-shadow: 2px 2px 5px #000;
+  cursor: pointer;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.time-stop-btn:hover {
+  transform: scale(1.03);
+}
+
+.time-stop-btn:active {
+  background: #384027;
+  color: #bcf4ae57;
+  box-shadow: 1px 1px 3px #000;
+  font-size: 17px;
+  transform: scale(0.97);
+}
+
+.time-stop-btn:focus {
+  outline: none;
+}
+
+.time-left {
+  margin: 8%;
+  text-shadow: 4px 4px 4px #000;
+  box-shadow: inset 2px 2px 4px #000, 2px 2px 4px #999;
+  border-radius: 3px;
+}
+
+#countdown {
+  font-size: 30px;
+}
